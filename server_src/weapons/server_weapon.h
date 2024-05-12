@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Projectile/server_projectile.h"
+#include "projectile/server_projectile.h"
 
 class Weapon {
     // https://www.jazz2online.com/21/the-weapons-of-jazz2/

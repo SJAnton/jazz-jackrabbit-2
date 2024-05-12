@@ -1,20 +1,20 @@
-#ifndef SERVER_FREEZER_H_
-#define SERVER_FREEZER_H_
+#ifndef SERVER_TOASTER_H_
+#define SERVER_TOASTER_H_
 
 #include "server_weapon.h"
-#include "Projectile/server_iceball.h"
+#include "projectile/server_toasterball.h"
 
-#define NAME "Freezer"
+#define NAME "Toaster"
 #define AMMO -1
 #define FIRE_RATE 10
 #define COOLDOWN 10
 #define SPEED 10
 
-class Freezer : public Weapon {
+class Toaster : public Weapon {
     private:
         std::string name = NAME;
 
-        Iceball projectile;
+        Toasterball projectile;
 
         uint8_t ammo = AMMO;
 
@@ -25,7 +25,7 @@ class Freezer : public Weapon {
         uint8_t projectile_speed = SPEED;
 
     public:
-        Freezer();
+        Toaster();
 
         void shoot(); //override
 };

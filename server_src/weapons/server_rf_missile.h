@@ -2,7 +2,7 @@
 #define SERVER_RF_MISSILE_H_
 
 #include "server_weapon.h"
-#include "Projectile/server_rocket.h"
+#include "projectile/server_rocket.h"
 
 #define NAME "RF Missile"
 #define AMMO -1

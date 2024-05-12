@@ -1,20 +1,20 @@
-#ifndef SERVER_BLASTER_H_
-#define SERVER_BLASTER_H_
+#ifndef SERVER_SEEKER_H_
+#define SERVER_SEEKER_H_
 
 #include "server_weapon.h"
-#include "Projectile/server_blasterball.h"
+#include "projectile/server_seeker_rocket.h"
 
-#define NAME "Blaster"
+#define NAME "Seeker"
 #define AMMO -1
 #define FIRE_RATE 10
 #define COOLDOWN 10
 #define SPEED 10
 
-class Blaster : public Weapon {
+class Seeker : public Weapon {
     private:
         std::string name = NAME;
 
-        Blasterball projectile;
+        SeekerRocket projectile;
 
         uint8_t ammo = AMMO;
 
@@ -25,8 +25,8 @@ class Blaster : public Weapon {
         uint8_t projectile_speed = SPEED;
 
     public:
-        Blaster();
+        Seeker();
 
         void shoot(); //override
-};  
+};
 #endif

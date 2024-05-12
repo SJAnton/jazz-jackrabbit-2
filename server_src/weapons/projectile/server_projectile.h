@@ -5,6 +5,7 @@
 
 class Projectile {
     // De esta clase heredan todos los proyectiles
+    // https://www.jazz2online.com/21/the-weapons-of-jazz2/
     private:
         uint8_t x_pos;
 
@@ -19,13 +20,13 @@ class Projectile {
     public:
         Projectile();
 
-        void set_x_pos(uint8_t x); // x
-
-        void set_y_pos(uint8_t y); // y
-
         void move_x_pos(uint8_t x); // x_pos + x
 
         void move_y_pos(uint8_t y); // y_pos + y
+        
+        void powerup();
+
+        void powerup_end();
 
         void contact();
 };

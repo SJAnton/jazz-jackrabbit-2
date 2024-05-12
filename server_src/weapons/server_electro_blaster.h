@@ -1,8 +1,8 @@
-#ifndef SERVER_TNT_H_
-#define SERVER_TNT_H_
+#ifndef SERVER_ELECTRO_BLASTER_H_
+#define SERVER_ELECTRO_BLASTER_H_
 
 #include "server_weapon.h"
-#include "Projectile/server_electroball.h"
+#include "projectile/server_electroball.h"
 
 #define NAME "Blade Gun"
 #define AMMO -1

@@ -21,6 +21,8 @@ class Enemy {
 
         uint8_t y_hitbox;
 
+        bool frozen = false;
+
     public:
         Enemy();
 };
