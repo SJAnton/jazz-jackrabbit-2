@@ -2,6 +2,7 @@
 #define SERVER_BLASTER_H_
 
 #include "server_weapon.h"
+#include "Projectile/server_blasterball.h"
 
 #define NAME "Blaster"
 #define AMMO -1
@@ -12,6 +13,8 @@
 class Blaster : public Weapon {
     private:
         std::string name = NAME;
+
+        Blasterball projectile;
 
         uint8_t ammo = AMMO;
 
@@ -25,5 +28,7 @@ class Blaster : public Weapon {
         Blaster();
 
         void shoot(); //override
-};
+
+        void on_hit(); //override
+};  
 #endif

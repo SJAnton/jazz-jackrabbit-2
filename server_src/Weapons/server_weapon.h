@@ -3,7 +3,10 @@
 
 #include <string>
 
+#include "Projectile/server_projectile.h"
+
 class Weapon {
+    // https://www.jazz2online.com/21/the-weapons-of-jazz2/
     // De esta clase heredan todas las armas
     // Añadir propiedades especiales para cada arma
     private:
@@ -21,5 +24,7 @@ class Weapon {
         Weapon();
 
         void shoot();
+
+        void on_hit(); //override
 };
 #endif

@@ -2,6 +2,7 @@
 #define SERVER_FREEZER_H_
 
 #include "server_weapon.h"
+#include "Projectile/server_iceball.h"
 
 #define NAME "Freezer"
 #define AMMO -1
@@ -12,6 +13,8 @@
 class Freezer : public Weapon {
     private:
         std::string name = NAME;
+
+        Iceball projectile;
 
         uint8_t ammo = AMMO;
 
@@ -25,5 +28,7 @@ class Freezer : public Weapon {
         Freezer();
 
         void shoot(); //override
+
+        void on_hit(); //override
 };
 #endif

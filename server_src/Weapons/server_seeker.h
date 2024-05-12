@@ -2,6 +2,7 @@
 #define SERVER_SEEKER_H_
 
 #include "server_weapon.h"
+#include "Projectile/server_seeker_rocket.h"
 
 #define NAME "Seeker"
 #define AMMO -1
@@ -12,6 +13,8 @@
 class Seeker : public Weapon {
     private:
         std::string name = NAME;
+
+        SeekerRocket projectile;
 
         uint8_t ammo = AMMO;
 
@@ -25,5 +28,7 @@ class Seeker : public Weapon {
         Seeker();
 
         void shoot(); //override
+
+        void on_hit(); //override
 };
 #endif

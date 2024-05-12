@@ -2,16 +2,19 @@
 #define SERVER_TNT_H_
 
 #include "server_weapon.h"
+#include "Projectile/server_electroball.h"
 
-#define NAME "Electro Blaster"
+#define NAME "Blade Gun"
 #define AMMO -1
 #define FIRE_RATE 10
 #define COOLDOWN 10
 #define SPEED 10
 
-class ElectroBlaster : public Weapon {
+class BladeGun : public Weapon {
     private:
         std::string name = NAME;
+
+        Electroball projectile;
 
         uint8_t ammo = AMMO;
 
@@ -22,7 +25,7 @@ class ElectroBlaster : public Weapon {
         uint8_t projectile_speed = SPEED;
 
     public:
-        ElectroBlaster();
+        BladeGun();
 
         void shoot(); //override
 };

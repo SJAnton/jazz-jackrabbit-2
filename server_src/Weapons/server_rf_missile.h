@@ -2,6 +2,7 @@
 #define SERVER_RF_MISSILE_H_
 
 #include "server_weapon.h"
+#include "Projectile/server_rocket.h"
 
 #define NAME "RF Missile"
 #define AMMO -1
@@ -10,8 +11,11 @@
 #define SPEED 10
 
 class RFMissile : public Weapon {
+    // Sin el power-up dispara un cohete 15° arriba y otro 15° abajo
     private:
         std::string name = NAME;
+
+        Rocket projectile;
 
         uint8_t ammo = AMMO;
 
@@ -25,5 +29,7 @@ class RFMissile : public Weapon {
         RFMissile();
 
         void shoot(); //override
+
+        void on_hit(); //override
 };
 #endif

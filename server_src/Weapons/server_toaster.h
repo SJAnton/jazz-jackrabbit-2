@@ -2,6 +2,7 @@
 #define SERVER_TOASTER_H_
 
 #include "server_weapon.h"
+#include "Projectile/server_toasterball.h"
 
 #define NAME "Toaster"
 #define AMMO -1
@@ -12,6 +13,8 @@
 class Toaster : public Weapon {
     private:
         std::string name = NAME;
+
+        Toasterball projectile;
 
         uint8_t ammo = AMMO;
 
