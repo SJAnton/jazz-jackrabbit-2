@@ -17,6 +17,10 @@ class Rocket : public Projectile {
         uint8_t damage;
 
     public:
-        Rocket();
+        Rocket(uint8_t x, uint8_t y);
+
+        void on_hit(); //override
+
+        void kill(); //override
 };
 #endif

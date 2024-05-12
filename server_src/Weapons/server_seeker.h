@@ -28,7 +28,5 @@ class Seeker : public Weapon {
         Seeker();
 
         void shoot(); //override
-
-        void on_hit(); //override
 };
 #endif

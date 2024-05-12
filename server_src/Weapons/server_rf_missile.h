@@ -29,7 +29,5 @@ class RFMissile : public Weapon {
         RFMissile();
 
         void shoot(); //override
-
-        void on_hit(); //override
 };
 #endif

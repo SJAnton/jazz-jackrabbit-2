@@ -28,7 +28,5 @@ class Bouncer : public Weapon {
         Bouncer();
 
         void shoot(); //override
-
-        void on_hit(); //override
 };
 #endif

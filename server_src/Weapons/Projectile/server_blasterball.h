@@ -2,6 +2,7 @@
 #define SERVER_BLASTERBALL_H_
 
 #include "server_projectile.h"
+#include <cstdint>
 
 class Blasterball : public Projectile {
     // De esta clase heredan todos los proyectiles
@@ -17,6 +18,10 @@ class Blasterball : public Projectile {
         uint8_t damage;
 
     public:
-        Blasterball();
+        Blasterball(uint8_t x, uint8_t y);
+
+        void on_hit(); //override
+
+        void kill(); //override
 };
 #endif

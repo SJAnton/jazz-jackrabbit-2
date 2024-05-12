@@ -28,7 +28,5 @@ class Blaster : public Weapon {
         Blaster();
 
         void shoot(); //override
-
-        void on_hit(); //override
 };  
 #endif

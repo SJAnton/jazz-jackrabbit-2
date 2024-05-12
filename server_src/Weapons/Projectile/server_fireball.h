@@ -17,6 +17,10 @@ class Fireball : public Projectile {
         uint8_t damage;
 
     public:
-        Fireball();
+        Fireball(uint8_t x, uint8_t y);
+
+        void on_hit(); //override
+
+        void kill(); //overrides
 };
 #endif

@@ -28,7 +28,5 @@ class Freezer : public Weapon {
         Freezer();
 
         void shoot(); //override
-
-        void on_hit(); //override
 };
 #endif

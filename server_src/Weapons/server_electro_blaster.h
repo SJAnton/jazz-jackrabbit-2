@@ -10,7 +10,7 @@
 #define COOLDOWN 10
 #define SPEED 10
 
-class BladeGun : public Weapon {
+class ElectroBlaster : public Weapon {
     private:
         std::string name = NAME;
 
@@ -25,7 +25,7 @@ class BladeGun : public Weapon {
         uint8_t projectile_speed = SPEED;
 
     public:
-        BladeGun();
+        ElectroBlaster();
 
         void shoot(); //override
 };

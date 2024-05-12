@@ -17,6 +17,10 @@ class Iceball : public Projectile {
         uint8_t damage;
 
     public:
-        Iceball();
+        Iceball(uint8_t x, uint8_t y);
+
+        void on_hit(); //override
+
+        void kill(); //override
 };
 #endif

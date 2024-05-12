@@ -24,7 +24,5 @@ class Weapon {
         Weapon();
 
         void shoot();
-
-        void on_hit(); //override
 };
 #endif

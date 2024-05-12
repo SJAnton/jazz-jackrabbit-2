@@ -16,6 +16,10 @@ class Electroball : public Projectile {
         uint8_t damage;
 
     public:
-        Electroball();
+        Electroball(uint8_t x, uint8_t y);
+
+        void on_hit(); //override
+
+        void kill(); //override
 };
 #endif
