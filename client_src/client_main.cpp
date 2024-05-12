@@ -1,5 +1,28 @@
+#include "interfaz_grafica.h"
+
+const int FPS = 50;
+const int frame_delay = 1000/FPS;
+
+int tiempo_transcurrido;
 
 int main() {
+
+    InterfazGrafica interfaz;
+    while (interfaz.estaAbierta())
+    {
+        int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
+
+        interfaz.manejarEventos();
+        interfaz.update(1);
+        interfaz.renderizar();
+
+        tiempo_transcurrido = SDL_GetTicks() - frameStart;
+        if (frame_delay > tiempo_transcurrido) {
+            SDL_Delay(frame_delay - tiempo_transcurrido); // sleep
+        }
+    }
+    interfaz.cerrarInterfaz(); 
+    std::cout << "fin" << std::endl;
 
     //conectarse al server
     //inicializar cliente
