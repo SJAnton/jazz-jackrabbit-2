@@ -2,6 +2,7 @@
 
 #include "sprite_object.h"
 #include "spritesheet.h"
+#include "client.h"
 
 //GameObject *player1;
 SpriteSheet *player1;
@@ -27,7 +28,7 @@ InterfazGrafica::InterfazGrafica()
         throw std::runtime_error("ERROR. SDL no pudo inicializarse");
     }
     player1 = new SpriteSheet(renderer, "../sprites/Players/Spazz/Idle (56x56)x06.png", 56, 56, 6);
-
+    client1 = Client();
 }
 
 bool InterfazGrafica::estaAbierta() {
@@ -48,15 +49,37 @@ SDL_Rect InterfazGrafica::crearRect(int height, int width, int x, int y) {
 void InterfazGrafica::manejarEventos()
 {
     SDL_Event e;
-    SDL_PollEvent(&e);    
-    switch (e.type)
-    {
-    case SDL_QUIT: // cierra la ventana
+    SDL_PollEvent(&e);
+
+    if (e.type == SDL_QUIT) {
         is_running = false;
-        break;
-    
-    default:
-        break;
+        return;
+
+    } else if (e.type == SDL_KEYDOWN) {
+        switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
+            case SDLK_SPACE:
+                client1.saltar();
+                break;
+            case SDLK_LEFT:
+                client1.moverIzquierda();
+                break;
+            case SDLK_RIGHT:
+                client1.moverDerecha();
+                break;
+            case SDLK_a:
+                client1.disparar();
+                break;
+            case SDLK_d:
+                client1.ataque_especial();
+                break;
+            //case correr a definir
+            case SDLK_ESCAPE:
+                is_running = false;
+                break;
+
+            default:
+                break;
+        }
     }
 }
  

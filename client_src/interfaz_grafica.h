@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <exception>
+#include "client.h"
 
 #define ANCHO_WINDOW 800 // representa pixeles
 #define ALTO_WINDOW 600 // representa pixeles
@@ -18,7 +19,7 @@ private:
     SDL_Renderer* renderer;
     bool is_running = true;
     int iteracion = 0;
-
+    Client client1;
 
 private:
     SDL_Texture* crearTexturaParaImagen(const std::string &imagen_path);
