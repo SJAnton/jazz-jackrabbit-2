@@ -10,3 +10,11 @@ void ServerGameloop::run() {
         // ServerApp para reducir el tamaño del gameloop)
     }
 }
+
+bool ServerGameloop::is_dead() {
+    return wc;
+}
+
+void ServerGameloop::kill() {
+    q.close();
+}

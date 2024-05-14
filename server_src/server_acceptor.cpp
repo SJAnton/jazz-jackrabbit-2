@@ -1,5 +1,7 @@
 #include "server_acceptor.h"
 
+#define NEW_GAME 0
+
 void ServerAcceptor::run() {
     int id = 0;
     while (!wc) {
@@ -9,15 +11,46 @@ void ServerAcceptor::run() {
             // como atributo
             Socket peer = sk.accept();
 
+            // El protocol se crea para leer el primer mensaje con la
+            // información relacionada (cuál personaje se eligió y si
+            // creó una nueva partida o se unió a una existente)
+            ServerProtocol pr(peer);
+
+            // Información de inicio
+            std::vector<uint8_t> init_data = pr.recv_init_info();
+
+            // Se crea una nueva partida y el client recibe la cola única
+            // de este gameloop y su lista de colas para enviarle acciones.
+            // Los gameloops a su vez se guardan en una lista de gameloops
+            // del aceptador.
+            Queue<uint8_t> recv_q;
+            ServerQueueList sql;
+
+            if (/*init_data[byte_juego] == */NEW_GAME) {
+                bool gmlp_wc = false;
+                ServerGameloop *gameloop = new ServerGameloop(recv_q, sql, std::move(gmlp_wc));
+                
+                recv_q_list.push_back(recv_q); // Ambos tienen el
+                sql_list.push_back(sql);       // mismo índice
+
+                gameloop->start();
+                gameloops.push_back(gameloop);
+            } else {
+                // El gameloop ya existe, hay que obtener la cola única
+                // y la lista de colas del gameloop existente para
+                // construir al client.
+                recv_q /*= recv_q_list.at()*/;
+                sql /*= sql_list.at()*/;
+            }
             // El byte inicial del client al servidor determina
             // el personaje utilizado
-            Client *client = new Client(std::move(peer), id, q, sql);
-            Player player;
+            Player player/*(personaje)*/;
+            Client *client = new Client(std::move(peer), std::move(player), id, recv_q, sql);
 
             client->start();
-
-            reap_dead();
             clients.push_back(client);
+
+            reap_dead(); // También debe borrar los gameloops
             id++;
         } catch (LibError &e) {
 
@@ -32,9 +65,14 @@ void ServerAcceptor::reap_dead() {
             client->kill();
             client->join();
             delete client;
-            return true;
         }
-        return false;
+    });
+    gameloops.remove_if([](ServerGameloop* gameloop) {
+        if (gameloop->is_dead()) {
+            gameloop->kill();
+            gameloop->join();
+            delete gameloop;
+        }
     });
 }
 
@@ -45,4 +83,10 @@ void ServerAcceptor::kill_all() {
         delete client;
     }
     clients.clear();
+    for (auto &gameloop : gameloops) {
+        gameloop->kill();
+        gameloop->join();
+        delete gameloop;
+    }
+    gameloops.clear();
 }

@@ -14,6 +14,8 @@ class ServerProtocol {
     public:
         explicit ServerProtocol(Socket &socket) : sk(socket) {}
 
+        std::vector<uint8_t> recv_init_info();
+
         /* Recibe una acción mediante el socket */
         uint8_t recv_action(bool &was_closed);
 

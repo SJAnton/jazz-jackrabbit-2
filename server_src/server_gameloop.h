@@ -16,12 +16,16 @@ class ServerGameloop : public Thread {
 
         ServerQueueList &sql;
 
-        bool &wc;
+        bool wc;
 
     public:
-        ServerGameloop(Queue<uint8_t> &recv_queue, ServerQueueList &sndr_q_list, bool &was_closed) :
-                        q(recv_queue), sql(sndr_q_list), wc(was_closed) {}
+        ServerGameloop(Queue<uint8_t> &recv_queue, ServerQueueList &sndr_q_list, bool was_closed) :
+                        q(recv_queue), sql(sndr_q_list), wc(std::move(was_closed)) {}
 
         void run() override;
+
+        bool is_dead();
+
+        void kill();
 };
 #endif

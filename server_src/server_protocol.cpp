@@ -22,6 +22,10 @@
 #define SEND_DEAD 0x0C
 #define SEND_REVIVE 0x0D
 
+std::vector<uint8_t> ServerProtocol::recv_init_info() {
+
+}
+
 uint8_t ServerProtocol::recv_action(bool &was_closed) {
 
 }

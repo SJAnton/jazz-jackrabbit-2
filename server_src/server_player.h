@@ -38,6 +38,8 @@ class Player {
         bool alive = true; // Si es false tarda unos segundos en revivir,
                            // aunque puede hacerse con if (health == 0)
 
+        bool frozen = false;
+
         bool intoxicated = false; // No puede disparar si es true, sí moverse
 
     public:

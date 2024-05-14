@@ -17,18 +17,14 @@ int main(int argc, char* argv[]) {
         return ERROR;
     }
     Socket skt(SERVICENAME);
-    Queue<uint8_t> recv_queue;
-    ServerQueueList sndr_queue_list;
     // Lee la configuración de un archivo YAML y modifica el juego
-    ServerConfigReader reader(/*archivo*/);
+    ServerConfigReader reader(/*settings.yaml*/);
 
     bool was_closed = false;
 
-    ServerAcceptor acceptor(skt, recv_queue, sndr_queue_list, was_closed);
-    ServerGameloop gameloop(recv_queue, sndr_queue_list, was_closed);
+    ServerAcceptor acceptor(skt, was_closed);
 
     acceptor.start();
-    gameloop.start();
 
     while (std::cin.get() != EXIT) {
 
@@ -36,8 +32,6 @@ int main(int argc, char* argv[]) {
     was_closed = true;
     skt.shutdown(SHUTCODE);
     skt.close();
-    recv_queue.close();
     acceptor.join();
-    gameloop.join();
     return SUCCESS;
 }
