@@ -12,6 +12,7 @@ class Client{
 		void correr();
 		void disparar();
 		void ataque_especial();
+		void recibirInformacion();
 };
 
 #endif

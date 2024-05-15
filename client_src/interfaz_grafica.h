@@ -19,17 +19,19 @@ private:
     SDL_Renderer* renderer;
     bool is_running = true;
     int iteracion = 0;
-    Client client1;
+    Client cliente;
 
 private:
     SDL_Texture* crearTexturaParaImagen(const std::string &imagen_path);
     SDL_Rect crearRect(int height, int width, int x, int y);
 public:
-    InterfazGrafica();
+    InterfazGrafica(Client&);
     
     bool estaAbierta();
 
     void manejarEventos();
+
+    void recibirInformacion();
 
     /**
      * Actualiza la iteracion, y los sprites que correspondan.

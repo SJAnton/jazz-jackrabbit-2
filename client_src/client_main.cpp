@@ -1,18 +1,27 @@
 #include "interfaz_grafica.h"
+#include "socket.h"
 
 const int FPS = 50;
 const int frame_delay = 1000/FPS;
 
 int tiempo_transcurrido;
 
-int main() {
+#define HOSTNAME argv[1]
+#define SERVICENAME argv[2]
 
-    InterfazGrafica interfaz;
+
+int main(int argc, char* argv[]) {
+
+    Socket skt(HOSTNAME, SERVICENAME);
+    Client cliente = Client();
+
+    InterfazGrafica interfaz(cliente);
     while (interfaz.estaAbierta())
     {
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
 
         interfaz.manejarEventos();
+        interfaz.recibirInformacion();
         interfaz.update(1);
         interfaz.renderizar();
 

@@ -6,8 +6,9 @@
 
 //GameObject *player1;
 SpriteSheet *player1;
+int x_player = 0;
 //constructor
-InterfazGrafica::InterfazGrafica()
+InterfazGrafica::InterfazGrafica(Client& cliente) : cliente(cliente)
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         window = SDL_CreateWindow("Ventana del juego", SDL_WINDOWPOS_CENTERED, 
@@ -27,8 +28,8 @@ InterfazGrafica::InterfazGrafica()
         is_running = false;
         throw std::runtime_error("ERROR. SDL no pudo inicializarse");
     }
-    player1 = new SpriteSheet(renderer, "../sprites/Players/Spazz/Idle (56x56)x06.png", 56, 56, 6);
-    client1 = Client();
+    player1 = new SpriteSheet(renderer, "../../sprites/Players/Spazz/Idle (56x56)x06.png", 56, 56, 6);
+    //cliente = Client();
 }
 
 bool InterfazGrafica::estaAbierta() {
@@ -58,19 +59,19 @@ void InterfazGrafica::manejarEventos()
     } else if (e.type == SDL_KEYDOWN) {
         switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
             case SDLK_SPACE:
-                client1.saltar();
+                cliente.saltar();
                 break;
             case SDLK_LEFT:
-                client1.moverIzquierda();
+                cliente.moverIzquierda();
                 break;
             case SDLK_RIGHT:
-                client1.moverDerecha();
+                cliente.moverDerecha();
                 break;
             case SDLK_a:
-                client1.disparar();
+                cliente.disparar();
                 break;
             case SDLK_d:
-                client1.ataque_especial();
+                cliente.ataque_especial();
                 break;
             //case correr a definir
             case SDLK_ESCAPE:
@@ -81,6 +82,11 @@ void InterfazGrafica::manejarEventos()
                 break;
         }
     }
+}
+
+void InterfazGrafica::recibirInformacion(){
+    cliente.recibirInformacion();
+    //Proceso la informacion para actualizar la interfaz
 }
  
 

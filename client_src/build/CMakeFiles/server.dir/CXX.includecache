@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lorenzo/Escritorio/Taller/tp_final/client_src/server_dummy.cpp
+socket.h
+/home/lorenzo/Escritorio/Taller/tp_final/client_src/socket.h
+arpa/inet.h
+-
+
+/home/lorenzo/Escritorio/Taller/tp_final/client_src/socket.h
+

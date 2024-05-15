@@ -4,6 +4,7 @@
 Client::Client(){}
 
 void Client::moverDerecha(){
+	//Envio mensaje al protocolo para que se lo envie al server
 	std::cout << "Moverse a la derecha" << std::endl;
 }
 
@@ -25,4 +26,9 @@ void Client::disparar(){
 
 void Client::ataque_especial(){
 	std::cout << "Ataque especial" << std::endl;
+}
+
+void Client::recibirInformacion(){
+	//Pido al protocolo que reciba mensajes
+	//Retorno a la interfaz la informacion
 }
