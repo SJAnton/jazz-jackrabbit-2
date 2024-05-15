@@ -4,8 +4,6 @@
 #include <cstdint>
 
 class Enemy {
-    // De esta clase heredan todos los enemigos,
-    // hay que implementar al menos tres
     private:
         uint8_t health;
 

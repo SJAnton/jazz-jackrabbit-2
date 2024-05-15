@@ -8,15 +8,15 @@
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_sender.h"
-#include "server_player.h"
 #include "server_receiver.h"
 #include "server_queue_list.h"
+#include "characters/server_character.h"
 
 class Client : public Thread {
     private:    
         Socket sk;
 
-        Player pl;
+        Character pl;
 
         int &id;
 
@@ -39,7 +39,7 @@ class Client : public Thread {
         ServerSender sndr;
 
     public:
-        Client(Socket socket, Player player, int &client_id, Queue<uint8_t> &recv_queue,
+        Client(Socket socket, Character player, int &client_id, Queue<uint8_t> &recv_queue,
                 ServerQueueList &sndr_queue_list) : sk(std::move(socket)),
                     pl(std::move(player)), id(client_id), q(recv_queue), sql(sndr_queue_list),
                         pr(sk), recv(pr, q, wc, is_alive), sndr(pr, sndr_queue, wc) {}

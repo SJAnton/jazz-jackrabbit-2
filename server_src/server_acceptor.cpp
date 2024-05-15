@@ -2,6 +2,10 @@
 
 #define NEW_GAME 0
 
+#define JAZZ 0
+#define LORI 0
+#define SPAZ 0
+
 void ServerAcceptor::run() {
     int id = 0;
     while (!wc) {
@@ -42,10 +46,21 @@ void ServerAcceptor::run() {
                 recv_q /*= recv_q_list.at()*/;
                 sql /*= sql_list.at()*/;
             }
+
             // El byte inicial del client al servidor determina
             // el personaje utilizado
-            Player player/*(personaje)*/;
-            Client *client = new Client(std::move(peer), std::move(player), id, recv_q, sql);
+            Character ch;
+            if (/*init_data[byte_pj] == */JAZZ) {
+                PlayerJazz player;
+                ch = player;
+            } else if (/*init_data[byte_pj] == */LORI) {
+                PlayerLori player;
+                ch = player;
+            } else {
+                PlayerSpaz player;
+                ch = player;
+            }
+            Client *client = new Client(std::move(peer), std::move(ch), id, recv_q, sql);
 
             client->start();
             clients.push_back(client);
@@ -58,6 +73,7 @@ void ServerAcceptor::run() {
     }
     kill_all();
 }
+
 
 void ServerAcceptor::reap_dead() {
     clients.remove_if([](Client* client) {
