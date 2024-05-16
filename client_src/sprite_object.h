@@ -1,6 +1,7 @@
 #ifndef SPRITE_OBJECT_H
 #define SPRITE_OBJECT_H
 
+
 #include <SDL.h>
 #include <SDL_image.h>
 
@@ -26,16 +27,19 @@ private:
     SDL_Texture* crearTexturaParaImagen(const char *path);
 
 public:
-    //recibe la direccion de la imagen y el puntero al renderer
-    SpriteObject(const std::string &pathSprite, SDL_Renderer* renderer);
+    //constructor "descartable", no inicializa nada
+    SpriteObject();
+    
+    explicit SpriteObject(SDL_Renderer* renderer, const std::string &pathSprite);
+    //recibe el puntero al renderer, la direccion de la imagen, el ancho y el alto 
+    explicit SpriteObject(SDL_Renderer* renderer, const std::string &pathSprite, int w, int h);
 
-    //para spriteSheets
-    SpriteObject(const std::string &pathSprite, SDL_Renderer* renderer, int w, int h);
-
+    void setArea(int width, int height);
     void setPosition(int x, int y);
 
-    void renderizar();
-    
+    void renderizar() const;
+    void renderizarEn(int x, int y) const;
+
 //    ~SpriteObject();
 };
 

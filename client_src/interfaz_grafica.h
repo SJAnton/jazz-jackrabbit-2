@@ -8,8 +8,12 @@
 #include <iostream>
 #include <exception>
 
-#define ANCHO_WINDOW 800 // representa pixeles
-#define ALTO_WINDOW 600 // representa pixeles
+#include "spritesManager.h"
+#include "sprite_object.h"
+#include "spritesheet.h"
+
+#define ANCHO_WINDOW 750 // representa pixeles
+#define ALTO_WINDOW 500 // representa pixeles
 
 class InterfazGrafica
 {
@@ -19,12 +23,16 @@ private:
     bool is_running = true;
     int iteracion = 0;
 
+    SpriteSheet *player1;
+    SpriteSheet player2;
+    SpriteSheet player3;
 
-private:
-    SDL_Texture* crearTexturaParaImagen(const std::string &imagen_path);
-    SDL_Rect crearRect(int height, int width, int x, int y);
+    SpritesManager *spritesManager; 
+
+    //uso puntero para no tener que construirlo en la member initializer list
 public:
     InterfazGrafica();
+
     
     bool estaAbierta();
 

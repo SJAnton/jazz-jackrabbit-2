@@ -2,9 +2,8 @@
 
 #include "sprite_object.h"
 #include "spritesheet.h"
+#include "spritesManager.h"
 
-//GameObject *player1;
-SpriteSheet *player1;
 //constructor
 InterfazGrafica::InterfazGrafica()
 {
@@ -26,24 +25,17 @@ InterfazGrafica::InterfazGrafica()
         is_running = false;
         throw std::runtime_error("ERROR. SDL no pudo inicializarse");
     }
-    player1 = new SpriteSheet(renderer, "../sprites/Players/Spazz/Idle (56x56)x06.png", 56, 56, 6);
+    spritesManager = new SpritesManager(renderer);
 
+    spritesManager->setPlayer(0, EstadosPlayer::Idle);
+    spritesManager->setPlayer(1, EstadosPlayer::Walk);
+    spritesManager->setPlayer(2, EstadosPlayer::SpecialAttack);
 }
 
 bool InterfazGrafica::estaAbierta() {
     return is_running;
 }
 
-
-//creo el rectangulo con el tamaño recibido, para una textura
-SDL_Rect InterfazGrafica::crearRect(int height, int width, int x, int y) {
-    SDL_Rect rect_destino;
-    rect_destino.w = width;
-    rect_destino.h = height;
-    rect_destino.x = x;
-    rect_destino.y = y;
-    return rect_destino;
-}
 
 void InterfazGrafica::manejarEventos()
 {
@@ -63,8 +55,16 @@ void InterfazGrafica::manejarEventos()
 
 void InterfazGrafica::update(int it) {
     iteracion += it;
-    if (iteracion % 5 == 0)
-        player1->nextFrame();
+    if (iteracion % 5 == 0) {
+        spritesManager->nextFramePlayer(0);
+    }
+    if (iteracion % 4 == 0) {
+        spritesManager->nextFramePlayer(1);
+    }
+    if (iteracion % 4 == 0) {
+        spritesManager->nextFramePlayer(2);
+    }
+    
 } 
 
 void InterfazGrafica::renderizar() 
@@ -73,7 +73,21 @@ void InterfazGrafica::renderizar()
 
     //cargar todos los pixeles (fondo, terreno, objetos, players, etc)
     //(ejemplo)
-    player1->renderizar();
+    //fondo->setArea(64, 64);
+    //fondo->renderizar();
+    for (int i =0; i < 20; i++) {
+        for (int j=0; j< 20; j++){
+            //fondo->renderizarEn(64*j, 64*i);
+        }
+    }
+    spritesManager->renderizarFondo();
+    spritesManager->renderizarPlayerEn(0, 244, 256);
+    //spritesManager->renderizarPlayerEn(1, 100, 0);
+    //spritesManager->renderizarPlayerEn(2, 200, 0);
+    //spritesManager->renderizarPlayerEn(2, 200, 200);
+
+    //spritesManager->playerSpaz->renderizar();
+    
     
     //SDL_RenderCopy(renderer, texture, &rect, &rectPos);
 

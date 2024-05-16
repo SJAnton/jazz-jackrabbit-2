@@ -1,9 +1,15 @@
 #include "spritesheet.h"
 
+
+SpriteSheet::SpriteSheet() :
+    SpriteObject()
+{
+    
+}
 //constructor
 SpriteSheet::SpriteSheet(SDL_Renderer* renderer, const std::string &pathSprite, 
                 int w, int h, int cantidadFrames) :
-    SpriteObject(pathSprite, renderer, w, h), 
+    SpriteObject(renderer, pathSprite, w, h), 
     total_frames(cantidadFrames),
     i(0)
 {
