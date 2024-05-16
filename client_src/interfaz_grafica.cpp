@@ -3,9 +3,13 @@
 #include "sprite_object.h"
 #include "spritesheet.h"
 #include "spritesManager.h"
+#include "client.h"
 
+//GameObject *player1;
+SpriteSheet *player1;
+int x_player = 0;
 //constructor
-InterfazGrafica::InterfazGrafica()
+InterfazGrafica::InterfazGrafica(Client& cliente) : cliente(cliente)
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         window = SDL_CreateWindow("Ventana del juego", SDL_WINDOWPOS_CENTERED, 
@@ -40,16 +44,43 @@ bool InterfazGrafica::estaAbierta() {
 void InterfazGrafica::manejarEventos()
 {
     SDL_Event e;
-    SDL_PollEvent(&e);    
-    switch (e.type)
-    {
-    case SDL_QUIT: // cierra la ventana
+    SDL_PollEvent(&e);
+
+    if (e.type == SDL_QUIT) {
         is_running = false;
-        break;
-    
-    default:
-        break;
+        return;
+
+    } else if (e.type == SDL_KEYDOWN) {
+        switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
+            case SDLK_SPACE:
+                cliente.saltar();
+                break;
+            case SDLK_LEFT:
+                cliente.moverIzquierda();
+                break;
+            case SDLK_RIGHT:
+                cliente.moverDerecha();
+                break;
+            case SDLK_a:
+                cliente.disparar();
+                break;
+            case SDLK_d:
+                cliente.ataque_especial();
+                break;
+            //case correr a definir
+            case SDLK_ESCAPE:
+                is_running = false;
+                break;
+
+            default:
+                break;
+        }
     }
+}
+
+void InterfazGrafica::recibirInformacion(){
+    cliente.recibirInformacion();
+    //Proceso la informacion para actualizar la interfaz
 }
  
 

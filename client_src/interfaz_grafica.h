@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <exception>
+#include "client.h"
 
 #include "spritesManager.h"
 #include "sprite_object.h"
@@ -22,21 +23,24 @@ private:
     SDL_Renderer* renderer;
     bool is_running = true;
     int iteracion = 0;
-
     SpriteSheet *player1;
     SpriteSheet player2;
     SpriteSheet player3;
-
+    Client cliente;
+    
     SpritesManager *spritesManager; 
 
     //uso puntero para no tener que construirlo en la member initializer list
 public:
     InterfazGrafica();
 
+    InterfazGrafica(Client&);
     
     bool estaAbierta();
 
     void manejarEventos();
+
+    void recibirInformacion();
 
     /**
      * Actualiza la iteracion, y los sprites que correspondan.
