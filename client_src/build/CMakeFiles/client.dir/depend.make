@@ -3,11 +3,17 @@
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/queue.h
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/queue.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/socket.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/thread.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /usr/include/SDL2/SDL.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /usr/include/SDL2/SDL_assert.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /usr/include/SDL2/SDL_atomic.h
@@ -55,6 +61,24 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /usr/include/SDL2/begin_code.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o: /usr/include/SDL2/close_code.h
 
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/socket.h
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/queue.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/socket.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/thread.h
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/queue.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/socket.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/thread.h
+
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/liberror.h
 
@@ -74,6 +98,7 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/queue.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: /usr/include/SDL2/SDL.h

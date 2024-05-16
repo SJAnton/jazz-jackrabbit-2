@@ -190,6 +190,87 @@ home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.s
 .PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.s
 
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.o: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.o
+
+# target to build an object file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.i: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.i
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.i
+
+# target to preprocess a source file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.i
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.i
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.s: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.s
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.s
+
+# target to generate assembly for a file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.s
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.s
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.o: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.o
+
+# target to build an object file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.i: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.i
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.i
+
+# target to preprocess a source file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.i
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.i
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.s: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.s
+
+# target to generate assembly for a file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.o: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.o
+
+# target to build an object file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.i: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.i
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.i
+
+# target to preprocess a source file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.i
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.i
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.s: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.s
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.s
+
+# target to generate assembly for a file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.s
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.s
+
 home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.o: home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o
 
 .PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.o
@@ -434,6 +515,15 @@ help:
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.o"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.i"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.s"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.o"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.i"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.s"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.o"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.i"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.s"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.o"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.i"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.s"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.o"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.i"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.s"

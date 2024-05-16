@@ -6,6 +6,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o"
