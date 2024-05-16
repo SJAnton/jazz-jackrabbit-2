@@ -34,8 +34,8 @@ void ServerAcceptor::run() {
                 bool gmlp_wc = false;
                 ServerGameloop *gameloop = new ServerGameloop(recv_q, sql, std::move(gmlp_wc));
                 
-                recv_q_list.push_back(recv_q); // Ambos tienen el
-                sql_list.push_back(sql);       // mismo índice
+                rql.push_back(recv_q); // Ambos tienen el
+                sqll.push_back(sql);   // mismo índice
 
                 gameloop->start();
                 gameloops.push_back(gameloop);

@@ -3,6 +3,8 @@
 
 #include <cstdint>
 
+#include "../../characters/server_character.h"
+
 class Projectile {
     // De esta clase heredan todos los proyectiles
     // https://www.jazz2online.com/21/the-weapons-of-jazz2/
@@ -17,17 +19,36 @@ class Projectile {
 
         uint8_t damage;
 
+        bool powered_up = false;
+        
+    protected:
+        bool contact_x(Character &ch);
+
+        bool contact_y(Character &ch);
+
     public:
         Projectile();
 
-        void move_x_pos(uint8_t x); // x_pos + x
+        uint8_t left_side();
 
-        void move_y_pos(uint8_t y); // y_pos + y
-        
-        void powerup();
+        uint8_t right_side();
 
-        void powerup_end();
+        uint8_t upper_side();
 
-        void contact();
+        uint8_t lower_side();
+
+        bool is_powered_up();
+
+        void move(uint8_t x, uint8_t y);
+
+        void move_x_pos(uint8_t &x);
+
+        void move_y_pos(uint8_t &y);
+
+        void power_up();
+
+        void power_up_end();
+
+        bool contact(Character &ch);
 };
 #endif

@@ -1,28 +1,9 @@
 #include "server_iceball.h"
 
-void Iceball::move_x_pos(uint8_t &x) {
-    for (x_pos; x_pos <= x; x_pos++) {
-
+bool Iceball::contact(Character &ch) {
+    if (contact_x(ch) || contact_y(ch)) {
+        ch.set_frozen_status(true);
+        return true;
     }
-}
-
-void Iceball::move_y_pos(uint8_t &y) {
-    for (y_pos; y_pos <= y; y_pos++) {
-        
-    }
-}
-
-void Iceball::powerup() {
-    damage *= DMG_MULTIPLIER;
-}
-
-void Iceball::powerup_end() {
-    damage /= DMG_MULTIPLIER;
-}
-
-bool Iceball::contact() {
-    /*  El hitbox_x derecho (o izquierdo) debe estar en la misma posición
-     *  que el hitbox_x izquierdo (o derecho) del enemigo, y debe estar
-     *  entre su hitbox_y superior e inferior para hacer contacto */
-    return true;
+    return false;
 }

@@ -5,6 +5,6 @@ class ServerApp {
     private:
 
     public:
-        ServerApp();
+        ServerApp() {};
 };
 #endif

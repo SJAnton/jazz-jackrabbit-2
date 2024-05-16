@@ -21,15 +21,13 @@ class ServerAcceptor : public Thread {
 
         bool &wc;
 
-        ServerApp app;
-
         std::list<Client*> clients;
 
         std::list<ServerGameloop*> gameloops;
 
-        std::vector<Queue<uint8_t>> recv_q_list;
+        std::vector<Queue<uint8_t>> rql;
 
-        std::vector<ServerQueueList> sql_list;
+        std::vector<ServerQueueList> sqll;
 
     public:
         ServerAcceptor(Socket &socket, bool &was_closed) : sk(socket), wc(was_closed) {}

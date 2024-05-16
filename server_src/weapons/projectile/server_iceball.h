@@ -22,14 +22,6 @@ class Iceball : public Projectile {
     public:
         Iceball(uint8_t x, uint8_t y) : x_pos(x), y_pos(y) {};
 
-        void move_x_pos(uint8_t &x); // x_pos + x
-
-        void move_y_pos(uint8_t &y); // y_pos + y
-
-        void powerup();
-
-        void powerup_end();
-
-        bool contact();
+        bool contact(Character &ch);
 };
 #endif

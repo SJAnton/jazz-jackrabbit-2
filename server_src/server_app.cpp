@@ -9,4 +9,4 @@
 #define SHOOT 0x17
 #define SPECIAL_MOVE 0x18
 
-ServerApp::ServerApp() {}
+
