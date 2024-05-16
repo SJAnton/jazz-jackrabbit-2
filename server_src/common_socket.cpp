@@ -12,7 +12,6 @@
 #include "common_socket.h"
 #include "common_resolver.h"
 #include "common_liberror.h"
-#include "common_wrap_socket.cpp"
 
 #include <stdexcept>
 
