@@ -1,8 +1,9 @@
 #include <iostream>
 #include "client_player.h"
 
-ClientPlayer::ClientPlayer(Queue<uint8_t>& queueReceptora, Queue<uint8_t>& queueEnviadora) : 
+ClientPlayer::ClientPlayer(Queue<EstadosPlayer>& queueReceptora, Queue<AccionesPlayer>& queueEnviadora) : 
 queueReceptora(queueReceptora), queueEnviadora(queueEnviadora){}
+
 
 void ClientPlayer::moverDerecha(){
 	//QueueEnviadora.push()

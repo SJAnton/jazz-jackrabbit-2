@@ -1,22 +1,23 @@
 #ifndef CLIENT_RECEIVER_H_
 #define CLIENT_RECEIVER_H_
 
-#include "socket.h"
-#include "queue.h"
+#include "../common_src/socket.h"
+#include "../common_src/queue.h"
 #include "client_protocol.h"
-#include "thread.h"
+#include "../common_src/thread.h"
+#include "../common_src/constantes.h"
 #include <atomic>
 
 
 class ClientReceiver : public Thread {
     private:
         ClientProtocol& protocolo;
-        Queue<uint8_t>& queueReceptora;
+        Queue<EstadosPlayer>& queueReceptora;
         bool& wc;
         //std::atomic<bool>& alive;
 
     public:
-        ClientReceiver(ClientProtocol& protocol, Queue<uint8_t>& recv_queue, bool &was_closed);
+        ClientReceiver(ClientProtocol& protocol, Queue<EstadosPlayer>& recv_queue, bool &was_closed);
 
         virtual void run() override;
 };

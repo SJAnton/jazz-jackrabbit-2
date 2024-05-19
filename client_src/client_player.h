@@ -1,23 +1,16 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-<<<<<<< HEAD:client_src/client_player.h
+#include "../common_src/queue.h"
+#include "../common_src/constantes.h"
 class ClientPlayer{
-=======
-#include "queue.h"
-
-class Client{
->>>>>>> 7f6ca1733e9999b5e6ec9bbea09ca6b6a6448e02:client_src/client.h
 	private:
-		Queue<uint8_t>& queueReceptora; 
-    	Queue<uint8_t>& queueEnviadora;
+		Queue<EstadosPlayer>& queueReceptora; 
+    	Queue<AccionesPlayer>& queueEnviadora;
 
 	public:
-<<<<<<< HEAD:client_src/client_player.h
 		ClientPlayer();
-=======
-		Client(Queue<uint8_t>&, Queue<uint8_t>&);
->>>>>>> 7f6ca1733e9999b5e6ec9bbea09ca6b6a6448e02:client_src/client.h
+		ClientPlayer(Queue<EstadosPlayer>&, Queue<AccionesPlayer>&);
 		void moverIzquierda();
 		void moverDerecha();
 		void saltar();

@@ -12,6 +12,7 @@
 #include "spritesManager.h"
 #include "sprite_object.h"
 #include "spritesheet.h"
+#include "client_player.h"
 
 #define ANCHO_WINDOW 750 // representa pixeles
 #define ALTO_WINDOW 500 // representa pixeles

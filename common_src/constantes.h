@@ -2,8 +2,10 @@
 #define CONSTANTES_H
 
 
-enum EstadosPlayer {Idle, Walk, Run, Jump, Fall, Shoot, SpecialAttack, Intoxicated, Damaged, Death};
-//enum AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
+enum EstadosPlayer {Inactivo, Caminando, Corriendo, Saltando, Cayendo, Disparando,
+                    AtaqueEspecial, Intoxicado, Impacado, Muriendo, Muerto, Reviviendo};
+
+enum AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
 enum EstadosEnemy{};
 enum TipoPlayer {Jazz, Spaz, Lori};
 

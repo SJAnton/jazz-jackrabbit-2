@@ -4,7 +4,9 @@
 #include "client_protocol.h"
 #include "client_receiver.h"
 #include "client_sender.h"
-#include "queue.h"
+#include "../common_src/queue.h"
+
+#include "../common_src/constantes.h"
 #include "client_player.h"
 
 const int FPS = 50;
@@ -21,15 +23,15 @@ int main(int argc, char* argv[]) {
     Socket skt(HOSTNAME, SERVICENAME);
     ClientProtocol protocolo = ClientProtocol(skt);
 
-    Queue<uint8_t> queueReceptora; 
-    Queue<uint8_t> queueEnviadora; //A definir el tipo de dato de las queues
+    Queue<EstadosPlayer> queueReceptora; 
+    Queue<AccionesPlayer> queueEnviadora; //A definir el tipo de dato de las queues
 
     //hilos sender y receiver con sus colas y el protocolo
     bool was_closed = false;
     ClientReceiver* receptor = new ClientReceiver(protocolo, queueReceptora, was_closed);
     ClientSender* enviador = new ClientSender(protocolo, queueEnviadora, was_closed);
 
-    Client cliente = Client(queueReceptora, queueEnviadora);
+    ClientPlayer cliente = ClientPlayer(queueReceptora, queueEnviadora);
 
     InterfazGrafica interfaz(cliente);
     while (interfaz.estaAbierta())

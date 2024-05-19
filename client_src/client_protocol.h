@@ -1,7 +1,7 @@
 #ifndef CLIENT_PROTOCOL_H
 #define CLIENT_PROTOCOL_H
 
-#include "socket.h"
+#include "../common_src/socket.h"
 #include <string>
 #include <arpa/inet.h>
 

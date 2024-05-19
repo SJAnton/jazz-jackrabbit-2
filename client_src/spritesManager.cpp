@@ -44,9 +44,9 @@ SpritesManager::SpritesManager() :
     players.push_back(playerSpaz_idle);
     players.push_back(playerSpaz_idle);
     players.push_back(playerSpaz_idle);
-    estadosPlayers.push_back(EstadosPlayer::Idle);
-    estadosPlayers.push_back(EstadosPlayer::Idle);
-    estadosPlayers.push_back(EstadosPlayer::Idle);
+    estadosPlayers.push_back(EstadosPlayer::Inactivo);
+    estadosPlayers.push_back(EstadosPlayer::Inactivo);
+    estadosPlayers.push_back(EstadosPlayer::Inactivo);
 
 }
 
@@ -121,17 +121,17 @@ SpriteSheetPlayer& SpritesManager::getPlayer(unsigned int n) {
 
 void SpritesManager::setPlayerSpaz(SpriteSheet &player, EstadosPlayer estado)
 {
-    if (estado == Idle)
+    if (estado == Inactivo)
         player = playerSpaz_idle;
-    else if (estado == Walk) {
+    else if (estado == Caminando) {
         player = playerSpaz_walk;
     }
-    else if (estado == Jump)
+    else if (estado == Saltando)
         player = playerSpaz_jump;
-    else if (estado == Shoot)
+    else if (estado == Disparando)
         player = playerSpaz_shoot;
-    else if (estado == SpecialAttack)
+    else if (estado == AtaqueEspecial)
         player = playerSpaz_specialAtack;
-    else if (estado == Death)
+    else if (estado == Muriendo)
         player = playerSpaz_death;
 }

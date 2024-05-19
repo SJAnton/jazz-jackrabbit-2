@@ -31,9 +31,9 @@ InterfazGrafica::InterfazGrafica(ClientPlayer& cliente) : cliente(cliente)
     }
     spritesManager = new SpritesManager();
 
-    spritesManager->setEstadoPlayer(0, EstadosPlayer::Idle);
-    spritesManager->setEstadoPlayer(1, EstadosPlayer::Walk);
-    spritesManager->setEstadoPlayer(2, EstadosPlayer::SpecialAttack);
+    spritesManager->setEstadoPlayer(0, EstadosPlayer::Inactivo);
+    spritesManager->setEstadoPlayer(1, EstadosPlayer::Caminando);
+    spritesManager->setEstadoPlayer(2, EstadosPlayer::AtaqueEspecial);
 }
 
 bool InterfazGrafica::estaAbierta() {
@@ -54,30 +54,30 @@ void InterfazGrafica::manejarEventos()
         switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
             case SDLK_SPACE:
                 cliente.saltar();
-                spritesManager->setEstadoPlayer(0,Jump);
+                spritesManager->setEstadoPlayer(0,Saltando);
                 break;
             case SDLK_LEFT:
                 cliente.moverIzquierda();
-                spritesManager->setEstadoPlayer(0,Walk);
+                spritesManager->setEstadoPlayer(0,Caminando);
                 spritesManager->flipPlayer(0,true);
                 break;
             case SDLK_RIGHT:
                 cliente.moverDerecha();
-                spritesManager->setEstadoPlayer(0,Walk);
+                spritesManager->setEstadoPlayer(0,Caminando);
                 spritesManager->flipPlayer(0,false);
                 break;
             case SDLK_d:
                 cliente.disparar();
-                spritesManager->setEstadoPlayer(0,Shoot);
+                spritesManager->setEstadoPlayer(0,Disparando);
                 break;
             case SDLK_a:
                 cliente.ataque_especial();
-                spritesManager->setEstadoPlayer(0,SpecialAttack);
+                spritesManager->setEstadoPlayer(0,AtaqueEspecial);
                 break;
             //case correr a definir
 
             case SDLK_k://para probar muerte
-                spritesManager->setEstadoPlayer(0,Death);
+                spritesManager->setEstadoPlayer(0,Muriendo);
                 break;
             case SDLK_ESCAPE:
                 is_running = false;
