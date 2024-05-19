@@ -1,6 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o"
+  "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o"
+  "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o"
+  "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o"

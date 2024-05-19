@@ -18,6 +18,9 @@ file(GLOB CLIENT_SOURCES
     "../*.cpp"
     "../client_main.cpp"
     "../client_game.cpp"
+    "../client_protocol.cpp"
+    "../client_receiver.cpp"
+    "../client_sender.cpp"
     "../interfaz_grafica.cpp"
     "../spritesheet.cpp"
     "../sprite_object.cpp"
@@ -30,7 +33,7 @@ file(GLOB SERVER_SOURCES
 
 # Client executable
 add_executable(client ${CLIENT_SOURCES} ${COMMON_SOURCES})
-target_link_libraries(client ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES})
+target_link_libraries(client ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} pthread)
 
 # Server executable
 add_executable(server ${SERVER_SOURCES} ${COMMON_SOURCES})

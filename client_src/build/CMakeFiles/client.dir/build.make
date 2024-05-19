@@ -83,9 +83,48 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.s
 
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp > CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.i
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.s
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp > CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.i
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp > CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.i
+
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.s
+
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.i: cmake_force
@@ -98,7 +137,7 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfa
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.i: cmake_force
@@ -111,7 +150,7 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.i: cmake_force
@@ -124,7 +163,7 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprites
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.i: cmake_force
@@ -137,7 +176,7 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.i: cmake_force
@@ -150,7 +189,7 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.i: cmake_force
@@ -163,7 +202,7 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp
 
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.i: cmake_force
@@ -178,6 +217,9 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_
 client_OBJECTS = \
 "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp.o" \
 "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o" \
+"CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o" \
+"CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o" \
+"CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o" \
 "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o" \
 "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o" \
 "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.o" \
@@ -191,6 +233,9 @@ client_EXTERNAL_OBJECTS =
 
 client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_game.cpp.o
 client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o
+client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o
+client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o
+client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o
 client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o
 client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o
 client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.o
@@ -200,7 +245,7 @@ client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src
 client: CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.o
 client: CMakeFiles/client.dir/build.make
 client: CMakeFiles/client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,6 +1,10 @@
 
 #include "interfaz_grafica.h"
 #include "../common_src/socket.h"
+#include "client_protocol.h"
+#include "client_receiver.h"
+#include "client_sender.h"
+#include "queue.h"
 #include "client_player.h"
 
 const int FPS = 50;
@@ -14,8 +18,18 @@ int tiempo_transcurrido;
 
 int main(int argc, char* argv[]) {
 
-    //Socket skt(HOSTNAME, SERVICENAME);
-    ClientPlayer cliente = ClientPlayer();
+    Socket skt(HOSTNAME, SERVICENAME);
+    ClientProtocol protocolo = ClientProtocol(skt);
+
+    Queue<uint8_t> queueReceptora; 
+    Queue<uint8_t> queueEnviadora; //A definir el tipo de dato de las queues
+
+    //hilos sender y receiver con sus colas y el protocolo
+    bool was_closed = false;
+    ClientReceiver* receptor = new ClientReceiver(protocolo, queueReceptora, was_closed);
+    ClientSender* enviador = new ClientSender(protocolo, queueEnviadora, was_closed);
+
+    Client cliente = Client(queueReceptora, queueEnviadora);
 
     InterfazGrafica interfaz(cliente);
     while (interfaz.estaAbierta())
@@ -35,12 +49,8 @@ int main(int argc, char* argv[]) {
     interfaz.cerrarInterfaz(); 
     std::cout << "fin" << std::endl;
 
-    //conectarse al server
-    //inicializar cliente
     //esperar confirmacion para iniciar (esperar a que se conecten los n clientes).
 
-
-    //inicializar interfaz grafica
 
     //inicia bucle (hasta que el contador llegue a 0)
         //leer de entrada estandar (qué teclas se presionan)

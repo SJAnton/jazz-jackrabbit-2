@@ -1,10 +1,11 @@
 #include <iostream>
 #include "client_player.h"
 
-ClientPlayer::ClientPlayer(){}
+ClientPlayer::ClientPlayer(Queue<uint8_t>& queueReceptora, Queue<uint8_t>& queueEnviadora) : 
+queueReceptora(queueReceptora), queueEnviadora(queueEnviadora){}
 
 void ClientPlayer::moverDerecha(){
-	//Envio mensaje al protocolo para que se lo envie al server
+	//QueueEnviadora.push()
 	std::cout << "Moverse a la derecha" << std::endl;
 }
 
@@ -29,6 +30,5 @@ void ClientPlayer::ataque_especial(){
 }
 
 void ClientPlayer::recibirInformacion(){
-	//Pido al protocolo que reciba mensajes
-	//Retorno a la interfaz la informacion
+	//QueueReceptora.pop()
 }
