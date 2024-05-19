@@ -1,7 +1,11 @@
+#include <fstream>
+
 #include "server_acceptor.h"
 #include "server_gameloop.h"
 #include "server_queue_list.h"
 #include "server_config_reader.h"
+
+#define CONFIG "config.yaml"
 
 #define EXIT 'q'
 
@@ -16,9 +20,12 @@ int main(int argc, char* argv[]) {
         throw std::invalid_argument("No servicename found");
         return ERROR;
     }
+    std::ifstream file(CONFIG);
+    if (!file.is_open()) {
+        throw std::runtime_error("Failure opening configuration file");
+    }
+    ServerConfigReader reader(file);
     Socket skt(SERVICENAME);
-    // Lee la configuración de un archivo YAML y modifica el juego
-    ServerConfigReader reader(/*settings.yaml*/);
 
     bool was_closed = false;
 

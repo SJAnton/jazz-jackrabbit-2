@@ -1,12 +1,16 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(Server VERSION 1.0)
+project(server VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIERED True)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Flags de compilación
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
+
+add_subdirectory(yaml-cpp)
+
+include_directories(yaml-cpp/include)
 
 # cmake . genera el makefile
 # make -f Makefile ejecuta el makefile
@@ -20,6 +24,7 @@ set(SOURCE_FILES
     # Archivos server
     ../server_app.cpp
     ../server_client.cpp
+    ../server_config_reader.cpp
     ../server_gameloop.cpp
     ../server_main.cpp
     ../server_protocol.cpp
@@ -52,3 +57,5 @@ set(SOURCE_FILES
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+target_link_libraries(${PROJECT_NAME} yaml-cpp)
