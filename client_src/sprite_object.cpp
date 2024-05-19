@@ -1,4 +1,7 @@
 #include "sprite_object.h"
+#include "interfaz_grafica.h"
+
+Uint32 fucsia = 0xff00ff;
 
 
 SDL_Texture* SpriteObject::crearTexturaParaImagen(const char *path) 
@@ -9,9 +12,8 @@ SDL_Texture* SpriteObject::crearTexturaParaImagen(const char *path)
                                  "Probablemente la direcion recibida no existe "
                                  "o no corresponde a una imagen valida");
     }
-    Uint32 fucsia = 0xff00ff;
     SDL_SetColorKey(surface, SDL_TRUE, fucsia);
-    SDL_Texture* _texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Texture* _texture = SDL_CreateTextureFromSurface(InterfazGrafica::renderer, surface);
     SDL_FreeSurface(surface);
     if (_texture == NULL)
         throw std::runtime_error(SDL_GetError());
@@ -21,8 +23,8 @@ SDL_Texture* SpriteObject::crearTexturaParaImagen(const char *path)
 SpriteObject::SpriteObject()
 {
 }
-SpriteObject::SpriteObject(SDL_Renderer* renderer, const std::string &pathSprite) :
-    renderer(renderer)
+
+SpriteObject::SpriteObject(const std::string &pathSprite)
 {
     texture = crearTexturaParaImagen(pathSprite.c_str());
     SDL_QueryTexture(texture, NULL, NULL, &widthSprite, &heightSprite);//obtengo el ancho y largo
@@ -31,8 +33,8 @@ SpriteObject::SpriteObject(SDL_Renderer* renderer, const std::string &pathSprite
     destRect = {pos_x, pos_y, widthSprite, heightSprite};
 }
 
-SpriteObject::SpriteObject(SDL_Renderer* renderer, const std::string &pathSprite, int w, int h) :
-    widthSprite(w), heightSprite(h), renderer(renderer)
+SpriteObject::SpriteObject(const std::string &pathSprite, int w, int h) :
+    widthSprite(w), heightSprite(h)
 {
     texture = crearTexturaParaImagen(pathSprite.c_str());
 
@@ -55,16 +57,22 @@ void SpriteObject::setPosition(int x, int y)
     destRect = {pos_x, pos_y, widthSprite, heightSprite};
 }
 
-void SpriteObject::renderizarEn(int x, int y) const 
-{
+void SpriteObject::renderizarEn(int x, int y) const{
     SDL_Rect aux = {x, y, widthSprite, heightSprite};
-    SDL_RenderCopy(renderer, texture, &srcRect, &aux);
-
+    SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &aux);
 }
 
-void SpriteObject::renderizar() const
-{
-    SDL_RenderCopy(renderer, texture, &srcRect, &destRect);
+void SpriteObject::renderizar() const{
+    SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &destRect);
+}
+
+void SpriteObject::renderizarInvertido() const{
+    SDL_RenderCopyEx(InterfazGrafica::renderer, texture, &srcRect, &destRect, 0, nullptr, SDL_FLIP_HORIZONTAL);    
+}
+
+void SpriteObject::renderizarInvertidoEn(int x, int y) const{
+    SDL_Rect aux = {x, y, widthSprite, heightSprite};
+    SDL_RenderCopyEx(InterfazGrafica::renderer, texture, &srcRect, &aux, 0, nullptr, SDL_FLIP_HORIZONTAL);
 }
 
 

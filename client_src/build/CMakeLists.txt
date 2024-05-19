@@ -14,7 +14,8 @@ file(GLOB COMMON_SOURCES
 )
 
 # Client source files
-file(GLOB CLIENT_SOURCES 
+file(GLOB CLIENT_SOURCES
+    "../*.cpp"
     "../client_main.cpp"
     "../client_game.cpp"
     "../interfaz_grafica.cpp"

@@ -1,4 +1,4 @@
-#include "socket.h"
+#include "../common_src/socket.h"
 #include <arpa/inet.h>
 
 #define SERVICENAME argv[1]

@@ -1,34 +1,34 @@
 #include <iostream>
-#include "client.h"
+#include "client_player.h"
 
-Client::Client(){}
+ClientPlayer::ClientPlayer(){}
 
-void Client::moverDerecha(){
+void ClientPlayer::moverDerecha(){
 	//Envio mensaje al protocolo para que se lo envie al server
 	std::cout << "Moverse a la derecha" << std::endl;
 }
 
-void Client::moverIzquierda(){
+void ClientPlayer::moverIzquierda(){
 	std::cout << "Moverse a la izquierda" << std::endl;
 }
 
-void Client::saltar(){
+void ClientPlayer::saltar(){
 	std::cout << "Saltar" << std::endl;
 }
 
-void Client::correr(){
+void ClientPlayer::correr(){
 	std::cout << "Correr" << std::endl;
 }
 
-void Client::disparar(){
+void ClientPlayer::disparar(){
 	std::cout << "Disparar" << std::endl;
 }
 
-void Client::ataque_especial(){
+void ClientPlayer::ataque_especial(){
 	std::cout << "Ataque especial" << std::endl;
 }
 
-void Client::recibirInformacion(){
+void ClientPlayer::recibirInformacion(){
 	//Pido al protocolo que reciba mensajes
 	//Retorno a la interfaz la informacion
 }

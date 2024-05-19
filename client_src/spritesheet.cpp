@@ -1,5 +1,5 @@
 #include "spritesheet.h"
-
+#include"interfaz_grafica.h"
 
 SpriteSheet::SpriteSheet() :
     SpriteObject()
@@ -7,9 +7,9 @@ SpriteSheet::SpriteSheet() :
     
 }
 //constructor
-SpriteSheet::SpriteSheet(SDL_Renderer* renderer, const std::string &pathSprite, 
+SpriteSheet::SpriteSheet(const std::string &pathSprite, 
                 int w, int h, int cantidadFrames) :
-    SpriteObject(renderer, pathSprite, w, h), 
+    SpriteObject(pathSprite, w, h), 
     total_frames(cantidadFrames),
     i(0)
 {
@@ -21,7 +21,7 @@ void SpriteSheet::renderizarFrame(int numeroFrame)
     srcRect = { i * widthSprite, 0, widthSprite, heightSprite };
     destRect = { pos_x, pos_y, widthSprite, heightSprite };
 
-    SDL_RenderCopy(renderer, texture, &srcRect, &destRect);
+    SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &destRect);
 };
 
 

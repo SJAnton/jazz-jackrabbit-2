@@ -7,6 +7,8 @@
 #include "spritesheetPlayer.h"
 
 #include <list>
+#include <vector>
+
 //carga todos los sprites que se van a utilizar a lo largo de todo el juego
 
 class SpritesManager
@@ -25,9 +27,15 @@ private:
     //Spritesheets Players
     SpriteSheetPlayer playerSpaz_idle;
     SpriteSheetPlayer playerSpaz_walk;
+    SpriteSheetPlayer playerSpaz_jump;
+    SpriteSheetPlayer playerSpaz_shoot;
     SpriteSheetPlayer playerSpaz_specialAtack;
+    SpriteSheetPlayer playerSpaz_death;
 
     std::list<SpriteSheetPlayer> players;
+    std::vector<EstadosPlayer> estadosPlayers;
+
+    bool playerInvertido = false;
 
 private: 
     void setPlayerJazz(SpriteSheet &player, EstadosPlayer estado);
@@ -37,14 +45,17 @@ private:
 
 
 public:
-    SpritesManager(SDL_Renderer *renderer);
+    SpritesManager();
 
-    //recibe la cantidad maxima de jugadores y el tipoPlayer de cada uno
+    //constructor que recibe la cantidad maxima de jugadores y el tipoPlayer de cada uno
     //(Todavia no está implementado).
-    SpritesManager(SDL_Renderer *renderer, int countPlayers, TipoPlayer tipos[]);
+    SpritesManager(int countPlayers, TipoPlayer tipos[]);
+
+    EstadosPlayer getEstadoPlayer(unsigned int numero);
 
     //modifica el spritesheet por otro que corresponda al estado nuevo, cambiando de animacion
-    void setPlayer(unsigned int numero, EstadosPlayer estado);
+    void setEstadoPlayer(unsigned int numero, EstadosPlayer estado);
+    void flipPlayer(unsigned int numero, bool invertirSprite);
 
     //modifica al player n pasando al siguiente frame del spritesheet
     void nextFramePlayer(unsigned int n);

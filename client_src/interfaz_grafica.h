@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <exception>
-#include "client.h"
+#include "client_player.h"
 
 #include "spritesManager.h"
 #include "sprite_object.h"
@@ -20,21 +20,20 @@ class InterfazGrafica
 {
 private:
     SDL_Window* window; // ventana emergente
-    SDL_Renderer* renderer;
     bool is_running = true;
     int iteracion = 0;
-    SpriteSheet *player1;
-    SpriteSheet player2;
-    SpriteSheet player3;
-    Client cliente;
     
-    SpritesManager *spritesManager; 
-
+    ClientPlayer cliente;//
     //uso puntero para no tener que construirlo en la member initializer list
+    SpritesManager *spritesManager;
+
+public:
+    static SDL_Renderer* renderer; //para poder accederlo desde otras clases
+
 public:
     InterfazGrafica();
 
-    InterfazGrafica(Client&);
+    InterfazGrafica(ClientPlayer&);
     
     bool estaAbierta();
 

@@ -10,10 +10,9 @@ private:
     TipoPlayer tipoPlayer;
 
 public:
-    SpriteSheetPlayer(SDL_Renderer* renderer, const std::string &pathSprite, 
+    SpriteSheetPlayer(const std::string &pathSprite, 
                       int w, int h, int cantidadFrames, TipoPlayer tipoPlayer);
-    TipoPlayer getTipo();
-    
+    TipoPlayer getTipo();    
 };
 
 #endif

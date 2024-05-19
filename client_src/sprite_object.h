@@ -21,8 +21,6 @@ protected:
     SDL_Rect srcRect; //para definir la región de la imagen que se va a renderizar.
     SDL_Rect destRect; //para definir la posicion y tamaño en la pantalla
 
-    SDL_Renderer *renderer;
-    
 private:
     SDL_Texture* crearTexturaParaImagen(const char *path);
 
@@ -30,15 +28,21 @@ public:
     //constructor "descartable", no inicializa nada
     SpriteObject();
     
-    explicit SpriteObject(SDL_Renderer* renderer, const std::string &pathSprite);
+    explicit SpriteObject(const std::string &pathSprite);
     //recibe el puntero al renderer, la direccion de la imagen, el ancho y el alto 
-    explicit SpriteObject(SDL_Renderer* renderer, const std::string &pathSprite, int w, int h);
+    explicit SpriteObject(const std::string &pathSprite, int w, int h);
 
     void setArea(int width, int height);
     void setPosition(int x, int y);
+    void setFlip(bool flipHorizontal);
+
 
     void renderizar() const;
     void renderizarEn(int x, int y) const;
+
+    void renderizarInvertido() const;
+    void renderizarInvertidoEn(int x, int y) const;
+
 
 //    ~SpriteObject();
 };

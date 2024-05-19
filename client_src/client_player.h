@@ -1,11 +1,11 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-class Client{
+class ClientPlayer{
 	private:
 
 	public:
-		Client();
+		ClientPlayer();
 		void moverIzquierda();
 		void moverDerecha();
 		void saltar();

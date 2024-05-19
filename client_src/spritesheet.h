@@ -23,7 +23,7 @@ public:
     SpriteSheet();
 
     //constructor
-    SpriteSheet(SDL_Renderer* renderer, const std::string &pathSprite, 
+    SpriteSheet(const std::string &pathSprite, 
                 int w, int h, int cantidadFrames);
 
     void nextFrame();

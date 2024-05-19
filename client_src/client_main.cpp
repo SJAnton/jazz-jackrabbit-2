@@ -1,5 +1,7 @@
+
 #include "interfaz_grafica.h"
-#include "socket.h"
+#include "../common_src/socket.h"
+#include "client_player.h"
 
 const int FPS = 50;
 const int frame_delay = 1000/FPS;
@@ -12,8 +14,8 @@ int tiempo_transcurrido;
 
 int main(int argc, char* argv[]) {
 
-    Socket skt(HOSTNAME, SERVICENAME);
-    Client cliente = Client();
+    //Socket skt(HOSTNAME, SERVICENAME);
+    ClientPlayer cliente = ClientPlayer();
 
     InterfazGrafica interfaz(cliente);
     while (interfaz.estaAbierta())

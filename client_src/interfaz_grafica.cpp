@@ -3,13 +3,13 @@
 #include "sprite_object.h"
 #include "spritesheet.h"
 #include "spritesManager.h"
-#include "client.h"
 
-//GameObject *player1;
 SpriteSheet *player1;
 int x_player = 0;
+SDL_Renderer* InterfazGrafica::renderer = nullptr;
+
 //constructor
-InterfazGrafica::InterfazGrafica(Client& cliente) : cliente(cliente)
+InterfazGrafica::InterfazGrafica(ClientPlayer& cliente) : cliente(cliente)
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         window = SDL_CreateWindow("Ventana del juego", SDL_WINDOWPOS_CENTERED, 
@@ -29,11 +29,11 @@ InterfazGrafica::InterfazGrafica(Client& cliente) : cliente(cliente)
         is_running = false;
         throw std::runtime_error("ERROR. SDL no pudo inicializarse");
     }
-    spritesManager = new SpritesManager(renderer);
+    spritesManager = new SpritesManager();
 
-    spritesManager->setPlayer(0, EstadosPlayer::Idle);
-    spritesManager->setPlayer(1, EstadosPlayer::Walk);
-    spritesManager->setPlayer(2, EstadosPlayer::SpecialAttack);
+    spritesManager->setEstadoPlayer(0, EstadosPlayer::Idle);
+    spritesManager->setEstadoPlayer(1, EstadosPlayer::Walk);
+    spritesManager->setEstadoPlayer(2, EstadosPlayer::SpecialAttack);
 }
 
 bool InterfazGrafica::estaAbierta() {
@@ -54,27 +54,43 @@ void InterfazGrafica::manejarEventos()
         switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
             case SDLK_SPACE:
                 cliente.saltar();
+                spritesManager->setEstadoPlayer(0,Jump);
                 break;
             case SDLK_LEFT:
                 cliente.moverIzquierda();
+                spritesManager->setEstadoPlayer(0,Walk);
+                spritesManager->flipPlayer(0,true);
                 break;
             case SDLK_RIGHT:
                 cliente.moverDerecha();
-                break;
-            case SDLK_a:
-                cliente.disparar();
+                spritesManager->setEstadoPlayer(0,Walk);
+                spritesManager->flipPlayer(0,false);
                 break;
             case SDLK_d:
+                cliente.disparar();
+                spritesManager->setEstadoPlayer(0,Shoot);
+                break;
+            case SDLK_a:
                 cliente.ataque_especial();
+                spritesManager->setEstadoPlayer(0,SpecialAttack);
                 break;
             //case correr a definir
+
+            case SDLK_k://para probar muerte
+                spritesManager->setEstadoPlayer(0,Death);
+                break;
             case SDLK_ESCAPE:
                 is_running = false;
                 break;
-
+            case SDLK_LCTRL:
+                break;
             default:
                 break;
         }
+    }
+    else{
+        //if (spritesManager->getEstadoPlayer(0) != Idle)
+          //  spritesManager->setEstadoPlayer(0, Idle);
     }
 }
 
@@ -86,7 +102,7 @@ void InterfazGrafica::recibirInformacion(){
 
 void InterfazGrafica::update(int it) {
     iteracion += it;
-    if (iteracion % 5 == 0) {
+    if (iteracion % 3 == 0) {
         spritesManager->nextFramePlayer(0);
     }
     if (iteracion % 4 == 0) {

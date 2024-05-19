@@ -6,11 +6,13 @@
 #define PATH_SPAZ_IDLE "../sprites/Players/Spaz/Idle (56x56)x06.png"
 #define PATH_SPAZ_WALK "../sprites/Players/Spaz/Walk (56x56)x08.png"
 #define PATH_SPAZ_RUN 
-#define PATH_SPAZ_SHOOT 
+#define PATH_SPAZ_JUMP "../sprites/Players/Spaz/Jump (56x56)x12.png"
+#define PATH_SPAZ_SHOOT "../sprites/Players/Spaz/Shoot (56x56)x06.png"
 #define PATH_SPAZ_SPECIAL "../sprites/Players/Spaz/Special Attack (56x56)x12.png"
+#define PATH_SPAZ_DEATH "../sprites/Players/Spaz/Death (96x96)x26.png"
 
 //TERRENO
-#define PATH_PISO_1 "../sprites/Terreno/tile012.jpg"
+#define PATH_PISO_1 "../sprites/Terreno/tile012.png"
 #define PATH_PISO_2 "../sprites/Terreno/tile013.png"
 #define PATH_PISO_DIAGONAL_1 "../sprites/Terreno/tile011.png"
 #define PATH_PISO_DIAGONAL_2 "../sprites/Terreno/tile006.png"
@@ -23,21 +25,28 @@
 
 std::string s = "../sprites/Players/Spaz/Idle (56x56)x06.png";
 
-SpritesManager::SpritesManager(SDL_Renderer *renderer) :
-    fondo(renderer, PATH_FONDO_2),
-    piso(renderer, PATH_PISO_1),
-    pisoIzq(renderer, PATH_PISO_IZQ),
-    PisoDer(renderer, PATH_PISO_DER),
-    pisoDiagonalIzq(renderer, PATH_PISO_DIAGONAL_1),
-    pisoDiagonalDer(renderer, PATH_PISO_DIAGONAL_2),
-    pisoBloque(renderer, PATH_PISO_BLOQUE_1),
-    playerSpaz_idle(renderer, PATH_SPAZ_IDLE, 56, 56, 6, Spaz),
-    playerSpaz_walk(renderer, PATH_SPAZ_WALK, 56, 56, 8, Spaz),
-    playerSpaz_specialAtack(renderer, PATH_SPAZ_SPECIAL , 56, 56, 12, Spaz)
+SpritesManager::SpritesManager() :
+    fondo(PATH_FONDO_2),
+    piso(PATH_PISO_1),
+    pisoIzq(PATH_PISO_IZQ),
+    PisoDer(PATH_PISO_DER),
+    pisoDiagonalIzq(PATH_PISO_DIAGONAL_1),
+    pisoDiagonalDer(PATH_PISO_DIAGONAL_2),
+    pisoBloque(PATH_PISO_BLOQUE_1),
+
+    playerSpaz_idle(PATH_SPAZ_IDLE, 56, 56, 6, Spaz),
+    playerSpaz_walk(PATH_SPAZ_WALK, 56, 56, 8, Spaz),
+    playerSpaz_jump(PATH_SPAZ_JUMP, 56, 56, 12, Spaz),
+    playerSpaz_shoot(PATH_SPAZ_SHOOT, 56, 56, 6, Spaz),
+    playerSpaz_specialAtack(PATH_SPAZ_SPECIAL , 56, 56, 12, Spaz),
+    playerSpaz_death(PATH_SPAZ_DEATH, 96, 96, 26, Spaz)
 {
     players.push_back(playerSpaz_idle);
     players.push_back(playerSpaz_idle);
     players.push_back(playerSpaz_idle);
+    estadosPlayers.push_back(EstadosPlayer::Idle);
+    estadosPlayers.push_back(EstadosPlayer::Idle);
+    estadosPlayers.push_back(EstadosPlayer::Idle);
 
 }
 
@@ -49,10 +58,20 @@ void SpritesManager::nextFramePlayer(unsigned int n)
 void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
 {
     SpriteSheetPlayer& player = getPlayer(n);
-    player.renderizarEn(x, y);
+    if (playerInvertido)
+        player.renderizarInvertidoEn(x, y);
+    else
+        player.renderizarEn(x, y);
 }
 
-void SpritesManager::setPlayer(unsigned int n, EstadosPlayer estado)
+EstadosPlayer SpritesManager::getEstadoPlayer(unsigned int n)
+{
+    if (n > estadosPlayers.size())
+        throw std::runtime_error("numero de player inexistente. SpritesManager::getEstadoPlayer()");
+    return estadosPlayers[n];
+}
+
+void SpritesManager::setEstadoPlayer(unsigned int n, EstadosPlayer estado)
 {
     SpriteSheetPlayer& player = getPlayer(n);
 
@@ -65,6 +84,7 @@ void SpritesManager::setPlayer(unsigned int n, EstadosPlayer estado)
     else {
         setPlayerSpaz(player, estado);//lori
     }
+    estadosPlayers[n] = estado;
 }
 
 void SpritesManager::renderizarFondo()
@@ -84,7 +104,11 @@ void SpritesManager::renderizarFondo()
     }
 }
 
+void SpritesManager::flipPlayer(unsigned int n, bool invertirSprite) 
+{
+    playerInvertido = invertirSprite;
 
+}
 //metodos privados:
 
 SpriteSheetPlayer& SpritesManager::getPlayer(unsigned int n) {
@@ -99,9 +123,15 @@ void SpritesManager::setPlayerSpaz(SpriteSheet &player, EstadosPlayer estado)
 {
     if (estado == Idle)
         player = playerSpaz_idle;
-    else if (estado == Walk)
+    else if (estado == Walk) {
         player = playerSpaz_walk;
+    }
+    else if (estado == Jump)
+        player = playerSpaz_jump;
+    else if (estado == Shoot)
+        player = playerSpaz_shoot;
     else if (estado == SpecialAttack)
         player = playerSpaz_specialAtack;
-
+    else if (estado == Death)
+        player = playerSpaz_death;
 }
