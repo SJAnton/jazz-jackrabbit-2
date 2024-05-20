@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o"
-  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o"
-  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o"
-  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.o"
-  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/server_dummy.cpp.o"
+  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/liberror.cpp.o"
+  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolver.cpp.o"
+  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolvererror.cpp.o"
+  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.cpp.o"
+  "CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/server_src/server_dummy.cpp.o"
   "server"
   "server.pdb"
 )

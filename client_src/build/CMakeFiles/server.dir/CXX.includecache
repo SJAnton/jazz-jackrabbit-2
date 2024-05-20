@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/lorenzo/Escritorio/Taller/tp_final/client_src/server_dummy.cpp
-socket.h
-/home/lorenzo/Escritorio/Taller/tp_final/client_src/socket.h
+/home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.h
+
+/home/lorenzo/Escritorio/Taller/tp_final/server_src/server_dummy.cpp
+../common_src/socket.h
+/home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.h
 arpa/inet.h
 -
-
-/home/lorenzo/Escritorio/Taller/tp_final/client_src/socket.h
 

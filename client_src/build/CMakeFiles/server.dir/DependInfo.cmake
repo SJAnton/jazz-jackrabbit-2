@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_liberror.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolver.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_resolvererror.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/common_socket.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/server_dummy.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/server_dummy.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/common_src/liberror.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/liberror.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolver.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolver.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolvererror.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolvererror.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/server_src/server_dummy.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir/home/lorenzo/Escritorio/Taller/tp_final/server_src/server_dummy.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

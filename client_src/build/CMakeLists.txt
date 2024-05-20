@@ -10,25 +10,29 @@ INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS})
 
 # Common source files
 file(GLOB COMMON_SOURCES 
-    "../common_*.cpp"
+    "../../common_src/socket.cpp"
+    "../../common_src/resolver.cpp"
+    "../../common_src/resolvererror.cpp"
+    "../../common_src/liberror.cpp"
 )
 
 # Client source files
 file(GLOB CLIENT_SOURCES
-    "../*.cpp"
     "../client_main.cpp"
-    "../client_game.cpp"
+    "../client_player.cpp"
     "../client_protocol.cpp"
     "../client_receiver.cpp"
     "../client_sender.cpp"
     "../interfaz_grafica.cpp"
     "../spritesheet.cpp"
     "../sprite_object.cpp"
+    "../spritesheetPlayer.cpp"
+    "../spritesManager.cpp"
 )
 
 # Server source files
 file(GLOB SERVER_SOURCES 
-    "../server_dummy.cpp"
+    "../../server_src/server_dummy.cpp"
 )
 
 # Client executable
