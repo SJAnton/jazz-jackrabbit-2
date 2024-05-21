@@ -10,29 +10,29 @@ INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS})
 
 # Common source files
 file(GLOB COMMON_SOURCES 
-    "common_src/socket.cpp"
-    "common_src/resolver.cpp"
-    "common_src/resolvererror.cpp"
-    "common_src/liberror.cpp"
+    "../common_src/socket.cpp"
+    "../common_src/resolver.cpp"
+    "../common_src/resolvererror.cpp"
+    "../common_src/liberror.cpp"
 )
 
 # Client source files
 file(GLOB CLIENT_SOURCES
-    "client_src/client_main.cpp"
-    "client_src/client_player.cpp"
-    "client_src/client_protocol.cpp"
-    "client_src/client_receiver.cpp"
-    "client_src/client_sender.cpp"
-    "client_src/interfaz_grafica.cpp"
-    "client_src/spritesheet.cpp"
-    "client_src/sprite_object.cpp"
-    "client_src/spritesheetPlayer.cpp"
-    "client_src/spritesManager.cpp"
+    "../client_src/client_main.cpp"
+    "../client_src/client_player.cpp"
+    "../client_src/client_protocol.cpp"
+    "../client_src/client_receiver.cpp"
+    "../client_src/client_sender.cpp"
+    "../client_src/interfaz_grafica.cpp"
+    "../client_src/spritesheet.cpp"
+    "../client_src/sprite_object.cpp"
+    "../client_src/spritesheetPlayer.cpp"
+    "../client_src/spritesManager.cpp"
 )
 
 # Server source files
 file(GLOB SERVER_SOURCES 
-    "server_src/server_dummy.cpp"
+    "../server_src/server_dummy.cpp"
 )
 
 

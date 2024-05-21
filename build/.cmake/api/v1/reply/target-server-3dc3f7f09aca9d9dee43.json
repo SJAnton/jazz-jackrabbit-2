@@ -39,11 +39,17 @@
 	"compileGroups" : 
 	[
 		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " "
+				}
+			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/usr/local/include/SDL2"
+					"path" : "/usr/include/SDL2"
 				}
 			],
 			"language" : "CXX",
@@ -95,31 +101,31 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "server_src/server_dummy.cpp",
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final/server_src/server_dummy.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "common_src/liberror.cpp",
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final/common_src/liberror.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "common_src/resolver.cpp",
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolver.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "common_src/resolvererror.cpp",
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolvererror.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "common_src/socket.cpp",
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
