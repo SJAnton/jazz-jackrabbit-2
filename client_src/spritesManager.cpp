@@ -3,27 +3,25 @@
 //las defino acá porque nadie mas necesita esta informacion
 
 //player Spaz
-#define PATH_SPAZ_IDLE "../../sprites/Players/Spaz/Idle (56x56)x06.png"
-#define PATH_SPAZ_WALK "../../sprites/Players/Spaz/Walk (56x56)x08.png"
+#define PATH_SPAZ_IDLE "../sprites/Players/Spaz/Idle (56x56)x06.png"
+#define PATH_SPAZ_WALK "../sprites/Players/Spaz/Walk (56x56)x08.png"
 #define PATH_SPAZ_RUN 
-#define PATH_SPAZ_JUMP "../../sprites/Players/Spaz/Jump (56x56)x12.png"
-#define PATH_SPAZ_SHOOT "../../sprites/Players/Spaz/Shoot (56x56)x06.png"
-#define PATH_SPAZ_SPECIAL "../../sprites/Players/Spaz/Special Attack (56x56)x12.png"
-#define PATH_SPAZ_DEATH "../../sprites/Players/Spaz/Death (96x96)x26.png"
+#define PATH_SPAZ_JUMP "../sprites/Players/Spaz/Jump (56x56)x12.png"
+#define PATH_SPAZ_SHOOT "../sprites/Players/Spaz/Shoot (56x56)x06.png"
+#define PATH_SPAZ_SPECIAL "../sprites/Players/Spaz/Special Attack (56x56)x12.png"
+#define PATH_SPAZ_DEATH "../sprites/Players/Spaz/Death (96x96)x26.png"
 
 //TERRENO
-#define PATH_PISO_1 "../../sprites/Terreno/tile012.png"
-#define PATH_PISO_2 "../../sprites/Terreno/tile013.png"
-#define PATH_PISO_DIAGONAL_1 "../../sprites/Terreno/tile011.png"
-#define PATH_PISO_DIAGONAL_2 "../../sprites/Terreno/tile006.png"
-#define PATH_PISO_IZQ "../../sprites/Terreno/tile000.png"
-#define PATH_PISO_DER "../../sprites/Terreno/tile001.png"
-#define PATH_PISO_BLOQUE_1 "../../sprites/Terreno/tile008.png"
+#define PATH_PISO_1 "../sprites/Terreno/tile012.png"
+#define PATH_PISO_2 "../sprites/Terreno/tile013.png"
+#define PATH_PISO_DIAGONAL_1 "../sprites/Terreno/tile011.png"
+#define PATH_PISO_DIAGONAL_2 "../sprites/Terreno/tile006.png"
+#define PATH_PISO_IZQ "../sprites/Terreno/tile000.png"
+#define PATH_PISO_DER "../sprites/Terreno/tile001.png"
+#define PATH_PISO_BLOQUE_1 "../sprites/Terreno/tile008.png"
 
 
-#define PATH_FONDO_2 "../../sprites/Terreno/tile002.png"
-
-std::string s = "../../sprites/Players/Spaz/Idle (56x56)x06.png";
+#define PATH_FONDO_2 "../sprites/Terreno/tile002.png"
 
 SpritesManager::SpritesManager() :
     fondo(PATH_FONDO_2),

@@ -1,4 +1,0 @@
-/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/rebuild_cache.dir
-/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/edit_cache.dir
-/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/server.dir
-/home/lorenzo/Escritorio/Taller/tp_final/client_src/build/CMakeFiles/client.dir
