@@ -34,14 +34,14 @@ public:
 
     void setArea(int width, int height);
     void setPosition(int x, int y);
-    void setFlip(bool flipHorizontal);
-
 
     void renderizar() const;
     void renderizarEn(int x, int y) const;
+    void renderizarCorrido(int x, int y) const;
 
     void renderizarInvertido() const;
     void renderizarInvertidoEn(int x, int y) const;
+    void renderizarInvertidoCorrido(int x, int y) const;
 
 
 //    ~SpriteObject();

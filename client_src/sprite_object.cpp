@@ -20,12 +20,12 @@ SDL_Texture* SpriteObject::crearTexturaParaImagen(const char *path)
     
     return _texture;
 }
+
 SpriteObject::SpriteObject()
 {
 }
 
-SpriteObject::SpriteObject(const std::string &pathSprite)
-{
+SpriteObject::SpriteObject(const std::string &pathSprite) {
     texture = crearTexturaParaImagen(pathSprite.c_str());
     SDL_QueryTexture(texture, NULL, NULL, &widthSprite, &heightSprite);//obtengo el ancho y largo
     
@@ -42,29 +42,35 @@ SpriteObject::SpriteObject(const std::string &pathSprite, int w, int h) :
     destRect = {pos_x, pos_y, w, h};
 }
 
-void SpriteObject::setArea(int width, int height)
-{
+
+void SpriteObject::setArea(int width, int height) {
     widthSprite = width;
     heightSprite = height;
     destRect = {pos_x, pos_y, widthSprite, widthSprite};
 }
 
 
-void SpriteObject::setPosition(int x, int y) 
-{
+void SpriteObject::setPosition(int x, int y) {
     pos_x = x;
     pos_y = y;
     destRect = {pos_x, pos_y, widthSprite, heightSprite};
 }
 
-void SpriteObject::renderizarEn(int x, int y) const{
+void SpriteObject::renderizar() const{
+    SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &destRect);
+}
+
+void SpriteObject::renderizarEn(int x, int y) const {
     SDL_Rect aux = {x, y, widthSprite, heightSprite};
     SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &aux);
 }
 
-void SpriteObject::renderizar() const{
-    SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &destRect);
+void SpriteObject::renderizarCorrido(int x, int y) const {
+    SDL_Rect aux = {pos_x + x, pos_y + y, widthSprite, heightSprite};
+    SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &aux);
 }
+
+
 
 void SpriteObject::renderizarInvertido() const{
     SDL_RenderCopyEx(InterfazGrafica::renderer, texture, &srcRect, &destRect, 0, nullptr, SDL_FLIP_HORIZONTAL);    
@@ -75,4 +81,8 @@ void SpriteObject::renderizarInvertidoEn(int x, int y) const{
     SDL_RenderCopyEx(InterfazGrafica::renderer, texture, &srcRect, &aux, 0, nullptr, SDL_FLIP_HORIZONTAL);
 }
 
+void SpriteObject::renderizarInvertidoCorrido(int x, int y) const {
+    SDL_Rect aux = {pos_x + x, pos_y + y, widthSprite, heightSprite};
+    SDL_RenderCopyEx(InterfazGrafica::renderer, texture, &srcRect, &aux, 0, nullptr, SDL_FLIP_HORIZONTAL);
+}
 

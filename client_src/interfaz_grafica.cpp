@@ -4,8 +4,6 @@
 #include "spritesheet.h"
 #include "spritesManager.h"
 
-SpriteSheet *player1;
-int x_player = 0;
 SDL_Renderer* InterfazGrafica::renderer = nullptr;
 
 //constructor
@@ -152,6 +150,7 @@ void InterfazGrafica::cerrarInterfaz()
 //destructor
 InterfazGrafica::~InterfazGrafica()
 {
+    delete spritesManager;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 }
