@@ -3,9 +3,9 @@
 
 #include "server_projectile.h"
 
-#define RADIUS 3
-#define DAMAGE 1
-#define DMG_MULTIPLIER 2
+#define RD_POS 0
+#define DM_POS 1
+#define MP_POS 2
 
 class Fireball : public Projectile {
     private:
@@ -13,13 +13,20 @@ class Fireball : public Projectile {
 
         uint8_t y_pos;
 
-        uint8_t x_hitbox = RADIUS;
+        uint8_t x_hitbox;
 
-        uint8_t y_hitbox = RADIUS;
+        uint8_t y_hitbox;
 
-        uint8_t damage = DAMAGE;
+        uint8_t damage;
+
+        uint8_t damage_multiplier;
 
     public:
-        Fireball(uint8_t x, uint8_t y) : x_pos(x), y_pos(y) {};
+        Fireball(uint8_t x, uint8_t y, std::vector<uint8_t> &data) : x_pos(x), y_pos(y) {
+            x_hitbox = data[RD_POS];
+            y_hitbox = data[RD_POS];
+            damage = data[DM_POS];
+            damage_multiplier = data[MP_POS];
+        };
 };
 #endif

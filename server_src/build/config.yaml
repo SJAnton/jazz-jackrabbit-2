@@ -5,9 +5,6 @@ PlayerJazz:
   x_hitbox: 5
   y_hitbox: 10
   jump_height: 10
-  alive: true
-  frozen: false
-  intoxicated: false
 
 PlayerLori:
   health: 100
@@ -15,9 +12,6 @@ PlayerLori:
   x_hitbox: 5
   y_hitbox: 10
   jump_height: 10
-  alive: true
-  frozen: false
-  intoxicated: false
   
 PlayerSpaz:
   health: 100
@@ -25,9 +19,6 @@ PlayerSpaz:
   x_hitbox: 5
   y_hitbox: 10
   jump_height: 10
-  alive: true
-  frozen: false
-  intoxicated: false
 
 # Enemigos
 EnemyBat:
@@ -35,83 +26,67 @@ EnemyBat:
   damage: 5
   x_hitbox: 5
   y_hitbox: 3
-  alive: true
-  frozen: false
 
 EnemyLizard:
   health: 100
   damage: 5
   x_hitbox: 3
   y_hitbox: 5
-  alive: true
-  frozen: false
 
 EnemyRat:
   health: 100
   damage: 5
   x_hitbox: 5
   y_hitbox: 3
-  alive: true
-  frozen: false
 
 # Armas
 Blaster:
-  name: "Blaster"
-  ammo: -1
   fire_rate: 15
   cooldown: 10
   speed: 10
 
 Bouncer:
-  name: "Bouncer"
   ammo: 10
   fire_rate: 10
   cooldown: 10
   speed: 10
 
 ElectroBlaster:
-  name: "ElectroBlaster"
   ammo: 10
   fire_rate: 10
   cooldown: 10
   speed: 10
 
 Freezer:
-  name: "Freezer"
   ammo: 10
   fire_rate: 10
   cooldown: 10
   speed: 10
 
 PepperSpray:
-  name: "Pepper Spray"
   ammo: 10
   fire_rate: 10
   cooldown: 10
   speed: 10
 
 RFMissile:
-  name: "RF Missile"
   ammo: 10
   fire_rate: 10
   cooldown: 10
   speed: 10
 
 Seeker:
-  name: "Seeker"
   ammo: 10
   fire_rate: 10
   cooldown: 10
   speed: 10
 
 TNT:
-  name: "TNT"
   ammo: 10
   radius: 10
   cooldown: 10
 
 Toaster:
-  name: "Toaster"
   ammo: 10
   fire_rate: 10
   cooldown: 10

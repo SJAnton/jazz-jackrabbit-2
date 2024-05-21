@@ -1,7 +1,5 @@
 #include "server_projectile.h"
 
-#define DMG_MULTIPLIER 2
-
 Projectile::Projectile() {}
 
 bool Projectile::contact_x(Character &ch) {
@@ -70,7 +68,7 @@ void Projectile::power_up() {
         return;
     }
     powered_up = true;
-    damage *= DMG_MULTIPLIER;
+    damage *= damage_multiplier;
 }
 
 void Projectile::power_up_end() {
@@ -78,7 +76,7 @@ void Projectile::power_up_end() {
         return;
     }
     powered_up = false;
-    damage /= DMG_MULTIPLIER;
+    damage /= damage_multiplier;
 }
 
 bool Projectile::contact(Character &ch) {

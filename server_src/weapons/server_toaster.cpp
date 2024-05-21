@@ -12,7 +12,7 @@ void Toaster::shoot() {
     uint8_t x = 0;
     uint8_t y = 0;
 
-    new Toasterball(x, y);
+    new Toasterball(x, y, data);
     ammo--;
     return;
 }

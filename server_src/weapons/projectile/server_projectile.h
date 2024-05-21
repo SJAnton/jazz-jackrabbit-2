@@ -1,6 +1,7 @@
 #ifndef SERVER_PROJECTILE_H_
 #define SERVER_PROJECTILE_H_
 
+#include <vector>
 #include <cstdint>
 
 #include "../../characters/server_character.h"
@@ -18,6 +19,8 @@ class Projectile {
         uint8_t y_hitbox;
 
         uint8_t damage;
+
+        uint8_t damage_multiplier;
 
         bool powered_up = false;
         

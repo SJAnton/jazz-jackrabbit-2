@@ -5,28 +5,32 @@
 #include "projectile/server_rocket.h"
 
 #define NAME "RF Missile"
-#define AMMO -1
-#define FIRE_RATE 10
-#define COOLDOWN 10
-#define SPEED 10
+#define AM_POS 0
+#define FR_POS 1
+#define RC_POS 2
+#define SP_POS 3
 
 class RFMissile : public Weapon {
-    // Sin el power-up dispara un cohete 15° arriba y otro 15° abajo
     private:
         std::string name = NAME;
 
-        Rocket projectile;
+        uint8_t ammo;
 
-        uint8_t ammo = AMMO;
+        uint8_t fire_rate;
 
-        uint8_t fire_rate = FIRE_RATE;
+        uint8_t recharge_cooldown;
 
-        uint8_t recharge_cooldown = COOLDOWN;
+        uint8_t projectile_speed;
 
-        uint8_t projectile_speed = SPEED;
+        std::vector<uint8_t> &data;
 
     public:
-        RFMissile();
+        RFMissile(std::vector<uint8_t> &data) : data(data) {
+            ammo = data[AM_POS];
+            fire_rate = data[FR_POS];
+            recharge_cooldown = data[RC_POS];
+            projectile_speed = data[SP_POS];
+        };
 
         void shoot(); //override
 };

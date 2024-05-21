@@ -12,7 +12,7 @@ void PepperSpray::shoot() {
     uint8_t x = 0;
     uint8_t y = 0;
 
-    new Fireball(x, y);
+    new Fireball(x, y, data);
     ammo--;
     return;
 }

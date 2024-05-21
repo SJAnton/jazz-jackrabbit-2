@@ -12,7 +12,7 @@ void Seeker::shoot() {
     uint8_t x = 0;
     uint8_t y = 0;
 
-    new SeekerRocket(x, y);
+    new SeekerRocket(x, y, data);
     ammo--;
     return;
 }

@@ -12,7 +12,7 @@ void RFMissile::shoot() {
     uint8_t x = 0;
     uint8_t y = 0;
 
-    new Rocket(x, y);
+    new Rocket(x, y, data);
     ammo--;
     return;
 }

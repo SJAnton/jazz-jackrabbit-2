@@ -12,7 +12,7 @@ void Bouncer::shoot() {
     uint8_t x = 0;
     uint8_t y = 0;
 
-    new Bouncerball(x, y);
+    new Bouncerball(x, y, data);
     ammo--;
     return;
 }

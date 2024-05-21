@@ -6,26 +6,30 @@
 
 #define NAME "Blaster"
 #define AMMO -1
-#define FIRE_RATE 10
-#define COOLDOWN 10
-#define SPEED 10
+#define FR_POS 0
+#define RC_POS 1
+#define SP_POS 2
 
 class Blaster : public Weapon {
     private:
         std::string name = NAME;
 
-        Blasterball projectile;
-
         uint8_t ammo = AMMO;
 
-        uint8_t fire_rate = FIRE_RATE;
+        uint8_t fire_rate;
 
-        uint8_t recharge_cooldown = COOLDOWN;
+        uint8_t recharge_cooldown;
 
-        uint8_t projectile_speed = SPEED;
+        uint8_t projectile_speed;
+
+        std::vector<uint8_t> &data;
 
     public:
-        Blaster();
+        Blaster(std::vector<uint8_t> &data) : data(data) {
+            fire_rate = data[FR_POS];
+            recharge_cooldown = data[RC_POS];
+            projectile_speed = data[SP_POS];
+        }
 
         void shoot(); //override
 };  

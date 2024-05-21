@@ -1,6 +1,7 @@
 #ifndef SERVER_ACCEPTOR_H_
 #define SERVER_ACCEPTOR_H_
 
+#include <map>
 #include <list>
 #include <utility>
 
@@ -21,6 +22,8 @@ class ServerAcceptor : public Thread {
 
         bool &wc;
 
+        ServerApp app;
+
         std::list<Client*> clients;
 
         std::list<ServerGameloop*> gameloops;
@@ -29,8 +32,11 @@ class ServerAcceptor : public Thread {
 
         std::vector<ServerQueueList> sqll;
 
+        std::map<std::string, std::vector<uint8_t>> &data;
+
     public:
-        ServerAcceptor(Socket &socket, bool &was_closed) : sk(socket), wc(was_closed) {}
+        ServerAcceptor(Socket &socket, std::map<std::string, std::vector<uint8_t>> &obj_data,
+                        bool &was_closed) : sk(socket), wc(was_closed), data(obj_data) {}
 
         void run() override;
 

@@ -12,7 +12,7 @@ void ElectroBlaster::shoot() {
     uint8_t x = 0;
     uint8_t y = 0;
 
-    new Electroball(x, y);
+    new Electroball(x, y, data);
     ammo--;
     return;
 }

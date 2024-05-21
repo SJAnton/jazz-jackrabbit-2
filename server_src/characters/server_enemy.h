@@ -1,6 +1,7 @@
 #ifndef SERVER_ENEMY_H_
 #define SERVER_ENEMY_H_
 
+#include <vector>
 #include <cstdint>
 
 #include "server_character.h"

@@ -24,12 +24,13 @@ int main(int argc, char* argv[]) {
     if (!file.is_open()) {
         throw std::runtime_error("Failure opening configuration file");
     }
-    ServerConfigReader reader(file);
     Socket skt(SERVICENAME);
+    ServerConfigReader reader(file);
+    std::map<std::string, std::vector<uint8_t>> data = reader.read();
 
     bool was_closed = false;
 
-    ServerAcceptor acceptor(skt, was_closed);
+    ServerAcceptor acceptor(skt, data, was_closed);
 
     acceptor.start();
 

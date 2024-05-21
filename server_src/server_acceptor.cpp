@@ -1,27 +1,35 @@
 #include "server_acceptor.h"
 
+#define GAME_BYTE 0
+#define CHAR_BYTE 0
+#define GAME_JOINED_BYTE 0
+
 #define NEW_GAME 0
 
-#define JAZZ 0
-#define LORI 0
-#define SPAZ 0
+#define JAZZ_CODE "PlayerJazz"
+#define LORI_CODE "PlayerLori"
+#define SPAZ_CODE "PlayerSpaz"
 
 void ServerAcceptor::run() {
     int id = 0;
     while (!wc) {
         try {
-            // Clase Client para la comunicación y clase Player para
-            // el jugador, se puede implementar que uno tome a otro
-            // como atributo
             Socket peer = sk.accept();
 
             // El protocol se crea para leer el primer mensaje con la
             // información relacionada (cuál personaje se eligió y si
-            // creó una nueva partida o se unió a una existente)
+            // creó una nueva partida o se unió a una existente) y
+            // para enviar el estado de las partidas y cuáles escenarios
+            // están disponibles
             ServerProtocol pr(peer);
 
+            std::vector<uint8_t> game_info;
+            game_info.push_back(gameloops.size());
+            //game_info.push_back(escenarios);
+
             // Información de inicio
-            std::vector<uint8_t> init_data = pr.recv_init_info();
+            pr.send_msg(game_info, wc);
+            std::vector<uint8_t> init_data = pr.recv_init_msg(wc);
 
             // Se crea una nueva partida y el client recibe la cola única
             // de este gameloop y su lista de colas para enviarle acciones.
@@ -30,7 +38,13 @@ void ServerAcceptor::run() {
             Queue<uint8_t> recv_q;
             ServerQueueList sql;
 
-            if (/*init_data[byte_juego] == */NEW_GAME) {
+            // El byte inicial del client al servidor determina
+            // el personaje utilizado
+            Character ch = app.choose_character(init_data[CHAR_BYTE], data);
+
+            Client *client;
+
+            if (init_data[GAME_BYTE] == NEW_GAME) {
                 bool gmlp_wc = false;
                 ServerGameloop *gameloop = new ServerGameloop(recv_q, sql, std::move(gmlp_wc));
                 
@@ -39,33 +53,19 @@ void ServerAcceptor::run() {
 
                 gameloop->start();
                 gameloops.push_back(gameloop);
+
+                client = new Client(std::move(peer), std::move(ch), id, recv_q, sql);
             } else {
                 // El gameloop ya existe, hay que obtener la cola única
                 // y la lista de colas del gameloop existente para
                 // construir al client.
-                recv_q /*= recv_q_list.at()*/;
-                sql /*= sql_list.at()*/;
+                client = new Client(std::move(peer), std::move(ch), id,
+                                    rql.at(GAME_JOINED_BYTE), sqll.at(GAME_JOINED_BYTE));
             }
-
-            // El byte inicial del client al servidor determina
-            // el personaje utilizado
-            Character ch;
-            if (/*init_data[byte_pj] == */JAZZ) {
-                PlayerJazz player;
-                ch = player;
-            } else if (/*init_data[byte_pj] == */LORI) {
-                PlayerLori player;
-                ch = player;
-            } else {
-                PlayerSpaz player;
-                ch = player;
-            }
-            Client *client = new Client(std::move(peer), std::move(ch), id, recv_q, sql);
-
             client->start();
             clients.push_back(client);
 
-            reap_dead(); // También debe borrar los gameloops
+            reap_dead();
             id++;
         } catch (LibError &e) {
 
