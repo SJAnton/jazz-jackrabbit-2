@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_player.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o"
+  "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o"
   "CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o"

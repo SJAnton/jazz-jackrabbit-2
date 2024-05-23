@@ -244,6 +244,33 @@ home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s
 .PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.s
 
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.o: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.o
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.o
+
+# target to build an object file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.o
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.o
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.i: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.i
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.i
+
+# target to preprocess a source file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.i
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.i
+
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.s: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.s
+
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.s
+
+# target to generate assembly for a file
+home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.s
+.PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.s
+
 home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.o: home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o
 
 .PHONY : home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.o
@@ -575,6 +602,9 @@ help:
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.o"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.i"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.s"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.o"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.i"
+	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.s"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.o"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.i"
 	@echo "... home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.s"

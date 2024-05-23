@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_player.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_player.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o"
   "/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o"

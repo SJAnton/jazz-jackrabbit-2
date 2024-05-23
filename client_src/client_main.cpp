@@ -4,6 +4,7 @@
 #include "client_protocol.h"
 #include "client_receiver.h"
 #include "client_sender.h"
+#include "client_renderer.h"
 #include "../common_src/queue.h"
 
 #include "../common_src/constantes.h"
@@ -32,23 +33,24 @@ int main(int argc, char* argv[]) {
     ClientSender* enviador = new ClientSender(protocolo, queueEnviadora, was_closed);
 
     ClientPlayer cliente = ClientPlayer(queueReceptora, queueEnviadora);
+    InterfazGrafica* interfaz = new InterfazGrafica(cliente);
 
-    InterfazGrafica interfaz(cliente);
-    while (interfaz.estaAbierta())
+    ClientRenderer* renderer = new ClientRenderer(interfaz);
+    renderer->start();
+
+    while (interfaz->estaAbierta())
     {
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
 
-        interfaz.manejarEventos();
-        interfaz.recibirInformacion();
-        interfaz.update(1);
-        interfaz.renderizar();
-
+        interfaz->manejarEventos();
+        
         tiempo_transcurrido = SDL_GetTicks() - frameStart;
         if (frame_delay > tiempo_transcurrido) {
             SDL_Delay(frame_delay - tiempo_transcurrido); // sleep
         }
+        
     }
-    interfaz.cerrarInterfaz(); 
+    renderer->join();
     std::cout << "fin" << std::endl;
 
     //esperar confirmacion para iniciar (esperar a que se conecten los n clientes).

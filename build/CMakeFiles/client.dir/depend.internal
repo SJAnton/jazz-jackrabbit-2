@@ -6,6 +6,7 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_
  /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_player.h
  /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.h
  /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.h
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.h
  /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.h
  /home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.h
  /home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.h
@@ -79,6 +80,64 @@ CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_
  /home/lorenzo/Escritorio/Taller/tp_final/common_src/queue.h
  /home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.h
  /home/lorenzo/Escritorio/Taller/tp_final/common_src/thread.h
+CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.o
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_player.h
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.h
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.h
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.h
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesManager.h
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.h
+ /home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheetPlayer.h
+ /home/lorenzo/Escritorio/Taller/tp_final/common_src/constantes.h
+ /home/lorenzo/Escritorio/Taller/tp_final/common_src/queue.h
+ /home/lorenzo/Escritorio/Taller/tp_final/common_src/thread.h
+ /usr/include/SDL2/SDL.h
+ /usr/include/SDL2/SDL_assert.h
+ /usr/include/SDL2/SDL_atomic.h
+ /usr/include/SDL2/SDL_audio.h
+ /usr/include/SDL2/SDL_blendmode.h
+ /usr/include/SDL2/SDL_clipboard.h
+ /usr/include/SDL2/SDL_config.h
+ /usr/include/SDL2/SDL_cpuinfo.h
+ /usr/include/SDL2/SDL_endian.h
+ /usr/include/SDL2/SDL_error.h
+ /usr/include/SDL2/SDL_events.h
+ /usr/include/SDL2/SDL_filesystem.h
+ /usr/include/SDL2/SDL_gamecontroller.h
+ /usr/include/SDL2/SDL_gesture.h
+ /usr/include/SDL2/SDL_haptic.h
+ /usr/include/SDL2/SDL_hints.h
+ /usr/include/SDL2/SDL_image.h
+ /usr/include/SDL2/SDL_joystick.h
+ /usr/include/SDL2/SDL_keyboard.h
+ /usr/include/SDL2/SDL_keycode.h
+ /usr/include/SDL2/SDL_loadso.h
+ /usr/include/SDL2/SDL_log.h
+ /usr/include/SDL2/SDL_main.h
+ /usr/include/SDL2/SDL_messagebox.h
+ /usr/include/SDL2/SDL_mouse.h
+ /usr/include/SDL2/SDL_mutex.h
+ /usr/include/SDL2/SDL_pixels.h
+ /usr/include/SDL2/SDL_platform.h
+ /usr/include/SDL2/SDL_power.h
+ /usr/include/SDL2/SDL_quit.h
+ /usr/include/SDL2/SDL_rect.h
+ /usr/include/SDL2/SDL_render.h
+ /usr/include/SDL2/SDL_rwops.h
+ /usr/include/SDL2/SDL_scancode.h
+ /usr/include/SDL2/SDL_sensor.h
+ /usr/include/SDL2/SDL_shape.h
+ /usr/include/SDL2/SDL_stdinc.h
+ /usr/include/SDL2/SDL_surface.h
+ /usr/include/SDL2/SDL_system.h
+ /usr/include/SDL2/SDL_thread.h
+ /usr/include/SDL2/SDL_timer.h
+ /usr/include/SDL2/SDL_touch.h
+ /usr/include/SDL2/SDL_version.h
+ /usr/include/SDL2/SDL_video.h
+ /usr/include/SDL2/begin_code.h
+ /usr/include/SDL2/close_code.h
 CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o
  /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.h
  /home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp

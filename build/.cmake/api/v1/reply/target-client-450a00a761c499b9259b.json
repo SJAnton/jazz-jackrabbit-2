@@ -25,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 44,
+				"line" : 45,
 				"parent" : 0
 			},
 			{
@@ -68,7 +68,8 @@
 				10,
 				11,
 				12,
-				13
+				13,
+				14
 			]
 		}
 	],
@@ -126,7 +127,8 @@
 				10,
 				11,
 				12,
-				13
+				13,
+				14
 			]
 		}
 	],
@@ -154,6 +156,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

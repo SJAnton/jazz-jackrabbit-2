@@ -23,6 +23,7 @@ file(GLOB CLIENT_SOURCES
     "../client_src/client_protocol.cpp"
     "../client_src/client_receiver.cpp"
     "../client_src/client_sender.cpp"
+    "../client_src/client_renderer.cpp"
     "../client_src/interfaz_grafica.cpp"
     "../client_src/spritesheet.cpp"
     "../client_src/sprite_object.cpp"
