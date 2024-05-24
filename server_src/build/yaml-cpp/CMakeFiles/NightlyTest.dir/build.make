@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build"
+CMAKE_SOURCE_DIR = "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build"
+CMAKE_BINARY_DIR = "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build"
 
 # Utility rule file for NightlyTest.
 
@@ -67,7 +67,7 @@ include yaml-cpp/CMakeFiles/NightlyTest.dir/compiler_depend.make
 include yaml-cpp/CMakeFiles/NightlyTest.dir/progress.make
 
 yaml-cpp/CMakeFiles/NightlyTest:
-	cd "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp" && /usr/bin/ctest -D NightlyTest
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp" && /usr/bin/ctest -D NightlyTest
 
 NightlyTest: yaml-cpp/CMakeFiles/NightlyTest
 NightlyTest: yaml-cpp/CMakeFiles/NightlyTest.dir/build.make
@@ -78,10 +78,10 @@ yaml-cpp/CMakeFiles/NightlyTest.dir/build: NightlyTest
 .PHONY : yaml-cpp/CMakeFiles/NightlyTest.dir/build
 
 yaml-cpp/CMakeFiles/NightlyTest.dir/clean:
-	cd "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp" && $(CMAKE_COMMAND) -P CMakeFiles/NightlyTest.dir/cmake_clean.cmake
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp" && $(CMAKE_COMMAND) -P CMakeFiles/NightlyTest.dir/cmake_clean.cmake
 .PHONY : yaml-cpp/CMakeFiles/NightlyTest.dir/clean
 
 yaml-cpp/CMakeFiles/NightlyTest.dir/depend:
-	cd "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp/CMakeFiles/NightlyTest.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp/CMakeFiles/NightlyTest.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : yaml-cpp/CMakeFiles/NightlyTest.dir/depend
 

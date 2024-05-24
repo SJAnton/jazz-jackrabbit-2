@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build"
+CMAKE_SOURCE_DIR = "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build"
+CMAKE_BINARY_DIR = "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build"
 
 # Utility rule file for ExperimentalSubmit.
 
@@ -67,7 +67,7 @@ include yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/compiler_depend.make
 include yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/progress.make
 
 yaml-cpp/CMakeFiles/ExperimentalSubmit:
-	cd "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp" && /usr/bin/ctest -D ExperimentalSubmit
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp" && /usr/bin/ctest -D ExperimentalSubmit
 
 ExperimentalSubmit: yaml-cpp/CMakeFiles/ExperimentalSubmit
 ExperimentalSubmit: yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/build.make
@@ -78,10 +78,10 @@ yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/build: ExperimentalSubmit
 .PHONY : yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/build
 
 yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/clean:
-	cd "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp" && $(CMAKE_COMMAND) -P CMakeFiles/ExperimentalSubmit.dir/cmake_clean.cmake
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp" && $(CMAKE_COMMAND) -P CMakeFiles/ExperimentalSubmit.dir/cmake_clean.cmake
 .PHONY : yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/clean
 
 yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/depend:
-	cd "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp" "/home/santiago/Escritorio/Taller de Programación/jazz-jackrabbit-2/server_src/build/yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : yaml-cpp/CMakeFiles/ExperimentalSubmit.dir/depend
 

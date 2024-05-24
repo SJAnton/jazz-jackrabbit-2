@@ -4,12 +4,15 @@
 
 void ServerReceiver::run() {
     while (!wc) {
-        uint8_t action = pr.recv_action(wc);
-        if (action == ATTACK) {
-            q.push(action);
-        } else {
-            // Desconexión del cliente
-            alive = false;
+        std::vector<uint8_t> data = pr.recv_msg(wc);
+        for (uint8_t action : data) {
+            if (action == ATTACK) {
+                // TODO: modificar
+                q.push(action);
+            } else {
+                // Desconexión del cliente
+                wc = true;
+            }
         }
     }
 }

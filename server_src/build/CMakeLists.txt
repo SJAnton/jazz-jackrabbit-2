@@ -16,10 +16,10 @@ include_directories(yaml-cpp/include)
 # make -f Makefile ejecuta el makefile
 set(SOURCE_FILES
     # Archivos common
-    ../common_liberror.cpp
-    ../common_resolver.cpp
-    ../common_resolvererror.cpp
-    ../common_socket.cpp
+    ../../common_src/liberror.cpp
+    ../../common_src/resolver.cpp
+    ../../common_src/resolvererror.cpp
+    ../../common_src/socket.cpp
 
     # Archivos server
     ../server_app.cpp

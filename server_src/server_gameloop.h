@@ -6,7 +6,7 @@
 #include "server_thread.h"
 #include "server_client.h"
 #include "server_queue_list.h"
-#include "common_socket.h"
+#include "../common_src/socket.h"
 
 class ServerGameloop : public Thread {
     private:

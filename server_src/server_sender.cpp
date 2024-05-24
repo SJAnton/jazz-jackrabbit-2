@@ -12,7 +12,7 @@ void ServerSender::run() {
             if (wc) {
                 break;
             }
-            pr.send_msg(enemies_current, enemies_last, wc);
+            //pr.send_msg(enemies_current, enemies_last, wc);
         } catch (const ClosedQueue &e) {
 
         }

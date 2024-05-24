@@ -1,11 +1,11 @@
 #ifndef SERVER_SENDER_H_
 #define SERVER_SENDER_H_
 
-#include "common_socket.h"
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_protocol.h"
 #include "server_queue_list.h"
+#include "../../common_src/socket.h"
 
 class ServerSender : public Thread {
     private:

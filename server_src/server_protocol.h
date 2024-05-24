@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "common_socket.h"
+#include "../common_src/socket.h"
 
 class ServerProtocol {
     private:

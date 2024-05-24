@@ -1,5 +1,6 @@
 #include "server_client.h"
-#include "common_liberror.h"
+
+#include "../../common_src/liberror.h"
 
 #define SHUTCODE 2
 

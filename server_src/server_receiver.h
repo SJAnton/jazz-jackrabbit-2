@@ -1,11 +1,11 @@
 #ifndef SERVER_RECEIVER_H_
 #define SERVER_RECEIVER_H_
 
-#include "common_socket.h"
 #include "server_app.h"
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_protocol.h"
+#include "../../common_src/socket.h"
 
 class ServerReceiver : public Thread {
     private:
