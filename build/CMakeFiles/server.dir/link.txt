@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/server.dir/server_src/server_dummy.cpp.o CMakeFiles/server.dir/common_src/liberror.cpp.o CMakeFiles/server.dir/common_src/resolver.cpp.o CMakeFiles/server.dir/common_src/resolvererror.cpp.o CMakeFiles/server.dir/common_src/socket.cpp.o -o server 
