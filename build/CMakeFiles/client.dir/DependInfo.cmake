@@ -1,30 +1,28 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_main.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_player.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_player.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_protocol.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_receiver.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_renderer.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/client_sender.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/interfaz_grafica.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/sprite_object.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesManager.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesManager.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheet.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheetPlayer.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/client_src/spritesheetPlayer.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/common_src/liberror.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/liberror.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolver.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolver.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolvererror.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/resolvererror.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.cpp" "/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir/home/lorenzo/Escritorio/Taller/tp_final/common_src/socket.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/include/SDL2"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/client_main.cpp" "CMakeFiles/client.dir/client_src/client_main.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/client_main.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/client_player.cpp" "CMakeFiles/client.dir/client_src/client_player.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/client_player.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/client_protocol.cpp" "CMakeFiles/client.dir/client_src/client_protocol.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/client_protocol.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/client_receiver.cpp" "CMakeFiles/client.dir/client_src/client_receiver.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/client_receiver.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/client_renderer.cpp" "CMakeFiles/client.dir/client_src/client_renderer.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/client_renderer.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/client_sender.cpp" "CMakeFiles/client.dir/client_src/client_sender.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/client_sender.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/interfaz_grafica.cpp" "CMakeFiles/client.dir/client_src/interfaz_grafica.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/interfaz_grafica.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/sprite_object.cpp" "CMakeFiles/client.dir/client_src/sprite_object.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/sprite_object.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/spritesManager.cpp" "CMakeFiles/client.dir/client_src/spritesManager.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/spritesManager.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/spritesheet.cpp" "CMakeFiles/client.dir/client_src/spritesheet.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/spritesheet.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/client_src/spritesheetPlayer.cpp" "CMakeFiles/client.dir/client_src/spritesheetPlayer.cpp.o" "gcc" "CMakeFiles/client.dir/client_src/spritesheetPlayer.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/common_src/liberror.cpp" "CMakeFiles/client.dir/common_src/liberror.cpp.o" "gcc" "CMakeFiles/client.dir/common_src/liberror.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/common_src/resolver.cpp" "CMakeFiles/client.dir/common_src/resolver.cpp.o" "gcc" "CMakeFiles/client.dir/common_src/resolver.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/common_src/resolvererror.cpp" "CMakeFiles/client.dir/common_src/resolvererror.cpp.o" "gcc" "CMakeFiles/client.dir/common_src/resolvererror.cpp.o.d"
+  "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/common_src/socket.cpp" "CMakeFiles/client.dir/common_src/socket.cpp.o" "gcc" "CMakeFiles/client.dir/common_src/socket.cpp.o.d"
   )
 
 # Targets to which this target links.

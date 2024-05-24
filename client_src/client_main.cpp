@@ -35,12 +35,16 @@ int main(int argc, char* argv[]) {
     ClientPlayer cliente = ClientPlayer(queueReceptora, queueEnviadora);
     InterfazGrafica* interfaz = new InterfazGrafica(cliente);
 
-    ClientRenderer* renderer = new ClientRenderer(interfaz);
-    renderer->start();
+    //ClientRenderer* renderer = new ClientRenderer(interfaz);
+    //renderer->start();
 
     while (interfaz->estaAbierta())
     {
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
+
+        interfaz->recibirInformacion();
+        interfaz->update(1);
+        interfaz->renderizar();
 
         interfaz->manejarEventos();
         
@@ -50,7 +54,7 @@ int main(int argc, char* argv[]) {
         }
         
     }
-    renderer->join();
+    //renderer->join();
     std::cout << "fin" << std::endl;
 
     //esperar confirmacion para iniciar (esperar a que se conecten los n clientes).

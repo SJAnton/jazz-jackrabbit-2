@@ -13,12 +13,13 @@ private:
     Position position;
     bool flip = false; //es true cuando está mirando a la izquierda
 
-    /* data */
 public:
     Player(TipoPlayer TipoPlayer);
 
     void setPosition(int x, int y);
+
     void setFlip(bool flip);
+    
     void setEstado(EstadosPlayer estado);
     EstadosPlayer getEstado();
 

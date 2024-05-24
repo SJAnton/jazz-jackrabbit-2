@@ -1,4 +1,4 @@
-/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/rebuild_cache.dir
-/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/edit_cache.dir
-/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/server.dir
-/home/lorenzo/Escritorio/Taller/tp_final/build/CMakeFiles/client.dir
+/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build/CMakeFiles/client.dir
+/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build/CMakeFiles/server.dir
+/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build/CMakeFiles/edit_cache.dir
+/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build/CMakeFiles/rebuild_cache.dir
