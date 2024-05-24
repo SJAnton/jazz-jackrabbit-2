@@ -8,7 +8,7 @@ cmake ..
 make
 ```
 
-### Se van a crear 2 archivos ejecutables.
+### Se van a crear 2 archivos ejecutables (client y server)
 
 ### Para correr el servidor hacer:
 ```sh
