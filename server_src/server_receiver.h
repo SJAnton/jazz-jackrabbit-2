@@ -15,12 +15,9 @@ class ServerReceiver : public Thread {
 
         bool &wc;
 
-        std::atomic<bool> &alive;
-
     public:
-        ServerReceiver(ServerProtocol &protocol, Queue<uint8_t> &recv_queue,
-                        bool &was_closed, std::atomic<bool> &is_alive) :
-                            pr(protocol), q(recv_queue), wc(was_closed), alive(is_alive) {}
+        ServerReceiver(ServerProtocol &protocol, std::shared_ptr<Queue<uint8_t>> recv_queue,
+                        bool &was_closed) : pr(protocol), q(*recv_queue.get()), wc(was_closed) {}
 
         void run() override;
 };

@@ -2,17 +2,19 @@
 
 #include "server_sender.h"
 
-#define MAX_ENEMIES 5
+#define MSG_SIZE 5
 
 void ServerSender::run() {
-    uint8_t enemies_last = MAX_ENEMIES;
     while (!wc) {
         try {
-            uint8_t enemies_current = q.pop();
+            std::vector<uint8_t> data;
+            for (int i = 0; i < MSG_SIZE; i++) {
+                data.push_back(q.pop());
+            }
             if (wc) {
                 break;
             }
-            //pr.send_msg(enemies_current, enemies_last, wc);
+            pr.send_msg(data, wc);
         } catch (const ClosedQueue &e) {
 
         }

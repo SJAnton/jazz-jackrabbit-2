@@ -1,6 +1,7 @@
 #ifndef SERVER_ACCEPTOR_H_
 #define SERVER_ACCEPTOR_H_
 
+#include <map>
 #include <list>
 #include <utility>
 
@@ -9,6 +10,9 @@
 #include "server_client.h"
 #include "server_gameloop.h"
 #include "server_queue_list.h"
+#include "characters/server_player_jazz.h"
+#include "characters/server_player_lori.h"
+#include "characters/server_player_spaz.h"
 #include "../../common_src/socket.h"
 #include "../../common_src/liberror.h"
 
@@ -16,18 +20,23 @@ class ServerAcceptor : public Thread {
     private:
         Socket &sk;
 
-        Queue<uint8_t> &q;
-
-        ServerQueueList &sql;
-
         bool &wc;
+
+        ServerApp app;
 
         std::list<Client*> clients;
 
+        std::list<ServerGameloop*> gameloops;
+
+        std::vector<Queue<uint8_t>> gameloops_q;
+
+        std::vector<ServerQueueList> monitors;
+
+        std::map<std::string, std::vector<uint8_t>> &data;
+
     public:
-        ServerAcceptor(Socket &socket, Queue<uint8_t> &recv_queue,
-                        ServerQueueList &sndr_queue_list, bool &was_closed) :
-                            sk(socket), q(recv_queue), sql(sndr_queue_list), wc(was_closed) {}
+        ServerAcceptor(Socket &socket, std::map<std::string, std::vector<uint8_t>> &obj_data,
+                        bool &was_closed) : sk(socket), wc(was_closed), data(obj_data) {}
 
         void run() override;
 

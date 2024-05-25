@@ -11,20 +11,6 @@
 #define INIT_MSG_SIZE 2
 #define MSG_SIZE 0
 
-#define SEND_STILL 0x01
-#define SEND_MOV_LEFT 0x02
-#define SEND_MOV_RIGHT 0x03
-#define SEND_RUN_LEFT 0x04
-#define SEND_RUN_RIGHT 0x05
-#define SEND_JUMP 0x06
-#define SEND_SHOOT 0x07
-#define SEND_SPECIAL_MOVE 0x08
-#define SEND_INTOXICATED 0x09
-#define SEND_DAMAGE 0x0A
-#define SEND_DYING 0x0B
-#define SEND_DEAD 0x0C
-#define SEND_REVIVE 0x0D
-
 // Esta función no es necesaria si INIT_MSG_SIZE = MSG_SIZE
 std::vector<uint8_t> ServerProtocol::recv_init_msg(bool &was_closed) {
     std::vector<uint8_t> data;

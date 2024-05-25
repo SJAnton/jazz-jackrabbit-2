@@ -1,47 +1,67 @@
 #ifndef SERVER_CLIENT_H_
 #define SERVER_CLIENT_H_
 
-#include <atomic>
-#include <utility>
-
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_sender.h"
+#include "server_gameloop.h"
 #include "server_receiver.h"
 #include "server_queue_list.h"
 #include "../../common_src/socket.h"
 #include "../../common_src/liberror.h"
-
-#define MAX_ENEMIES 5
+#include "characters/server_player_jazz.h"
+#include "characters/server_player_lori.h"
+#include "characters/server_player_spaz.h"
 
 class Client : public Thread {
     private:    
+        // ESTA DATA LA RECIBIMOS POR PARAMETRO EN EL CONSTRUCTOR
         Socket sk;
 
-        Queue<uint8_t> &q;
+        int id;
 
-        ServerQueueList &sql;
+        std::list<ServerGameloop*> &gameloops;
 
-        ServerProtocol pr;
+        std::vector<ServerQueueList> &monitors;
 
-        Queue<uint8_t> sndr_queue;
+        std::vector<Queue<uint8_t>> &gameloops_q;
 
-        std::atomic<bool> is_alive = true;
+        std::map<std::string, std::vector<uint8_t>> &data;
 
-        std::atomic<bool> keep_running = true;
+        ServerProtocol protocol;
+
+        // ESTA DATA LA CREAMOS EN EL CONSTRUCTOR
+        Queue<uint8_t> sndr_q;
+
+        std::shared_ptr<Queue<uint8_t>> recv_q;
+
+        std::shared_ptr<ServerQueueList> monitor;
+
+        std::unique_ptr<Character> player;
+
+        ServerReceiver recv;
+
+        ServerSender sndr;
 
         bool wc = false;
 
-        ServerReceiver recv;
-        
-        ServerSender sndr;
+        void select_game(uint8_t game, uint8_t game_joined);
+
+        void select_character(uint8_t character);
 
     public:
-        Client(Socket socket, Queue<uint8_t> &recv_queue, ServerQueueList &sndr_queue_list) :
-                sk(std::move(socket)), q(recv_queue), sql(sndr_queue_list), pr(sk),
-                sndr_queue(MAX_ENEMIES * 2), recv(pr, q, wc, is_alive), sndr(pr, sndr_queue, wc) {}
+        Client(Socket socket, int id, std::list<ServerGameloop*> &gameloops,
+                std::vector<ServerQueueList> &monitors, std::vector<Queue<uint8_t>> &gameloops_q,
+                    std::map<std::string, std::vector<uint8_t>> &data) :
+                    sk(std::move(socket)), id(id), gameloops(gameloops), monitors(monitors),
+                        gameloops_q(gameloops_q), protocol(sk), recv(protocol, recv_q, wc),
+                            sndr(protocol, sndr_q, wc), data(data) {}
 
         void run() override;
+
+        int get_id();
+
+        Character get_player();
 
         bool is_dead();
 
