@@ -1,6 +1,7 @@
 #ifndef CONSTANTES_H
 #define CONSTANTES_H
 
+//#include "info_juego.h"
 
 enum EstadosPlayer {Inactivo, Caminando, Corriendo, Saltando, Cayendo, Disparando,
                     AtaqueEspecial, Intoxicado, Impacado, Muriendo, Muerto, Reviviendo};
@@ -8,7 +9,19 @@ enum EstadosPlayer {Inactivo, Caminando, Corriendo, Saltando, Cayendo, Disparand
 enum AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
 enum EstadosEnemy{};
 enum TipoPlayer {Jazz, Spaz, Lori};
+enum Direcciones {Left, Right};
 
+class ComandoCliente {
+public:
+    AccionesPlayer accion;
+    Direcciones direccion;
+
+    ComandoCliente(AccionesPlayer accion, Direcciones direccion){
+        this->accion = accion;
+        this->direccion = direccion;
+    }
+    ComandoCliente(){    }
+};
 
 class Position {
     public:
@@ -18,6 +31,7 @@ class Position {
         return (x == other.x && y == other.y);
     };
 };
+
 
 
 

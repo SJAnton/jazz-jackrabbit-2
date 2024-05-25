@@ -46,32 +46,21 @@
 #define STATE_DEAD 0x0C
 #define STATE_REVIVE 0x0D
 
-//Tipos de Eventos
-#define PLAYER_CAMBIA_ESTADO 0xE1
-#define PLAYER_SUMA_PUNTOS 0xE2
-#define ENEMIGO_CAMBIA_ESTADO 0xE3
-#define MONEDA_RECOLECTADA 0xE5
-
-
 
 /* El server devuelve a todos los clientes:
-    1 byte con el tipo de Evento
-    si es E1:
-        1 byte con el ID del player
-        1 byte con el estado del Player
-        4 bytes con la posicion xy
-    si es E2:
-        1 byte con el ID del player
-        2 bytes con el puntaje del player
-    si es E3:
-        1 byte con el ID del enemigo
-        1 byte con el estado del Enemigo
-        4 bytes con la posicion (suponiendo que se pueden mover)
-    si es E4:
-        1 byte con el ID de la moneda (u otra forma de identificarla)
+    2 bytes con la cantidad de bytes del mensaje.
+    1 byte con id del Player 1
+        2 bytes con la posion en x
+        2 bytes con la poscion en y
+        1 byte con el estado anterior
+        1 byte con el estado actual
+        1 byte con la vida
+        2 bytes con los puntos
     
-    ultimo byte con 0x00
-
 */
+//Ejemplo
+//000A A1 0002 00ff 01 02 0A 0000 
+
+//size=10 id=Player1 x=2 y=255 estadoAnterior=Idle EstadoActual=Walk vida=10 puntos=0 
 
 #endif
