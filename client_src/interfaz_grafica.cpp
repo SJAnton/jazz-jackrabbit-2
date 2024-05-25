@@ -39,10 +39,98 @@ bool InterfazGrafica::estaAbierta() {
     return is_running;
 }
 
+bool InterfazGrafica::menuAbierto(){
+    return menu_abierto;
+}
 
+<<<<<<< HEAD
 void InterfazGrafica::recibirInformacion() {
     //estadojuego = queueReceptora.pop()
     
+=======
+void InterfazGrafica::manejarEventos()
+{
+    SDL_Event e;
+    SDL_PollEvent(&e);
+
+    if (e.type == SDL_QUIT) {
+        is_running = false;
+        return;
+
+    } else if (e.type == SDL_KEYDOWN) {
+        switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
+            case SDLK_SPACE:
+                cliente.saltar();
+                spritesManager->setEstadoPlayer(0,Saltando);
+                break;
+            case SDLK_LEFT:
+                cliente.moverIzquierda();
+                spritesManager->setEstadoPlayer(0,Caminando);
+                spritesManager->flipPlayer(0,true);
+                break;
+            case SDLK_RIGHT:
+                cliente.moverDerecha();
+                spritesManager->setEstadoPlayer(0,Caminando);
+                spritesManager->flipPlayer(0,false);
+                break;
+            case SDLK_d:
+                cliente.disparar();
+                spritesManager->setEstadoPlayer(0,Disparando);
+                break;
+            case SDLK_a:
+                cliente.ataque_especial();
+                spritesManager->setEstadoPlayer(0,AtaqueEspecial);
+                break;
+            //case correr a definir
+
+            case SDLK_k://para probar muerte
+                spritesManager->setEstadoPlayer(0,Muriendo);
+                break;
+            case SDLK_ESCAPE:
+                is_running = false;
+                break;
+            case SDLK_LCTRL:
+                break;
+            default:
+                break;
+        }
+    }
+    else{
+        //if (spritesManager->getEstadoPlayer(0) != Idle)
+          //  spritesManager->setEstadoPlayer(0, Idle);
+    }
+}
+
+bool pointInsideRect(int x, int y, SDL_Rect rect) {
+    return (x >= rect.x && x <= rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h);
+}
+
+void InterfazGrafica::manejarEventosMenu(){
+    SDL_Event e;
+    SDL_PollEvent(&e);
+
+    if (e.type == SDL_QUIT) {
+        is_running = false;
+        return;
+    } else if (e.type == SDL_KEYDOWN) {
+        if(e.key.keysym.sym == SDLK_ESCAPE){
+            is_running = false;
+            return;
+        }
+    }else if (e.type == SDL_MOUSEBUTTONDOWN) {
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+        if (pointInsideRect(mouseX, mouseY, {234, 258, 282, 84})) { //Chequea si se clickeo en la zona del boton
+            std::cout << "Comienza el juego!" << std::endl;
+            menu_abierto = false;
+        }
+    }
+}
+
+void InterfazGrafica::recibirInformacion(){
+    cliente.recibirInformacion();
+    //Proceso la informacion para actualizar la interfaz
+>>>>>>> af8ff760c996947a6dd2a5a503acca45914e0aee
 }
  
 
@@ -90,6 +178,29 @@ void InterfazGrafica::stop(){
     is_running = false;
 } 
 
+
+void InterfazGrafica::renderizarMenu(){
+    SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
+    SDL_RenderClear(renderer);
+
+    SDL_Surface* surface_button = IMG_Load("../sprites/boton_play.png");
+    SDL_Texture* texture_button = SDL_CreateTextureFromSurface(renderer, surface_button);
+    SDL_FreeSurface(surface_button);
+    SDL_Rect buttonRect = {234, 258, 282, 84};
+
+    SDL_RenderCopy(renderer, texture_button, nullptr, &buttonRect);
+    SDL_DestroyTexture(texture_button);
+
+    SDL_Surface* surface = IMG_Load("../sprites/titulo.png");
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+    SDL_Rect imageRect = {95, 28, 560, 224};
+
+    SDL_RenderCopy(renderer, texture, nullptr, &imageRect);
+    SDL_DestroyTexture(texture);
+
+    SDL_RenderPresent(renderer);
+}
 
 void InterfazGrafica::cerrarInterfaz() 
 {

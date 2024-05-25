@@ -1,4 +1,3 @@
-
 #include "interfaz_grafica.h"
 #include "client_protocol.h"
 #include "client_receiver.h"
@@ -31,8 +30,26 @@ int main(int argc, char* argv[]) {
     eventHandler.start();
     
     while (interfaz.estaAbierta())
+    //ClientReceiver* receptor = new ClientReceiver(protocolo, queueReceptora, was_closed);
+    //ClientSender* enviador = new ClientSender(protocolo, queueEnviadora, was_closed);
+
+    //ClientPlayer cliente = ClientPlayer(queueReceptora, queueEnviadora);
+    //InterfazGrafica* interfaz = new InterfazGrafica(cliente);
+
+    while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza el menu principal
+    {
+        interfaz.renderizarMenu();
+        interfaz.manejarEventosMenu();
+    }
+
+    ClientRenderer* renderer = new ClientRenderer(interfaz);
+    renderer->start();
+    
+    while (interfaz.estaAbierta())
     {
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
+
+        //interfaz->manejarEventos();
 
         interfaz.recibirInformacion();
         interfaz.update(1);
@@ -46,6 +63,8 @@ int main(int argc, char* argv[]) {
     }
 
     eventHandler.join();
+    
+    renderer->join();
     std::cout << "fin" << std::endl;
 
     //esperar confirmacion para iniciar (esperar a que se conecten los n clientes).
