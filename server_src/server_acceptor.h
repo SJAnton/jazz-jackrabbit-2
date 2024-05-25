@@ -28,9 +28,9 @@ class ServerAcceptor : public Thread {
 
         std::list<ServerGameloop*> gameloops;
 
-        std::vector<Queue<uint8_t>> gameloops_q;
+        std::map<uint8_t, std::vector<Queue<uint8_t>>> gameloops_q;
 
-        std::vector<ServerQueueList> monitors;
+        std::map<uint8_t, std::vector<ServerQueueList>> monitors;
 
         std::map<std::string, std::vector<uint8_t>> &data;
 

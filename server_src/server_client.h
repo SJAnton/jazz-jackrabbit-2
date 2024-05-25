@@ -7,8 +7,8 @@
 #include "server_gameloop.h"
 #include "server_receiver.h"
 #include "server_queue_list.h"
-#include "../../common_src/socket.h"
-#include "../../common_src/liberror.h"
+#include "../common_src/socket.h"
+#include "../common_src/liberror.h"
 #include "characters/server_player_jazz.h"
 #include "characters/server_player_lori.h"
 #include "characters/server_player_spaz.h"
@@ -22,9 +22,13 @@ class Client : public Thread {
 
         std::list<ServerGameloop*> &gameloops;
 
-        std::vector<ServerQueueList> &monitors;
+        //std::vector<ServerQueueList> &monitors;
 
-        std::vector<Queue<uint8_t>> &gameloops_q;
+        //std::vector<Queue<uint8_t>> &gameloops_q;
+
+        std::map<uint8_t, std::vector<ServerQueueList>> &monitors;
+
+        std::map<uint8_t, std::vector<Queue<uint8_t>>> &gameloops_q;
 
         std::map<std::string, std::vector<uint8_t>> &data;
 
@@ -51,7 +55,9 @@ class Client : public Thread {
 
     public:
         Client(Socket socket, int id, std::list<ServerGameloop*> &gameloops,
-                std::vector<ServerQueueList> &monitors, std::vector<Queue<uint8_t>> &gameloops_q,
+                //std::vector<ServerQueueList> &monitors, std::vector<Queue<uint8_t>> &gameloops_q,
+                std::map<uint8_t, std::vector<ServerQueueList>> &monitors,
+                std::map<uint8_t, std::vector<Queue<uint8_t>>> &gameloops_q,
                     std::map<std::string, std::vector<uint8_t>> &data) :
                     sk(std::move(socket)), id(id), gameloops(gameloops), monitors(monitors),
                         gameloops_q(gameloops_q), protocol(sk), recv(protocol, recv_q, wc),

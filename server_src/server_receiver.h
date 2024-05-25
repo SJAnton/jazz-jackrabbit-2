@@ -5,7 +5,7 @@
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_protocol.h"
-#include "../../common_src/socket.h"
+#include "../common_src/socket.h"
 
 class ServerReceiver : public Thread {
     private:

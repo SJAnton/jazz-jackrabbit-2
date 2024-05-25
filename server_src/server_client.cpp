@@ -1,8 +1,8 @@
 #include "server_client.h"
 
 #define CHAR_BYTE 0x00
+#define CHOSEN_GAME_BYTE 0x00
 #define GAME_BYTE 0x00
-#define GAME_JOINED_BYTE 0x00
 
 #define NEW_GAME 0x00
 
@@ -24,7 +24,7 @@ void Client::run() {
     protocol.send_msg(msg, wc);
     std::vector<uint8_t> init_data = protocol.recv_init_msg(wc);
 
-    select_game(init_data[GAME_BYTE], init_data[GAME_JOINED_BYTE]);
+    select_game(init_data[CHOSEN_GAME_BYTE], init_data[GAME_BYTE]);
     select_character(init_data[CHAR_BYTE]);
 }
 
@@ -41,8 +41,10 @@ void Client::select_game(uint8_t game, uint8_t game_joined) {
 
         ServerGameloop *gameloop = new ServerGameloop(gameloop_q, *monitor.get());
         
-        gameloops_q.push_back(gameloop_q);
-        monitors.push_back(*monitor.get());
+        uint8_t id = gameloops_q.size();
+
+        gameloops_q[id].push_back(gameloop_q);
+        monitors[id].push_back(*monitor.get());
 
         gameloop->start();
         gameloops.push_back(gameloop);
