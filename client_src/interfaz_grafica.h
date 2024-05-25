@@ -22,6 +22,7 @@ class InterfazGrafica
 private:
     SDL_Window* window; // ventana emergente
     bool is_running = true;
+    bool menu_abierto = true;
     int iteracion = 0;
     
     ClientPlayer cliente;//
@@ -38,7 +39,11 @@ public:
     
     bool estaAbierta();
 
+    bool menuAbierto();
+
     void manejarEventos();
+
+    void manejarEventosMenu();
 
     void recibirInformacion();
 
@@ -57,6 +62,8 @@ public:
      * Dibuja todos los pixeles en la pantalla
      */
     void renderizar();
+
+    void renderizarMenu();
 
     void cerrarInterfaz();
 
