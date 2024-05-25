@@ -80,9 +80,6 @@ int Client::get_id() {
 }
 
 Character Client::get_player() {
-    if (player == nullptr) {
-        return;
-    }
     return *player.get();
 }
 

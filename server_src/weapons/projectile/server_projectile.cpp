@@ -30,6 +30,10 @@ bool Projectile::contact_y(Character &ch) {
     return true;
 }
 
+uint8_t Projectile::get_id() {
+    return projectile_id;
+}
+
 uint8_t Projectile::left_side() {
     return x_pos - x_hitbox;
 }

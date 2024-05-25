@@ -3,13 +3,16 @@
 
 #include "server_projectile.h"
 
-#define XH_POS 0
-#define YH_POS 1
-#define DM_POS 2
-#define MP_POS 3
+#define RK_ID_POS 0
+#define RK_XH_POS 1
+#define RK_YH_POS 2
+#define RK_DM_POS 3
+#define RK_MP_POS 4
 
 class Rocket : public Projectile {
     private:
+        uint8_t projectile_id;
+
         uint8_t x_pos;
 
         uint8_t y_pos;
@@ -24,10 +27,11 @@ class Rocket : public Projectile {
 
     public:
         Rocket(uint8_t x, uint8_t y, std::vector<uint8_t> &data) : x_pos(x), y_pos(y) {
-            x_hitbox = data[XH_POS];
-            y_hitbox = data[YH_POS];
-            damage = data[DM_POS];
-            damage_multiplier = data[MP_POS];
+            projectile_id = data[RK_ID_POS];
+            x_hitbox = data[RK_XH_POS];
+            y_hitbox = data[RK_YH_POS];
+            damage = data[RK_DM_POS];
+            damage_multiplier = data[RK_MP_POS];
         };
 
         void impact();

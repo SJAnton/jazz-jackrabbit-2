@@ -3,12 +3,15 @@
 
 #include "server_projectile.h"
 
-#define RD_POS 0
-#define DM_POS 1
-#define MP_POS 2
+#define PR_ID_POS 0
+#define PR_RD_POS 1
+#define PR_DM_POS 2
+#define PR_MP_POS 3
 
 class Iceball : public Projectile {
     private:
+        uint8_t projectile_id;
+
         uint8_t x_pos;
 
         uint8_t y_pos;
@@ -23,12 +26,13 @@ class Iceball : public Projectile {
 
     public:
         Iceball(uint8_t x, uint8_t y, std::vector<uint8_t> &data) : x_pos(x), y_pos(y) {
-            x_hitbox = data[RD_POS];
-            y_hitbox = data[RD_POS];
-            damage = data[DM_POS];
-            damage_multiplier = data[MP_POS];
+            projectile_id = data[PR_ID_POS];
+            x_hitbox = data[PR_RD_POS];
+            y_hitbox = data[PR_RD_POS];
+            damage = data[PR_DM_POS];
+            damage_multiplier = data[PR_MP_POS];
         };
 
-        bool contact(Character &ch);
+        //bool contact(Character &ch);
 };
 #endif

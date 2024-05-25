@@ -10,7 +10,7 @@ class Weapon {
     // De esta clase heredan todas las armas
     // Añadir propiedades especiales para cada arma
     private:
-        std::string name;
+        uint8_t weapon_id;
 
         uint8_t ammo;
 
@@ -22,6 +22,8 @@ class Weapon {
 
     public:
         Weapon();
+
+        uint8_t get_id();
 
         void shoot();
 };

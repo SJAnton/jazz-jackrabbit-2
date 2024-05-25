@@ -4,15 +4,15 @@
 #include "server_weapon.h"
 #include "projectile/server_fireball.h"
 
-#define NAME "Pepper Spray"
-#define AM_POS 0
-#define FR_POS 1
-#define RC_POS 2
-#define SP_POS 3
+#define ID_POS 0
+#define AM_POS 1
+#define FR_POS 2
+#define RC_POS 3
+#define SP_POS 4
 
 class PepperSpray : public Weapon {
     private:
-        std::string name = NAME;
+        uint8_t weapon_id;
 
         uint8_t ammo;
 
@@ -26,6 +26,7 @@ class PepperSpray : public Weapon {
 
     public:
         PepperSpray(std::vector<uint8_t> &data) : data(data) {
+            weapon_id = data[ID_POS];
             ammo = data[AM_POS];
             fire_rate = data[FR_POS];
             recharge_cooldown = data[RC_POS];

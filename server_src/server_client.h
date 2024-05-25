@@ -1,6 +1,8 @@
 #ifndef SERVER_CLIENT_H_
 #define SERVER_CLIENT_H_
 
+#include <map>
+
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_sender.h"
@@ -21,10 +23,6 @@ class Client : public Thread {
         int id;
 
         std::list<ServerGameloop*> &gameloops;
-
-        //std::vector<ServerQueueList> &monitors;
-
-        //std::vector<Queue<uint8_t>> &gameloops_q;
 
         std::map<uint8_t, std::vector<ServerQueueList>> &monitors;
 
@@ -60,8 +58,8 @@ class Client : public Thread {
                 std::map<uint8_t, std::vector<Queue<uint8_t>>> &gameloops_q,
                     std::map<std::string, std::vector<uint8_t>> &data) :
                     sk(std::move(socket)), id(id), gameloops(gameloops), monitors(monitors),
-                        gameloops_q(gameloops_q), protocol(sk), recv(protocol, recv_q, wc),
-                            sndr(protocol, sndr_q, wc), data(data) {}
+                        gameloops_q(gameloops_q), data(data), protocol(sk),
+                            recv(protocol, recv_q, wc), sndr(protocol, sndr_q, wc) {}
 
         void run() override;
 

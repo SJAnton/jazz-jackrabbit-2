@@ -3,14 +3,14 @@
 
 #include "server_weapon.h"
 
-#define NAME "TNT"
-#define AM_POS 0
-#define RD_POS 1
-#define RC_POS 2
+#define TNT_ID_POS 0
+#define TNT_AM_POS 1
+#define TNT_RD_POS 2
+#define TNT_RC_POS 3
 
 class TNT : public Weapon {
     private:
-        std::string name = NAME;
+        uint8_t weapon_id;
 
         uint8_t ammo;
 
@@ -22,9 +22,10 @@ class TNT : public Weapon {
 
     public:
         TNT(std::vector<uint8_t> &data) : data(data) {
-            ammo = data[AM_POS];
-            radius = data[RD_POS];
-            recharge_cooldown = data[RC_POS];
+            weapon_id = data[TNT_ID_POS];
+            ammo = data[TNT_AM_POS];
+            radius = data[TNT_RD_POS];
+            recharge_cooldown = data[TNT_RC_POS];
         }
 
         void shoot(); //override
