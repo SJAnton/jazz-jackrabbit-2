@@ -6,40 +6,42 @@
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_sender.h"
-#include "server_gameloop.h"
 #include "server_receiver.h"
 #include "server_queue_list.h"
+#include "server_gameloop_list.h"
 #include "../common_src/socket.h"
 #include "../common_src/liberror.h"
 #include "characters/server_player_jazz.h"
 #include "characters/server_player_lori.h"
 #include "characters/server_player_spaz.h"
 
+using namespace std;
+
 class Client : public Thread {
     private:    
         // ESTA DATA LA RECIBIMOS POR PARAMETRO EN EL CONSTRUCTOR
         Socket sk;
-
+        
         int id;
 
-        std::list<ServerGameloop*> &gameloops;
+        GameloopList &gameloops;
 
-        std::map<uint8_t, std::vector<ServerQueueList>> &monitors;
+        map<uint8_t, shared_ptr<ServerQueueList>> &monitors;
 
-        std::map<uint8_t, std::vector<Queue<uint8_t>>> &gameloops_q;
+        map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q; // Debería ser un monitor?
 
-        std::map<std::string, std::vector<uint8_t>> &data;
+        map<string, vector<uint8_t>> &data;
 
         ServerProtocol protocol;
 
         // ESTA DATA LA CREAMOS EN EL CONSTRUCTOR
         Queue<uint8_t> sndr_q;
 
-        std::shared_ptr<Queue<uint8_t>> recv_q;
+        shared_ptr<Queue<uint8_t>> recv_q;
 
-        std::shared_ptr<ServerQueueList> monitor;
+        shared_ptr<ServerQueueList> monitor;
 
-        std::unique_ptr<Character> player;
+        unique_ptr<Character> player;
 
         ServerReceiver recv;
 
@@ -52,14 +54,13 @@ class Client : public Thread {
         void select_character(uint8_t character);
 
     public:
-        Client(Socket socket, int id, std::list<ServerGameloop*> &gameloops,
-                //std::vector<ServerQueueList> &monitors, std::vector<Queue<uint8_t>> &gameloops_q,
-                std::map<uint8_t, std::vector<ServerQueueList>> &monitors,
-                std::map<uint8_t, std::vector<Queue<uint8_t>>> &gameloops_q,
-                    std::map<std::string, std::vector<uint8_t>> &data) :
-                    sk(std::move(socket)), id(id), gameloops(gameloops), monitors(monitors),
-                        gameloops_q(gameloops_q), data(data), protocol(sk),
-                            recv(protocol, recv_q, wc), sndr(protocol, sndr_q, wc) {}
+        Client(Socket socket, int id, GameloopList &gameloops,
+                map<uint8_t, shared_ptr<ServerQueueList>> &monitors,
+                    map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q,
+                        map<string, vector<uint8_t>> &data) :
+                            sk(move(socket)), id(id), gameloops(gameloops), monitors(monitors),
+                                gameloops_q(gameloops_q), data(data), protocol(sk),
+                                    recv(protocol, recv_q, wc), sndr(protocol, sndr_q, wc) {}
 
         void run() override;
 

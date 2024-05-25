@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Flags de compilación
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wno-unused-private-field")
 
 add_subdirectory(yaml-cpp)
 
@@ -23,9 +23,11 @@ set(SOURCE_FILES
 
     # Archivos server
     ../server_app.cpp
+    ../server_acceptor.cpp
     ../server_client.cpp
     ../server_config_reader.cpp
     ../server_gameloop.cpp
+    ../server_gameloop_list.cpp
     ../server_main.cpp
     ../server_protocol.cpp
     ../server_queue_list.cpp
@@ -40,7 +42,9 @@ set(SOURCE_FILES
     ../weapons/server_pepper_spray.cpp
     ../weapons/server_rf_missile.cpp
     ../weapons/server_seeker.cpp
+    ../weapons/server_tnt.cpp
     ../weapons/server_toaster.cpp
+    ../weapons/server_weapon.cpp
 
     # Proyectiles
     ../weapons/projectile/server_iceball.cpp

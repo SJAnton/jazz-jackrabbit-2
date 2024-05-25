@@ -17,12 +17,12 @@
 #define SHUTCODE 2
 
 void Client::run() {
-    std::vector<uint8_t> msg;
+    vector<uint8_t> msg;
     msg.push_back(gameloops.size());
     //msg.push_back(escenarios);
 
     protocol.send_msg(msg, wc);
-    std::vector<uint8_t> init_data = protocol.recv_init_msg(wc);
+    vector<uint8_t> init_data = protocol.recv_init_msg(wc);
 
     select_game(init_data[CHOSEN_GAME_BYTE], init_data[GAME_BYTE]);
     select_character(init_data[CHAR_BYTE]);
@@ -32,27 +32,26 @@ void Client::select_game(uint8_t game, uint8_t game_joined) {
     if (game == NEW_GAME) {
         // Se crea un nuevo juego, el nuevo gameloop recibe un monitor
         // y una cola única
-        Queue<uint8_t> gameloop_q;
-        ServerQueueList gameloop_monitor;
         
         // No se pierden las referencias al salir de la función
-        recv_q = std::make_shared<Queue<uint8_t>>(gameloop_q);
-        monitor = std::make_shared<ServerQueueList>(gameloop_monitor);
+        recv_q = std::make_shared<Queue<uint8_t>>();
+        monitor = std::make_shared<ServerQueueList>();
 
-        ServerGameloop *gameloop = new ServerGameloop(gameloop_q, *monitor.get());
+        // TODO: pasar ownership
+        ServerGameloop *gameloop = new ServerGameloop(*recv_q.get(), *monitor.get());
         
         uint8_t id = gameloops_q.size();
 
-        gameloops_q[id].push_back(gameloop_q);
-        monitors[id].push_back(*monitor.get());
+        gameloops_q.at(id) = recv_q;
+        monitors.at(id) = monitor;
 
         gameloop->start();
         gameloops.push_back(gameloop);
     } else {
         // La partida ya existe, la cola del receiver es la cola
         // única del gameloop y el monitor recibe la cola del sender
-        recv_q = std::make_shared<Queue<uint8_t>>(gameloops_q.at(game_joined));
-        monitor = std::make_shared<ServerQueueList>(monitors.at(game_joined));
+        recv_q = gameloops_q.at(game_joined);
+        monitor = monitors.at(game_joined);
     }
     monitor->push_back(&sndr_q);
     recv.start();
@@ -62,16 +61,16 @@ void Client::select_game(uint8_t game, uint8_t game_joined) {
 void Client::select_character(uint8_t character) {
     switch (character) {
         case JAZZ_BYTE:
-            player = std::make_unique<PlayerJazz>(data[JAZZ_CODE]);
+            player = make_unique<PlayerJazz>(data[JAZZ_CODE]);
             break;
         case LORI_BYTE:
-            player = std::make_unique<PlayerLori>(data[LORI_CODE]);
+            player = make_unique<PlayerLori>(data[LORI_CODE]);
             break;
         case SPAZ_BYTE:
-            player = std::make_unique<PlayerSpaz>(data[SPAZ_CODE]);
+            player = make_unique<PlayerSpaz>(data[SPAZ_CODE]);
             break;
         default:
-            throw std::runtime_error("No character chosen");
+            throw runtime_error("No character chosen");
     }
 }
 

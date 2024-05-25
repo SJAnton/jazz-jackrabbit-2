@@ -16,5 +16,5 @@ bool ServerGameloop::is_dead() {
 }
 
 void ServerGameloop::kill() {
-    q.close();
+    recv_q.close();
 }

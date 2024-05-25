@@ -1,9 +1,8 @@
 #ifndef SERVER_WEAPON_H_
 #define SERVER_WEAPON_H_
 
-#include <string>
-
-#include "projectile/server_projectile.h"
+#include <vector>
+#include <cstdint>
 
 class Weapon {
     // https://www.jazz2online.com/21/the-weapons-of-jazz2/
@@ -21,10 +20,10 @@ class Weapon {
         uint8_t projectile_speed;
 
     public:
-        Weapon();
-
-        uint8_t get_id();
+        Weapon() {};
 
         void shoot();
+
+        uint8_t get_id();
 };
 #endif

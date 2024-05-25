@@ -2,6 +2,7 @@
 
 Projectile::Projectile() {}
 
+/*
 bool Projectile::contact_x(Character &ch) {
     if (right_side() != ch.left_side() || left_side() != ch.right_side() ||
         lower_side() > ch.upper_side() || upper_side() < ch.lower_side()) {
@@ -28,7 +29,7 @@ bool Projectile::contact_y(Character &ch) {
     // left_side() >= ch.left_side() y right_side() <= ch.right_side()
     ch.take_damage(damage);
     return true;
-}
+}*/
 
 uint8_t Projectile::get_id() {
     return projectile_id;
@@ -83,6 +84,7 @@ void Projectile::power_up_end() {
     damage /= damage_multiplier;
 }
 
+/*
 bool Projectile::contact(Character &ch) {
     return contact_x(ch) || contact_y(ch);
-}
+}*/

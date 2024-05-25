@@ -4,8 +4,6 @@
 #include <vector>
 #include <cstdint>
 
-#include "../../characters/server_character.h"
-
 class Projectile {
     // De esta clase heredan todos los proyectiles
     // https://www.jazz2online.com/21/the-weapons-of-jazz2/
