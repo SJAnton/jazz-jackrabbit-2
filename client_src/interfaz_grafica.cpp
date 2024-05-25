@@ -43,63 +43,6 @@ bool InterfazGrafica::menuAbierto(){
     return menu_abierto;
 }
 
-<<<<<<< HEAD
-void InterfazGrafica::recibirInformacion() {
-    //estadojuego = queueReceptora.pop()
-    
-=======
-void InterfazGrafica::manejarEventos()
-{
-    SDL_Event e;
-    SDL_PollEvent(&e);
-
-    if (e.type == SDL_QUIT) {
-        is_running = false;
-        return;
-
-    } else if (e.type == SDL_KEYDOWN) {
-        switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
-            case SDLK_SPACE:
-                cliente.saltar();
-                spritesManager->setEstadoPlayer(0,Saltando);
-                break;
-            case SDLK_LEFT:
-                cliente.moverIzquierda();
-                spritesManager->setEstadoPlayer(0,Caminando);
-                spritesManager->flipPlayer(0,true);
-                break;
-            case SDLK_RIGHT:
-                cliente.moverDerecha();
-                spritesManager->setEstadoPlayer(0,Caminando);
-                spritesManager->flipPlayer(0,false);
-                break;
-            case SDLK_d:
-                cliente.disparar();
-                spritesManager->setEstadoPlayer(0,Disparando);
-                break;
-            case SDLK_a:
-                cliente.ataque_especial();
-                spritesManager->setEstadoPlayer(0,AtaqueEspecial);
-                break;
-            //case correr a definir
-
-            case SDLK_k://para probar muerte
-                spritesManager->setEstadoPlayer(0,Muriendo);
-                break;
-            case SDLK_ESCAPE:
-                is_running = false;
-                break;
-            case SDLK_LCTRL:
-                break;
-            default:
-                break;
-        }
-    }
-    else{
-        //if (spritesManager->getEstadoPlayer(0) != Idle)
-          //  spritesManager->setEstadoPlayer(0, Idle);
-    }
-}
 
 bool pointInsideRect(int x, int y, SDL_Rect rect) {
     return (x >= rect.x && x <= rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h);
@@ -128,9 +71,8 @@ void InterfazGrafica::manejarEventosMenu(){
 }
 
 void InterfazGrafica::recibirInformacion(){
-    cliente.recibirInformacion();
+    //cliente.recibirInformacion();
     //Proceso la informacion para actualizar la interfaz
->>>>>>> af8ff760c996947a6dd2a5a503acca45914e0aee
 }
  
 

@@ -23,14 +23,8 @@ class InterfazGrafica
 private:
     SDL_Window* window; // ventana emergente
     bool is_running = true;
-<<<<<<< HEAD
-    int iteracion = 0;    
-=======
     bool menu_abierto = true;
-    int iteracion = 0;
-    
-    ClientPlayer cliente;//
->>>>>>> af8ff760c996947a6dd2a5a503acca45914e0aee
+    int iteracion = 0;    
     //uso puntero para no tener que construirlo en la member initializer list
     SpritesManager *spritesManager;
 
@@ -43,10 +37,7 @@ public:
     InterfazGrafica(Queue<InfoJuego> &queueReceptora);
     
     bool estaAbierta();
-
     bool menuAbierto();
-
-    void manejarEventos();
 
     void manejarEventosMenu();
 
@@ -67,16 +58,14 @@ public:
      * Dibuja todos los pixeles en la pantalla
      */
     void renderizar();
-<<<<<<< HEAD
-    void stop();
-=======
 
     void renderizarMenu();
 
->>>>>>> af8ff760c996947a6dd2a5a503acca45914e0aee
+    void stop();
     void cerrarInterfaz();
 
     ~InterfazGrafica();
 };
 
 #endif
+

@@ -29,7 +29,6 @@ int main(int argc, char* argv[]) {
     EventHandler eventHandler(interfaz, cliente);
     eventHandler.start();
     
-    while (interfaz.estaAbierta())
     //ClientReceiver* receptor = new ClientReceiver(protocolo, queueReceptora, was_closed);
     //ClientSender* enviador = new ClientSender(protocolo, queueEnviadora, was_closed);
 
@@ -42,8 +41,8 @@ int main(int argc, char* argv[]) {
         interfaz.manejarEventosMenu();
     }
 
-    ClientRenderer* renderer = new ClientRenderer(interfaz);
-    renderer->start();
+    //ClientRenderer* renderer = new ClientRenderer(interfaz);
+    //renderer->start();
     
     while (interfaz.estaAbierta())
     {
@@ -64,7 +63,7 @@ int main(int argc, char* argv[]) {
 
     eventHandler.join();
     
-    renderer->join();
+    //renderer->join();
     std::cout << "fin" << std::endl;
 
     //esperar confirmacion para iniciar (esperar a que se conecten los n clientes).
