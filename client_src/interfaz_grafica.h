@@ -13,6 +13,7 @@
 #include "sprite_object.h"
 #include "spritesheet.h"
 #include "client_player.h"
+#include "../common_src/info_juego.h"
 
 #define ANCHO_WINDOW 750 // representa pixeles
 #define ALTO_WINDOW 500 // representa pixeles
@@ -22,19 +23,17 @@ class InterfazGrafica
 private:
     SDL_Window* window; // ventana emergente
     bool is_running = true;
-    int iteracion = 0;
-    
-    ClientPlayer cliente;//
+    int iteracion = 0;    
     //uso puntero para no tener que construirlo en la member initializer list
     SpritesManager *spritesManager;
+
+    Queue<InfoJuego> &queueReceptora;
 
 public:
     static SDL_Renderer* renderer; //para poder accederlo desde otras clases
 
 public:
-    InterfazGrafica();
-
-    InterfazGrafica(ClientPlayer&);
+    InterfazGrafica(Queue<InfoJuego> &queueReceptora);
     
     bool estaAbierta();
 
@@ -57,7 +56,7 @@ public:
      * Dibuja todos los pixeles en la pantalla
      */
     void renderizar();
-
+    void stop();
     void cerrarInterfaz();
 
     ~InterfazGrafica();

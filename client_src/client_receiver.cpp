@@ -1,11 +1,15 @@
 #include "client_receiver.h"
 #include <atomic>
 
-ClientReceiver::ClientReceiver(ClientProtocol &protocol, Queue<EstadosPlayer> &recv_queue, bool &was_closed): 
-protocolo(protocol), queueReceptora(recv_queue), wc(was_closed){}
+
+
+ClientReceiver::ClientReceiver(ClientProtocol &protocol, Queue<InfoJuego> &recv_queue): 
+protocolo(protocol), queueReceptora(recv_queue){}
 
 void ClientReceiver::run() {
-    while (!wc) {
+    while (_keep_running) {
+        if (was_closed)
+            return;
         //uint8_t data = protocolo.recv_action(wc);
 
         //hacer:

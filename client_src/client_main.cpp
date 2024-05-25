@@ -1,14 +1,16 @@
 
 #include "interfaz_grafica.h"
-#include "../common_src/socket.h"
 #include "client_protocol.h"
 #include "client_receiver.h"
 #include "client_sender.h"
 #include "client_renderer.h"
-#include "../common_src/queue.h"
-
-#include "../common_src/constantes.h"
+#include "event_handler.h"
 #include "client_player.h"
+
+#include "../common_src/queue.h"
+#include "../common_src/socket.h"
+#include "../common_src/constantes.h"
+#include "../common_src/info_juego.h"
 
 const int FPS = 50;
 const int frame_delay = 1000/FPS;
@@ -20,33 +22,21 @@ int tiempo_transcurrido;
 
 
 int main(int argc, char* argv[]) {
-
-    Socket skt(HOSTNAME, SERVICENAME);
-    ClientProtocol protocolo = ClientProtocol(skt);
-
-    Queue<EstadosPlayer> queueReceptora; 
-    Queue<AccionesPlayer> queueEnviadora; //A definir el tipo de dato de las queues
-
-    //hilos sender y receiver con sus colas y el protocolo
+    
     bool was_closed = false;
-    ClientReceiver* receptor = new ClientReceiver(protocolo, queueReceptora, was_closed);
-    ClientSender* enviador = new ClientSender(protocolo, queueEnviadora, was_closed);
-
-    ClientPlayer cliente = ClientPlayer(queueReceptora, queueEnviadora);
-    InterfazGrafica* interfaz = new InterfazGrafica(cliente);
-
-    //ClientRenderer* renderer = new ClientRenderer(interfaz);
-    //renderer->start();
-
-    while (interfaz->estaAbierta())
+    
+    ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
+    InterfazGrafica interfaz = InterfazGrafica(cliente.queueReceptora);
+    EventHandler eventHandler(interfaz, cliente);
+    eventHandler.start();
+    
+    while (interfaz.estaAbierta())
     {
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
 
-        interfaz->recibirInformacion();
-        interfaz->update(1);
-        interfaz->renderizar();
-
-        interfaz->manejarEventos();
+        interfaz.recibirInformacion();
+        interfaz.update(1);
+        interfaz.renderizar();
         
         tiempo_transcurrido = SDL_GetTicks() - frameStart;
         if (frame_delay > tiempo_transcurrido) {
@@ -54,7 +44,8 @@ int main(int argc, char* argv[]) {
         }
         
     }
-    //renderer->join();
+
+    eventHandler.join();
     std::cout << "fin" << std::endl;
 
     //esperar confirmacion para iniciar (esperar a que se conecten los n clientes).

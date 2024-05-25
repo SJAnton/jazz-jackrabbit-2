@@ -1,6 +1,12 @@
 #include "client_protocol.h"
 
-ClientProtocol::ClientProtocol(Socket& socket) : socket(socket){}
+
+ClientProtocol::ClientProtocol(const std::string& hostname, const std::string& servname) :
+socket(hostname.c_str(), servname.c_str()) {
+
+}
+
+//ClientProtocol::ClientProtocol(Socket& socket) : socket(socket){}
 
 uint8_t ClientProtocol::recv_action(bool &was_closed) {
 	uint8_t accion = 0;

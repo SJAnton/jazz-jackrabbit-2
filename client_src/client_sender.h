@@ -12,12 +12,11 @@
 class ClientSender : public Thread {
     private:
         ClientProtocol& protocolo;
-        Queue<AccionesPlayer>& queueEnviadora;
-        bool& wc;
-        //std::atomic<bool>& alive;
+        Queue<ComandoCliente>& queueEnviadora;
+        bool was_closed;
 
     public:
-        ClientSender(ClientProtocol& protocol, Queue<AccionesPlayer>& send_queue, bool &was_closed);
+        ClientSender(ClientProtocol& protocol, Queue<ComandoCliente>& send_queue);
 
         virtual void run() override;
 };

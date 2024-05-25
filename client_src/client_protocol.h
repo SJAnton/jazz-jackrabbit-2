@@ -7,9 +7,10 @@
 
 class ClientProtocol{
 	private:
-		Socket& socket;
+		Socket socket;
 	public:
-		ClientProtocol(Socket& socket);
+		ClientProtocol(const std::string& hostname, const std::string& servname);
+		//ClientProtocol(Socket& socket);
 		uint8_t recv_action(bool&);
 		int send_action(uint8_t&, bool&);
 };

@@ -7,7 +7,8 @@
 SDL_Renderer* InterfazGrafica::renderer = nullptr;
 
 //constructor
-InterfazGrafica::InterfazGrafica(ClientPlayer& cliente) : cliente(cliente)
+InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora) : 
+    queueReceptora(queueReceptora)
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         window = SDL_CreateWindow("Ventana del juego", SDL_WINDOWPOS_CENTERED, 
@@ -39,66 +40,19 @@ bool InterfazGrafica::estaAbierta() {
 }
 
 
-void InterfazGrafica::manejarEventos()
-{
-    SDL_Event e;
-    SDL_PollEvent(&e);
-
-    if (e.type == SDL_QUIT) {
-        is_running = false;
-        return;
-
-    } else if (e.type == SDL_KEYDOWN) {
-        switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
-            case SDLK_SPACE:
-                cliente.saltar();
-                spritesManager->setEstadoPlayer(0,Saltando);
-                break;
-            case SDLK_LEFT:
-                cliente.moverIzquierda();
-                spritesManager->setEstadoPlayer(0,Caminando);
-                spritesManager->flipPlayer(0,true);
-                break;
-            case SDLK_RIGHT:
-                cliente.moverDerecha();
-                spritesManager->setEstadoPlayer(0,Caminando);
-                spritesManager->flipPlayer(0,false);
-                break;
-            case SDLK_d:
-                cliente.disparar();
-                spritesManager->setEstadoPlayer(0,Disparando);
-                break;
-            case SDLK_a:
-                cliente.ataque_especial();
-                spritesManager->setEstadoPlayer(0,AtaqueEspecial);
-                break;
-            //case correr a definir
-
-            case SDLK_k://para probar muerte
-                spritesManager->setEstadoPlayer(0,Muriendo);
-                break;
-            case SDLK_ESCAPE:
-                is_running = false;
-                break;
-            case SDLK_LCTRL:
-                break;
-            default:
-                break;
-        }
-    }
-    else{
-        //if (spritesManager->getEstadoPlayer(0) != Idle)
-          //  spritesManager->setEstadoPlayer(0, Idle);
-    }
-}
-
-void InterfazGrafica::recibirInformacion(){
-    cliente.recibirInformacion();
-    //Proceso la informacion para actualizar la interfaz
+void InterfazGrafica::recibirInformacion() {
+    //estadojuego = queueReceptora.pop()
+    
 }
  
 
 void InterfazGrafica::update(int it) {
+    //recibirinformacion()
+    //copiar toda la informacion seteandola en el spritemanager.
+    //Por ej.:
+    //spritesManager->setPositionPlayer(0, estadoJuego.getPlayer(0).position)
+    //spritesManager->setEstadoPlayer(0, estadoJuego.getPlayer(0).estado)
+
     iteracion += it;
     if (iteracion % 3 == 0) {
         spritesManager->nextFramePlayer(0);
@@ -118,13 +72,6 @@ void InterfazGrafica::renderizar()
 
     //cargar todos los pixeles (fondo, terreno, objetos, players, etc)
     //(ejemplo)
-    //fondo->setArea(64, 64);
-    //fondo->renderizar();
-    for (int i =0; i < 20; i++) {
-        for (int j=0; j< 20; j++){
-            //fondo->renderizarEn(64*j, 64*i);
-        }
-    }
     spritesManager->renderizarFondo();
     spritesManager->renderizarPlayerEn(0, 244, 256);
     //spritesManager->renderizarPlayerEn(1, 100, 0);
@@ -139,6 +86,10 @@ void InterfazGrafica::renderizar()
 
     SDL_RenderPresent(renderer); // dibuja todo
 }
+void InterfazGrafica::stop(){
+    is_running = false;
+} 
+
 
 void InterfazGrafica::cerrarInterfaz() 
 {
