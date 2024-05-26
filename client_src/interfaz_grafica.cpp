@@ -104,15 +104,6 @@ void InterfazGrafica::renderizar()
     //(ejemplo)
     spritesManager->renderizarFondo();
     spritesManager->renderizarPlayerEn(0, 244, 256);
-    //spritesManager->renderizarPlayerEn(1, 100, 0);
-    //spritesManager->renderizarPlayerEn(2, 200, 0);
-    //spritesManager->renderizarPlayerEn(2, 200, 200);
-
-    //spritesManager->playerSpaz->renderizar();
-    
-    
-    //SDL_RenderCopy(renderer, texture, &rect, &rectPos);
-
 
     SDL_RenderPresent(renderer); // dibuja todo
 }

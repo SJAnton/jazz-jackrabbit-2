@@ -1,8 +1,9 @@
 #ifndef CONSTANTES_PROTOCOLO_H
 #define CONSTANTES_PROTOCOLO_H
 
-
+#define SIZE_CLIENT_MSG 3
 //Comandos o acciones que puede enviar un Cliente
+#define ACTION_IDLE 0x11
 #define ACTION_WALK 0x12
 #define ACTION_RUN 0x13
 #define ACTION_JUMP 0x14
@@ -37,14 +38,14 @@
 #define STATE_WALK 0x02
 #define STATE_RUN 0x03
 #define STATE_JUMP 0x04
-#define STATE_FALL 0x04
-#define STATE_SHOOT 0x05
-#define STATE_SPECIAL_ATTACK 0x08
-#define STATE_INTOXICATED 0x09
-#define STATE_DAMAGED 0x0A
-#define STATE_DYING 0x0B
-#define STATE_DEAD 0x0C
-#define STATE_REVIVE 0x0D
+#define STATE_FALL 0x05
+#define STATE_SHOOT 0x06
+#define STATE_SPECIAL_ATTACK 0x07
+#define STATE_INTOXICATED 0x08
+#define STATE_DAMAGED 0x09
+#define STATE_DYING 0x0A
+#define STATE_DEAD 0x0B
+#define STATE_REVIVE 0x0C
 
 
 /* El server devuelve a todos los clientes:

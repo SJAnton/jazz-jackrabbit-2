@@ -4,7 +4,7 @@
 //#include "info_juego.h"
 
 enum EstadosPlayer {Inactivo, Caminando, Corriendo, Saltando, Cayendo, Disparando,
-                    AtaqueEspecial, Intoxicado, Impacado, Muriendo, Muerto, Reviviendo};
+                    AtaqueEspecial, Intoxicado, Impactado, Muriendo, Muerto, Reviviendo};
 
 enum AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
 enum EstadosEnemy{};
@@ -27,6 +27,9 @@ class Position {
     public:
     int x = 0;
     int y = 0;
+    Position() {}
+    explicit Position(int x, int y) : x(x), y(y){
+    }
     bool operator==(const Position& other) const {//capaz que sirve. Sino lo sacamos
         return (x == other.x && y == other.y);
     };
