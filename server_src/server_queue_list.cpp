@@ -19,6 +19,11 @@ void ServerQueueList::remove(Queue<uint8_t> *queue) {
     list.remove(queue);
 }
 
+int ServerQueueList::size() {
+    std::unique_lock<std::mutex> lock(m);
+    return list.size();
+}
+
 std::list<Queue<uint8_t>*>::iterator ServerQueueList::begin() {
     return list.begin();
 }

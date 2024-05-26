@@ -22,6 +22,8 @@ class ServerQueueList {
 
         void remove(Queue<uint8_t> *queue);
 
+        int size();
+
         std::list<Queue<uint8_t>*>::iterator begin();
 
         std::list<Queue<uint8_t>*>::iterator end();

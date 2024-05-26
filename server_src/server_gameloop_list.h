@@ -8,12 +8,10 @@
 
 class GameloopList {
     private:
-        ServerGameloop* a;
-
         std::list<ServerGameloop*> list;
 
         std::mutex m;
-
+        
     public:
         GameloopList() {};
 

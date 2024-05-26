@@ -22,10 +22,11 @@ set(SOURCE_FILES
     ../../common_src/socket.cpp
 
     # Archivos server
-    ../server_app.cpp
     ../server_acceptor.cpp
+    ../server_character_list.cpp
     ../server_client.cpp
     ../server_config_reader.cpp
+    ../server_game.cpp
     ../server_gameloop.cpp
     ../server_gameloop_list.cpp
     ../server_main.cpp

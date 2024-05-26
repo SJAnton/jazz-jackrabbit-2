@@ -4,11 +4,11 @@
 #include "server_gameloop.h"
 
 void ServerGameloop::run() {
-    while (!wc) {
-        // Retirar elementos de la cola del receiver, operar
-        // e insertar en la cola de los senders (hacerlo en
-        // ServerApp para reducir el tamaño del gameloop)
+    while (sndr_qs->size() > 0) {
+        std::vector<uint8_t> actions = game.get_actions(*recv_q.get());
+        game.execute_actions(actions);
     }
+    wc = true;
 }
 
 bool ServerGameloop::is_dead() {
@@ -16,5 +16,5 @@ bool ServerGameloop::is_dead() {
 }
 
 void ServerGameloop::kill() {
-    recv_q.close();
+    recv_q->close();
 }

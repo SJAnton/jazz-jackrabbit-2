@@ -38,7 +38,7 @@ void Client::select_game(uint8_t game, uint8_t game_joined) {
         monitor = std::make_shared<ServerQueueList>();
 
         // TODO: pasar ownership
-        ServerGameloop *gameloop = new ServerGameloop(*recv_q.get(), *monitor.get());
+        ServerGameloop *gameloop = new ServerGameloop(recv_q, monitor);
         
         uint8_t id = gameloops_q.size();
 

@@ -5,7 +5,7 @@
 #include <list>
 #include <utility>
 
-#include "server_app.h"
+#include "server_game.h"
 #include "server_thread.h"
 #include "server_client.h"
 #include "server_gameloop_list.h"
@@ -23,8 +23,6 @@ class ServerAcceptor : public Thread {
         Socket &sk;
 
         bool &wc;
-
-        ServerApp app;
 
         list<Client*> clients;
 

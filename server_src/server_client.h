@@ -28,7 +28,7 @@ class Client : public Thread {
 
         map<uint8_t, shared_ptr<ServerQueueList>> &monitors;
 
-        map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q; // Debería ser un monitor?
+        map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q;
 
         map<string, vector<uint8_t>> &data;
 
