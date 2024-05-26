@@ -14,6 +14,8 @@
 
 class PlayerJazz : public Character {
     private:
+        int player_id;
+
         uint8_t health;
 
         Weapon weapon;
@@ -37,7 +39,8 @@ class PlayerJazz : public Character {
         bool intoxicated = false;
         
     public:
-        PlayerJazz(std::vector<uint8_t> &data) : weapon(Blaster(data)) {
+        PlayerJazz(std::vector<uint8_t> &data, int id) : weapon(Blaster(data)) {
+            player_id = id;
             health = data[HP_POS];
             points = data[PT_POS];
             x_hitbox = data[XH_POS];

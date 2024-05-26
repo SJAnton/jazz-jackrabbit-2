@@ -34,14 +34,17 @@ void Client::select_game(uint8_t game, uint8_t game_joined) {
         // y una cola única
         
         // No se pierden las referencias al salir de la función
+        ch_map = std::make_shared<CharacterMap>();
         recv_q = std::make_shared<Queue<uint8_t>>();
         monitor = std::make_shared<ServerQueueList>();
 
-        // TODO: pasar ownership
-        ServerGameloop *gameloop = new ServerGameloop(recv_q, monitor);
+
+
+        ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor);
         
         uint8_t id = gameloops_q.size();
 
+        ch_maps.at(id) = ch_map;
         gameloops_q.at(id) = recv_q;
         monitors.at(id) = monitor;
 
@@ -50,6 +53,7 @@ void Client::select_game(uint8_t game, uint8_t game_joined) {
     } else {
         // La partida ya existe, la cola del receiver es la cola
         // única del gameloop y el monitor recibe la cola del sender
+        ch_map = ch_maps.at(game_joined);
         recv_q = gameloops_q.at(game_joined);
         monitor = monitors.at(game_joined);
     }
@@ -61,25 +65,18 @@ void Client::select_game(uint8_t game, uint8_t game_joined) {
 void Client::select_character(uint8_t character) {
     switch (character) {
         case JAZZ_BYTE:
-            player = make_unique<PlayerJazz>(data[JAZZ_CODE]);
+            player = make_unique<PlayerJazz>(data[JAZZ_CODE], id);
             break;
         case LORI_BYTE:
-            player = make_unique<PlayerLori>(data[LORI_CODE]);
+            player = make_unique<PlayerLori>(data[LORI_CODE], id);
             break;
         case SPAZ_BYTE:
-            player = make_unique<PlayerSpaz>(data[SPAZ_CODE]);
+            player = make_unique<PlayerSpaz>(data[SPAZ_CODE], id);
             break;
         default:
             throw runtime_error("No character chosen");
     }
-}
-
-int Client::get_id() {
-    return id;
-}
-
-Character Client::get_player() {
-    return *player.get();
+    ch_map->at(id) = *player.get();
 }
 
 bool Client::is_dead() {

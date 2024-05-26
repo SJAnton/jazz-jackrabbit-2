@@ -10,6 +10,7 @@
 #include "server_client.h"
 #include "server_gameloop_list.h"
 #include "server_queue_list.h"
+#include "server_character_map.h"
 #include "characters/server_player_jazz.h"
 #include "characters/server_player_lori.h"
 #include "characters/server_player_spaz.h"
@@ -27,6 +28,8 @@ class ServerAcceptor : public Thread {
         list<Client*> clients;
 
         GameloopList gameloops;
+
+        map<uint8_t, shared_ptr<CharacterMap>> ch_maps;
 
         map<uint8_t, shared_ptr<Queue<uint8_t>>> gameloops_q;
 

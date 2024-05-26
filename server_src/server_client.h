@@ -26,6 +26,8 @@ class Client : public Thread {
 
         GameloopList &gameloops;
 
+        map<uint8_t, shared_ptr<CharacterMap>> &ch_maps;
+
         map<uint8_t, shared_ptr<ServerQueueList>> &monitors;
 
         map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q;
@@ -36,6 +38,8 @@ class Client : public Thread {
 
         // ESTA DATA LA CREAMOS EN EL CONSTRUCTOR
         Queue<uint8_t> sndr_q;
+
+        shared_ptr<CharacterMap> ch_map;
 
         shared_ptr<Queue<uint8_t>> recv_q;
 
@@ -55,18 +59,16 @@ class Client : public Thread {
 
     public:
         Client(Socket socket, int id, GameloopList &gameloops,
-                map<uint8_t, shared_ptr<ServerQueueList>> &monitors,
-                    map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q,
-                        map<string, vector<uint8_t>> &data) :
-                            sk(move(socket)), id(id), gameloops(gameloops), monitors(monitors),
-                                gameloops_q(gameloops_q), data(data), protocol(sk),
-                                    recv(protocol, recv_q, wc), sndr(protocol, sndr_q, wc) {}
+                map<uint8_t, shared_ptr<CharacterMap>> &ch_maps,
+                    map<uint8_t, shared_ptr<ServerQueueList>> &monitors,
+                        map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q,
+                            map<string, vector<uint8_t>> &data) :
+                            sk(move(socket)), id(id), gameloops(gameloops), ch_maps(ch_maps),
+                                monitors(monitors), gameloops_q(gameloops_q), data(data),
+                                    protocol(sk), recv(protocol, recv_q, wc),
+                                        sndr(protocol, sndr_q, wc) {}
 
         void run() override;
-
-        int get_id();
-
-        Character get_player();
 
         bool is_dead();
 

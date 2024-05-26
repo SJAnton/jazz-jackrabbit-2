@@ -2,10 +2,14 @@
 
 #define RUN_SPEED 3
 
-#define MOV_LEFT 0x12
-#define MOV_RIGHT 0x13
-#define RUN_LEFT 0x14
-#define RUN_RIGHT 0x15
+#define WALK 0x12
+#define RUN 0x13
+#define LEFT 0x4C
+#define RIGHT 0x52
+
+int Character::get_id() {
+    return player_id;
+}
 
 uint8_t Character::left_side() {
     return x_pos - x_hitbox;
@@ -40,19 +44,23 @@ void Character::move(uint8_t x, uint8_t y) {
     y_pos = y;
 }
 
-void Character::move_x_pos(uint8_t &movement) {
+void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
     if (is_frozen()) {
         return;
     }
-    switch (movement) {
-        case MOV_LEFT:
-            x_pos--;
-        case MOV_RIGHT:
-            x_pos++;
-        case RUN_LEFT:
-            x_pos -= RUN_SPEED;
-        case RUN_RIGHT:
-            x_pos += RUN_SPEED;
+    switch (direction) {
+        case LEFT:
+            if (movement == WALK) {
+                x_pos--;
+            } else {
+                x_pos -= RUN_SPEED;
+            }
+        case RIGHT:
+            if (movement == WALK) {
+                x_pos--;
+            } else {
+                x_pos -= RUN_SPEED;
+            }
         default:
             return;
     }
@@ -74,6 +82,10 @@ void Character::attack() {
         return;
     }
     weapon.shoot();
+}
+
+void Character::special_attack() {
+
 }
 
 void Character::pick_up_ammo() {

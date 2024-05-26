@@ -19,6 +19,8 @@
 
 class Character {
     private:
+        int player_id;
+
         uint8_t health;
 
         Weapon weapon;
@@ -42,6 +44,8 @@ class Character {
     public:
         Character() {};
 
+        int get_id();
+
         uint8_t left_side(); // Devuelve x_pos - hitbox_x
 
         uint8_t right_side(); // Devuelve x_pos + hitbox_x
@@ -58,13 +62,15 @@ class Character {
 
         void move(uint8_t x, uint8_t y);
 
-        void move_x_pos(uint8_t &movement); // Toma el byte de movimiento izq/der
+        void move_x_pos(uint8_t &movement, uint8_t &direction);
 
         void jump();
 
         void fall();
 
         void attack();
+
+        void special_attack();
 
         void pick_up_ammo();
 

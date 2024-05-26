@@ -5,10 +5,13 @@
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_queue_list.h"
+#include "server_character_map.h"
 
 class ServerGameloop : public Thread {
     private:
         Game game;
+
+        std::shared_ptr<CharacterMap> &character_map;
 
         std::shared_ptr<Queue<uint8_t>> &recv_q;
 
@@ -17,9 +20,10 @@ class ServerGameloop : public Thread {
         bool wc;
 
     public:
-        ServerGameloop(std::shared_ptr<Queue<uint8_t>> recv_q,
-                        std::shared_ptr<ServerQueueList> sndr_qs) :
-                            recv_q(recv_q), sndr_qs(sndr_qs) {};
+        ServerGameloop(std::shared_ptr<CharacterMap> &map,
+                        std::shared_ptr<Queue<uint8_t>> recv_q,
+                            std::shared_ptr<ServerQueueList> sndr_qs) :
+                                character_map(map), recv_q(recv_q), sndr_qs(sndr_qs) {};
 
         void run() override;
 

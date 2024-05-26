@@ -4,9 +4,9 @@
 #include "server_gameloop.h"
 
 void ServerGameloop::run() {
-    while (sndr_qs->size() > 0) {
+    while (character_map->size() > 0) {
         std::vector<uint8_t> actions = game.get_actions(*recv_q.get());
-        game.execute_actions(actions);
+        game.execute_actions(actions, *character_map.get());
     }
     wc = true;
 }

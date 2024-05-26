@@ -1,15 +1,16 @@
 #include "server_game.h"
 
-#define MSG_SIZE 5
+#define MSG_SIZE 3
 
-#define STILL 0x11
-#define MOV_LEFT 0x12
-#define MOVE_RIGHT 0x13
-#define RUN_LEFT 0x14
-#define RUN_RIGHT 0x15
-#define JUMP 0x16
-#define SHOOT 0x17
-#define SPECIAL_MOVE 0x18
+#define ID_POS 0
+#define ACTION_POS 1
+#define DIRECTION_POS 2
+
+#define ACTION_WALK 0x12
+#define ACTION_RUN 0x13
+#define ACTION_JUMP 0x14
+#define ACTION_SHOOT 0x15
+#define ACTION_SPECIAL_ATTACK 0x16
 
 std::vector<uint8_t> Game::get_actions(Queue<uint8_t> &q) {
     std::vector<uint8_t> data;
@@ -19,20 +20,34 @@ std::vector<uint8_t> Game::get_actions(Queue<uint8_t> &q) {
     return data;
 }
 
-void Game::execute_actions(std::vector<uint8_t> &actions) {
+void Game::execute_actions(std::vector<uint8_t> &actions, CharacterMap &ch_map) {
+    uint8_t player_id = actions[ID_POS];
+    uint8_t action = actions[ACTION_POS];
+    uint8_t direction = actions[DIRECTION_POS];
 
-}
+    Character ch = ch_map.at(player_id);
 
-void Game::move_character(uint8_t &byte, Character &character) {
-    if (byte == JUMP) {
-        character.jump();
-    } else {
-        character.move_x_pos(byte);
+    switch (action) {
+        case ACTION_WALK:
+            ch.move_x_pos(action, direction);
+            break;
+        case ACTION_RUN:
+            ch.move_x_pos(action, direction);
+            break;
+        case ACTION_JUMP:
+            ch.jump();
+            break;
+        case ACTION_SHOOT:
+            ch.attack();
+            break;
+        case ACTION_SPECIAL_ATTACK:
+            ch.special_attack();
+            break;
+        default:
+            break;
     }
 }
 
-void Game::attack(uint8_t &byte, Character &character) {
-    if (byte == SHOOT) {
-        character.attack();
-    }
+void Game::snapshot() {
+
 }

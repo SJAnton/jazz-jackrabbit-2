@@ -23,7 +23,7 @@ set(SOURCE_FILES
 
     # Archivos server
     ../server_acceptor.cpp
-    ../server_character_list.cpp
+    ../server_character_map.cpp
     ../server_client.cpp
     ../server_config_reader.cpp
     ../server_game.cpp
