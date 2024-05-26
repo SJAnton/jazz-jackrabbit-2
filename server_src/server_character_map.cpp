@@ -12,7 +12,7 @@ Character CharacterMap::at(int id) {
 
 int CharacterMap::size() {
     std::unique_lock<std::mutex> lock(m);
-    map.size();
+    return map.size();
 }
 
 void CharacterMap::erase(int id) {
