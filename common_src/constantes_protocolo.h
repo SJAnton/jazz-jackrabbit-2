@@ -53,15 +53,14 @@
     1 byte con id del Player 1
         2 bytes con la posion en x
         2 bytes con la poscion en y
-        1 byte con el estado anterior
         1 byte con el estado actual
         1 byte con la vida
         2 bytes con los puntos
     
 */
 //Ejemplo
-//000A A1 0002 00ff 01 02 0A 0000 
+//0009 A1 0002 00ff 01 02 0A 0000 
 
-//size=10 id=Player1 x=2 y=255 estadoAnterior=Idle EstadoActual=Walk vida=10 puntos=0 
+//size=9 id=Player1 x=2 y=255 Estado=Walk vida=10 puntos=0 
 
 #endif
