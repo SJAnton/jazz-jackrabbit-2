@@ -30,7 +30,8 @@ file(GLOB CLIENT_SOURCES
     "client_src/spritesManager.cpp"
     "client_src/client_renderer.cpp"
     "client_src/event_handler.cpp"
-
+    "client_src/sprite_player.cpp"
+    "client_src/sprites_players.cpp"
 )
 
 # Server source files
