@@ -29,10 +29,6 @@ InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora) :
         throw std::runtime_error("ERROR. SDL no pudo inicializarse");
     }
     spritesManager = new SpritesManager();
-
-    spritesManager->setEstadoPlayer(0, EstadosPlayer::Inactivo);
-    spritesManager->setEstadoPlayer(1, EstadosPlayer::Caminando);
-    spritesManager->setEstadoPlayer(2, EstadosPlayer::AtaqueEspecial);
 }
 
 bool InterfazGrafica::estaAbierta() {
@@ -77,6 +73,13 @@ void InterfazGrafica::recibirInformacion(){
  
 
 void InterfazGrafica::update(int it) {
+    InfoJuego infoJuego;
+    if (queueReceptora.try_pop(infoJuego)) {
+        //std::cout << infoJuego.player1.pos.x << std::endl;
+        //spritesManager->updatePlayer()
+        spritesManager->updatePlayer(0,infoJuego.player1.estado, infoJuego.player1.pos);
+        //spritesManager->setEstadoPlayer(0, infoJuego.player1.estado);
+    }
     //recibirinformacion()
     //copiar toda la informacion seteandola en el spritemanager.
     //Por ej.:
@@ -84,7 +87,7 @@ void InterfazGrafica::update(int it) {
     //spritesManager->setEstadoPlayer(0, estadoJuego.getPlayer(0).estado)
 
     iteracion += it;
-    if (iteracion % 3 == 0) {
+    /*if (iteracion % 3 == 0) {
         spritesManager->nextFramePlayer(0);
     }
     if (iteracion % 4 == 0) {
@@ -92,7 +95,8 @@ void InterfazGrafica::update(int it) {
     }
     if (iteracion % 4 == 0) {
         spritesManager->nextFramePlayer(2);
-    }
+    }*/
+
     
 } 
 

@@ -1,5 +1,6 @@
 #include "spritesManager.h"
 
+#include <iostream>
 //las defino acá porque nadie mas necesita esta informacion
 
 //player Spaz
@@ -30,60 +31,37 @@ SpritesManager::SpritesManager() :
     PisoDer(PATH_PISO_DER),
     pisoDiagonalIzq(PATH_PISO_DIAGONAL_1),
     pisoDiagonalDer(PATH_PISO_DIAGONAL_2),
-    pisoBloque(PATH_PISO_BLOQUE_1),
+    pisoBloque(PATH_PISO_BLOQUE_1)
 
-    playerSpaz_idle(PATH_SPAZ_IDLE, 56, 56, 6, Spaz),
+    /*playerSpaz_idle(PATH_SPAZ_IDLE, 56, 56, 6, Spaz),
     playerSpaz_walk(PATH_SPAZ_WALK, 56, 56, 8, Spaz),
     playerSpaz_jump(PATH_SPAZ_JUMP, 56, 56, 12, Spaz),
     playerSpaz_shoot(PATH_SPAZ_SHOOT, 56, 56, 6, Spaz),
     playerSpaz_specialAtack(PATH_SPAZ_SPECIAL , 56, 56, 12, Spaz),
     playerSpaz_death(PATH_SPAZ_DEATH, 96, 96, 26, Spaz)
+    */
 {
-    players.push_back(playerSpaz_idle);
-    players.push_back(playerSpaz_idle);
-    players.push_back(playerSpaz_idle);
-    estadosPlayers.push_back(EstadosPlayer::Inactivo);
-    estadosPlayers.push_back(EstadosPlayer::Inactivo);
-    estadosPlayers.push_back(EstadosPlayer::Inactivo);
-
+    SpritesPlayers::init();
+    players.emplace_back(Spaz);
+    players.emplace_back(Spaz);
+    players.emplace_back(Spaz);
 }
 
-void SpritesManager::nextFramePlayer(unsigned int n)
+/*void SpritesManager::nextFramePlayer(unsigned int n)
 {
-    SpriteSheetPlayer& player = getPlayer(n);
+    SpritePlayer& player = getPlayer(n);
     player.nextFrame();
 }
+*/
 void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
 {
-    SpriteSheetPlayer& player = getPlayer(n);
+    SpritePlayer& player = getPlayer(n);
     if (playerInvertido)
-        player.renderizarInvertidoEn(x, y);
-    else
-        player.renderizarEn(x, y);
+        player.setFlip(true);
+    player.renderizarEn(x, y);
+
 }
 
-EstadosPlayer SpritesManager::getEstadoPlayer(unsigned int n)
-{
-    if (n > estadosPlayers.size())
-        throw std::runtime_error("numero de player inexistente. SpritesManager::getEstadoPlayer()");
-    return estadosPlayers[n];
-}
-
-void SpritesManager::setEstadoPlayer(unsigned int n, EstadosPlayer estado)
-{
-    SpriteSheetPlayer& player = getPlayer(n);
-
-    if (player.getTipo() == Spaz) {
-        setPlayerSpaz(player, estado);
-    }
-    else if (player.getTipo() == Jazz){
-        setPlayerSpaz(player, estado);//jazz
-    }
-    else {
-        setPlayerSpaz(player, estado);//lori
-    }
-    estadosPlayers[n] = estado;
-}
 
 void SpritesManager::renderizarFondo()
 {
@@ -104,19 +82,19 @@ void SpritesManager::renderizarFondo()
 
 void SpritesManager::flipPlayer(unsigned int n, bool invertirSprite) 
 {
-    playerInvertido = invertirSprite;
-
+    SpritePlayer& player = getPlayer(n);
+    player.setFlip(invertirSprite);
 }
 //metodos privados:
 
-SpriteSheetPlayer& SpritesManager::getPlayer(unsigned int n) {
+SpritePlayer& SpritesManager::getPlayer(unsigned int n) {
     if (n >= players.size()) {
         throw std::out_of_range("Index out of range");
     }
     auto player = std::next(players.begin(), n);
     return *player;
 }
-
+/*
 void SpritesManager::setPlayerSpaz(SpriteSheet &player, EstadosPlayer estado)
 {
     if (estado == Inactivo)
@@ -132,4 +110,19 @@ void SpritesManager::setPlayerSpaz(SpriteSheet &player, EstadosPlayer estado)
         player = playerSpaz_specialAtack;
     else if (estado == Muriendo)
         player = playerSpaz_death;
+}
+
+*/
+
+void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos) {
+    SpritePlayer& player = getPlayer(n);
+    player.setPosition(pos.x, pos.y);
+    if (player.getEstado() != estado) { // si cambió de estado
+        std::cout << "...";
+
+        player.setEstado(estado);
+    }
+    else {
+        player.updateFrame();
+    }
 }

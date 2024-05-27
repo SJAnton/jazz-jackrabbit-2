@@ -1,6 +1,5 @@
 #include "client_sender.h"
 #include <atomic>
-
 #include <iostream>
 
 ClientSender::ClientSender(ClientProtocol &protocol, Queue<ComandoCliente> &send_queue): 

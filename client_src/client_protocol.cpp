@@ -51,16 +51,21 @@ EstadosPlayer ClientProtocol::decodeEstadoPlayer(uint8_t byte) {
     }
 }
 
+
+
 InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t> &bytes) {
 	uint8_t id = bytes[2];
     uint16_t x = (bytes[3] << 8) | bytes[4];
     uint16_t y = (bytes[5] << 8) | bytes[6];
-    EstadosPlayer estadoAnterior = decodeEstado(bytes[7]);
-    EstadosPlayer estadoActual = decodeEstado(bytes[8]);
+    EstadosPlayer estadoAnterior = decodeEstadoPlayer(bytes[7]);
+    EstadosPlayer estadoActual = decodeEstadoPlayer(bytes[8]);
     uint8_t vida = bytes[9];
     uint16_t puntos = (bytes[10] << 8) | bytes[11];
 
     Position pos(x, y);
+
+	InfoPlayer infoPlayer;
+	return InfoJuego(std::move(infoPlayer));
 }
 
 //metodos publicos
@@ -71,7 +76,8 @@ void ClientProtocol::enviarComandoAlServer(ComandoCliente comando, bool*was_clos
 	mensaje.push_back(codeAccion(comando.accion));
 	mensaje.push_back(codeDireccion(comando.direccion));
 
-	int enviados = socket.sendall(mensaje.data(), SIZE_CLIENT_MSG, was_closed);
+	int enviados = socket.sendall(mensaje.data(), SIZE_CLIENT_MSG, was_closed);	
+	std::cout << comando.accion << std::endl;
 	std::cout << "se enviaron " << enviados << " bytes." << std::endl;
 }
 
@@ -86,18 +92,16 @@ InfoJuego ClientProtocol::recibirInformacionDelServer(bool *was_closed) {
 	//std::vector<uint8_t> buffer(size);
 	//r = socket.recvall(buffer.data(), size, was_closed);
 
-    std::vector<uint8_t> buffer = {0xA1, 0x00, 0x02, 0x00, 0xFF, 0x01, 0x02, 0x0A, 0x00, 0x00};
+    std::vector<uint8_t> bytes = {0xA1, 0x00, 0x02, 0x00, 0xFF, 0x01, 0x02, 0x0A, 0x00, 0x00};
 
-	decodificarMensajeDelServer(buffer);
+	//decodificarMensajeDelServer(bytes);
 
 	InfoPlayer infoPlayer;
-	infoPlayer.estado = EstadosPlayer::Saltando;
-	infoPlayer.estadoAnterior = EstadosPlayer::Inactivo;
+	infoPlayer.estado = EstadosPlayer::Caminando;
 	infoPlayer.pos = Position(250, 244);
 	infoPlayer.puntos = 0;
 	infoPlayer.vida = 10;
 
 	InfoJuego info(std::move(infoPlayer));
 	return info;
-
 }

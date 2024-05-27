@@ -6,6 +6,7 @@
 #include "../common_src/info_juego.h"
 
 #include <string>
+#include <vector>
 #include <arpa/inet.h>
 
 class ClientProtocol{
@@ -21,16 +22,19 @@ class ClientProtocol{
 		//obtiene el valor decimal contenido en 1 byte
 		int decodeInt(uint8_t byte);
 		EstadosPlayer decodeEstadoPlayer(uint8_t byte);
+
 		InfoJuego decodificarMensajeDelServer(const std::vector<uint8_t> &bytes);
 
 
 	public:
 		ClientProtocol(const std::string& hostname, const std::string& servname);
-		//ClientProtocol(Socket& socket);
-		//uint8_t recv_action(bool&);
-		InfoJuego recibirInformacionDelServer(bool *was_closed);
+
+		void enviarMensajeInicialAlServer(bool*was_closed);
+		
 		void enviarComandoAlServer(ComandoCliente comando, bool*was_closed);
-		//int send_action(uint8_t&, bool&);
+		
+		InfoJuego recibirInformacionDelServer(bool *was_closed);
+		
 };
 
 #endif
