@@ -41,11 +41,12 @@
 #define STATE_FALL 0x05
 #define STATE_SHOOT 0x06
 #define STATE_SPECIAL_ATTACK 0x07
-#define STATE_INTOXICATED 0x08
-#define STATE_DAMAGED 0x09
-#define STATE_DYING 0x0A
-#define STATE_DEAD 0x0B
-#define STATE_REVIVE 0x0C
+#define STATE_INTOXICATED_IDLE 0x08
+#define STATE_INTOXICATED_WALK 0x09
+#define STATE_DAMAGED 0x0A
+#define STATE_DYING 0x0B
+#define STATE_DEAD 0x0C
+#define STATE_REVIVE 0x0D
 
 
 /* El server devuelve a todos los clientes:
@@ -56,7 +57,6 @@
         1 byte con el estado actual
         1 byte con la vida
         2 bytes con los puntos
-    
 */
 //Ejemplo
 //0009 A1 0002 00ff 01 02 0A 0000 

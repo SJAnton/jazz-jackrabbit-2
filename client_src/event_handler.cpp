@@ -21,11 +21,11 @@ void EventHandler::run() {
             return;
         } else if (e.type == SDL_KEYDOWN) {
             switch (e.key.keysym.sym) { //Obtengo el codigo de cada tecla
-            case SDLK_SPACE:
-                cliente.saltar(dir); 
+            case SDLK_SPACE: cliente.saltar(dir); 
                 break;
             case SDLK_LEFT:
                 dir = Direcciones::Left;
+                interfaz.flipPlayer(true);
                 if (SDL_GetModState() & KMOD_LCTRL) //Se presionó Ctrl + Izquierda
                     cliente.correr(dir);
                 else 
@@ -33,16 +33,15 @@ void EventHandler::run() {
                 break;
             case SDLK_RIGHT:
                 dir = Direcciones::Right;
+                interfaz.flipPlayer(false);
                 if (SDL_GetModState() & KMOD_LCTRL) // Se presionó Ctrl + Derecha
                     cliente.correr(dir);
                 else // caminar
                     cliente.caminar(dir);
                 break;
-            case SDLK_d:
-                cliente.disparar(dir);
+            case SDLK_d: cliente.disparar(dir);
                 break;
-            case SDLK_a:
-                cliente.ataque_especial(dir);
+            case SDLK_a: cliente.ataque_especial(dir);
                 break;
             case SDLK_ESCAPE:
                 interfaz.stop();

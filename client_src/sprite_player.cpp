@@ -23,11 +23,18 @@ void SpritePlayer::renderizarEn(int x, int y) {
         spriteSheet.renderizarEn(x, y);
 }
 
+void SpritePlayer::renderizar() {
+    if (flip)
+        spriteSheet.renderizarInvertidoEn(position.x, position.y);
+    else
+        spriteSheet.renderizarEn(position.x, position.y);
+}
 
 void SpritePlayer::updateFrame() {
     it++;
     if (it % 3 == 0) {
         spriteSheet.nextFrame();
+        it = 0;
     }
 }
 
@@ -56,23 +63,25 @@ void SpritePlayer::setEstadoSpaz(const EstadosPlayer &estado_)
 {
     switch (estado_)
     {
-    case Inactivo:
-        spriteSheet = SpritesPlayers::Spaz_idle;
+    case Inactivo: spriteSheet = SpritesPlayers::Spaz_idle;
         break;
-    case Caminando:
-        spriteSheet = SpritesPlayers::Spaz_walk;
+    case Caminando: spriteSheet = SpritesPlayers::Spaz_walk;
         break;
-    case Saltando:
-        spriteSheet = SpritesPlayers::Spaz_jump;
+    case Corriendo: spriteSheet = SpritesPlayers::Spaz_run;
         break;
-    case Disparando:
-        spriteSheet = SpritesPlayers::Spaz_shoot;
+    case Saltando: spriteSheet = SpritesPlayers::Spaz_jump;
         break;
-    case AtaqueEspecial:
-        spriteSheet = SpritesPlayers::Spaz_specialAtack;
+    case Disparando: spriteSheet = SpritesPlayers::Spaz_shoot;
         break;
-    case Muriendo:
-        spriteSheet = SpritesPlayers::Spaz_death;
+    case AtaqueEspecial: spriteSheet = SpritesPlayers::Spaz_specialAtack;
+        break;
+    case Impactado: spriteSheet = SpritesPlayers::Spaz_damaged;
+        break;
+    case IntoxicadoIdle: spriteSheet = SpritesPlayers::Spaz_intoxicatedIdle;
+        break;
+    case IntoxicadoWalk: spriteSheet = SpritesPlayers::Spaz_walk;
+        break;
+    case Muriendo: spriteSheet = SpritesPlayers::Spaz_death;
         break;
     default:
         break;

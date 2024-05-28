@@ -8,9 +8,13 @@ class SpritesPlayers {
 public:
     static SpriteSheet Spaz_idle;
     static SpriteSheet Spaz_walk;
+    static SpriteSheet Spaz_run;
     static SpriteSheet Spaz_jump;
     static SpriteSheet Spaz_shoot;
     static SpriteSheet Spaz_specialAtack;
+    static SpriteSheet Spaz_damaged;
+    static SpriteSheet Spaz_intoxicatedIdle;
+    static SpriteSheet Spaz_intoxicatedWalk;
     static SpriteSheet Spaz_death;
     static void init();
 private:

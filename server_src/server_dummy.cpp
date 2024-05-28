@@ -22,7 +22,7 @@ void caminar(Direcciones direccion, InfoPlayer &infoPlayer) {
 		infoPlayer.pos.x += velocidad_x;
 	}
 }
-void correr(Direcciones direccion, InfoPlayer infoPlayer) {
+void correr(Direcciones direccion, InfoPlayer &infoPlayer) {
 	infoPlayer.estado = EstadosPlayer::Corriendo;
 	if (direccion == Left) {
 		std::cout << "correr a la izquierda" << std::endl;
@@ -31,7 +31,7 @@ void correr(Direcciones direccion, InfoPlayer infoPlayer) {
 		std::cout << "correr a la derecha" << std::endl;
 	}
 }
-void saltar(Direcciones direccion, InfoPlayer infoPlayer) {
+void saltar(Direcciones direccion, InfoPlayer &infoPlayer) {
 	infoPlayer.estado = EstadosPlayer::Saltando;
 	if (direccion == Left) {
 		std::cout << "saltar a la izquierda" << std::endl;
@@ -40,7 +40,7 @@ void saltar(Direcciones direccion, InfoPlayer infoPlayer) {
 		std::cout << "saltar a la derecha" << std::endl;
 	}
 }
-void disparar(Direcciones direccion, InfoPlayer infoPlayer) {
+void disparar(Direcciones direccion, InfoPlayer &infoPlayer) {
 	infoPlayer.estado = EstadosPlayer::Disparando;
 	if (direccion == Left) {
 		std::cout << "disparar a la izquierda" << std::endl;
@@ -49,7 +49,7 @@ void disparar(Direcciones direccion, InfoPlayer infoPlayer) {
 		std::cout << "disparar a la derecha" << std::endl;
 	}
 }
-void ataqueEspecial(Direcciones direccion, InfoPlayer infoPlayer) {
+void ataqueEspecial(Direcciones direccion, InfoPlayer &infoPlayer) {
 	infoPlayer.estado = EstadosPlayer::AtaqueEspecial;
 	if (direccion == Left) {
 		std::cout << "ataque especial a la izquierda" << std::endl;
@@ -67,19 +67,23 @@ int main(int argc, char const *argv[])
 	ServerProtocol protocolo;
 
 	InfoPlayer infoPlayer;
-	infoPlayer.pos = Position(0, 244);
+	//inicializo por defecto
+	infoPlayer.pos = Position(0, 256);
 	infoPlayer.estado = Inactivo;
 	infoPlayer.puntos = 0;
 	infoPlayer.vida = 10;
 
 	bool cerrado = false;
-	while(not cerrado){
-		std::vector<uint8_t> buffer(3); // Inicializar un arreglo de 3 bytes con ceros
+	std::vector<uint8_t> buffer(3);
+	while(not cerrado) {
 		clientSocket.recvall(buffer.data(), 3, &cerrado);
+		/*
 		std::cout << "Mensaje recibido: ";
 		for (uint8_t byte : buffer) {
 			std::cout << std::hex << std::setw(2) << static_cast<int>(byte) << " ";
 		}
+		std::cout << std::endl;
+		*/
 		uint8_t idPlayer = buffer[0];
 		AccionesPlayer accion = protocolo.decodeAction(buffer[1]);
 		Direcciones direccion = protocolo.decodeDireccion(buffer[2]);
@@ -106,13 +110,18 @@ int main(int argc, char const *argv[])
 		InfoJuego info(infoPlayer);
 
 		//protocolo.enviarAlCliente(infoJuego);
+
+		//Esto se haria en un metodo protocolo.codificarMensaje()
 		int x = info.player1.pos.x;
+		int y = info.player1.pos.y;
 		uint8_t x1 = (x >> 8) & 0xFF; // Obtener el byte más significativo
     	uint8_t x2 = x & 0xFF; // Obtener el byte menos significativo
+		uint8_t y1 = (y >> 8) & 0xFF; // Obtener el byte más significativo
+    	uint8_t y2 = y & 0xFF; // Obtener el byte menos significativo
 		uint8_t state = protocolo.codeEstado(info.player1.estado);
-		std::vector<uint8_t> bytes = {0x08, PLAYER_1, x1, x2, 0x00, 0xF4, state, 0x0A, 0x00};
+		std::vector<uint8_t> bytes = {0x00, 0x08, PLAYER_1, x1, x2, y1, y2, state, 0x0A, 0x00};
 		
-		//clientSocket.sendall(bytes.data(),bytes.size(),&cerrado);
+		clientSocket.sendall(bytes.data(),bytes.size(),&cerrado);
 	}
 	return 0;
 }

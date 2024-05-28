@@ -31,6 +31,7 @@ public:
     EstadosPlayer getEstado();
 
     void renderizarEn(int x, int y);
+    void renderizar();
     void updateFrame();
     
     //~SpritePlayer();

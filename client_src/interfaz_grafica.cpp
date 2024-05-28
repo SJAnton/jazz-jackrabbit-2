@@ -29,6 +29,11 @@ InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora) :
         throw std::runtime_error("ERROR. SDL no pudo inicializarse");
     }
     spritesManager = new SpritesManager();
+
+    infoJuego.player1.estado = EstadosPlayer::Inactivo;
+    infoJuego.player1.pos = Position(0, 256);
+    infoJuego.player1.vida = 10;
+    infoJuego.player1.puntos = 0 ;
 }
 
 bool InterfazGrafica::estaAbierta() {
@@ -73,41 +78,24 @@ void InterfazGrafica::recibirInformacion(){
  
 
 void InterfazGrafica::update(int it) {
-    InfoJuego infoJuego;
-    if (queueReceptora.try_pop(infoJuego)) {
-        //std::cout << infoJuego.player1.pos.x << std::endl;
-        //spritesManager->updatePlayer()
-        spritesManager->updatePlayer(0,infoJuego.player1.estado, infoJuego.player1.pos);
-        //spritesManager->setEstadoPlayer(0, infoJuego.player1.estado);
-    }
-    //recibirinformacion()
-    //copiar toda la informacion seteandola en el spritemanager.
-    //Por ej.:
-    //spritesManager->setPositionPlayer(0, estadoJuego.getPlayer(0).position)
-    //spritesManager->setEstadoPlayer(0, estadoJuego.getPlayer(0).estado)
-
     iteracion += it;
-    /*if (iteracion % 3 == 0) {
-        spritesManager->nextFramePlayer(0);
+    
+    if (queueReceptora.try_pop(infoJuego)) {//Debe ser bloqueante?
+        
     }
-    if (iteracion % 4 == 0) {
-        spritesManager->nextFramePlayer(1);
-    }
-    if (iteracion % 4 == 0) {
-        spritesManager->nextFramePlayer(2);
-    }*/
+    spritesManager->updatePlayer(0, infoJuego.player1.estado, infoJuego.player1.pos);
 
     
+    
 } 
-
+void InterfazGrafica::flipPlayer(bool flip) {
+    spritesManager->flipPlayer(0, flip);
+}
 void InterfazGrafica::renderizar() 
 {
     SDL_RenderClear(renderer);//borra todo
-
-    //cargar todos los pixeles (fondo, terreno, objetos, players, etc)
-    //(ejemplo)
     spritesManager->renderizarFondo();
-    spritesManager->renderizarPlayerEn(0, 244, 256);
+    spritesManager->renderizarPlayer(0);
 
     SDL_RenderPresent(renderer); // dibuja todo
 }

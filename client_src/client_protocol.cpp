@@ -3,6 +3,7 @@
 #include <vector>
 #include <exception>
 #include <iostream>
+#include <iomanip>
 
 ClientProtocol::ClientProtocol(const std::string& hostname, const std::string& servname) :
 socket(hostname.c_str(), servname.c_str()) {
@@ -40,7 +41,8 @@ EstadosPlayer ClientProtocol::decodeEstadoPlayer(uint8_t byte) {
         case STATE_FALL: return EstadosPlayer::Cayendo;
         case STATE_SHOOT: return EstadosPlayer::Disparando;
         case STATE_SPECIAL_ATTACK: return EstadosPlayer::AtaqueEspecial;
-        case STATE_INTOXICATED: return EstadosPlayer::Intoxicado;
+        case STATE_INTOXICATED_IDLE: return EstadosPlayer::IntoxicadoIdle;
+		case STATE_INTOXICATED_WALK: return EstadosPlayer::IntoxicadoWalk;
         case STATE_DAMAGED: return EstadosPlayer::Impactado;
         case STATE_DYING: return EstadosPlayer::Muriendo;
         case STATE_DEAD: return EstadosPlayer::Muerto;
@@ -54,30 +56,34 @@ EstadosPlayer ClientProtocol::decodeEstadoPlayer(uint8_t byte) {
 
 
 InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t> &bytes) {
-	uint8_t id = bytes[2];
-    uint16_t x = (bytes[3] << 8) | bytes[4];
-    uint16_t y = (bytes[5] << 8) | bytes[6];
-    EstadosPlayer estadoAnterior = decodeEstadoPlayer(bytes[7]);
-    EstadosPlayer estadoActual = decodeEstadoPlayer(bytes[8]);
-    uint8_t vida = bytes[9];
-    uint16_t puntos = (bytes[10] << 8) | bytes[11];
+	uint8_t id = bytes[0];
+    uint16_t x = (bytes[1] << 8) | bytes[2];
+    uint16_t y = (bytes[3] << 8) | bytes[4];
+    EstadosPlayer estadoActual = decodeEstadoPlayer(bytes[5]);
+    uint8_t vida = bytes[6];
+    uint8_t puntos = bytes[7];
 
     Position pos(x, y);
 
+
 	InfoPlayer infoPlayer;
+	infoPlayer.estado = estadoActual;
+	infoPlayer.pos = pos;
+	infoPlayer.vida = (int)vida;
+	infoPlayer.puntos = (int)puntos;
 	return InfoJuego(std::move(infoPlayer));
 }
 
 //metodos publicos
 
 void ClientProtocol::enviarComandoAlServer(ComandoCliente comando, bool*was_closed) {
-	std::vector<uint8_t> mensaje(SIZE_CLIENT_MSG);
-	mensaje.push_back(PLAYER_1); // necesito saber mi ID de cliente o no hace falta?
+	std::vector<uint8_t> mensaje;
+	mensaje.push_back(PLAYER_1); // necesito saber mi ID de cliente
 	mensaje.push_back(codeAccion(comando.accion));
 	mensaje.push_back(codeDireccion(comando.direccion));
 
+	
 	int enviados = socket.sendall(mensaje.data(), SIZE_CLIENT_MSG, was_closed);	
-	std::cout << comando.accion << std::endl;
 	std::cout << "se enviaron " << enviados << " bytes." << std::endl;
 }
 
@@ -85,23 +91,21 @@ void ClientProtocol::enviarComandoAlServer(ComandoCliente comando, bool*was_clos
 
 InfoJuego ClientProtocol::recibirInformacionDelServer(bool *was_closed) {
 
-	uint16_t aux;
+	uint8_t aux[2];
 	//recibo los primeros 2 bytes que indican el size del mensaje
-	//int r = socket.recvall(&aux,2, was_closed);
-	//int size = ...//convertir los 2 bytes al numero entero
-	//std::vector<uint8_t> buffer(size);
-	//r = socket.recvall(buffer.data(), size, was_closed);
+	int r = socket.recvall(&aux,2, was_closed);
 
-    std::vector<uint8_t> bytes = {0xA1, 0x00, 0x02, 0x00, 0xFF, 0x01, 0x02, 0x0A, 0x00, 0x00};
+	int size = (aux[0] << 8) | aux[1];//convertir los 2 bytes al numero entero
 
-	//decodificarMensajeDelServer(bytes);
-
-	InfoPlayer infoPlayer;
-	infoPlayer.estado = EstadosPlayer::Caminando;
-	infoPlayer.pos = Position(250, 244);
-	infoPlayer.puntos = 0;
-	infoPlayer.vida = 10;
-
-	InfoJuego info(std::move(infoPlayer));
-	return info;
+    std::vector<uint8_t> bytes(size); //= {0xA1, 0x00, 0x02, 0x00, 0xFF, 0x01, 0x02, 0x0A, 0x00, 0x00};
+	r = socket.recvall(bytes.data(), size, was_closed);
+	/*std::cout << "Recibí " << r << " bytes." << std::endl;
+	std::cout << "Mensaje recibido: ";
+		for (uint8_t byte : bytes) {
+			std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << " ";
+		}
+		std::cout << std::endl;
+	*/
+	InfoJuego infoJuego = decodificarMensajeDelServer(bytes);
+	return infoJuego;
 }

@@ -28,6 +28,7 @@ private:
     //uso puntero para no tener que construirlo en la member initializer list
     SpritesManager *spritesManager;
 
+    InfoJuego infoJuego;
     Queue<InfoJuego> &queueReceptora;
 
 public:
@@ -63,6 +64,9 @@ public:
 
     void stop();
     void cerrarInterfaz();
+
+    //Temporal hasta que se me ocurra un lugar mejor donde hacer esto (una forma de avisar al spriteplayer)
+    void flipPlayer(bool flip);
 
     ~InterfazGrafica();
 };

@@ -4,7 +4,7 @@
 //#include "info_juego.h"
 
 enum EstadosPlayer {Inactivo, Caminando, Corriendo, Saltando, Cayendo, Disparando,
-                    AtaqueEspecial, Intoxicado, Impactado, Muriendo, Muerto, Reviviendo};
+                    AtaqueEspecial, IntoxicadoIdle, IntoxicadoWalk, Impactado, Muriendo, Muerto, Reviviendo};
 
 enum AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
 enum EstadosEnemy{};

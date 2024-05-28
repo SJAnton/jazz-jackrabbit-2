@@ -32,14 +32,6 @@ SpritesManager::SpritesManager() :
     pisoDiagonalIzq(PATH_PISO_DIAGONAL_1),
     pisoDiagonalDer(PATH_PISO_DIAGONAL_2),
     pisoBloque(PATH_PISO_BLOQUE_1)
-
-    /*playerSpaz_idle(PATH_SPAZ_IDLE, 56, 56, 6, Spaz),
-    playerSpaz_walk(PATH_SPAZ_WALK, 56, 56, 8, Spaz),
-    playerSpaz_jump(PATH_SPAZ_JUMP, 56, 56, 12, Spaz),
-    playerSpaz_shoot(PATH_SPAZ_SHOOT, 56, 56, 6, Spaz),
-    playerSpaz_specialAtack(PATH_SPAZ_SPECIAL , 56, 56, 12, Spaz),
-    playerSpaz_death(PATH_SPAZ_DEATH, 96, 96, 26, Spaz)
-    */
 {
     SpritesPlayers::init();
     players.emplace_back(Spaz);
@@ -47,12 +39,7 @@ SpritesManager::SpritesManager() :
     players.emplace_back(Spaz);
 }
 
-/*void SpritesManager::nextFramePlayer(unsigned int n)
-{
-    SpritePlayer& player = getPlayer(n);
-    player.nextFrame();
-}
-*/
+
 void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
 {
     SpritePlayer& player = getPlayer(n);
@@ -62,6 +49,10 @@ void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
 
 }
 
+void SpritesManager::renderizarPlayer(unsigned int n) {
+    SpritePlayer& player = getPlayer(n);
+    player.renderizar();
+}
 
 void SpritesManager::renderizarFondo()
 {
@@ -85,6 +76,7 @@ void SpritesManager::flipPlayer(unsigned int n, bool invertirSprite)
     SpritePlayer& player = getPlayer(n);
     player.setFlip(invertirSprite);
 }
+
 //metodos privados:
 
 SpritePlayer& SpritesManager::getPlayer(unsigned int n) {
@@ -118,8 +110,6 @@ void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, c
     SpritePlayer& player = getPlayer(n);
     player.setPosition(pos.x, pos.y);
     if (player.getEstado() != estado) { // si cambió de estado
-        std::cout << "...";
-
         player.setEstado(estado);
     }
     else {

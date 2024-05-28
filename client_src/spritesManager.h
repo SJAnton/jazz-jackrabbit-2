@@ -26,23 +26,12 @@ private:
     SpriteObject pisoDiagonalDer;
     SpriteObject pisoBloque;
 
-    //Spritesheets Players
-    /*SpriteSheetPlayer playerSpaz_idle;
-    SpriteSheetPlayer playerSpaz_walk;
-    SpriteSheetPlayer playerSpaz_jump;
-    SpriteSheetPlayer playerSpaz_shoot;
-    SpriteSheetPlayer playerSpaz_specialAtack;
-    SpriteSheetPlayer playerSpaz_death;
-*/
     std::list<SpritePlayer> players;
     std::vector<EstadosPlayer> estadosPlayers;
 
     bool playerInvertido = false;
 
 private: 
-    //void setPlayerJazz(SpriteSheet &player, EstadosPlayer estado);
-    //void setPlayerSpaz(SpriteSheet &player, EstadosPlayer estado);
-    //void setPlayerLori(SpriteSheet &player, EstadosPlayer estado);
     SpritePlayer& getPlayer(unsigned int n);
 
 
@@ -66,6 +55,7 @@ public:
     //pinta en la pantalla en la posicion recibida.
     //(para despues: pensar si es necesario usar .renderizarEn(x, y) o alcanza solo con  .renderizar())
     void renderizarPlayerEn(unsigned int n, int x, int y);
+    void renderizarPlayer(unsigned int n);
 
     void renderizarFondo();
 
