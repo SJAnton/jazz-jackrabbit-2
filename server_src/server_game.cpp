@@ -48,6 +48,16 @@ void Game::execute_actions(std::vector<uint8_t> &actions, CharacterMap &ch_map) 
     }
 }
 
-void Game::snapshot() {
+std::map<uint8_t, std::vector<uint8_t>> Game::snapshot(CharacterMap &ch_map) {
+    std::map<uint8_t, std::vector<uint8_t>> game_data;
+    /*for (auto &it : ch_map) {
+        int character_id = it.first;
+        Character *character = it.second;
+        std::vector<uint8_t> character_data;
 
+        // Llenar ch_data
+
+        game_data.at(character_id) = character_data;
+    }*/
+    return game_data;
 }

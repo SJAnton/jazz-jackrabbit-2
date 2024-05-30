@@ -4,7 +4,7 @@
 #include "server_gameloop.h"
 
 void ServerGameloop::run() {
-    while (character_map->size() > 0) {
+    while (!wc && character_map->size() > 0) {
         std::vector<uint8_t> actions = game.get_actions(*recv_q.get());
         game.execute_actions(actions, *character_map.get());
     }
@@ -16,5 +16,6 @@ bool ServerGameloop::is_dead() {
 }
 
 void ServerGameloop::kill() {
+    wc = true;
     recv_q->close();
 }

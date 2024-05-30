@@ -22,6 +22,10 @@ std::vector<uint8_t> ServerProtocol::recv_init_msg(bool &was_closed) {
     return data;
 }
 
+void ServerProtocol::send_id(uint8_t id, bool &was_closed) {
+    sk.sendall(&id, sizeof(id), &was_closed);
+}
+
 std::vector<uint8_t> ServerProtocol::recv_msg(bool &was_closed) {
     std::vector<uint8_t> data;
     uint8_t byte;

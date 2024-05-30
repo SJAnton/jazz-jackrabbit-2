@@ -16,6 +16,8 @@ class ServerProtocol {
 
         std::vector<uint8_t> recv_init_msg(bool &was_closed);
 
+        void send_id(uint8_t id, bool &was_closed);
+
         std::vector<uint8_t> recv_msg(bool &was_closed);
 
         void send_msg(std::vector<uint8_t> msg, bool &was_closed);

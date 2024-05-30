@@ -15,6 +15,6 @@ class Game {
 
         void execute_actions(std::vector<uint8_t> &actions, CharacterMap &ch_map);
 
-        void snapshot();
+        std::map<uint8_t, std::vector<uint8_t>> snapshot(CharacterMap &ch_map);
 };
 #endif

@@ -23,6 +23,7 @@ void Client::run() {
 
     protocol.send_msg(msg, wc);
     vector<uint8_t> init_data = protocol.recv_init_msg(wc);
+    protocol.send_id(id, wc);
 
     select_game(init_data[CHOSEN_GAME_BYTE], init_data[GAME_BYTE]);
     select_character(init_data[CHAR_BYTE]);
@@ -37,8 +38,6 @@ void Client::select_game(uint8_t game, uint8_t game_joined) {
         ch_map = std::make_shared<CharacterMap>();
         recv_q = std::make_shared<Queue<uint8_t>>();
         monitor = std::make_shared<ServerQueueList>();
-
-
 
         ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor);
         
@@ -84,10 +83,11 @@ bool Client::is_dead() {
 }
 
 void Client::kill() {
-    sndr_q.close();
+    sndr_q.close();ch_map->erase(id);
     sk.close();
     if (recv_q != nullptr) {
         monitor->remove(&sndr_q);
+        ch_map->erase(id);
         recv.join();
         sndr.join();
     }
