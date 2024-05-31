@@ -24,32 +24,23 @@ int main(int argc, char* argv[]) {
     
     bool was_closed = false;
     
-    ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
-    InterfazGrafica interfaz = InterfazGrafica(cliente.queueReceptora);
+    ClientPlayer cliente(HOSTNAME, SERVICENAME);
+    InterfazGrafica interfaz(cliente.queueReceptora);
     EventHandler eventHandler(interfaz, cliente);
     eventHandler.start();
-    
-    //ClientReceiver* receptor = new ClientReceiver(protocolo, queueReceptora, was_closed);
-    //ClientSender* enviador = new ClientSender(protocolo, queueEnviadora, was_closed);
-
-    //ClientPlayer cliente = ClientPlayer(queueReceptora, queueEnviadora);
-    //InterfazGrafica* interfaz = new InterfazGrafica(cliente);
 
     while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza el menu principal
     {
         interfaz.renderizarMenu();
         interfaz.manejarEventosMenu();
     }
-
     //ClientRenderer* renderer = new ClientRenderer(interfaz);
     //renderer->start();
     
     while (interfaz.estaAbierta())
     {
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
-
-        //interfaz->manejarEventos();
-
+        
         interfaz.recibirInformacion();
         interfaz.update(1);
         interfaz.renderizar();
@@ -58,9 +49,7 @@ int main(int argc, char* argv[]) {
         if (frame_delay > tiempo_transcurrido) {
             SDL_Delay(frame_delay - tiempo_transcurrido); // sleep
         }
-        
     }
-
     eventHandler.join();
     
     //renderer->join();

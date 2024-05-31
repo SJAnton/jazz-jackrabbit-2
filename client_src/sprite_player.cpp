@@ -32,7 +32,7 @@ void SpritePlayer::renderizar() {
 
 void SpritePlayer::updateFrame() {
     it++;
-    if (it % 3 == 0) {
+    if (it % 2 == 0) {
         spriteSheet.nextFrame();
         it = 0;
     }

@@ -7,6 +7,8 @@
 #include "../common_src/info_juego.h"
 
 #include "../common_src/constantes_protocolo.h"
+#include <chrono>
+#include <thread>
 
 #define SERVICENAME argv[1]
 int velocidad_x = 4;
@@ -122,6 +124,8 @@ int main(int argc, char const *argv[])
 		std::vector<uint8_t> bytes = {0x00, 0x08, PLAYER_1, x1, x2, y1, y2, state, 0x0A, 0x00};
 		
 		clientSocket.sendall(bytes.data(),bytes.size(),&cerrado);
+		//std::this_thread::sleep_for(std::chrono::milliseconds(67));
+
 	}
 	return 0;
 }

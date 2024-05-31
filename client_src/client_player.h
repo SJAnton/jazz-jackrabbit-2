@@ -19,7 +19,7 @@ class ClientPlayer{
 
 	public:
 		ClientPlayer(const std::string& hostname, const std::string& servname);
-		//ClientPlayer(Queue<InfoJuego>&, Queue<AccionesPlayer>&);
+
 		void caminar(Direcciones direccion);
 		void saltar(Direcciones direccion);
 		void correr(Direcciones direccion);
