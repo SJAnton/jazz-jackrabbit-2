@@ -3,30 +3,33 @@
 
 #include <map>
 #include <mutex>
+#include <memory>
 
 #include "characters/server_character.h"
 
 class CharacterMap {
     private:
-        std::map<int, Character*> map;
+        std::map<int, std::shared_ptr<Character>> map;
 
         std::mutex m;
 
     public:
         CharacterMap() {};
 
-        void push_back(int id, Character *character);
+        void push_back(int id, std::shared_ptr<Character> character);
 
-        Character at(int id);
+        std::shared_ptr<Character> at(int id);
 
         int size();
+
+        bool empty();
 
         void erase(int id);
 
         void clear();
 
-        std::map<int, Character*>::iterator begin();
+        std::map<int, std::shared_ptr<Character>>::iterator begin();
 
-        std::map<int, Character*>::iterator end();
+        std::map<int, std::shared_ptr<Character>>::iterator end();
 };
 #endif

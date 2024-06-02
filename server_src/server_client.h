@@ -24,6 +24,8 @@ class Client : public Thread {
         
         int id;
 
+        atomic<int> &gmlp_id;
+
         GameloopList &gameloops;
 
         map<uint8_t, shared_ptr<CharacterMap>> &ch_maps;
@@ -45,7 +47,7 @@ class Client : public Thread {
 
         shared_ptr<ServerQueueList> monitor;
 
-        unique_ptr<Character> player;
+        shared_ptr<Character> player;
 
         ServerReceiver recv;
 
@@ -53,19 +55,21 @@ class Client : public Thread {
 
         bool wc = false;
 
-        void select_game(uint8_t game, uint8_t game_joined);
+        vector<uint8_t> get_games();
 
-        void select_character(uint8_t character);
+        void select_game(uint8_t game);
+
+        void select_character(uint8_t character, uint8_t game);
 
     public:
-        Client(Socket socket, int id, GameloopList &gameloops,
+        Client(Socket socket, int id, atomic<int> &gmlp_id, GameloopList &gameloops,
                 map<uint8_t, shared_ptr<CharacterMap>> &ch_maps,
                     map<uint8_t, shared_ptr<ServerQueueList>> &monitors,
                         map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q,
                             map<string, vector<uint8_t>> &data) :
-                            sk(move(socket)), id(id), gameloops(gameloops), ch_maps(ch_maps),
-                                monitors(monitors), gameloops_q(gameloops_q), data(data),
-                                    protocol(sk), recv(protocol, recv_q, wc),
+                            sk(move(socket)), id(id), gmlp_id(gmlp_id), gameloops(gameloops),
+                                ch_maps(ch_maps), monitors(monitors), gameloops_q(gameloops_q),
+                                    data(data), protocol(sk), recv(protocol, recv_q, wc),
                                         sndr(protocol, sndr_q, wc) {}
 
         void run() override;

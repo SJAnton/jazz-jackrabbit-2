@@ -1,12 +1,12 @@
 #include "server_acceptor.h"
 
 void ServerAcceptor::run() {
-    int id = 0;
+    int id = 1;
     while (!wc) {
         try {
             Socket peer = sk.accept();
             
-            Client *client = new Client(std::move(peer), id, gameloops, ch_maps,
+            Client *client = new Client(std::move(peer), id, gmlp_id, gameloops, ch_maps,
                                             monitors, gameloops_q, data);
 
             client->start();

@@ -1,5 +1,7 @@
 #include "server_game.h"
 
+#include <iostream>
+
 #define MSG_SIZE 3
 
 #define ID_POS 0
@@ -12,36 +14,40 @@
 #define ACTION_SHOOT 0x15
 #define ACTION_SPECIAL_ATTACK 0x16
 
-std::vector<uint8_t> Game::get_actions(Queue<uint8_t> &q) {
+std::vector<uint8_t> Game::get_actions(std::shared_ptr<Queue<uint8_t>> &q) {
     std::vector<uint8_t> data;
-    for (int i = 0; i < MSG_SIZE; i++) {
-        data.push_back(q.pop());
+    uint8_t byte;
+    while (q->try_pop(byte)) {
+        data.push_back(byte);
     }
     return data;
 }
 
-void Game::execute_actions(std::vector<uint8_t> &actions, CharacterMap &ch_map) {
+void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<CharacterMap> &ch_map) {
+    if (actions.empty()) {
+        return;
+    }
     uint8_t player_id = actions[ID_POS];
     uint8_t action = actions[ACTION_POS];
     uint8_t direction = actions[DIRECTION_POS];
 
-    Character ch = ch_map.at(player_id);
+    std::shared_ptr<Character> ch = ch_map->at(player_id);
 
     switch (action) {
         case ACTION_WALK:
-            ch.move_x_pos(action, direction);
+            ch->move_x_pos(action, direction);
             break;
         case ACTION_RUN:
-            ch.move_x_pos(action, direction);
+            ch->move_x_pos(action, direction);
             break;
         case ACTION_JUMP:
-            ch.jump();
+            ch->jump();
             break;
         case ACTION_SHOOT:
-            ch.attack();
+            ch->attack();
             break;
         case ACTION_SPECIAL_ATTACK:
-            ch.special_attack();
+            ch->special_attack();
             break;
         default:
             break;

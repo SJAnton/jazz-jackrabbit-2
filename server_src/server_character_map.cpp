@@ -1,18 +1,23 @@
 #include "server_character_map.h"
 
-void CharacterMap::push_back(int id, Character *character) {
+void CharacterMap::push_back(int id, std::shared_ptr<Character> character) {
     std::unique_lock<std::mutex> lock(m);
-    map.at(id) = character;
+    map[id] = character;
 }
 
-Character CharacterMap::at(int id) {
+std::shared_ptr<Character> CharacterMap::at(int id) {
     std::unique_lock<std::mutex> lock(m);
-    return *map.at(id);
+    return map.at(id);
 }
 
 int CharacterMap::size() {
     std::unique_lock<std::mutex> lock(m);
     return map.size();
+}
+
+bool CharacterMap::empty() {
+    std::unique_lock<std::mutex> lock(m);
+    return map.empty();
 }
 
 void CharacterMap::erase(int id) {
@@ -24,10 +29,10 @@ void CharacterMap::clear() {
     map.clear();
 }
 
-std::map<int, Character*>::iterator CharacterMap::begin() {
+std::map<int, std::shared_ptr<Character>>::iterator CharacterMap::begin() {
     return map.begin();
 }
 
-std::map<int, Character*>::iterator CharacterMap::end() {
+std::map<int, std::shared_ptr<Character>>::iterator CharacterMap::end() {
     return map.end();
 }

@@ -25,6 +25,8 @@ class ServerAcceptor : public Thread {
 
         bool &wc;
 
+        atomic<int> gmlp_id = 1; // TODO: corregir
+
         list<Client*> clients;
 
         GameloopList gameloops;

@@ -5,13 +5,9 @@
 #define SUCCESS 0
 #define SHUTCODE 2
 
-// El primer mensaje enviado al cliente debe indicarle qué escenarios
-// hay disponibles así como las partidas que ya están creadas y están
-// disponibles para que el usuario pueda unirse
 #define INIT_MSG_SIZE 2
-#define MSG_SIZE 0
+#define MSG_SIZE 3
 
-// Esta función no es necesaria si INIT_MSG_SIZE = MSG_SIZE
 std::vector<uint8_t> ServerProtocol::recv_init_msg(bool &was_closed) {
     std::vector<uint8_t> data;
     uint8_t byte;

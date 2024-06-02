@@ -17,12 +17,12 @@ class ServerGameloop : public Thread {
 
         std::shared_ptr<ServerQueueList> &sndr_qs;
 
-        bool wc;
+        bool wc = false;
 
     public:
         ServerGameloop(std::shared_ptr<CharacterMap> &map,
-                        std::shared_ptr<Queue<uint8_t>> recv_q,
-                            std::shared_ptr<ServerQueueList> sndr_qs) :
+                        std::shared_ptr<Queue<uint8_t>> &recv_q,
+                            std::shared_ptr<ServerQueueList> &sndr_qs) :
                                 character_map(map), recv_q(recv_q), sndr_qs(sndr_qs) {};
 
         void run() override;

@@ -23,7 +23,8 @@ ClientProtocol::ClientProtocol(
     }
 
     int ClientProtocol::send_msg(std::vector<uint8_t> data, bool &was_closed) {
-        for (size_t i = 0; i < data.size(); i++) {
+        int size = data.size();
+        for (int i = 0; i < size; i++) {
             socket.sendall(&data[i], sizeof(data[i]), &was_closed);
         }
         return SUCCESS;
