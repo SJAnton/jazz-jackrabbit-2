@@ -3,12 +3,14 @@
 #include "sprite_object.h"
 #include "spritesheet.h"
 #include "spritesManager.h"
+#include "characters.h"
 
 SDL_Renderer* InterfazGrafica::renderer = nullptr;
 
 //constructor
 InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora) : 
-    queueReceptora(queueReceptora)
+    queueReceptora(queueReceptora), renderizarPantalla(&InterfazGrafica::renderizarMenu), 
+    manejarEventos(&InterfazGrafica::manejarEventosMenu)
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         window = SDL_CreateWindow("Ventana del juego", SDL_WINDOWPOS_CENTERED, 
@@ -65,6 +67,31 @@ void InterfazGrafica::manejarEventosMenu(){
         int mouseX, mouseY;
         SDL_GetMouseState(&mouseX, &mouseY);
         if (pointInsideRect(mouseX, mouseY, {234, 258, 282, 84})) { //Chequea si se clickeo en la zona del boton
+            std::cout << "Seleccione una partida" << std::endl;
+            //menu_abierto = false;
+            renderizarPantalla = &InterfazGrafica::renderizarSeleccionPartida;
+            manejarEventos = &InterfazGrafica::manejarEventosSeleccionPartida;
+
+        }
+    }
+}
+
+void InterfazGrafica::manejarEventosSeleccionPartida(){
+    SDL_Event e;
+    SDL_PollEvent(&e);
+
+    if (e.type == SDL_QUIT) {
+        is_running = false;
+        return;
+    } else if (e.type == SDL_KEYDOWN) {
+        if(e.key.keysym.sym == SDLK_ESCAPE){
+            is_running = false;
+            return;
+        }
+    }else if (e.type == SDL_MOUSEBUTTONDOWN) {
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+        if (pointInsideRect(mouseX, mouseY, {450, 100, 384, 64})) { //Chequea si se clickeo en la zona del boton
             std::cout << "Comienza el juego!" << std::endl;
             menu_abierto = false;
         }
@@ -103,6 +130,13 @@ void InterfazGrafica::stop(){
     is_running = false;
 } 
 
+void InterfazGrafica::renderizarActual(){
+    (this->*renderizarPantalla)();
+}
+
+void InterfazGrafica::manejarEventosActual(){
+    (this->*manejarEventos)();
+}
 
 void InterfazGrafica::renderizarMenu(){
     SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
@@ -125,6 +159,43 @@ void InterfazGrafica::renderizarMenu(){
     SDL_DestroyTexture(texture);
 
     SDL_RenderPresent(renderer);
+}
+
+void renderText(SDL_Renderer* renderer, SDL_Texture* texture, const std::unordered_map<char,
+                SDL_Rect>& charMap, const std::string& text, int x, int y, float scale) {
+    for (char c : text) {
+        auto it = charMap.find(c);
+        if (it != charMap.end()) { // Si se encuentra el carácter en el mapa
+            SDL_Rect srcRect = it->second;
+            SDL_Rect dstRect = { x, y, static_cast<int>(srcRect.w * scale), 
+                                static_cast<int>(srcRect.h * scale) };
+            SDL_RenderCopy(renderer, texture, &srcRect, &dstRect);
+            x += dstRect.w;
+        } else if (c == ' ') { // Si el carácter es un espacio
+            x += static_cast<int>(64 * scale); // Avanza el ancho de un espacio
+        }
+    }
+}
+
+void InterfazGrafica::renderizarSeleccionPartida(){
+    SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
+    SDL_RenderClear(renderer);
+
+    Characters fontMap = Characters();
+
+    SDL_Surface* surface = IMG_Load("../sprites/font.png");
+    SDL_Texture* fontTexture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+
+    renderText(renderer, fontTexture, fontMap.charMap, "PARTIDA 1", 100, 100, 0.5f);
+    renderText(renderer, fontTexture, fontMap.charMap, "PARTIDA 2", 100, 200, 0.5f);
+
+    renderText(renderer, fontTexture, fontMap.charMap, "UNIRSE", 450, 100, 0.5f);
+
+
+    
+
+    SDL_RenderPresent(renderer);    
 }
 
 void InterfazGrafica::cerrarInterfaz() 

@@ -24,15 +24,15 @@ int main(int argc, char* argv[]) {
     
     bool was_closed = false;
     
-    ClientPlayer cliente(HOSTNAME, SERVICENAME);
+    ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
     InterfazGrafica interfaz(cliente.queueReceptora);
     EventHandler eventHandler(interfaz, cliente);
     eventHandler.start();
 
-    while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza el menu principal
+    while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza las diferentes pantallas
     {
-        interfaz.renderizarMenu();
-        interfaz.manejarEventosMenu();
+        interfaz.renderizarActual();
+        interfaz.manejarEventosActual();
     }
     //ClientRenderer* renderer = new ClientRenderer(interfaz);
     //renderer->start();

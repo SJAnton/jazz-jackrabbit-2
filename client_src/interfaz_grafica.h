@@ -42,6 +42,10 @@ public:
 
     void manejarEventosMenu();
 
+    void manejarEventosSeleccionPartida();
+
+    void manejarEventosActual();
+
     void recibirInformacion();
 
     /**
@@ -60,7 +64,14 @@ public:
      */
     void renderizar();
 
+    void (InterfazGrafica::*renderizarPantalla)(); //Puntero a funcion renderer
+    void (InterfazGrafica::*manejarEventos)(); //Puntero a funcion handler
+
+    void renderizarActual();
+
     void renderizarMenu();
+
+    void renderizarSeleccionPartida();
 
     void stop();
     void cerrarInterfaz();

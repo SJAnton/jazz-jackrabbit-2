@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(client)
 
+set(CMAKE_CXX_STANDARD 17)
+
 INCLUDE(FindPkgConfig)
 
 PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
@@ -32,6 +34,7 @@ file(GLOB CLIENT_SOURCES
     "client_src/event_handler.cpp"
     "client_src/sprite_player.cpp"
     "client_src/sprites_players.cpp"
+    "client_src/characters.cpp"
 )
 
 # Server source files
