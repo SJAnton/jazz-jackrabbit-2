@@ -1,8 +1,9 @@
 #ifndef CONSTANTES_PROTOCOLO_H
 #define CONSTANTES_PROTOCOLO_H
 
-
+#define SIZE_CLIENT_MSG 3
 //Comandos o acciones que puede enviar un Cliente
+#define ACTION_IDLE 0x11
 #define ACTION_WALK 0x12
 #define ACTION_RUN 0x13
 #define ACTION_JUMP 0x14
@@ -37,41 +38,29 @@
 #define STATE_WALK 0x02
 #define STATE_RUN 0x03
 #define STATE_JUMP 0x04
-#define STATE_FALL 0x04
-#define STATE_SHOOT 0x05
-#define STATE_SPECIAL_ATTACK 0x08
-#define STATE_INTOXICATED 0x09
+#define STATE_FALL 0x05
+#define STATE_SHOOT 0x06
+#define STATE_SPECIAL_ATTACK 0x07
+#define STATE_INTOXICATED_IDLE 0x08
+#define STATE_INTOXICATED_WALK 0x09
 #define STATE_DAMAGED 0x0A
 #define STATE_DYING 0x0B
 #define STATE_DEAD 0x0C
 #define STATE_REVIVE 0x0D
 
-//Tipos de Eventos
-#define PLAYER_CAMBIA_ESTADO 0xE1
-#define PLAYER_SUMA_PUNTOS 0xE2
-#define ENEMIGO_CAMBIA_ESTADO 0xE3
-#define MONEDA_RECOLECTADA 0xE5
-
-
 
 /* El server devuelve a todos los clientes:
-    1 byte con el tipo de Evento
-    si es E1:
-        1 byte con el ID del player
-        1 byte con el estado del Player
-        4 bytes con la posicion xy
-    si es E2:
-        1 byte con el ID del player
-        2 bytes con el puntaje del player
-    si es E3:
-        1 byte con el ID del enemigo
-        1 byte con el estado del Enemigo
-        4 bytes con la posicion (suponiendo que se pueden mover)
-    si es E4:
-        1 byte con el ID de la moneda (u otra forma de identificarla)
-    
-    ultimo byte con 0x00
-
+    2 bytes con la cantidad de bytes del mensaje.
+    1 byte con id del Player 1
+        2 bytes con la posion en x
+        2 bytes con la poscion en y
+        1 byte con el estado actual
+        1 byte con la vida
+        2 bytes con los puntos
 */
+//Ejemplo
+//0009 A1 0002 00ff 01 02 0A 0000 
+
+//size=9 id=Player1 x=2 y=255 Estado=Walk vida=10 puntos=0 
 
 #endif

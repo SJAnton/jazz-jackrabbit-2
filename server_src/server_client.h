@@ -24,6 +24,8 @@ class Client : public Thread {
         
         int id;
 
+        int gmlp_id_copy;
+
         atomic<int> &gmlp_id;
 
         GameloopList &gameloops;

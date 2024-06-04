@@ -18,4 +18,6 @@ bool ServerGameloop::is_dead() {
 void ServerGameloop::kill() {
     wc = true;
     recv_q->close();
+    monitors.erase(id);
+    gameloops_q.erase(id);
 }

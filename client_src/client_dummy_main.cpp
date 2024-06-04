@@ -1,13 +1,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "client_dummy_app.h"
 #include "client_dummy_protocol.h"
-
-#define GAME_BYTE 0x01
-
-#define JAZZ_BYTE 0x01
-#define LORI_BYTE 0x02
-#define SPAZ_BYTE 0x03
 
 #define ACTION_WALK 0x12
 #define LEFT 0x4C
@@ -16,6 +11,8 @@
 #define MOV_IZQ "IZQ"
 #define MOV_DER "DER"
 #define EXIT "q"
+
+#define ID_MSG_SIZE 1
 
 #define EXIT_BYTE 0xFF
 
@@ -31,14 +28,21 @@ int main(int argc, char* argv[]) {
         return ERROR;
     }
     ClientProtocol protocol(HOSTNAME, SERVICENAME);
+    ClientApp app(protocol);
 
     std::string input;
     bool was_closed = false;
 
-    std::vector<uint8_t> init_data = {GAME_BYTE, JAZZ_BYTE};
+    // Elección de partida y personaje
+    app.get_games(was_closed);
+    std::vector<uint8_t> init_data = app.choose_game_and_character();
     protocol.send_msg(init_data, was_closed);
-    uint8_t client_id = protocol.get_id(was_closed);
 
+    // ID del cliente
+    uint8_t client_id = protocol.recv_msg(ID_MSG_SIZE, was_closed)[0];
+    std::cout << "ID del cliente: " << static_cast<int>(client_id) << std::endl;
+
+    std::cout << "Ingresar movimiento (IZQ, DER, q):" << std::endl;
     while (std::getline(std::cin, input)) {
         try {
             if (input == MOV_IZQ) {
@@ -52,7 +56,6 @@ int main(int argc, char* argv[]) {
                 protocol.send_msg(actions, was_closed);
                 break;
             }
-
         } catch (const std::invalid_argument &e) {
             std::cerr << e.what() << std::endl;
         }

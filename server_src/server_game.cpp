@@ -31,6 +31,10 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
     uint8_t action = actions[ACTION_POS];
     uint8_t direction = actions[DIRECTION_POS];
 
+    //std::cout << "ID del player: " << (int)player_id << std::endl;
+    //std::cout << "Acción: " << (int)action << std::endl;
+    //std::cout << "Dirección: " << (int)direction << std::endl;
+
     std::shared_ptr<Character> ch = ch_map->at(player_id);
 
     switch (action) {
@@ -54,7 +58,7 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
     }
 }
 
-std::map<uint8_t, std::vector<uint8_t>> Game::snapshot(CharacterMap &ch_map) {
+std::map<uint8_t, std::vector<uint8_t>> Game::snapshot(std::shared_ptr<CharacterMap> &ch_map) {
     std::map<uint8_t, std::vector<uint8_t>> game_data;
     /*for (auto &it : ch_map) {
         int character_id = it.first;

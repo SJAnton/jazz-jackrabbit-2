@@ -16,6 +16,7 @@ set(SOURCE_FILES
     ../../common_src/resolvererror.cpp
     ../../common_src/socket.cpp
 
+    ../client_dummy_app.cpp
     ../client_dummy_main.cpp
     ../client_dummy_protocol.cpp
 )

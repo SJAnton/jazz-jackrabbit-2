@@ -3,7 +3,7 @@
 #define GAME_POS 0
 #define CHAR_POS 1
 
-#define NEW_GAME 0x01
+#define NEW_GAME 0x00
 
 #define JAZZ_BYTE 0x01
 #define LORI_BYTE 0x02
@@ -33,7 +33,7 @@ void Client::run() {
 
 vector<uint8_t> Client::get_games() {
     vector<uint8_t> msg;
-
+    msg.push_back(gameloops_q.size()); // Cantidad de partidas
     for (auto &key : gameloops_q) {
         msg.push_back(key.first);
     }
@@ -49,10 +49,13 @@ void Client::select_game(uint8_t game) {
         recv_q = std::make_shared<Queue<uint8_t>>();
         monitor = std::make_shared<ServerQueueList>();
 
-        ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor);
+        int current_gmlp_id = gmlp_id.load();
+
+        ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor, monitors,
+                                                        gameloops_q, current_gmlp_id);
         
-        gameloops_q[gmlp_id] = recv_q;
-        monitors[gmlp_id] = monitor;
+        gameloops_q[current_gmlp_id] = recv_q;
+        monitors[current_gmlp_id] = monitor;
 
         gameloop->start();
         gameloops.push_back(gameloop);
@@ -75,7 +78,6 @@ void Client::select_character(uint8_t character, uint8_t game) {
     } else {
         ch_map = ch_maps.at(game);
     }
-
     switch (character) {
         case JAZZ_BYTE:
             player = make_shared<PlayerJazz>(data[JAZZ_CODE], id);

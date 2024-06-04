@@ -5,7 +5,7 @@ void ServerAcceptor::run() {
     while (!wc) {
         try {
             Socket peer = sk.accept();
-            
+
             Client *client = new Client(std::move(peer), id, gmlp_id, gameloops, ch_maps,
                                             monitors, gameloops_q, data);
 
