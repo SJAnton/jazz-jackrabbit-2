@@ -11,6 +11,7 @@ ClientPlayer::ClientPlayer(const std::string& hostname, const std::string& servn
 	sender(protocolo, queueEnviadora) 
 {
 	sender.start();
+	std::cout << "sender corriendo";
 	receiver.start();
 }
 

@@ -22,9 +22,12 @@ class ClientProtocol{
 		//obtiene el valor decimal contenido en 1 byte
 		int decodeInt(uint8_t byte);
 		EstadosPlayer decodeEstadoPlayer(uint8_t byte);
+		TipoEnemy decodeTipoEnemy(uint8_t byte);
+		EstadosEnemy decodeEstadoEnemy(uint8_t byte);
+		Direcciones decodeDireccion(uint8_t dir);
+
 
 		InfoJuego decodificarMensajeDelServer(const std::vector<uint8_t> &bytes);
-
 
 	public:
 		ClientProtocol(const std::string& hostname, const std::string& servname);

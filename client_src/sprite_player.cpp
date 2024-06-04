@@ -4,7 +4,7 @@
 SpritePlayer::SpritePlayer(TipoPlayer tipoPlayer) :
     tipo(tipoPlayer)
 {
-    setEstado(EstadosPlayer::Inactivo);
+    setEstado(EstadosPlayer::Inactive);
 }
 
 void SpritePlayer::setFlip(bool flip_) {
@@ -63,25 +63,25 @@ void SpritePlayer::setEstadoSpaz(const EstadosPlayer &estado_)
 {
     switch (estado_)
     {
-    case Inactivo: spriteSheet = SpritesPlayers::Spaz_idle;
+    case EstadosPlayer::Inactive : spriteSheet = SpritesPlayers::Spaz_idle;
         break;
-    case Caminando: spriteSheet = SpritesPlayers::Spaz_walk;
+    case EstadosPlayer::Walking : spriteSheet = SpritesPlayers::Spaz_walk;
         break;
-    case Corriendo: spriteSheet = SpritesPlayers::Spaz_run;
+    case EstadosPlayer::Running : spriteSheet = SpritesPlayers::Spaz_run;
         break;
-    case Saltando: spriteSheet = SpritesPlayers::Spaz_jump;
+    case EstadosPlayer::Jumping : spriteSheet = SpritesPlayers::Spaz_jump;
         break;
-    case Disparando: spriteSheet = SpritesPlayers::Spaz_shoot;
+    case EstadosPlayer::Shooting : spriteSheet = SpritesPlayers::Spaz_shoot;
         break;
-    case AtaqueEspecial: spriteSheet = SpritesPlayers::Spaz_specialAtack;
+    case EstadosPlayer::SpecialAttack : spriteSheet = SpritesPlayers::Spaz_specialAtack;
         break;
-    case Impactado: spriteSheet = SpritesPlayers::Spaz_damaged;
+    case EstadosPlayer::Damaged : spriteSheet = SpritesPlayers::Spaz_damaged;
         break;
-    case IntoxicadoIdle: spriteSheet = SpritesPlayers::Spaz_intoxicatedIdle;
+    case EstadosPlayer::IntoxicatedIdle : spriteSheet = SpritesPlayers::Spaz_intoxicatedIdle;
         break;
-    case IntoxicadoWalk: spriteSheet = SpritesPlayers::Spaz_walk;
+    case EstadosPlayer::IntoxicatedWalk : spriteSheet = SpritesPlayers::Spaz_walk;
         break;
-    case Muriendo: spriteSheet = SpritesPlayers::Spaz_death;
+    case EstadosPlayer::Dying : spriteSheet = SpritesPlayers::Spaz_death;
         break;
     default:
         break;

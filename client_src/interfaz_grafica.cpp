@@ -32,10 +32,12 @@ InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora) :
     }
     spritesManager = new SpritesManager();
 
-    infoJuego.player1.estado = EstadosPlayer::Inactivo;
+    infoJuego.addPlayer();
+    /*infoJuego.player1.estado = EstadosPlayer::Inactivo;
     infoJuego.player1.pos = Position(0, 256);
     infoJuego.player1.vida = 10;
     infoJuego.player1.puntos = 0 ;
+    */
 }
 
 bool InterfazGrafica::estaAbierta() {
@@ -110,7 +112,8 @@ void InterfazGrafica::update(int it) {
     if (queueReceptora.try_pop(infoJuego)) {//Debe ser bloqueante?
         
     }
-    spritesManager->updatePlayer(0, infoJuego.player1.estado, infoJuego.player1.pos);
+    Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y);
+    spritesManager->updatePlayer(0, infoJuego.players[0].estado, pos);
 
     
     

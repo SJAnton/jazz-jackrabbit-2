@@ -11,7 +11,7 @@
 #include "../common_src/constantes.h"
 #include "../common_src/info_juego.h"
 
-const int FPS = 50;
+const int FPS = 15;
 const int frame_delay = 1000/FPS;
 
 int tiempo_transcurrido;
@@ -29,14 +29,13 @@ int main(int argc, char* argv[]) {
     EventHandler eventHandler(interfaz, cliente);
     eventHandler.start();
 
-    while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza las diferentes pantallas
+    /*while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza las diferentes pantallas
     {
         interfaz.renderizarActual();
         interfaz.manejarEventosActual();
     }
-    //ClientRenderer* renderer = new ClientRenderer(interfaz);
-    //renderer->start();
-    
+    */
+    //interfaz.run()
     while (interfaz.estaAbierta())
     {
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
