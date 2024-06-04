@@ -23,11 +23,7 @@ public:
     InfoPlayer(int id, int x, int y, EstadosPlayer e, int vida, int pts, TipoArma arma, int municion)
         : id(id), pos_x(x), pos_y(y), estado(e), vida(vida), puntos(pts), arma(arma), muncion(municion){}
 
-    std::vector <uint8_t> encode() {
-        std::vector <uint8_t> bytes;
-        bytes.push_back(id);
-
-    }
+    
 };
 
 
@@ -59,9 +55,10 @@ public:
     int pos_y;
     Direcciones direccion;
 
-    InfoProyectil(int x, int y, Direcciones dir) : 
+    InfoProyectil(int x, int y, const Direcciones &dir) : 
                 pos_x(x), pos_y(y), direccion(dir) {}
 };
+
 // Clase que representa la información del juego
 class InfoJuego {
 public:
@@ -85,14 +82,20 @@ public:
               std::vector<InfoProyectil>&& proyectiles)
         : players(std::move(players)), recolectables(std::move(recolectables)), enemigos(std::move(enemigos)), proyectiles(std::move(proyectiles)) {}
     
-    int getLengthData() {
-        return (
+    int getLengthData() const{
+        return ( 4 +
             players.size() * LENGTH_PLAYER_INFO + 
             enemigos.size() * LENGTH_ENEMY_INFO + 
             recolectables.size() * LENGTH_ITEMS_INFO +
             proyectiles.size() * LENGTH_PROYECTIL_INFO
         );
     }
+    int cantidadPlayers() const;
+    int cantEnemigos() const;
+    int cantRecolectables() const;
+    int cantProyectiles() const;
+
+    void addPlayer();
 
 };
 

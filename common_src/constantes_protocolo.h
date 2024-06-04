@@ -63,5 +63,14 @@
 #define ENEMY_STATE_DAMAGED 0X04
 #define ENEMY_STATE_DEATH 0X05
 
+//Armas
+#define ARMA_COMUN 0XC0
+
+
+//Items recolectables
+#define ITEM_DIAMANTE 0X01
+#define ITEM_MONEDA 0X02
+#define ITEM_ZANAHORIA 0X03
+#define ITEM_MUNCION 0X04
 
 #endif
