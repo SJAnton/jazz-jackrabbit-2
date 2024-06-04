@@ -40,7 +40,7 @@ public:
     EstadosEnemy estado;
 
     InfoEnemigo(TipoEnemy tipo, int x, int y,  EstadosEnemy estado)
-        : pos_x(x), pos_y(y), tipo(tipo), estado(estado) {}
+        : tipo(tipo), pos_x(x), pos_y(y), estado(estado) {}
 };
 
 //Clase que contiene la info de los objetos recolectables (monedas, zanahorias, etc)
@@ -75,18 +75,20 @@ public:
     // Constructores
     InfoJuego() {};
 
-    InfoJuego(const std::vector<InfoPlayer>& players,
+     InfoJuego(const std::vector<InfoPlayer>& players,
               const std::vector<InfoEnemigo>& enemigos,
               const std::vector<InfoRecolectable>& recolectables,
               const std::vector<InfoProyectil>& proyectiles)
-        : players(players), recolectables(recolectables), enemigos(enemigos), proyectiles(proyectiles) {}
+        : players(players), enemigos(enemigos), recolectables(recolectables), proyectiles(proyectiles) {}
 
+    // Constructor parametrizado usando rvalue references
     InfoJuego(std::vector<InfoPlayer>&& players,
               std::vector<InfoEnemigo>&& enemigos,
               std::vector<InfoRecolectable>&& recolectables,
               std::vector<InfoProyectil>&& proyectiles)
-        : players(std::move(players)), recolectables(std::move(recolectables)), enemigos(std::move(enemigos)), proyectiles(std::move(proyectiles)) {}
-    
+        : players(std::move(players)), enemigos(std::move(enemigos)), 
+          recolectables(std::move(recolectables)), proyectiles(std::move(proyectiles)) {}
+
     int getLengthData() const{
         return ( 4 +
             players.size() * LENGTH_PLAYER_INFO + 

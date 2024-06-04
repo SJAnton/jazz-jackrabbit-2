@@ -182,7 +182,7 @@ void Character::set_intoxicated_status(bool status) {
 }
 
 void Character::take_damage(uint8_t &damage) {
-    status = EstadosPlayer::Hit;
+    status = EstadosPlayer::Damaged;
     health -= damage;
     if (health <= 0) {
         health = 0;
