@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "../common_src/socket.h"
+#include "../common_src/info_juego.h"
 
 class ServerProtocol {
     private:
@@ -20,7 +21,9 @@ class ServerProtocol {
 
         std::vector<uint8_t> recv_msg(bool &was_closed);
 
-        void send_msg(std::vector<uint8_t> msg, bool &was_closed);
+        void send_msg(std::vector<uint8_t> &msg, bool &was_closed);
+
+        void send_game_data(InfoJuego &game_data, bool &was_closed);
 
         /* Cierra el socket pasado por parámetro */
         int disconnect();

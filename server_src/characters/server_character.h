@@ -13,13 +13,16 @@
 #include "../weapons/server_rf_missile.h"
 #include "../weapons/server_pepper_spray.h"
 #include "../weapons/server_electro_blaster.h"
-
-#define HEALTH 100
-#define POINTS 0
+#include "../../common_src/info_juego.h"
+#include "../../common_src/constantes.h"
 
 class Character {
     private:
         int player_id;
+
+        EstadosPlayer status;
+
+        TipoArma weapon_type = TipoArma::Blaster;
 
         uint8_t health;
 
@@ -44,6 +47,8 @@ class Character {
     public:
         Character() {};
 
+        InfoPlayer set_data(int id);
+
         int get_id();
 
         uint8_t left_side(); // Devuelve x_pos - hitbox_x
@@ -59,6 +64,8 @@ class Character {
         bool is_frozen();
 
         bool is_intoxicated();
+
+        void do_nothing();
 
         void move(uint8_t x, uint8_t y);
 

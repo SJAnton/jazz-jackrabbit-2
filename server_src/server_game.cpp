@@ -58,16 +58,23 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
     }
 }
 
-std::map<uint8_t, std::vector<uint8_t>> Game::snapshot(std::shared_ptr<CharacterMap> &ch_map) {
-    std::map<uint8_t, std::vector<uint8_t>> game_data;
-    /*for (auto &it : ch_map) {
-        int character_id = it.first;
-        Character *character = it.second;
-        std::vector<uint8_t> character_data;
+InfoJuego Game::snapshot(std::shared_ptr<CharacterMap> &ch_map) {
+    std::vector<InfoPlayer> players_data;
+    std::vector<InfoEnemigo> enemies_data;
+    std::vector<InfoRecolectable> items_data;
+    std::vector<InfoProyectil> projectile_data;
 
-        // Llenar ch_data
+    for (auto it = ch_map->begin(); it != ch_map->end(); it++) {
+        int character_id = it->first;
+        std::shared_ptr<Character> character = it->second;
 
-        game_data.at(character_id) = character_data;
-    }*/
+        InfoPlayer player_data = character->set_data(character_id);
+        players_data.push_back(player_data);
+    }
+    InfoJuego game_data(players_data, enemies_data, items_data, projectile_data);
     return game_data;
+}
+
+void Game::send_snapshot(InfoJuego &game_data, std::shared_ptr<ServerQueueList> &sndr_qs) {
+    sndr_qs->push_to_all_queues(game_data);
 }

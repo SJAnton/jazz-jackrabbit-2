@@ -18,6 +18,8 @@ class PlayerJazz : public Character {
 
         uint8_t health;
 
+        uint8_t full_health;
+
         Weapon weapon;
 
         uint8_t points;

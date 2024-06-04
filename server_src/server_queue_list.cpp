@@ -2,19 +2,19 @@
 
 #include <iostream>
 
-void ServerQueueList::push_back(Queue<uint8_t> *queue) {
+void ServerQueueList::push_back(Queue<InfoJuego> *queue) {
     std::unique_lock<std::mutex> lock(m);
     list.push_back(queue);
 }
 
-void ServerQueueList::push_to_all_queues(uint8_t value) {
+void ServerQueueList::push_to_all_queues(InfoJuego data) {
     std::unique_lock<std::mutex> lock(m);
-    for (Queue<uint8_t> *queue : list) {
-        queue->try_push(value);
+    for (Queue<InfoJuego> *queue : list) {
+        queue->try_push(data);
     }
 }
 
-void ServerQueueList::remove(Queue<uint8_t> *queue) {
+void ServerQueueList::remove(Queue<InfoJuego> *queue) {
     std::unique_lock<std::mutex> lock(m);
     list.remove(queue);
 }
@@ -24,10 +24,10 @@ int ServerQueueList::size() {
     return list.size();
 }
 
-std::list<Queue<uint8_t>*>::iterator ServerQueueList::begin() {
+std::list<Queue<InfoJuego>*>::iterator ServerQueueList::begin() {
     return list.begin();
 }
 
-std::list<Queue<uint8_t>*>::iterator ServerQueueList::end() {
+std::list<Queue<InfoJuego>*>::iterator ServerQueueList::end() {
     return list.end();
 }

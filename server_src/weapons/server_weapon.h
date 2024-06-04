@@ -25,5 +25,7 @@ class Weapon {
         void shoot();
 
         uint8_t get_id();
+
+        uint8_t get_ammo();
 };
 #endif

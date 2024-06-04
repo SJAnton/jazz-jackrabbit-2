@@ -32,12 +32,16 @@ std::vector<uint8_t> ServerProtocol::recv_msg(bool &was_closed) {
     return data;
 }
 
-void ServerProtocol::send_msg(std::vector<uint8_t> msg, bool &was_closed) {
+void ServerProtocol::send_msg(std::vector<uint8_t> &msg, bool &was_closed) {
     int size = msg.size();
     for (int i = 0; i < size; i++) {
         uint8_t byte = msg[i];
         sk.sendall(&byte, sizeof(byte), &was_closed);
     }
+}
+
+void ServerProtocol::send_game_data(InfoJuego &game_data, bool &was_closed) {
+    
 }
 
 int ServerProtocol::disconnect() {

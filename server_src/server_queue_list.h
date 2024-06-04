@@ -5,27 +5,27 @@
 #include <mutex>
 
 #include "server_queue.h"
+#include "../common_src/info_juego.h"
 
 class ServerQueueList {
     private:
-        std::list<Queue<uint8_t>*> list;
+        std::list<Queue<InfoJuego>*> list;
 
         std::mutex m;
 
     public:
         ServerQueueList() {}
 
-        void push_back(Queue<uint8_t> *queue);
+        void push_back(Queue<InfoJuego> *queue);
 
-        /* Inserta un valor uint8_t en todas las queues */
-        void push_to_all_queues(uint8_t value);
+        void push_to_all_queues(InfoJuego data);
 
-        void remove(Queue<uint8_t> *queue);
+        void remove(Queue<InfoJuego> *queue);
 
         int size();
 
-        std::list<Queue<uint8_t>*>::iterator begin();
+        std::list<Queue<InfoJuego>*>::iterator begin();
 
-        std::list<Queue<uint8_t>*>::iterator end();
+        std::list<Queue<InfoJuego>*>::iterator end();
 };
 #endif

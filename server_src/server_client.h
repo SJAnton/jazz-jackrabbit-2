@@ -11,6 +11,7 @@
 #include "server_gameloop_list.h"
 #include "../common_src/socket.h"
 #include "../common_src/liberror.h"
+#include "../common_src/info_juego.h"
 #include "characters/server_player_jazz.h"
 #include "characters/server_player_lori.h"
 #include "characters/server_player_spaz.h"
@@ -41,7 +42,7 @@ class Client : public Thread {
         ServerProtocol protocol;
 
         // ESTA DATA LA CREAMOS EN EL CONSTRUCTOR
-        Queue<uint8_t> sndr_q;
+        Queue<InfoJuego> sndr_q;
 
         shared_ptr<CharacterMap> ch_map;
 
