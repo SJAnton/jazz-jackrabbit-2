@@ -53,13 +53,13 @@ std::vector<uint8_t> ServerProtocol::encodePlayer(const InfoPlayer &infoPlayer) 
     bytes.push_back(x1);
     bytes.push_back(x2);
     bytes.push_back(y1);
-    bytes.push_back(y1);
+    bytes.push_back(y2);
     
     bytes.push_back(encodeEstadoPlayer(infoPlayer.estado));
     bytes.push_back(infoPlayer.vida);
     bytes.push_back(infoPlayer.puntos);
     bytes.push_back(ARMA_COMUN);
-    bytes.push_back(infoPlayer.muncion);
+    bytes.push_back(infoPlayer.municion);
 
     return bytes;
 }
@@ -78,7 +78,7 @@ std::vector<uint8_t> ServerProtocol::encodeEnemy(const InfoEnemigo &infoEnemigo)
     bytes.push_back(x1);
     bytes.push_back(x2);
     bytes.push_back(y1);
-    bytes.push_back(y1);
+    bytes.push_back(y2);
 
     bytes.push_back(encodeEstadoEnemy(infoEnemigo.estado));
 
@@ -98,7 +98,7 @@ std::vector<uint8_t> ServerProtocol::encodeRecolectable(const InfoRecolectable &
     bytes.push_back(x1);
     bytes.push_back(x2);
     bytes.push_back(y1);
-    bytes.push_back(y1);
+    bytes.push_back(y2);
 
     return bytes;
 }
@@ -115,7 +115,7 @@ std::vector<uint8_t> ServerProtocol::encodeProyectil(const InfoProyectil &infoPr
     bytes.push_back(x1);
     bytes.push_back(x2);
     bytes.push_back(y1);
-    bytes.push_back(y1);
+    bytes.push_back(y2);
     
     bytes.push_back(encodeDireccion(infoProyectil.direccion));
 

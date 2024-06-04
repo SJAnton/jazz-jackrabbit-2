@@ -18,6 +18,7 @@ file(GLOB COMMON_SOURCES
 
 # Client source files
 file(GLOB CLIENT_SOURCES
+    "client_src/*.cpp"
     "client_src/client_main.cpp"
     "client_src/client_player.cpp"
     "client_src/client_protocol.cpp"

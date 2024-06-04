@@ -17,11 +17,14 @@ public:
     int vida;
     int puntos;
     TipoArma arma;
-    int muncion;
+    int municion;
 
     InfoPlayer(){};
     InfoPlayer(int id, int x, int y, EstadosPlayer e, int vida, int pts, TipoArma arma, int municion)
-        : id(id), pos_x(x), pos_y(y), estado(e), vida(vida), puntos(pts), arma(arma), muncion(municion){}
+        : id(id), pos_x(x), pos_y(y), estado(e), vida(vida), puntos(pts), arma(arma), municion(municion){}
+    InfoPlayer(const InfoPlayer& other) 
+        : id(other.id), pos_x(other.pos_x), pos_y(other.pos_y), estado(other.estado), 
+          vida(other.vida), puntos(other.puntos), arma(other.arma), municion(other.municion) {}
 
     
 };

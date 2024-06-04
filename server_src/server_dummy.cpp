@@ -14,6 +14,7 @@
 int velocidad_x = 4;
 
 void caminar(Direcciones direccion, InfoPlayer &infoPlayer) {
+	std::cout << "posy " << infoPlayer.pos_y << std::endl;
 	infoPlayer.estado = EstadosPlayer::Walking;
 	if (direccion == Left) {
 		std::cout << "caminar a la izquierda" << std::endl;
@@ -76,7 +77,9 @@ int main(int argc, char const *argv[])
 	InfoPlayer infoPlayer ;
 	//inicializo por defecto
 	infoPlayers.emplace_back(1, 0, 64, EstadosPlayer::Inactive, 10, 0, TipoArma::Comun, 255);
-
+	std::cout << "posy " << infoPlayers[0].pos_y << std::endl;
+	
+	
 	bool cerrado = false;
 	std::vector<uint8_t> buffer(3);
 
@@ -106,17 +109,12 @@ int main(int argc, char const *argv[])
 			//Excepcion
 			break;
 		}
+		
 		InfoJuego info(infoPlayers, infoEnemigos, infoItems, infoProyectiles);
 
 		//protocolo.enviarAlCliente(infoJuego);
 		auto bytes = protocolo.encodeInfoJuego(info);
-		std::cout << "posy " << info.players[0].pos_y << std::endl;
-		/*std::cout << "Mensaje enviado: ";
-		for (uint8_t byte : bytes) {
-			std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << " ";
-		}
-		std::cout << std::endl;
-		*/
+		
 		clientSocket.sendall(bytes.data(),bytes.size(),&cerrado);
 
 	}
