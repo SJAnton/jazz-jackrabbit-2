@@ -3,12 +3,21 @@
 
 //#include "info_juego.h"
 
-enum EstadosPlayer {Inactivo, Caminando, Corriendo, Saltando, Cayendo, Disparando,
-                    AtaqueEspecial, IntoxicadoIdle, IntoxicadoWalk, Impactado, Muriendo, Muerto, Reviviendo};
+enum class EstadosPlayer {Inactive, Walking, Running, Jumping, Falling, Shooting,
+    SpecialAttack, IntoxicatedIdle, IntoxicatedWalk, Damaged, Dying, Dead, Reviving
+};
 
-enum AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
-enum EstadosEnemy{};
 enum TipoPlayer {Jazz, Spaz, Lori};
+
+enum class AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
+
+enum class EstadosEnemy{Idle, Move, Attack, Damaged, Death};
+enum TipoEnemy{Rat, Bat, Lizard};
+
+enum TipoRecolectable {Moneda, Diamante, Zanahoria, Municion};
+
+enum class TipoArma {Comun};
+
 enum Direcciones {Left, Right};
 
 class ComandoCliente {

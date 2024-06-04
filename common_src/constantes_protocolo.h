@@ -2,6 +2,12 @@
 #define CONSTANTES_PROTOCOLO_H
 
 #define SIZE_CLIENT_MSG 3
+
+#define LENGTH_PLAYER_INFO 10
+#define LENGTH_ENEMY_INFO 6
+#define LENGTH_ITEMS_INFO 5
+#define LENGTH_PROYECTIL_INFO 5
+
 //Comandos o acciones que puede enviar un Cliente
 #define ACTION_IDLE 0x11
 #define ACTION_WALK 0x12
@@ -31,8 +37,6 @@
 */
 
 
-
-
 //Estados posibles de un Player
 #define STATE_IDLE 0x01
 #define STATE_WALK 0x02
@@ -48,19 +52,16 @@
 #define STATE_DEAD 0x0C
 #define STATE_REVIVE 0x0D
 
+// Enemigos
+#define ENEMY_RAT 0xB1
+#define ENEMY_BAT 0xB2
+#define ENEMY_LIZARD 0xB3
 
-/* El server devuelve a todos los clientes:
-    2 bytes con la cantidad de bytes del mensaje.
-    1 byte con id del Player 1
-        2 bytes con la posion en x
-        2 bytes con la poscion en y
-        1 byte con el estado actual
-        1 byte con la vida
-        2 bytes con los puntos
-*/
-//Ejemplo
-//0009 A1 0002 00ff 01 02 0A 0000 
+#define ENEMY_STATE_IDLE 0X01
+#define ENEMY_STATE_MOVE 0X02
+#define ENEMY_STATE_ATTACK 0X03
+#define ENEMY_STATE_DAMAGED 0X04
+#define ENEMY_STATE_DEATH 0X05
 
-//size=9 id=Player1 x=2 y=255 Estado=Walk vida=10 puntos=0 
 
 #endif
