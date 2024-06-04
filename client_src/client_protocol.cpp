@@ -203,7 +203,7 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 
 void ClientProtocol::enviarComandoAlServer(ComandoCliente comando, bool*was_closed) {
 	std::vector<uint8_t> mensaje;
-	mensaje.push_back(PLAYER_1); // necesito saber mi ID de cliente
+	mensaje.push_back(id); // necesito saber mi ID de cliente
 	mensaje.push_back(codeAccion(comando.accion));
 	mensaje.push_back(codeDireccion(comando.direccion));
 
@@ -225,7 +225,7 @@ InfoJuego ClientProtocol::recibirInformacionDelServer(bool *was_closed) {
 	r = socket.recvall(bytes.data(), size, was_closed);
 	std::cout << "Recibí " << r << " bytes." << std::endl;
 	if (*was_closed)
-		std::cout << "socket cerrado" << std::endl;
+		return InfoJuego();
 	std::cout << "Mensaje recibido: ";
 		for (uint8_t byte : bytes) {
 			std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << " ";
@@ -234,3 +234,37 @@ InfoJuego ClientProtocol::recibirInformacionDelServer(bool *was_closed) {
 	InfoJuego infoJuego = decodificarMensajeDelServer(bytes);
 	return infoJuego;
 }
+
+void ClientProtocol::close() {
+	socket.shutdown(2);
+	socket.close();
+}
+
+#define SUCCESS 0
+#define SHUTCODE 2
+
+
+ uint8_t ClientProtocol::get_msg_size(bool &was_closed) {
+        uint8_t size;
+        socket.recvall(&size, sizeof(size), &was_closed);
+        return size;
+    }
+
+    int ClientProtocol::send_msg(std::vector<uint8_t> data, bool &was_closed) {
+        int size = data.size();
+        for (int i = 0; i < size; i++) {
+            socket.sendall(&data[i], sizeof(data[i]), &was_closed);
+        }
+        return SUCCESS;
+    }
+
+ std::vector<uint8_t> ClientProtocol::recv_msg(int size, bool &was_closed) {
+        std::vector<uint8_t> data;
+        uint8_t byte;
+        for (int i = 0; i < size; i++) {
+            socket.recvall(&byte, sizeof(byte), &was_closed);
+            data.push_back(byte);
+        }
+        return data;
+    }
+

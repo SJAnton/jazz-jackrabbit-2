@@ -16,4 +16,5 @@ void ClientSender::run() {
     	}
     }
 	std::cout << "me fui del sender..." << std::endl;
+	protocolo.close();
 }

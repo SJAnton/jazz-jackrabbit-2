@@ -12,6 +12,7 @@
 class ClientProtocol{
 	private:
 		Socket socket;
+		
 
 	private:
 		uint8_t codeAccion(AccionesPlayer accion);
@@ -37,7 +38,13 @@ class ClientProtocol{
 		void enviarComandoAlServer(ComandoCliente comando, bool*was_closed);
 		
 		InfoJuego recibirInformacionDelServer(bool *was_closed);
-		
+
+		void close();
+		uint8_t get_msg_size(bool &was_closed);
+		int send_msg(std::vector<uint8_t> data, bool &was_closed);
+		std::vector<uint8_t> recv_msg(int size, bool &was_closed);
+
+		uint8_t id=0;
 };
 
 #endif
