@@ -26,8 +26,6 @@ int main(int argc, char* argv[]) {
     
     ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
     InterfazGrafica interfaz(cliente.queueReceptora);
-    EventHandler eventHandler(interfaz, cliente);
-    eventHandler.start();
 
     while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza las diferentes pantallas
     {
@@ -36,6 +34,8 @@ int main(int argc, char* argv[]) {
     }
     //ClientRenderer* renderer = new ClientRenderer(interfaz);
     //renderer->start();
+    EventHandler eventHandler(interfaz, cliente);
+    eventHandler.start();
     
     while (interfaz.estaAbierta())
     {
