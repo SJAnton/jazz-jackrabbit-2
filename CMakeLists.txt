@@ -38,7 +38,7 @@ file(GLOB CLIENT_SOURCES
 
 # Server source files
 file(GLOB SERVER_SOURCES 
-    "server_src/*.cpp"
+    "_server_src/*.cpp"
 )
 
 
