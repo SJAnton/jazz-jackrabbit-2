@@ -1,3 +1,6 @@
 [submodule "server_src/yaml-cpp"]
 	path = server_src/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp.git
+[submodule "server_src/build/yaml-cpp"]
+	path = server_src/build/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp.git
