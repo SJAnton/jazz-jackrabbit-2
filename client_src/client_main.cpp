@@ -26,16 +26,17 @@ int main(int argc, char* argv[]) {
     
     ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
     InterfazGrafica interfaz(cliente.queueReceptora);
-    EventHandler eventHandler(interfaz, cliente);
-    eventHandler.start();
 
-    /*while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza las diferentes pantallas
+    while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza las diferentes pantallas
     {
         interfaz.renderizarActual();
         interfaz.manejarEventosActual();
     }
-    */
-    //interfaz.run()
+    //ClientRenderer* renderer = new ClientRenderer(interfaz);
+    //renderer->start();
+    EventHandler eventHandler(interfaz, cliente);
+    eventHandler.start();
+    
     while (interfaz.estaAbierta())
     {
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
@@ -53,20 +54,7 @@ int main(int argc, char* argv[]) {
     
     //renderer->join();
     std::cout << "fin" << std::endl;
-
-    //esperar confirmacion para iniciar (esperar a que se conecten los n clientes).
-
-
-    //inicia bucle (hasta que el contador llegue a 0)
-        //leer de entrada estandar (qué teclas se presionan)
-        //recibir informacion de los estados y posiciones de todos los elementos
-        //actualizar estados y posiciones de todas las imagenes. (si no recibio nada, mantienen los que tenian)
-        //si mantuvieron el estado, avanzar al siguiente frame de cada animacion (segun corresponda)
-        //pintar
-
-        //hacer un sleep de ? milisegundos
-        //contador--
-
+    
     //finalmente
     //mostrar tabla final y ganador.
     return 0;
