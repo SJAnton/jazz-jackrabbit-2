@@ -8,15 +8,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Flags de compilación
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wno-unused-private-field")
 
-add_subdirectory(yaml-cpp)
+include(FetchContent)
 
-include_directories(yaml-cpp/include)
+FetchContent_Declare(yaml-cpp
+  GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
+  GIT_TAG yaml-cpp-0.7.0)
+
+FetchContent_GetProperties(yaml-cpp)
+
+if(NOT yaml-cpp_POPULATED)
+  message(STATUS "Fetching yaml-cpp...")
+  FetchContent_Populate(yaml-cpp)
+  add_subdirectory(${yaml-cpp_SOURCE_DIR} ${yaml-cpp_BINARY_DIR})
+endif()
 
 # cmake . genera el makefile
 # make -f Makefile ejecuta el makefile
 set(SOURCE_FILES
     # Archivos common
-    "../../common_src/*.cpp"
+    ../../common_src/info_juego.cpp
     ../../common_src/liberror.cpp
     ../../common_src/resolver.cpp
     ../../common_src/resolvererror.cpp
@@ -64,4 +74,4 @@ set(SOURCE_FILES
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
-target_link_libraries(${PROJECT_NAME} yaml-cpp)
+target_link_libraries(${PROJECT_NAME} PUBLIC yaml-cpp::yaml-cpp)

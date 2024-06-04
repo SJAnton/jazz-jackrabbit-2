@@ -10,6 +10,8 @@ void ServerGameloop::run() {
         
         InfoJuego game_data = game.snapshot(character_map);
         game.send_snapshot(game_data, sndr_qs);
+
+        std::this_thread::sleep_for(std::chrono::milliseconds());
     }
     wc = true;
 }

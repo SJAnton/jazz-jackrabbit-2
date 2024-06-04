@@ -18,6 +18,7 @@ public:
     int id;
     int pos_x;
     int pos_y;
+    int player_id;
     EstadosPlayer estado;
     int vida;
     int puntos;
@@ -25,12 +26,10 @@ public:
     int muncion;
 
     InfoPlayer(){};
-    InfoPlayer(int id, int x, int y, EstadosPlayer e, int vida, int pts, TipoArma arma, int municion)
-        : id(id), pos_x(x), pos_y(y), estado(e), vida(vida), puntos(pts), arma(arma), muncion(municion){}
-
-    
+    InfoPlayer(int id, int x, int y, int player_id, EstadosPlayer e, int vida,
+                int pts, TipoArma arma, int municion) : id(id), pos_x(x), pos_y(y),
+                    estado(e), vida(vida), puntos(pts), arma(arma), muncion(municion) {}
 };
-
 
 class InfoEnemigo {
 public:
@@ -40,7 +39,7 @@ public:
     EstadosEnemy estado;
 
     InfoEnemigo(TipoEnemy tipo, int x, int y,  EstadosEnemy estado)
-        : pos_x(x), pos_y(y), tipo(tipo), estado(estado) {}
+        : tipo(tipo), pos_x(x), pos_y(y), estado(estado) {}
 };
 
 //Clase que contiene la info de los objetos recolectables (monedas, zanahorias, etc)
@@ -79,13 +78,13 @@ public:
               const std::vector<InfoEnemigo>& enemigos,
               const std::vector<InfoRecolectable>& recolectables,
               const std::vector<InfoProyectil>& proyectiles)
-        : players(players), recolectables(recolectables), enemigos(enemigos), proyectiles(proyectiles) {}
+        : players(players), enemigos(enemigos), recolectables(recolectables), proyectiles(proyectiles) {}
 
     InfoJuego(std::vector<InfoPlayer>&& players,
               std::vector<InfoEnemigo>&& enemigos,
               std::vector<InfoRecolectable>&& recolectables,
               std::vector<InfoProyectil>&& proyectiles)
-        : players(std::move(players)), recolectables(std::move(recolectables)), enemigos(std::move(enemigos)), proyectiles(std::move(proyectiles)) {}
+        : players(std::move(players)), enemigos(std::move(enemigos)), recolectables(std::move(recolectables)), proyectiles(std::move(proyectiles)) {}
     
     int getLengthData() const{
         return ( 4 +

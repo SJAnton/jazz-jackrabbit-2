@@ -51,6 +51,10 @@ class Character {
 
         int get_id();
 
+        uint8_t get_x_pos();
+
+        uint8_t get_y_pos();
+
         uint8_t left_side(); // Devuelve x_pos - hitbox_x
 
         uint8_t right_side(); // Devuelve x_pos + hitbox_x

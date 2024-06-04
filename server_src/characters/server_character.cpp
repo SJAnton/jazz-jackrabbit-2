@@ -19,7 +19,8 @@
 #define TOASTER_ID 0x08
 
 InfoPlayer Character::set_data(int id) {
-    InfoPlayer data(id, x_pos, y_pos, status, health, points, weapon_type, weapon.get_ammo());
+    InfoPlayer data(id, x_pos, y_pos, player_id, status, health,
+                    points, weapon_type, weapon.get_ammo());
     if (!alive) {
         status = EstadosPlayer::Dead;
     }
@@ -28,6 +29,14 @@ InfoPlayer Character::set_data(int id) {
 
 int Character::get_id() {
     return player_id;
+}
+
+uint8_t Character::get_x_pos() {
+    return x_pos;
+}
+
+uint8_t Character::get_y_pos() {
+    return y_pos;
 }
 
 uint8_t Character::left_side() {
@@ -182,7 +191,7 @@ void Character::set_intoxicated_status(bool status) {
 }
 
 void Character::take_damage(uint8_t &damage) {
-    status = EstadosPlayer::Hit;
+    status = EstadosPlayer::Damaged;
     health -= damage;
     if (health <= 0) {
         health = 0;
