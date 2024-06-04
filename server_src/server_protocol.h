@@ -8,49 +8,33 @@
 
 #include "../common_src/constantes.h"
 #include "../common_src/constantes_protocolo.h"
+#include "../common_src/info_juego.h"
 
-class ServerProtocol
-{
+class ServerProtocol {
+
+
 private:
+    uint8_t encodeEstadoPlayer(EstadosPlayer estado);
+    uint8_t encodeTipoEnemy(TipoEnemy enemigo);
+    uint8_t encodeEstadoEnemy(EstadosEnemy estado);
+    uint8_t encodeTipoRecolectable(TipoRecolectable tipo);
+    uint8_t encodeDireccion(Direcciones direccion);
+
 public:
-    AccionesPlayer decodeAction(uint8_t byte) {
-        switch (byte)
-        {
-        case ACTION_IDLE: return AccionesPlayer::Idle;
-        case ACTION_WALK: return AccionesPlayer::Walk;
-        case ACTION_RUN: return AccionesPlayer::Run;
-        case ACTION_JUMP: return AccionesPlayer::Jump;
-        case ACTION_SHOOT: return AccionesPlayer::Shoot;
-        case ACTION_SPECIAL_ATACK: return AccionesPlayer::SpecialAttack;
-        default:
-            //Excepcion
-            return AccionesPlayer::Idle;
-        }
-    }
-    Direcciones decodeDireccion(uint8_t byte) {
-        switch (byte)
-        {
-        case LEFT: return Direcciones::Left;
-        case RIGHT: return Direcciones::Right;
-        default:
-            //Excepcion
-            return Direcciones::Right;
-        }
-    }
-    uint8_t codeEstado(EstadosPlayer estado) {
-        switch (estado)
-        {
-        case Inactivo: return STATE_IDLE;
-        case Caminando: return STATE_WALK;
-        case Corriendo: return STATE_RUN;
-        case Saltando: return STATE_JUMP;
-        case Disparando: return STATE_SHOOT;
-        case AtaqueEspecial: return STATE_SPECIAL_ATTACK;
-        default: 
-            return STATE_IDLE;
-        }
-    }
+    AccionesPlayer decodeAction(uint8_t byte);
+    Direcciones decodeDireccion(uint8_t byte);
+
     
+
+    std::vector<uint8_t> encodeInfoJuego(const InfoJuego &info);
+    
+    std::vector<uint8_t> encodePlayer(const InfoPlayer &InfoPlayer);
+    std::vector<uint8_t> encodeEnemy(const InfoEnemigo &);
+    std::vector<uint8_t> encodeRecolectable(const InfoRecolectable &);
+    std::vector<uint8_t> encodeProyectil(const InfoProyectil &);
+
+
+
 };
 
 #endif
