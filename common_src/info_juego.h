@@ -74,18 +74,20 @@ public:
     // Constructores
     InfoJuego() {};
 
-    InfoJuego(const std::vector<InfoPlayer>& players,
+     InfoJuego(const std::vector<InfoPlayer>& players,
               const std::vector<InfoEnemigo>& enemigos,
               const std::vector<InfoRecolectable>& recolectables,
               const std::vector<InfoProyectil>& proyectiles)
         : players(players), enemigos(enemigos), recolectables(recolectables), proyectiles(proyectiles) {}
 
+    // Constructor parametrizado usando rvalue references
     InfoJuego(std::vector<InfoPlayer>&& players,
               std::vector<InfoEnemigo>&& enemigos,
               std::vector<InfoRecolectable>&& recolectables,
               std::vector<InfoProyectil>&& proyectiles)
-        : players(std::move(players)), enemigos(std::move(enemigos)), recolectables(std::move(recolectables)), proyectiles(std::move(proyectiles)) {}
-    
+        : players(std::move(players)), enemigos(std::move(enemigos)), 
+          recolectables(std::move(recolectables)), proyectiles(std::move(proyectiles)) {}
+
     int getLengthData() const{
         return ( 4 +
             players.size() * LENGTH_PLAYER_INFO + 
