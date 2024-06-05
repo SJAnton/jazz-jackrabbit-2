@@ -17,8 +17,12 @@ class Game {
 
         void execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<CharacterMap> &ch_map);
 
+        void tick();
+
         InfoJuego snapshot(std::shared_ptr<CharacterMap> &ch_map);
 
         void send_snapshot(InfoJuego &game_data, std::shared_ptr<ServerQueueList> &sndr_qs);
+
+        void send_closed_game_message(std::shared_ptr<ServerQueueList> &sndr_qs);
 };
 #endif

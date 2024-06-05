@@ -13,7 +13,6 @@ void ServerAcceptor::run() {
             clients.push_back(client);
 
             reap_dead_clients();
-            reap_dead_gameloops();
             id++;
         } catch (LibError &e) {
 
@@ -32,20 +31,6 @@ void ServerAcceptor::reap_dead_clients() {
         }
         return false;
     });
-}
-
-void ServerAcceptor::reap_dead_gameloops() {
-    for (auto it = gameloops.begin(); it != gameloops.end();) {
-        ServerGameloop *gameloop = *it;
-        if (gameloop->is_dead()) {
-            gameloop->kill();
-            gameloop->join();
-            it = gameloops.erase(it); // Devuelve la siguiente posición
-            delete gameloop;
-        } else {
-            it++;
-        }
-    }
 }
 
 void ServerAcceptor::kill_all() {

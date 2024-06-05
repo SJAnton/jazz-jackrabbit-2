@@ -58,6 +58,10 @@ class Client : public Thread {
 
         bool wc = false;
 
+        bool gmlp_wc = false;
+
+        void reap_dead_gameloops();
+
         vector<uint8_t> get_games();
 
         void select_game(uint8_t game);

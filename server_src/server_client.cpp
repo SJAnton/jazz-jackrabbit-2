@@ -16,6 +16,8 @@
 #define SHUTCODE 2
 
 void Client::run() {
+    reap_dead_gameloops();
+
     vector<uint8_t> msg = get_games();
     //msg.push_back(escenarios);
 
@@ -29,6 +31,20 @@ void Client::run() {
 
     select_character(init_data[CHAR_POS], init_data[GAME_POS]);
     select_game(init_data[GAME_POS]);
+}
+
+void Client::reap_dead_gameloops() {
+    for (auto it = gameloops.begin(); it != gameloops.end();) {
+        ServerGameloop *gameloop = *it;
+        if (gameloop->is_dead()) {
+            gameloop->kill();
+            gameloop->join();
+            it = gameloops.erase(it); // Devuelve la siguiente posición
+            delete gameloop;
+        } else {
+            it++;
+        }
+    }
 }
 
 vector<uint8_t> Client::get_games() {
@@ -52,7 +68,7 @@ void Client::select_game(uint8_t game) {
         int current_gmlp_id = gmlp_id.load();
 
         ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor, monitors,
-                                                        gameloops_q, current_gmlp_id);
+                                                        gameloops_q, current_gmlp_id, wc);
         
         gameloops_q[current_gmlp_id] = recv_q;
         monitors[current_gmlp_id] = monitor;

@@ -25,7 +25,7 @@ class ServerAcceptor : public Thread {
 
         bool &wc;
 
-        atomic<int> gmlp_id = 1; // TODO: corregir
+        atomic<int> gmlp_id = 1;
 
         list<Client*> clients;
 

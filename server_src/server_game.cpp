@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-#define MSG_SIZE 3
-
 #define ID_POS 0
 #define ACTION_POS 1
 #define DIRECTION_POS 2
@@ -13,6 +11,8 @@
 #define ACTION_JUMP 0x14
 #define ACTION_SHOOT 0x15
 #define ACTION_SPECIAL_ATTACK 0x16
+
+#define CLOSED_GAME_MSG 0xFF
 
 std::vector<uint8_t> Game::get_actions(std::shared_ptr<Queue<uint8_t>> &q) {
     std::vector<uint8_t> data;
@@ -31,11 +31,9 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
     uint8_t action = actions[ACTION_POS];
     uint8_t direction = actions[DIRECTION_POS];
 
-    //std::cout << "ID del player: " << (int)player_id << std::endl;
-    //std::cout << "Acción: " << (int)action << std::endl;
-    //std::cout << "Dirección: " << (int)direction << std::endl;
-
     std::shared_ptr<Character> ch = ch_map->at(player_id);
+
+    //std::cout << (int)ch->get_x_pos() << std::endl;
 
     switch (action) {
         case ACTION_WALK:
@@ -56,6 +54,11 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
         default:
             break;
     }
+    //std::cout << (int)ch->get_x_pos() << std::endl;
+}
+
+void Game::tick() {
+
 }
 
 InfoJuego Game::snapshot(std::shared_ptr<CharacterMap> &ch_map) {

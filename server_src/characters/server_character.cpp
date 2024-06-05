@@ -96,9 +96,11 @@ void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
                     status = EstadosPlayer::Walking;
                 }
                 x_pos--;
+                break;
             } else {
                 status = EstadosPlayer::Running;
                 x_pos -= RUN_SPEED;
+                break;
             }
         case RIGHT:
             if (movement == WALK || (movement == RUN && intoxicated)) {
@@ -108,9 +110,11 @@ void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
                     status = EstadosPlayer::Walking;
                 }
                 x_pos++;
+                break;
             } else {
                 status = EstadosPlayer::Running;
                 x_pos += RUN_SPEED;
+                break;
             }
         default:
             return;
