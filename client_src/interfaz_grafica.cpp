@@ -5,6 +5,7 @@
 #include "spritesManager.h"
 #include "characters.h"
 
+
 SDL_Renderer* InterfazGrafica::renderer = nullptr;
 
 //constructor
@@ -93,9 +94,14 @@ void InterfazGrafica::manejarEventosSeleccionPartida(){
     }else if (e.type == SDL_MOUSEBUTTONDOWN) {
         int mouseX, mouseY;
         SDL_GetMouseState(&mouseX, &mouseY);
-        if (pointInsideRect(mouseX, mouseY, {450, 100, 384, 64})) { //Chequea si se clickeo en la zona del boton
-            std::cout << "Comienza el juego!" << std::endl;
-            menu_abierto = false;
+
+        for (auto partida : partidas) { //Recorro las partidas
+            if (partida.clicked(mouseX, mouseY)) { //Chequea si se clickeo en la zona del boton
+                std::cout << "Comienza el juego!" << std::endl;
+                //Mandar mensaje al server con el ID de la partida
+                menu_abierto = false;
+                break;
+            }
         }
     }
 }
@@ -193,10 +199,17 @@ void InterfazGrafica::renderizarSeleccionPartida(){
     SDL_Texture* fontTexture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_FreeSurface(surface);
 
-    renderText(renderer, fontTexture, fontMap.charMap, "PARTIDA 1", 100, 100, 0.5f);
-    renderText(renderer, fontTexture, fontMap.charMap, "PARTIDA 2", 100, 200, 0.5f);
+    //renderText(renderer, fontTexture, fontMap.charMap, "PARTIDA 1", 100, 100, 0.5f);
+    int id1 = 1;
+    ButtonPartida boton1 = ButtonPartida(id1);
+    boton1.renderizar(renderer, fontTexture, fontMap);
+    partidas.push_back(boton1);
 
-    renderText(renderer, fontTexture, fontMap.charMap, "UNIRSE", 450, 100, 0.5f);
+    //renderText(renderer, fontTexture, fontMap.charMap, "PARTIDA 2", 100, 200, 0.5f);
+    int id2 = 2;
+    ButtonPartida boton2 = ButtonPartida(id2);
+    boton2.renderizar(renderer, fontTexture, fontMap);
+    partidas.push_back(boton2);
 
 
     

@@ -13,7 +13,7 @@
 
 //player Lori
 #define PATH_LORI_DAMAGED "../sprites/Players/Lori/Damaged (56x56)x11.png"
-#define PATH_LORI_DEATH "../sprites/Players/Lori/Death (60x60)x03.png"
+//#define PATH_LORI_DEATH "../sprites/Players/Lori/Death (60x60)x03.png"
 #define PATH_LORI_DEATH "../sprites/Players/Lori/Dying (60x60)x20.png"
 #define PATH_LORI_FALL "../sprites/Players/Lori/Fall (56x56)x04.png"
 #define PATH_LORI_IDLE "../sprites/Players/Lori/Idle (56x56)x08.png"

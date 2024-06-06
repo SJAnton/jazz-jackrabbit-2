@@ -14,6 +14,7 @@
 #include "spritesheet.h"
 #include "client_player.h"
 #include "../common_src/info_juego.h"
+#include "button_partida.h"
 
 #define ANCHO_WINDOW 750 // representa pixeles
 #define ALTO_WINDOW 500 // representa pixeles
@@ -30,6 +31,8 @@ private:
 
     InfoJuego infoJuego;
     Queue<InfoJuego> &queueReceptora;
+
+    std::list<ButtonPartida> partidas;
 
 public:
     static SDL_Renderer* renderer; //para poder accederlo desde otras clases
