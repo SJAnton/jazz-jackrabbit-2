@@ -10,7 +10,6 @@ void ServerReceiver::run() {
                 q->push(action);
             } else {
                 // Desconexión del cliente
-                std::cout << "fin receiver" << std::endl;
                 wc = true;
                 break;
             }

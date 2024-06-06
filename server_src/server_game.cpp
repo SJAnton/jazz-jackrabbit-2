@@ -12,7 +12,7 @@
 #define ACTION_SHOOT 0x15
 #define ACTION_SPECIAL_ATTACK 0x16
 
-#define CLOSED_GAME_MSG 0xFF
+#define CLOSED_GAME_BYTE 0xFF
 
 std::vector<uint8_t> Game::get_actions(std::shared_ptr<Queue<uint8_t>> &q) {
     std::vector<uint8_t> data;
@@ -80,4 +80,8 @@ InfoJuego Game::snapshot(std::shared_ptr<CharacterMap> &ch_map) {
 
 void Game::send_snapshot(InfoJuego &game_data, std::shared_ptr<ServerQueueList> &sndr_qs) {
     sndr_qs->push_to_all_queues(game_data);
+}
+
+void Game::send_closed_game_message(std::shared_ptr<ServerQueueList> &sndr_qs) {
+    sndr_qs->push_to_all_queues(static_cast<uint8_t>(CLOSED_GAME_BYTE));
 }

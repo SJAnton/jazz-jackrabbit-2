@@ -40,9 +40,14 @@ void ServerProtocol::send_msg(std::vector<uint8_t> &msg, bool &was_closed) {
     }
 }
 
-void ServerProtocol::send_game_data(InfoJuego &game_data, bool &was_closed) {
-    std::vector<uint8_t> bytes = encodeInfoJuego(game_data);
-    sk.sendall(bytes.data(),bytes.size(),&was_closed);
+void ServerProtocol::send_game_data(QueueData &game_data, bool &was_closed) {
+    if (std::holds_alternative<uint8_t>(game_data)) {
+        uint8_t byte = std::get<uint8_t>(game_data);
+        sk.sendall(&byte, sizeof(byte), &was_closed);
+    } else {
+        std::vector<uint8_t> bytes = encodeInfoJuego(std::get<InfoJuego>(game_data));
+        sk.sendall(bytes.data(), bytes.size(), &was_closed);
+    }
 }
 
 int ServerProtocol::disconnect() {

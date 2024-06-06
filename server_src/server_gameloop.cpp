@@ -24,6 +24,7 @@ void ServerGameloop::run() {
             std::this_thread::sleep_for(expected_itr_time - itr_time);
         }
     }
+    game.send_closed_game_message(sndr_qs);
 }
 
 bool ServerGameloop::is_dead() {

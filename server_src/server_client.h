@@ -42,7 +42,7 @@ class Client : public Thread {
         ServerProtocol protocol;
 
         // ESTA DATA LA CREAMOS EN EL CONSTRUCTOR
-        Queue<InfoJuego> sndr_q;
+        Queue<QueueData> sndr_q;
 
         shared_ptr<CharacterMap> ch_map;
 

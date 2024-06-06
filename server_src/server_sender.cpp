@@ -2,10 +2,12 @@
 
 #include "server_sender.h"
 
+#define END_BYTE 0xFF
+
 void ServerSender::run() {
     while (!wc) {
         try {
-            InfoJuego data = q.pop();
+            QueueData data = q.pop();
             if (wc) {
                 break;
             }

@@ -11,12 +11,12 @@ class ServerSender : public Thread {
     private:
         ServerProtocol &pr;
 
-        Queue<InfoJuego> &q;
+        Queue<QueueData> &q;
 
         bool &wc;
 
     public:
-        ServerSender(ServerProtocol &protocol, Queue<InfoJuego> &queue, bool &was_closed) :
+        ServerSender(ServerProtocol &protocol, Queue<QueueData> &queue, bool &was_closed) :
                         pr(protocol), q(queue), wc(was_closed) {}
 
         void run() override;
