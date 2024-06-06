@@ -10,3 +10,17 @@
 #define PATH_SPAZ_INTOXICATED_IDLE "../sprites/Players/Spaz/Intoxicated_Idle (56x56)x08.png"
 #define PATH_SPAZ_INTOXICATED_WALK "../sprites/Players/Spaz/Intoxicated_Walk (56x56)x12.png"
 #define PATH_SPAZ_DEATH "../sprites/Players/Spaz/Death (96x96)x26.png"
+
+//player Lori
+#define PATH_LORI_DAMAGED "../sprites/Players/Lori/Damaged (56x56)x11.png"
+#define PATH_LORI_DEATH "../sprites/Players/Lori/Death (60x60)x03.png"
+#define PATH_LORI_DEATH "../sprites/Players/Lori/Dying (60x60)x20.png"
+#define PATH_LORI_FALL "../sprites/Players/Lori/Fall (56x56)x04.png"
+#define PATH_LORI_IDLE "../sprites/Players/Lori/Idle (56x56)x08.png"
+#define PATH_LORI_INTOXICATED_IDLE "../sprites/Players/Lori/Intoxicated_Idle (56x56)12.png"
+#define PATH_LORI_INTOXICATED_WALK "../sprites/Players/Lori/Intoxicated_Walk (56x56)x12.png"
+#define PATH_LORI_JUMP "../sprites/Players/Lori/Jump (56x56)x13.png"
+#define PATH_LORI_RUN "../sprites/Players/Lori/Run (64x56)x08.png"
+#define PATH_LORI_SHOOT "../sprites/Players/Lori/Shoot (56x56)x07.png"
+#define PATH_LORI_SPECIAL "../sprites/Players/Lori/Special_Attack (56x56)x10.png"
+#define PATH_LORI_WALK "../sprites/Players/Lori/Walk (56x56)x08.png"
