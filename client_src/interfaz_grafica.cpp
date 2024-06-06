@@ -109,9 +109,12 @@ void InterfazGrafica::recibirInformacion(){
 void InterfazGrafica::update(int it) {
     iteracion += it;
     
-    if (queueReceptora.try_pop(infoJuego)) {//Debe ser bloqueante?
-        
+    /*if (queueReceptora.try_pop(infoJuego)) {//Debe ser bloqueante?
+        if (infoJuego.players[0].estado == EstadosPlayer::Jumping)
+            std::cout << "dibujo saltar" << std::endl;
     }
+    */
+    infoJuego = queueReceptora.pop();
     Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y);
     spritesManager->updatePlayer(0, infoJuego.players[0].estado, pos);
 

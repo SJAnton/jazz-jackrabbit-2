@@ -100,14 +100,10 @@ int ClientProtocol::decodeInt(uint8_t byte) {
     return static_cast<int>(byte);
 }
 int ClientProtocol::decodeInt(uint8_t byte1, uint8_t byte2) {
-    // Combine los bytes en un uint16_t
-    uint16_t combined = (static_cast<uint16_t>(byte1) << 8) | static_cast<uint16_t>(byte2);
-    // Convertir del orden de bytes del host al orden de bytes de la red (big-endian)
-    uint16_t networkOrder = htons(combined);
-    // Convertir de nuevo del orden de bytes de la red al orden de bytes del host
-    uint16_t hostOrder = ntohs(networkOrder);
-    // Convertir el resultado a un entero con signo
-    return static_cast<int>(hostOrder);
+	int network_value = (byte1 << 8) | byte2;
+    int host_value = ntohs(network_value);
+    
+	return host_value;
 }
 
 
@@ -209,7 +205,7 @@ void ClientProtocol::enviarComandoAlServer(ComandoCliente comando, bool*was_clos
 
 	
 	int enviados = socket.sendall(mensaje.data(), SIZE_CLIENT_MSG, was_closed);	
-	std::cout << "se enviaron " << enviados << " bytes." << std::endl;
+	//std::cout << "se enviaron " << enviados << " bytes." << std::endl;
 }
 
 
@@ -217,20 +213,22 @@ void ClientProtocol::enviarComandoAlServer(ComandoCliente comando, bool*was_clos
 InfoJuego ClientProtocol::recibirInformacionDelServer(bool *was_closed) {
 	uint8_t aux[2];
 	int r = socket.recvall(&aux,2, was_closed);	//recibo los primeros 2 bytes que indican el size del mensaje
+	int size = decodeInt(aux[0], aux[1]);
 
-
-	int size = (aux[0] << 8) | aux[1];//convertir los 2 bytes al numero entero
-
-    std::vector<uint8_t> bytes(size); //= {0xA1, 0x00, 0x02, 0x00, 0xFF, 0x01, 0x02, 0x0A, 0x00, 0x00};
+    std::vector<uint8_t> bytes(size);
 	r = socket.recvall(bytes.data(), size, was_closed);
-	std::cout << "Recibí " << r << " bytes." << std::endl;
-	if (*was_closed)
+	if (*was_closed) {
+		std::cout << "wasclosed " << std::endl;//no se está activando esto
 		return InfoJuego();
-	std::cout << "Mensaje recibido: ";
+
+	}
+	/*std::cout << "Mensaje recibido: ";
 		for (uint8_t byte : bytes) {
 			std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << " ";
 		}
 		std::cout << std::endl;
+	*/
+
 	InfoJuego infoJuego = decodificarMensajeDelServer(bytes);
 	return infoJuego;
 }
@@ -239,6 +237,9 @@ void ClientProtocol::close() {
 	socket.shutdown(2);
 	socket.close();
 }
+
+
+//temporal
 
 #define SUCCESS 0
 #define SHUTCODE 2

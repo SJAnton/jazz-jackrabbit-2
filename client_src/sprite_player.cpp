@@ -57,6 +57,7 @@ void SpritePlayer::setEstado(const EstadosPlayer &estado_) {
         return;
     }
 }
+
 //metodos privados
 
 void SpritePlayer::setEstadoSpaz(const EstadosPlayer &estado_)
@@ -83,6 +84,9 @@ void SpritePlayer::setEstadoSpaz(const EstadosPlayer &estado_)
         break;
     case EstadosPlayer::Dying : spriteSheet = SpritesPlayers::Spaz_death;
         break;
+    //case EstadosPlayer::Reviving;
+    //case EstadosPlayer::Death;
+
     default:
         break;
     }

@@ -25,7 +25,7 @@
 #define ERROR 1
 
 
-const int FPS = 15;
+const int FPS = 30;
 const int frame_delay = 1000/FPS;
 
 int tiempo_transcurrido;
@@ -54,6 +54,7 @@ int main(int argc, char* argv[]) {
     
     while (interfaz.estaAbierta())
     {
+
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
         
         interfaz.recibirInformacion();
@@ -64,6 +65,8 @@ int main(int argc, char* argv[]) {
         if (frame_delay > tiempo_transcurrido) {
             SDL_Delay(frame_delay - tiempo_transcurrido); // sleep
         }
+        
+        
     }
     eventHandler.join();
     

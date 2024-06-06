@@ -27,7 +27,7 @@ file(GLOB CLIENT_SOURCES
     "client_src/interfaz_grafica.cpp"
     "client_src/spritesheet.cpp"
     "client_src/sprite_object.cpp"
-    "client_src/spritesheetPlayer.cpp"
+    #"client_src/spritesheetPlayer.cpp"
     "client_src/spritesManager.cpp"
     "client_src/client_renderer.cpp"
     "client_src/event_handler.cpp"
