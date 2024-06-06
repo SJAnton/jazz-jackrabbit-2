@@ -6,7 +6,7 @@
 #define SHUTCODE 2
 
 #define INIT_MSG_SIZE 2
-#define MSG_SIZE 3
+//#define MSG_SIZE 3
 
 std::vector<uint8_t> ServerProtocol::recv_init_msg(bool &was_closed) {
     std::vector<uint8_t> data;
@@ -25,7 +25,7 @@ void ServerProtocol::send_id(uint8_t id, bool &was_closed) {
 std::vector<uint8_t> ServerProtocol::recv_msg(bool &was_closed) {
     std::vector<uint8_t> data;
     uint8_t byte;
-    for (int i = 0; i < MSG_SIZE; i++) {
+    for (int i = 0; i < SIZE_CLIENT_MSG; i++) {
         sk.recvall(&byte, sizeof(byte), &was_closed);
         data.push_back(byte);
     }
@@ -60,13 +60,7 @@ int ServerProtocol::disconnect() {
 
 std::vector<uint8_t> ServerProtocol::encodeInfoJuego(const InfoJuego &infoJuego) {
     std::vector<uint8_t> bytes;
-
-    int sz = infoJuego.getLengthData();
-
-    uint8_t sz1 = (sz >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t sz2 = sz & 0xFF; // Obtener el byte menos significativo
-    bytes.push_back(sz1);
-    bytes.push_back(sz2);
+    insertar2bytesDelNumero(infoJuego.getLengthData(), bytes);   
 
     bytes.push_back(infoJuego.cantidadPlayers());
     for (int i=0; i < infoJuego.cantidadPlayers(); i++) {
@@ -91,23 +85,14 @@ std::vector<uint8_t> ServerProtocol::encodeInfoJuego(const InfoJuego &infoJuego)
     return bytes;
 }
 
+
 std::vector<uint8_t> ServerProtocol::encodePlayer(const InfoPlayer &infoPlayer) {
     std::vector<uint8_t> bytes;
     bytes.push_back(infoPlayer.id);
+    insertar2bytesDelNumero(infoPlayer.pos_x, bytes);
+    insertar2bytesDelNumero(infoPlayer.pos_y, bytes);
     
-    int x = infoPlayer.pos_x;
-    int y = infoPlayer.pos_y;
-    uint8_t x1 = (x >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t x2 = x & 0xFF; // Obtener el byte menos significativo
-    uint8_t y1 = (y >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t y2 = y & 0xFF; // Obtener el byte menos significativo
-
-    bytes.push_back(x1);
-    bytes.push_back(x2);
-    bytes.push_back(y1);
-    bytes.push_back(y2);
-    
-    bytes.push_back(infoPlayer.player_id);
+//    bytes.push_back(infoPlayer.player_id);
     bytes.push_back(encodeEstadoPlayer(infoPlayer.estado));
     bytes.push_back(infoPlayer.vida);
     bytes.push_back(infoPlayer.puntos);
@@ -121,17 +106,8 @@ std::vector<uint8_t> ServerProtocol::encodeEnemy(const InfoEnemigo &infoEnemigo)
 
     bytes.push_back(encodeTipoEnemy(infoEnemigo.tipo));
 
-    int x = infoEnemigo.pos_x;
-    int y = infoEnemigo.pos_y;
-    uint8_t x1 = (x >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t x2 = x & 0xFF; // Obtener el byte menos significativo
-    uint8_t y1 = (y >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t y2 = y & 0xFF; // Obtener el byte menos significativo
-
-    bytes.push_back(x1);
-    bytes.push_back(x2);
-    bytes.push_back(y1);
-    bytes.push_back(y2);
+    insertar2bytesDelNumero(infoEnemigo.pos_x, bytes);
+    insertar2bytesDelNumero(infoEnemigo.pos_y, bytes);
     bytes.push_back(encodeEstadoEnemy(infoEnemigo.estado));
     return bytes;
 }
@@ -140,36 +116,26 @@ std::vector<uint8_t> ServerProtocol::encodeRecolectable(const InfoRecolectable &
     std::vector<uint8_t> bytes;
 
     bytes.push_back(encodeTipoRecolectable(infoItem.tipo));
-    int x = infoItem.pos_x;
-    int y = infoItem.pos_y;
-    uint8_t x1 = (x >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t x2 = x & 0xFF; // Obtener el byte menos significativo
-    uint8_t y1 = (y >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t y2 = y & 0xFF; // Obtener el byte menos significativo
 
-    bytes.push_back(x1);
-    bytes.push_back(x2);
-    bytes.push_back(y1);
-    bytes.push_back(y2);
+    insertar2bytesDelNumero(infoItem.pos_x, bytes);
+    insertar2bytesDelNumero(infoItem.pos_y, bytes);
     return bytes;
 }
 
 std::vector<uint8_t> ServerProtocol::encodeProyectil(const InfoProyectil &infoProyectil) {
     std::vector<uint8_t> bytes;
 
-    int x = infoProyectil.pos_x;
-    int y = infoProyectil.pos_y;
-    uint8_t x1 = (x >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t x2 = x & 0xFF; // Obtener el byte menos significativo
-    uint8_t y1 = (y >> 8) & 0xFF; // Obtener el byte más significativo
-    uint8_t y2 = y & 0xFF; // Obtener el byte menos significativo
+    insertar2bytesDelNumero(infoProyectil.pos_x, bytes);
+    insertar2bytesDelNumero(infoProyectil.pos_y, bytes);
 
-    bytes.push_back(x1);
-    bytes.push_back(x2);
-    bytes.push_back(y1);
-    bytes.push_back(y2);
     bytes.push_back(encodeDireccion(infoProyectil.direccion));
     return bytes;
+}
+
+void ServerProtocol::insertar2bytesDelNumero(int num, std::vector<uint8_t> &array) {
+    int aux = htons(num);
+    array.push_back((aux >> 8) & 0xFF); // insertar el byte más significativo
+    array.push_back(aux & 0xFF); // inseratr el byte menos significativo
 }
 
 uint8_t ServerProtocol::encodeEstadoPlayer(EstadosPlayer estado) {
