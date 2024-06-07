@@ -16,6 +16,7 @@ bool SpritesPlayers::inicializado = false;
 
 void SpritesPlayers::init() {
     if (!inicializado) {
+        //Spaz
         Spaz_idle = SpriteSheet(PATH_SPAZ_IDLE, 56, 56, 6);
         Spaz_walk = SpriteSheet(PATH_SPAZ_WALK, 56, 56, 8);
         Spaz_run = SpriteSheet(PATH_SPAZ_JUMP,56, 56, 12);
@@ -26,6 +27,8 @@ void SpritesPlayers::init() {
         Spaz_intoxicatedIdle = SpriteSheet(PATH_SPAZ_INTOXICATED_IDLE, 56, 56, 8);
         Spaz_intoxicatedWalk = SpriteSheet(PATH_SPAZ_INTOXICATED_WALK,56, 56, 12);
         Spaz_death = SpriteSheet(PATH_SPAZ_DEATH, 96, 96, 26);
+
+        //Lori
         inicializado = true;
     }
 }
