@@ -103,6 +103,12 @@ void InterfazGrafica::manejarEventosSeleccionPartida(){
                 break;
             }
         }
+
+        if (pointInsideRect(mouseX, mouseY, {416, 32, 167, 400})) { //Chequea si se clickeo en la zona del boton
+            std::cout << "Creando partida nueva" << std::endl;
+            menu_abierto = false;
+        }
+
     }
 }
 
@@ -199,20 +205,17 @@ void InterfazGrafica::renderizarSeleccionPartida(){
     SDL_Texture* fontTexture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_FreeSurface(surface);
 
-    //renderText(renderer, fontTexture, fontMap.charMap, "PARTIDA 1", 100, 100, 0.5f);
-    int id1 = 1;
-    ButtonPartida boton1 = ButtonPartida(id1);
-    boton1.renderizar(renderer, fontTexture, fontMap);
-    partidas.push_back(boton1);
+    int cantidad_partidas = 2; //Tenemos que recibir del server esto
 
-    //renderText(renderer, fontTexture, fontMap.charMap, "PARTIDA 2", 100, 200, 0.5f);
-    int id2 = 2;
-    ButtonPartida boton2 = ButtonPartida(id2);
-    boton2.renderizar(renderer, fontTexture, fontMap);
-    partidas.push_back(boton2);
+    for (int i = 0; i < cantidad_partidas; ++i)
+    {
+        int id = i + 1;
+        ButtonPartida boton = ButtonPartida(id);
+        boton.renderizar(renderer, fontTexture, fontMap);
+        partidas.push_back(boton);
+    }
 
-
-    
+    renderText(renderer, fontTexture, fontMap.charMap, "CREAR PARTIDA", 167, 400, 0.5f);  
 
     SDL_RenderPresent(renderer);    
 }

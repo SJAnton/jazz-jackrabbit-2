@@ -31,6 +31,6 @@ bool pointInsideButton(int& x, int& y, SDL_Rect rect) {
 }
 
 bool ButtonPartida::clicked(int& mouseX, int& mouseY){
-	bool cliked = pointInsideButton(mouseX, mouseY, {this->x + 350, this->y, 384, 64});
+	bool cliked = pointInsideButton(mouseX, mouseY, {this->x + 350, this->y, 192, 32});
 	return cliked;
 }
