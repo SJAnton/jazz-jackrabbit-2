@@ -1,4 +1,4 @@
-# Install script for directory: /home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src
+# Install script for directory: /home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/cmake_install.cmake")
+  include("/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-build/util/cmake_install.cmake")
 
 endif()
 

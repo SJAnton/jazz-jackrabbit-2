@@ -1,7 +1,7 @@
 _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o: \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/simplekey.cpp \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/src/simplekey.cpp \
  /usr/include/stdc-predef.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/scanner.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/src/scanner.h \
  /usr/include/c++/11/cstddef \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -164,7 +164,7 @@ _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o: \
  /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h /usr/include/c++/11/stack \
  /usr/include/c++/11/bits/stl_stack.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/ptr_vector.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/src/ptr_vector.h \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -179,10 +179,10 @@ _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/stream.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/mark.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/src/stream.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/mark.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/token.h
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/src/token.h

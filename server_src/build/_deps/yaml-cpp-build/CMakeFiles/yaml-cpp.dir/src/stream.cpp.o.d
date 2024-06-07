@@ -1,5 +1,5 @@
 _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/stream.cpp.o: \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/stream.cpp \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/src/stream.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -146,9 +146,9 @@ _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/stream.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/stream.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/mark.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/src/stream.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/mark.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
  /usr/include/c++/11/cstddef /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \

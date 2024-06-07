@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 
-#include "server_queue_list.h"
 #include "../common_src/socket.h"
 #include "../common_src/info_juego.h"
 
@@ -24,7 +23,7 @@ class ServerProtocol {
 
         void send_msg(std::vector<uint8_t> &msg, bool &was_closed);
 
-        void send_game_data(QueueData &game_data, bool &was_closed);
+        void send_game_data(InfoJuego &game_data, bool &was_closed);
 
         int disconnect();
 

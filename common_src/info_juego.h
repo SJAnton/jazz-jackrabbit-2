@@ -74,7 +74,7 @@ public:
     // Constructores
     InfoJuego() {};
 
-     InfoJuego(const std::vector<InfoPlayer>& players,
+    InfoJuego(const std::vector<InfoPlayer>& players,
               const std::vector<InfoEnemigo>& enemigos,
               const std::vector<InfoRecolectable>& recolectables,
               const std::vector<InfoProyectil>& proyectiles)

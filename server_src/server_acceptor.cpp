@@ -2,13 +2,12 @@
 
 void ServerAcceptor::run() {
     int id = 1;
-    while (!wc) {
+    while (!srv_wc) {
         try {
             Socket peer = sk.accept();
 
-            Client *client = new Client(std::move(peer), id, gmlp_id, gameloops, ch_maps,
-                                            monitors, gameloops_q, data);
-
+            Client *client = new Client(std::move(peer), id, gmlp_id, gameloops,
+                                            ch_maps, monitors, gameloops_q, data);
             client->start();
             clients.push_back(client);
 

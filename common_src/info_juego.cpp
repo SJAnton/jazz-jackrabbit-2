@@ -1,6 +1,4 @@
-
 #include "info_juego.h"
-
 
 int InfoJuego::cantidadPlayers() const {
     return players.size();

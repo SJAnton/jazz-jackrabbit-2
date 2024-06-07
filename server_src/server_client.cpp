@@ -68,7 +68,7 @@ void Client::select_game(uint8_t game) {
         int current_gmlp_id = gmlp_id.load();
 
         ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor, monitors,
-                                                        gameloops_q, current_gmlp_id, wc);
+                                                        gameloops_q, current_gmlp_id);
         
         gameloops_q[current_gmlp_id] = recv_q;
         monitors[current_gmlp_id] = monitor;

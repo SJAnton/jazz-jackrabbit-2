@@ -1,8 +1,8 @@
 _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/null.cpp.o: \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/null.cpp \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/src/null.cpp \
  /usr/include/stdc-predef.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/null.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/null.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

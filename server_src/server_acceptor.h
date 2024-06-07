@@ -23,7 +23,7 @@ class ServerAcceptor : public Thread {
     private:
         Socket &sk;
 
-        bool &wc;
+        bool &srv_wc;
 
         atomic<int> gmlp_id = 1;
 
@@ -41,7 +41,7 @@ class ServerAcceptor : public Thread {
 
     public:
         ServerAcceptor(Socket &socket, map<string, vector<uint8_t>> &obj_data,
-                        bool &was_closed) : sk(socket), wc(was_closed), data(obj_data) {}
+                        bool &was_closed) : sk(socket), srv_wc(was_closed), data(obj_data) {}
 
         void run() override;
 

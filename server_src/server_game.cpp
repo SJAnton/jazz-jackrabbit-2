@@ -12,8 +12,6 @@
 #define ACTION_SHOOT 0x15
 #define ACTION_SPECIAL_ATTACK 0x16
 
-#define CLOSED_GAME_BYTE 0xFF
-
 std::vector<uint8_t> Game::get_actions(std::shared_ptr<Queue<uint8_t>> &q) {
     std::vector<uint8_t> data;
     uint8_t byte;
@@ -32,9 +30,6 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
     uint8_t direction = actions[DIRECTION_POS];
 
     std::shared_ptr<Character> ch = ch_map->at(player_id);
-
-    //std::cout << (int)ch->get_x_pos() << std::endl;
-
     switch (action) {
         case ACTION_WALK:
             ch->move_x_pos(action, direction);
@@ -54,11 +49,18 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
         default:
             break;
     }
-    //std::cout << (int)ch->get_x_pos() << std::endl;
 }
 
-void Game::tick() {
-
+void Game::tick(std::shared_ptr<CharacterMap> &ch_map) {
+    // Mover enemigos y proyectiles
+    // Implementar caída del personaje
+    for (auto it = ch_map->begin(); it != ch_map->end(); it++) {
+        std::shared_ptr<Character> character = it->second;
+        /* if (is_falling(character)) {
+            character->fall();
+        }
+        */
+    }
 }
 
 InfoJuego Game::snapshot(std::shared_ptr<CharacterMap> &ch_map) {
@@ -82,6 +84,6 @@ void Game::send_snapshot(InfoJuego &game_data, std::shared_ptr<ServerQueueList> 
     sndr_qs->push_to_all_queues(game_data);
 }
 
-void Game::send_closed_game_message(std::shared_ptr<ServerQueueList> &sndr_qs) {
-    sndr_qs->push_to_all_queues(static_cast<uint8_t>(CLOSED_GAME_BYTE));
+void Game::remove_character(uint8_t &player_id, std::shared_ptr<CharacterMap> &ch_map) {
+    ch_map->erase(player_id);
 }

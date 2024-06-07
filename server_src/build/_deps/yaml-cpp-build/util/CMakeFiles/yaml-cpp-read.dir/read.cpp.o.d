@@ -1,8 +1,8 @@
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/read.cpp.o: \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/util/read.cpp \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/util/read.cpp \
  /usr/include/stdc-predef.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emitterstyle.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/eventhandler.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emitterstyle.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/eventhandler.h \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -131,10 +131,10 @@ _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/read.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/anchor.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/anchor.h \
  /usr/include/c++/11/cstddef \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/yaml.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/parser.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/yaml.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/parser.h \
  /usr/include/c++/11/ios /usr/include/c++/11/exception \
  /usr/include/c++/11/bits/exception_ptr.h \
  /usr/include/c++/11/bits/cxxabi_init_exception.h \
@@ -174,8 +174,8 @@ _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/read.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emitter.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emitter.h \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -203,15 +203,15 @@ _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/read.cpp.o: \
  /usr/include/c++/11/bits/ostream.tcc \
  /usr/include/c++/11/bits/istream.tcc \
  /usr/include/c++/11/bits/sstream.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/binary.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/binary.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emitterdef.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emittermanip.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/null.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/ostream_wrapper.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/stlemitter.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emitterdef.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emittermanip.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/null.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/ostream_wrapper.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/stlemitter.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc /usr/include/c++/11/set \
  /usr/include/c++/11/bits/stl_tree.h \
@@ -221,26 +221,26 @@ _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/read.cpp.o: \
  /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/map \
  /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/exceptions.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/mark.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/noexcept.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/traits.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/node.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/iterator_fwd.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/ptr.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/type.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/impl.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/memory.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_ref.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_data.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_iterator.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/exceptions.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/mark.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/noexcept.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/traits.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/node.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/iterator_fwd.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/ptr.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/type.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/impl.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/memory.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_ref.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_data.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_iterator.h \
  /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/iterator.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/iterator.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/iterator.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/iterator.h \
  /usr/include/c++/11/atomic \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/convert.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/impl.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/convert.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/impl.h \
  /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
@@ -251,8 +251,8 @@ _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/read.cpp.o: \
  /usr/include/c++/11/bits/hashtable_policy.h \
  /usr/include/c++/11/bits/enable_special_members.h \
  /usr/include/c++/11/bits/unordered_map.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/parse.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/emit.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/parse.h \
+ /home/santiago/Escritorio/Taller\ de\ Programación/TPG/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/emit.h \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \

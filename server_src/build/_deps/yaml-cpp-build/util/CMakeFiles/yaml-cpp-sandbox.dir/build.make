@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build"
+CMAKE_SOURCE_DIR = "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build"
+CMAKE_BINARY_DIR = "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build"
 
 # Include any dependencies generated for this target.
 include _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/depend.make
@@ -72,16 +72,16 @@ include _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/flags.make
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o: _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/flags.make
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o: _deps/yaml-cpp-src/util/sandbox.cpp
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o: _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o"
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o -MF CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o.d -o CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o -c "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/util/sandbox.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o"
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-build/util" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o -MF CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o.d -o CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o -c "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-src/util/sandbox.cpp"
 
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.i"
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/util/sandbox.cpp" > CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.i
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-build/util" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-src/util/sandbox.cpp" > CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.i
 
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.s"
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/util/sandbox.cpp" -o CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.s
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-build/util" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-src/util/sandbox.cpp" -o CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.s
 
 # Object files for target yaml-cpp-sandbox
 yaml__cpp__sandbox_OBJECTS = \
@@ -94,18 +94,18 @@ _deps/yaml-cpp-build/util/sandbox: _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp
 _deps/yaml-cpp-build/util/sandbox: _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/build.make
 _deps/yaml-cpp-build/util/sandbox: _deps/yaml-cpp-build/libyaml-cpp.a
 _deps/yaml-cpp-build/util/sandbox: _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable sandbox"
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/yaml-cpp-sandbox.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable sandbox"
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-build/util" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/yaml-cpp-sandbox.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/build: _deps/yaml-cpp-build/util/sandbox
 .PHONY : _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/build
 
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/clean:
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util" && $(CMAKE_COMMAND) -P CMakeFiles/yaml-cpp-sandbox.dir/cmake_clean.cmake
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-build/util" && $(CMAKE_COMMAND) -P CMakeFiles/yaml-cpp-sandbox.dir/cmake_clean.cmake
 .PHONY : _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/clean
 
 _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/depend:
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/util" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-src/util" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-build/util" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir/depend
 

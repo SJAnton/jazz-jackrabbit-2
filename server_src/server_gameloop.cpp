@@ -3,17 +3,26 @@
 
 #include "server_gameloop.h"
 
+#define PLAYER_ID_POS 0
+#define EXIT_POS 1
+#define EXIT_BYTE 0xFF
+
 #define MILLISECONDS_PER_ITR 1000/15
 
 void ServerGameloop::run() {
     auto expected_itr_time = std::chrono::milliseconds(MILLISECONDS_PER_ITR);
-    while (!wc) {
+    while (!character_map->empty()) {
         auto start_time = std::chrono::steady_clock::now();
 
         std::vector<uint8_t> actions = game.get_actions(recv_q);
+        if (actions.size() > EXIT_POS && actions.at(EXIT_POS) == EXIT_BYTE) {
+            uint8_t player_id = actions.at(PLAYER_ID_POS);
+            game.remove_character(player_id, character_map);
+            continue;
+        }
         game.execute_actions(actions, character_map);
         
-        game.tick();
+        //game.tick(character_map);
 
         InfoJuego game_data = game.snapshot(character_map);
         game.send_snapshot(game_data, sndr_qs);
@@ -24,7 +33,7 @@ void ServerGameloop::run() {
             std::this_thread::sleep_for(expected_itr_time - itr_time);
         }
     }
-    game.send_closed_game_message(sndr_qs);
+    wc = true;
 }
 
 bool ServerGameloop::is_dead() {

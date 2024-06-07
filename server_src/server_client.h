@@ -42,7 +42,7 @@ class Client : public Thread {
         ServerProtocol protocol;
 
         // ESTA DATA LA CREAMOS EN EL CONSTRUCTOR
-        Queue<QueueData> sndr_q;
+        Queue<InfoJuego> sndr_q;
 
         shared_ptr<CharacterMap> ch_map;
 
@@ -58,7 +58,7 @@ class Client : public Thread {
 
         bool wc = false;
 
-        bool gmlp_wc = false;
+        std::atomic<bool> threads_wc = false;
 
         void reap_dead_gameloops();
 
@@ -76,8 +76,8 @@ class Client : public Thread {
                             map<string, vector<uint8_t>> &data) :
                             sk(move(socket)), id(id), gmlp_id(gmlp_id), gameloops(gameloops),
                                 ch_maps(ch_maps), monitors(monitors), gameloops_q(gameloops_q),
-                                    data(data), protocol(sk), recv(protocol, recv_q, wc),
-                                        sndr(protocol, sndr_q, wc) {}
+                                    data(data), protocol(sk), recv(protocol, recv_q, threads_wc),
+                                        sndr(protocol, sndr_q, threads_wc) {}
 
         void run() override;
 

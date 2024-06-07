@@ -1,4 +1,4 @@
-# Install script for directory: /home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/util
+# Install script for directory: /home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-src/util
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

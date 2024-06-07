@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
     while (std::cin.get() != EXIT) {
 
     }
-    was_closed = true;
+    was_closed = true; // pasar a los gameloops
     skt.shutdown(SHUTCODE);
     skt.close();
     acceptor.join();

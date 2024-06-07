@@ -1,0 +1,3 @@
+/home/santiago/Escritorio/Taller de Programación/TPG/_client_src/build/CMakeFiles/client.dir
+/home/santiago/Escritorio/Taller de Programación/TPG/_client_src/build/CMakeFiles/edit_cache.dir
+/home/santiago/Escritorio/Taller de Programación/TPG/_client_src/build/CMakeFiles/rebuild_cache.dir

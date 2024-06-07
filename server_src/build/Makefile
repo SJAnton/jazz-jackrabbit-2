@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build"
+CMAKE_SOURCE_DIR = "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build"
+CMAKE_BINARY_DIR = "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/CMakeFiles" "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -113,7 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles/VerifyGlobs.cmake"
+	$(CMAKE_COMMAND) -P "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/CMakeFiles/VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -559,869 +559,869 @@ yaml-cpp-read/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/build.make _deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir/build
 .PHONY : yaml-cpp-read/fast
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.o: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.i: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.s: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.o: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.i: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.s: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.o: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.i: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.s: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.o: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.i: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.s: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.o: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.i: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.s: home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.cpp.s
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.o: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.o: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.o
 
 # target to build an object file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.o
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.o
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.o
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.o
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.i: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.i: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.i
 
 # target to preprocess a source file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.i
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.i
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.i
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.i
 
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.s: home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.s: home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.s
 
 # target to generate assembly for a file
-home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.s
-.PHONY : home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.cpp.s
+home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.s
+.PHONY : home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.cpp.s
 
 # Help Target
 help:
@@ -1465,114 +1465,114 @@ help:
 	@echo "... yaml-cpp-parse"
 	@echo "... yaml-cpp-read"
 	@echo "... yaml-cpp-sandbox"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/info_juego.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/liberror.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolver.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/resolvererror.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/common_src/socket.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_character.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_enemy.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_jazz.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_lori.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/characters/server_player_spaz.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_acceptor.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_character_map.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_client.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_config_reader.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_game.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_gameloop_list.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_main.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_protocol.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_queue_list.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_receiver.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/server_sender.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_iceball.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_projectile.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_rocket.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/projectile/server_seeker_rocket.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_blaster.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_bouncer.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_electro_blaster.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_freezer.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_pepper_spray.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_rf_missile.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_seeker.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_tnt.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_toaster.s"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.o"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.i"
-	@echo "... home/agustin/Escritorio/Taller_1/TP_Final/rama_server/jazz-jackrabbit-2/server_src/weapons/server_weapon.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/info_juego.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/liberror.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolver.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/resolvererror.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/common_src/socket.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_character.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_enemy.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_jazz.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_lori.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/characters/server_player_spaz.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_acceptor.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_character_map.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_client.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_config_reader.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_game.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_gameloop_list.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_main.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_protocol.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_queue_list.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_receiver.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/server_sender.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_iceball.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_projectile.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_rocket.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/projectile/server_seeker_rocket.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_blaster.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_bouncer.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_electro_blaster.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_freezer.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_pepper_spray.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_rf_missile.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_seeker.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_tnt.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_toaster.s"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.o"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.i"
+	@echo "... home/santiago/Escritorio/Taller_de_Programación/TPG/server_src/weapons/server_weapon.s"
 .PHONY : help
 
 
@@ -1584,7 +1584,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles/VerifyGlobs.cmake"
+	$(CMAKE_COMMAND) -P "/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/CMakeFiles/VerifyGlobs.cmake"
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

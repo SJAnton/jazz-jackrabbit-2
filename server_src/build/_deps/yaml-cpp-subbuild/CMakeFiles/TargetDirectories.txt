@@ -1,3 +1,3 @@
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/yaml-cpp-populate.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/edit_cache.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/rebuild_cache.dir
+/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/yaml-cpp-populate.dir
+/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/edit_cache.dir
+/home/santiago/Escritorio/Taller de Programación/TPG/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/rebuild_cache.dir
