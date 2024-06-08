@@ -107,6 +107,7 @@ void InterfazGrafica::manejarEventosSeleccionPartida(){
         if (pointInsideRect(mouseX, mouseY, {416, 32, 167, 400})) { //Chequea si se clickeo en la zona del boton
             std::cout << "Creando partida nueva" << std::endl;
             menu_abierto = false;
+            //Mandar mensaje al server de que se quiere crear una partida
         }
 
     }
