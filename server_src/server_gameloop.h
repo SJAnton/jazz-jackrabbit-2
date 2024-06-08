@@ -21,6 +21,10 @@ class ServerGameloop : public Thread {
 
         std::map<uint8_t, std::shared_ptr<Queue<uint8_t>>> &gameloops_q;
 
+        std::map<std::string, std::vector<uint8_t>> &data_map;
+
+        std::list<std::shared_ptr<Projectile>> projectile_list;
+
         int id;
 
         bool wc = false;
@@ -31,8 +35,10 @@ class ServerGameloop : public Thread {
                          std::shared_ptr<ServerQueueList> &sndr_qs,
                           std::map<uint8_t, std::shared_ptr<ServerQueueList>> &monitors,
                             std::map<uint8_t, std::shared_ptr<Queue<uint8_t>>> &gameloops_q,
-                             int id) : character_map(map), recv_q(recv_q), sndr_qs(sndr_qs),
-                                monitors(monitors), gameloops_q(gameloops_q), id(id) {};
+                             std::map<std::string, std::vector<uint8_t>> &data_map, int id) :
+                                character_map(map), recv_q(recv_q), sndr_qs(sndr_qs),
+                                    monitors(monitors), gameloops_q(gameloops_q),
+                                        data_map(data_map), id(id) {};
 
         void run() override;
 

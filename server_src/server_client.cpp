@@ -68,7 +68,7 @@ void Client::select_game(uint8_t game) {
         int current_gmlp_id = gmlp_id.load();
 
         ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor, monitors,
-                                                        gameloops_q, current_gmlp_id);
+                                                        gameloops_q, data, current_gmlp_id);
         
         gameloops_q[current_gmlp_id] = recv_q;
         monitors[current_gmlp_id] = monitor;
@@ -96,13 +96,13 @@ void Client::select_character(uint8_t character, uint8_t game) {
     }
     switch (character) {
         case JAZZ_BYTE:
-            player = make_shared<PlayerJazz>(data[JAZZ_CODE], id);
+            player = make_shared<PlayerJazz>(data);
             break;
         case LORI_BYTE:
-            player = make_shared<PlayerLori>(data[LORI_CODE], id);
+            player = make_shared<PlayerLori>(data);
             break;
         case SPAZ_BYTE:
-            player = make_shared<PlayerSpaz>(data[SPAZ_CODE], id);
+            player = make_shared<PlayerSpaz>(data);
             break;
         default:
             kill();

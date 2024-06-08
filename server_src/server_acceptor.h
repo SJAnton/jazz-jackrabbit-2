@@ -45,9 +45,7 @@ class ServerAcceptor : public Thread {
 
         void run() override;
 
-        void reap_dead_clients();
-
-        void reap_dead_gameloops();
+        void reap_dead();
 
         void kill_all();
 };

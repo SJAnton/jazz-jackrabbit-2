@@ -48,14 +48,14 @@ set(SOURCE_FILES
 
     # Armas
     ../weapons/server_blaster.cpp
-    ../weapons/server_bouncer.cpp
-    ../weapons/server_electro_blaster.cpp
-    ../weapons/server_freezer.cpp
-    ../weapons/server_pepper_spray.cpp
-    ../weapons/server_rf_missile.cpp
-    ../weapons/server_seeker.cpp
-    ../weapons/server_tnt.cpp
-    ../weapons/server_toaster.cpp
+    #../weapons/server_bouncer.cpp
+    #../weapons/server_electro_blaster.cpp
+    #../weapons/server_freezer.cpp
+    #../weapons/server_pepper_spray.cpp
+    #../weapons/server_rf_missile.cpp
+    #../weapons/server_seeker.cpp
+    #../weapons/server_tnt.cpp
+    #../weapons/server_toaster.cpp
     ../weapons/server_weapon.cpp
 
     # Proyectiles

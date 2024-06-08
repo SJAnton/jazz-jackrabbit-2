@@ -3,18 +3,15 @@
 
 #include "server_character.h"
 
+#define JAZZ_KEY "PlayerJazz"
+#define BLASTER_KEY "Blaster"
+
 #define X_START 0
 #define Y_START 0
 
-#define HP_POS 0
-#define PT_POS 1
-#define XH_POS 2
-#define YH_POS 3
-#define JH_POS 4
-
 class PlayerJazz : public Character {
     private:
-        int player_id;
+        int character_id = JAZZ_ID;
 
         uint8_t health;
 
@@ -41,8 +38,9 @@ class PlayerJazz : public Character {
         bool intoxicated = false;
         
     public:
-        PlayerJazz(std::vector<uint8_t> &data, int id) : weapon(Blaster(data)) {
-            player_id = id;
+        PlayerJazz(std::map<std::string, std::vector<uint8_t>> &map)
+                    : weapon(Blaster(map[BLASTER_KEY])) {
+            std::vector<uint8_t> data = map[JAZZ_KEY];
             health = data[HP_POS];
             points = data[PT_POS];
             x_hitbox = data[XH_POS];
@@ -52,6 +50,8 @@ class PlayerJazz : public Character {
                 alive = false;
             }
         };
+
+        int get_character_id();
 
         void special_attack();
 };

@@ -1,6 +1,11 @@
 #ifndef SERVER_CHARACTER_H_
 #define SERVER_CHARACTER_H_
 
+#include <map>
+#include <list>
+#include <string>
+#include <memory>
+#include <vector>
 #include <cstdint>
 
 #include "../weapons/server_tnt.h"
@@ -16,9 +21,19 @@
 #include "../../common_src/info_juego.h"
 #include "../../common_src/constantes.h"
 
+#define JAZZ_ID 1
+#define LORI_ID 2
+#define SPAZ_ID 3
+
+#define HP_POS 0
+#define PT_POS 1
+#define XH_POS 2
+#define YH_POS 3
+#define JH_POS 4
+
 class Character {
     private:
-        int player_id;
+        int character_id; // Jazz = 1, Lori = 2, Spaz = 3
 
         EstadosPlayer status;
 
@@ -49,7 +64,7 @@ class Character {
 
         InfoPlayer set_data(int id);
 
-        int get_id();
+        int get_character_id();
 
         uint8_t get_x_pos();
 
@@ -79,7 +94,8 @@ class Character {
 
         void fall();
 
-        void attack();
+        void attack(uint8_t direction, std::list<std::shared_ptr<Projectile>> &projectile_list,
+                    std::map<std::string, std::vector<uint8_t>> &data_map);
 
         void special_attack();
 

@@ -1,7 +1,7 @@
 #include "server_acceptor.h"
 
 void ServerAcceptor::run() {
-    int id = 1;
+    int id = 1; // Máximo = 255 jugadores (por conversión a uint8_t)
     while (!srv_wc) {
         try {
             Socket peer = sk.accept();
@@ -11,7 +11,7 @@ void ServerAcceptor::run() {
             client->start();
             clients.push_back(client);
 
-            reap_dead_clients();
+            reap_dead();
             id++;
         } catch (LibError &e) {
 
@@ -20,7 +20,7 @@ void ServerAcceptor::run() {
     kill_all();
 }
 
-void ServerAcceptor::reap_dead_clients() {
+void ServerAcceptor::reap_dead() {
     clients.remove_if([](Client* client) {
         if (client->is_dead()) {
             client->kill();

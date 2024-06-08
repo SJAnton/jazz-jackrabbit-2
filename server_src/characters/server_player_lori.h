@@ -3,18 +3,15 @@
 
 #include "server_character.h"
 
+#define LORI_KEY "PlayerLori"
+#define BLASTER_KEY "Blaster"
+
 #define X_START 0
 #define Y_START 0
 
-#define HP_POS 0
-#define PT_POS 1
-#define XH_POS 2
-#define YH_POS 3
-#define JH_POS 4
-
 class PlayerLori : public Character {
     private:
-        int player_id;
+        int player_id = LORI_ID;
 
         uint8_t health;
 
@@ -39,8 +36,9 @@ class PlayerLori : public Character {
         bool intoxicated = false;
         
     public:
-        PlayerLori(std::vector<uint8_t> &data, int id) : weapon(Blaster(data)) {
-            player_id = id;
+        PlayerLori(std::map<std::string, std::vector<uint8_t>> &map)
+                    : weapon(Blaster(map[BLASTER_KEY])) {
+            std::vector<uint8_t> data = map[LORI_KEY];
             health = data[HP_POS];
             points = data[PT_POS];
             x_hitbox = data[XH_POS];

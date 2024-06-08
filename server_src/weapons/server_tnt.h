@@ -27,7 +27,5 @@ class TNT : public Weapon {
             radius = data[TNT_RD_POS];
             recharge_cooldown = data[TNT_RC_POS];
         }
-
-        void shoot(); //override
 };
 #endif

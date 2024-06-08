@@ -21,7 +21,9 @@ std::vector<uint8_t> Game::get_actions(std::shared_ptr<Queue<uint8_t>> &q) {
     return data;
 }
 
-void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<CharacterMap> &ch_map) {
+void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<CharacterMap> &ch_map,
+                            std::list<std::shared_ptr<Projectile>> &projectile_list,
+                             std::map<std::string, std::vector<uint8_t>> &data_map) {
     if (actions.empty()) {
         return;
     }
@@ -30,7 +32,13 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
     uint8_t direction = actions[DIRECTION_POS];
 
     std::shared_ptr<Character> ch = ch_map->at(player_id);
+
+    //std::cout << "x = " << (int)ch->get_x_pos() << " y = " << (int)ch->get_y_pos() << std::endl;
+
     switch (action) {
+        case ACTION_IDLE:
+            ch->do_nothing();
+            break;
         case ACTION_WALK:
             ch->move_x_pos(action, direction);
             break;
@@ -41,7 +49,7 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
             ch->jump();
             break;
         case ACTION_SHOOT:
-            ch->attack();
+            ch->attack(direction, projectile_list, data_map);
             break;
         case ACTION_SPECIAL_ATTACK:
             ch->special_attack();
@@ -49,17 +57,27 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
         default:
             break;
     }
+    //std::cout << "x = " << (int)ch->get_x_pos() << " y = " << (int)ch->get_y_pos() << std::endl;
 }
 
-void Game::tick(std::shared_ptr<CharacterMap> &ch_map) {
+void Game::tick(std::shared_ptr<CharacterMap> &ch_map,
+                std::list<std::shared_ptr<Projectile>> &projectile_list) {
     // Mover enemigos y proyectiles
     // Implementar caída del personaje
     for (auto it = ch_map->begin(); it != ch_map->end(); it++) {
         std::shared_ptr<Character> character = it->second;
-        /* if (is_falling(character)) {
+        //std::cout << "character_id = " << character->get_character_id() << std::endl; TODO: arreglar
+        /*if (character.is_falling()) {
             character->fall();
+        }*/
+    }
+    for (std::shared_ptr<Projectile> projectile : projectile_list) {
+        projectile->move_x_pos();
+        /* if (projectile->contact()) {
+            projectile_list.remove(projectile);
         }
         */
+        std::cout << (int)projectile->get_x_pos() << std::endl;    
     }
 }
 

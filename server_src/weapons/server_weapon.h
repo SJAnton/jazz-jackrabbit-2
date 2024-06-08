@@ -15,14 +15,12 @@ class Weapon {
 
         uint8_t fire_rate;
 
-        uint8_t recharge_cooldown;
-
-        uint8_t projectile_speed;
+        uint8_t cooldown;
 
     public:
         Weapon() {};
 
-        void shoot();
+        virtual bool shoot();
 
         uint8_t get_id();
 

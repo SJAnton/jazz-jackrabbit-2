@@ -1,7 +1,11 @@
 #include "server_weapon.h"
 
-void Weapon::shoot() {
-    
+bool Weapon::shoot() {
+    if (ammo > 0) {
+        ammo--;
+        return true;
+    }
+    return false;
 }
 
 uint8_t Weapon::get_id() {

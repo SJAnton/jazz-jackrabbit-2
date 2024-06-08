@@ -20,9 +20,9 @@ void ServerGameloop::run() {
             game.remove_character(player_id, character_map);
             continue;
         }
-        game.execute_actions(actions, character_map);
-        
-        //game.tick(character_map);
+        game.execute_actions(actions, character_map, projectile_list, data_map);
+
+        game.tick(character_map, projectile_list);
 
         InfoJuego game_data = game.snapshot(character_map);
         game.send_snapshot(game_data, sndr_qs);

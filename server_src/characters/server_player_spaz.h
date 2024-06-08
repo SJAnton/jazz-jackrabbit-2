@@ -3,18 +3,15 @@
 
 #include "server_character.h"
 
+#define SPAZ_KEY "PlayerSpaz"
+#define BLASTER_KEY "Blaster"
+
 #define X_START 0
 #define Y_START 0
 
-#define HP_POS 0
-#define PT_POS 1
-#define XH_POS 2
-#define YH_POS 3
-#define JH_POS 4
-
 class PlayerSpaz : public Character {
     private:
-        int player_id;
+        int character_id = SPAZ_ID;
 
         uint8_t health;
 
@@ -39,8 +36,9 @@ class PlayerSpaz : public Character {
         bool intoxicated = false;
         
     public:
-        PlayerSpaz(std::vector<uint8_t> &data, int id) : weapon(Blaster(data)) {
-            player_id = id;
+        PlayerSpaz(std::map<std::string, std::vector<uint8_t>> &map)
+                    : weapon(Blaster(map[BLASTER_KEY])) {
+            std::vector<uint8_t> data = map[SPAZ_KEY];
             health = data[HP_POS];
             points = data[PT_POS];
             x_hitbox = data[XH_POS];

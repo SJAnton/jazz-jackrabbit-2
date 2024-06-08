@@ -9,17 +9,27 @@
 #define LEFT 0x4C
 #define RIGHT 0x52
 
+#define BLASTERBALL_KEY "Blasterball"
+#define BOUNCERBALL_KEY "Bouncerball"
+#define ELECTROBALL_KEY "Electroball"
+#define ICEBALL_KEY "Iceball"
+#define FIREBALL_KEY "Fireball"
+#define ROCKET_KEY "Rocket"
+#define SEEKER_ROCKET_KEY "SeekerRocket"
+#define TOASTERBALL_KEY "Toasterball"
+
 #define BLASTER_ID 0x01
 #define BOUNCER_ID 0x02
 #define ELECTRO_BLASTER_ID 0x03
 #define FREEZER_ID 0x04
 #define PEPPER_SPRAY_ID 0x05
 #define RF_MISSILE_ID 0x06
-#define TNT_ID 0x07
-#define TOASTER_ID 0x08
+#define SEEKER_ID 0x07
+#define TNT_ID 0x08
+#define TOASTER_ID 0x09
 
 InfoPlayer Character::set_data(int id) {
-    InfoPlayer data(id, x_pos, y_pos, player_id, status, health,
+    InfoPlayer data(id, x_pos, y_pos, character_id, status, health,
                     points, weapon_type, weapon.get_ammo());
     if (!alive) {
         status = EstadosPlayer::Dead;
@@ -27,8 +37,8 @@ InfoPlayer Character::set_data(int id) {
     return data;
 }
 
-int Character::get_id() {
-    return player_id;
+int Character::get_character_id() {
+    return character_id;
 }
 
 uint8_t Character::get_x_pos() {
@@ -137,12 +147,68 @@ void Character::fall() {
     y_pos--;
 }
 
-void Character::attack() {
-    if (is_intoxicated() || is_dead()) {
+#include <iostream>
+
+void Character::attack(uint8_t direction, std::list<std::shared_ptr<Projectile>> &projectile_list,
+                        std::map<std::string, std::vector<uint8_t>> &data_map) {
+    std::cout << "id = " << (int)weapon.get_id() << std::endl;
+    if (is_intoxicated() || is_dead() || !weapon.shoot()) {
         return;
     }
+    uint8_t projectile_x;
     status = EstadosPlayer::Shooting;
-    weapon.shoot();
+    std::shared_ptr<Projectile> projectile;
+    if (direction == LEFT) {
+        projectile_x--;
+    } else {
+        projectile_x++;
+    }
+    switch (weapon.get_id()) {
+        case BLASTER_ID:
+            projectile = std::make_shared<Blasterball>(
+                            projectile_x, y_pos, direction, data_map[BLASTERBALL_KEY]
+            );
+            break;
+        case BOUNCER_ID:
+            projectile = std::make_shared<Bouncerball>(
+                            projectile_x, y_pos, direction, data_map[BOUNCERBALL_KEY]
+            );
+            break;
+        case ELECTRO_BLASTER_ID:
+            projectile = std::make_shared<Electroball>(
+                            projectile_x, y_pos, direction, data_map[ELECTROBALL_KEY]
+            );
+            break;
+        case FREEZER_ID:
+            projectile = std::make_shared<Iceball>(
+                            projectile_x, y_pos, direction, data_map[ICEBALL_KEY]
+            );
+            break;
+        case PEPPER_SPRAY_ID:
+            projectile = std::make_shared<Fireball>(
+                            projectile_x, y_pos, direction, data_map[FIREBALL_KEY]
+            );
+            break;
+        case RF_MISSILE_ID:
+            projectile = std::make_shared<Rocket>(
+                            projectile_x, y_pos, direction, data_map[ROCKET_KEY]
+            );
+            break;
+        case SEEKER_ID:
+            projectile = std::make_shared<SeekerRocket>(
+                            projectile_x, y_pos, direction, data_map[SEEKER_ROCKET_KEY]
+            );
+            break;
+        case TNT_ID:
+            //projectile = std::make_shared<Projectile>();
+            break;
+        case TOASTER_ID:
+            projectile = std::make_shared<Toasterball>(
+                            projectile_x, y_pos, direction, data_map[TOASTERBALL_KEY]
+            );
+            break;
+    }
+    projectile_list.push_back(projectile);
 }
 
 void Character::special_attack() {
@@ -175,6 +241,9 @@ void Character::change_weapon(Weapon new_weapon) {
             break;
         case RF_MISSILE_ID:
             weapon_type = TipoArma::RFMissile;
+            break;
+        case SEEKER_ID:
+            weapon_type = TipoArma::Seeker;
             break;
         case TNT_ID:
             weapon_type = TipoArma::TNT;
