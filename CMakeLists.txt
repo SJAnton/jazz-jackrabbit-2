@@ -20,7 +20,6 @@ file(GLOB COMMON_SOURCES
 file(GLOB CLIENT_SOURCES
     "client_src/*.cpp"
     "client_src/interfaz_src/*.cpp"
-    
 )
 
 # Server source files
