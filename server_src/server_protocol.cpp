@@ -55,8 +55,8 @@ int ServerProtocol::disconnect() {
 std::vector<uint8_t> ServerProtocol::encodeInfoJuego(const InfoJuego &infoJuego) {
     std::vector<uint8_t> bytes;
     insertar2bytesDelNumero(infoJuego.getLengthData(), bytes);   
-
     bytes.push_back(infoJuego.cantidadPlayers());
+
     for (int i=0; i < infoJuego.cantidadPlayers(); i++) {
         auto dataPlayer = encodePlayer(infoJuego.players[i]);
         bytes.insert(bytes.end(), dataPlayer.begin(), dataPlayer.end());//concateno
