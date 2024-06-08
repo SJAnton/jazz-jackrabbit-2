@@ -1,9 +1,8 @@
-#include "interfaz_grafica.h"
+#include "interfaz_src/interfaz_grafica.h"
 #include "client_protocol.h"
 #include "client_receiver.h"
 #include "client_sender.h"
 #include "client_renderer.h"
-#include "event_handler.h"
 #include "client_player.h"
 
 #include "../common_src/queue.h"
@@ -39,27 +38,19 @@ int main(int argc, char* argv[]) {
     bool was_closed = false;
     
     ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
-    InterfazGrafica interfaz(cliente.queueReceptora);
+    InterfazGrafica interfaz(cliente.queueReceptora, cliente);
 
-    /*while(interfaz.estaAbierta() && interfaz.menuAbierto()) //Renderiza las diferentes pantallas
-    {
-        interfaz.renderizarActual();
-        interfaz.manejarEventosActual();
-    }
-    */
     //ClientRenderer* renderer = new ClientRenderer(interfaz);
     //renderer->start();
-    EventHandler eventHandler(interfaz, cliente);
-    eventHandler.start();
     
-    while (interfaz.estaAbierta())
+    while (interfaz.estaAbierta()) // hacer a la interfaz un thread y hacer interfaz.start(). No hace falta un hilo renderer
     {
 
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
         
-        interfaz.recibirInformacion();
+        //interfaz.recibirInformacion();
         interfaz.update(1);
-        interfaz.renderizar();
+        interfaz.renderizarActual();
         
         tiempo_transcurrido = SDL_GetTicks() - frameStart;
         if (frame_delay > tiempo_transcurrido) {
@@ -67,13 +58,9 @@ int main(int argc, char* argv[]) {
         }
         
         
-    }
-    eventHandler.join();
-    
+    }    
     //renderer->join();
     std::cout << "fin" << std::endl;
     
-    //finalmente
-    //mostrar tabla final y ganador.
     return 0;
 }

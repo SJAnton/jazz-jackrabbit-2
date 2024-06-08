@@ -13,7 +13,7 @@ class ClientPlayer{
 		ClientReceiver receiver;
 		ClientSender sender;
 		static Queue<ComandoCliente> queueEnviadora;
-
+		std::vector<int> ids_partidas;
 	public:
 		static Queue<InfoJuego> queueReceptora;
 
@@ -27,6 +27,11 @@ class ClientPlayer{
 		void ataque_especial(Direcciones direccion);
 		
 		void recibirInformacion();
+
+		void crearPartida(const TipoPlayer &TipoPlayer);
+		void entrarPartida(int idPartida, const TipoPlayer &TipoPlayer);
+
+		std::vector<int> getIdPartidas();
 		~ClientPlayer();
 };
 

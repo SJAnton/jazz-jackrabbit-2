@@ -9,7 +9,9 @@
 
 
 ClientProtocol::ClientProtocol(const std::string& hostname, const std::string& servname) :
-socket(hostname.c_str(), servname.c_str()) {
+	socket(hostname.c_str(), servname.c_str()),
+	was_closed(false)
+{
 
 }
 //metodos privados
@@ -35,7 +37,16 @@ uint8_t ClientProtocol::codeDireccion(Direcciones direccion) {
 		return RIGHT;
 	}
 }
-
+uint8_t ClientProtocol::codeTipoPlayer(const TipoPlayer &tipo) {
+	switch (tipo) {
+		case Jazz: return PLAYER_TYPE_JAZZ;
+		case Lori: return PLAYER_TYPE_LORI;
+		case Spaz: return PLAYER_TYPE_SPAZ;
+		default: 
+			throw std::runtime_error("ERROR. Tipo PLayer invalido");
+			return PLAYER_TYPE_JAZZ;
+	}
+}
 Direcciones ClientProtocol::decodeDireccion(uint8_t dir) {
 	switch (dir) {
 		case LEFT: return Left;
@@ -77,7 +88,6 @@ TipoEnemy ClientProtocol::decodeTipoEnemy(uint8_t byte) {
 		return Rat;
 	}
 }
-
 EstadosEnemy ClientProtocol::decodeEstadoEnemy(uint8_t byte) {
 
 	switch (byte)
@@ -93,21 +103,18 @@ EstadosEnemy ClientProtocol::decodeEstadoEnemy(uint8_t byte) {
 	}
 }
 
-
-
-// CHEQUEAR ESTAS FUNCIONES!
 int ClientProtocol::decodeInt(uint8_t byte) {
     return static_cast<int>(byte);
 }
 int ClientProtocol::decodeInt(uint8_t byte1, uint8_t byte2) {
-	int network_value = (byte1 << 8) | byte2;
+    uint16_t network_value = (static_cast<uint16_t>(byte1) << 8) | byte2;
     int host_value = ntohs(network_value);
     
 	return host_value;
 }
 
 
-// modularizar
+// modularizarlo despues
 InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t> &bytes) {
 	int cantPlayers = decodeInt(bytes[0]);
 
@@ -197,27 +204,39 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 
 //metodos publicos
 
-void ClientProtocol::enviarComandoAlServer(ComandoCliente comando, bool*was_closed) {
+void ClientProtocol::enviarComando(ComandoCliente comando, bool*was_closed_) {
 	std::vector<uint8_t> mensaje;
-	mensaje.push_back(id); // necesito saber mi ID de cliente
-	mensaje.push_back(codeAccion(comando.accion));
-	mensaje.push_back(codeDireccion(comando.direccion));
-
-	
-	int enviados = socket.sendall(mensaje.data(), SIZE_CLIENT_MSG, was_closed);	
+	if (comando.getTipoComando() == MensajeInicial) {
+		std::cout << "me uno a la partida" << std::endl;
+		mensaje.push_back((uint8_t)comando.getIdPartida());
+		mensaje.push_back(codeTipoPlayer(comando.getTipoPlayer()));
+	}
+	else { //Accion de un player
+		mensaje.push_back(id); // necesito saber mi ID de cliente
+		mensaje.push_back(codeAccion(comando.getAccion()));
+		mensaje.push_back(codeDireccion(comando.getDireccion()));
+	}
+	socket.sendall(mensaje.data(), mensaje.size(), &was_closed);	
+	*was_closed_= was_closed;
 	//std::cout << "se enviaron " << enviados << " bytes." << std::endl;
 }
 
-
-
-InfoJuego ClientProtocol::recibirInformacionDelServer(bool *was_closed) {
+InfoJuego ClientProtocol::recibirInformacion(bool *was_closed_) {
 	uint8_t aux[2];
-	int r = socket.recvall(&aux,2, was_closed);	//recibo los primeros 2 bytes que indican el size del mensaje
-	int size = decodeInt(aux[0], aux[1]);
+	int r = socket.recvall(&aux, sizeof(aux), &was_closed);	//recibo los primeros 2 bytes que indican el size del mensaje
+	if (was_closed) {
+		*was_closed_ = was_closed;
+		std::cout << "wasclosed " << std::endl;//no se está activando esto
+		return InfoJuego();
+	}
 
+	int size = decodeInt(aux[0], aux[1]);
+	//std::cout << "size " << size<< std::endl;//no se está activando esto
+	
     std::vector<uint8_t> bytes(size);
-	r = socket.recvall(bytes.data(), size, was_closed);
-	if (*was_closed) {
+	r = socket.recvall(bytes.data(), size, &was_closed);
+	if (was_closed) {
+		*was_closed_ = true;
 		std::cout << "wasclosed " << std::endl;//no se está activando esto
 		return InfoJuego();
 
@@ -228,44 +247,35 @@ InfoJuego ClientProtocol::recibirInformacionDelServer(bool *was_closed) {
 		}
 		std::cout << std::endl;
 	*/
-
 	InfoJuego infoJuego = decodificarMensajeDelServer(bytes);
 	return infoJuego;
 }
+
+std::vector<int> ClientProtocol::recibirIdsPartidas(bool *was_closed_)
+ {
+	uint8_t size;
+    socket.recvall(&size, sizeof(size), &was_closed); // recibo 1 byte con el size
+
+	std::vector<uint8_t> bytes(size);
+	socket.recvall(bytes.data(), size, &was_closed); // recibo los id de las partidas
+	*was_closed_ = was_closed;
+	// Convertimos los bytes recibidos a un vector de enteros
+    std::vector<int> idsPartidas(size);
+    for (size_t i = 0; i < size; ++i) {
+        idsPartidas[i] = static_cast<int>(bytes[i]);
+    }
+    return idsPartidas;
+}
+
+void ClientProtocol::recibirIDCliente() {
+	uint8_t byte;
+	int r = socket.recvall(&byte, sizeof(byte), &was_closed);	
+	this->id = byte;
+}
+
 
 void ClientProtocol::close() {
 	socket.shutdown(2);
 	socket.close();
 }
-
-
-//temporal
-
-#define SUCCESS 0
-#define SHUTCODE 2
-
-
- uint8_t ClientProtocol::get_msg_size(bool &was_closed) {
-        uint8_t size;
-        socket.recvall(&size, sizeof(size), &was_closed);
-        return size;
-    }
-
-    int ClientProtocol::send_msg(std::vector<uint8_t> data, bool &was_closed) {
-        int size = data.size();
-        for (int i = 0; i < size; i++) {
-            socket.sendall(&data[i], sizeof(data[i]), &was_closed);
-        }
-        return SUCCESS;
-    }
-
- std::vector<uint8_t> ClientProtocol::recv_msg(int size, bool &was_closed) {
-        std::vector<uint8_t> data;
-        uint8_t byte;
-        for (int i = 0; i < size; i++) {
-            socket.recvall(&byte, sizeof(byte), &was_closed);
-            data.push_back(byte);
-        }
-        return data;
-    }
 

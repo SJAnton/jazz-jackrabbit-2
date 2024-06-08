@@ -12,7 +12,7 @@ void ClientSender::run() {
 			break;
     	ComandoCliente comando;
     	if(queueEnviadora.try_pop(comando)){
-			protocolo.enviarComandoAlServer(comando, &was_closed);
+			protocolo.enviarComando(comando, &was_closed);
     	}
     }
 	std::cout << "me fui del sender..." << std::endl;

@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <SDL.h>
 
+#define SIZE_CHARACTER 64
 struct Character {
     char symbol;
     SDL_Rect rect;

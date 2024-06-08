@@ -10,7 +10,7 @@ protocolo(protocol), queueReceptora(recv_queue), was_closed(false){}
 void ClientReceiver::run() {
     int i = 0;
     while (_keep_running) {
-        InfoJuego infoJuego = protocolo.recibirInformacionDelServer(&was_closed);
+        InfoJuego infoJuego = protocolo.recibirInformacion(&was_closed);
         if (infoJuego.players[0].estado == EstadosPlayer::Jumping && i ==0) {
              std::cout << "recibido saltando" << std::endl;
              i++;

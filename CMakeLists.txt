@@ -19,21 +19,8 @@ file(GLOB COMMON_SOURCES
 # Client source files
 file(GLOB CLIENT_SOURCES
     "client_src/*.cpp"
-    "client_src/client_main.cpp"
-    "client_src/client_player.cpp"
-    "client_src/client_protocol.cpp"
-    "client_src/client_receiver.cpp"
-    "client_src/client_sender.cpp"
-    "client_src/interfaz_grafica.cpp"
-    "client_src/spritesheet.cpp"
-    "client_src/sprite_object.cpp"
-    #"client_src/spritesheetPlayer.cpp"
-    "client_src/spritesManager.cpp"
-    "client_src/client_renderer.cpp"
-    "client_src/event_handler.cpp"
-    "client_src/sprite_player.cpp"
-    "client_src/sprites_players.cpp"
-    "client_src/characters.cpp"
+    "client_src/interfaz_src/*.cpp"
+    
 )
 
 # Server source files

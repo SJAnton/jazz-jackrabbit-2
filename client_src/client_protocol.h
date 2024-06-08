@@ -12,12 +12,14 @@
 class ClientProtocol{
 	private:
 		Socket socket;
-		
+		bool was_closed;
+		uint8_t id;
 
 	private:
 		uint8_t codeAccion(AccionesPlayer accion);
 		uint8_t codeDireccion(Direcciones direccion);
-
+		uint8_t codeTipoPlayer(const TipoPlayer &tipo);
+		
 		//obtiene el valor decimal contenido entre ambos bytes
 		int decodeInt(uint8_t byte1, uint8_t byte2);
 		//obtiene el valor decimal contenido en 1 byte
@@ -33,18 +35,26 @@ class ClientProtocol{
 	public:
 		ClientProtocol(const std::string& hostname, const std::string& servname);
 
-		void enviarMensajeInicialAlServer(bool*was_closed);
+		// envia 2 bytes:
+		// id partida (0 si es para crear una partida) y tipo de player
+		void enviarMensajeInicial(int id_partida, TipoPlayer tipoPlayer, bool *was_closed);
 		
-		void enviarComandoAlServer(ComandoCliente comando, bool*was_closed);
+		void enviarComando(ComandoCliente comando, bool*was_closed);
 		
-		InfoJuego recibirInformacionDelServer(bool *was_closed);
+
+		InfoJuego recibirInformacion(bool *was_closed);
+		std::vector<int> recibirIdsPartidas(bool *was_closed);
+		void recibirIDCliente();
+		//Terreno recibirTerreno(bool *was_closed);
+
 
 		void close();
+
+		//temporal
 		uint8_t get_msg_size(bool &was_closed);
 		int send_msg(std::vector<uint8_t> data, bool &was_closed);
 		std::vector<uint8_t> recv_msg(int size, bool &was_closed);
 
-		uint8_t id=0;
 };
 
 #endif

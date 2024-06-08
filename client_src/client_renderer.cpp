@@ -14,7 +14,7 @@ void ClientRenderer::run(){
 
 		interfaz->recibirInformacion();
         interfaz->update(1);
-        interfaz->renderizar();
+        interfaz->renderizarActual();
 
         tiempo_transcurrido = SDL_GetTicks() - frameStart;
         if (frame_delay > tiempo_transcurrido) {

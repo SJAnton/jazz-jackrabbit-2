@@ -3,7 +3,7 @@
 
 #include "spritesheet.h"
 #include "sprites_players.h"
-#include "../common_src/constantes.h"
+#include "../../common_src/constantes.h"
 
 class SpritePlayer {
 private:

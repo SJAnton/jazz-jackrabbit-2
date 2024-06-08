@@ -1,17 +1,8 @@
 #include "spritesManager.h"
-
+#include "interfaz_grafica.h"
 #include <iostream>
-//las defino acá porque nadie mas necesita esta informacion
 
-//player Spaz
-#define PATH_SPAZ_IDLE "../sprites/Players/Spaz/Idle (56x56)x06.png"
-#define PATH_SPAZ_WALK "../sprites/Players/Spaz/Walk (56x56)x08.png"
-#define PATH_SPAZ_RUN 
-#define PATH_SPAZ_JUMP "../sprites/Players/Spaz/Jump (56x56)x12.png"
-#define PATH_SPAZ_SHOOT "../sprites/Players/Spaz/Shoot (56x56)x06.png"
-#define PATH_SPAZ_SPECIAL "../sprites/Players/Spaz/Special Attack (56x56)x12.png"
-#define PATH_SPAZ_DEATH "../sprites/Players/Spaz/Death (96x96)x26.png"
-
+ // Definirlas en 'sprites_paths.h'
 //TERRENO
 #define PATH_PISO_1 "../sprites/Terreno/tile012.png"
 #define PATH_PISO_2 "../sprites/Terreno/tile013.png"
@@ -24,7 +15,14 @@
 
 #define PATH_FONDO_2 "../sprites/Terreno/tile002.png"
 
+#define PATH_BUTTON_PLAY "../sprites/boton_play.png"
+#define PATH_TITULO "../sprites/titulo.png"
+#define PATH_FONT "../sprites/font.png"
+
 SpritesManager::SpritesManager() :
+    botonPlay(PATH_BUTTON_PLAY),
+    titulo(PATH_TITULO),
+    //letras(PATH_FONT),
     fondo(PATH_FONDO_2),
     piso(PATH_PISO_1),
     pisoIzq(PATH_PISO_IZQ),
@@ -33,13 +31,49 @@ SpritesManager::SpritesManager() :
     pisoDiagonalDer(PATH_PISO_DIAGONAL_2),
     pisoBloque(PATH_PISO_BLOQUE_1)
 {
+    botonPlay.setPosition(234, 258);
+    titulo.setPosition(95, 28);
+
     SpritesPlayers::init();
+
+    //Temporal. Armar mejor la clase ButtonPartida
+    SDL_Surface* surface = IMG_Load(PATH_FONT);
+    fontTexture = SDL_CreateTextureFromSurface(InterfazGrafica::renderer, surface);
+    SDL_FreeSurface(surface);
+
+    
     players.emplace_back(Spaz);
     players.emplace_back(Spaz);
     players.emplace_back(Spaz);
 }
 
+void SpritesManager::renderizarMenu() {
+    botonPlay.renderizar();
+    titulo.renderizar();
+}
 
+void SpritesManager::inicializarBotonesPartidas(const std::vector<int> &id_partidas) {
+    int cantidad = id_partidas.size();
+    for (int id : id_partidas) {
+        botones_partidas.emplace_back(id); 
+        //Estaria bueno que el tamaño de los botones  y letras dependa de la cantidad de partidas 
+        //porque no van a entrar en la pantalla si hay muchas
+    }
+}
+
+std::list<ButtonPartida> SpritesManager::getBotonesPartidas() {
+    return botones_partidas;
+}
+
+void SpritesManager::renderizarBotonesPartidas() {
+    for (auto button : botones_partidas) {
+        button.renderizar(InterfazGrafica::renderer, fontTexture);
+    }
+    botones_partidas.back().renderizarCrearPartida(InterfazGrafica::renderer, fontTexture);
+}
+
+
+//JUEGO
 void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
 {
     SpritePlayer& player = getPlayer(n);
@@ -56,17 +90,16 @@ void SpritesManager::renderizarPlayer(unsigned int n) {
 
 void SpritesManager::renderizarFondo()
 {
-    fondo.setArea(64, 64);
-    piso.setArea(64, 64);
-    pisoBloque.setArea(64, 64);
+    int size = 64;
+    fondo.setArea(size, size);
+    piso.setArea(size, size);
+    pisoBloque.setArea(size, size);
 
-    for (size_t i = 0; i < 15; i++)
-    {
-        for (size_t j = 0; j < 10; j++)
-        {
-            fondo.renderizarEn(64*i, 64*j);
-            piso.renderizarEn(64*i, 300);
-            pisoBloque.renderizarEn(i*64, 364);
+    for (size_t i = 0; i < 15; i++) {
+        for (size_t j = 0; j < 10; j++) {
+            fondo.renderizarEn(size*i, size*j);
+            piso.renderizarEn(size*i, 300);
+            pisoBloque.renderizarEn(i*size, 364);
         }
     }
 }
@@ -86,25 +119,6 @@ SpritePlayer& SpritesManager::getPlayer(unsigned int n) {
     auto player = std::next(players.begin(), n);
     return *player;
 }
-/*
-void SpritesManager::setPlayerSpaz(SpriteSheet &player, EstadosPlayer estado)
-{
-    if (estado == Inactivo)
-        player = playerSpaz_idle;
-    else if (estado == Caminando) {
-        player = playerSpaz_walk;
-    }
-    else if (estado == Saltando)
-        player = playerSpaz_jump;
-    else if (estado == Disparando)
-        player = playerSpaz_shoot;
-    else if (estado == AtaqueEspecial)
-        player = playerSpaz_specialAtack;
-    else if (estado == Muriendo)
-        player = playerSpaz_death;
-}
-
-*/
 
 void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos) {
     SpritePlayer& player = getPlayer(n);

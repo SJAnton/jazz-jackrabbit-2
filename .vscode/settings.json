@@ -59,5 +59,6 @@
         "sstream": "cpp",
         "map": "cpp",
         "fstream": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

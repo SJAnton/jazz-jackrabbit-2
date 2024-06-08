@@ -2,7 +2,7 @@
 #define CONSTANTES_PROTOCOLO_H
 
 #define SIZE_CLIENT_MSG 3
-
+#define SIZE_CLIENT_MSG_INIT 2
 #define LENGTH_PLAYER_INFO 10
 #define LENGTH_ENEMY_INFO 6
 #define LENGTH_ITEMS_INFO 5
@@ -20,11 +20,14 @@
 #define RIGHT 0x52 // R
 
 //ID para identificar el cliente al que le corresponde la accion o el estado
-#define PLAYER_1 0xA1
-#define PLAYER_2 0xA2
-#define PLAYER_3 0xA3
-#define PLAYER_4 0xA4
+//#define PLAYER_1 0xA1
+//#define PLAYER_2 0xA2
+//#define PLAYER_3 0xA3
+//#define PLAYER_4 0xA4
 
+#define PLAYER_TYPE_JAZZ 0x01
+#define PLAYER_TYPE_LORI 0x02
+#define PLAYER_TYPE_SPAZ 0x03
 
 /* El cliente envia 3 bytes
     1 byte con ID del cliente

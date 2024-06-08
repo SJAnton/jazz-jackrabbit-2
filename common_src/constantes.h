@@ -20,17 +20,38 @@ enum class TipoArma {Comun};
 
 enum Direcciones {Left, Right};
 
+
+enum TipoComando { AccionPlayer, MensajeInicial };
+
 class ComandoCliente {
-public:
+private:
     AccionesPlayer accion;
     Direcciones direccion;
+    int id_partida;
+    TipoPlayer tipoPlayer;
+    TipoComando tipoComando;
 
-    ComandoCliente(AccionesPlayer accion, Direcciones direccion){
-        this->accion = accion;
-        this->direccion = direccion;
+public:
+    ComandoCliente(AccionesPlayer accion, Direcciones direccion) 
+        : accion(accion), direccion(direccion) {
+        tipoComando = AccionPlayer;
     }
-    ComandoCliente(){    }
+
+    ComandoCliente(int id_partida, TipoPlayer tipo) 
+        : id_partida(id_partida), tipoPlayer(tipo) {
+        tipoComando = MensajeInicial;
+    }
+
+    ComandoCliente() { }
+
+    // Getters
+    AccionesPlayer getAccion() const { return accion; }
+    Direcciones getDireccion() const { return direccion; }
+    int getIdPartida() const { return id_partida; }
+    TipoPlayer getTipoPlayer() const { return tipoPlayer; }
+    TipoComando getTipoComando() const { return tipoComando; }
 };
+
 
 class Position {
     public:

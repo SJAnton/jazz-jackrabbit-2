@@ -1,3 +1,0 @@
-para compilar a mi me funciona con:
-    g++ -o client *.cpp ../common_src/*.cpp `sdl2-config --cflags --libs` -lSDL2_image
-

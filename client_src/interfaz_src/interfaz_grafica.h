@@ -4,52 +4,58 @@
 //para poder usar estas librerias tenes que instalarlas en tu sistema.
 #include <SDL.h>
 #include <SDL_image.h>
-
 #include <iostream>
 #include <exception>
-#include "client_player.h"
+
+#include "../../common_src/info_juego.h"
+#include "../client_player.h"
 
 #include "spritesManager.h"
 #include "sprite_object.h"
 #include "spritesheet.h"
-#include "client_player.h"
-#include "../common_src/info_juego.h"
 #include "button_partida.h"
 
 #define ANCHO_WINDOW 750 // representa pixeles
 #define ALTO_WINDOW 500 // representa pixeles
+
+#include "event_handler.h"
+
+enum EstadoInterfaz {Menu, SeleccionPartida, SeleccionPlayer, Juego, ResultadosFinales};
 
 class InterfazGrafica
 {
 private:
     SDL_Window* window; // ventana emergente
     bool is_running = true;
-    bool menu_abierto = true;
-    int iteracion = 0;    
+    int iteracion = 0;
+    EstadoInterfaz estado;
+
     //uso puntero para no tener que construirlo en la member initializer list
     SpritesManager *spritesManager;
 
     InfoJuego infoJuego;
     Queue<InfoJuego> &queueReceptora;
 
-    std::list<ButtonPartida> partidas;
+    EventHandler *eventHandler;
 
 public:
     static SDL_Renderer* renderer; //para poder accederlo desde otras clases
 
+private:
+    void renderizarMenu();
+    void renderizarSeleccionPartida();
+    void renderizarJuego();
+    void (InterfazGrafica::*renderizarPantalla)(); //Puntero a funcion renderizar
+
 public:
-    InterfazGrafica(Queue<InfoJuego> &queueReceptora);
+    InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer &client);
     
     bool estaAbierta();
-    bool menuAbierto();
-
-    void manejarEventosMenu();
-
-    void manejarEventosSeleccionPartida();
-
-    void manejarEventosActual();
-
+    
     void recibirInformacion();
+
+    EstadoInterfaz getEstado() { return estado;};
+    void nextEstado();
 
     /**
      * Actualiza la iteracion, y los sprites que correspondan.
@@ -62,19 +68,7 @@ public:
     */
     void update(int it);
 
-    /**
-     * Dibuja todos los pixeles en la pantalla
-     */
-    void renderizar();
-
-    void (InterfazGrafica::*renderizarPantalla)(); //Puntero a funcion renderer
-    void (InterfazGrafica::*manejarEventos)(); //Puntero a funcion handler
-
     void renderizarActual();
-
-    void renderizarMenu();
-
-    void renderizarSeleccionPartida();
 
     void stop();
     void cerrarInterfaz();

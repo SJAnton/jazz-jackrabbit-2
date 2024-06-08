@@ -8,9 +8,9 @@ SDL_Texture* SpriteObject::crearTexturaParaImagen(const char *path)
 {
     SDL_Surface* surface = IMG_Load(path);
     if (surface == NULL) {
-        throw std::runtime_error("Error. Falló IMG_Load(). "
+        throw std::runtime_error(std::string("Error. Falló IMG_Load(). "
                                  "Probablemente la direcion recibida no existe "
-                                 "o no corresponde a una imagen valida");
+                                 "o no corresponde a una imagen valida. Path: ") + path);
     }
     SDL_SetColorKey(surface, SDL_TRUE, fucsia);
     SDL_Texture* _texture = SDL_CreateTextureFromSurface(InterfazGrafica::renderer, surface);

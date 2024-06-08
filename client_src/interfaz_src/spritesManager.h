@@ -1,24 +1,32 @@
 #ifndef SPRITES_MANAGER_H
 #define SPRITES_MANAGER_H
 
-#include "../common_src/constantes.h"
+#include "../../common_src/constantes.h"
 #include "sprite_object.h"
 #include "spritesheet.h"
 //#include "spritesheetPlayer.h"
 #include "sprite_player.h"
 #include "sprites_players.h"
-
+#include "button_partida.h"
 #include <list>
 #include <vector>
 
 //carga todos los sprites que se van a utilizar a lo largo de todo el juego
-
 class SpritesManager
 {
 private:
-    SpriteObject fondo;
+    //MENU
+    SpriteObject botonPlay;
+    SpriteObject titulo;
+
+    //SeleccionarPartida
+    std::list<ButtonPartida> botones_partidas;
+    //SpriteObject letras;
+    SDL_Texture* fontTexture;
+
 
     //terreno
+    SpriteObject fondo;//Podria ser una imagen grande
     SpriteObject piso;
     SpriteObject pisoIzq;
     SpriteObject PisoDer;
@@ -28,7 +36,7 @@ private:
 
     std::list<SpritePlayer> players;
     std::vector<EstadosPlayer> estadosPlayers;
-
+ 
     bool playerInvertido = false;
 
 private: 
@@ -42,6 +50,11 @@ public:
     //(Todavia no está implementado).
     SpritesManager(int countPlayers, TipoPlayer tipos[]);
 
+    void renderizarMenu();
+
+    void inicializarBotonesPartidas(const std::vector<int> &id_partidas);
+    std::list<ButtonPartida> getBotonesPartidas();
+    void renderizarBotonesPartidas();
     //EstadosPlayer getEstadoPlayer(unsigned int numero);
 
     //modifica el spritesheet por otro que corresponda al estado nuevo, cambiando de animacion
