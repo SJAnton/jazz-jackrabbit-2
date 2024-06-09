@@ -57,11 +57,13 @@ void SpriteObject::setPosition(int x, int y) {
 }
 
 void SpriteObject::renderizar() const{
-    SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &destRect);
+    renderizarEn(pos_x, pos_y);
 }
 
 void SpriteObject::renderizarEn(int x, int y) const {
-    SDL_Rect aux = {x, y, widthSprite, heightSprite};
+    int _x = x - InterfazGrafica::camara.x;
+    int _y = y - InterfazGrafica::camara.y;
+    SDL_Rect aux = {_x, _y, widthSprite, heightSprite};
     SDL_RenderCopy(InterfazGrafica::renderer, texture, &srcRect, &aux);
 }
 
@@ -73,11 +75,13 @@ void SpriteObject::renderizarCorrido(int x, int y) const {
 
 
 void SpriteObject::renderizarInvertido() const{
-    SDL_RenderCopyEx(InterfazGrafica::renderer, texture, &srcRect, &destRect, 0, nullptr, SDL_FLIP_HORIZONTAL);    
+    renderizarInvertidoEn(this->pos_x, this->pos_y);  
 }
 
 void SpriteObject::renderizarInvertidoEn(int x, int y) const{
-    SDL_Rect aux = {x, y, widthSprite, heightSprite};
+    int _x = x - InterfazGrafica::camara.x;
+    int _y = y - InterfazGrafica::camara.y;
+    SDL_Rect aux = {_x, _y, widthSprite, heightSprite};
     SDL_RenderCopyEx(InterfazGrafica::renderer, texture, &srcRect, &aux, 0, nullptr, SDL_FLIP_HORIZONTAL);
 }
 

@@ -31,8 +31,8 @@ SpritesManager::SpritesManager() :
     pisoDiagonalDer(PATH_PISO_DIAGONAL_2),
     pisoBloque(PATH_PISO_BLOQUE_1),
     moneda(PATH_ITEM_COIN, 28, 28, 20),
-    gema(PATH_ITEM_GEM, 56, 56, 8),
-    zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 10)
+    gema(PATH_ITEM_GEM, 36, 36, 8),
+    zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20)
 {
     botonPlay.setPosition(234, 258);
     titulo.setPosition(95, 28);
@@ -45,7 +45,7 @@ SpritesManager::SpritesManager() :
     SDL_FreeSurface(surface);
 
     
-    players.emplace_back(Spaz);
+    players.emplace_back(Lori);
     players.emplace_back(Spaz);
     players.emplace_back(Spaz);
 }

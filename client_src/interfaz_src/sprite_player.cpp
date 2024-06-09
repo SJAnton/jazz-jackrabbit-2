@@ -47,11 +47,11 @@ void SpritePlayer::setEstado(const EstadosPlayer &estado_) {
     estado = estado_;
     switch (this->tipo)
     {
-    case Jazz:
+    case Jazz: setEstadoJazz(estado_);
         break;
     case Spaz: setEstadoSpaz(estado_);
         break;
-    case Lori:
+    case Lori: setEstadoLori(estado_);
         break;
     default:
         return;

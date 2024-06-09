@@ -9,6 +9,8 @@
 
 SDL_Renderer* InterfazGrafica::renderer = nullptr;
 
+SDL_Rect InterfazGrafica::camara = {0,0,ANCHO_WINDOW, ALTO_WINDOW};
+
 //constructor
 InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer &client) : 
     estado(Menu),
@@ -51,7 +53,12 @@ void InterfazGrafica::recibirInformacion(){
     //Proceso la informacion para actualizar la interfaz
 }
  
-
+//muevo la camara para que quede centrada en la posicion recibida
+void InterfazGrafica::updateCamara(const Position &pos) {
+    
+    camara.x = pos.x - ANCHO_WINDOW/2;
+    camara.y = pos.y - ALTO_WINDOW/2;
+}
 void InterfazGrafica::update(int it) {
     if (estado != Juego)
         return;
@@ -60,9 +67,10 @@ void InterfazGrafica::update(int it) {
     //infoJuego = queueReceptora.pop();
     if (queueReceptora.try_pop(infoJuego)) {
         Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y);
+        updateCamara(pos);
         spritesManager->updatePlayer(0, infoJuego.players[0].estado, pos);
     }
-    if (iteracion % 3 == 0)
+    if (iteracion % 2 == 0)
         spritesManager->updateItems();
 
 } 

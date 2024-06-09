@@ -40,12 +40,14 @@ private:
 
 public:
     static SDL_Renderer* renderer; //para poder accederlo desde otras clases
+    static SDL_Rect camara; //poscion de la camara
 
 private:
     void renderizarMenu();
     void renderizarSeleccionPartida();
     void renderizarJuego();
     void (InterfazGrafica::*renderizarPantalla)(); //Puntero a funcion renderizar
+    void updateCamara(const Position &pos);
 
 public:
     InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer &client);
