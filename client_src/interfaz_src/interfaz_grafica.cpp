@@ -79,7 +79,12 @@ void InterfazGrafica::renderizarJuego()
     SDL_RenderClear(renderer);//borra todo
     spritesManager->renderizarFondo();
     spritesManager->renderizarPlayer(0);
+
     spritesManager->renderizarItemEn(Moneda, 100, 260);
+    spritesManager->renderizarItemEn(Moneda, 200, 260);
+    spritesManager->renderizarItemEn(Diamante, 300, 260);
+    spritesManager->renderizarItemEn(Zanahoria, 400, 260);
+    spritesManager->renderizarItemEn(Diamante, 450, 240);
 
     SDL_RenderPresent(renderer); // dibuja todo
 }
