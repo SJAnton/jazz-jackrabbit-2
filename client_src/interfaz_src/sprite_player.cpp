@@ -72,21 +72,24 @@ void SpritePlayer::setEstadoSpaz(const EstadosPlayer &estado_)
         break;
     case EstadosPlayer::Jumping : spriteSheet = SpritesPlayers::Spaz_jump;
         break;
+    case EstadosPlayer::Falling : spriteSheet = SpritesPlayers::Spaz_jump; // Cambiar
+        break;
     case EstadosPlayer::Shooting : spriteSheet = SpritesPlayers::Spaz_shoot;
         break;
     case EstadosPlayer::SpecialAttack : spriteSheet = SpritesPlayers::Spaz_specialAtack;
-        break;
-    case EstadosPlayer::Damaged : spriteSheet = SpritesPlayers::Spaz_damaged;
         break;
     case EstadosPlayer::IntoxicatedIdle : spriteSheet = SpritesPlayers::Spaz_intoxicatedIdle;
         break;
     case EstadosPlayer::IntoxicatedWalk : spriteSheet = SpritesPlayers::Spaz_walk;
         break;
-    case EstadosPlayer::Dying : spriteSheet = SpritesPlayers::Spaz_death;
+    case EstadosPlayer::Damaged : spriteSheet = SpritesPlayers::Spaz_damaged;
         break;
-    //case EstadosPlayer::Reviving;
-    //case EstadosPlayer::Death;
-
+    case EstadosPlayer::Dying : spriteSheet = SpritesPlayers::Spaz_death; //cambiar
+        break;
+    case EstadosPlayer::Dead : spriteSheet = SpritesPlayers::Spaz_death;
+        break;
+    case EstadosPlayer::Reviving : spriteSheet = SpritesPlayers::Spaz_idle;
+        break;
     default:
         break;
     }
@@ -97,5 +100,37 @@ void SpritePlayer::setEstadoJazz(const EstadosPlayer &estado_) {
 }
 
 void SpritePlayer::setEstadoLori(const EstadosPlayer &estado_) {
+     switch (estado_)
+    {
+    case EstadosPlayer::Inactive : spriteSheet = SpritesPlayers::Lori_idle;
+        break;
+    case EstadosPlayer::Walking : spriteSheet = SpritesPlayers::Lori_walk;
+        break;
+    case EstadosPlayer::Running : spriteSheet = SpritesPlayers::Lori_run;
+        break;
+    case EstadosPlayer::Jumping : spriteSheet = SpritesPlayers::Lori_jump;
+        break;
+    case EstadosPlayer::Falling : spriteSheet = SpritesPlayers::Lori_fall;
+        break;
+    case EstadosPlayer::Shooting : spriteSheet = SpritesPlayers::Lori_shoot;
+        break;
+    case EstadosPlayer::SpecialAttack : spriteSheet = SpritesPlayers::Lori_specialAtack;
+        break;
+    case EstadosPlayer::IntoxicatedIdle : spriteSheet = SpritesPlayers::Lori_intoxicatedIdle;
+        break;
+    case EstadosPlayer::IntoxicatedWalk : spriteSheet = SpritesPlayers::Lori_walk;
+        break;
+    case EstadosPlayer::Damaged : spriteSheet = SpritesPlayers::Lori_damaged;
+        break;
+    case EstadosPlayer::Dying : spriteSheet = SpritesPlayers::Lori_dying;
+        break;
+    case EstadosPlayer::Dead : spriteSheet = SpritesPlayers::Lori_death;
+        break;
+    case EstadosPlayer::Reviving : spriteSheet = SpritesPlayers::Lori_idle;
+        break;
+    default:
+        break;
+    }
+
 
 }

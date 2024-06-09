@@ -7,6 +7,7 @@
 //#include "spritesheetPlayer.h"
 #include "sprite_player.h"
 #include "sprites_players.h"
+#include "sprites_paths.h"
 #include "button_partida.h"
 #include <list>
 #include <vector>
@@ -24,8 +25,7 @@ private:
     //SpriteObject letras;
     SDL_Texture* fontTexture;
 
-
-    //terreno
+    //terreno 
     SpriteObject fondo;//Podria ser una imagen grande
     SpriteObject piso;
     SpriteObject pisoIzq;
@@ -33,6 +33,10 @@ private:
     SpriteObject pisoDiagonalIzq;
     SpriteObject pisoDiagonalDer;
     SpriteObject pisoBloque;
+
+    SpriteSheet moneda;
+    SpriteSheet gema;
+    SpriteSheet zanahoria;
 
     std::list<SpritePlayer> players;
     std::vector<EstadosPlayer> estadosPlayers;
@@ -72,6 +76,8 @@ public:
 
     void renderizarFondo();
 
+    void renderizarItemEn(const TipoRecolectable &tipo, int x, int y);
+    void updateItems();
     //~SpritesManager();
 };
 

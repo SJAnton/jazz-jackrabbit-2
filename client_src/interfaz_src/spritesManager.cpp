@@ -29,7 +29,10 @@ SpritesManager::SpritesManager() :
     PisoDer(PATH_PISO_DER),
     pisoDiagonalIzq(PATH_PISO_DIAGONAL_1),
     pisoDiagonalDer(PATH_PISO_DIAGONAL_2),
-    pisoBloque(PATH_PISO_BLOQUE_1)
+    pisoBloque(PATH_PISO_BLOQUE_1),
+    moneda(PATH_ITEM_COIN, 28, 28, 20),
+    gema(PATH_ITEM_GEM, 56, 56, 8),
+    zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 10)
 {
     botonPlay.setPosition(234, 258);
     titulo.setPosition(95, 28);
@@ -104,21 +107,26 @@ void SpritesManager::renderizarFondo()
     }
 }
 
+void SpritesManager::renderizarItemEn(const TipoRecolectable &tipo, int x, int y) {
+    if (tipo == TipoRecolectable::Moneda)
+        moneda.renderizarEn(x, y);
+    else if (tipo == TipoRecolectable::Diamante)
+        gema.renderizarEn(x, y);
+    else if (tipo == TipoRecolectable::Zanahoria)
+        zanahoria.renderizarEn(x, y);
+}
+void SpritesManager::updateItems() {
+    moneda.nextFrame();
+    gema.nextFrame();
+    zanahoria.nextFrame();
+}
 void SpritesManager::flipPlayer(unsigned int n, bool invertirSprite) 
 {
     SpritePlayer& player = getPlayer(n);
     player.setFlip(invertirSprite);
 }
 
-//metodos privados:
 
-SpritePlayer& SpritesManager::getPlayer(unsigned int n) {
-    if (n >= players.size()) {
-        throw std::out_of_range("Index out of range");
-    }
-    auto player = std::next(players.begin(), n);
-    return *player;
-}
 
 void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos) {
     SpritePlayer& player = getPlayer(n);
@@ -129,4 +137,14 @@ void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, c
     else {
         player.updateFrame();
     }
+}
+
+//metodos privados:
+
+SpritePlayer& SpritesManager::getPlayer(unsigned int n) {
+    if (n >= players.size()) {
+        throw std::out_of_range("Index out of range");
+    }
+    auto player = std::next(players.begin(), n);
+    return *player;
 }

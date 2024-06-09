@@ -62,7 +62,9 @@ void InterfazGrafica::update(int it) {
         Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y);
         spritesManager->updatePlayer(0, infoJuego.players[0].estado, pos);
     }
-    
+    if (iteracion % 3 == 0)
+        spritesManager->updateItems();
+
 } 
 
 
@@ -77,6 +79,7 @@ void InterfazGrafica::renderizarJuego()
     SDL_RenderClear(renderer);//borra todo
     spritesManager->renderizarFondo();
     spritesManager->renderizarPlayer(0);
+    spritesManager->renderizarItemEn(Moneda, 100, 260);
 
     SDL_RenderPresent(renderer); // dibuja todo
 }
