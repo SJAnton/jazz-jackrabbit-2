@@ -16,7 +16,7 @@ class CharacterMap {
     public:
         CharacterMap() {};
 
-        void push_back(int id, std::shared_ptr<Character> character);
+        void push_back(int id, std::shared_ptr<Character> &character);
 
         std::shared_ptr<Character> at(int id);
 

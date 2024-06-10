@@ -5,27 +5,9 @@
 
 class Toasterball : public Projectile {
     private:
-        uint8_t projectile_id;
-
-        Direction direction;
-
-        uint8_t x_pos;
-
-        uint8_t y_pos;
-
-        uint8_t x_hitbox;
-
-        uint8_t y_hitbox;
-
-        uint8_t damage;
-
-        uint8_t damage_multiplier;
-
-        uint8_t speed;
 
     public:
-        Toasterball(uint8_t x, uint8_t y, uint8_t dir,
-                    std::vector<uint8_t> &data) : x_pos(x), y_pos(y) {
+        Toasterball(uint8_t x, uint8_t y, uint8_t dir, std::vector<uint8_t> &data) {
             if (dir == LEFT) {
                 direction = DIR_LEFT;
             } else if (dir == RIGHT) {
@@ -33,6 +15,8 @@ class Toasterball : public Projectile {
             } else {
                 throw std::runtime_error("Invalid projectile direction");
             }
+            x_pos = x;
+            y_pos = y;
             projectile_id = data[PR_ID_POS];
             x_hitbox = data[PR_RD_POS];
             y_hitbox = data[PR_RD_POS];

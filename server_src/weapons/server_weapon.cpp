@@ -1,5 +1,7 @@
 #include "server_weapon.h"
 
+#include <iostream>
+
 bool Weapon::shoot() {
     if (ammo > 0) {
         ammo--;

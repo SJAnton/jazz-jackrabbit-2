@@ -32,16 +32,16 @@
 #define JH_POS 4
 
 class Character {
-    private:
+    protected:
         int character_id; // Jazz = 1, Lori = 2, Spaz = 3
 
-        EstadosPlayer status;
+        EstadosPlayer status = EstadosPlayer::Inactive;
 
-        TipoArma weapon_type = TipoArma::Blaster;
+        TipoArma weapon_type;
 
         uint8_t health;
 
-        Weapon weapon;
+        std::unique_ptr<Weapon> weapon;
 
         uint8_t points;
 
@@ -53,6 +53,8 @@ class Character {
 
         uint8_t y_hitbox;
 
+        uint8_t jump_height;
+
         bool alive = true;
 
         bool frozen = false;
@@ -62,9 +64,13 @@ class Character {
     public:
         Character() {};
 
+        virtual ~Character() = default;
+
         InfoPlayer set_data(int id);
 
         int get_character_id();
+
+        EstadosPlayer get_status();
 
         uint8_t get_x_pos();
 
@@ -97,11 +103,11 @@ class Character {
         void attack(uint8_t direction, std::list<std::shared_ptr<Projectile>> &projectile_list,
                     std::map<std::string, std::vector<uint8_t>> &data_map);
 
-        void special_attack();
+        virtual void special_attack();
 
         void pick_up_ammo();
-
-        void change_weapon(Weapon new_weapon);
+        
+        void change_weapon(std::unique_ptr<Weapon> &new_weapon);
 
         void set_frozen_status(bool status);
 

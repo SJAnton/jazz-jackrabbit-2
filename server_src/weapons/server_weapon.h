@@ -4,11 +4,14 @@
 #include <vector>
 #include <cstdint>
 
+#define ID_POS 0
+#define AM_POS 1
+#define FR_POS 2
+#define RC_POS 3
+
 class Weapon {
     // https://www.jazz2online.com/21/the-weapons-of-jazz2/
-    // De esta clase heredan todas las armas
-    // Añadir propiedades especiales para cada arma
-    private:
+    protected:
         uint8_t weapon_id;
 
         uint8_t ammo;
@@ -19,6 +22,8 @@ class Weapon {
 
     public:
         Weapon() {};
+
+        virtual ~Weapon() = default;
 
         virtual bool shoot();
 

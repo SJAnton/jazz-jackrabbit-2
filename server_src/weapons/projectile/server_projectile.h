@@ -26,6 +26,11 @@ class Projectile {
     // De esta clase heredan todos los proyectiles
     // https://www.jazz2online.com/21/the-weapons-of-jazz2/
     private:
+        //bool contact_x(Character &ch);
+
+        //bool contact_y(Character &ch);
+
+    protected:
         uint8_t projectile_id;
 
         Direction direction;
@@ -45,11 +50,6 @@ class Projectile {
         uint8_t speed;
 
         bool powered_up = false;
-        
-    //protected:
-        //bool contact_x(Character &ch);
-
-        //bool contact_y(Character &ch);
 
     public:
         Projectile();

@@ -10,24 +10,11 @@
 
 class EnemyBat : public Enemy {
     private:
-        uint8_t health;
-
-        uint8_t damage;
-
-        uint8_t x_pos;
-
-        uint8_t y_pos;
-
-        uint8_t x_hitbox;
-
-        uint8_t y_hitbox;
-
-        bool alive = true;
-
-        bool frozen = false;
 
     public:
-        EnemyBat(uint8_t x, uint8_t y, std::vector<uint8_t> &data) : x_pos(x), y_pos(y) {
+        EnemyBat(uint8_t x, uint8_t y, std::vector<uint8_t> &data) {
+            x_pos = x;
+            y_pos = y;
             health = data[H_POS];
             damage = data[D_POS];
             x_hitbox = data[XH_POS];

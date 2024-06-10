@@ -11,37 +11,16 @@
 
 class PlayerJazz : public Character {
     private:
-        int character_id = JAZZ_ID;
-
-        uint8_t health;
-
-        uint8_t full_health;
-
-        Weapon weapon;
-
-        uint8_t points;
-
-        uint8_t x_pos = X_START;
-
-        uint8_t y_pos = Y_START;
-
-        uint8_t x_hitbox;
-
-        uint8_t y_hitbox;
-
-        uint8_t jump_height;
-
-        bool alive = true;
-
-        bool frozen = false;
-
-        bool intoxicated = false;
         
     public:
-        PlayerJazz(std::map<std::string, std::vector<uint8_t>> &map)
-                    : weapon(Blaster(map[BLASTER_KEY])) {
+        PlayerJazz(uint8_t x, uint8_t y, std::map<std::string, std::vector<uint8_t>> &map) {
             std::vector<uint8_t> data = map[JAZZ_KEY];
+            x_pos = x;
+            y_pos = y;
+            character_id = JAZZ_ID;
             health = data[HP_POS];
+            weapon = std::make_unique<Blaster>(map[BLASTER_KEY]);
+            weapon_type = TipoArma::Blaster;
             points = data[PT_POS];
             x_hitbox = data[XH_POS];
             y_hitbox = data[YH_POS];
@@ -51,8 +30,6 @@ class PlayerJazz : public Character {
             }
         };
 
-        int get_character_id();
-
-        void special_attack();
+        void special_attack() override;
 };
 #endif

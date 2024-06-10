@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Flags de compilación
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wno-unused-private-field")
 
+# Instalador de yaml-cpp
 include(FetchContent)
 
 FetchContent_Declare(yaml-cpp

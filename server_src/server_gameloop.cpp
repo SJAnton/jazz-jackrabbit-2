@@ -22,6 +22,8 @@ void ServerGameloop::run() {
         }
         game.execute_actions(actions, character_map, projectile_list, data_map);
 
+        //std::cout << projectile_list.size() << std::endl;
+
         game.tick(character_map, projectile_list);
 
         InfoJuego game_data = game.snapshot(character_map);

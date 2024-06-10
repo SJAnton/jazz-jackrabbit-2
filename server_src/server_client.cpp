@@ -13,6 +13,8 @@
 #define LORI_CODE "PlayerLori"
 #define SPAZ_CODE "PlayerSpaz"
 
+#define INIT_POS 0
+
 #define SHUTCODE 2
 
 void Client::run() {
@@ -96,13 +98,14 @@ void Client::select_character(uint8_t character, uint8_t game) {
     }
     switch (character) {
         case JAZZ_BYTE:
-            player = make_shared<PlayerJazz>(data);
+            // TODO: completar con las posiciones del spawn
+            player = make_shared<PlayerJazz>(INIT_POS, INIT_POS, data);
             break;
         case LORI_BYTE:
-            player = make_shared<PlayerLori>(data);
+            player = make_shared<PlayerLori>(INIT_POS, INIT_POS, data);
             break;
         case SPAZ_BYTE:
-            player = make_shared<PlayerSpaz>(data);
+            player = make_shared<PlayerSpaz>(INIT_POS, INIT_POS, data);
             break;
         default:
             kill();

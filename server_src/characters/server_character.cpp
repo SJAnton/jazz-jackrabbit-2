@@ -1,13 +1,9 @@
 #include "server_character.h"
+#include "../../common_src/constantes_protocolo.h"
 
 #define RUN_SPEED 3
 #define LOW_HEALTH 20
 #define FULL_HEALTH 100
-
-#define WALK 0x12
-#define RUN 0x13
-#define LEFT 0x4C
-#define RIGHT 0x52
 
 #define BLASTERBALL_KEY "Blasterball"
 #define BOUNCERBALL_KEY "Bouncerball"
@@ -18,19 +14,9 @@
 #define SEEKER_ROCKET_KEY "SeekerRocket"
 #define TOASTERBALL_KEY "Toasterball"
 
-#define BLASTER_ID 0x01
-#define BOUNCER_ID 0x02
-#define ELECTRO_BLASTER_ID 0x03
-#define FREEZER_ID 0x04
-#define PEPPER_SPRAY_ID 0x05
-#define RF_MISSILE_ID 0x06
-#define SEEKER_ID 0x07
-#define TNT_ID 0x08
-#define TOASTER_ID 0x09
-
 InfoPlayer Character::set_data(int id) {
     InfoPlayer data(id, x_pos, y_pos, character_id, status, health,
-                    points, weapon_type, weapon.get_ammo());
+                    points, weapon_type, weapon->get_ammo());
     if (!alive) {
         status = EstadosPlayer::Dead;
     }
@@ -39,6 +25,10 @@ InfoPlayer Character::set_data(int id) {
 
 int Character::get_character_id() {
     return character_id;
+}
+
+EstadosPlayer Character::get_status() {
+    return status;
 }
 
 uint8_t Character::get_x_pos() {
@@ -99,7 +89,7 @@ void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
     }
     switch (direction) {
         case LEFT:
-            if (movement == WALK || (movement == RUN && intoxicated)) {
+            if (movement == ACTION_WALK || (movement == ACTION_RUN && intoxicated)) {
                 if (intoxicated) {
                     status = EstadosPlayer::IntoxicatedWalk;
                 } else {
@@ -113,7 +103,7 @@ void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
                 break;
             }
         case RIGHT:
-            if (movement == WALK || (movement == RUN && intoxicated)) {
+            if (movement == ACTION_WALK || (movement == ACTION_RUN && intoxicated)) {
                 if (intoxicated) {
                     status = EstadosPlayer::IntoxicatedWalk;
                 } else {
@@ -147,12 +137,9 @@ void Character::fall() {
     y_pos--;
 }
 
-#include <iostream>
-
 void Character::attack(uint8_t direction, std::list<std::shared_ptr<Projectile>> &projectile_list,
                         std::map<std::string, std::vector<uint8_t>> &data_map) {
-    std::cout << "id = " << (int)weapon.get_id() << std::endl;
-    if (is_intoxicated() || is_dead() || !weapon.shoot()) {
+    if (is_intoxicated() || is_dead() || !weapon->shoot()) {
         return;
     }
     uint8_t projectile_x;
@@ -163,7 +150,7 @@ void Character::attack(uint8_t direction, std::list<std::shared_ptr<Projectile>>
     } else {
         projectile_x++;
     }
-    switch (weapon.get_id()) {
+    switch (weapon->get_id()) {
         case BLASTER_ID:
             projectile = std::make_shared<Blasterball>(
                             projectile_x, y_pos, direction, data_map[BLASTERBALL_KEY]
@@ -222,8 +209,10 @@ void Character::pick_up_ammo() {
 
 }
 
-void Character::change_weapon(Weapon new_weapon) {
-    switch (new_weapon.get_id()) {
+//void Character::change_weapon(Weapon new_weapon) {
+void Character::change_weapon(std::unique_ptr<Weapon> &new_weapon) {
+    //switch (new_weapon.get_id()) {
+    switch (new_weapon->get_id()) {
         case BLASTER_ID:
             weapon_type = TipoArma::Blaster;
             break;
@@ -252,7 +241,8 @@ void Character::change_weapon(Weapon new_weapon) {
             weapon_type = TipoArma::Toaster;
             break;
     }
-    weapon = new_weapon;
+    //weapon = new_weapon;
+    weapon.swap(new_weapon);
 } 
 
 void Character::set_frozen_status(bool status) {

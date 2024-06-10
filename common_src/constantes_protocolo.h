@@ -31,6 +31,16 @@
     A2 15 4C // El player2 dispara a la izquierda
 */
 
+// Armas de un Player
+#define BLASTER_ID 0x01
+#define BOUNCER_ID 0x02
+#define ELECTRO_BLASTER_ID 0x03
+#define FREEZER_ID 0x04
+#define PEPPER_SPRAY_ID 0x05
+#define RF_MISSILE_ID 0x06
+#define SEEKER_ID 0x07
+#define TNT_ID 0x08
+#define TOASTER_ID 0x09
 
 //Estados posibles de un Player
 #define STATE_IDLE 0x01
