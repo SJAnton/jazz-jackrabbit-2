@@ -75,10 +75,10 @@ void Game::tick(std::shared_ptr<CharacterMap> &ch_map,
     for (std::shared_ptr<Projectile> projectile : projectile_list) {
         uint8_t current_x_pos = projectile->get_x_pos();
         projectile->move_x_pos();
-        if (current_x_pos == 0 || current_x_pos == 255) {
+        /*if (current_x_pos == 0 || current_x_pos == 255) {
             projectile_list.remove(projectile);
             continue;
-        }
+        }*/
         /* if (projectile->contact()) {
             projectile_list.remove(projectile);
         }
