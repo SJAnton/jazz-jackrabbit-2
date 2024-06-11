@@ -1,0 +1,6 @@
+_client_src/build/client
+_client_src/build/cmake_install.cmake
+_client_src/build/CMakeCache.txt
+_client_src/build/Makefile
+_client_src/build/CMakeFiles/cmake.check_cache
+_client_src/build/CMakeFiles/CMakeDirectoryInformation.cmake
