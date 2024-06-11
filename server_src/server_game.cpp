@@ -1,18 +1,30 @@
 #include "server_game.h"
 
 #include <iostream>
+#include <algorithm>
 
 #define ID_POS 0
 #define ACTION_POS 1
 #define DIRECTION_POS 2
 
-void Game::check_top_three_players(std::vector<Character> top_players) {
-    /*if (top_players[2] > top_players[1]) {
-        std::swap(top_players[1], top_players[2]);
+#define TP_NUM 3
+#define TP_LAST_POS 2
+
+bool Game::compare_points(std::shared_ptr<Character> &ch1, std::shared_ptr<Character> &ch2) {
+    return ch1->get_points() > ch2->get_points();
+}
+
+void Game::check_top_three_players(std::shared_ptr<Character> &character,
+                                    std::vector<std::shared_ptr<Character>> &top_players) {
+    if (std::count(top_players.begin(), top_players.end(), character) == 0) {
+        // Character no está en la lista
+        if (top_players.size() < TP_NUM) {
+            top_players.push_back(character);
+        } else if (character->get_points() > top_players[TP_LAST_POS]->get_points()) {
+            top_players[2] = character;
+        }
     }
-    if (top_players[1] > top_players[0]) {
-        std::swap(top_players[0], top_players[1]);
-    }*/
+    std::sort(top_players.begin(), top_players.end(), Game::compare_points);
 }
 
 std::vector<uint8_t> Game::get_actions(std::shared_ptr<Queue<uint8_t>> &q) {
@@ -61,13 +73,18 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
 }
 
 void Game::tick(std::shared_ptr<CharacterMap> &ch_map,
-                std::list<std::shared_ptr<Projectile>> &projectile_list) {
+                std::vector<std::shared_ptr<Character>> &top_players,
+                std::list<std::shared_ptr<Projectile>> &projectile_list,
+                std::list<std::shared_ptr<Enemy>> &enemy_list,
+                std::list<std::shared_ptr<Object>> &object_list) {
     for (auto it = ch_map->begin(); it != ch_map->end(); ++it) {
         std::shared_ptr<Character> character = it->second;
         if (character->is_intoxicated()) {
             character->reduce_intoxicated_time();
+        } else if (character->is_dead()) {
+            character->reduce_respawn_time();
         }
-        //check_top_three_players(character);
+        check_top_three_players(character, top_players);
         /*if (character.is_falling()) {
             character->fall();
         }*/
@@ -75,14 +92,20 @@ void Game::tick(std::shared_ptr<CharacterMap> &ch_map,
     for (std::shared_ptr<Projectile> projectile : projectile_list) {
         uint8_t current_x_pos = projectile->get_x_pos();
         projectile->move_x_pos();
-        /*if (current_x_pos == 0 || current_x_pos == 255) {
+        if (current_x_pos == 0 || current_x_pos == 255) {
             projectile_list.remove(projectile);
             continue;
-        }*/
+        }
         /* if (projectile->contact()) {
             projectile_list.remove(projectile);
         }
         */
+    }
+    for (std::shared_ptr<Enemy> enemy : enemy_list) {
+
+    }
+    for (std::shared_ptr<Object> object : object_list) {
+
     }
 }
 

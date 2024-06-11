@@ -35,6 +35,7 @@
 #define JH_POS 4
 
 #define AMMO_KEY "InitAmmo"
+#define CHARACTER_KEY "Character"
 
 #define BOUNCER_AMMO_POS 0
 #define ELECTRO_BLASTER_AMMO_POS 1
@@ -44,6 +45,9 @@
 #define SEEKER_AMMO_POS 5
 #define TNT_AMMO_POS 6
 #define TOASTER_AMMO_POS 7
+
+#define RESPAWN_TIME_POS 0
+#define ITR_PER_SEC 15
 
 class Character {
     protected:
@@ -91,6 +95,10 @@ class Character {
 
         uint8_t toaster_ammo;
 
+        int respawn;
+
+        int respawn_time = 0;
+
         std::map<std::string, std::vector<uint8_t>> &map;
 
         void pick_up_ammo(std::shared_ptr<Object> &object);
@@ -112,6 +120,8 @@ class Character {
             seeker_ammo = ammo_data[SEEKER_AMMO_POS];
             tnt_ammo = ammo_data[TNT_AMMO_POS];
             toaster_ammo = ammo_data[TOASTER_AMMO_POS];
+
+            respawn = map[CHARACTER_KEY][RESPAWN_TIME_POS] * ITR_PER_SEC;
         };
 
         virtual ~Character() = default;
@@ -154,11 +164,13 @@ class Character {
 
         void set_frozen_status(bool status);
 
-        void set_intoxicated_status(int time); // Convierte intoxicated a true/false
+        void set_intoxicated_status(int time);
 
-        void take_damage(uint8_t &damage); // health - damage
+        void take_damage(uint8_t &damage);
 
         void reduce_intoxicated_time();
+
+        void reduce_respawn_time();
 
         void revive();
 

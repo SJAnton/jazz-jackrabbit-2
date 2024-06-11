@@ -22,7 +22,7 @@ void ServerGameloop::run() {
         }
         game.execute_actions(actions, character_map, projectile_list, data_map);
 
-        game.tick(character_map, projectile_list);
+        game.tick(character_map, top_players, projectile_list, enemy_list, object_list);
 
         InfoJuego game_data = game.snapshot(character_map);
         game.send_snapshot(game_data, sndr_qs);
@@ -32,7 +32,7 @@ void ServerGameloop::run() {
         if (itr_time < expected_itr_time) {
             std::this_thread::sleep_for(expected_itr_time - itr_time);
         }
-        //time_left--; // TODO: enviar por InfoJuego
+        time_left--; // TODO: enviar por InfoJuego
     }
     wc = true;
 }

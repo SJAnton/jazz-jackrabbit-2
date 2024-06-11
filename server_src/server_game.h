@@ -7,10 +7,14 @@
 #include "../common_src/info_juego.h"
 #include "../common_src/constantes_protocolo.h"
 #include "characters/server_character.h"
+#include "characters/server_enemy.h"
 
 class Game {
     private:
-        void check_top_three_players(std::vector<Character> top_players);
+        static bool compare_points(std::shared_ptr<Character> &ch1, std::shared_ptr<Character> &ch2);
+
+        void check_top_three_players(std::shared_ptr<Character> &character,
+                                        std::vector<std::shared_ptr<Character>> &top_players);
 
     public:
         Game() {};
@@ -21,8 +25,11 @@ class Game {
                                 std::list<std::shared_ptr<Projectile>> &projectile_list,
                                     std::map<std::string, std::vector<uint8_t>> &data_map);
 
-        void tick(std::shared_ptr<CharacterMap> &ch_map,
-                    std::list<std::shared_ptr<Projectile>> &projectile_list);
+        void tick(std::shared_ptr<CharacterMap> &ch_map, 
+                    std::vector<std::shared_ptr<Character>> &top_players,
+                        std::list<std::shared_ptr<Projectile>> &projectile_list,
+                            std::list<std::shared_ptr<Enemy>> &enemy_list,
+                                std::list<std::shared_ptr<Object>> &object_list);
 
         InfoJuego snapshot(std::shared_ptr<CharacterMap> &ch_map);
 

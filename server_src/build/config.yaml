@@ -182,7 +182,7 @@ Gem:
 
 PoisonedFruit:
   object_id: 5
-  poisoned_time: 75 # Cantidad de iteraciones (15 por segundo)
+  poisoned_time: 5 # Cantidad de segundos
 
 # Munición inicial
 InitAmmo:
@@ -198,3 +198,6 @@ InitAmmo:
 # Duración de la partida
 GameLength:
   length: 250
+
+Character:
+  respawn: 5

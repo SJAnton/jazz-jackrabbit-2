@@ -75,8 +75,8 @@ void Client::select_game(uint8_t game) {
         uint8_t game_length = data[GAME_LENGTH_KEY][GAME_LENGTH_POS];
 
         ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor, monitors,
-                                                        gameloops_q, data, current_gmlp_id,
-                                                            game_length);
+                                                        gameloops_q, data, game_length,
+                                                            current_gmlp_id);
         
         gameloops_q[current_gmlp_id] = recv_q;
         monitors[current_gmlp_id] = monitor;

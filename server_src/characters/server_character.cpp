@@ -139,6 +139,7 @@ void Character::take_damage(uint8_t &damage) {
     if (health <= 0) {
         health = 0;
         alive = false;
+        respawn_time = respawn;
     }
 }
 
@@ -154,7 +155,18 @@ void Character::add_health(uint8_t sum) {
 }
 
 void Character::reduce_intoxicated_time() {
+    if (intoxicated_time == 0) {
+        return;
+    }
     intoxicated_time--;
+}
+
+void Character::reduce_respawn_time() {
+    if (respawn_time == 0) {
+        revive();
+        return;
+    }
+    respawn_time--;
 }
 
 void Character::revive() {

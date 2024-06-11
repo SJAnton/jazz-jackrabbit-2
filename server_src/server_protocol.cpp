@@ -223,7 +223,7 @@ AccionesPlayer  ServerProtocol::decodeAction(uint8_t byte) {
             return AccionesPlayer::Jump;
         case ACTION_SHOOT:
             return AccionesPlayer::Shoot;
-        case ACTION_SPECIAL_ATACK:
+        case ACTION_SPECIAL_ATTACK:
             return AccionesPlayer::SpecialAttack;
         default:
             //Excepcion
