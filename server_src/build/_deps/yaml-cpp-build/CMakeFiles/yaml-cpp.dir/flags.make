@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include" -I"/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src"
+CXX_INCLUDES = -I/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include -I/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src
 
 CXX_FLAGS =  -Wall -Werror -Wno-unused-private-field -Wall -Wextra -Wshadow -Weffc++ -Wno-long-long -pedantic -pedantic-errors -std=gnu++17
 

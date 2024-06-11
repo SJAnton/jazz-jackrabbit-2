@@ -1,4 +1,4 @@
-# Install script for directory: /home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild
+# Install script for directory: /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

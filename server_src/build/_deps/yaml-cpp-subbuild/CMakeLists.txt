@@ -22,8 +22,8 @@ set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
 include(ExternalProject)
 ExternalProject_Add(yaml-cpp-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/jbeder/yaml-cpp.git" "GIT_TAG" "yaml-cpp-0.7.0"
-                    SOURCE_DIR          "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src"
-                    BINARY_DIR          "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build"
+                    SOURCE_DIR          "/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src"
+                    BINARY_DIR          "/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

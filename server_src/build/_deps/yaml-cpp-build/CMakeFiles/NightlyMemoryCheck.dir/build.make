@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build"
+CMAKE_SOURCE_DIR = /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build"
+CMAKE_BINARY_DIR = /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build
 
 # Utility rule file for NightlyMemoryCheck.
 
@@ -67,7 +67,7 @@ include _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/compiler_depend.m
 include _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/progress.make
 
 _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck:
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build" && /usr/bin/ctest -D NightlyMemoryCheck
+	cd /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build && /usr/bin/ctest -D NightlyMemoryCheck
 
 NightlyMemoryCheck: _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck
 NightlyMemoryCheck: _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/build.make
@@ -78,10 +78,10 @@ _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/build: NightlyMemoryCheck
 .PHONY : _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/build
 
 _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/clean:
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build" && $(CMAKE_COMMAND) -P CMakeFiles/NightlyMemoryCheck.dir/cmake_clean.cmake
+	cd /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build && $(CMAKE_COMMAND) -P CMakeFiles/NightlyMemoryCheck.dir/cmake_clean.cmake
 .PHONY : _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/clean
 
 _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/depend:
-	cd "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build" "/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : _deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir/depend
 

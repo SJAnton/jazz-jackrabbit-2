@@ -1,4 +1,6 @@
 #include "server_client.h"
+#include "server_game_map.h"
+#include "server_game_map.cpp"
 
 #define GAME_POS 0
 #define CHAR_POS 1
@@ -73,14 +75,22 @@ void Client::select_game(uint8_t game) {
         gameloops_q[current_gmlp_id] = recv_q;
         monitors[current_gmlp_id] = monitor;
 
+        //int selectedMap = rand() % 4;
+        int selectedMap = 3; 
+        ServerGameMap *gameMap = new ServerGameMap(1, 1, 30, 30, selectedMap); //Esto podría ir al constructor, no quiero abultarlo
+
+        gameloop->setGameMap(gameMap);
         gameloop->start();
         gameloops.push_back(gameloop);
         gmlp_id++;
     } else {
         // La partida ya existe, la cola del receiver es la cola
         // única del gameloop y el monitor recibe la cola del sender
+        
         recv_q = gameloops_q.at(game);
         monitor = monitors.at(game);
+        ServerGameloop* gameloop = gameloops.find_by_id((int)game);
+        gameloop->send_map(&sndr_q);
     }
     monitor->push_back(&sndr_q);
     recv.start();

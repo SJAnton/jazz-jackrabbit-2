@@ -1,7 +1,7 @@
 _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o: \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/nodeevents.cpp \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/nodeevents.cpp \
  /usr/include/stdc-predef.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/nodeevents.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/nodeevents.h \
  /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
  /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -55,11 +55,11 @@ _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o: \
  /usr/include/c++/11/bits/functional_hash.h \
  /usr/include/c++/11/bits/hash_bytes.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/anchor.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/anchor.h \
  /usr/include/c++/11/cstddef \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/ptr.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/ptr.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/dll.h \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -128,7 +128,7 @@ _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o: \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/eventhandler.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/eventhandler.h \
  /usr/include/c++/11/string /usr/include/c++/11/bits/char_traits.h \
  /usr/include/c++/11/cstdint /usr/include/c++/11/bits/localefwd.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
@@ -161,15 +161,15 @@ _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emitterstyle.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/mark.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_ref.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/type.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_data.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/emitterstyle.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/mark.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_ref.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/type.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_data.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_iterator.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/node_iterator.h \
  /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
  /usr/include/c++/11/bits/streambuf_iterator.h \
  /usr/include/c++/11/streambuf /usr/include/c++/11/bits/ios_base.h \
@@ -178,9 +178,9 @@ _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o: \
  /usr/include/c++/11/system_error \
  /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
  /usr/include/c++/11/stdexcept /usr/include/c++/11/bits/streambuf.tcc \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/iterator.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/node.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/iterator_fwd.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/iterator.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/iterator.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/node.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/iterator_fwd.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/include/yaml-cpp/node/detail/iterator.h \
  /usr/include/c++/11/set /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h /usr/include/c++/11/atomic

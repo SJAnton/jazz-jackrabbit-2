@@ -39,3 +39,15 @@ void ServerGameloop::kill() {
     monitors.erase(id);
     gameloops_q.erase(id);
 }
+
+void ServerGameloop::setGameMap(ServerGameMap *game_map) {
+    this->gameMap = game_map;
+}
+
+bool ServerGameloop::is_id(int other_id) {
+    return other_id == this->id;
+}
+
+void ServerGameloop::send_map(Queue<QueueData>* sndr_q) {
+    gameMap->send_map(sndr_q);
+}

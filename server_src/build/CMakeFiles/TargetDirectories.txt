@@ -1,40 +1,40 @@
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles/server.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles/edit_cache.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/CMakeFiles/rebuild_cache.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/Experimental.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/Nightly.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/Continuous.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyStart.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyUpdate.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyConfigure.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyBuild.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyTest.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyCoverage.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyMemCheck.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlySubmit.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalStart.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalUpdate.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalConfigure.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalBuild.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalTest.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalCoverage.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalMemCheck.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalSubmit.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousStart.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousUpdate.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousConfigure.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousBuild.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousTest.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousCoverage.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousMemCheck.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousSubmit.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/format.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/edit_cache.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/rebuild_cache.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-parse.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/edit_cache.dir
-/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/rebuild_cache.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/CMakeFiles/server.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/CMakeFiles/edit_cache.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/CMakeFiles/rebuild_cache.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/Experimental.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/Nightly.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/Continuous.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyMemoryCheck.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyStart.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyUpdate.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyConfigure.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyBuild.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyTest.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyCoverage.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlyMemCheck.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/NightlySubmit.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalStart.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalUpdate.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalConfigure.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalBuild.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalTest.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalCoverage.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalMemCheck.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ExperimentalSubmit.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousStart.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousUpdate.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousConfigure.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousBuild.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousTest.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousCoverage.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousMemCheck.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/ContinuousSubmit.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/format.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/edit_cache.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/CMakeFiles/rebuild_cache.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-sandbox.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-parse.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/yaml-cpp-read.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/edit_cache.dir
+/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-build/util/CMakeFiles/rebuild_cache.dir

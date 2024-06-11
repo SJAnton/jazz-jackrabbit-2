@@ -28,5 +28,7 @@ class GameloopList {
         std::list<ServerGameloop*>::iterator begin();
 
         std::list<ServerGameloop*>::iterator end();
+
+        ServerGameloop* find_by_id(int id);
 };
 #endif

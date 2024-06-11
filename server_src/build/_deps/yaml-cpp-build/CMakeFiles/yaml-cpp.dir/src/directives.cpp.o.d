@@ -1,7 +1,7 @@
 _deps/yaml-cpp-build/CMakeFiles/yaml-cpp.dir/src/directives.cpp.o: \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/directives.cpp \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/directives.cpp \
  /usr/include/stdc-predef.h \
- /home/agustin/Escritorio/Taller\ 1/TP\ Final/rama_server/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/directives.h \
+ /home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-src/src/directives.h \
  /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

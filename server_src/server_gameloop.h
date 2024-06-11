@@ -6,10 +6,13 @@
 #include "server_thread.h"
 #include "server_queue_list.h"
 #include "server_character_map.h"
+#include "server_game_map.h"
 
 class ServerGameloop : public Thread {
     private:
         Game game;
+
+        ServerGameMap* gameMap;
 
         std::shared_ptr<CharacterMap> &character_map;
 
@@ -37,8 +40,14 @@ class ServerGameloop : public Thread {
 
         void run() override;
 
+        void setGameMap(ServerGameMap *game);
+
         bool is_dead();
 
         void kill();
+
+        bool is_id(int other_id);
+
+        void send_map(Queue<QueueData>* sndr_q);
 };
 #endif
