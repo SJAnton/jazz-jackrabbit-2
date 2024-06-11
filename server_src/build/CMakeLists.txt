@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Flags de compilación
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wno-unused-private-field")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 
 # Instalador de yaml-cpp
 include(FetchContent)
@@ -58,6 +58,10 @@ set(SOURCE_FILES
     #../weapons/server_tnt.cpp
     #../weapons/server_toaster.cpp
     ../weapons/server_weapon.cpp
+
+    # Objetos
+    ../objects/server_ammo.cpp
+    ../objects/server_object.cpp
 
     # Proyectiles
     ../weapons/projectile/server_iceball.cpp

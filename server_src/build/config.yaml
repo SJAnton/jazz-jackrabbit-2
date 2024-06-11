@@ -47,75 +47,68 @@ Blaster:
 
 Bouncer:
   weapon_id: 2
-  ammo: 10
   fire_rate: 10
   cooldown: 10
+  max_ammo: 100
 
 ElectroBlaster:
   weapon_id: 3
-  ammo: 10
   fire_rate: 10
   cooldown: 10
+  max_ammo: 100
 
 Freezer:
   weapon_id: 4
-  ammo: 10
   fire_rate: 10
   cooldown: 10
+  max_ammo: 100
 
 PepperSpray:
   weapon_id: 5
-  ammo: 10
   fire_rate: 10
   cooldown: 10
+  max_ammo: 100
 
 RFMissile:
   weapon_id: 6
-  ammo: 10
   fire_rate: 10
   cooldown: 10
+  max_ammo: 100
 
 Seeker:
   weapon_id: 7
-  ammo: 10
   fire_rate: 10
   cooldown: 10
+  max_ammo: 100
 
 TNT:
   weapon_id: 8
-  ammo: 10
   radius: 10
   cooldown: 10
+  max_ammo: 100
 
 Toaster:
   weapon_id: 9
-  ammo: 10
   fire_rate: 10
   cooldown: 10
+  max_ammo: 100
 
 # Proyectiles
 Blasterball:
-  projectile_id: 0
-  radius: 3
-  damage: 1
-  dmg_multiplier: 2
-  speed: 2
-
-Bouncerball:
   projectile_id: 1
   radius: 3
   damage: 1
   dmg_multiplier: 2
   speed: 2
 
-Electroball:
+Bouncerball:
   projectile_id: 2
   radius: 3
   damage: 1
   dmg_multiplier: 2
   speed: 2
 
-Fireball:
+Electroball:
   projectile_id: 3
   radius: 3
   damage: 1
@@ -129,15 +122,14 @@ Iceball:
   dmg_multiplier: 2
   speed: 2
 
-Rocket:
+Fireball:
   projectile_id: 5
-  x_hitbox: 5
-  y_hitbox: 3
+  radius: 3
   damage: 1
   dmg_multiplier: 2
   speed: 2
 
-SeekerRocket:
+Rocket:
   projectile_id: 6
   x_hitbox: 5
   y_hitbox: 3
@@ -145,9 +137,64 @@ SeekerRocket:
   dmg_multiplier: 2
   speed: 2
 
-Toasterball:
+SeekerRocket:
   projectile_id: 7
+  x_hitbox: 5
+  y_hitbox: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+Toasterball:
+  projectile_id: 8
   radius: 3
   damage: 1
   dmg_multiplier: 2
   speed: 2
+
+# Objetos
+Ammo:
+  object_id: 1
+  bouncer: 10
+  electro_blaster: 10
+  freezer: 10
+  pepper_spray: 10
+  rf_missile: 10
+  seeker: 10
+  tnt: 10
+  toaster: 10
+  xy_hitbox: 3
+
+Carrot:
+  object_id: 2
+  restored_health: 20
+  xy_hitbox: 3
+
+Coin:
+  object_id: 3
+  points: 5
+  xy_hitbox: 3
+
+Gem:
+  object_id: 4
+  points: 10
+  xy_hitbox: 3
+
+PoisonedFruit:
+  object_id: 5
+  poisoned_time: 75 # Cantidad de iteraciones (15 por segundo)
+
+# Munición inicial
+InitAmmo:
+  bouncer: 0
+  electro_blaster: 0
+  freezer: 0
+  pepper_spray: 0
+  rf_missile: 0
+  seeker: 0
+  tnt: 0
+  toaster: 0
+  
+# Duración de la partida
+GameLength:
+  length: 250

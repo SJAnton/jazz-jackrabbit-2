@@ -15,6 +15,9 @@
 
 #define INIT_POS 0
 
+#define GAME_LENGTH_KEY "GameLength"
+#define GAME_LENGTH_POS 0
+
 #define SHUTCODE 2
 
 void Client::run() {
@@ -69,8 +72,11 @@ void Client::select_game(uint8_t game) {
 
         int current_gmlp_id = gmlp_id.load();
 
+        uint8_t game_length = data[GAME_LENGTH_KEY][GAME_LENGTH_POS];
+
         ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor, monitors,
-                                                        gameloops_q, data, current_gmlp_id);
+                                                        gameloops_q, data, current_gmlp_id,
+                                                            game_length);
         
         gameloops_q[current_gmlp_id] = recv_q;
         monitors[current_gmlp_id] = monitor;

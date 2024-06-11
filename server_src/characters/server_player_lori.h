@@ -6,14 +6,12 @@
 #define LORI_KEY "PlayerLori"
 #define BLASTER_KEY "Blaster"
 
-#define X_START 0
-#define Y_START 0
-
 class PlayerLori : public Character {
     private:
         
     public:
-        PlayerLori(uint8_t x, uint8_t y, std::map<std::string, std::vector<uint8_t>> &map) {
+        PlayerLori(uint8_t x, uint8_t y, std::map<std::string, std::vector<uint8_t>> &map) :
+                    Character(map) {
             std::vector<uint8_t> data = map[LORI_KEY];
             x_pos = x;
             y_pos = y;

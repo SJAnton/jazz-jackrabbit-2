@@ -12,7 +12,9 @@ class EnemyRat : public Enemy {
     private:
 
     public:
-        EnemyRat(uint8_t x, uint8_t y, std::vector<uint8_t> &data) {
+        EnemyRat(uint8_t x, uint8_t y, std::map<std::string, std::vector<uint8_t>> &map)
+                    : Enemy(map) {
+            std::vector<uint8_t> data = map[RAT_KEY];
             x_pos = x;
             y_pos = y;
             health = data[H_POS];

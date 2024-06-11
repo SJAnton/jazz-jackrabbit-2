@@ -6,14 +6,12 @@
 #define JAZZ_KEY "PlayerJazz"
 #define BLASTER_KEY "Blaster"
 
-#define X_START 0
-#define Y_START 0
-
 class PlayerJazz : public Character {
     private:
         
     public:
-        PlayerJazz(uint8_t x, uint8_t y, std::map<std::string, std::vector<uint8_t>> &map) {
+        PlayerJazz(uint8_t x, uint8_t y, std::map<std::string, std::vector<uint8_t>> &map) :
+                    Character(map) {
             std::vector<uint8_t> data = map[JAZZ_KEY];
             x_pos = x;
             y_pos = y;

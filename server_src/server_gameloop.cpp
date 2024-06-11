@@ -11,7 +11,7 @@
 
 void ServerGameloop::run() {
     auto expected_itr_time = std::chrono::milliseconds(MILLISECONDS_PER_ITR);
-    while (!character_map->empty()) {
+    while (!character_map->empty() && time_left > 0) {
         auto start_time = std::chrono::steady_clock::now();
 
         std::vector<uint8_t> actions = game.get_actions(recv_q);
@@ -21,8 +21,6 @@ void ServerGameloop::run() {
             continue;
         }
         game.execute_actions(actions, character_map, projectile_list, data_map);
-
-        //std::cout << projectile_list.size() << std::endl;
 
         game.tick(character_map, projectile_list);
 
@@ -34,6 +32,7 @@ void ServerGameloop::run() {
         if (itr_time < expected_itr_time) {
             std::this_thread::sleep_for(expected_itr_time - itr_time);
         }
+        //time_left--; // TODO: enviar por InfoJuego
     }
     wc = true;
 }

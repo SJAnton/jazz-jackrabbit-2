@@ -5,10 +5,12 @@
 #include "server_queue_list.h"
 #include "server_character_map.h"
 #include "../common_src/info_juego.h"
+#include "../common_src/constantes_protocolo.h"
 #include "characters/server_character.h"
 
 class Game {
     private:
+        void check_top_three_players(std::vector<Character> top_players);
 
     public:
         Game() {};

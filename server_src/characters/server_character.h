@@ -8,6 +8,8 @@
 #include <vector>
 #include <cstdint>
 
+#include "../objects/server_object.h"
+#include "../objects/server_ammo.h"
 #include "../weapons/server_tnt.h"
 #include "../weapons/server_weapon.h"
 #include "../weapons/server_seeker.h"
@@ -20,6 +22,7 @@
 #include "../weapons/server_electro_blaster.h"
 #include "../../common_src/info_juego.h"
 #include "../../common_src/constantes.h"
+#include "../../common_src/constantes_protocolo.h"
 
 #define JAZZ_ID 1
 #define LORI_ID 2
@@ -30,6 +33,17 @@
 #define XH_POS 2
 #define YH_POS 3
 #define JH_POS 4
+
+#define AMMO_KEY "InitAmmo"
+
+#define BOUNCER_AMMO_POS 0
+#define ELECTRO_BLASTER_AMMO_POS 1
+#define FREEZER_AMMO_POS 2
+#define PEPPER_SPRAY_AMMO_POS 3
+#define RF_MISSILE_AMMO_POS 4
+#define SEEKER_AMMO_POS 5
+#define TNT_AMMO_POS 6
+#define TOASTER_AMMO_POS 7
 
 class Character {
     protected:
@@ -53,16 +67,52 @@ class Character {
 
         uint8_t y_hitbox;
 
-        uint8_t jump_height;
-
         bool alive = true;
 
         bool frozen = false;
 
-        bool intoxicated = false;
+        uint8_t intoxicated_time;
+
+        uint8_t jump_height;
+
+        uint8_t bouncer_ammo;
+
+        uint8_t electro_blaster_ammo;
+
+        uint8_t freezer_ammo;
+
+        uint8_t pepper_spray_ammo;
+
+        uint8_t rf_missile_ammo;
+
+        uint8_t seeker_ammo;
+
+        uint8_t tnt_ammo;
+
+        uint8_t toaster_ammo;
+
+        std::map<std::string, std::vector<uint8_t>> &map;
+
+        void pick_up_ammo(std::shared_ptr<Object> &object);
+
+        void add_points(uint8_t sum);
+
+        void add_health(uint8_t health);
 
     public:
-        Character() {};
+        Character(std::map<std::string, std::vector<uint8_t>> &map) : map(map) {
+            std::vector<uint8_t> ammo_data = map[AMMO_KEY];
+
+            // Cantidad inicial de munición
+            bouncer_ammo = ammo_data[BOUNCER_AMMO_POS];
+            electro_blaster_ammo = ammo_data[ELECTRO_BLASTER_AMMO_POS];;
+            freezer_ammo = ammo_data[FREEZER_AMMO_POS];
+            pepper_spray_ammo = ammo_data[PEPPER_SPRAY_AMMO_POS];
+            rf_missile_ammo = ammo_data[RF_MISSILE_AMMO_POS];
+            seeker_ammo = ammo_data[SEEKER_AMMO_POS];
+            tnt_ammo = ammo_data[TNT_AMMO_POS];
+            toaster_ammo = ammo_data[TOASTER_AMMO_POS];
+        };
 
         virtual ~Character() = default;
 
@@ -71,6 +121,8 @@ class Character {
         int get_character_id();
 
         EstadosPlayer get_status();
+
+        uint8_t get_points();
 
         uint8_t get_x_pos();
 
@@ -94,29 +146,29 @@ class Character {
 
         void move(uint8_t x, uint8_t y);
 
-        void move_x_pos(uint8_t &movement, uint8_t &direction);
-
         void jump();
 
         void fall();
 
-        void attack(uint8_t direction, std::list<std::shared_ptr<Projectile>> &projectile_list,
-                    std::map<std::string, std::vector<uint8_t>> &data_map);
-
         virtual void special_attack();
-
-        void pick_up_ammo();
-        
-        void change_weapon(std::unique_ptr<Weapon> &new_weapon);
 
         void set_frozen_status(bool status);
 
-        void set_intoxicated_status(bool status); // Convierte intoxicated a true/false
+        void set_intoxicated_status(int time); // Convierte intoxicated a true/false
 
         void take_damage(uint8_t &damage); // health - damage
 
-        void add_points(uint8_t &sum); // points + sum
+        void reduce_intoxicated_time();
 
         void revive();
+
+        void move_x_pos(uint8_t &movement, uint8_t &direction);
+
+        void attack(uint8_t direction, std::list<std::shared_ptr<Projectile>> &projectile_list,
+                    std::map<std::string, std::vector<uint8_t>> &data_map);
+
+        void change_weapon(int id);
+
+        void pick_up_object(std::shared_ptr<Object> &object);
 };
 #endif

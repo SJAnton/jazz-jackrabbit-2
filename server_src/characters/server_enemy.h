@@ -6,6 +6,10 @@
 
 #include "server_character.h"
 
+#define BAT_KEY "EnemyBat"
+#define LIZARD_KEY "EnemyLizard"
+#define RAT_KEY "EnemyRat"
+
 class Enemy : public Character {
     private:
         bool contact_x(Character &ch);
@@ -16,7 +20,7 @@ class Enemy : public Character {
         uint8_t damage;
         
     public:
-        Enemy() {};
+        Enemy(std::map<std::string, std::vector<uint8_t>> &map) : Character(map) {};
 
         void move_x_pos(uint8_t &x);
 

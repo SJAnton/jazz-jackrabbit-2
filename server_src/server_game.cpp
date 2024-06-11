@@ -6,11 +6,14 @@
 #define ACTION_POS 1
 #define DIRECTION_POS 2
 
-#define ACTION_WALK 0x12
-#define ACTION_RUN 0x13
-#define ACTION_JUMP 0x14
-#define ACTION_SHOOT 0x15
-#define ACTION_SPECIAL_ATTACK 0x16
+void Game::check_top_three_players(std::vector<Character> top_players) {
+    /*if (top_players[2] > top_players[1]) {
+        std::swap(top_players[1], top_players[2]);
+    }
+    if (top_players[1] > top_players[0]) {
+        std::swap(top_players[0], top_players[1]);
+    }*/
+}
 
 std::vector<uint8_t> Game::get_actions(std::shared_ptr<Queue<uint8_t>> &q) {
     std::vector<uint8_t> data;
@@ -59,14 +62,23 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
 
 void Game::tick(std::shared_ptr<CharacterMap> &ch_map,
                 std::list<std::shared_ptr<Projectile>> &projectile_list) {
-    for (auto it = ch_map->begin(); it != ch_map->end(); it++) {
+    for (auto it = ch_map->begin(); it != ch_map->end(); ++it) {
         std::shared_ptr<Character> character = it->second;
+        if (character->is_intoxicated()) {
+            character->reduce_intoxicated_time();
+        }
+        //check_top_three_players(character);
         /*if (character.is_falling()) {
             character->fall();
         }*/
     }
     for (std::shared_ptr<Projectile> projectile : projectile_list) {
+        uint8_t current_x_pos = projectile->get_x_pos();
         projectile->move_x_pos();
+        if (current_x_pos == 0 || current_x_pos == 255) {
+            projectile_list.remove(projectile);
+            continue;
+        }
         /* if (projectile->contact()) {
             projectile_list.remove(projectile);
         }
@@ -80,7 +92,7 @@ InfoJuego Game::snapshot(std::shared_ptr<CharacterMap> &ch_map) {
     std::vector<InfoRecolectable> items_data;
     std::vector<InfoProyectil> projectile_data;
 
-    for (auto it = ch_map->begin(); it != ch_map->end(); it++) {
+    for (auto it = ch_map->begin(); it != ch_map->end(); ++it) {
         int character_id = it->first;
         std::shared_ptr<Character> character = it->second;
 

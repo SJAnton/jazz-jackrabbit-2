@@ -6,14 +6,12 @@
 #define SPAZ_KEY "PlayerSpaz"
 #define BLASTER_KEY "Blaster"
 
-#define X_START 0
-#define Y_START 0
-
 class PlayerSpaz : public Character {
     private:
         
     public:
-        PlayerSpaz(uint8_t x, uint8_t y, std::map<std::string, std::vector<uint8_t>> &map) {
+        PlayerSpaz(uint8_t x, uint8_t y, std::map<std::string, std::vector<uint8_t>> &map) :
+                    Character(map) {
             std::vector<uint8_t> data = map[SPAZ_KEY];
             x_pos = x;
             y_pos = y;

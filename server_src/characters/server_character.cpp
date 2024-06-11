@@ -1,9 +1,24 @@
 #include "server_character.h"
-#include "../../common_src/constantes_protocolo.h"
 
 #define RUN_SPEED 3
 #define LOW_HEALTH 20
 #define FULL_HEALTH 100
+
+#define AMMO_ID 1
+#define CARROT_ID 2
+#define COIN_ID 3
+#define GEM_ID 4
+#define POISONED_FRUIT_ID 5
+
+#define BLASTER_KEY "Blaster"
+#define BOUNCER_KEY "Bouncer"
+#define ELECTRO_BLASTER_KEY "ElectroBlaster"
+#define FREEZER_KEY "Freezer"
+#define PEPPER_SPRAY_KEY "PepperSpray"
+#define RF_MISSILE_KEY "RFMissile"
+#define SEEKER_KEY "Seeker"
+#define TNT_KEY "TNT"
+#define TOASTER_KEY "Toaster"
 
 #define BLASTERBALL_KEY "Blasterball"
 #define BOUNCERBALL_KEY "Bouncerball"
@@ -29,6 +44,10 @@ int Character::get_character_id() {
 
 EstadosPlayer Character::get_status() {
     return status;
+}
+
+uint8_t Character::get_points() {
+    return points;
 }
 
 uint8_t Character::get_x_pos() {
@@ -64,7 +83,7 @@ bool Character::is_frozen() {
 }
 
 bool Character::is_intoxicated() {
-    return intoxicated;
+    return intoxicated_time > 0;
 }
 
 void Character::do_nothing() {
@@ -83,44 +102,6 @@ void Character::move(uint8_t x, uint8_t y) {
     do_nothing();
 }
 
-void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
-    if (is_frozen() || is_dead()) {
-        return;
-    }
-    switch (direction) {
-        case LEFT:
-            if (movement == ACTION_WALK || (movement == ACTION_RUN && intoxicated)) {
-                if (intoxicated) {
-                    status = EstadosPlayer::IntoxicatedWalk;
-                } else {
-                    status = EstadosPlayer::Walking;
-                }
-                x_pos--;
-                break;
-            } else {
-                status = EstadosPlayer::Running;
-                x_pos -= RUN_SPEED;
-                break;
-            }
-        case RIGHT:
-            if (movement == ACTION_WALK || (movement == ACTION_RUN && intoxicated)) {
-                if (intoxicated) {
-                    status = EstadosPlayer::IntoxicatedWalk;
-                } else {
-                    status = EstadosPlayer::Walking;
-                }
-                x_pos++;
-                break;
-            } else {
-                status = EstadosPlayer::Running;
-                x_pos += RUN_SPEED;
-                break;
-            }
-        default:
-            return;
-    }
-}
-
 void Character::jump() {
     if (is_frozen() || is_dead()) {
         return;
@@ -135,6 +116,89 @@ void Character::fall() {
     }
     status = EstadosPlayer::Falling;
     y_pos--;
+}
+
+void Character::special_attack() {
+    if (is_frozen() || is_intoxicated() || is_dead()) {
+        return;
+    }
+    status = EstadosPlayer::SpecialAttack;
+}
+
+void Character::set_frozen_status(bool status) {
+    frozen = status;
+}
+
+void Character::set_intoxicated_status(int time) {
+    intoxicated_time = time;
+}
+
+void Character::take_damage(uint8_t &damage) {
+    status = EstadosPlayer::Damaged;
+    health -= damage;
+    if (health <= 0) {
+        health = 0;
+        alive = false;
+    }
+}
+
+void Character::add_points(uint8_t sum) {
+    points += sum;
+}
+
+void Character::add_health(uint8_t sum) {
+    health += sum;
+    if (health > FULL_HEALTH) {
+        health = FULL_HEALTH;
+    }
+}
+
+void Character::reduce_intoxicated_time() {
+    intoxicated_time--;
+}
+
+void Character::revive() {
+    status = EstadosPlayer::Reviving;
+    alive = true;
+    health = FULL_HEALTH;
+}
+
+void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
+    if (is_frozen() || is_dead()) {
+        return;
+    }
+    switch (direction) {
+        case LEFT:
+            if (movement == ACTION_WALK || (movement == ACTION_RUN && is_intoxicated())) {
+                if (is_intoxicated()) {
+                    status = EstadosPlayer::IntoxicatedWalk;
+                } else {
+                    status = EstadosPlayer::Walking;
+                }
+                x_pos--;
+                break;
+            } else {
+                status = EstadosPlayer::Running;
+                x_pos -= RUN_SPEED;
+                break;
+            }
+        case RIGHT:
+            if (movement == ACTION_WALK || (movement == ACTION_RUN && is_intoxicated())) {
+                if (is_intoxicated()) {
+                    status = EstadosPlayer::IntoxicatedWalk;
+                } else {
+                    status = EstadosPlayer::Walking;
+                }
+                x_pos++;
+                break;
+            } else {
+                status = EstadosPlayer::Running;
+                x_pos += RUN_SPEED;
+                break;
+            }
+        default:
+            return;
+    }
 }
 
 void Character::attack(uint8_t direction, std::list<std::shared_ptr<Projectile>> &projectile_list,
@@ -198,76 +262,103 @@ void Character::attack(uint8_t direction, std::list<std::shared_ptr<Projectile>>
     projectile_list.push_back(projectile);
 }
 
-void Character::special_attack() {
-    if (is_frozen() || is_intoxicated() || is_dead()) {
+void Character::pick_up_ammo(std::shared_ptr<Object> &object) {
+    std::shared_ptr<Ammo> ammo = std::dynamic_pointer_cast<Ammo>(object);
+    if (ammo == nullptr) {
         return;
     }
-    status = EstadosPlayer::SpecialAttack;
+    switch (ammo->get_id()) {
+        case BLASTER_ID:
+            break;
+        case BOUNCER_ID:
+            bouncer_ammo += ammo->get_amount();
+            break;
+        case ELECTRO_BLASTER_ID:
+            electro_blaster_ammo += ammo->get_amount();
+            break;
+        case FREEZER_ID:
+            freezer_ammo += ammo->get_amount();
+            break;
+        case PEPPER_SPRAY_ID:
+            pepper_spray_ammo += ammo->get_amount();
+            break;
+        case RF_MISSILE_ID:
+            rf_missile_ammo += ammo->get_amount();
+            break;
+        case SEEKER_ID:
+            seeker_ammo += ammo->get_amount();
+            break;
+        case TNT_ID:
+            tnt_ammo += ammo->get_amount();
+            break;
+        case TOASTER_ID:
+            toaster_ammo += ammo->get_amount();
+            break;
+        default:
+            std::invalid_argument("Invalid ammo ID");
+    }
 }
 
-void Character::pick_up_ammo() {
-
-}
-
-//void Character::change_weapon(Weapon new_weapon) {
-void Character::change_weapon(std::unique_ptr<Weapon> &new_weapon) {
-    //switch (new_weapon.get_id()) {
-    switch (new_weapon->get_id()) {
+void Character::change_weapon(int id) {
+    std::unique_ptr<Weapon> new_weapon;
+    switch (id) {
         case BLASTER_ID:
             weapon_type = TipoArma::Blaster;
             break;
         case BOUNCER_ID:
             weapon_type = TipoArma::Bouncer;
+            new_weapon = std::make_unique<Bouncer>(bouncer_ammo, map[BOUNCER_KEY]);
             break;
         case ELECTRO_BLASTER_ID:
             weapon_type = TipoArma::ElectroBlaster;
+            new_weapon = std::make_unique<ElectroBlaster>(
+                                electro_blaster_ammo, map[ELECTRO_BLASTER_KEY]
+                            );
             break;
         case FREEZER_ID:
             weapon_type = TipoArma::Freezer;
+            new_weapon = std::make_unique<Freezer>(freezer_ammo, map[FREEZER_KEY]);
             break;
         case PEPPER_SPRAY_ID:
             weapon_type = TipoArma::PepperSpray;
+            new_weapon = std::make_unique<PepperSpray>(pepper_spray_ammo, map[PEPPER_SPRAY_KEY]);
             break;
         case RF_MISSILE_ID:
             weapon_type = TipoArma::RFMissile;
+            new_weapon = std::make_unique<RFMissile>(rf_missile_ammo, map[RF_MISSILE_KEY]);
             break;
         case SEEKER_ID:
             weapon_type = TipoArma::Seeker;
+            new_weapon = std::make_unique<Seeker>(seeker_ammo, map[SEEKER_KEY]);
             break;
         case TNT_ID:
             weapon_type = TipoArma::TNT;
+            new_weapon = std::make_unique<TNT>(tnt_ammo, map[TNT_KEY]);
             break;
         case TOASTER_ID:
             weapon_type = TipoArma::Toaster;
+            new_weapon = std::make_unique<Toaster>(toaster_ammo, map[TOASTER_KEY]);
             break;
     }
-    //weapon = new_weapon;
     weapon.swap(new_weapon);
 } 
 
-void Character::set_frozen_status(bool status) {
-    frozen = status;
-}
-
-void Character::set_intoxicated_status(bool status) {
-    intoxicated = status;
-}
-
-void Character::take_damage(uint8_t &damage) {
-    status = EstadosPlayer::Damaged;
-    health -= damage;
-    if (health <= 0) {
-        health = 0;
-        alive = false;
+void Character::pick_up_object(std::shared_ptr<Object> &object) {
+    switch (object->get_object_id()) {
+        case AMMO_ID:
+            pick_up_ammo(object);
+            break;
+        case CARROT_ID:
+            add_health(object->get_amount());
+            break;
+        case COIN_ID:
+            add_points(object->get_amount());
+            break;    
+        case GEM_ID:
+            add_points(object->get_amount());
+            break;
+        case POISONED_FRUIT_ID:
+            set_intoxicated_status(object->get_amount());
+            break;
     }
-}
-
-void Character::add_points(uint8_t &sum) {
-    points += sum;
-}
-
-void Character::revive() {
-    status = EstadosPlayer::Reviving;
-    alive = true;
-    health = FULL_HEALTH;
 }
