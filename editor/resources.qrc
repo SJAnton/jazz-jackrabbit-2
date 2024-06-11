@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sprites/tile000.png</file>
+        <file>sprites/tile003.png</file>
+    </qresource>
+</RCC>
