@@ -6,12 +6,11 @@
 #define SHUTCODE 2
 
 #define INIT_MSG_SIZE 2
-//#define MSG_SIZE 3
 
 std::vector<uint8_t> ServerProtocol::recv_init_msg(bool &was_closed) {
     std::vector<uint8_t> data;
     uint8_t byte;
-    for (int i = 0; i < INIT_MSG_SIZE; i++) {
+    for (int i = 0; i < INIT_MSG_SIZE; ++i) {
         sk.recvall(&byte, sizeof(byte), &was_closed);
         data.push_back(byte);
     }
@@ -25,7 +24,7 @@ void ServerProtocol::send_id(uint8_t id, bool &was_closed) {
 std::vector<uint8_t> ServerProtocol::recv_msg(bool &was_closed) {
     std::vector<uint8_t> data;
     uint8_t byte;
-    for (int i = 0; i < SIZE_CLIENT_MSG; i++) {
+    for (int i = 0; i < SIZE_CLIENT_MSG; ++i) {
         sk.recvall(&byte, sizeof(byte), &was_closed);
         data.push_back(byte);
     }
@@ -34,20 +33,15 @@ std::vector<uint8_t> ServerProtocol::recv_msg(bool &was_closed) {
 
 void ServerProtocol::send_msg(std::vector<uint8_t> &msg, bool &was_closed) {
     int size = msg.size();
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; ++i) {
         uint8_t byte = msg[i];
         sk.sendall(&byte, sizeof(byte), &was_closed);
     }
 }
 
-void ServerProtocol::send_game_data(QueueData &game_data, bool &was_closed) {
-    if (std::holds_alternative<uint8_t>(game_data)) {
-        uint8_t byte = std::get<uint8_t>(game_data);
-        sk.sendall(&byte, sizeof(byte), &was_closed);
-    } else {
-        std::vector<uint8_t> bytes = encodeInfoJuego(std::get<InfoJuego>(game_data));
-        sk.sendall(bytes.data(), bytes.size(), &was_closed);
-    }
+void ServerProtocol::send_game_data(InfoJuego &game_data, bool &was_closed) {
+    std::vector<uint8_t> bytes = encodeInfoJuego(game_data);
+    sk.sendall(bytes.data(), bytes.size(), &was_closed);
 }
 
 int ServerProtocol::disconnect() {
@@ -61,24 +55,24 @@ int ServerProtocol::disconnect() {
 std::vector<uint8_t> ServerProtocol::encodeInfoJuego(const InfoJuego &infoJuego) {
     std::vector<uint8_t> bytes;
     insertar2bytesDelNumero(infoJuego.getLengthData(), bytes);   
-
     bytes.push_back(infoJuego.cantidadPlayers());
-    for (int i=0; i < infoJuego.cantidadPlayers(); i++) {
+
+    for (int i=0; i < infoJuego.cantidadPlayers(); ++i) {
         auto dataPlayer = encodePlayer(infoJuego.players[i]);
         bytes.insert(bytes.end(), dataPlayer.begin(), dataPlayer.end());//concateno
     }
     bytes.push_back(infoJuego.cantEnemigos());
-    for (int i=0; i < infoJuego.cantEnemigos(); i++) {
+    for (int i=0; i < infoJuego.cantEnemigos(); ++i) {
         auto dataEnemigo = encodeEnemy(infoJuego.enemigos[i]);
         bytes.insert(bytes.end(), dataEnemigo.begin(), dataEnemigo.end());//concateno
     }
     bytes.push_back(infoJuego.cantRecolectables());
-    for (int i=0; i < infoJuego.cantRecolectables(); i++) {
+    for (int i=0; i < infoJuego.cantRecolectables(); ++i) {
         auto dataRecolectable = encodeRecolectable(infoJuego.recolectables[i]);
         bytes.insert(bytes.end(), dataRecolectable.begin(), dataRecolectable.end());//concateno
     }
     bytes.push_back(infoJuego.cantProyectiles());
-    for (int i=0; i < infoJuego.cantProyectiles(); i++) {
+    for (int i=0; i < infoJuego.cantProyectiles(); ++i) {
         auto dataProyectil = encodeProyectil(infoJuego.proyectiles[i]);
         bytes.insert(bytes.end(), dataProyectil.begin(), dataProyectil.end());//concateno
     }
@@ -229,7 +223,7 @@ AccionesPlayer  ServerProtocol::decodeAction(uint8_t byte) {
             return AccionesPlayer::Jump;
         case ACTION_SHOOT:
             return AccionesPlayer::Shoot;
-        case ACTION_SPECIAL_ATACK:
+        case ACTION_SPECIAL_ATTACK:
             return AccionesPlayer::SpecialAttack;
         default:
             //Excepcion

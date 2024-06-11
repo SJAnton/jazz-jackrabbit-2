@@ -7,7 +7,7 @@
 #include <vector>
 #include <cstdint>
 
-#define LENGTH_PLAYER_INFO 11
+#define LENGTH_PLAYER_INFO 10 //11
 #define LENGTH_ENEMY_INFO 6
 #define LENGTH_ITEMS_INFO 5
 #define LENGTH_PROYECTIL_INFO 5
@@ -74,7 +74,7 @@ public:
     // Constructores
     InfoJuego() {};
 
-     InfoJuego(const std::vector<InfoPlayer>& players,
+    InfoJuego(const std::vector<InfoPlayer>& players,
               const std::vector<InfoEnemigo>& enemigos,
               const std::vector<InfoRecolectable>& recolectables,
               const std::vector<InfoProyectil>& proyectiles)

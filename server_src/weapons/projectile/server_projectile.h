@@ -3,12 +3,37 @@
 
 #include <vector>
 #include <cstdint>
+#include <stdexcept>
+
+#include "../../../common_src/constantes_protocolo.h"
+
+#define PR_ID_POS 0
+#define PR_RD_POS 1
+#define PR_DM_POS 2
+#define PR_MP_POS 3
+#define PR_SP_POS 4
+
+#define RK_ID_POS 0
+#define RK_XH_POS 1
+#define RK_YH_POS 2
+#define RK_DM_POS 3
+#define RK_MP_POS 4
+#define RK_SP_POS 5
+
+enum Direction {DIR_LEFT, DIR_RIGHT};
 
 class Projectile {
     // De esta clase heredan todos los proyectiles
     // https://www.jazz2online.com/21/the-weapons-of-jazz2/
     private:
+        //bool contact_x(Character &ch);
+
+        //bool contact_y(Character &ch);
+
+    protected:
         uint8_t projectile_id;
+
+        Direction direction;
 
         uint8_t x_pos;
 
@@ -22,17 +47,18 @@ class Projectile {
 
         uint8_t damage_multiplier;
 
-        bool powered_up = false;
-        
-    //protected:
-        //bool contact_x(Character &ch);
+        uint8_t speed;
 
-        //bool contact_y(Character &ch);
+        bool powered_up = false;
 
     public:
         Projectile();
 
         uint8_t get_id();
+
+        uint8_t get_x_pos();
+
+        uint8_t get_y_pos();
 
         uint8_t left_side();
 
@@ -46,9 +72,9 @@ class Projectile {
 
         void move(uint8_t x, uint8_t y);
 
-        void move_x_pos(uint8_t &x);
+        void move_x_pos();
 
-        void move_y_pos(uint8_t &y);
+        void move_y_pos();
 
         void power_up();
 

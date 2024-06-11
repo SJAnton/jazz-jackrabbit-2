@@ -6,8 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Flags de compilación
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wno-unused-private-field")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 
+# Instalador de yaml-cpp
 include(FetchContent)
 
 FetchContent_Declare(yaml-cpp
@@ -48,15 +49,19 @@ set(SOURCE_FILES
 
     # Armas
     ../weapons/server_blaster.cpp
-    ../weapons/server_bouncer.cpp
-    ../weapons/server_electro_blaster.cpp
-    ../weapons/server_freezer.cpp
-    ../weapons/server_pepper_spray.cpp
-    ../weapons/server_rf_missile.cpp
-    ../weapons/server_seeker.cpp
-    ../weapons/server_tnt.cpp
-    ../weapons/server_toaster.cpp
+    #../weapons/server_bouncer.cpp
+    #../weapons/server_electro_blaster.cpp
+    #../weapons/server_freezer.cpp
+    #../weapons/server_pepper_spray.cpp
+    #../weapons/server_rf_missile.cpp
+    #../weapons/server_seeker.cpp
+    #../weapons/server_tnt.cpp
+    #../weapons/server_toaster.cpp
     ../weapons/server_weapon.cpp
+
+    # Objetos
+    ../objects/server_ammo.cpp
+    ../objects/server_object.cpp
 
     # Proyectiles
     ../weapons/projectile/server_iceball.cpp

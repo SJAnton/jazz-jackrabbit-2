@@ -4,14 +4,12 @@
 
 void ServerReceiver::run() {
     while (!wc) {
-        std::vector<uint8_t> data = pr.recv_msg(wc);
+        bool local_wc = wc.load();
+        std::vector<uint8_t> data = pr.recv_msg(local_wc);
         for (uint8_t action : data) {
-            if (action != EXIT) {
-                q->push(action);
-            } else {
-                // Desconexión del cliente
+            q->push(action);
+            if (action == EXIT) {
                 wc = true;
-                break;
             }
         }
     }

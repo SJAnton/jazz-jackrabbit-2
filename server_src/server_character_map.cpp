@@ -1,6 +1,6 @@
 #include "server_character_map.h"
 
-void CharacterMap::push_back(int id, std::shared_ptr<Character> character) {
+void CharacterMap::push_back(int id, std::shared_ptr<Character> &character) {
     std::unique_lock<std::mutex> lock(m);
     map[id] = character;
 }

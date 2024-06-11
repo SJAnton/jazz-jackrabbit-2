@@ -15,6 +15,11 @@
 #define LORI_CODE "PlayerLori"
 #define SPAZ_CODE "PlayerSpaz"
 
+#define INIT_POS 0
+
+#define GAME_LENGTH_KEY "GameLength"
+#define GAME_LENGTH_POS 0
+
 #define SHUTCODE 2
 
 void Client::run() {
@@ -69,8 +74,11 @@ void Client::select_game(uint8_t game) {
 
         int current_gmlp_id = gmlp_id.load();
 
+        uint8_t game_length = data[GAME_LENGTH_KEY][GAME_LENGTH_POS];
+
         ServerGameloop *gameloop = new ServerGameloop(ch_map, recv_q, monitor, monitors,
-                                                        gameloops_q, current_gmlp_id, wc);
+                                                        gameloops_q, data, game_length,
+                                                            current_gmlp_id);
         
         gameloops_q[current_gmlp_id] = recv_q;
         monitors[current_gmlp_id] = monitor;
@@ -106,13 +114,14 @@ void Client::select_character(uint8_t character, uint8_t game) {
     }
     switch (character) {
         case JAZZ_BYTE:
-            player = make_shared<PlayerJazz>(data[JAZZ_CODE], id);
+            // TODO: completar con las posiciones del spawn
+            player = make_shared<PlayerJazz>(INIT_POS, INIT_POS, data);
             break;
         case LORI_BYTE:
-            player = make_shared<PlayerLori>(data[LORI_CODE], id);
+            player = make_shared<PlayerLori>(INIT_POS, INIT_POS, data);
             break;
         case SPAZ_BYTE:
-            player = make_shared<PlayerSpaz>(data[SPAZ_CODE], id);
+            player = make_shared<PlayerSpaz>(INIT_POS, INIT_POS, data);
             break;
         default:
             kill();

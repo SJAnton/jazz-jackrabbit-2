@@ -35,6 +35,14 @@ uint8_t Projectile::get_id() {
     return projectile_id;
 }
 
+uint8_t Projectile::get_x_pos() {
+    return x_pos;
+}
+
+uint8_t Projectile::get_y_pos() {
+    return y_pos;
+}
+
 uint8_t Projectile::left_side() {
     return x_pos - x_hitbox;
 }
@@ -60,12 +68,16 @@ void Projectile::move(uint8_t x, uint8_t y) {
     y_pos = y;
 }
 
-void Projectile::move_x_pos(uint8_t &x) {
-    x_pos += x;
+void Projectile::move_x_pos() {
+    if (direction == DIR_LEFT) {
+        x_pos -= speed;
+    } else {
+        x_pos += speed;
+    }
 }
 
-void Projectile::move_y_pos(uint8_t &y) {
-    y_pos += y;
+void Projectile::move_y_pos() {
+    y_pos++;
 }
 
 void Projectile::power_up() {

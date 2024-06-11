@@ -3,8 +3,8 @@
 #include <iostream>
 
 void ClientApp::get_games(bool &wc) {
-    uint8_t size = protocol.get_msg_size(wc);
-    std::vector<uint8_t> games = protocol.recv_msg(size, wc);
+    //uint8_t size = protocol.get_msg_size(wc);
+    std::vector<uint8_t> games = protocol.recv_msg(wc);
 
     if (games.empty()) {
         std::cout << "No hay partidas activas" << std::endl;

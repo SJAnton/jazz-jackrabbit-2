@@ -20,7 +20,9 @@ class ClientProtocol {
 
           int send_msg(std::vector<uint8_t> data, bool &was_closed);
 
-          std::vector<uint8_t> recv_msg(int size, bool &was_closed);
+          uint8_t get_id(bool &was_closed);
+
+          std::vector<uint8_t> recv_msg(bool &was_closed);
 
           int disconnect();
 };

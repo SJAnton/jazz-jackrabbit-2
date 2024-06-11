@@ -1,3 +1,0 @@
-/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/yaml-cpp-populate.dir
-/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/edit_cache.dir
-/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/server_src/build/_deps/yaml-cpp-subbuild/CMakeFiles/rebuild_cache.dir
