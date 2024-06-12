@@ -2,6 +2,7 @@
 #define CONSTANTES_PROTOCOLO_H
 
 #define SIZE_CLIENT_MSG 3
+#define SIZE_CLIENT_MSG_INIT 2
 
 //Comandos o acciones que puede enviar un Cliente
 #define ACTION_IDLE 0x11
@@ -9,17 +10,14 @@
 #define ACTION_RUN 0x13
 #define ACTION_JUMP 0x14
 #define ACTION_SHOOT 0x15
-#define ACTION_SPECIAL_ATACK 0x16
+#define ACTION_SPECIAL_ATTACK 0x16
 // La accion vendrá seguida de la direccion en el eje x
 #define LEFT 0x4C // L
 #define RIGHT 0x52 // R
 
-//ID para identificar el cliente al que le corresponde la accion o el estado
-#define PLAYER_1 0xA1
-#define PLAYER_2 0xA2
-#define PLAYER_3 0xA3
-#define PLAYER_4 0xA4
-
+#define PLAYER_TYPE_JAZZ 0x01
+#define PLAYER_TYPE_LORI 0x02
+#define PLAYER_TYPE_SPAZ 0x03
 
 /* El cliente envia 3 bytes
     1 byte con ID del cliente
@@ -31,16 +29,6 @@
     A2 15 4C // El player2 dispara a la izquierda
 */
 
-// Armas de un Player
-#define BLASTER_ID 0x01
-#define BOUNCER_ID 0x02
-#define ELECTRO_BLASTER_ID 0x03
-#define FREEZER_ID 0x04
-#define PEPPER_SPRAY_ID 0x05
-#define RF_MISSILE_ID 0x06
-#define SEEKER_ID 0x07
-#define TNT_ID 0x08
-#define TOASTER_ID 0x09
 
 //Estados posibles de un Player
 #define STATE_IDLE 0x01
@@ -76,6 +64,6 @@
 #define ITEM_DIAMANTE 0X01
 #define ITEM_MONEDA 0X02
 #define ITEM_ZANAHORIA 0X03
-#define ITEM_MUNCION 0X01
+#define ITEM_MUNCION 0X04
 
 #endif

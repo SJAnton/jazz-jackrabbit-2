@@ -4,7 +4,7 @@
 #include <list>
 #include <mutex>
 
-#include "server_gameloop.h"
+#include "game/gameloop.h"
 
 class GameloopList {
     private:
@@ -28,5 +28,9 @@ class GameloopList {
         std::list<ServerGameloop*>::iterator begin();
 
         std::list<ServerGameloop*>::iterator end();
+
+        bool contains(int id);
+        ServerGameloop* at(int id);
+
 };
 #endif

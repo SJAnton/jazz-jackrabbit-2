@@ -7,6 +7,9 @@
 #include "server_queue.h"
 #include "../common_src/info_juego.h"
 
+/**
+ * Contiene todas las sender_queues de los clientes de una partida
+*/
 class ServerQueueList {
     private:
         std::list<Queue<InfoJuego>*> list;

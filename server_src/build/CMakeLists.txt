@@ -38,8 +38,8 @@ set(SOURCE_FILES
     ../server_character_map.cpp
     ../server_client.cpp
     ../server_config_reader.cpp
-    ../server_game.cpp
-    ../server_gameloop.cpp
+    #../server_game.cpp
+    #../server_gameloop.cpp
     ../server_gameloop_list.cpp
     ../server_main.cpp
     ../server_protocol.cpp
@@ -47,8 +47,17 @@ set(SOURCE_FILES
     ../server_receiver.cpp
     ../server_sender.cpp
 
+    ../game/game_mundo.cpp
+    ../game/game_object.cpp
+    ../game/game_object_player.cpp
+    ../game/game.cpp
+    ../game/gameloop.cpp
+    #../game/Wapons/weaponer.cpp
+
+
+
     # Armas
-    ../weapons/server_blaster.cpp
+    #../weapons/server_blaster.cpp
     #../weapons/server_bouncer.cpp
     #../weapons/server_electro_blaster.cpp
     #../weapons/server_freezer.cpp
@@ -57,20 +66,20 @@ set(SOURCE_FILES
     #../weapons/server_seeker.cpp
     #../weapons/server_tnt.cpp
     #../weapons/server_toaster.cpp
-    ../weapons/server_weapon.cpp
+    #../weapons/server_weapon.cpp
 
     # Proyectiles
-    ../weapons/projectile/server_iceball.cpp
-    ../weapons/projectile/server_projectile.cpp
-    ../weapons/projectile/server_rocket.cpp
-    ../weapons/projectile/server_seeker_rocket.cpp
+    #../weapons/projectile/server_iceball.cpp
+    #../weapons/projectile/server_projectile.cpp
+    #../weapons/projectile/server_rocket.cpp
+    #../weapons/projectile/server_seeker_rocket.cpp
 
     # Personajes
-    ../characters/server_character.cpp
-    ../characters/server_enemy.cpp
-    ../characters/server_player_jazz.cpp
-    ../characters/server_player_lori.cpp
-    ../characters/server_player_spaz.cpp
+    #../characters/server_character.cpp
+    #../characters/server_enemy.cpp
+    #../characters/server_player_jazz.cpp
+    #../characters/server_player_lori.cpp
+    #../characters/server_player_spaz.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

@@ -1,31 +1,44 @@
 #include "server_acceptor.h"
 
+//constructor:
+ServerAcceptor::ServerAcceptor(const std::string &hostname) :
+    sk(hostname.c_str()),
+    was_closed(false)
+{
+
+}
+
 void ServerAcceptor::run() {
     int id = 1; // Máximo = 255 jugadores (por conversión a uint8_t)
-    while (!srv_wc) {
+    while (!was_closed) {
         try {
             Socket peer = sk.accept();
+            clients.emplace_back(std::move(peer), id, gameloops);
+            std::cout << "Se conectó el cliente " << id << std::endl;
 
-            Client *client = new Client(std::move(peer), id, gmlp_id, gameloops,
+            clients.back().start();
+            /*Client *client = new Client(std::move(peer), id, gmlp_id, gameloops,
                                             ch_maps, monitors, gameloops_q, data);
-            client->start();
-            clients.push_back(client);
+                                            */
+            //client->start();
+            //clients.push_back(client);
 
-            reap_dead();
+            //reap_dead();
             id++;
         } catch (LibError &e) {
+            std::cerr << "Error en el Acceptor" << e.what() << std::endl;
 
+        } catch (const std::exception& e) {
+        
         }
     }
     kill_all();
 }
 
 void ServerAcceptor::reap_dead() {
-    clients.remove_if([](Client* client) {
-        if (client->is_dead()) {
-            client->kill();
-            client->join();
-            delete client;
+    clients.remove_if([](Client& client) { // Cambia Client* a Client&
+        if (client.is_dead()) {
+            client.kill();
             return true;
         }
         return false;
@@ -34,9 +47,11 @@ void ServerAcceptor::reap_dead() {
 
 void ServerAcceptor::kill_all() {
     for (auto &client : clients) {
-        client->kill();
-        client->join();
-        delete client;
+        client.kill();
+        client.join();
+        //client->kill();
+        //client->join();
+        //delete client;
     }
     clients.clear();
     for (auto &gameloop : gameloops) {

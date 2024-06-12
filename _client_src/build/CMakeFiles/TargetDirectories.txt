@@ -1,0 +1,3 @@
+/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/_client_src/build/CMakeFiles/client.dir
+/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/_client_src/build/CMakeFiles/edit_cache.dir
+/home/agustin/Escritorio/Taller 1/TP Final/rama_server/jazz-jackrabbit-2/_client_src/build/CMakeFiles/rebuild_cache.dir

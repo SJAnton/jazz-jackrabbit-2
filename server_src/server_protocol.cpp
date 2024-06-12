@@ -1,6 +1,7 @@
 #include "server_protocol.h"
 
 #include <iostream>
+#include <iomanip>
 
 #define SUCCESS 0
 #define SHUTCODE 2
@@ -54,9 +55,10 @@ int ServerProtocol::disconnect() {
 
 std::vector<uint8_t> ServerProtocol::encodeInfoJuego(const InfoJuego &infoJuego) {
     std::vector<uint8_t> bytes;
+    
     insertar2bytesDelNumero(infoJuego.getLengthData(), bytes);   
     bytes.push_back(infoJuego.cantidadPlayers());
-
+    //std::cout << "cant players " << infoJuego.cantidadPlayers() << std::endl;
     for (int i=0; i < infoJuego.cantidadPlayers(); i++) {
         auto dataPlayer = encodePlayer(infoJuego.players[i]);
         bytes.insert(bytes.end(), dataPlayer.begin(), dataPlayer.end());//concateno
@@ -76,6 +78,12 @@ std::vector<uint8_t> ServerProtocol::encodeInfoJuego(const InfoJuego &infoJuego)
         auto dataProyectil = encodeProyectil(infoJuego.proyectiles[i]);
         bytes.insert(bytes.end(), dataProyectil.begin(), dataProyectil.end());//concateno
     }
+    /*std::cout << "Mensaje enviado: ";
+		for (uint8_t byte : bytes) {
+			std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << " ";
+		}
+		std::cout << std::endl;
+        */
     return bytes;
 }
 
@@ -132,7 +140,8 @@ void ServerProtocol::insertar2bytesDelNumero(int num, std::vector<uint8_t> &arra
     array.push_back(aux & 0xFF); // inseratr el byte menos significativo
 }
 
-uint8_t ServerProtocol::encodeEstadoPlayer(EstadosPlayer estado) {
+
+uint8_t ServerProtocol::encodeEstadoPlayer(const EstadosPlayer &estado) {
     switch (estado) {
         case EstadosPlayer::Inactive:
             return STATE_IDLE;
@@ -142,10 +151,24 @@ uint8_t ServerProtocol::encodeEstadoPlayer(EstadosPlayer estado) {
             return STATE_RUN;
         case EstadosPlayer::Jumping:
             return STATE_JUMP;
+        case EstadosPlayer::Falling : 
+            return STATE_FALL;
         case EstadosPlayer::Shooting:
             return STATE_SHOOT;
         case EstadosPlayer::SpecialAttack:
             return STATE_SPECIAL_ATTACK;
+        case EstadosPlayer::IntoxicatedIdle:
+            return STATE_INTOXICATED_IDLE;
+        case EstadosPlayer::IntoxicatedWalk:
+            return STATE_INTOXICATED_WALK;
+        case EstadosPlayer::Damaged:
+            return STATE_DAMAGED;
+        case EstadosPlayer::Dying:
+            return STATE_DYING;
+        case EstadosPlayer::Dead:
+            return STATE_DEAD;
+        case EstadosPlayer::Reviving:
+            return STATE_REVIVE;
         default: 
             return STATE_IDLE;
     }
@@ -223,7 +246,7 @@ AccionesPlayer  ServerProtocol::decodeAction(uint8_t byte) {
             return AccionesPlayer::Jump;
         case ACTION_SHOOT:
             return AccionesPlayer::Shoot;
-        case ACTION_SPECIAL_ATACK:
+        case ACTION_SPECIAL_ATTACK:
             return AccionesPlayer::SpecialAttack;
         default:
             //Excepcion

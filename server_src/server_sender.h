@@ -13,11 +13,11 @@ class ServerSender : public Thread {
 
         Queue<InfoJuego> &q;
 
-        std::atomic<bool> &wc;
+        bool &wc;
 
     public:
         ServerSender(ServerProtocol &protocol, Queue<InfoJuego> &queue,
-                        std::atomic<bool> &was_closed) : pr(protocol),
+                        bool &was_closed) : pr(protocol),
                             q(queue), wc(was_closed) {}
 
         void run() override;

@@ -31,3 +31,23 @@ std::list<ServerGameloop*>::iterator GameloopList::begin() {
 std::list<ServerGameloop*>::iterator GameloopList::end() {
     return list.end();
 }
+
+bool GameloopList::contains(int id) {
+    std::lock_guard<std::mutex> lock(m);
+    for (auto gameloop : list) {
+        if (gameloop->id == id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+ServerGameloop* GameloopList::at(int id) {
+    std::lock_guard<std::mutex> guard(m);
+    for (auto gameloop : list) {
+        if (gameloop->id == id) {
+            return gameloop;
+        }
+    }
+    return nullptr; // Devuelve nullptr si no se encuentra el gameloop
+}

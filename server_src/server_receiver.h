@@ -12,13 +12,18 @@ class ServerReceiver : public Thread {
 
         std::shared_ptr<Queue<uint8_t>> &q;
 
-        std::atomic<bool> &wc;
+        //std::atomic<bool> &wc;
+        bool &was_closed;
 
     public:
-        ServerReceiver(ServerProtocol &protocol, std::shared_ptr<Queue<uint8_t>> &recv_queue,
+        /*ServerReceiver(ServerProtocol &protocol, std::shared_ptr<Queue<uint8_t>> &recv_queue,
                         std::atomic<bool> &was_closed) : pr(protocol),
                             q(recv_queue), wc(was_closed) {}
-
+        */
+        ServerReceiver(ServerProtocol &protocol, std::shared_ptr<Queue<uint8_t>> &recv_queue,
+                        bool &was_closed) : 
+            pr(protocol), q(recv_queue), was_closed(was_closed) {}
+        
         void run() override;
 };
 #endif

@@ -1,24 +1,25 @@
-#ifndef SERVER_CHARACTER_MAP_H_
-#define SERVER_CHARACTER_MAP_H_
+#ifndef SERVER_Player_MAP_H_
+#define SERVER_Player_MAP_H_
 
 #include <map>
 #include <mutex>
 #include <memory>
 
-#include "characters/server_character.h"
+//#include "Players/server_Player.h"
+#include "game/game_object_player.h"
 
-class CharacterMap {
+class PlayerMap {
     private:
-        std::map<int, std::shared_ptr<Character>> map;
+        std::map<int, std::shared_ptr<ObjectPlayer>> map;
 
         std::mutex m;
 
     public:
-        CharacterMap() {};
+        PlayerMap() {};
 
-        void push_back(int id, std::shared_ptr<Character> &character);
+        void push_back(int id, std::shared_ptr<ObjectPlayer> &ObjectPlayer);
 
-        std::shared_ptr<Character> at(int id);
+        std::shared_ptr<ObjectPlayer> at(int id);
 
         int size();
 
@@ -28,8 +29,10 @@ class CharacterMap {
 
         void clear();
 
-        std::map<int, std::shared_ptr<Character>>::iterator begin();
+        std::map<int, std::shared_ptr<ObjectPlayer>>::iterator begin();
 
-        std::map<int, std::shared_ptr<Character>>::iterator end();
+        std::map<int, std::shared_ptr<ObjectPlayer>>::iterator end();
+        std::vector<std::shared_ptr<ObjectPlayer>> getPlayers();
+
 };
 #endif

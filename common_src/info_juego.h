@@ -18,7 +18,7 @@ public:
     int id;
     int pos_x;
     int pos_y;
-    int player_id;
+    //TipoPlayer player_id;
     EstadosPlayer estado;
     int vida;
     int puntos;
@@ -26,7 +26,7 @@ public:
     int muncion;
 
     InfoPlayer(){};
-    InfoPlayer(int id, int x, int y, int player_id, EstadosPlayer e, int vida,
+    InfoPlayer(int id, int x, int y, EstadosPlayer e, int vida,
                 int pts, TipoArma arma, int municion) : id(id), pos_x(x), pos_y(y),
                     estado(e), vida(vida), puntos(pts), arma(arma), muncion(municion) {}
 };
