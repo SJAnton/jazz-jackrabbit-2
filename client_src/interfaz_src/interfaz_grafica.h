@@ -45,6 +45,7 @@ public:
 private:
     void renderizarMenu();
     void renderizarSeleccionPartida();
+    void renderizarSeleccionPlayer();
     void renderizarJuego();
     void (InterfazGrafica::*renderizarPantalla)(); //Puntero a funcion renderizar
     void updateCamara(const Position &pos);

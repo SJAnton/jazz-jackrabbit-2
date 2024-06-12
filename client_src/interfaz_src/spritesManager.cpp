@@ -19,9 +19,13 @@
 #define PATH_TITULO "../sprites/titulo.png"
 #define PATH_FONT "../sprites/font.png"
 
+
 SpritesManager::SpritesManager() :
     botonPlay(PATH_BUTTON_PLAY),
     titulo(PATH_TITULO),
+    character_spaz(PATH_CHARACTER_SPAZ),
+    character_jazz(PATH_CHARACTER_JAZZ),
+    character_lori(PATH_CHARACTER_LORI),
     //letras(PATH_FONT),
     fondo(PATH_FONDO_2),
     piso(PATH_PISO_1),
@@ -73,6 +77,23 @@ void SpritesManager::renderizarBotonesPartidas() {
         button.renderizar(InterfazGrafica::renderer, fontTexture);
     }
     botones_partidas.back().renderizarCrearPartida(InterfazGrafica::renderer, fontTexture);
+}
+
+
+void SpritesManager::inicializarBotonesCharacter(){
+    botones_character.emplace_back(TipoPlayer::Jazz, 53, 130); //hardcodeado
+    botones_character.emplace_back(TipoPlayer::Spaz, 303, 130);
+    botones_character.emplace_back(TipoPlayer::Lori, 553, 130);
+}
+
+std::list<ButtonCharacter> SpritesManager::getBotonesCharacter() {
+    return botones_character;
+}
+
+void SpritesManager::renderizarBotonesCharacter(){
+    character_jazz.renderizarEn(53,130); //hardcodeado
+    character_spaz.renderizarEn(303,130);
+    character_lori.renderizarEn(553,130);
 }
 
 

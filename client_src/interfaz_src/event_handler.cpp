@@ -4,7 +4,8 @@
 #include "../../common_src/constantes.h"
 
 EventHandler::EventHandler(InterfazGrafica &interfaz, ClientPlayer &clientPlayer, 
-                           const std::list<ButtonPartida> &partidas) : 
+                           const std::list<ButtonPartida> &partidas,
+                           const std::list<ButtonCharacter> &personajes) : 
         interfaz(interfaz),
         cliente(clientPlayer),
         partidas(partidas)
@@ -61,11 +62,6 @@ void EventHandler::manejarEventosMenu(SDL_Event &e) {
         if (pointInsideRect(mouseX, mouseY, {234, 258, 282, 84})) { //Chequea si se clickeo en la zona del boton
             std::cout << "Seleccione una partida" << std::endl;
             interfaz.nextEstado();
-
-            //menu_abierto = false;
-            //renderizarPantalla = &InterfazGrafica::renderizarSeleccionPartida;
-            //manejarEventos = &InterfazGrafica::manejarEventosSeleccionPartida;
-
         }
     }
 }
@@ -79,10 +75,9 @@ void EventHandler::manejarSeleccionPartida(SDL_Event &e){
                 std::cout << "Comienza el juego!" << std::endl;
                 partidaSeleccionada = partida.getIdPartida();
                 interfaz.nextEstado();
-                cliente.entrarPartida(partidaSeleccionada, TipoPlayer::Spaz);//hardcodeado
-                cliente.recibirInformacion();
-                interfaz.nextEstado();
-                //menu_abierto = false;
+                //cliente.entrarPartida(partidaSeleccionada, TipoPlayer::Spaz);//hardcodeado
+                //cliente.recibirInformacion();
+                //interfaz.nextEstado();
                 return;
             }
         }
@@ -92,16 +87,30 @@ void EventHandler::manejarSeleccionPartida(SDL_Event &e){
             std::cout << "Creando partida nueva" << std::endl;
             partidaSeleccionada = 0;
             interfaz.nextEstado();
-            cliente.entrarPartida(partidaSeleccionada, TipoPlayer::Spaz);//hardcodeado
-            interfaz.nextEstado();
-            //menu_abierto = false;
+            //cliente.entrarPartida(partidaSeleccionada, TipoPlayer::Spaz);//hardcodeado
+            //interfaz.nextEstado();
         }
 
     }
 }
 
 void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
-    
+    if (e.type == SDL_MOUSEBUTTONDOWN) {
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+
+        for (auto personaje : personajes) { //Recorro los personajes
+            if (personaje.clicked(mouseX, mouseY)) { //Chequea si se clickeo en la zona del boton
+                std::cout << "Comienza el juego!" << std::endl;
+                TipoPlayer personajeSeleccionado = personaje.getTipoPlayer();
+                cliente.entrarPartida(partidaSeleccionada, personajeSeleccionado);
+                cliente.recibirInformacion();
+                interfaz.nextEstado();
+
+                return;
+            }
+        }
+    }
 }
 
 void EventHandler::manejarComandosJuego(SDL_Event &e) {

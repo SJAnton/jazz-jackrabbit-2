@@ -38,7 +38,8 @@ InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer 
     }
     spritesManager = new SpritesManager();
     spritesManager->inicializarBotonesPartidas(client.getIdPartidas());
-    eventHandler  =new EventHandler(*this, client, spritesManager->getBotonesPartidas());
+    spritesManager->inicializarBotonesCharacter();
+    eventHandler = new EventHandler(*this, client, spritesManager->getBotonesPartidas(), spritesManager->getBotonesCharacter());
 
     eventHandler->start();
     infoJuego.addPlayer();
@@ -106,7 +107,7 @@ void InterfazGrafica::nextEstado() {
         break;
     case SeleccionPartida:
         estado = SeleccionPlayer;
-        //renderizarPantalla = &InterfazGrafica::renderizarSeleccionPlayer;
+        renderizarPantalla = &InterfazGrafica::renderizarSeleccionPlayer;
         break;
     case SeleccionPlayer:
         estado = Juego;
@@ -148,27 +149,18 @@ void InterfazGrafica::renderizarSeleccionPartida(){
     SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
     SDL_RenderClear(renderer);
 
-    spritesManager->renderizarBotonesPartidas();
-/*    Characters fontMap = Characters();
-
-
-    SDL_Surface* surface = IMG_Load("../sprites/font.png");
-    SDL_Texture* fontTexture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
-
-    int cantidad_partidas = 2; //Tenemos que recibir del server esto
-
-    for (int i = 0; i < cantidad_partidas; ++i)
-    {
-        int id = i + 1;
-        ButtonPartida boton = ButtonPartida(id);
-        boton.renderizar(renderer, fontTexture, fontMap);
-        partidas.push_back(boton);
-    }
-    */
-//    renderText(renderer, fontTexture, fontMap.charMap, "CREAR PARTIDA", 167, 400, 0.5f);  
+    spritesManager->renderizarBotonesPartidas(); 
 
     SDL_RenderPresent(renderer);    
+}
+
+void InterfazGrafica::renderizarSeleccionPlayer(){
+    SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
+    SDL_RenderClear(renderer);
+
+    spritesManager->renderizarBotonesCharacter();
+
+    SDL_RenderPresent(renderer);
 }
 
 void InterfazGrafica::cerrarInterfaz() 
