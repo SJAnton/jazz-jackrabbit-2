@@ -15,8 +15,8 @@
 #include "spritesheet.h"
 #include "button_partida.h"
 
-#define ANCHO_WINDOW 750 // representa pixeles
-#define ALTO_WINDOW 500 // representa pixeles
+//#define ANCHO_WINDOW 750 // representa pixeles
+//#define ALTO_WINDOW 500 // representa pixeles
 
 #include "event_handler.h"
 

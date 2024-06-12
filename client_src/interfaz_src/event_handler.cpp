@@ -8,7 +8,8 @@ EventHandler::EventHandler(InterfazGrafica &interfaz, ClientPlayer &clientPlayer
                            const std::list<ButtonCharacter> &personajes) : 
         interfaz(interfaz),
         cliente(clientPlayer),
-        partidas(partidas)
+        partidas(partidas),
+        personajes(personajes)
 {
 }
 
@@ -34,6 +35,7 @@ void EventHandler::run()
                 manejarSeleccionPartida(e);
                 break;
             case SeleccionPlayer: 
+                manejarSeleccionPlayer(e);
                 break;;
             case Juego: 
                 manejarComandosJuego(e);
@@ -59,7 +61,13 @@ void EventHandler::manejarEventosMenu(SDL_Event &e) {
     if (e.type == SDL_MOUSEBUTTONDOWN) {
         int mouseX, mouseY;
         SDL_GetMouseState(&mouseX, &mouseY);
-        if (pointInsideRect(mouseX, mouseY, {234, 258, 282, 84})) { //Chequea si se clickeo en la zona del boton
+
+        int separacion = 100;
+        int boton_width = 282, boton_height = 84;
+        int boton_x = (ANCHO_WINDOW - boton_width) / 2;
+        int boton_y = ((ALTO_WINDOW - boton_height) / 2) + separacion;
+
+        if (pointInsideRect(mouseX, mouseY, {boton_x, boton_y, boton_width, boton_height})) { //Chequea si se clickeo en la zona del boton
             std::cout << "Seleccione una partida" << std::endl;
             interfaz.nextEstado();
         }
@@ -72,7 +80,7 @@ void EventHandler::manejarSeleccionPartida(SDL_Event &e){
 
         for (auto partida : partidas) { //Recorro las partidas
             if (partida.clicked(mouseX, mouseY)) { //Chequea si se clickeo en la zona del boton
-                std::cout << "Comienza el juego!" << std::endl;
+                std::cout << "Seleccione un personaje" << std::endl;
                 partidaSeleccionada = partida.getIdPartida();
                 interfaz.nextEstado();
                 //cliente.entrarPartida(partidaSeleccionada, TipoPlayer::Spaz);//hardcodeado

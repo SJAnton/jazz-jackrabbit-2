@@ -38,9 +38,6 @@ SpritesManager::SpritesManager() :
     gema(PATH_ITEM_GEM, 36, 36, 8),
     zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20)
 {
-    botonPlay.setPosition(234, 258);
-    titulo.setPosition(95, 28);
-
     SpritesPlayers::init();
 
     //Temporal. Armar mejor la clase ButtonPartida
@@ -55,8 +52,13 @@ SpritesManager::SpritesManager() :
 }
 
 void SpritesManager::renderizarMenu() {
-    botonPlay.renderizar();
-    titulo.renderizar();
+    int separacion = 100;
+
+    int boton_width = 282, boton_height = 84;
+    botonPlay.renderizarEn((ANCHO_WINDOW - boton_width) / 2, ((ALTO_WINDOW - boton_height) / 2) + separacion);
+
+    int titulo_width = 560, titulo_height = 224;
+    titulo.renderizarEn((ANCHO_WINDOW - titulo_width) / 2, ((ALTO_WINDOW - titulo_height) / 2) - separacion);
 }
 
 void SpritesManager::inicializarBotonesPartidas(const std::vector<int> &id_partidas) {

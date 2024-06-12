@@ -3,6 +3,9 @@
 
 //#include "info_juego.h"
 
+#define ANCHO_WINDOW 750
+#define ALTO_WINDOW 500 
+
 enum class EstadosPlayer {Inactive, Walking, Running, Jumping, Falling, Shooting,
     SpecialAttack, IntoxicatedIdle, IntoxicatedWalk, Damaged, Dying, Dead, Reviving
 };
