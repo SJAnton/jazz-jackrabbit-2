@@ -9,9 +9,9 @@ class Fireball : public Projectile {
     public:
         Fireball(uint8_t x, uint8_t y, uint8_t dir, std::vector<uint8_t> &data) {
             if (dir == LEFT) {
-                direction = DIR_LEFT;
+                direction = Left;
             } else if (dir == RIGHT) {
-                direction = DIR_RIGHT;
+                direction = Right;
             } else {
                 throw std::runtime_error("Invalid projectile direction");
             }

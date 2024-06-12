@@ -10,6 +10,7 @@ class PoisonedFruit : public Object {
 
     public:
         PoisonedFruit(std::vector<uint8_t> &data) {
+            type = FrutaEnvenenada;
             object_id = data[OBJ_ID_POS];
             amount = data[OBJ_AMOUNT_POS] * ITR_PER_SEC;
             xy_hitbox = data[OBJ_HITBOX_POS];

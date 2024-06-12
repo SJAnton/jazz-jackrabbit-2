@@ -24,7 +24,7 @@ void ServerGameloop::run() {
 
         game.tick(character_map, top_players, projectile_list, enemy_list, object_list);
 
-        InfoJuego game_data = game.snapshot(character_map);
+        InfoJuego game_data = game.snapshot(character_map, projectile_list, enemy_list, object_list);
         game.send_snapshot(game_data, sndr_qs);
 
         auto end_time = std::chrono::steady_clock::now();
@@ -50,6 +50,7 @@ void ServerGameloop::kill() {
     gameloops_q.erase(id);
 }
 
+/*
 void ServerGameloop::setGameMap(ServerGameMap *game_map) {
     this->gameMap = game_map;
 }
@@ -58,6 +59,6 @@ bool ServerGameloop::is_id(int other_id) {
     return other_id == this->id;
 }
 
-void ServerGameloop::send_map(Queue<QueueData>* sndr_q) {
+void ServerGameloop::send_map(Queue<InfoMap>* sndr_q) {
     gameMap->send_map(sndr_q);
-}
+}*/

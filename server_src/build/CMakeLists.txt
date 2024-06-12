@@ -75,6 +75,9 @@ set(SOURCE_FILES
     ../characters/server_player_jazz.cpp
     ../characters/server_player_lori.cpp
     ../characters/server_player_spaz.cpp
+
+    # Mapa
+    ../map/server_game_map.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

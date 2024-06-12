@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "../common_src/socket.h"
+#include "../common_src/info_map.h"
 #include "../common_src/info_juego.h"
 
 class ServerProtocol {
@@ -24,6 +25,12 @@ class ServerProtocol {
         void send_msg(std::vector<uint8_t> &msg, bool &was_closed);
 
         void send_game_data(InfoJuego &game_data, bool &was_closed);
+
+        void send_layer(InfoLayer layer_data, bool &was_closed);
+
+        void send_objects(InfoObject object_data, bool &was_closed);
+
+        void send_objects_size(int size, bool &was_closed);
 
         int disconnect();
 
@@ -88,6 +95,8 @@ class ServerProtocol {
          */
         std::vector<uint8_t> encodeProyectil(const InfoProyectil &);
 
+        std::vector<uint8_t> encodeInfoLayer(const InfoLayer &layer_data);
 
+        std::vector<uint8_t> encodeInfoObject(const InfoObject &object_data);
 };
 #endif  // SERVER_PROTOCOL_H_

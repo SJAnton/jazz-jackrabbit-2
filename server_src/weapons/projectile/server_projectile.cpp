@@ -31,6 +31,10 @@ bool Projectile::contact_y(Character &ch) {
     return true;
 }*/
 
+InfoProyectil Projectile::set_data() {
+    return InfoProyectil(x_pos, y_pos, direction);
+}
+
 uint8_t Projectile::get_id() {
     return projectile_id;
 }
@@ -69,7 +73,7 @@ void Projectile::move(uint8_t x, uint8_t y) {
 }
 
 void Projectile::move_x_pos() {
-    if (direction == DIR_LEFT) {
+    if (direction == Left) {
         x_pos -= speed;
     } else {
         x_pos += speed;

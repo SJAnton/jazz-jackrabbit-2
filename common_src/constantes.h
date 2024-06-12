@@ -14,7 +14,7 @@ enum class AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
 enum class EstadosEnemy{Idle, Move, Attack, Damaged, Death};
 enum TipoEnemy{Rat, Bat, Lizard};
 
-enum TipoRecolectable {Moneda, Diamante, Zanahoria, Municion};
+enum TipoRecolectable {Moneda, Diamante, Zanahoria, Municion, FrutaEnvenenada};
 
 enum class TipoArma {Blaster, Bouncer, ElectroBlaster, Freezer,
                         PepperSpray, RFMissile, Seeker, TNT, Toaster};

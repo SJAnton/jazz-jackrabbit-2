@@ -8,6 +8,7 @@ class Carrot : public Object {
 
     public:
         Carrot(std::vector<uint8_t> &data) {
+            type = Zanahoria;
             object_id = data[OBJ_ID_POS];
             amount = data[OBJ_AMOUNT_POS]; // Cantidad de vida que restaura
             xy_hitbox = data[OBJ_HITBOX_POS];

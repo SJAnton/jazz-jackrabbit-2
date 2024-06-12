@@ -2,7 +2,6 @@
 
 #define RUN_SPEED 3
 #define LOW_HEALTH 20
-#define FULL_HEALTH 100
 
 #define AMMO_ID 1
 #define CARROT_ID 2
@@ -86,6 +85,10 @@ bool Character::is_intoxicated() {
     return intoxicated_time > 0;
 }
 
+bool Character::is_jumping() {
+    return jump_left > 0;
+}
+
 void Character::do_nothing() {
     if (health <= LOW_HEALTH) {
         status = EstadosPlayer::Dying;
@@ -105,13 +108,18 @@ void Character::move(uint8_t x, uint8_t y) {
 void Character::jump() {
     if (is_frozen() || is_dead()) {
         return;
+    } else if (jump_left == 0) {
+        // Jump_left = veces que sube en el eje Y por iteración
+        status = EstadosPlayer::Jumping;
+        jump_left = jump_height;
     }
-    status = EstadosPlayer::Jumping;
     y_pos++;
+    jump_left--;
 }
 
 void Character::fall() {
-    if (is_dead()) {
+    // TODO: return si está sobre un tile sólido
+    if (is_dead() || is_jumping() || y_pos == 0) {
         return;
     }
     status = EstadosPlayer::Falling;
@@ -129,7 +137,7 @@ void Character::set_frozen_status(bool status) {
     frozen = status;
 }
 
-void Character::set_intoxicated_status(int time) {
+void Character::set_intoxicated_time(int time) {
     intoxicated_time = time;
 }
 
@@ -149,8 +157,8 @@ void Character::add_points(uint8_t sum) {
 
 void Character::add_health(uint8_t sum) {
     health += sum;
-    if (health > FULL_HEALTH) {
-        health = FULL_HEALTH;
+    if (health > full_health) {
+        health = full_health;
     }
 }
 
@@ -172,7 +180,7 @@ void Character::reduce_respawn_time() {
 void Character::revive() {
     status = EstadosPlayer::Reviving;
     alive = true;
-    health = FULL_HEALTH;
+    health = full_health;
 }
 
 void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
@@ -181,6 +189,7 @@ void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
     }
     switch (direction) {
         case LEFT:
+            // Si está intoxicado no puede correr
             if (movement == ACTION_WALK || (movement == ACTION_RUN && is_intoxicated())) {
                 if (is_intoxicated()) {
                     status = EstadosPlayer::IntoxicatedWalk;
@@ -221,10 +230,11 @@ void Character::attack(uint8_t direction, std::list<std::shared_ptr<Projectile>>
     uint8_t projectile_x;
     status = EstadosPlayer::Shooting;
     std::shared_ptr<Projectile> projectile;
+    // El proyectil comienza una dirección a la izquierda o a la derecha del personaje
     if (direction == LEFT) {
-        projectile_x--;
+        projectile_x = left_side();
     } else {
-        projectile_x++;
+        projectile_x = right_side();
     }
     switch (weapon->get_id()) {
         case BLASTER_ID:
@@ -370,7 +380,7 @@ void Character::pick_up_object(std::shared_ptr<Object> &object) {
             add_points(object->get_amount());
             break;
         case POISONED_FRUIT_ID:
-            set_intoxicated_status(object->get_amount());
+            set_intoxicated_time(object->get_amount());
             break;
     }
 }

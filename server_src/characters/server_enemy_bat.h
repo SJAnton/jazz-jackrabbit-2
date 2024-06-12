@@ -21,6 +21,8 @@ class EnemyBat : public Enemy {
             damage = data[D_POS];
             x_hitbox = data[XH_POS];
             y_hitbox = data[YH_POS];
+            type = Bat;
+            enemy_status = EstadosEnemy::Idle;
             if (health <= 0) {
                 alive = false;
             }

@@ -44,6 +44,21 @@ void ServerProtocol::send_game_data(InfoJuego &game_data, bool &was_closed) {
     sk.sendall(bytes.data(), bytes.size(), &was_closed);
 }
 
+void ServerProtocol::send_layer(InfoLayer layer_data, bool &was_closed) {
+    std::vector<uint8_t> bytes = encodeInfoLayer(layer_data); // TODO: implementar
+    sk.sendall(bytes.data(), bytes.size(), &was_closed);
+}
+
+void ServerProtocol::send_objects(InfoObject object_data, bool &was_closed) {
+    std::vector<uint8_t> bytes = encodeInfoObject(object_data);
+    sk.sendall(bytes.data(), bytes.size(), &was_closed);
+}
+
+void ServerProtocol::send_objects_size(int size, bool &was_closed) {
+    uint8_t byte = size;
+    sk.sendall(&byte, sizeof(byte), &was_closed);
+}
+
 int ServerProtocol::disconnect() {
     sk.shutdown(SHUTCODE);
     sk.close();
@@ -123,6 +138,22 @@ std::vector<uint8_t> ServerProtocol::encodeProyectil(const InfoProyectil &infoPr
     insertar2bytesDelNumero(infoProyectil.pos_y, bytes);
 
     bytes.push_back(encodeDireccion(infoProyectil.direccion));
+    return bytes;
+}
+
+std::vector<uint8_t> ServerProtocol::encodeInfoLayer(const InfoLayer &infoLayer) {
+    std::vector<uint8_t> bytes;
+    insertar2bytesDelNumero(infoLayer.x, bytes);
+    insertar2bytesDelNumero(infoLayer.y, bytes);
+    bytes.push_back(infoLayer.tile);
+    return bytes;
+}
+
+std::vector<uint8_t> ServerProtocol::encodeInfoObject(const InfoObject &infoObject) {
+    std::vector<uint8_t> bytes;
+    insertar2bytesDelNumero(infoObject.x, bytes);
+    insertar2bytesDelNumero(infoObject.y, bytes);
+    bytes.push_back(infoObject.type);
     return bytes;
 }
 

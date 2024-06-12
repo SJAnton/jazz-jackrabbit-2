@@ -8,6 +8,7 @@ class Coin : public Object {
 
     public:
         Coin(std::vector<uint8_t> &data) {
+            type = Moneda;
             object_id = data[OBJ_ID_POS];
             amount = data[OBJ_AMOUNT_POS];
             xy_hitbox = data[OBJ_HITBOX_POS];

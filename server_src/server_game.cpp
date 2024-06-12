@@ -21,7 +21,7 @@ void Game::check_top_three_players(std::shared_ptr<Character> &character,
         if (top_players.size() < TP_NUM) {
             top_players.push_back(character);
         } else if (character->get_points() > top_players[TP_LAST_POS]->get_points()) {
-            top_players[2] = character;
+            top_players[TP_LAST_POS] = character;
         }
     }
     std::sort(top_players.begin(), top_players.end(), Game::compare_points);
@@ -73,18 +73,23 @@ void Game::execute_actions(std::vector<uint8_t> &actions, std::shared_ptr<Charac
 }
 
 void Game::tick(std::shared_ptr<CharacterMap> &ch_map,
-                std::vector<std::shared_ptr<Character>> &top_players,
-                std::list<std::shared_ptr<Projectile>> &projectile_list,
-                std::list<std::shared_ptr<Enemy>> &enemy_list,
-                std::list<std::shared_ptr<Object>> &object_list) {
+                    std::vector<std::shared_ptr<Character>> &top_players,
+                        std::list<std::shared_ptr<Projectile>> &projectile_list,
+                            std::list<std::shared_ptr<Enemy>> &enemy_list,
+                                std::list<std::shared_ptr<Object>> &object_list) {
     for (auto it = ch_map->begin(); it != ch_map->end(); ++it) {
         std::shared_ptr<Character> character = it->second;
+
         if (character->is_intoxicated()) {
             character->reduce_intoxicated_time();
         } else if (character->is_dead()) {
             character->reduce_respawn_time();
         }
-        check_top_three_players(character, top_players);
+        if (character->is_jumping()) {
+            character->jump();
+        }
+        character->fall(); // Verifica si toca el suelo, sino cae
+        check_top_three_players(character, top_players); // TODO: enviar por InfoJuego
         /*if (character.is_falling()) {
             character->fall();
         }*/
@@ -109,20 +114,31 @@ void Game::tick(std::shared_ptr<CharacterMap> &ch_map,
     }
 }
 
-InfoJuego Game::snapshot(std::shared_ptr<CharacterMap> &ch_map) {
+InfoJuego Game::snapshot(std::shared_ptr<CharacterMap> &ch_map,
+                            std::list<std::shared_ptr<Projectile>> &projectile_list,
+                                std::list<std::shared_ptr<Enemy>> &enemy_list,
+                                    std::list<std::shared_ptr<Object>> &object_list) {
     std::vector<InfoPlayer> players_data;
     std::vector<InfoEnemigo> enemies_data;
-    std::vector<InfoRecolectable> items_data;
+    std::vector<InfoRecolectable> objects_data;
     std::vector<InfoProyectil> projectile_data;
 
     for (auto it = ch_map->begin(); it != ch_map->end(); ++it) {
         int character_id = it->first;
         std::shared_ptr<Character> character = it->second;
 
-        InfoPlayer player_data = character->set_data(character_id);
-        players_data.push_back(player_data);
+        players_data.push_back(character->set_data(character_id));
     }
-    InfoJuego game_data(players_data, enemies_data, items_data, projectile_data);
+    for (std::shared_ptr<Projectile> projectile : projectile_list) {
+        projectile_data.push_back(projectile->set_data());
+    }
+    for (std::shared_ptr<Enemy> enemy : enemy_list) {
+        enemies_data.push_back(enemy->set_data());
+    }
+    for (std::shared_ptr<Object> object : object_list) {
+        objects_data.push_back(object->set_data());
+    }
+    InfoJuego game_data(players_data, enemies_data, objects_data, projectile_data);
     return game_data;
 }
 

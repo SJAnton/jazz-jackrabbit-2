@@ -1,0 +1,203 @@
+# Personajes
+PlayerJazz:
+  health: 100
+  points: 0
+  x_hitbox: 5
+  y_hitbox: 10
+  jump_height: 10
+
+PlayerLori:
+  health: 100
+  points: 0
+  x_hitbox: 5
+  y_hitbox: 10
+  jump_height: 10
+  
+PlayerSpaz:
+  health: 100
+  points: 0
+  x_hitbox: 5
+  y_hitbox: 10
+  jump_height: 10
+
+# Enemigos
+EnemyBat:
+  health: 100
+  damage: 5
+  x_hitbox: 5
+  y_hitbox: 3
+
+EnemyLizard:
+  health: 100
+  damage: 5
+  x_hitbox: 3
+  y_hitbox: 5
+
+EnemyRat:
+  health: 100
+  damage: 5
+  x_hitbox: 5
+  y_hitbox: 3
+
+# Armas
+Blaster:
+  weapon_id: 1
+  fire_rate: 15
+  cooldown: 10
+
+Bouncer:
+  weapon_id: 2
+  fire_rate: 10
+  cooldown: 10
+  max_ammo: 100
+
+ElectroBlaster:
+  weapon_id: 3
+  fire_rate: 10
+  cooldown: 10
+  max_ammo: 100
+
+Freezer:
+  weapon_id: 4
+  fire_rate: 10
+  cooldown: 10
+  max_ammo: 100
+
+PepperSpray:
+  weapon_id: 5
+  fire_rate: 10
+  cooldown: 10
+  max_ammo: 100
+
+RFMissile:
+  weapon_id: 6
+  fire_rate: 10
+  cooldown: 10
+  max_ammo: 100
+
+Seeker:
+  weapon_id: 7
+  fire_rate: 10
+  cooldown: 10
+  max_ammo: 100
+
+TNT:
+  weapon_id: 8
+  radius: 10
+  cooldown: 10
+  max_ammo: 100
+
+Toaster:
+  weapon_id: 9
+  fire_rate: 10
+  cooldown: 10
+  max_ammo: 100
+
+# Proyectiles
+Blasterball:
+  projectile_id: 1
+  radius: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+Bouncerball:
+  projectile_id: 2
+  radius: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+Electroball:
+  projectile_id: 3
+  radius: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+Iceball:
+  projectile_id: 4
+  radius: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+Fireball:
+  projectile_id: 5
+  radius: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+Rocket:
+  projectile_id: 6
+  x_hitbox: 5
+  y_hitbox: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+SeekerRocket:
+  projectile_id: 7
+  x_hitbox: 5
+  y_hitbox: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+Toasterball:
+  projectile_id: 8
+  radius: 3
+  damage: 1
+  dmg_multiplier: 2
+  speed: 2
+
+# Objetos
+Ammo:
+  object_id: 1
+  bouncer: 10
+  electro_blaster: 10
+  freezer: 10
+  pepper_spray: 10
+  rf_missile: 10
+  seeker: 10
+  tnt: 10
+  toaster: 10
+  xy_hitbox: 3
+
+Carrot:
+  object_id: 2
+  restored_health: 20
+  xy_hitbox: 3
+
+Coin:
+  object_id: 3
+  points: 5
+  xy_hitbox: 3
+
+Gem:
+  object_id: 4
+  points: 10
+  xy_hitbox: 3
+
+PoisonedFruit:
+  object_id: 5
+  poisoned_time: 5 # Cantidad de segundos
+
+# Munición inicial
+InitAmmo:
+  bouncer: 0
+  electro_blaster: 0
+  freezer: 0
+  pepper_spray: 0
+  rf_missile: 0
+  seeker: 0
+  tnt: 0
+  toaster: 0
+  
+# Duración de la partida
+GameLength:
+  length: 250
+
+Character:
+  respawn: 5

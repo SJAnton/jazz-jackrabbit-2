@@ -5,6 +5,8 @@
 #include <cstdint>
 #include <stdexcept>
 
+#include "../../common_src/info_juego.h"
+
 #define OBJ_ID_POS 0
 #define OBJ_AMOUNT_POS 1
 #define OBJ_HITBOX_POS 2
@@ -12,6 +14,8 @@
 class Object {
     protected:
         uint8_t object_id;
+
+        TipoRecolectable type;
 
         uint8_t x_pos;
 
@@ -25,6 +29,8 @@ class Object {
         Object() {};
 
         virtual ~Object() = default;
+
+        InfoRecolectable set_data();
 
         uint8_t get_object_id();
 

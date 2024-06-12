@@ -59,6 +59,8 @@ class Character {
 
         uint8_t health;
 
+        uint8_t full_health;
+
         std::unique_ptr<Weapon> weapon;
 
         uint8_t points;
@@ -99,6 +101,8 @@ class Character {
 
         int respawn_time = 0;
 
+        int jump_left = 0;
+
         std::map<std::string, std::vector<uint8_t>> &map;
 
         void pick_up_ammo(std::shared_ptr<Object> &object);
@@ -110,6 +114,8 @@ class Character {
     public:
         Character(std::map<std::string, std::vector<uint8_t>> &map) : map(map) {
             std::vector<uint8_t> ammo_data = map[AMMO_KEY];
+
+            full_health = health;
 
             // Cantidad inicial de munición
             bouncer_ammo = ammo_data[BOUNCER_AMMO_POS];
@@ -152,7 +158,9 @@ class Character {
 
         bool is_intoxicated();
 
-        void do_nothing();
+        bool is_jumping();
+
+        virtual void do_nothing();
 
         void move(uint8_t x, uint8_t y);
 
@@ -164,15 +172,15 @@ class Character {
 
         void set_frozen_status(bool status);
 
-        void set_intoxicated_status(int time);
+        void set_intoxicated_time(int time);
 
-        void take_damage(uint8_t &damage);
+        virtual void take_damage(uint8_t &damage);
 
         void reduce_intoxicated_time();
 
         void reduce_respawn_time();
 
-        void revive();
+        virtual void revive();
 
         void move_x_pos(uint8_t &movement, uint8_t &direction);
 

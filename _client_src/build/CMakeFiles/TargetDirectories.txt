@@ -1,3 +1,0 @@
-/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/_client_src/build/CMakeFiles/client.dir
-/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/_client_src/build/CMakeFiles/edit_cache.dir
-/home/esteban/Desktop/TallerDeProgramacion/jazz-jackrabbit-2/_client_src/build/CMakeFiles/rebuild_cache.dir

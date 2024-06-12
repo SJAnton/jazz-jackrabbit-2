@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <stdexcept>
 
+#include "../../../common_src/info_juego.h"
 #include "../../../common_src/constantes_protocolo.h"
 
 #define PR_ID_POS 0
@@ -20,8 +21,6 @@
 #define RK_MP_POS 4
 #define RK_SP_POS 5
 
-enum Direction {DIR_LEFT, DIR_RIGHT};
-
 class Projectile {
     // De esta clase heredan todos los proyectiles
     // https://www.jazz2online.com/21/the-weapons-of-jazz2/
@@ -33,7 +32,7 @@ class Projectile {
     protected:
         uint8_t projectile_id;
 
-        Direction direction;
+        Direcciones direction;
 
         uint8_t x_pos;
 
@@ -53,6 +52,8 @@ class Projectile {
 
     public:
         Projectile();
+
+        InfoProyectil set_data();
 
         uint8_t get_id();
 

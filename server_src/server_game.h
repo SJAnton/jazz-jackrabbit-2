@@ -31,7 +31,10 @@ class Game {
                             std::list<std::shared_ptr<Enemy>> &enemy_list,
                                 std::list<std::shared_ptr<Object>> &object_list);
 
-        InfoJuego snapshot(std::shared_ptr<CharacterMap> &ch_map);
+        InfoJuego snapshot(std::shared_ptr<CharacterMap> &ch_map,
+                            std::list<std::shared_ptr<Projectile>> &projectile_list,
+                                std::list<std::shared_ptr<Enemy>> &enemy_list,
+                                    std::list<std::shared_ptr<Object>> &object_list);
 
         void send_snapshot(InfoJuego &game_data, std::shared_ptr<ServerQueueList> &sndr_qs);
 

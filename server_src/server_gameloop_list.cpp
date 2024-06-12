@@ -32,7 +32,7 @@ std::list<ServerGameloop*>::iterator GameloopList::end() {
     return list.end();
 }
 
-ServerGameloop* GameloopList::find_by_id(int id) {
+/*ServerGameloop* GameloopList::find_by_id(int id) {
     std::unique_lock<std::mutex> lock(m);
     for (auto it = list.begin(); it != list.end(); ++it) {
         if ((*it)->is_id(id)) {
@@ -40,4 +40,4 @@ ServerGameloop* GameloopList::find_by_id(int id) {
         }
     }
     return nullptr;
-}
+}*/

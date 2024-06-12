@@ -9,6 +9,7 @@
 #include "server_receiver.h"
 #include "server_queue_list.h"
 #include "server_gameloop_list.h"
+#include "map/server_game_map.h"
 #include "../common_src/socket.h"
 #include "../common_src/liberror.h"
 #include "../common_src/info_juego.h"
@@ -38,6 +39,9 @@ class Client : public Thread {
         map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_q;
 
         map<string, vector<uint8_t>> &data;
+
+        // TODO: leer en el main y pasar por parámetro en el constructor
+        map<uint8_t, shared_ptr<ServerGameMap>> game_map;
 
         ServerProtocol protocol;
 

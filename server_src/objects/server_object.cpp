@@ -1,5 +1,9 @@
 #include "server_object.h"
 
+InfoRecolectable Object::set_data() {
+    return InfoRecolectable(type, x_pos, y_pos);
+}
+
 uint8_t Object::get_object_id() {
     return object_id;
 }

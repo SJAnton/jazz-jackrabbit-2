@@ -8,6 +8,7 @@ class Gem : public Object {
 
     public:
         Gem(std::vector<uint8_t> &data) {
+            type = Diamante;
             object_id = data[OBJ_ID_POS];
             amount = data[OBJ_AMOUNT_POS];
             xy_hitbox = data[OBJ_HITBOX_POS];

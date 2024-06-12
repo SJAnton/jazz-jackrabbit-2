@@ -5,12 +5,12 @@
 #include "server_queue.h"
 #include "server_thread.h"
 #include "server_queue_list.h"
+#include "map/server_game_map.h"
 #include "server_character_map.h"
 #include "objects/server_object.h"
 #include "characters/server_enemy.h"
 
 #define ITR_PER_SEC 15
-#include "server_game_map.h"
 
 class ServerGameloop : public Thread {
     private:
@@ -57,14 +57,14 @@ class ServerGameloop : public Thread {
 
         void run() override;
 
-        void setGameMap(ServerGameMap *game);
-
         bool is_dead();
 
         void kill();
 
+        /*void setGameMap(ServerGameMap *game);
+
         bool is_id(int other_id);
 
-        void send_map(Queue<QueueData>* sndr_q);
+        void send_map(Queue<InfoMap>* sndr_q);*/
 };
 #endif

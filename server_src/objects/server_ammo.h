@@ -52,6 +52,7 @@ class Ammo : public Object {
                     throw std::invalid_argument("Invalid ammo ID");
             }
             ammo_id = id;
+            type = Municion;
             object_id = data[OBJ_ID_POS];
             xy_hitbox = data[OBJ_HITBOX_POS];
         }
