@@ -31,11 +31,18 @@ protected:
 
 private slots:
     void onGraphicsViewClicked(QMouseEvent *event);
+    void onGraphicsViewMouseMoved(QMouseEvent *event);
+    void onGraphicsViewMouseReleased(QMouseEvent *event);
+    void onModeChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
 private:
     Ui::LevelEditor *ui;
     QGraphicsScene *scene;
     Map *map;
+    bool isMousePressed;
+    QString currentMode;
+    void placeSpriteAtPosition(const QPointF &scenePos);
+    void eraseSpriteAtPosition(const QPointF &scenePos);
 };
 
 #endif // LEVELEDITOR_H

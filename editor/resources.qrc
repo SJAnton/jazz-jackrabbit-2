@@ -2,5 +2,9 @@
     <qresource prefix="/">
         <file>sprites/tile000.png</file>
         <file>sprites/tile003.png</file>
+        <file>sprites/tile001.png</file>
+        <file>sprites/tile013.png</file>
+        <file>sprites/tile008.png</file>
+        <file>sprites/tile009.png</file>
     </qresource>
 </RCC>

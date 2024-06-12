@@ -4,20 +4,23 @@
 #include <QGraphicsView>
 #include <QMouseEvent>
 
-class CustomGraphicsView : public QGraphicsView {
+class CustomGraphicsView : public QGraphicsView
+{
     Q_OBJECT
 
     public:
-        CustomGraphicsView(QWidget *parent = nullptr) : QGraphicsView(parent) {}
+        explicit CustomGraphicsView(QWidget *parent = nullptr);
 
     signals:
-        void clicked(QMouseEvent *event);
+        void mousePressed(QMouseEvent *event);
+        void mouseMoved(QMouseEvent *event);
+        void mouseReleased(QMouseEvent *event);
 
     protected:
-        void mousePressEvent(QMouseEvent *event) override {
-            QGraphicsView::mousePressEvent(event);
-            emit clicked(event);
-        }
+        void mousePressEvent(QMouseEvent *event) override;
+        void mouseMoveEvent(QMouseEvent *event) override;
+        void mouseReleaseEvent(QMouseEvent *event) override;
 };
 
 #endif // CUSTOMGRAPHICSVIEW_H
+
