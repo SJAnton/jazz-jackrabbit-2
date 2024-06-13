@@ -2,23 +2,23 @@
 	"BUILD_DIR" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen",
 	"CMAKE_BINARY_DIR" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug",
 	"CMAKE_CURRENT_BINARY_DIR" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/lorenzo/Escritorio/Taller/editor",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_SOURCE_DIR" : "/home/lorenzo/Escritorio/Taller/editor",
+	"CMAKE_SOURCE_DIR" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor",
 	"HEADERS" : 
 	[
 		[
-			"/home/lorenzo/Escritorio/Taller/editor/customgraphicsview.h",
+			"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.h",
 			"MU",
 			"EWIEGA46WW/moc_customgraphicsview.cpp"
 		],
 		[
-			"/home/lorenzo/Escritorio/Taller/editor/leveleditor.h",
+			"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.h",
 			"MU",
 			"EWIEGA46WW/moc_leveleditor.cpp"
 		],
 		[
-			"/home/lorenzo/Escritorio/Taller/editor/map.h",
+			"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.h",
 			"MU",
 			"EWIEGA46WW/moc_map.cpp"
 		]
@@ -37,7 +37,7 @@
 	"MOC_INCLUDES" : 
 	[
 		"/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug",
-		"/home/lorenzo/Escritorio/Taller/editor",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor",
 		"/usr/include/x86_64-linux-gnu/qt5",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
@@ -74,10 +74,22 @@
 	"SETTINGS_FILE" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/home/lorenzo/Escritorio/Taller/editor/customgraphicsview.cpp", "MU" ],
-		[ "/home/lorenzo/Escritorio/Taller/editor/leveleditor.cpp", "MU" ],
-		[ "/home/lorenzo/Escritorio/Taller/editor/main.cpp", "MU" ],
-		[ "/home/lorenzo/Escritorio/Taller/editor/map.cpp", "MU" ]
+		[
+			"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.cpp",
+			"MU"
+		],
+		[
+			"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.cpp",
+			"MU"
+		],
+		[
+			"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/main.cpp",
+			"MU"
+		],
+		[
+			"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.cpp",
+			"MU"
+		]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

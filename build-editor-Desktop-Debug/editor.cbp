@@ -5,7 +5,7 @@
 		<Option title="editor"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug"/>
@@ -48,7 +48,7 @@
 					<Add option="-DQT_GUI_LIB"/>
 					<Add option="-DQT_CORE_LIB"/>
 					<Add directory="/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug"/>
-					<Add directory="/home/lorenzo/Escritorio/Taller/editor"/>
+					<Add directory="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor"/>
 					<Add directory="/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/include"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
@@ -81,7 +81,7 @@
 					<Add option="-DQT_GUI_LIB"/>
 					<Add option="-DQT_CORE_LIB"/>
 					<Add directory="/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug"/>
-					<Add directory="/home/lorenzo/Escritorio/Taller/editor"/>
+					<Add directory="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor"/>
 					<Add directory="/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/include"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
@@ -123,155 +123,155 @@
 		<Unit filename="/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/mocs_compilation.cpp">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/customgraphicsview.cpp">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.cpp">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/customgraphicsview.h">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.h">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/leveleditor.cpp">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.cpp">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/leveleditor.h">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.h">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/leveleditor.ui">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.ui">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/main.cpp">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/main.cpp">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/map.cpp">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.cpp">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/map.h">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.h">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/resources.qrc">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/resources.qrc">
 			<Option target="editor"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/CMakeLists.txt">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/resources.qrc">
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/resources.qrc">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
 		</Unit>
-		<Unit filename="/home/lorenzo/Escritorio/Taller/editor/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		<Unit filename="/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

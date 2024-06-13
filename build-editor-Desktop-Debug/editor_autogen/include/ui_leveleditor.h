@@ -15,6 +15,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
 #include "customgraphicsview.h"
 
@@ -24,8 +25,13 @@ class Ui_LevelEditor
 {
 public:
     QWidget *centralwidget;
-    QListWidget *objectPalette;
     CustomGraphicsView *graphicsView;
+    QListWidget *modeList;
+    QTabWidget *tabWidget;
+    QWidget *Terrain;
+    QListWidget *terrainListWidget;
+    QWidget *Objects;
+    QListWidget *objectsListWidget;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -33,20 +39,36 @@ public:
     {
         if (LevelEditor->objectName().isEmpty())
             LevelEditor->setObjectName(QString::fromUtf8("LevelEditor"));
-        LevelEditor->resize(800, 600);
+        LevelEditor->resize(1080, 720);
         centralwidget = new QWidget(LevelEditor);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        objectPalette = new QListWidget(centralwidget);
-        objectPalette->setObjectName(QString::fromUtf8("objectPalette"));
-        objectPalette->setGeometry(QRect(20, 370, 751, 61));
-        objectPalette->setFlow(QListView::LeftToRight);
         graphicsView = new CustomGraphicsView(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(20, 10, 750, 351));
+        graphicsView->setGeometry(QRect(20, 10, 931, 571));
+        modeList = new QListWidget(centralwidget);
+        modeList->setObjectName(QString::fromUtf8("modeList"));
+        modeList->setGeometry(QRect(960, 10, 91, 571));
+        tabWidget = new QTabWidget(centralwidget);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setGeometry(QRect(20, 580, 1031, 91));
+        Terrain = new QWidget();
+        Terrain->setObjectName(QString::fromUtf8("Terrain"));
+        terrainListWidget = new QListWidget(Terrain);
+        terrainListWidget->setObjectName(QString::fromUtf8("terrainListWidget"));
+        terrainListWidget->setGeometry(QRect(0, 0, 1031, 61));
+        terrainListWidget->setFlow(QListView::LeftToRight);
+        tabWidget->addTab(Terrain, QString());
+        Objects = new QWidget();
+        Objects->setObjectName(QString::fromUtf8("Objects"));
+        objectsListWidget = new QListWidget(Objects);
+        objectsListWidget->setObjectName(QString::fromUtf8("objectsListWidget"));
+        objectsListWidget->setGeometry(QRect(0, 0, 1031, 61));
+        objectsListWidget->setFlow(QListView::LeftToRight);
+        tabWidget->addTab(Objects, QString());
         LevelEditor->setCentralWidget(centralwidget);
         menubar = new QMenuBar(LevelEditor);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 1080, 21));
         LevelEditor->setMenuBar(menubar);
         statusbar = new QStatusBar(LevelEditor);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -54,12 +76,17 @@ public:
 
         retranslateUi(LevelEditor);
 
+        tabWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(LevelEditor);
     } // setupUi
 
     void retranslateUi(QMainWindow *LevelEditor)
     {
         LevelEditor->setWindowTitle(QApplication::translate("LevelEditor", "LevelEditor", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(Terrain), QApplication::translate("LevelEditor", "Terrain", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(Objects), QApplication::translate("LevelEditor", "Objects", nullptr));
     } // retranslateUi
 
 };

@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lorenzo/Escritorio/Taller/editor
+CMAKE_SOURCE_DIR = /home/lorenzo/Escritorio/Taller/tp_final_editor/editor
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug
@@ -57,10 +57,19 @@ include CMakeFiles/editor.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/editor.dir/flags.make
 
-editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/editor/resources.qrc
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/resources.qrc
 editor_autogen/EWIEGA46WW/qrc_resources.cpp: CMakeFiles/editor_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json
-editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/editor/sprites/tile000.png
-editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/editor/sprites/tile003.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/gold_coin.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/silver_coin.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/erase.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile001.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile009.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/red_gem.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile000.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile013.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/put.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile008.png
+editor_autogen/EWIEGA46WW/qrc_resources.cpp: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile003.png
 editor_autogen/EWIEGA46WW/qrc_resources.cpp: /usr/lib/qt5/bin/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for resources.qrc"
 	/usr/bin/cmake -E cmake_autorcc /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json Debug
@@ -79,56 +88,56 @@ CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.s: cmake_force
 	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/mocs_compilation.cpp -o CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/editor.dir/main.cpp.o: CMakeFiles/editor.dir/flags.make
-CMakeFiles/editor.dir/main.cpp.o: /home/lorenzo/Escritorio/Taller/editor/main.cpp
+CMakeFiles/editor.dir/main.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/editor.dir/main.cpp.o"
-	/usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/main.cpp.o -c /home/lorenzo/Escritorio/Taller/editor/main.cpp
+	/usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/main.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/main.cpp
 
 CMakeFiles/editor.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/editor.dir/main.cpp.i"
-	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/editor/main.cpp > CMakeFiles/editor.dir/main.cpp.i
+	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/main.cpp > CMakeFiles/editor.dir/main.cpp.i
 
 CMakeFiles/editor.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/editor.dir/main.cpp.s"
-	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/editor/main.cpp -o CMakeFiles/editor.dir/main.cpp.s
+	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/main.cpp -o CMakeFiles/editor.dir/main.cpp.s
 
 CMakeFiles/editor.dir/leveleditor.cpp.o: CMakeFiles/editor.dir/flags.make
-CMakeFiles/editor.dir/leveleditor.cpp.o: /home/lorenzo/Escritorio/Taller/editor/leveleditor.cpp
+CMakeFiles/editor.dir/leveleditor.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/editor.dir/leveleditor.cpp.o"
-	/usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/leveleditor.cpp.o -c /home/lorenzo/Escritorio/Taller/editor/leveleditor.cpp
+	/usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/leveleditor.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.cpp
 
 CMakeFiles/editor.dir/leveleditor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/editor.dir/leveleditor.cpp.i"
-	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/editor/leveleditor.cpp > CMakeFiles/editor.dir/leveleditor.cpp.i
+	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.cpp > CMakeFiles/editor.dir/leveleditor.cpp.i
 
 CMakeFiles/editor.dir/leveleditor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/editor.dir/leveleditor.cpp.s"
-	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/editor/leveleditor.cpp -o CMakeFiles/editor.dir/leveleditor.cpp.s
+	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.cpp -o CMakeFiles/editor.dir/leveleditor.cpp.s
 
 CMakeFiles/editor.dir/customgraphicsview.cpp.o: CMakeFiles/editor.dir/flags.make
-CMakeFiles/editor.dir/customgraphicsview.cpp.o: /home/lorenzo/Escritorio/Taller/editor/customgraphicsview.cpp
+CMakeFiles/editor.dir/customgraphicsview.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/editor.dir/customgraphicsview.cpp.o"
-	/usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/customgraphicsview.cpp.o -c /home/lorenzo/Escritorio/Taller/editor/customgraphicsview.cpp
+	/usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/customgraphicsview.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.cpp
 
 CMakeFiles/editor.dir/customgraphicsview.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/editor.dir/customgraphicsview.cpp.i"
-	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/editor/customgraphicsview.cpp > CMakeFiles/editor.dir/customgraphicsview.cpp.i
+	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.cpp > CMakeFiles/editor.dir/customgraphicsview.cpp.i
 
 CMakeFiles/editor.dir/customgraphicsview.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/editor.dir/customgraphicsview.cpp.s"
-	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/editor/customgraphicsview.cpp -o CMakeFiles/editor.dir/customgraphicsview.cpp.s
+	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.cpp -o CMakeFiles/editor.dir/customgraphicsview.cpp.s
 
 CMakeFiles/editor.dir/map.cpp.o: CMakeFiles/editor.dir/flags.make
-CMakeFiles/editor.dir/map.cpp.o: /home/lorenzo/Escritorio/Taller/editor/map.cpp
+CMakeFiles/editor.dir/map.cpp.o: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/editor.dir/map.cpp.o"
-	/usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/map.cpp.o -c /home/lorenzo/Escritorio/Taller/editor/map.cpp
+	/usr/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/editor.dir/map.cpp.o -c /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.cpp
 
 CMakeFiles/editor.dir/map.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/editor.dir/map.cpp.i"
-	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/editor/map.cpp > CMakeFiles/editor.dir/map.cpp.i
+	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.cpp > CMakeFiles/editor.dir/map.cpp.i
 
 CMakeFiles/editor.dir/map.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/editor.dir/map.cpp.s"
-	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/editor/map.cpp -o CMakeFiles/editor.dir/map.cpp.s
+	/usr/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.cpp -o CMakeFiles/editor.dir/map.cpp.s
 
 CMakeFiles/editor.dir/editor_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/editor.dir/flags.make
 CMakeFiles/editor.dir/editor_autogen/EWIEGA46WW/qrc_resources.cpp.o: editor_autogen/EWIEGA46WW/qrc_resources.cpp
@@ -179,6 +188,6 @@ CMakeFiles/editor.dir/clean:
 .PHONY : CMakeFiles/editor.dir/clean
 
 CMakeFiles/editor.dir/depend: editor_autogen/EWIEGA46WW/qrc_resources.cpp
-	cd /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lorenzo/Escritorio/Taller/editor /home/lorenzo/Escritorio/Taller/editor /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lorenzo/Escritorio/Taller/tp_final_editor/editor /home/lorenzo/Escritorio/Taller/tp_final_editor/editor /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/editor.dir/depend
 

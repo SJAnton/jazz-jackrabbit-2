@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lorenzo/Escritorio/Taller/editor
+CMAKE_SOURCE_DIR = /home/lorenzo/Escritorio/Taller/tp_final_editor/editor
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug
@@ -72,6 +72,6 @@ CMakeFiles/editor_autogen.dir/clean:
 .PHONY : CMakeFiles/editor_autogen.dir/clean
 
 CMakeFiles/editor_autogen.dir/depend:
-	cd /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lorenzo/Escritorio/Taller/editor /home/lorenzo/Escritorio/Taller/editor /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lorenzo/Escritorio/Taller/tp_final_editor/editor /home/lorenzo/Escritorio/Taller/tp_final_editor/editor /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug /home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/editor_autogen.dir/depend
 

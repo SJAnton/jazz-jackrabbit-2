@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lorenzo/Escritorio/Taller/editor/customgraphicsview.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/customgraphicsview.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/customgraphicsview.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/customgraphicsview.cpp.o"
   "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/EWIEGA46WW/qrc_resources.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/editor_autogen/EWIEGA46WW/qrc_resources.cpp.o"
   "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/mocs_compilation.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/editor_autogen/mocs_compilation.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/editor/leveleditor.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/leveleditor.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/editor/main.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/main.cpp.o"
-  "/home/lorenzo/Escritorio/Taller/editor/map.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/map.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/leveleditor.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/leveleditor.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/main.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/main.cpp.o"
+  "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/map.cpp" "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir/map.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -23,7 +23,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "."
-  "/home/lorenzo/Escritorio/Taller/editor"
+  "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor"
   "editor_autogen/include"
   "/usr/include/x86_64-linux-gnu/qt5"
   "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"

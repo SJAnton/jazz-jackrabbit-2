@@ -1,4 +1,4 @@
-# Install script for directory: /home/lorenzo/Escritorio/Taller/editor
+# Install script for directory: /home/lorenzo/Escritorio/Taller/tp_final_editor/editor
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CustomGraphicsView_t {
-    QByteArrayData data[5];
-    char stringdata0[47];
+    QByteArrayData data[7];
+    char stringdata0[77];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,14 +32,17 @@ struct qt_meta_stringdata_CustomGraphicsView_t {
 static const qt_meta_stringdata_CustomGraphicsView_t qt_meta_stringdata_CustomGraphicsView = {
     {
 QT_MOC_LITERAL(0, 0, 18), // "CustomGraphicsView"
-QT_MOC_LITERAL(1, 19, 7), // "clicked"
-QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(4, 41, 5) // "event"
+QT_MOC_LITERAL(1, 19, 12), // "mousePressed"
+QT_MOC_LITERAL(2, 32, 0), // ""
+QT_MOC_LITERAL(3, 33, 12), // "QMouseEvent*"
+QT_MOC_LITERAL(4, 46, 5), // "event"
+QT_MOC_LITERAL(5, 52, 10), // "mouseMoved"
+QT_MOC_LITERAL(6, 63, 13) // "mouseReleased"
 
     },
-    "CustomGraphicsView\0clicked\0\0QMouseEvent*\0"
-    "event"
+    "CustomGraphicsView\0mousePressed\0\0"
+    "QMouseEvent*\0event\0mouseMoved\0"
+    "mouseReleased"
 };
 #undef QT_MOC_LITERAL
 
@@ -49,17 +52,21 @@ static const uint qt_meta_data_CustomGraphicsView[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   19,    2, 0x06 /* Public */,
+       1,    1,   29,    2, 0x06 /* Public */,
+       5,    1,   32,    2, 0x06 /* Public */,
+       6,    1,   35,    2, 0x06 /* Public */,
 
  // signals: parameters
+    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 3,    4,
 
        0        // eod
@@ -71,15 +78,31 @@ void CustomGraphicsView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         auto *_t = static_cast<CustomGraphicsView *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->clicked((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 0: _t->mousePressed((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 1: _t->mouseMoved((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 2: _t->mouseReleased((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (CustomGraphicsView::*)(QMouseEvent * );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CustomGraphicsView::clicked)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CustomGraphicsView::mousePressed)) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (CustomGraphicsView::*)(QMouseEvent * );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CustomGraphicsView::mouseMoved)) {
+                *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (CustomGraphicsView::*)(QMouseEvent * );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CustomGraphicsView::mouseReleased)) {
+                *result = 2;
                 return;
             }
         }
@@ -115,22 +138,36 @@ int CustomGraphicsView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }
 
 // SIGNAL 0
-void CustomGraphicsView::clicked(QMouseEvent * _t1)
+void CustomGraphicsView::mousePressed(QMouseEvent * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void CustomGraphicsView::mouseMoved(QMouseEvent * _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void CustomGraphicsView::mouseReleased(QMouseEvent * _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

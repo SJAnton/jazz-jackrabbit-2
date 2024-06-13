@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug"
+			"value" : "/home/lorenzo/Escritorio/Taller/tp_final_editor"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/lorenzo/Escritorio/Taller/editor"
+			"value" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1179,7 +1179,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug"
+			"value" : "/home/lorenzo/Escritorio/Taller/tp_final_editor"
 		},
 		{
 			"name" : "editor_SOURCE_DIR",
@@ -1191,7 +1191,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/lorenzo/Escritorio/Taller/editor"
+			"value" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor"
 		}
 	],
 	"kind" : "cache",

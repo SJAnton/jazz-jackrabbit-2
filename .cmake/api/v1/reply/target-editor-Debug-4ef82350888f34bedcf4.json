@@ -70,14 +70,14 @@
 			"includes" : 
 			[
 				{
-					"path" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug"
+					"path" : "/home/lorenzo/Escritorio/Taller/tp_final_editor"
 				},
 				{
-					"path" : "/home/lorenzo/Escritorio/Taller/editor"
+					"path" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor"
 				},
 				{
 					"backtrace" : 0,
-					"path" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/include"
+					"path" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor_autogen/include"
 				},
 				{
 					"backtrace" : 2,
@@ -205,7 +205,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/mocs_compilation.cpp",
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -261,13 +261,13 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/EWIEGA46WW/qrc_resources.cpp",
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor_autogen/EWIEGA46WW/qrc_resources.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/editor_autogen/EWIEGA46WW/qrc_resources.cpp.rule",
+			"path" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor_autogen/EWIEGA46WW/qrc_resources.cpp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],
