@@ -44,7 +44,7 @@ SpritesManager::SpritesManager() :
     SDL_FreeSurface(surface);
 
     
-    players.emplace_back(Lori);
+    //players.emplace_back(Lori);
     
 }
 

@@ -6,6 +6,19 @@
 // Esta clase funciona como una libreria. No se deben crear instancias de esta clase
 class SpritesPlayers {
 public:
+    //Jazz
+    static SpriteSheet Jazz_idle;
+    static SpriteSheet Jazz_walk;
+    static SpriteSheet Jazz_run;
+    static SpriteSheet Jazz_jump;
+    static SpriteSheet Jazz_fall;
+    static SpriteSheet Jazz_shoot;
+    static SpriteSheet Jazz_specialAtack;
+    static SpriteSheet Jazz_damaged;
+    static SpriteSheet Jazz_intoxicatedIdle;
+    static SpriteSheet Jazz_intoxicatedWalk;
+    static SpriteSheet Jazz_dying;
+    static SpriteSheet Jazz_death;
     //Spaz
     static SpriteSheet Spaz_idle;
     static SpriteSheet Spaz_walk;

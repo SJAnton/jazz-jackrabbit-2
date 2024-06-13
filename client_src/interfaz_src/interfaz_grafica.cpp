@@ -53,6 +53,9 @@ void InterfazGrafica::recibirInformacion(){
     //Proceso la informacion para actualizar la interfaz
 }
  
+void InterfazGrafica::addPlayer(const TipoPlayer &tipo) {//temporal
+    spritesManager->addPlayer(tipo);
+}
 //muevo la camara para que quede centrada en la posicion recibida
 void InterfazGrafica::updateCamara(const Position &pos) {
     

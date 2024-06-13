@@ -96,7 +96,37 @@ void SpritePlayer::setEstadoSpaz(const EstadosPlayer &estado_)
 }
 
 void SpritePlayer::setEstadoJazz(const EstadosPlayer &estado_) {
-
+    switch (estado_)
+    {
+    case EstadosPlayer::Inactive : spriteSheet = SpritesPlayers::Jazz_idle;
+        break;
+    case EstadosPlayer::Walking : spriteSheet = SpritesPlayers::Jazz_walk;
+        break;
+    case EstadosPlayer::Running : spriteSheet = SpritesPlayers::Jazz_run;
+        break;
+    case EstadosPlayer::Jumping : spriteSheet = SpritesPlayers::Jazz_jump;
+        break;
+    case EstadosPlayer::Falling : spriteSheet = SpritesPlayers::Jazz_fall;
+        break;
+    case EstadosPlayer::Shooting : spriteSheet = SpritesPlayers::Jazz_shoot;
+        break;
+    case EstadosPlayer::SpecialAttack : spriteSheet = SpritesPlayers::Jazz_specialAtack;
+        break;
+    case EstadosPlayer::IntoxicatedIdle : spriteSheet = SpritesPlayers::Jazz_intoxicatedIdle;
+        break;
+    case EstadosPlayer::IntoxicatedWalk : spriteSheet = SpritesPlayers::Jazz_walk;
+        break;
+    case EstadosPlayer::Damaged : spriteSheet = SpritesPlayers::Jazz_damaged;
+        break;
+    case EstadosPlayer::Dying : spriteSheet = SpritesPlayers::Jazz_death; //cambiar
+        break;
+    case EstadosPlayer::Dead : spriteSheet = SpritesPlayers::Jazz_death;
+        break;
+    case EstadosPlayer::Reviving : spriteSheet = SpritesPlayers::Jazz_idle;
+        break;
+    default:
+        break;
+    }
 }
 
 void SpritePlayer::setEstadoLori(const EstadosPlayer &estado_) {

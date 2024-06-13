@@ -73,6 +73,7 @@ void EventHandler::manejarEventosMenu(SDL_Event &e) {
         }
     }
 }
+
 void EventHandler::manejarSeleccionPartida(SDL_Event &e){
     if (e.type == SDL_MOUSEBUTTONDOWN) {
         int mouseX, mouseY;
@@ -117,6 +118,7 @@ void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
                 TipoPlayer personajeSeleccionado = personaje.getTipoPlayer();
                 cliente.entrarPartida(partidaSeleccionada, personajeSeleccionado);
                 cliente.recibirInformacion();
+                interfaz.addPlayer(personajeSeleccionado); //temporal
                 interfaz.nextEstado();
 
                 return;

@@ -3,6 +3,20 @@
 
 //Tengo que declararlos aca porque son static
 
+//Jazz
+SpriteSheet SpritesPlayers::Jazz_idle;
+SpriteSheet SpritesPlayers::Jazz_walk;
+SpriteSheet SpritesPlayers::Jazz_run;
+SpriteSheet SpritesPlayers::Jazz_jump;
+SpriteSheet SpritesPlayers::Jazz_fall;
+SpriteSheet SpritesPlayers::Jazz_shoot;
+SpriteSheet SpritesPlayers::Jazz_specialAtack;
+SpriteSheet SpritesPlayers::Jazz_damaged;
+SpriteSheet SpritesPlayers::Jazz_intoxicatedIdle;
+SpriteSheet SpritesPlayers::Jazz_intoxicatedWalk;
+SpriteSheet SpritesPlayers::Jazz_death;
+
+//Spaz
 SpriteSheet SpritesPlayers::Spaz_idle;
 SpriteSheet SpritesPlayers::Spaz_walk;
 SpriteSheet SpritesPlayers::Spaz_run;
@@ -33,10 +47,23 @@ bool SpritesPlayers::inicializado = false;
 
 void SpritesPlayers::init() {
     if (!inicializado) {
+        //Jazz (NO IMPLEMENTDO, reemplazar despues)
+        Jazz_idle = SpriteSheet(PATH_SPAZ_IDLE, 56, 56, 6); //CAMBIAR
+        Jazz_walk = SpriteSheet(PATH_JAZZ_WALK, 57, 56, 8);
+        Jazz_run = SpriteSheet(PATH_JAZZ_RUN,72, 72, 4);
+        Jazz_jump = SpriteSheet(PATH_JAZZ_JUMP, 56, 56, 12);
+        Jazz_fall = SpriteSheet(PATH_JAZZ_FALL,56, 56, 3);
+        Jazz_shoot = SpriteSheet(PATH_JAZZ_SHOOT, 64, 64, 6);
+        Jazz_specialAtack = SpriteSheet(PATH_JAZZ_SPECIAL, 56, 64, 12);
+        Jazz_damaged = SpriteSheet(PATH_JAZZ_DAMAGED, 72, 72, 9);
+        Jazz_intoxicatedIdle = SpriteSheet(PATH_JAZZ_INTOXICATED_IDLE, 56, 56, 8);
+        Jazz_intoxicatedWalk = SpriteSheet(PATH_JAZZ_INTOXICATED_WALK,64, 64, 12);
+        Jazz_death = SpriteSheet(PATH_JAZZ_DEATH, 88, 88, 20);
+        
         //Spaz
         Spaz_idle = SpriteSheet(PATH_SPAZ_IDLE, 56, 56, 6);
         Spaz_walk = SpriteSheet(PATH_SPAZ_WALK, 56, 56, 8);
-        Spaz_run = SpriteSheet(PATH_SPAZ_JUMP,56, 56, 12);
+        Spaz_run = SpriteSheet(PATH_SPAZ_RUN, 56, 56, 4);
         Spaz_jump = SpriteSheet(PATH_SPAZ_JUMP, 56, 56, 12);
         Spaz_fall = SpriteSheet(PATH_SPAZ_FALL,56, 56, 3);
         Spaz_shoot = SpriteSheet(PATH_SPAZ_SHOOT, 56, 56, 6);

@@ -56,7 +56,8 @@ public:
     InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer &client);
     
     bool estaAbierta();
-    
+    void addPlayer(const TipoPlayer &tipo);//temporal
+
     void recibirInformacion();
 
     EstadoInterfaz getEstado() { return estado;};
