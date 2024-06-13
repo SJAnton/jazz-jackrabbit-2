@@ -33,6 +33,8 @@ public:
     std::vector<uint8_t> encodeRecolectable(const InfoRecolectable &);
     std::vector<uint8_t> encodeProyectil(const InfoProyectil &);
 
+    void send_id(uint8_t id, bool &was_closed);
+    void send_game_data(InfoJuego &game_data, bool &was_closed);
 
 
 };

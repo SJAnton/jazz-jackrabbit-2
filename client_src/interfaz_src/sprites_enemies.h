@@ -6,26 +6,21 @@
 // Esta clase funciona como una libreria. No se deben crear instancias de esta clase
 class SpritesPlayers {
 public:
-    //Spaz
-    static SpriteSheet Spaz_idle;
-    static SpriteSheet Spaz_walk;
-    static SpriteSheet Spaz_specialAtack;
-    static SpriteSheet Spaz_damaged;
-    static SpriteSheet Spaz_dying;
-    static SpriteSheet Spaz_death;
-    //Lori
-    static SpriteSheet Lori_idle;
-    static SpriteSheet Lori_walk;
-    static SpriteSheet Lori_run;
-    static SpriteSheet Lori_jump;
-    static SpriteSheet Lori_fall;
-    static SpriteSheet Lori_shoot;
-    static SpriteSheet Lori_specialAtack;
-    static SpriteSheet Lori_damaged;
-    static SpriteSheet Lori_intoxicatedIdle;
-    static SpriteSheet Lori_intoxicatedWalk;
-    static SpriteSheet Lori_dying;
-    static SpriteSheet Lori_death;
+    //Bat
+    static SpriteSheet Bat_idle;
+    static SpriteSheet Bat_Attack;
+    
+    //Rat
+    static SpriteSheet Rat_idle;
+    static SpriteSheet Rat_walk;
+    static SpriteSheet Rat_attack;
+    
+    //Diablo
+    static SpriteSheet Diablo_idle;
+    static SpriteSheet Diablo_attack;
+    static SpriteSheet Diablo_appear;
+    static SpriteSheet Diablo_disappear;
+
     static void init();
 private:
     static bool inicializado;

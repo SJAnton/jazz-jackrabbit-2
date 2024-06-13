@@ -1,4 +1,17 @@
 
+//=======
+// LOBBY 
+//=======
+
+#define PATH_BUTTON_PLAY "../sprites/boton_play.png"
+#define PATH_TITULO "../sprites/titulo.png"
+#define PATH_FONT "../sprites/font.png"
+
+
+//=========
+// PLAYERS
+//=========
+
 //player Spaz
 #define PATH_SPAZ_IDLE "../sprites/Players/Spaz/Idle (56x56)x06.png"
 #define PATH_SPAZ_WALK "../sprites/Players/Spaz/Walk (56x56)x08.png"
@@ -41,12 +54,32 @@
 #define PATH_JAZZ_WALK "../sprites/Players/Jazz/Walk (57x56)x08.png"
 
 
-//Enemigos
+//==========
+// ENEMIGOS
+//==========
+
 //Bat
+#define PATH_BAT_IDLE "../sprites/Enemies/Bat Idle (32x40)x08.png"
+#define PATH_BAT_ATTACK "../sprites/Enemies/Bat Attack (72x48)08.png"
 
+//Rat
+#define PATH_RAT_IDLE "../sprites/Enemies/Rata_Idle (84x44)x08.png"
+#define PATH_RAT_WALK "../sprites/Enemies/Rata_Walk (84x44)x08.png"
+#define PATH_RAT_ATTACK "../sprites/Enemies/Rata_Attack (84x44)x08.png"
 
-//Items Recolectables
+//Diablo
+#define PATH_DIABLO_IDLE "../sprites/Enemies/Diablo_idle (128x128)x08.png"
+#define PATH_DIABLO_ATTACK "../sprites/Enemies/Diablo_Attack (128x128)x18.png"
+#define PATH_DIABLO_APPEAR "../sprites/Enemies/Diablo_Appear (128x128)x20.png"
+#define PATH_DIABLO_DISAPPEAR "../sprites/Enemies/Diablo_Disappear (128x128)x17.png"
+
+//=====================
+// ITEMS RECOLECTABLES
+//=====================
 #define PATH_ITEM_COIN "../sprites/Items/Gold_coin (28x28)x20.png"
 #define PATH_ITEM_GEM "../sprites/Items/Gem (36x36)x08.png"
 #define PATH_ITEM_ZANAHORIA "../sprites/Items/Zanahoria (36x36)x20.png"
 
+
+// PROJECTILES
+#define PATH_PROJECTILE_0 "../sprites/Projectiles/Projectile (16x8)x03.png"

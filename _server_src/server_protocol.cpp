@@ -1,6 +1,14 @@
 #include "server_protocol.h"
 
 
+/*void ServerProtocol::send_id(uint8_t id, bool &was_closed) {
+    sk.sendall(&id, sizeof(id), &was_closed);
+}
+void ServerProtocol::send_game_data(InfoJuego &game_data, bool &was_closed) {
+    std::vector<uint8_t> bytes = encodeInfoJuego(game_data);
+    sk.sendall(bytes.data(), bytes.size(), &was_closed);
+}
+*/
 std::vector<uint8_t> ServerProtocol::encodeInfoJuego(const InfoJuego &infoJuego) {
     std::vector<uint8_t> bytes;
 
@@ -205,7 +213,7 @@ AccionesPlayer  ServerProtocol::decodeAction(uint8_t byte) {
     case ACTION_RUN: return AccionesPlayer::Run;
     case ACTION_JUMP: return AccionesPlayer::Jump;
     case ACTION_SHOOT: return AccionesPlayer::Shoot;
-    case ACTION_SPECIAL_ATACK: return AccionesPlayer::SpecialAttack;
+    case ACTION_SPECIAL_ATTACK: return AccionesPlayer::SpecialAttack;
     default:
         //Excepcion
         return AccionesPlayer::Idle;

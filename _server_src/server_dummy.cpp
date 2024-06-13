@@ -68,7 +68,25 @@ int main(int argc, char const *argv[])
 	Socket skt(SERVICENAME);
 	Socket clientSocket = skt.accept();
 	ServerProtocol protocolo;
-	
+	int id = 1;
+	bool cerrado = false;
+
+    std::vector<uint8_t> ids_partidas;
+	ids_partidas.push_back(1);
+	ids_partidas.push_back(1);
+
+	clientSocket.sendall(ids_partidas.data(), ids_partidas.size(), &cerrado); //envio el id al cliente
+
+	//recibo data inicial (mapa y player)
+    std::vector<uint8_t> data;
+    uint8_t byte;
+    for (int i = 0; i < 2; i++) {
+		clientSocket.recvall(&byte, sizeof(byte), &cerrado);
+		data.push_back(byte);
+	}
+	std::cout << "recibo data" << std::endl;
+	clientSocket.sendall(&id, sizeof(id), &cerrado); //envio el id al cliente
+
 	std::vector<InfoPlayer> infoPlayers;
 	std::vector<InfoEnemigo> infoEnemigos;
 	std::vector<InfoRecolectable> infoItems;
@@ -80,11 +98,11 @@ int main(int argc, char const *argv[])
 	std::cout << "posy " << infoPlayers[0].pos_y << std::endl;
 	
 	
-	bool cerrado = false;
 	std::vector<uint8_t> buffer(3);
 
+	//Deberia hacer un hilo para recibir y otro para enviar
 	while(not cerrado) {
-		clientSocket.recvall(buffer.data(), 3, &cerrado);
+		//clientSocket.recvall(buffer.data(), 3, &cerrado);
 		std::cout << "comando recibido"<<std::endl;
 		uint8_t idPlayer = buffer[0];
 		AccionesPlayer accion = protocolo.decodeAction(buffer[1]);

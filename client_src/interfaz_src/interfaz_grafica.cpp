@@ -16,7 +16,6 @@ InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer 
     estado(Menu),
     queueReceptora(queueReceptora),
     renderizarPantalla(&InterfazGrafica::renderizarMenu)
-    //manejarEventos(&InterfazGrafica::manejarEventosMenu)
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         window = SDL_CreateWindow("Ventana del juego", SDL_WINDOWPOS_CENTERED, 
@@ -38,7 +37,7 @@ InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer 
     }
     spritesManager = new SpritesManager();
     spritesManager->inicializarBotonesPartidas(client.getIdPartidas());
-    eventHandler  =new EventHandler(*this, client, spritesManager->getBotonesPartidas());
+    eventHandler  = new EventHandler(*this, client, spritesManager->getBotonesPartidas());
 
     eventHandler->start();
     infoJuego.addPlayer();
@@ -68,11 +67,19 @@ void InterfazGrafica::update(int it) {
     if (queueReceptora.try_pop(infoJuego)) {
         Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y);
         updateCamara(pos);
+        pos = posRelativaACamara(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y);
         spritesManager->updatePlayer(0, infoJuego.players[0].estado, pos);
+        for (int i=1; i< infoJuego.cantidadPlayers(); i++) {
+            //Position posicion(infoJuego.players[i].pos_x, infoJuego.players[i].pos_y);
+            pos = posRelativaACamara(infoJuego.players[i].pos_x, infoJuego.players[i].pos_y);
+            spritesManager->updatePlayer(i, infoJuego.players[i].estado, pos);
+        }
+        infoJuego.cantProyectiles();
     }
     if (iteracion % 2 == 0)
         spritesManager->updateItems();
 
+    spritesManager->updateProyectiles();
 } 
 
 
@@ -80,19 +87,30 @@ void InterfazGrafica::flipPlayer(bool flip) {
     spritesManager->flipPlayer(0, flip);
 }
 
+Position InterfazGrafica::posRelativaACamara(const int &x, const int &y) {
+    return Position(x - camara.x, y- camara.y);
+}
+
 void InterfazGrafica::renderizarJuego() 
 {
     SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
 
     SDL_RenderClear(renderer);//borra todo
-    spritesManager->renderizarFondo();
+    spritesManager->renderizarFondo(Position(camara.x, camara.y));
     spritesManager->renderizarPlayer(0);
 
-    spritesManager->renderizarItemEn(Moneda, 100, 260);
-    spritesManager->renderizarItemEn(Moneda, 200, 260);
-    spritesManager->renderizarItemEn(Diamante, 300, 260);
-    spritesManager->renderizarItemEn(Zanahoria, 400, 260);
-    spritesManager->renderizarItemEn(Diamante, 450, 240);
+    spritesManager->renderizarProyectilEn(Right, 100, 260);
+    for (int i=0; i< infoJuego.cantRecolectables(); i++) {
+        Position pos = posRelativaACamara(infoJuego.recolectables[i].pos_x, infoJuego.recolectables[i].pos_y);
+        spritesManager->renderizarItemEn(infoJuego.recolectables[i].tipo, pos.x, pos.y);
+    }
+
+    for (int i=0; i< infoJuego.cantProyectiles(); i++) {
+        std::cout << "Hay " << infoJuego.cantProyectiles() << " proyectiles" << std::endl;
+        Position pos = posRelativaACamara(infoJuego.proyectiles[i].pos_x, infoJuego.proyectiles[i].pos_y);
+        spritesManager->renderizarProyectilEn(infoJuego.proyectiles[i].direccion, pos.x, pos.y);
+        //spritesManager->updatePlayer(i, infoJuego.players[i].estado, posicion);
+    }
 
     SDL_RenderPresent(renderer); // dibuja todo
 }

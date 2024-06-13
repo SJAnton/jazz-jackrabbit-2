@@ -3,10 +3,7 @@
 
 #define SIZE_CLIENT_MSG 3
 #define SIZE_CLIENT_MSG_INIT 2
-#define LENGTH_PLAYER_INFO 10
-#define LENGTH_ENEMY_INFO 6
-#define LENGTH_ITEMS_INFO 5
-#define LENGTH_PROYECTIL_INFO 5
+
 
 //Comandos o acciones que puede enviar un Cliente
 #define ACTION_IDLE 0x11
@@ -14,16 +11,10 @@
 #define ACTION_RUN 0x13
 #define ACTION_JUMP 0x14
 #define ACTION_SHOOT 0x15
-#define ACTION_SPECIAL_ATACK 0x16
+#define ACTION_SPECIAL_ATTACK 0x16
 // La accion vendrá seguida de la direccion en el eje x
 #define LEFT 0x4C // L
 #define RIGHT 0x52 // R
-
-//ID para identificar el cliente al que le corresponde la accion o el estado
-//#define PLAYER_1 0xA1
-//#define PLAYER_2 0xA2
-//#define PLAYER_3 0xA3
-//#define PLAYER_4 0xA4
 
 #define PLAYER_TYPE_JAZZ 0x01
 #define PLAYER_TYPE_LORI 0x02

@@ -23,10 +23,11 @@ private:
     //SeleccionarPartida
     std::list<ButtonPartida> botones_partidas;
     //SpriteObject letras;
-    SDL_Texture* fontTexture;
+    SDL_Texture* fontTexture;//cambiar
 
     //terreno 
     SpriteObject fondo;//Podria ser una imagen grande
+    //SpriteTileMap (implementar)
     SpriteObject piso;
     SpriteObject pisoIzq;
     SpriteObject PisoDer;
@@ -34,14 +35,21 @@ private:
     SpriteObject pisoDiagonalDer;
     SpriteObject pisoBloque;
 
+    //Items recolectables
     SpriteSheet moneda;
     SpriteSheet gema;
     SpriteSheet zanahoria;
 
+    //Players
     std::list<SpritePlayer> players;
-    std::vector<EstadosPlayer> estadosPlayers;
- 
-    bool playerInvertido = false;
+    bool playerInvertido = false;// sacar
+
+    //Proyectiles
+    SpriteSheet proyectil_0;
+
+    //HUD
+    SpriteObject heartIcon;
+
 
 private: 
     SpritePlayer& getPlayer(unsigned int n);
@@ -65,19 +73,50 @@ public:
     //void setEstadoPlayer(unsigned int numero, EstadosPlayer estado);
     void flipPlayer(unsigned int numero, bool invertirSprite);
 
-    //modifica al player n pasando al siguiente frame del spritesheet
-    //void nextFramePlayer(unsigned int n);
+    
 
-    void updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos);
-    //pinta en la pantalla en la posicion recibida.
-    //(para despues: pensar si es necesario usar .renderizarEn(x, y) o alcanza solo con  .renderizar())
+    //RENDERIZADORES
+
     void renderizarPlayerEn(unsigned int n, int x, int y);
     void renderizarPlayer(unsigned int n);
 
-    void renderizarFondo();
-
+    void renderizarFondo(const Position &posCamara);
+    void renderizarTerreno();
     void renderizarItemEn(const TipoRecolectable &tipo, int x, int y);
+    void renderizarProyectilEn(const Direcciones &dir, int x, int y);
+
+    // UPDATES
+    /**
+     * Avanza al siguiente frame de la animacion de todos los items recolectables
+    */
     void updateItems();
+    /**
+     * Avanza al siguiente frame de la animacion de todos los proyectiles
+    */
+    void updateProyectiles();
+
+    /**
+     * Actualiza el player numero 'n'.
+     * Se cambia la posicion a la posicion recibida.
+     * Si el estado es el mismo que tenia antes, avanza al siguiente frame de la animacion.
+     * Si es diferente al que tenia antes, cambia su estado (y su animacion).
+     * 
+     * nota.
+     * Si NO EXISTE el player numero 'n' en SpritesManager, lanza una excepcion
+    */
+    void updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos);
+
+    /**
+     * Actualiza el enemy numero 'n'.
+     * Se cambia la posicion a la posicion recibida.
+     * Si el estado es el mismo que tenia antes, avanza al siguiente frame de la animacion.
+     * Si es diferente al que tenia antes, cambia su estado (y su animacion).
+     * 
+     * nota.
+     * Si NO EXISTE el enemigo numero 'n' en SpritesManager, lanza una excepcion
+    */
+    void updateEnemy(unsigned int n, const EstadosEnemy &estado, const Position &pos);
+    
     //~SpritesManager();
 };
 

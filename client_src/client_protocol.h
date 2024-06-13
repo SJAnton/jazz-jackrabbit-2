@@ -29,7 +29,7 @@ class ClientProtocol{
 		EstadosEnemy decodeEstadoEnemy(uint8_t byte);
 		Direcciones decodeDireccion(uint8_t dir);
 
-
+		InfoPlayer decodePlayer(const std::vector<uint8_t> &bytes);
 		InfoJuego decodificarMensajeDelServer(const std::vector<uint8_t> &bytes);
 
 	public:

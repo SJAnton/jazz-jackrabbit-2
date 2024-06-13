@@ -34,6 +34,7 @@ public:
     void setArea(int width, int height);
     void setPosition(int x, int y);
 
+    void renderizarFijoEn(int x, int y);
     void renderizar() const;
     void renderizarEn(int x, int y) const;
     void renderizarCorrido(int x, int y) const;

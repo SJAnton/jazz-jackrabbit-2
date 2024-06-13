@@ -12,12 +12,9 @@
 #define PATH_PISO_DER "../sprites/Terreno/tile001.png"
 #define PATH_PISO_BLOQUE_1 "../sprites/Terreno/tile008.png"
 
-
 #define PATH_FONDO_2 "../sprites/Terreno/tile002.png"
 
-#define PATH_BUTTON_PLAY "../sprites/boton_play.png"
-#define PATH_TITULO "../sprites/titulo.png"
-#define PATH_FONT "../sprites/font.png"
+
 
 SpritesManager::SpritesManager() :
     botonPlay(PATH_BUTTON_PLAY),
@@ -32,7 +29,8 @@ SpritesManager::SpritesManager() :
     pisoBloque(PATH_PISO_BLOQUE_1),
     moneda(PATH_ITEM_COIN, 28, 28, 20),
     gema(PATH_ITEM_GEM, 36, 36, 8),
-    zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20)
+    zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20),
+    proyectil_0(PATH_PROJECTILE_0, 16, 8,3)
 {
     botonPlay.setPosition(234, 258);
     titulo.setPosition(95, 28);
@@ -91,7 +89,7 @@ void SpritesManager::renderizarPlayer(unsigned int n) {
     player.renderizar();
 }
 
-void SpritesManager::renderizarFondo()
+void SpritesManager::renderizarFondo(const Position &posCamara)
 {
     int size = 64;
     fondo.setArea(size, size);
@@ -99,10 +97,10 @@ void SpritesManager::renderizarFondo()
     pisoBloque.setArea(size, size);
 
     for (size_t i = 0; i < 15; i++) {
-        for (size_t j = 0; j < 10; j++) {
-            fondo.renderizarEn(size*i, size*j);
-            piso.renderizarEn(size*i, 300);
-            pisoBloque.renderizarEn(i*size, 364);
+        for (size_t j = 0; j < 10; j++) { //HARDCODEADO
+            fondo.renderizarEn(size*i - posCamara.x, size*j - posCamara.y);
+            piso.renderizarEn(size*i - posCamara.x, 4*63  - posCamara.y);
+            pisoBloque.renderizarEn(i*size - posCamara.x, 5*64 - posCamara.y);
         }
     }
 }
@@ -115,6 +113,14 @@ void SpritesManager::renderizarItemEn(const TipoRecolectable &tipo, int x, int y
     else if (tipo == TipoRecolectable::Zanahoria)
         zanahoria.renderizarEn(x, y);
 }
+
+void SpritesManager::renderizarProyectilEn(const Direcciones &dir, int x, int y) {
+    if (dir == Left)
+        proyectil_0.renderizarInvertidoEn(x, y);
+    else 
+        proyectil_0.renderizarEn(x, y);
+}
+
 void SpritesManager::updateItems() {
     moneda.nextFrame();
     gema.nextFrame();
@@ -137,6 +143,10 @@ void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, c
     else {
         player.updateFrame();
     }
+}
+
+void SpritesManager::updateProyectiles() {
+    proyectil_0.nextFrame();
 }
 
 //metodos privados:

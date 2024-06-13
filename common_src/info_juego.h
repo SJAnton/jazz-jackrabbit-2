@@ -7,6 +7,11 @@
 #include <vector>
 #include <cstdint>
 
+#define LENGTH_PLAYER_INFO 10
+#define LENGTH_ENEMY_INFO 6
+#define LENGTH_ITEMS_INFO 5
+#define LENGTH_PROYECTIL_INFO 5
+
 // Clase que representa la información de un jugador
 class InfoPlayer {
 public:

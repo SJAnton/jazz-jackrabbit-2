@@ -48,6 +48,8 @@ private:
     void renderizarJuego();
     void (InterfazGrafica::*renderizarPantalla)(); //Puntero a funcion renderizar
     void updateCamara(const Position &pos);
+    Position posRelativaACamara(const int &x, const int &y);
+
 
 public:
     InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer &client);

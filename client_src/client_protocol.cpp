@@ -22,7 +22,7 @@ uint8_t ClientProtocol::codeAccion(AccionesPlayer accion) {
 		case AccionesPlayer::Run: return ACTION_RUN;
 		case AccionesPlayer::Jump: return ACTION_JUMP;
 		case AccionesPlayer::Shoot: return ACTION_SHOOT;
-		case AccionesPlayer::SpecialAttack: return ACTION_SPECIAL_ATACK;
+		case AccionesPlayer::SpecialAttack: return ACTION_SPECIAL_ATTACK;
 		default: 
 		throw std::runtime_error("ERROR. Accion invalida");
 		return ACTION_IDLE;
@@ -52,7 +52,7 @@ Direcciones ClientProtocol::decodeDireccion(uint8_t dir) {
 		case LEFT: return Left;
 		case RIGHT: return Right;
 		default: 
-		throw std::runtime_error("ERROR. Direccion invalida");
+		throw std::runtime_error("ERROR. Direccion invalida. ClientProtocol::decodeDireccion()");
 		return Right;
 	}
 }
@@ -113,15 +113,26 @@ int ClientProtocol::decodeInt(uint8_t byte1, uint8_t byte2) {
 	return host_value;
 }
 
+InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
+	int id = decodeInt(bytes[0]);
+	int pos_x = decodeInt(bytes[1], bytes[2]);// * MULTIPLICADOR_POSICION;
+	int pos_y = decodeInt(bytes[3], bytes[4]);// * MULTIPLICADOR_POSICION;
+	EstadosPlayer estado = decodeEstadoPlayer(bytes[5]);
+	int vida = decodeInt(bytes[6]);
+	int pts = decodeInt(bytes[7]);
+	TipoArma arma = TipoArma::Comun;//decodeInt(bytes[contador+8)
+	int municion = decodeInt(bytes[9]);
+	return InfoPlayer(id, pos_x, pos_y, estado, vida, pts, arma, municion);
+}
 
 // modularizarlo despues
 InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t> &bytes) {
 	int cantPlayers = decodeInt(bytes[0]);
-
+	std::cout << "Cantidad de Players: " << cantPlayers << std::endl;
 	if (cantPlayers* LENGTH_PLAYER_INFO > bytes.size()){
 		std::runtime_error("Error en el mensaje recibido. En ClientProtocol::decodificarMensajeDelServer()");
 	}
-	int contador = 0;
+	int contador = 1;
 	
 	std::vector<InfoPlayer> infoPlayers;
 	std::vector<InfoEnemigo> infoEnemies;
@@ -133,18 +144,11 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 		if (contador + LENGTH_PLAYER_INFO > bytes.size()) {
 			std::runtime_error("Error. Faltaron datos de un player. En ClientProtocol::decodificarMensajeDelServer()");
 		}
-		int id = decodeInt(bytes[contador+1]);
-		int pos_x = decodeInt(bytes[contador+2], bytes[contador+3]) * MULTIPLICADOR_POSICION;
-		int pos_y = decodeInt(bytes[contador+4], bytes[contador+5]) * MULTIPLICADOR_POSICION;
-		EstadosPlayer estado = decodeEstadoPlayer(bytes[contador+6]);
-		int vida = decodeInt(bytes[contador+7]);
-		int pts = decodeInt(bytes[contador+8]);
-		TipoArma arma = TipoArma::Comun;//decodeInt(bytes[contador+9)
-		int municion = decodeInt(bytes[contador+10]);
+		std::vector<uint8_t> playerBytes(bytes.begin() + contador, bytes.begin() + contador + LENGTH_PLAYER_INFO);
+        InfoPlayer player = decodePlayer(playerBytes);
+        infoPlayers.push_back(player);
 
-		infoPlayers.emplace_back(id,pos_x, pos_y, estado, vida, pts, arma, municion);
-
-		contador += LENGTH_PLAYER_INFO;
+	    contador += LENGTH_PLAYER_INFO;
 	}
 	if (cantPlayers == 0)
 		contador++;
@@ -186,12 +190,13 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 	int cantProyectiles = decodeInt(bytes[contador]);
 
 	//Decode info proyectiles
-	for (int i = 0; i < cantItems; i++) { 
+	for (int i = 0; i < cantProyectiles; i++) { 
 		if (contador + LENGTH_PROYECTIL_INFO > bytes.size())
 			std::runtime_error("Error. Faltó info de un proyectil. En ClientProtocol::decodificarMensajeDelServer()");
 		
 		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]) * MULTIPLICADOR_POSICION;
 		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]) * MULTIPLICADOR_POSICION;
+		
 		Direcciones dir = decodeDireccion(bytes[contador+5]);
 
 		infoProyectiles.emplace_back(pos_x, pos_y, dir);
@@ -231,7 +236,7 @@ InfoJuego ClientProtocol::recibirInformacion(bool *was_closed_) {
 	}
 
 	int size = decodeInt(aux[0], aux[1]);
-	//std::cout << "size " << size<< std::endl;//no se está activando esto
+	std::cout << "size " << size<< std::endl;//no se está activando esto
 	
     std::vector<uint8_t> bytes(size);
 	r = socket.recvall(bytes.data(), size, &was_closed);
