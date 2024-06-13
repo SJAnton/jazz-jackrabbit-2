@@ -10,7 +10,7 @@ sudo apt-get install libsdl2-dev
 ```sh
 sudo apt-get install libsdl2-image-dev
 ```
-###Server
+## Server
 ### Para crear el makefile del server, ir a la carpeta server_src/build y hacer:
 ```sh
 cmake .
@@ -29,7 +29,7 @@ Para ejecutar localmente:
 ```sh
 ./server 8080
 ```
-###Cliente
+## Cliente
 ### Para crear el makefile del cliente, ir a la carpeta build y hacer:
 ```sh
 cmake ..
