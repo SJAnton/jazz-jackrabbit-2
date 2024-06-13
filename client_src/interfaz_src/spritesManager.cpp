@@ -45,8 +45,7 @@ SpritesManager::SpritesManager() :
 
     
     players.emplace_back(Lori);
-    players.emplace_back(Spaz);
-    players.emplace_back(Spaz);
+    
 }
 
 void SpritesManager::renderizarMenu() {
@@ -135,7 +134,7 @@ void SpritesManager::renderizarFondo(const Position &posCamara)
     for (size_t i = 0; i < 15; i++) {
         for (size_t j = 0; j < 10; j++) { //HARDCODEADO
             fondo.renderizarEn(size*i - posCamara.x, size*j - posCamara.y);
-            piso.renderizarEn(size*i - posCamara.x, 4*63  - posCamara.y);
+            piso.renderizarEn(size*i - posCamara.x, 4*64  - posCamara.y); //Fila 4
             pisoBloque.renderizarEn(i*size - posCamara.x, 5*64 - posCamara.y);
         }
     }
@@ -184,6 +183,11 @@ void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, c
 void SpritesManager::updateProyectiles() {
     proyectil_0.nextFrame();
 }
+
+void SpritesManager::addPlayer(const TipoPlayer &tipo) {
+    players.emplace_back(tipo);
+}
+
 
 //metodos privados:
 

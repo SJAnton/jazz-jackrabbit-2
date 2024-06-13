@@ -25,7 +25,7 @@ private:
     std::list<ButtonPartida> botones_partidas;
     std::list<ButtonCharacter> botones_character;
     //SpriteObject letras;
-    SDL_Texture* fontTexture;//cambiar
+    SDL_Texture* fontTexture;//cambiar si se puede
 
     //SeleccionPlayer
     SpriteObject character_spaz;
@@ -35,12 +35,12 @@ private:
     //terreno 
     SpriteObject fondo;//Podria ser una imagen grande
     //SpriteTileMap (implementar)
-    SpriteObject piso;
-    SpriteObject pisoIzq;
-    SpriteObject PisoDer;
-    SpriteObject pisoDiagonalIzq;
-    SpriteObject pisoDiagonalDer;
-    SpriteObject pisoBloque;
+    SpriteObject piso;//temporal
+    SpriteObject pisoIzq;//temporal
+    SpriteObject PisoDer;//temporal
+    SpriteObject pisoDiagonalIzq;//temporal
+    SpriteObject pisoDiagonalDer;//temporal
+    SpriteObject pisoBloque;//temporal
 
     //Items recolectables
     SpriteSheet moneda;
@@ -85,12 +85,12 @@ public:
     void flipPlayer(unsigned int numero, bool invertirSprite);
 
     
+    void addPlayer(const TipoPlayer &tipo);
 
     //RENDERIZADORES
 
     void renderizarPlayerEn(unsigned int n, int x, int y);
     void renderizarPlayer(unsigned int n);
-
     void renderizarFondo(const Position &posCamara);
     void renderizarTerreno();
     void renderizarItemEn(const TipoRecolectable &tipo, int x, int y);

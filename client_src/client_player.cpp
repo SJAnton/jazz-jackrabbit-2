@@ -12,7 +12,7 @@ ClientPlayer::ClientPlayer(const std::string& hostname, const std::string& servn
 {
 	bool was_closed;
 	ids_partidas = protocolo.recibirIdsPartidas(&was_closed);
-	ids_partidas.push_back(1);//temporal
+	ids_partidas.push_back(0);//temporal
 	//ids_partidas.push_back(2);
 	
 	sender.start();

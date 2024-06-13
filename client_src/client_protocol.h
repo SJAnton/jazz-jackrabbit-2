@@ -27,6 +27,7 @@ class ClientProtocol{
 		EstadosPlayer decodeEstadoPlayer(uint8_t byte);
 		TipoEnemy decodeTipoEnemy(uint8_t byte);
 		EstadosEnemy decodeEstadoEnemy(uint8_t byte);
+		TipoPlayer decodeTipoPlayer(uint8_t byte);
 		Direcciones decodeDireccion(uint8_t dir);
 
 		InfoPlayer decodePlayer(const std::vector<uint8_t> &bytes);

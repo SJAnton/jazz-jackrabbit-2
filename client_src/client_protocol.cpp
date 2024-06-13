@@ -88,6 +88,17 @@ TipoEnemy ClientProtocol::decodeTipoEnemy(uint8_t byte) {
 		return Rat;
 	}
 }
+TipoPlayer ClientProtocol::decodeTipoPlayer(uint8_t byte) {
+	switch (byte)
+	{
+	case PLAYER_TYPE_JAZZ : return Jazz;
+	case PLAYER_TYPE_LORI : return Lori;
+	case PLAYER_TYPE_SPAZ : return Spaz;	
+	default:
+		std::runtime_error("enemigo no existe. Probablemente se recibio un byte que corresponde a ora cosa");
+		return Spaz;
+	}
+}
 EstadosEnemy ClientProtocol::decodeEstadoEnemy(uint8_t byte) {
 
 	switch (byte)
@@ -117,18 +128,19 @@ InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
 	int id = decodeInt(bytes[0]);
 	int pos_x = decodeInt(bytes[1], bytes[2]);// * MULTIPLICADOR_POSICION;
 	int pos_y = decodeInt(bytes[3], bytes[4]);// * MULTIPLICADOR_POSICION;
-	EstadosPlayer estado = decodeEstadoPlayer(bytes[5]);
-	int vida = decodeInt(bytes[6]);
-	int pts = decodeInt(bytes[7]);
-	TipoArma arma = TipoArma::Comun;//decodeInt(bytes[contador+8)
-	int municion = decodeInt(bytes[9]);
-	return InfoPlayer(id, pos_x, pos_y, estado, vida, pts, arma, municion);
+	TipoPlayer tipo = decodeTipoPlayer(bytes[5]);
+	EstadosPlayer estado = decodeEstadoPlayer(bytes[6]);
+	int vida = decodeInt(bytes[7]);
+	int pts = decodeInt(bytes[8]);
+	TipoArma arma = TipoArma::Comun;//HARDCODEADO //decodeInt(bytes[contador+9) 
+	int municion = decodeInt(bytes[10]);
+	return InfoPlayer(id, pos_x, pos_y,tipo, estado, vida, pts, arma, municion);
 }
 
 // modularizarlo despues
+// nota. EL PLAYER 0 DEBE SER EL QUE COINCIDA CON EL ID DEL CLIENTE (FUNDAMENTAL)
 InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t> &bytes) {
 	int cantPlayers = decodeInt(bytes[0]);
-	std::cout << "Cantidad de Players: " << cantPlayers << std::endl;
 	if (cantPlayers* LENGTH_PLAYER_INFO > bytes.size()){
 		std::runtime_error("Error en el mensaje recibido. En ClientProtocol::decodificarMensajeDelServer()");
 	}
@@ -161,8 +173,8 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 			std::runtime_error("Error. Faltaron datos de un enemigo. En ClientProtocol::decodificarMensajeDelServer()");
 		}
 		TipoEnemy tipo = decodeTipoEnemy(bytes[contador+1]);
-		int pos_x = decodeInt(bytes[contador+2], bytes[contador+3]) * MULTIPLICADOR_POSICION;
-		int pos_y = decodeInt(bytes[contador+4], bytes[contador+5]) * MULTIPLICADOR_POSICION;
+		int pos_x = decodeInt(bytes[contador+2], bytes[contador+3]);// * MULTIPLICADOR_POSICION;
+		int pos_y = decodeInt(bytes[contador+4], bytes[contador+5]);// * MULTIPLICADOR_POSICION;
 		EstadosEnemy estado = decodeEstadoEnemy(bytes[contador+6]);
 
 		infoEnemies.emplace_back(tipo, pos_x, pos_y, estado);
@@ -172,14 +184,15 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 		contador++;
 	
 	int cantItems = decodeInt(bytes[contador]);
+
 	//Decode info Recolectables
 	for (int i = 0; i < cantItems; i++) { 
 		if (contador + LENGTH_ITEMS_INFO > bytes.size())
 			std::runtime_error("Error. Faltaron datos de un item recolectable. En ClientProtocol::decodificarMensajeDelServer()");
 		
 		TipoRecolectable tipo = TipoRecolectable::Moneda; 
-		int pos_x = decodeInt(bytes[contador+2], bytes[contador+3]) * MULTIPLICADOR_POSICION;
-		int pos_y = decodeInt(bytes[contador+4], bytes[contador+5]) * MULTIPLICADOR_POSICION;
+		int pos_x = decodeInt(bytes[contador+2], bytes[contador+3]);// * MULTIPLICADOR_POSICION;
+		int pos_y = decodeInt(bytes[contador+4], bytes[contador+5]);// * MULTIPLICADOR_POSICION;
 
 		infoItems.emplace_back(tipo, pos_x, pos_y);
 		contador += LENGTH_ITEMS_INFO;
@@ -194,15 +207,17 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 		if (contador + LENGTH_PROYECTIL_INFO > bytes.size())
 			std::runtime_error("Error. Faltó info de un proyectil. En ClientProtocol::decodificarMensajeDelServer()");
 		
-		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]) * MULTIPLICADOR_POSICION;
-		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]) * MULTIPLICADOR_POSICION;
+		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]);// * MULTIPLICADOR_POSICION;
+		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]);// * MULTIPLICADOR_POSICION;
 		
 		Direcciones dir = decodeDireccion(bytes[contador+5]);
 
 		infoProyectiles.emplace_back(pos_x, pos_y, dir);
 		contador += LENGTH_PROYECTIL_INFO;
 	}
-	
+	// std::cout << "Cantidad de Players: " << cantPlayers << std::endl;
+	//	std::cout << "Cantidad de Items: " << cantItems << std::endl;
+
 	return InfoJuego(infoPlayers, infoEnemies, infoItems, infoProyectiles);
 }
 
@@ -236,7 +251,7 @@ InfoJuego ClientProtocol::recibirInformacion(bool *was_closed_) {
 	}
 
 	int size = decodeInt(aux[0], aux[1]);
-	std::cout << "size " << size<< std::endl;//no se está activando esto
+	//std::cout << "size " << size<< std::endl;//no se está activando esto
 	
     std::vector<uint8_t> bytes(size);
 	r = socket.recvall(bytes.data(), size, &was_closed);

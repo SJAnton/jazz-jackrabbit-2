@@ -41,7 +41,7 @@ InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer 
     eventHandler =  new EventHandler(*this, client, spritesManager->getBotonesPartidas(), spritesManager->getBotonesCharacter());
 
     eventHandler->start();
-    infoJuego.addPlayer();
+    //infoJuego.addPlayer();
 }
 
 bool InterfazGrafica::estaAbierta() {
@@ -59,6 +59,7 @@ void InterfazGrafica::updateCamara(const Position &pos) {
     camara.x = pos.x - ANCHO_WINDOW/2;
     camara.y = pos.y - ALTO_WINDOW/2;
 }
+
 void InterfazGrafica::update(int it) {
     if (estado != Juego)
         return;
@@ -66,17 +67,19 @@ void InterfazGrafica::update(int it) {
     
     //infoJuego = queueReceptora.pop();
     if (queueReceptora.try_pop(infoJuego)) {
-        Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y);
+        Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y); //el player 0 debo "ser yo"
         updateCamara(pos);
-        pos = posRelativaACamara(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y);
-        spritesManager->updatePlayer(0, infoJuego.players[0].estado, pos);
-        for (int i=1; i< infoJuego.cantidadPlayers(); i++) {
-            //Position posicion(infoJuego.players[i].pos_x, infoJuego.players[i].pos_y);
+        
+        for (int i=0; i< infoJuego.cantidadPlayers(); i++) {
             pos = posRelativaACamara(infoJuego.players[i].pos_x, infoJuego.players[i].pos_y);
             spritesManager->updatePlayer(i, infoJuego.players[i].estado, pos);
         }
-        infoJuego.cantProyectiles();
+        for (int i=0; i< infoJuego.cantEnemigos(); i++) {
+            pos = posRelativaACamara(infoJuego.enemigos[i].pos_x, infoJuego.enemigos[i].pos_y);
+            //spritesManager->updateEnemy(i, infoJuego.enemigos[i].estado, pos);
+        }
     }
+
     if (iteracion % 2 == 0)
         spritesManager->updateItems();
 
@@ -98,16 +101,24 @@ void InterfazGrafica::renderizarJuego()
 
     SDL_RenderClear(renderer);//borra todo
     spritesManager->renderizarFondo(Position(camara.x, camara.y));
-    spritesManager->renderizarPlayer(0);
 
-    spritesManager->renderizarProyectilEn(Right, 100, 260);
+    for (int i=0; i< infoJuego.cantidadPlayers(); i++) {
+        spritesManager->renderizarPlayer(i);
+    }
+
+    for (int i=0; i< infoJuego.cantEnemigos(); i++) {
+        //spritesManager->renderizarEnemigo(i);
+    }
+
+    //renderizo los items
     for (int i=0; i< infoJuego.cantRecolectables(); i++) {
         Position pos = posRelativaACamara(infoJuego.recolectables[i].pos_x, infoJuego.recolectables[i].pos_y);
         spritesManager->renderizarItemEn(infoJuego.recolectables[i].tipo, pos.x, pos.y);
     }
 
+    //renderizo los proyectiles
     for (int i=0; i< infoJuego.cantProyectiles(); i++) {
-        std::cout << "Hay " << infoJuego.cantProyectiles() << " proyectiles" << std::endl;
+        //std::cout << "Hay " << infoJuego.cantProyectiles() << " proyectiles" << std::endl;
         Position pos = posRelativaACamara(infoJuego.proyectiles[i].pos_x, infoJuego.proyectiles[i].pos_y);
         spritesManager->renderizarProyectilEn(infoJuego.proyectiles[i].direccion, pos.x, pos.y);
         //spritesManager->updatePlayer(i, infoJuego.players[i].estado, posicion);
@@ -132,7 +143,7 @@ void InterfazGrafica::nextEstado() {
         renderizarPantalla = &InterfazGrafica::renderizarJuego;
         break;
     case Juego:
-        estado = ResultadosFinales;
+        estado = ResultadosFinales; //no implementado
         //renderizarPantalla = &InterfazGrafica::renderizarTablaResultados;
         break;
     case ResultadosFinales:
@@ -160,7 +171,6 @@ void InterfazGrafica::renderizarMenu(){
 
     SDL_RenderPresent(renderer);
 }
-
 
 
 void InterfazGrafica::renderizarSeleccionPartida(){
