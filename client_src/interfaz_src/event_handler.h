@@ -7,6 +7,7 @@
 #include "../client_player.h"
 
 #include "button_partida.h"
+#include "button_character.h"
 #include <list>
 
 class InterfazGrafica; // para que se pueda compilar
@@ -19,6 +20,7 @@ private:
     ClientPlayer &cliente;
 
     std::list<ButtonPartida> partidas; //Para saber en qué posicion de la pantalla estan los botones
+    std::list<ButtonCharacter> personajes;
     int partidaSeleccionada = 0; // guarda el id de la partida que se seleccione
 
 private:
@@ -30,7 +32,7 @@ private:
 
 
 public:
-    EventHandler(InterfazGrafica &interfaz, ClientPlayer &clientPlayer, const std::list<ButtonPartida> &partidas);
+    EventHandler(InterfazGrafica &interfaz, ClientPlayer &clientPlayer, const std::list<ButtonPartida> &partidas, const std::list<ButtonCharacter> &personajes);
 
     void cargarPartidas();
 

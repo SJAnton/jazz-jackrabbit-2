@@ -53,6 +53,10 @@
 #define PATH_JAZZ_SPECIAL "../sprites/Players/Jazz/Special Attack (56x64)x12.png"
 #define PATH_JAZZ_WALK "../sprites/Players/Jazz/Walk (57x56)x08.png"
 
+//seleccion player
+#define PATH_CHARACTER_SPAZ "../sprites/Character_Select/Spaz (144x240).png"
+#define PATH_CHARACTER_JAZZ "../sprites/Character_Select/Jazz (144x240).png"
+#define PATH_CHARACTER_LORI "../sprites/Character_Select/Lori (144x240).png"
 
 //==========
 // ENEMIGOS

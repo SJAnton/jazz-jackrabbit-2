@@ -45,7 +45,11 @@ void renderText(SDL_Renderer* renderer, SDL_Texture* texture, const std::unorder
 
 void ButtonPartida::renderizarCrearPartida(SDL_Renderer* renderer, SDL_Texture* fontTexture) {
     Characters fontMap = Characters();
-    renderText(renderer, fontTexture, fontMap.charMap, "CREAR PARTIDA", 167, 400, 0.5f);  
+    int cant_letras_texto = 13;
+    int texto_width = (32 * cant_letras_texto);
+    int x = (ANCHO_WINDOW - texto_width) / 2;
+    int y = ALTO_WINDOW - 100;
+    renderText(renderer, fontTexture, fontMap.charMap, "CREAR PARTIDA", x, y, 0.5f);  
 
 }
 

@@ -9,6 +9,7 @@
 #include "sprites_players.h"
 #include "sprites_paths.h"
 #include "button_partida.h"
+#include "button_character.h"
 #include <list>
 #include <vector>
 
@@ -22,8 +23,14 @@ private:
 
     //SeleccionarPartida
     std::list<ButtonPartida> botones_partidas;
+    std::list<ButtonCharacter> botones_character;
     //SpriteObject letras;
     SDL_Texture* fontTexture;//cambiar
+
+    //SeleccionPlayer
+    SpriteObject character_spaz;
+    SpriteObject character_jazz;
+    SpriteObject character_lori;
 
     //terreno 
     SpriteObject fondo;//Podria ser una imagen grande
@@ -67,6 +74,10 @@ public:
     void inicializarBotonesPartidas(const std::vector<int> &id_partidas);
     std::list<ButtonPartida> getBotonesPartidas();
     void renderizarBotonesPartidas();
+
+    void inicializarBotonesCharacter();
+    std::list<ButtonCharacter> getBotonesCharacter();
+    void renderizarBotonesCharacter();
     //EstadosPlayer getEstadoPlayer(unsigned int numero);
 
     //modifica el spritesheet por otro que corresponda al estado nuevo, cambiando de animacion

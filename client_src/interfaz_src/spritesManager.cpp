@@ -16,9 +16,13 @@
 
 
 
+
 SpritesManager::SpritesManager() :
     botonPlay(PATH_BUTTON_PLAY),
     titulo(PATH_TITULO),
+    character_spaz(PATH_CHARACTER_SPAZ),
+    character_jazz(PATH_CHARACTER_JAZZ),
+    character_lori(PATH_CHARACTER_LORI),
     //letras(PATH_FONT),
     fondo(PATH_FONDO_2),
     piso(PATH_PISO_1),
@@ -32,9 +36,6 @@ SpritesManager::SpritesManager() :
     zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20),
     proyectil_0(PATH_PROJECTILE_0, 16, 8,3)
 {
-    botonPlay.setPosition(234, 258);
-    titulo.setPosition(95, 28);
-
     SpritesPlayers::init();
 
     //Temporal. Armar mejor la clase ButtonPartida
@@ -49,8 +50,16 @@ SpritesManager::SpritesManager() :
 }
 
 void SpritesManager::renderizarMenu() {
-    botonPlay.renderizar();
-    titulo.renderizar();
+    int separacion = 120;
+
+    SpriteObject title_screen = SpriteObject("../sprites/Title_Screen (640x398).png", ANCHO_WINDOW, ALTO_WINDOW);
+    title_screen.renderizar();
+
+    int boton_width = 282, boton_height = 84;
+    botonPlay.renderizarEn((ANCHO_WINDOW - boton_width) / 2, ((ALTO_WINDOW - boton_height) / 2) + separacion);
+
+    //int titulo_width = 560, titulo_height = 224;
+    //titulo.renderizarEn((ANCHO_WINDOW - titulo_width) / 2, ((ALTO_WINDOW - titulo_height) / 2) - separacion);
 }
 
 void SpritesManager::inicializarBotonesPartidas(const std::vector<int> &id_partidas) {
@@ -71,6 +80,33 @@ void SpritesManager::renderizarBotonesPartidas() {
         button.renderizar(InterfazGrafica::renderer, fontTexture);
     }
     botones_partidas.back().renderizarCrearPartida(InterfazGrafica::renderer, fontTexture);
+}
+
+
+void SpritesManager::inicializarBotonesCharacter(){
+    int separacion = 250;
+    int character_width = 144, character_height = 240;
+    int x = ((ANCHO_WINDOW / 3) - character_width) / 2;
+    int y = (ALTO_WINDOW - character_height) / 2;
+
+    botones_character.emplace_back(TipoPlayer::Jazz, x, y);
+    botones_character.emplace_back(TipoPlayer::Spaz, x + separacion, y);
+    botones_character.emplace_back(TipoPlayer::Lori, x + separacion * 2, y);
+}
+
+std::list<ButtonCharacter> SpritesManager::getBotonesCharacter() {
+    return botones_character;
+}
+
+void SpritesManager::renderizarBotonesCharacter(){
+    int separacion = 250;
+    int character_width = 144, character_height = 240;
+    int x = ((ANCHO_WINDOW / 3) - character_width) / 2;
+    int y = (ALTO_WINDOW - character_height) / 2;
+
+    character_jazz.renderizarEn(x, y);
+    character_spaz.renderizarEn(x + separacion, y);
+    character_lori.renderizarEn(x + separacion * 2, y);
 }
 
 
