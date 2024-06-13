@@ -14,19 +14,6 @@
    <string>LevelEditor</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListWidget" name="objectPalette">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>590</y>
-      <width>1031</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="flow">
-     <enum>QListView::LeftToRight</enum>
-    </property>
-   </widget>
    <widget class="CustomGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
@@ -46,6 +33,55 @@
       <height>571</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>580</y>
+      <width>1031</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="Terrain">
+     <attribute name="title">
+      <string>Terrain</string>
+     </attribute>
+     <widget class="QListWidget" name="terrainListWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="flow">
+       <enum>QListView::LeftToRight</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Objects">
+     <attribute name="title">
+      <string>Objects</string>
+     </attribute>
+     <widget class="QListWidget" name="objectsListWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="flow">
+       <enum>QListView::LeftToRight</enum>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -11,12 +11,24 @@
 #include <QMimeData>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QStyledItemDelegate>
 #include "customgraphicsview.h"
 #include "map.h"
 
 namespace Ui {
-class LevelEditor;
+    class LevelEditor;
 }
+
+class CustomDelegate : public QStyledItemDelegate
+{
+    Q_OBJECT
+public:
+    explicit CustomDelegate(QObject *parent = nullptr) : QStyledItemDelegate(parent) {}
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override {
+        return QSize(80, 40); // Ajusta el tamaño según tus necesidades
+    }
+};
+
 
 class LevelEditor : public QMainWindow {
     Q_OBJECT

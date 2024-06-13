@@ -25,25 +25,36 @@ LevelEditor::LevelEditor(QWidget *parent) :
 
     // Añadir ejemplos de objetos a la paleta
     QListWidgetItem *floorItem = new QListWidgetItem(QIcon(":/sprites/tile013.png"), "Floor");
-    ui->objectPalette->addItem(floorItem);
+    ui->terrainListWidget->addItem(floorItem);
 
     QListWidgetItem *floorLeftCornerItem = new QListWidgetItem(QIcon(":/sprites/tile000.png"), "Floor Left Corner");
-    ui->objectPalette->addItem(floorLeftCornerItem);
+    ui->terrainListWidget->addItem(floorLeftCornerItem);
 
     QListWidgetItem *floorRightCornerItem = new QListWidgetItem(QIcon(":/sprites/tile001.png"), "Floor Right Corner");
-    ui->objectPalette->addItem(floorRightCornerItem);
+    ui->terrainListWidget->addItem(floorRightCornerItem);
 
     QListWidgetItem *undergroundItem1 = new QListWidgetItem(QIcon(":/sprites/tile008.png"), "Underground 1");
-    ui->objectPalette->addItem(undergroundItem1);
+    ui->terrainListWidget->addItem(undergroundItem1);
 
     QListWidgetItem *undergroundItem2 = new QListWidgetItem(QIcon(":/sprites/tile009.png"), "Underground 2");
-    ui->objectPalette->addItem(undergroundItem2);
+    ui->terrainListWidget->addItem(undergroundItem2);
 
     QListWidgetItem *wallItem = new QListWidgetItem(QIcon(":/sprites/tile003.png"), "Background");
-    ui->objectPalette->addItem(wallItem);
+    ui->terrainListWidget->addItem(wallItem);
+
+    // Añadir ejemplos de objetos a la paleta en la pestaña 'Objects'
+    QListWidgetItem *goldCoinItem = new QListWidgetItem(QIcon(":/sprites/gold_coin.png"), "Gold Coin");
+    ui->objectsListWidget->addItem(goldCoinItem);
+
+    QListWidgetItem *silverCoinItem = new QListWidgetItem(QIcon(":/sprites/silver_coin.png"), "Silver Coin");
+    ui->objectsListWidget->addItem(silverCoinItem);
+
+    QListWidgetItem *redGemItem = new QListWidgetItem(QIcon(":/sprites/red_gem.png"), "Red Gem");
+    ui->objectsListWidget->addItem(redGemItem);
 
     // Habilitar la selección en la lista
-    ui->objectPalette->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->terrainListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->objectsListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
     // Conectar la señal de clic al slot
     connect(ui->graphicsView, &CustomGraphicsView::mousePressed, this, &LevelEditor::onGraphicsViewClicked);
@@ -51,14 +62,22 @@ LevelEditor::LevelEditor(QWidget *parent) :
     connect(ui->graphicsView, &CustomGraphicsView::mouseReleased, this, &LevelEditor::onGraphicsViewMouseReleased);
 
     // Añadir modos a la lista de modos
-    QListWidgetItem *putMode = new QListWidgetItem("Put");
+    QListWidgetItem *putMode = new QListWidgetItem(QIcon(":/sprites/put.png"), "Put");
     ui->modeList->addItem(putMode);
 
-    QListWidgetItem *eraseMode = new QListWidgetItem("Erase");
+    QListWidgetItem *eraseMode = new QListWidgetItem(QIcon(":/sprites/erase.png"), "Erase");
     ui->modeList->addItem(eraseMode);
 
     // Conectar la señal de cambio de selección al slot correspondiente
     connect(ui->modeList, &QListWidget::currentItemChanged, this, &LevelEditor::onModeChanged);
+
+    // Establecer el delegado personalizado para cambiar el tamaño de los ítems
+    CustomDelegate *delegate = new CustomDelegate(this);
+    ui->modeList->setItemDelegate(delegate);
+
+    // Seleccionar el modo por defecto "Put"
+    ui->modeList->setCurrentItem(putMode);
+    currentMode = "Put";
 }
 
 LevelEditor::~LevelEditor() {
@@ -123,10 +142,18 @@ void LevelEditor::onGraphicsViewMouseReleased(QMouseEvent *event) {
 }
 
 void LevelEditor::placeSpriteAtPosition(const QPointF &scenePos) {
-    QListWidgetItem *selectedItem = ui->objectPalette->currentItem();
+    QListWidgetItem *selectedItem = nullptr;
+    bool isObject = false;
+
+    if (ui->tabWidget->currentIndex() == 0) {  // 'Terrain' tab
+        selectedItem = ui->terrainListWidget->currentItem();
+    } else if (ui->tabWidget->currentIndex() == 1) {  // 'Objects' tab
+        selectedItem = ui->objectsListWidget->currentItem();
+        isObject = true;
+    }
+
     if (selectedItem) {
         QIcon icon = selectedItem->icon();
-        //QPointF scenePos = ui->graphicsView->mapToScene(event->pos());
 
         // Calcular la posición de la matriz
         int gridSize = 32;  // Tamaño del sprite
@@ -135,15 +162,30 @@ void LevelEditor::placeSpriteAtPosition(const QPointF &scenePos) {
 
         // Verificar si las coordenadas están dentro del rango
         if (map->isValidCoordinate(x, y)) {
-            // Comprobar si la posición está ocupada
-            if (!map->isOccupied(x, y)) {
-                // Colocar el sprite en la posición calculada
-                QGraphicsPixmapItem *item = new QGraphicsPixmapItem(icon.pixmap(gridSize, gridSize));
-                item->setPos(x * gridSize, y * gridSize);
-                scene->addItem(item);
+            if (isObject) {
+                // Comprobar si la posición no está ocupada por otro objeto
+                if (!map->isObjectOccupied(x, y)) {
+                    // Colocar el objeto en la posición calculada
+                    QGraphicsPixmapItem *item = new QGraphicsPixmapItem(icon.pixmap(gridSize, gridSize));
+                    item->setPos(x * gridSize, y * gridSize);
+                    item->setZValue(1);  // Asegurar que los objetos estén al frente
+                    scene->addItem(item);
 
-                // Marcar la posición como ocupada
-                map->setOccupied(x, y, true);
+                    // Marcar la posición como ocupada
+                    map->setObjectOccupied(x, y, true);
+                }
+            } else {
+                // Comprobar si la posición no está ocupada por el terreno
+                if (!map->isOccupied(x, y)) {
+                    // Colocar el terreno en la posición calculada
+                    QGraphicsPixmapItem *item = new QGraphicsPixmapItem(icon.pixmap(gridSize, gridSize));
+                    item->setPos(x * gridSize, y * gridSize);
+                    item->setZValue(0);  // Asegurar que el terreno esté detrás de los objetos
+                    scene->addItem(item);
+
+                    // Marcar la posición como ocupada
+                    map->setOccupied(x, y, true);
+                }
             }
         }
     }
@@ -157,18 +199,32 @@ void LevelEditor::eraseSpriteAtPosition(const QPointF &scenePos) {
 
     // Verificar si las coordenadas están dentro del rango
     if (map->isValidCoordinate(x, y)) {
-        // Comprobar si la posición está ocupada
-        if (map->isOccupied(x, y)) {
-            // Buscar el sprite en la posición calculada
+        // Buscar y borrar el objeto si existe
+        if (map->isObjectOccupied(x, y)) {
             QList<QGraphicsItem *> items = scene->items(QRectF(x * gridSize, y * gridSize, gridSize, gridSize));
             for (QGraphicsItem *item : items) {
-                if (QGraphicsPixmapItem *pixmapItem = dynamic_cast<QGraphicsPixmapItem *>(item)) {
-                    scene->removeItem(pixmapItem);
-                    delete pixmapItem;
+                if (item->zValue() == 1) {  // Verificar si es un objeto
+                    if (QGraphicsPixmapItem *pixmapItem = dynamic_cast<QGraphicsPixmapItem *>(item)) {
+                        scene->removeItem(pixmapItem);
+                        delete pixmapItem;
+                        map->setObjectOccupied(x, y, false);
+                        break;
+                    }
+                }
+            }
+        }
 
-                    // Marcar la posición como no ocupada
-                    map->setOccupied(x, y, false);
-                    break;
+        // Buscar y borrar el terreno si existe
+        if (map->isOccupied(x, y)) {
+            QList<QGraphicsItem *> items = scene->items(QRectF(x * gridSize, y * gridSize, gridSize, gridSize));
+            for (QGraphicsItem *item : items) {
+                if (item->zValue() == 0) {  // Verificar si es terreno
+                    if (QGraphicsPixmapItem *pixmapItem = dynamic_cast<QGraphicsPixmapItem *>(item)) {
+                        scene->removeItem(pixmapItem);
+                        delete pixmapItem;
+                        map->setOccupied(x, y, false);
+                        break;
+                    }
                 }
             }
         }
