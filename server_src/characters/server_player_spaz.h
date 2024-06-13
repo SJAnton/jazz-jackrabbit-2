@@ -15,7 +15,7 @@ class PlayerSpaz : public Character {
             std::vector<uint8_t> data = map[SPAZ_KEY];
             x_pos = x;
             y_pos = y;
-            character_id = SPAZ_ID;
+            type_player = TipoPlayer::Spaz;
             health = data[HP_POS];
             weapon = std::make_unique<Blaster>(map[BLASTER_KEY]);
             weapon_type = TipoArma::Blaster;

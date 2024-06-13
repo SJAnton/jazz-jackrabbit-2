@@ -15,7 +15,7 @@ class PlayerLori : public Character {
             std::vector<uint8_t> data = map[LORI_KEY];
             x_pos = x;
             y_pos = y;
-            character_id = LORI_ID;
+            type_player = TipoPlayer::Lori;
             health = data[HP_POS];
             weapon = std::make_unique<Blaster>(map[BLASTER_KEY]);
             weapon_type = TipoArma::Blaster;

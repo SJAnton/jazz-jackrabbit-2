@@ -51,7 +51,7 @@
 
 class Character {
     protected:
-        int character_id; // Jazz = 1, Lori = 2, Spaz = 3
+        TipoPlayer type_player; // Jazz = 1, Lori = 2, Spaz = 3
 
         EstadosPlayer status = EstadosPlayer::Inactive;
 
@@ -134,7 +134,7 @@ class Character {
 
         InfoPlayer set_data(int id);
 
-        int get_character_id();
+        TipoPlayer get_player_type();
 
         EstadosPlayer get_status();
 

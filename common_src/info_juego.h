@@ -7,7 +7,7 @@
 #include <vector>
 #include <cstdint>
 
-#define LENGTH_PLAYER_INFO 10 //11
+#define LENGTH_PLAYER_INFO 11
 #define LENGTH_ENEMY_INFO 6
 #define LENGTH_ITEMS_INFO 5
 #define LENGTH_PROYECTIL_INFO 5
@@ -18,7 +18,7 @@ public:
     int id;
     int pos_x;
     int pos_y;
-    int player_id;
+    TipoPlayer tipoPlayer;
     EstadosPlayer estado;
     int vida;
     int puntos;
@@ -26,9 +26,11 @@ public:
     int muncion;
 
     InfoPlayer(){};
-    InfoPlayer(int id, int x, int y, int player_id, EstadosPlayer e, int vida,
-                int pts, TipoArma arma, int municion) : id(id), pos_x(x), pos_y(y),
-                    estado(e), vida(vida), puntos(pts), arma(arma), muncion(municion) {}
+    
+    InfoPlayer(int id, int x, int y, TipoPlayer tipoPlayer, EstadosPlayer e, int vida,
+                int pts, TipoArma arma, int municion) : 
+                id(id), pos_x(x), pos_y(y), tipoPlayer(tipoPlayer), 
+                estado(e), vida(vida), puntos(pts), arma(arma), muncion(municion) {}
 };
 
 class InfoEnemigo {
