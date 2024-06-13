@@ -130,10 +130,14 @@ void SpritesManager::renderizarFondo(const Position &posCamara)
     fondo.setArea(size, size);
     piso.setArea(size, size);
     pisoBloque.setArea(size, size);
-
+    for (int i = -15; i < 25; i++) {
+        for (int j = -15; j < 25; j++) { //HARDCODEADO
+            fondo.renderizarEn(size*i - posCamara.x, size*j - posCamara.y);
+        }
+    }
     for (size_t i = 0; i < 15; i++) {
         for (size_t j = 0; j < 10; j++) { //HARDCODEADO
-            fondo.renderizarEn(size*i - posCamara.x, size*j - posCamara.y);
+            //fondo.renderizarEn(size*i - posCamara.x, size*j - posCamara.y);
             piso.renderizarEn(size*i - posCamara.x, 4*64  - posCamara.y); //Fila 4
             pisoBloque.renderizarEn(i*size - posCamara.x, 5*64 - posCamara.y);
         }
