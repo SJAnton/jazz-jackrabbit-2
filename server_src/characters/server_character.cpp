@@ -196,11 +196,11 @@ void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
                 } else {
                     status = EstadosPlayer::Walking;
                 }
-                x_pos--;
+                x_pos -= moving_speed;
                 break;
             } else {
                 status = EstadosPlayer::Running;
-                x_pos -= RUN_SPEED;
+                x_pos -= running_speed;
                 break;
             }
         case RIGHT:
@@ -210,11 +210,11 @@ void Character::move_x_pos(uint8_t &movement, uint8_t &direction) {
                 } else {
                     status = EstadosPlayer::Walking;
                 }
-                x_pos++;
+                x_pos += moving_speed;
                 break;
             } else {
                 status = EstadosPlayer::Running;
-                x_pos += RUN_SPEED;
+                x_pos += running_speed;
                 break;
             }
         default:

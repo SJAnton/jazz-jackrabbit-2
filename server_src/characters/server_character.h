@@ -37,6 +37,9 @@
 #define AMMO_KEY "InitAmmo"
 #define CHARACTER_KEY "Character"
 
+#define MOVING_SPEED_POS 1
+#define RUNNING_SPEED_POS 2
+
 #define BOUNCER_AMMO_POS 0
 #define ELECTRO_BLASTER_AMMO_POS 1
 #define FREEZER_AMMO_POS 2
@@ -79,6 +82,10 @@ class Character {
 
         uint8_t intoxicated_time;
 
+        uint8_t moving_speed;
+
+        uint8_t running_speed;
+
         uint8_t jump_height;
 
         uint8_t bouncer_ammo;
@@ -116,6 +123,8 @@ class Character {
             std::vector<uint8_t> ammo_data = map[AMMO_KEY];
 
             full_health = health;
+            moving_speed = map[CHARACTER_KEY][MOVING_SPEED_POS];
+            running_speed = map[CHARACTER_KEY][RUNNING_SPEED_POS];
 
             // Cantidad inicial de munición
             bouncer_ammo = ammo_data[BOUNCER_AMMO_POS];

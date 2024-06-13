@@ -201,3 +201,5 @@ GameLength:
 
 Character:
   respawn: 5
+  moving_speed: 5
+  running_speed: 10
