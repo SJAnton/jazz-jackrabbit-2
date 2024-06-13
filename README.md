@@ -10,17 +10,37 @@ sudo apt-get install libsdl2-dev
 ```sh
 sudo apt-get install libsdl2-image-dev
 ```
-
-### Para crear el makefile, ir a la carpeta build y hacer:
+##Server
+### Para crear el makefile del server, ir a la carpeta server_src/build y hacer:
 ```sh
 cmake .
 ```
-
-### Compilación:
-El ejecutable del cliente se creará en la carpeta build.
+y luego, para crear el ejecutable hacer:
 ```sh
 make
 ```
+Esto creara el ejecutable del server.
+
+### Ejecución:
+```sh
+./server {Puerto}
+```
+Para ejecutar localmente:
+```sh
+./server 8080
+```
+##Cliente
+### Para crear el makefile del cliente, ir a la carpeta build y hacer:
+```sh
+cmake ..
+```
+
+### Compilación:
+Luego, dentro de la misma carpeta, hacer:
+```sh
+make
+```
+Esto creara el ejecutable cel client.
 
 ### Ejecución:
 Es necesario haber ejecutado el servidor anteriormente.
@@ -31,4 +51,3 @@ Para ejecutar localmente:
 ```sh
 ./client localhost 8080
 ```
-
