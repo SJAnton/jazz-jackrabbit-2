@@ -1,21 +1,28 @@
+### Instalación de dependencias:
+Las dependencias utilizadas son PKG-Config, SDL2 y SDL2-Image.
+```sh
+sudo apt-get install pkg-config
+```
+```sh
+sudo apt-get install libsdl2-dev
+```
+```sh
+sudo apt-get install libsdl2-image-dev
+```
 
 ### Para crear el makefile, ir a la carpeta build y hacer:
 ```sh
-cmake ..
+cmake .
 ```
-### Luego, para compilar hacer:
+
+### Compilación:
+El ejecutable del cliente se creará en la carpeta build.
 ```sh
 make
 ```
 
-### Se van a crear 2 archivos ejecutables (client y server)
-
-### Para correr el servidor hacer:
-```sh
-./server 8080
-```
-
-### Para correr un cliente hacer:
+### Ejecución:
+Es necesario haber ejecutado el servidor anteriormente.
 ```sh
 ./client localhost 8080
 ```
