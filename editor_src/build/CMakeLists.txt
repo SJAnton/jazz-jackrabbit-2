@@ -1,0 +1,87 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(editor VERSION 1.0)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Flags de compilación
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
+
+# Instalador de yaml-cpp
+include(FetchContent)
+
+FetchContent_Declare(yaml-cpp
+  GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
+  GIT_TAG yaml-cpp-0.7.0)
+
+FetchContent_GetProperties(yaml-cpp)
+
+if(NOT yaml-cpp_POPULATED)
+  message(STATUS "Fetching yaml-cpp...")
+  FetchContent_Populate(yaml-cpp)
+  add_subdirectory(${yaml-cpp_SOURCE_DIR} ${yaml-cpp_BINARY_DIR})
+endif()
+
+# cmake . genera el makefile
+# make -f Makefile ejecuta el makefile
+set(SOURCE_FILES
+    ../editor_main.cpp
+    ../editor_map_creator.cpp
+
+    # Archivos common
+    ../../common_src/info_juego.cpp
+    ../../common_src/liberror.cpp
+    ../../common_src/resolver.cpp
+    ../../common_src/resolvererror.cpp
+    ../../common_src/socket.cpp
+
+    # Archivos server
+    ../../server_src/server_acceptor.cpp
+    ../../server_src/server_character_map.cpp
+    ../../server_src/server_client.cpp
+    ../../server_src/server_config_reader.cpp
+    ../../server_src/server_game.cpp
+    ../../server_src/server_gameloop.cpp
+    ../../server_src/server_gameloop_list.cpp
+    ../../server_src/server_protocol.cpp
+    ../../server_src/server_queue_list.cpp
+    ../../server_src/server_receiver.cpp
+    ../../server_src/server_sender.cpp
+
+    # Armas
+    ../../server_src/weapons/server_blaster.cpp
+    #../weapons/server_bouncer.cpp
+    #../weapons/server_electro_blaster.cpp
+    #../weapons/server_freezer.cpp
+    #../weapons/server_pepper_spray.cpp
+    #../weapons/server_rf_missile.cpp
+    #../weapons/server_seeker.cpp
+    #../weapons/server_tnt.cpp
+    #../weapons/server_toaster.cpp
+    ../../server_src/weapons/server_weapon.cpp
+
+    # Objetos
+    ../../server_src/objects/server_ammo.cpp
+    ../../server_src/objects/server_object.cpp
+
+    # Proyectiles
+    ../../server_src/weapons/projectile/server_iceball.cpp
+    ../../server_src/weapons/projectile/server_projectile.cpp
+    ../../server_src/weapons/projectile/server_rocket.cpp
+    ../../server_src/weapons/projectile/server_seeker_rocket.cpp
+
+    # Personajes
+    ../../server_src/characters/server_character.cpp
+    ../../server_src/characters/server_enemy.cpp
+    ../../server_src/characters/server_player_jazz.cpp
+    ../../server_src/characters/server_player_lori.cpp
+    ../../server_src/characters/server_player_spaz.cpp
+
+    # Mapa
+    ../../server_src/map/server_game_map.cpp
+)
+
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+target_link_libraries(${PROJECT_NAME} PUBLIC yaml-cpp::yaml-cpp)

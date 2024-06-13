@@ -7,22 +7,26 @@
 #include "../server_queue.h"
 #include "../server_protocol.h"
 #include "../server_queue_list.h"
+#include "../objects/server_object.h"
 #include "../../common_src/info_map.h"
+
+#define GROUND_ID 0x00
+#define GRASS_ID 0x01
+#define MOUNTAIN_ID 0x02
+#define SNOW_ID 0x03
 
 struct Tile {
     int id;
     bool solid;
-    int pixelWidth; // Ancho en píxeles
-    int pixelHeight; // Alto en píxeles
+    int width; // Ancho en píxeles
+    int height; // Alto en píxeles
     uint8_t type; // Indica si el tile es de tierra, pasto, etc
-    std::string name; 
 
-    Tile(int id = 0, bool solid = false, int pixelWidth = 30, int pixelHeight = 30, uint8_t type = 0x9, std::string name = "")
-        : id(id), solid(solid), pixelWidth(pixelWidth), pixelHeight(pixelHeight), type(type) {}
+    Tile(int id = 0, bool solid = false, int width = 30, int height = 30, uint8_t type = 0x9) :
+            id(id), solid(solid), width(width), height(height), type(type) {}
 };
 
 class Tileset {
-
     public:
         std::vector<Tile> tiles;
 
@@ -30,9 +34,13 @@ class Tileset {
             tiles.resize(numTiles);
         }
 
-        void addTile(int id, bool solid, int pixelWidth, int pixelHeight, uint8_t type, std::string name) {
+        std::vector<Tile> get_tiles() {
+            return tiles;
+        }
+
+        void addTile(int id, bool solid, int pixelWidth, int pixelHeight, uint8_t type) {
             if(id >= 0 && id < (int)tiles.size()) {
-                tiles[id] = Tile(id, solid, pixelWidth, pixelHeight, type, name);
+                tiles[id] = Tile(id, solid, pixelWidth, pixelHeight, type);
             }
         }
 
@@ -52,7 +60,6 @@ class Tileset {
 };
 
 class Layer {
-
     public:
         int width;  // Ancho de la capa
         int height; // Alto de la capa
@@ -80,31 +87,32 @@ class Layer {
         }
 };
 
-struct GameObject {
-    int x, y;
-    //std::string type;
-    uint8_t type;
+struct SpawnPoint {
+    uint8_t x;
+    uint8_t y;
 
-    GameObject(int x, int y, const /*std::string*/ uint8_t &type) : x(x), y(y), type(type) {};
+    SpawnPoint(uint8_t x, uint8_t y) : x(x), y(y) {};
 };
 
-// Define your class for the server game map
 class ServerGameMap {
     public:
         Tileset tileset;
+        SpawnPoint spawn;
         std::vector<Layer> layers;
-        std::vector<GameObject> objects;
+        std::vector<std::shared_ptr<Object>> objects;
 
-        ServerGameMap(int numTiles, int numLayers, int layerWidth, int layerHeight, int gameSelection)
-            : tileset(numTiles) {
+        ServerGameMap(int numTiles, int numLayers, int layerWidth, int layerHeight,
+                        int gameSelection, uint8_t spawn_x, uint8_t spawn_y) : 
+                            tileset(numTiles), spawn(spawn_x, spawn_y) {
+        
             for (int i = 0; i < numLayers; ++i) {
                 layers.emplace_back(layerWidth, layerHeight);
             }
 
-            tileset.addTile(0, true, 32, 32, 0x00, "Ground");  // Tile de tierra
-            tileset.addTile(1, true, 32, 32, 0x01, "Grass");  // Tile de pasto
-            tileset.addTile(2, true, 32, 32, 0x02, "Mountain");  // Tile de montaña
-            tileset.addTile(3, true, 32, 32, 0x03, "Snow");  // Tile de nieve
+            tileset.addTile(0, true, 32, 32, GROUND_ID);   // Tile de tierra
+            tileset.addTile(1, true, 32, 32, GRASS_ID);    // Tile de pasto
+            tileset.addTile(2, true, 32, 32, MOUNTAIN_ID); // Tile de montaña
+            tileset.addTile(3, true, 32, 32, SNOW_ID);     // Tile de nieve
 
             switch (gameSelection) {
                 case 0:
@@ -123,10 +131,16 @@ class ServerGameMap {
                     createUltraFlatMap(0, 0);
                     break;
             }
-
         }
+        Tileset get_tileset();
 
-        void addObject(int x, int y, const uint8_t &type);
+        SpawnPoint get_spawn_point();
+
+        std::vector<Layer> get_layers();
+
+        std::vector<std::shared_ptr<Object>> get_objects();
+
+        void addObject(std::shared_ptr<Object> &object);
 
         void createUltraFlatMap(int layerIndex, int tileId);
 
@@ -142,10 +156,6 @@ class ServerGameMap {
 
         void setWalls(int x, int y, int width, int height, int tileId);
 
-        //void send_map(Queue<InfoMap>* sndr_q);
-
         void send_map(ServerProtocol &protocol, bool &wc);
-
     };
-
 #endif // SERVER_GAME_MAP_H

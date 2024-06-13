@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(server VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Flags de compilación
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
@@ -78,6 +78,7 @@ set(SOURCE_FILES
 
     # Mapa
     ../map/server_game_map.cpp
+    ../map/server_game_map_reader.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

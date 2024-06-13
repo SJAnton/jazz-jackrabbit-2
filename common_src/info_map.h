@@ -24,13 +24,13 @@ class InfoLayer {
 
 class InfoObject {
     public:
-        int x;
+        uint8_t x;
 
-        int y;
+        uint8_t y;
 
         uint8_t type;
     
-        InfoObject(int x, int y, uint8_t &type) : x(x), y(y), type(type) {};
+        InfoObject(uint8_t x, uint8_t y, uint8_t type) : x(x), y(y), type(type) {};
 };
 
 #endif
