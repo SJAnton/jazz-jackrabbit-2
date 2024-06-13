@@ -19,7 +19,9 @@ enum TipoEnemy{Rat, Bat, Lizard};
 
 enum TipoRecolectable {Moneda, Diamante, Zanahoria, Municion};
 
-enum class TipoArma {Comun};
+
+enum class TipoArma {Blaster, Bouncer, ElectroBlaster, Freezer,
+                        PepperSpray, RFMissile, Seeker, TNT, Toaster};
 
 enum Direcciones {Left, Right};
 

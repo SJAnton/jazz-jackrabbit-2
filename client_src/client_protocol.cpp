@@ -132,7 +132,7 @@ InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
 	EstadosPlayer estado = decodeEstadoPlayer(bytes[6]);
 	int vida = decodeInt(bytes[7]);
 	int pts = decodeInt(bytes[8]);
-	TipoArma arma = TipoArma::Comun;//HARDCODEADO //decodeInt(bytes[contador+9) 
+	TipoArma arma =  TipoArma::Blaster;//HARDCODEADO //decodeInt(bytes[contador+9) 
 	int municion = decodeInt(bytes[10]);
 	return InfoPlayer(id, pos_x, pos_y,tipo, estado, vida, pts, arma, municion);
 }

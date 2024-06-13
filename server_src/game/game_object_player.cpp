@@ -13,8 +13,6 @@ ObjectPlayer::ObjectPlayer(int id, TipoPlayer &tipo, const Weapon &weapon) :
     type = TypeGameObject::Player;
 }
 
-
-
 // Movimientos
 void ObjectPlayer::idle() {
     estado = EstadosPlayer::Inactive;
@@ -132,6 +130,6 @@ void ObjectPlayer::revive() {
 
 InfoPlayer ObjectPlayer::getInfo() {
     //InfoPlayer info(id, position.x, position.y, tipoPlayer, estado, health, points, weapon.getType(), weapon.getmuniciones());
-    InfoPlayer info(id, position.x, position.y, tipoPlayer, estado, health, points, TipoArma::Blaster, 1); //hardcodeado
+    InfoPlayer info(id, position.x, position.y, tipoPlayer, estado, health, points,  TipoArma::Blaster, 1); //hardcodeado
     return info;
 }
