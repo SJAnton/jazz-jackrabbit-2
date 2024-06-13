@@ -52,13 +52,16 @@ SpritesManager::SpritesManager() :
 }
 
 void SpritesManager::renderizarMenu() {
-    int separacion = 100;
+    int separacion = 120;
+
+    SpriteObject title_screen = SpriteObject("../sprites/Title_Screen (640x398).png", ANCHO_WINDOW, ALTO_WINDOW);
+    title_screen.renderizar();
 
     int boton_width = 282, boton_height = 84;
     botonPlay.renderizarEn((ANCHO_WINDOW - boton_width) / 2, ((ALTO_WINDOW - boton_height) / 2) + separacion);
 
-    int titulo_width = 560, titulo_height = 224;
-    titulo.renderizarEn((ANCHO_WINDOW - titulo_width) / 2, ((ALTO_WINDOW - titulo_height) / 2) - separacion);
+    //int titulo_width = 560, titulo_height = 224;
+    //titulo.renderizarEn((ANCHO_WINDOW - titulo_width) / 2, ((ALTO_WINDOW - titulo_height) / 2) - separacion);
 }
 
 void SpritesManager::inicializarBotonesPartidas(const std::vector<int> &id_partidas) {
@@ -83,9 +86,14 @@ void SpritesManager::renderizarBotonesPartidas() {
 
 
 void SpritesManager::inicializarBotonesCharacter(){
-    botones_character.emplace_back(TipoPlayer::Jazz, 53, 130); //hardcodeado
-    botones_character.emplace_back(TipoPlayer::Spaz, 303, 130);
-    botones_character.emplace_back(TipoPlayer::Lori, 553, 130);
+    int separacion = 250;
+    int character_width = 144, character_height = 240;
+    int x = ((ANCHO_WINDOW / 3) - character_width) / 2;
+    int y = (ALTO_WINDOW - character_height) / 2;
+
+    botones_character.emplace_back(TipoPlayer::Jazz, x, y);
+    botones_character.emplace_back(TipoPlayer::Spaz, x + separacion, y);
+    botones_character.emplace_back(TipoPlayer::Lori, x + separacion * 2, y);
 }
 
 std::list<ButtonCharacter> SpritesManager::getBotonesCharacter() {
@@ -93,9 +101,14 @@ std::list<ButtonCharacter> SpritesManager::getBotonesCharacter() {
 }
 
 void SpritesManager::renderizarBotonesCharacter(){
-    character_jazz.renderizarEn(53,130); //hardcodeado
-    character_spaz.renderizarEn(303,130);
-    character_lori.renderizarEn(553,130);
+    int separacion = 250;
+    int character_width = 144, character_height = 240;
+    int x = ((ANCHO_WINDOW / 3) - character_width) / 2;
+    int y = (ALTO_WINDOW - character_height) / 2;
+
+    character_jazz.renderizarEn(x, y);
+    character_spaz.renderizarEn(x + separacion, y);
+    character_lori.renderizarEn(x + separacion * 2, y);
 }
 
 

@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include "characters.h"
 #include <string>
+#include "../../common_src/constantes.h"
 
 class ButtonPartida{
 	private:

@@ -90,8 +90,12 @@ void EventHandler::manejarSeleccionPartida(SDL_Event &e){
             }
         }
 
-        //ARREGLAR ESTO PARA QUE NO ESTE HARDCODEADO
-        if (pointInsideRect(mouseX, mouseY, {416, 32, 167, 400})) { //Chequea si se clickeo en la zona del boton
+        int cant_letras_texto = 13, size_letras = 32;
+        int texto_width = (size_letras * cant_letras_texto);
+        int x = (ANCHO_WINDOW - texto_width) / 2;
+        int y = ALTO_WINDOW - 100;
+
+        if (pointInsideRect(mouseX, mouseY, {x, y, texto_width, size_letras})) { //Chequea si se clickeo en la zona del boton
             std::cout << "Creando partida nueva" << std::endl;
             partidaSeleccionada = 0;
             interfaz.nextEstado();

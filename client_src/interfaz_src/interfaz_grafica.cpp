@@ -146,7 +146,7 @@ void InterfazGrafica::renderizarMenu(){
 
 
 void InterfazGrafica::renderizarSeleccionPartida(){
-    SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
+    SDL_SetRenderDrawColor(renderer,106, 101, 255, 1);
     SDL_RenderClear(renderer);
 
     spritesManager->renderizarBotonesPartidas(); 
