@@ -2,8 +2,8 @@
 #define SERVER_GAMELOOP_H_
 
 #include "game.h"
-#include "../server_queue.h"
-#include "../server_thread.h"
+#include "../../common_src/queue.h"
+#include "../../common_src/thread.h"
 #include "../server_queue_list.h"
 #include "../server_character_map.h"
 
@@ -33,21 +33,13 @@ class ServerGameloop : public Thread {
         bool wc = false;
 
     public:
-        /*ServerGameloop(std::shared_ptr<CharacterMap> &map,
-                        std::shared_ptr<Queue<uint8_t>> &recv_q,
-                         std::shared_ptr<ServerQueueList> &sndr_qs,
-                          std::map<uint8_t, std::shared_ptr<ServerQueueList>> &monitors,
-                            std::map<uint8_t, std::shared_ptr<Queue<uint8_t>>> &gameloops_q,
-                             std::map<std::string, std::vector<uint8_t>> &data_map, int id) :
-                                character_map(map), recv_q(recv_q), sndr_qs(sndr_qs),
-                                    monitors(monitors), //gameloops_q(gameloops_q),
-                                        data_map(data_map), id(id) {};
-        */
-        
         ServerGameloop(int id_game, int id_client, TipoPlayer tipoPlayer, std::shared_ptr<Queue<uint8_t>> recv_q, 
                                Queue<InfoJuego> *sndr_q);
 
         void addPlayer(int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q);
+
+        void send_snapshot();
+
         void run() override;
 
         bool is_dead();

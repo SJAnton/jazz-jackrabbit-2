@@ -4,11 +4,13 @@
 //#include "game_terreno.h"
 #include "game_casillero.h"
 #include "game_coordenada.h"
-#include "game_object.h"
-//#include "game_object_collected.h"
-#include "game_object_player.h"
-#include "game_object_collected.h"
+#include "GameObjects/game_object.h"
+#include "GameObjects/Players/game_object_player.h"
+#include "GameObjects/Collected/game_object_collected.h"
+#include "GameObjects/Enemies/game_object_enemy.h"
+#include "GameObjects/Enemies/enemy_rat.h"
 
+#include "GameObjects/Projectile/game_object_projectile.h"
 #include "../server_character_map.h"
 
 #include <list>
@@ -23,10 +25,10 @@ private:
     // El terreno se puede pensar como los casilleros simplificados.
     //TileMap TileMap;
     std::vector<std::shared_ptr<ObjectPlayer>> players; //lista de los players
-    //std::shared_ptr<PlayerMap> &ch_map;
-    //std::list<ObjectProyectil> proyectiles;
+    std::vector<ObjectEnemy> &enemigos;
     std::vector<ObjectCollected> &itemsRecolectables;
-    //std::list<ObjectEnemy> enemigos;
+    std::vector<ObjectProjectile> &proyectiles;
+
 
 public:
     /** ACLARACION sistema de coordenadas y casilleros
@@ -60,7 +62,9 @@ public:
 
 public:
     GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
-              std::vector<ObjectCollected> &itemsRecolectables);
+              std::vector<ObjectEnemy> &enemigos,
+              std::vector<ObjectCollected> &itemsRecolectables, 
+              std::vector<ObjectProjectile> &proyectiles);
 
     //Recibe el terreno ya creado
     //GameMundo(Terreno &&terreno);
@@ -79,7 +83,23 @@ private:
     void bloquearCasilleros(const CoordenadaBloque &bloque);
 
     void aplicarGravedad();
+    
+    /**
+     * Chequea si un player esta dentro de algun item recolectable (si esta colisionando) 
+     * y en ese caso lo recolecta, aplicando la accion que corresponda sobre el player, 
+     * y eliminando el item del vector.
+    */
+    void chequearColisionesItems();
+
+    /**
+     * Chequea si un proyectil está dentro de un player o de un enemigo
+     * y en ese caso explota, dañando al personaje con el que colisionó 
+    */
+    void chequearColisionesProyectiles();
+    void chequearColisionesEnemies();
+
     void chequearColisiones();
+    
     
 };
 

@@ -4,7 +4,7 @@
 #include <list>
 #include <mutex>
 
-#include "server_queue.h"
+#include "../common_src/queue.h"
 #include "../common_src/info_juego.h"
 
 /**

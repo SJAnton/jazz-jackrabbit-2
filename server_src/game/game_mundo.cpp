@@ -9,9 +9,14 @@ std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vec
 
 //constructores
 GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
-                     std::vector<ObjectCollected> &_itemsRecolectables) :
-    filas(15*MULTIPLCADOR_CASILLERO), columnas(15*MULTIPLCADOR_CASILLERO), players(players),
-    itemsRecolectables(_itemsRecolectables)
+              std::vector<ObjectEnemy> &enemigos,
+              std::vector<ObjectCollected> &itemsRecolectables, 
+              std::vector<ObjectProjectile> &proyectiles) :
+    filas(15*MULTIPLCADOR_CASILLERO), 
+    columnas(15*MULTIPLCADOR_CASILLERO), 
+    players(players), enemigos(enemigos), 
+    itemsRecolectables(itemsRecolectables), 
+    proyectiles(proyectiles)
 {
    for (int j = 0; j < 15; ++j) { //Cargo los casilleros solidos (HARDCODEADO)
         CoordenadaBloque coord(j, 4); //bloqueo la fila 4
@@ -57,8 +62,12 @@ void GameMundo::aplicarGravedad() {
         player->fall();
     }
 }
-void GameMundo::chequearColisiones() {
-    // chequear colision de items
+
+//
+//   COLISIONES
+// ---------------
+
+void GameMundo::chequearColisionesItems() {
     for (auto it = itemsRecolectables.begin(); it != itemsRecolectables.end(); ) {
         std::vector<Coordenada> areaObj = it->coordenadasOcupadas();
         bool itemRecolectado = false;
@@ -73,11 +82,12 @@ void GameMundo::chequearColisiones() {
                 if (p->isInside(c)) {
                     int pts = it->recolectar();
                     // Si es una moneda o diamante...
-                    p->add_points(pts);
-                    // Si es una zanahoria...
-                    // p->...(pts);
-                    // Si es una munición...
-                    // p->...(pts);
+                    if (it->getTipoRecolectable() == Moneda || it->getTipoRecolectable() == Diamante)
+                        p->add_points(pts);
+                    else if (it->getTipoRecolectable() == Zanahoria)
+                        p->add_hearts(pts);
+                    else if (it->getTipoRecolectable() == Municion)
+                        p->pick_up_ammo(pts);
                     break; // pasa a la siguiente coordenada
                 }
             }
@@ -88,12 +98,52 @@ void GameMundo::chequearColisiones() {
     }
 }
 
+void GameMundo::chequearColisionesProyectiles() {
+    for (auto it = proyectiles.begin(); it != proyectiles.end(); ) { //por cada proyectil
+        std::vector<Coordenada> areaObj = it->coordenadasOcupadas();
+        bool hubo_colision = false;
+        for (Coordenada c : areaObj) { // por cada coordenada ocupada del proyectil...
+            if (it->is_exploded()) {
+                std::cout << "Proyectil destruido" << std::endl;
+                it = proyectiles.erase(it); // elimina el proyectil y actualiza el iterador
+                hubo_colision = true;
+                break; // Pasa al siguiente proyectil
+            }
+            for (auto p : players) { // por cada player
+                if (p->isInside(c)) {
+                    int damage = it->explode();
+                    p->take_damage(damage);
+                    break; // pasa a la siguiente coordenada
+                }
+            }
+            for (auto e : enemigos) { // por cada enemigo
+                if (e.isInside(c)) {
+                    int damage = it->explode();
+                    e.take_damage(damage);
+                    break; // pasa a la siguiente coordenada
+                }
+            }
+        }
+        if (!hubo_colision) {
+            ++it; // si no se ha eliminado el proyectil, avanza el iterador
+        }
+    }
+}
+
+void GameMundo::chequearColisiones() {
+    chequearColisionesItems();
+    chequearColisionesProyectiles();
+    
+}
+
+
 
 //Es llamada por el gameloop
 void GameMundo::update() {
     temporizador--;
     aplicarGravedad();
     chequearColisiones();
+
     //manejarComandos();
 
     //chequear colision de items

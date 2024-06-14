@@ -1,8 +1,8 @@
 #ifndef SERVER_RECEIVER_H_
 #define SERVER_RECEIVER_H_
 
-#include "server_queue.h"
-#include "server_thread.h"
+#include "../common_src/queue.h"
+#include "../common_src/thread.h"
 #include "server_protocol.h"
 #include "../common_src/socket.h"
 

@@ -197,7 +197,7 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 		infoItems.emplace_back(tipo, pos_x, pos_y);
 		contador += LENGTH_ITEMS_INFO;
 	}
-	if (cantItems == 0)
+	//if (cantItems == 0)
 		contador++;
 	
 	int cantProyectiles = decodeInt(bytes[contador]);
@@ -215,8 +215,10 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 		infoProyectiles.emplace_back(pos_x, pos_y, dir);
 		contador += LENGTH_PROYECTIL_INFO;
 	}
-	// std::cout << "Cantidad de Players: " << cantPlayers << std::endl;
-	//	std::cout << "Cantidad de Items: " << cantItems << std::endl;
+	//std::cout << "Cantidad de Players: " << cantPlayers << std::endl;
+	//std::cout << "Cantidad de Enemigos: " << cantEnemigos << std::endl;
+	//std::cout << "Cantidad de Items: " << cantItems << std::endl;
+	//std::cout << "Cantidad de proyectiles: " << cantProyectiles << std::endl;
 
 	return InfoJuego(infoPlayers, infoEnemies, infoItems, infoProyectiles);
 }

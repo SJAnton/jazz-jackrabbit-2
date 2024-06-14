@@ -6,7 +6,7 @@
 #include <utility>
 
 #include "game/game.h"
-#include "server_thread.h"
+#include "../common_src/thread.h"
 #include "server_client.h"
 #include "server_gameloop_list.h"
 #include "server_queue_list.h"
@@ -40,11 +40,6 @@ class ServerAcceptor : public Thread {
 
     public:
         ServerAcceptor(const std::string &hostname);
-
-        /*
-        ServerAcceptor(Socket &socket, map<string, vector<uint8_t>> &obj_data,
-                        bool &was_closed) : sk(socket), srv_wc(was_closed), data(obj_data) {}
-        */
 
         void run() override;
 

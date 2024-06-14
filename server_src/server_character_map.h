@@ -6,7 +6,7 @@
 #include <memory>
 
 //#include "Players/server_Player.h"
-#include "game/game_object_player.h"
+#include "game/GameObjects/Players/game_object_player.h"
 
 class PlayerMap {
     private:

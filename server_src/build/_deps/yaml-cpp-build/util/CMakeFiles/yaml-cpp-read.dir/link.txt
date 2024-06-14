@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Werror -Wno-unused-private-field CMakeFiles/yaml-cpp-read.dir/read.cpp.o -o read  ../libyaml-cpp.a 

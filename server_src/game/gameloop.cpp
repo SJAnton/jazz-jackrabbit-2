@@ -15,7 +15,6 @@ ServerGameloop::ServerGameloop(int id_game, int id_client, TipoPlayer tipoPlayer
     id(id_game),
     recv_q(recv_q)
 {
-
     std::cout << "creo un gameloop" << std::endl;
     sndr_queues.push_back(sndr_q);
     game.add_player(tipoPlayer, id_client);  
@@ -47,14 +46,10 @@ void ServerGameloop::run() {
             continue;
         }
         game.update();
+
         game.execute_actions(data);
 
-        //std::cout << projectile_list.size() << std::endl;
-
-        //game.tick(character_map, projectile_list);
-
-        //InfoJuego game_data = game.snapshot(character_map);
-        game.send_snapshot(sndr_queues);
+        send_snapshot();
 
         //dormir
         auto end_time = std::chrono::steady_clock::now();
@@ -66,9 +61,15 @@ void ServerGameloop::run() {
     wc = true;
 }
 
+void ServerGameloop::send_snapshot() {
+    InfoJuego game_data = game.snapshot();
+    sndr_queues.push_to_all_queues(game_data);
+}
+
 bool ServerGameloop::is_dead() {
     return wc;
 }
+
 
 void ServerGameloop::kill() {
     wc = true;
