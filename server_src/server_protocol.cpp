@@ -101,7 +101,7 @@ std::vector<uint8_t> ServerProtocol::encodePlayer(const InfoPlayer &infoPlayer) 
     insertar2bytesDelNumero(infoPlayer.pos_x, bytes);
     insertar2bytesDelNumero(infoPlayer.pos_y, bytes);
     
-    bytes.push_back(encodeTipoPlayer(infoPlayer.tipoPlayer));
+//    bytes.push_back(infoPlayer.player_id);
     bytes.push_back(encodeEstadoPlayer(infoPlayer.estado));
     bytes.push_back(infoPlayer.vida);
     bytes.push_back(infoPlayer.puntos);
@@ -161,18 +161,6 @@ void ServerProtocol::insertar2bytesDelNumero(int num, std::vector<uint8_t> &arra
     int aux = htons(num);
     array.push_back((aux >> 8) & 0xFF); // insertar el byte más significativo
     array.push_back(aux & 0xFF); // inseratr el byte menos significativo
-}
-
-uint8_t ServerProtocol::encodeTipoPlayer(TipoPlayer tipo) {
-	switch (tipo)
-	{
-	case Jazz : return PLAYER_TYPE_JAZZ;
-	case Lori : return PLAYER_TYPE_LORI;
-	case Spaz : return PLAYER_TYPE_SPAZ;	
-	default:
-		std::runtime_error("Tipo de Player no existe. Probablemente se recibio un byte que corresponde a ora cosa. En ClientProtocol::encodeTipoPlayer()");
-		return PLAYER_TYPE_JAZZ;
-	}
 }
 
 uint8_t ServerProtocol::encodeEstadoPlayer(EstadosPlayer estado) {

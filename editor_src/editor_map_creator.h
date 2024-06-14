@@ -3,6 +3,7 @@
 
 #include <yaml-cpp/yaml.h>
 
+#include "../server_src/objects/server_ammo.h"
 #include "../server_src/map/server_game_map.h"
 
 class MapCreator {

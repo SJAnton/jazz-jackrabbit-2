@@ -54,7 +54,7 @@
 
 class Character {
     protected:
-        TipoPlayer type_player; // Jazz = 1, Lori = 2, Spaz = 3
+        int character_id; // Jazz = 1, Lori = 2, Spaz = 3
 
         EstadosPlayer status = EstadosPlayer::Inactive;
 
@@ -80,11 +80,11 @@ class Character {
 
         bool frozen = false;
 
-        uint8_t intoxicated_time;
-
         uint8_t moving_speed;
 
         uint8_t running_speed;
+
+        uint8_t intoxicated_time;
 
         uint8_t jump_height;
 
@@ -143,7 +143,7 @@ class Character {
 
         InfoPlayer set_data(int id);
 
-        TipoPlayer get_player_type();
+        int get_character_id();
 
         EstadosPlayer get_status();
 

@@ -57,6 +57,17 @@ class Ammo : public Object {
             xy_hitbox = data[OBJ_HITBOX_POS];
         }
 
+        Ammo(uint8_t id, uint8_t x, uint8_t y, uint8_t am_amount, uint8_t hitbox, uint8_t am_id) {
+            // Para construir un objecto Ammo leído de un mapa
+            object_id = id;
+            x_pos = x;
+            y_pos = y;
+            amount = am_amount;
+            xy_hitbox = hitbox;
+            ammo_id = am_id;
+            type = Municion;
+        }
+
         int get_id();
 };
 #endif

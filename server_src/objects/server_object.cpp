@@ -20,6 +20,10 @@ uint8_t Object::get_amount() {
     return amount;
 }
 
+uint8_t Object::get_hitbox() {
+    return xy_hitbox;
+}
+
 uint8_t Object::left_side() {
     return x_pos - xy_hitbox;
 }

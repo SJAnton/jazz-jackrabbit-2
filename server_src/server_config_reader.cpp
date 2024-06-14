@@ -3,13 +3,13 @@
 std::map<std::string, std::vector<uint8_t>> ServerConfigReader::read() {
     std::map<std::string, std::vector<uint8_t>> data;
 
-    for (YAML::iterator it = node.begin(); it != node.end(); it++) {
+    for (YAML::iterator it = node.begin(); it != node.end(); ++it) {
         std::vector<uint8_t> values;
         
         YAML::Node key = it->first;
         YAML::Node value = it->second;
 
-        for (YAML::iterator val_it = value.begin(); val_it != value.end(); val_it++) {
+        for (YAML::iterator val_it = value.begin(); val_it != value.end(); ++val_it) {
             YAML::Node map_val = val_it->second;
             values.push_back(map_val.as<uint8_t>());
         }

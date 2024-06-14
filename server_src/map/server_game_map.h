@@ -78,6 +78,10 @@ class Layer {
             }
         }
 
+        void setTileMap(std::vector<std::vector<int>> &tile_map) {
+            tileMap = tile_map;
+        }
+
         // Obtener el ID del tile en una posición específica
         int getTile(int x, int y) const {
             if (x >= 0 && x < width && y >= 0 && y < height) {
@@ -87,23 +91,25 @@ class Layer {
         }
 };
 
-struct SpawnPoint {
+struct Point {
     uint8_t x;
     uint8_t y;
 
-    SpawnPoint(uint8_t x, uint8_t y) : x(x), y(y) {};
+    Point(uint8_t x, uint8_t y) : x(x), y(y) {};
 };
 
 class ServerGameMap {
     public:
         Tileset tileset;
-        SpawnPoint spawn;
+        Point spawn_point;
+        Point exit_point;
         std::vector<Layer> layers;
         std::vector<std::shared_ptr<Object>> objects;
 
         ServerGameMap(int numTiles, int numLayers, int layerWidth, int layerHeight,
-                        int gameSelection, uint8_t spawn_x, uint8_t spawn_y) : 
-                            tileset(numTiles), spawn(spawn_x, spawn_y) {
+                        int gameSelection, uint8_t spawn_x, uint8_t spawn_y, uint8_t exit_x,
+                            uint8_t exit_y) : tileset(numTiles), spawn_point(spawn_x, spawn_y),
+                                exit_point(exit_x, exit_y) {
         
             for (int i = 0; i < numLayers; ++i) {
                 layers.emplace_back(layerWidth, layerHeight);
@@ -132,9 +138,23 @@ class ServerGameMap {
                     break;
             }
         }
+
+        ServerGameMap(int numTiles, uint8_t spawn_x, uint8_t spawn_y, uint8_t exit_x,
+                        uint8_t exit_y, uint8_t layers_height, uint8_t layers_width,
+                            std::vector<std::vector<int>> &tile_map, 
+                                std::vector<std::shared_ptr<Object>> &objects) : 
+                                tileset(numTiles), spawn_point(spawn_x, spawn_y),
+                                    exit_point(exit_x, exit_y), objects(objects) {
+            // Crea un GameMap leído desde un archivo
+            layers.emplace_back(layers_width, layers_height);
+            layers[0].setTileMap(tile_map);
+        }
+
         Tileset get_tileset();
 
-        SpawnPoint get_spawn_point();
+        Point get_spawn_point();
+
+        Point get_exit_point();
 
         std::vector<Layer> get_layers();
 

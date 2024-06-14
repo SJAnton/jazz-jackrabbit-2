@@ -15,7 +15,7 @@ class PlayerJazz : public Character {
             std::vector<uint8_t> data = map[JAZZ_KEY];
             x_pos = x;
             y_pos = y;
-            type_player = TipoPlayer::Jazz;
+            character_id = JAZZ_ID;
             health = data[HP_POS];
             weapon = std::make_unique<Blaster>(map[BLASTER_KEY]);
             weapon_type = TipoArma::Blaster;

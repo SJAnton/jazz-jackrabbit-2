@@ -29,7 +29,7 @@
 #define TOASTERBALL_KEY "Toasterball"
 
 InfoPlayer Character::set_data(int id) {
-    InfoPlayer data(id, x_pos, y_pos, type_player, status, health,
+    InfoPlayer data(id, x_pos, y_pos, character_id, status, health,
                     points, weapon_type, weapon->get_ammo());
     if (!alive) {
         status = EstadosPlayer::Dead;
@@ -37,8 +37,8 @@ InfoPlayer Character::set_data(int id) {
     return data;
 }
 
-TipoPlayer Character::get_player_type() {
-    return type_player;
+int Character::get_character_id() {
+    return character_id;
 }
 
 EstadosPlayer Character::get_status() {

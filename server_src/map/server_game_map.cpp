@@ -4,8 +4,12 @@ Tileset ServerGameMap::get_tileset() {
     return tileset;
 }
 
-SpawnPoint ServerGameMap::get_spawn_point() {
-    return spawn;
+Point ServerGameMap::get_spawn_point() {
+    return spawn_point;
+}
+
+Point ServerGameMap::get_exit_point() {
+    return exit_point;
 }
 
 std::vector<Layer> ServerGameMap::get_layers() {

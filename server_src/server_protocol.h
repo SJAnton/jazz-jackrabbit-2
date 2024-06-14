@@ -40,9 +40,7 @@ class ServerProtocol {
 
         /* Obtener un byte equivalente al valor de cada enum. (Ver constantes_protocolo.h y constantes.h)*/
         uint8_t encodeEstadoPlayer(EstadosPlayer estado);
-        
         uint8_t encodeTipoEnemy(TipoEnemy enemigo);
-        uint8_t encodeTipoPlayer(TipoPlayer tipo);
         uint8_t encodeEstadoEnemy(EstadosEnemy estado);
         uint8_t encodeTipoRecolectable(TipoRecolectable tipo);
         uint8_t encodeDireccion(Direcciones direccion);

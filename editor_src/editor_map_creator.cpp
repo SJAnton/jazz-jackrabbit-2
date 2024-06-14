@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-#define LEVELS_ROUTE "../../server_src/levels/"
+#define LEVELS_ROUTE "../../server_src/map/levels/"
 #define FILE_EXTENSION ".yaml"
 
 // Tests
@@ -20,9 +20,13 @@
 #define LAYER_HEIGHT 30
 #define SPAWN_X 5
 #define SPAWN_Y 20
+#define EXIT_X 10
+#define EXIT_Y 20
 
 // Claves del YAML
 #define SPAWN_POINT_KEY "SpawnPoint"
+#define EXIT_POINT_KEY "ExitPoint"
+#define TILESET_KEY "Tileset"
 #define OBJECT_KEY "Objects"
 #define LAYER_KEY "Layers"
 #define TILE_KEY "Tile"
@@ -31,12 +35,20 @@
 #define X_KEY "x"
 #define Y_KEY "y"
 #define ID_KEY "id"
+#define TILES_NUMBER_KEY "tiles_num"
 #define LAYER_HEIGHT_KEY "height"
 #define LAYER_WIDTH_KEY "width"
 #define OBJECT_ID_KEY "object_id"
+#define AMMO_ID_KEY "ammo_id"
+#define OBJECT_AMOUNT_KEY "amount"
+#define OBJECT_HITBOX_KEY "hitbox"
+
+#define AMMO_OBJECT_ID 1
 
 void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
-    SpawnPoint spawn = game_map.get_spawn_point();
+    Point spawn = game_map.get_spawn_point();
+    Point exit = game_map.get_exit_point();
+    Tileset tileset = game_map.get_tileset();
     std::vector<Layer> layers = game_map.get_layers();
     std::vector<Tile> tiles = game_map.get_tileset().get_tiles();
     std::vector<std::shared_ptr<Object>> objects = game_map.get_objects();
@@ -44,13 +56,26 @@ void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
     YAML::Emitter out;
     std::ofstream ostr(LEVELS_ROUTE + name + FILE_EXTENSION);
 
-    out << YAML::BeginMap; // Inicio escritura
+    out << YAML::BeginMap;
 
     // SpawnPoint
     out << YAML::Key << SPAWN_POINT_KEY;
     out << YAML::Value << YAML::BeginMap;
-    out << YAML::Key << X_KEY << YAML::Value << YAML::Hex << spawn.x;
-    out << YAML::Key << Y_KEY << YAML::Value << YAML::Hex << spawn.y;
+    out << YAML::Key << X_KEY << YAML::Value << /*YAML::Hex <<*/ static_cast<int>(spawn.x);
+    out << YAML::Key << Y_KEY << YAML::Value << /*YAML::Hex <<*/ static_cast<int>(spawn.y);
+    out << YAML::EndMap;
+
+    // ExitPoint
+    out << YAML::Key << EXIT_POINT_KEY;
+    out << YAML::Value << YAML::BeginMap;
+    out << YAML::Key << X_KEY << YAML::Value << /*YAML::Hex <<*/ static_cast<int>(exit.x);
+    out << YAML::Key << Y_KEY << YAML::Value << /*YAML::Hex <<*/ static_cast<int>(exit.y);
+    out << YAML::EndMap;
+
+    // TileSet
+    out << YAML::Key << TILESET_KEY;
+    out << YAML::Value << YAML::BeginMap;
+    out << YAML::Key << TILES_NUMBER_KEY << YAML::Value << tileset.get_tiles().size();
     out << YAML::EndMap;
 
     // Layers
@@ -73,19 +98,6 @@ void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
             out << YAML::EndSeq;
         }
         out << YAML::EndSeq;
-
-        // IsSolid
-        out << YAML::Key << IS_SOLID_KEY;
-        out << YAML::Value << YAML::BeginSeq;
-        int tm_size = tile_map.size();
-        for (int x = 0; x < tm_size; ++x) {
-            out << YAML::Flow << YAML::BeginSeq;
-            for (size_t y = 0; y < tile_map[x].size(); ++y) {
-                game_map.get_tileset().get_tiles();
-            }
-            out << YAML::EndSeq;
-        }
-        out << YAML::EndSeq;
     }
     out << YAML::EndMap;
 
@@ -93,13 +105,23 @@ void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
     out << YAML::Key << OBJECT_KEY;
     out << YAML::Value << YAML::BeginMap;
     for (std::shared_ptr<Object> object : objects) {
-        out << YAML::Key << OBJECT_ID_KEY << object->get_object_id();
-        out << YAML::Key << X_KEY << object->get_x_pos();
-        out << YAML::Key << Y_KEY << object->get_y_pos();
+        uint8_t object_id = object->get_object_id();
+        out << YAML::Key << OBJECT_ID_KEY << static_cast<int>(object_id);
+
+        if (object_id == AMMO_OBJECT_ID) {
+            std::shared_ptr<Ammo> ammo = std::dynamic_pointer_cast<Ammo>(object);
+            if (ammo != nullptr) {
+                out << YAML::Key << AMMO_ID_KEY << static_cast<int>(ammo->get_id());
+            }
+        }
+        out << YAML::Key << OBJECT_AMOUNT_KEY << static_cast<int>(object->get_amount());
+        out << YAML::Key << X_KEY << static_cast<int>(object->get_x_pos());
+        out << YAML::Key << Y_KEY << static_cast<int>(object->get_y_pos());
+        out << YAML::Key << OBJECT_HITBOX_KEY << static_cast<int>(object->get_hitbox());
     }
     out << YAML::EndMap;
 
-    out << YAML::EndMap; // Fin escritura
+    out << YAML::EndMap;
 
     ostr << out.c_str();
 
@@ -108,7 +130,7 @@ void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
 
 void MapCreator::generate_test_flat_map() {
     ServerGameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
-                            FLAT_GAME_SELECTION, SPAWN_X, SPAWN_Y);
+                            FLAT_GAME_SELECTION, SPAWN_X, SPAWN_Y, EXIT_X, EXIT_Y);
 
     std::string name = FLAT_MAP_NAME;
 
@@ -117,7 +139,7 @@ void MapCreator::generate_test_flat_map() {
 
 void MapCreator::generate_test_mountain_map() {
     ServerGameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
-                            MOUNTAIN_GAME_SELECTION, SPAWN_X, SPAWN_Y);
+                            MOUNTAIN_GAME_SELECTION, SPAWN_X, SPAWN_Y, EXIT_X, EXIT_Y);
 
     std::string name = MOUNTAIN_MAP_NAME;
 
@@ -126,7 +148,7 @@ void MapCreator::generate_test_mountain_map() {
 
 void MapCreator::generate_test_random_map() {
     ServerGameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
-                            RANDOM_GAME_SELECTION, SPAWN_X, SPAWN_Y);
+                            RANDOM_GAME_SELECTION, SPAWN_X, SPAWN_Y, EXIT_X, EXIT_Y);
 
     std::string name = RANDOM_MAP_NAME;
 
@@ -135,7 +157,7 @@ void MapCreator::generate_test_random_map() {
 
 void MapCreator::generate_test_snowy_map() {
     ServerGameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
-                            SNOWY_GAME_SELECTION, SPAWN_X, SPAWN_Y);
+                            SNOWY_GAME_SELECTION, SPAWN_X, SPAWN_Y, EXIT_X, EXIT_Y);
 
     std::string name = SNOWY_MAP_NAME;
 
