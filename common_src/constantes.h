@@ -6,23 +6,33 @@
 #define ANCHO_WINDOW 750
 #define ALTO_WINDOW 500 
 
+// Player
+enum TipoPlayer {Jazz, Spaz, Lori};
+
 enum class EstadosPlayer {Inactive, Walking, Running, Jumping, Falling, Shooting,
     SpecialAttack, IntoxicatedIdle, IntoxicatedWalk, Damaged, Dying, Dead, Reviving
 };
 
-enum TipoPlayer {Jazz, Spaz, Lori};
-
 enum class AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
 
+
+// Enemy
 enum class EstadosEnemy{Idle, Move, Attack, Damaged, Death};
 enum TipoEnemy{Rat, Bat, Lizard};
 
+
+// Recolectables
 enum TipoRecolectable {Moneda, Diamante, Zanahoria, Municion};
 
-
+// Armas y Proyectiles
 enum class TipoArma {Blaster, Bouncer, ElectroBlaster, Freezer,
                         PepperSpray, RFMissile, Seeker, TNT, Toaster};
 
+//enum TipoArma {Tipo_1, Tipo_2, Tipo_3, Tipo_4};
+enum TipoProyectil {Tipo_1, Tipo_2, Tipo_3, Tipo_4};
+
+
+// otros
 enum Direcciones {Left, Right};
 
 

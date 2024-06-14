@@ -3,8 +3,8 @@
 
 #include <map>
 
-#include "server_queue.h"
-#include "server_thread.h"
+#include "../common_src/queue.h"
+#include "../common_src/thread.h"
 #include "server_sender.h"
 #include "server_receiver.h"
 #include "server_queue_list.h"

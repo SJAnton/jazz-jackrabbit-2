@@ -3,7 +3,6 @@
 
 #include <list>
 #include <mutex>
-
 #include "game/gameloop.h"
 
 class GameloopList {

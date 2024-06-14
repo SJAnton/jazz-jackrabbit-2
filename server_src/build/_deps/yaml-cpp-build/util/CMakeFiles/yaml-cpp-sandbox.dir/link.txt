@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Werror -Wno-unused-private-field CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o -o sandbox  ../libyaml-cpp.a 

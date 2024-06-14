@@ -2,6 +2,8 @@
 
 #include "server_acceptor.h"
 #include "game/gameloop.h"
+#include "game/game.h"
+
 #include "server_queue_list.h"
 #include "server_config_reader.h"
 
@@ -30,7 +32,7 @@ int main(int argc, char* argv[]) {
     //bool was_closed = false;
     ServerConfigReader reader(file);
     std::map<std::string, std::vector<uint8_t>> data = reader.read();
-    //Game::init()
+    Game::init();
     ServerAcceptor acceptor(SERVICENAME);
    
     acceptor.start();

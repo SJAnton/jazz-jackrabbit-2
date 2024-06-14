@@ -1,8 +1,8 @@
 #ifndef SERVER_SENDER_H_
 #define SERVER_SENDER_H_
 
-#include "server_queue.h"
-#include "server_thread.h"
+#include "../common_src/queue.h"
+#include "../common_src/thread.h"
 #include "server_protocol.h"
 #include "server_queue_list.h"
 #include "../common_src/socket.h"

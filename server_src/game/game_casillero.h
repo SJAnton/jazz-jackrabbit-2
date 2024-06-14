@@ -1,8 +1,6 @@
 #ifndef GAME_CASILLERO_H
 #define GAME_CASILLERO_H
 
-#include "game_object.h"
-
 #include <set>
 #include <memory>
 #include <algorithm>

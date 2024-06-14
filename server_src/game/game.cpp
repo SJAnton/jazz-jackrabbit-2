@@ -8,28 +8,34 @@
 
 #include "../../common_src/constantes_protocolo.h"
 
+#define PTS_DIAMANTE 20
+#define PTS_MONEDA 10
+#define PTS_VIDA 1
+#define PTS_MUNICION 3
+
+
+//Metodo para cargar todas las constantes del config
+void Game::init() {
+    ObjectPlayer::init(10, 5, 10, 2, 15, 15);
+    ObjectProjectile::init(1, 2, 3, 4, 11, 12, 13, 14);
+    ObjectCollected::init(20, 10, 3, 2, -1, 0.2f);
+    EnemyRat::init(3, 4);
+
+} 
+
 Game::Game() : 
     ch_map(std::make_shared<PlayerMap>()), 
-    gameMundo(ch_map->getPlayers(), itemsRecolectables) 
+    gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables, proyectiles) 
 {
-    //Hardcodeo 2 monedas
+    //Hardcodeo 2 monedas (esta info debo recibirla en init y guardarmela en una variable estatica privada)
     itemsRecolectables.push_back(ObjectCollected(Moneda));
     itemsRecolectables.back().setPosition(Coordenada(250, 225));
 
     itemsRecolectables.push_back(ObjectCollected(Moneda));
     itemsRecolectables.back().setPosition(Coordenada(350, 220));
-
 }
 
 
-std::vector<uint8_t> Game::get_actions(std::shared_ptr<Queue<uint8_t>> &q) {
-    std::vector<uint8_t> data;
-    uint8_t byte;
-    while (q->try_pop(byte)) {
-        data.push_back(byte);
-    }
-    return data;
-}
 
 void Game::execute_actions(std::vector<uint8_t> &actions) {
     if (actions.empty()) {
@@ -57,17 +63,23 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
         case ACTION_JUMP:
             player->jump(direction);
             break;
-        case ACTION_SHOOT:
-            player->shoot(direction);
+        case ACTION_SHOOT: {
+            auto proyectil = player->shoot(direction);
+            proyectiles.push_back(proyectil);
             break;
-        case ACTION_SPECIAL_ATTACK:
+        }
+        //case ACTION_SPECIAL_ATTACK:
             //player->special_attack();
-            break;
+            //break;
         default:
             break;
     }
 }
 void Game::update() {
+    for (auto p : proyectiles) {
+        p.move_x_pos();
+    }
+    
     gameMundo.update();
 }
 
@@ -100,19 +112,25 @@ InfoJuego Game::snapshot() {
         InfoPlayer player_data = Player->getInfo();
         players_data.push_back(player_data);
     }
+    for (auto enemy : enemies) {
+        InfoEnemigo info = enemy.getInfo();
+        enemies_data.push_back(info);
+    }
     for (auto item : itemsRecolectables) {
         if (item.isCollected())
             continue;
         InfoRecolectable info = item.getInfo();
         items_data.push_back(info);
     }
+    for (auto proyectil : proyectiles) {
+        if (proyectil.is_exploded())
+            continue;
+        InfoProyectil info = proyectil.getInfo();
+        projectile_data.push_back(info);
+    }
     InfoJuego game_data(players_data, enemies_data, items_data, projectile_data);
+    std::cout << "envio " << game_data.cantProyectiles() << std::endl;
     return game_data;
-}
-
-void Game::send_snapshot(ServerQueueList &sndr_qs) {
-    InfoJuego game_data = snapshot();
-    sndr_qs.push_to_all_queues(game_data);
 }
 
 void Game::add_player(TipoPlayer &player_type, int player_id) {
