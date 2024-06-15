@@ -127,6 +127,8 @@ void InterfazGrafica::renderizarJuego()
         //spritesManager->updatePlayer(i, infoJuego.players[i].estado, posicion);
     }
 
+    spritesManager->renderizarVidas(infoJuego.players[0].vida);
+
     SDL_RenderPresent(renderer); // dibuja todo
 }
 

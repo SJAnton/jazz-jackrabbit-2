@@ -87,3 +87,7 @@
 
 // PROJECTILES
 #define PATH_PROJECTILE_0 "../sprites/Projectiles/Projectile (16x8)x03.png"
+
+// HUD
+#define PATH_HEART_ICON "../sprites/HUD/Heart Icon (24x16)x01.png"
+

@@ -95,6 +95,7 @@ public:
     void renderizarTerreno();
     void renderizarItemEn(const TipoRecolectable &tipo, int x, int y);
     void renderizarProyectilEn(const Direcciones &dir, int x, int y);
+    void renderizarVidas(int& vidas);
 
     // UPDATES
     /**

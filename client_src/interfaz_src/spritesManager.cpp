@@ -34,7 +34,8 @@ SpritesManager::SpritesManager() :
     moneda(PATH_ITEM_COIN, 28, 28, 20),
     gema(PATH_ITEM_GEM, 36, 36, 8),
     zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20),
-    proyectil_0(PATH_PROJECTILE_0, 16, 8,3)
+    proyectil_0(PATH_PROJECTILE_0, 16, 8,3),
+    heartIcon(PATH_HEART_ICON)
 {
     SpritesPlayers::init();
 
@@ -158,6 +159,17 @@ void SpritesManager::renderizarProyectilEn(const Direcciones &dir, int x, int y)
         proyectil_0.renderizarInvertidoEn(x, y);
     else 
         proyectil_0.renderizarEn(x, y);
+}
+
+void SpritesManager::renderizarVidas(int& vidas){
+    int corazones_x = ANCHO_WINDOW * 0.9;
+    int corazones_y = ALTO_WINDOW * 0.05;
+    int separacion = 0;
+    for (int i = 0; i < vidas; ++i)
+    {
+        heartIcon.renderizarEn(corazones_x + separacion, corazones_y);
+        separacion -= 30;
+    }
 }
 
 void SpritesManager::updateItems() {
