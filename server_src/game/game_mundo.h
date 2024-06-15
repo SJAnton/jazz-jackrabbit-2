@@ -9,10 +9,8 @@
 #include "GameObjects/Collected/game_object_collected.h"
 #include "GameObjects/Enemies/game_object_enemy.h"
 #include "GameObjects/Enemies/enemy_rat.h"
-
 #include "GameObjects/Projectile/game_object_projectile.h"
 #include "../server_character_map.h"
-
 #include <list>
 #include <vector>
 
@@ -27,7 +25,7 @@ private:
     std::vector<std::shared_ptr<ObjectPlayer>> players; //lista de los players
     std::vector<ObjectEnemy> &enemigos;
     std::vector<ObjectCollected> &itemsRecolectables;
-    std::vector<ObjectProjectile> &proyectiles;
+    std::vector<ObjectProjectile> proyectiles;
 
 
 public:
@@ -63,18 +61,20 @@ public:
 public:
     GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
               std::vector<ObjectEnemy> &enemigos,
-              std::vector<ObjectCollected> &itemsRecolectables, 
-              std::vector<ObjectProjectile> &proyectiles);
+              std::vector<ObjectCollected> &itemsRecolectables);
 
     //Recibe el terreno ya creado
     //GameMundo(Terreno &&terreno);
 
     void addItem(ObjectCollected &&item, const Coordenada &position);
     void addPlayer(std::shared_ptr<ObjectPlayer>, Coordenada position);
+    void addProjectile(ObjectProjectile &&projectile);
 
     // Avanza una iteracion en el tiempo, aplica la gravedad a todos los objetos con peso
     // Chequea todas las colisiones de los recolectables, proyectiles, etc.
     void update();
+
+    std::vector<InfoProyectil> getInfoProyectiles();
 
 private:
     //void cargarMapa(const Terreno &terreno);

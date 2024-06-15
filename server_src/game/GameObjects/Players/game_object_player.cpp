@@ -104,6 +104,10 @@ void ObjectPlayer::jump(Direcciones direccion) {
 
 ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
     estado = EstadosPlayer::Shooting;
+    if (dir == Left) {
+        Coordenada pos(x_left - 8, pos_y_max - height/2); // ajustar visualmente
+        return ObjectProjectile(TipoProyectil::Tipo_1, dir, pos);
+    }
     Coordenada pos(pos_x_max+4, pos_y_max - height/2); // ajustar visualmente
     return ObjectProjectile(TipoProyectil::Tipo_1, dir, pos);
     //return ObjectProjectile(weapon.getTipo(), dir, pos);

@@ -17,6 +17,7 @@ void EventHandler::run()
 {
     SDL_Event e;
     int frameStart;
+    Direcciones dir = Direcciones::Right;
     while (_keep_running) {
         frameStart = SDL_GetTicks();
 
@@ -38,7 +39,7 @@ void EventHandler::run()
                 manejarSeleccionPlayer(e);
                 break;;
             case Juego: 
-                manejarComandosJuego(e);
+                manejarComandosJuego(e, dir);
                 break;
             case ResultadosFinales:
                 break;
@@ -118,7 +119,7 @@ void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
                 TipoPlayer personajeSeleccionado = personaje.getTipoPlayer();
                 cliente.entrarPartida(partidaSeleccionada, personajeSeleccionado);
                 cliente.recibirInformacion();
-                interfaz.addPlayer(personajeSeleccionado); //temporal
+                interfaz.addPlayer(personajeSeleccionado);
                 interfaz.nextEstado();
 
                 return;
@@ -127,9 +128,8 @@ void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
     }
 }
 
-void EventHandler::manejarComandosJuego(SDL_Event &e) {
+void EventHandler::manejarComandosJuego(SDL_Event &e, Direcciones &dir) {
     if (e.type == SDL_KEYDOWN) {
-        Direcciones dir = Direcciones::Right;
         switch (e.key.keysym.sym) { // Obtengo el código de la tecla presionada
         case SDLK_SPACE: 
             cliente.saltar(dir);

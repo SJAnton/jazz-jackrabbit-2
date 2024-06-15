@@ -10,38 +10,17 @@ std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vec
 //constructores
 GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
               std::vector<ObjectEnemy> &enemigos,
-              std::vector<ObjectCollected> &itemsRecolectables, 
-              std::vector<ObjectProjectile> &proyectiles) :
+              std::vector<ObjectCollected> &itemsRecolectables) :
     filas(15*MULTIPLCADOR_CASILLERO), 
     columnas(15*MULTIPLCADOR_CASILLERO), 
     players(players), enemigos(enemigos), 
-    itemsRecolectables(itemsRecolectables), 
-    proyectiles(proyectiles)
+    itemsRecolectables(itemsRecolectables)
 {
    for (int j = 0; j < 15; ++j) { //Cargo los casilleros solidos (HARDCODEADO)
         CoordenadaBloque coord(j, 4); //bloqueo la fila 4
         bloquearCasilleros(coord);
     }
 }
-
-/*
-GameMundo::GameMundo(Terreno &&_terreno) : 
-    terreno(_terreno),
-    filas(_terreno.getFilas()*MULTIPLCADOR_CASILLERO),
-    columnas(_terreno.getColumnas()*MULTIPLCADOR_CASILLERO),
-    casilleros(filas, std::vector<Casillero>(columnas))
-{
-    for (int i=0; i< terreno.getFilas(); i++){
-        for (int j=0; j< terreno.getColumnas(); j++) {
-            if (terreno.getValor(i, j) == PARED) {
-                bloquearCasilleros(CoordenadaBloque(j, i));
-            }
-        }
-    }
-
-}
-*/
-
 
 void GameMundo::addPlayer(std::shared_ptr<ObjectPlayer> playerPtr, Coordenada position) {
     
@@ -55,6 +34,9 @@ void GameMundo::addItem(ObjectCollected &&item, const Coordenada &pos) {
     itemsRecolectables.push_back(item);
     itemsRecolectables.back().setPosition(pos);   
 }
+void GameMundo::addProjectile(ObjectProjectile &&projectile) {
+    proyectiles.push_back(projectile);
+}
 
 
 void GameMundo::aplicarGravedad() {
@@ -63,7 +45,7 @@ void GameMundo::aplicarGravedad() {
     }
 }
 
-//
+// ---------------
 //   COLISIONES
 // ---------------
 
@@ -137,44 +119,19 @@ void GameMundo::chequearColisiones() {
 }
 
 
-
 //Es llamada por el gameloop
 void GameMundo::update() {
     temporizador--;
     aplicarGravedad();
     chequearColisiones();
 
+    for (auto &p : proyectiles) {
+        p.move_x_pos();
+    }
+    
     //manejarComandos();
 
-    //chequear colision de items
-    /*for (auto item : items) {
-        std::vector<Coordenada> areaObj = item->coordenadasOcupadas();
-        for (Coordenada c : areaObj) {
-            if (item->isCollected()) {
-                descargarCasilleros(item);
-                //items.pop(item);
-                break;//Pasa al siguiente item
-            }
-            for (auto p : players) {
-                if (p->isInside(c)) {
-                    int pts = item->recolectar();
-                    //Si es una moneda o diamante...
-                        p->add_points(pts);
-                    //Si es una zanahora...
-                        //p->...(pts);
-                    
-                    //Si es una muncion...
-                        //p->...(pts);
-                    break; //pasa a la siguiente coordenada
-                }
-            }
-        }
-    }
-    */
-
     //chequear colision de enemigos
-
-    //chequear colision de proyectiles
 
 }
 
@@ -190,6 +147,17 @@ void GameMundo::bloquearCasilleros(const CoordenadaBloque &bloque) {
             casilleros[i][j].bloquear();
         }        
     }
+}
+
+std::vector<InfoProyectil> GameMundo::getInfoProyectiles() {
+    std::vector<InfoProyectil> projectile_data;
+    for (auto proyectil : proyectiles) {
+        if (proyectil.is_exploded())
+            continue;
+        InfoProyectil info = proyectil.getInfo();
+        projectile_data.push_back(info);
+    }
+    return projectile_data;
 }
 
 

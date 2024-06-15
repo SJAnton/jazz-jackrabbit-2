@@ -69,8 +69,6 @@ void GameObject::set_pos_x(int x) {
     x_right = pos_x_max +1;
     if (position.x < 1) 
         x_left = 0;
-    if (position.y < 1)
-        y_up = 0;
 }
 
 bool GameObject::isInside(const Coordenada &coordenada) {

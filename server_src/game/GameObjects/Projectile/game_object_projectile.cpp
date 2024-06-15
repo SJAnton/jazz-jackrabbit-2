@@ -94,9 +94,7 @@ void ObjectProjectile::move_x_pos() {
                 //Colison con pared
                 explode();
                 return;
-            } else {
-                std::cout << "avanza a pos " <<position.x+1 << std::endl;
-                
+            } else {                
                 set_pos_x(position.x + 1);
             }
         }

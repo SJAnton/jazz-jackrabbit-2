@@ -23,7 +23,7 @@ class Game {
         std::shared_ptr<PlayerMap> ch_map;
         std::vector<ObjectEnemy> enemies; //lista con todos los enemigos del juego
         std::vector<ObjectCollected> itemsRecolectables;
-        std::vector<ObjectProjectile> proyectiles; //lista con todos los proyectiles en tiempo real 
+
 
         GameMundo gameMundo;
 

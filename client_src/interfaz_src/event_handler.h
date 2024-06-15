@@ -27,8 +27,8 @@ private:
     void manejarEventosMenu(SDL_Event &e);
     void manejarSeleccionPartida(SDL_Event &e);
     void manejarSeleccionPlayer(SDL_Event &e);
-    void manejarComandosJuego(SDL_Event &e);
-    void manejarResultadosFinales(SDL_Event &e);
+    void manejarComandosJuego(SDL_Event &e, Direcciones &dir);
+    void manejarResultadosFinales(SDL_Event &e); //No implementado
 
 
 public:

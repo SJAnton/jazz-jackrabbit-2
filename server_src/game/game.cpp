@@ -25,7 +25,7 @@ void Game::init() {
 
 Game::Game() : 
     ch_map(std::make_shared<PlayerMap>()), 
-    gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables, proyectiles) 
+    gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables) 
 {
     //Hardcodeo 2 monedas (esta info debo recibirla en init y guardarmela en una variable estatica privada)
     itemsRecolectables.push_back(ObjectCollected(Moneda));
@@ -44,9 +44,10 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
     uint8_t player_id = actions[ID_POS];
     uint8_t action = actions[ACTION_POS];
    
-   Direcciones direction = Right;
-    if (actions[DIRECTION_POS] == LEFT)
-         direction = Left;
+    Direcciones direction = Right;
+    if (actions[DIRECTION_POS] == LEFT) {
+        direction = Left;
+    }
 
     std::shared_ptr<ObjectPlayer> player = ch_map->at(player_id); //identifico el player por su id
     //std::cout << "Ejecuto accion" << std::endl;
@@ -64,8 +65,8 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
             player->jump(direction);
             break;
         case ACTION_SHOOT: {
-            auto proyectil = player->shoot(direction);
-            proyectiles.push_back(proyectil);
+            ObjectProjectile proyectil = player->shoot(direction);
+            gameMundo.addProjectile(std::move(proyectil));
             break;
         }
         //case ACTION_SPECIAL_ATTACK:
@@ -76,10 +77,6 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
     }
 }
 void Game::update() {
-    for (auto p : proyectiles) {
-        p.move_x_pos();
-    }
-    
     gameMundo.update();
 }
 
@@ -104,7 +101,6 @@ InfoJuego Game::snapshot() {
     std::vector<InfoPlayer> players_data;
     std::vector<InfoEnemigo> enemies_data;
     std::vector<InfoRecolectable> items_data;
-    std::vector<InfoProyectil> projectile_data;
 
     for (auto it = ch_map->begin(); it != ch_map->end(); it++) {
         std::shared_ptr<ObjectPlayer> &Player = it->second;
@@ -122,14 +118,8 @@ InfoJuego Game::snapshot() {
         InfoRecolectable info = item.getInfo();
         items_data.push_back(info);
     }
-    for (auto proyectil : proyectiles) {
-        if (proyectil.is_exploded())
-            continue;
-        InfoProyectil info = proyectil.getInfo();
-        projectile_data.push_back(info);
-    }
-    InfoJuego game_data(players_data, enemies_data, items_data, projectile_data);
-    std::cout << "envio " << game_data.cantProyectiles() << std::endl;
+
+    InfoJuego game_data(players_data, enemies_data, items_data, gameMundo.getInfoProyectiles());
     return game_data;
 }
 
