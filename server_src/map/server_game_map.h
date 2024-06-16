@@ -8,6 +8,7 @@
 #include "../server_protocol.h"
 #include "../server_queue_list.h"
 #include "../objects/server_object.h"
+#include "../characters/server_enemy.h"
 #include "../../common_src/info_map.h"
 
 #define GROUND_ID 0x00
@@ -104,6 +105,7 @@ class ServerGameMap {
         Point spawn_point;
         Point exit_point;
         std::vector<Layer> layers;
+        std::vector<std::shared_ptr<Enemy>> enemies;
         std::vector<std::shared_ptr<Object>> objects;
 
         ServerGameMap(int numTiles, int numLayers, int layerWidth, int layerHeight,
@@ -141,10 +143,11 @@ class ServerGameMap {
 
         ServerGameMap(int numTiles, uint8_t spawn_x, uint8_t spawn_y, uint8_t exit_x,
                         uint8_t exit_y, uint8_t layers_height, uint8_t layers_width,
-                            std::vector<std::vector<int>> &tile_map, 
-                                std::vector<std::shared_ptr<Object>> &objects) : 
-                                tileset(numTiles), spawn_point(spawn_x, spawn_y),
-                                    exit_point(exit_x, exit_y), objects(objects) {
+                            std::vector<std::vector<int>> &tile_map,
+                            std::vector<std::shared_ptr<Enemy>> &enemies,
+                            std::vector<std::shared_ptr<Object>> &objects
+                        ) : tileset(numTiles), spawn_point(spawn_x, spawn_y),
+                            exit_point(exit_x, exit_y), enemies(enemies), objects(objects) {
             // Crea un GameMap leído desde un archivo
             layers.emplace_back(layers_width, layers_height);
             layers[0].setTileMap(tile_map);
@@ -157,6 +160,8 @@ class ServerGameMap {
         Point get_exit_point();
 
         std::vector<Layer> get_layers();
+
+        std::vector<std::shared_ptr<Enemy>> get_enemies();
 
         std::vector<std::shared_ptr<Object>> get_objects();
 

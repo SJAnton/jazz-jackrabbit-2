@@ -3,11 +3,6 @@
 
 #include "server_enemy.h"
 
-#define H_POS 0
-#define D_POS 1
-#define XH_POS 2
-#define YH_POS 3
-
 class EnemyLizard : public Enemy {
     private:
 
@@ -18,6 +13,7 @@ class EnemyLizard : public Enemy {
             x_pos = x;
             y_pos = y;
             health = data[H_POS];
+            enemy_id = LIZARD_ID;
             damage = data[D_POS];
             x_hitbox = data[XH_POS];
             y_hitbox = data[YH_POS];

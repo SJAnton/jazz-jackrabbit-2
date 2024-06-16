@@ -26,6 +26,14 @@ InfoEnemigo Enemy::set_data() {
     return data;
 }
 
+uint8_t Enemy::get_enemy_id() {
+    return enemy_id;
+}
+
+uint8_t Enemy::get_damage() {
+    return damage;
+}
+
 void Enemy::do_nothing() {
     enemy_status = EstadosEnemy::Idle;
 }

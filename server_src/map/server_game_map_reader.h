@@ -6,8 +6,8 @@
 #include <filesystem>
 #include <yaml-cpp/yaml.h>
 
-#include "../TPG/server_src/objects/server_ammo.h"
-#include "../TPG/server_src/map/server_game_map.h"
+#include "../objects/server_ammo.h"
+#include "../map/server_game_map.h"
 
 class ServerGameMapReader {
     private:

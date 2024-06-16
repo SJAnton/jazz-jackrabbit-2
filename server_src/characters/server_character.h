@@ -110,8 +110,6 @@ class Character {
 
         int jump_left = 0;
 
-        std::map<std::string, std::vector<uint8_t>> &map;
-
         void pick_up_ammo(std::shared_ptr<Object> &object);
 
         void add_points(uint8_t sum);
@@ -119,7 +117,7 @@ class Character {
         void add_health(uint8_t health);
 
     public:
-        Character(std::map<std::string, std::vector<uint8_t>> &map) : map(map) {
+        Character(std::map<std::string, std::vector<uint8_t>> &map) {
             std::vector<uint8_t> ammo_data = map[AMMO_KEY];
 
             full_health = health;
@@ -139,6 +137,8 @@ class Character {
             respawn = map[CHARACTER_KEY][RESPAWN_TIME_POS] * ITR_PER_SEC;
         };
 
+        Character() {};
+
         virtual ~Character() = default;
 
         InfoPlayer set_data(int id);
@@ -149,17 +149,23 @@ class Character {
 
         uint8_t get_points();
 
+        uint8_t get_health();
+
+        uint8_t get_x_hitbox();
+
+        uint8_t get_y_hitbox();
+
         uint8_t get_x_pos();
 
         uint8_t get_y_pos();
 
-        uint8_t left_side(); // Devuelve x_pos - hitbox_x
+        uint8_t left_side();
 
-        uint8_t right_side(); // Devuelve x_pos + hitbox_x
+        uint8_t right_side();
 
-        uint8_t upper_side(); // Devuelve y_pos + hitbox_y
+        uint8_t upper_side();
 
-        uint8_t lower_side(); // Devuelve y_pos - hitbox_y
+        uint8_t lower_side();
 
         bool is_dead();
 
@@ -196,7 +202,7 @@ class Character {
         void attack(uint8_t direction, std::list<std::shared_ptr<Projectile>> &projectile_list,
                     std::map<std::string, std::vector<uint8_t>> &data_map);
 
-        void change_weapon(int id);
+        void change_weapon(int id, std::map<std::string, std::vector<uint8_t>> &data_map);
 
         void pick_up_object(std::shared_ptr<Object> &object);
 };

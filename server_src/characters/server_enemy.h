@@ -11,6 +11,15 @@
 #define LIZARD_KEY "EnemyLizard"
 #define RAT_KEY "EnemyRat"
 
+#define BAT_ID 0x01
+#define LIZARD_ID 0x02
+#define RAT_ID 0x03
+
+#define H_POS 0
+#define D_POS 1
+#define XH_POS 2
+#define YH_POS 3
+
 class Enemy : public Character {
     private:
         bool contact_x(Character &ch);
@@ -18,6 +27,8 @@ class Enemy : public Character {
         bool contact_y(Character &ch);
 
     protected:
+        uint8_t enemy_id;
+
         uint8_t damage;
 
         TipoEnemy type;
@@ -26,6 +37,21 @@ class Enemy : public Character {
         
     public:
         Enemy(std::map<std::string, std::vector<uint8_t>> &map) : Character(map) {};
+
+        Enemy(uint8_t x, uint8_t y, uint8_t hp, uint8_t id,
+                uint8_t dmg, uint8_t x_hbx, uint8_t y_hbx) {
+            x_pos = x;
+            y_pos = y;
+            health = hp;
+            enemy_id = id;
+            damage = dmg;
+            x_hitbox = x_hbx;
+            y_hitbox = y_hbx;
+        }
+
+        uint8_t get_enemy_id();
+
+        uint8_t get_damage();
 
         InfoEnemigo set_data();
 

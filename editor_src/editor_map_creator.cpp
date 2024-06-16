@@ -27,6 +27,7 @@
 #define SPAWN_POINT_KEY "SpawnPoint"
 #define EXIT_POINT_KEY "ExitPoint"
 #define TILESET_KEY "Tileset"
+#define ENEMY_KEY "Enemies"
 #define OBJECT_KEY "Objects"
 #define LAYER_KEY "Layers"
 #define TILE_KEY "Tile"
@@ -38,6 +39,11 @@
 #define TILES_NUMBER_KEY "tiles_num"
 #define LAYER_HEIGHT_KEY "height"
 #define LAYER_WIDTH_KEY "width"
+#define ENEMY_ID_KEY "enemy_id"
+#define ENEMY_HEALTH_KEY "health"
+#define ENEMY_DAMAGE_KEY "damage"
+#define ENEMY_X_HITBOX_KEY "x_hitbox"
+#define ENEMY_Y_HITBOX_KEY "y_hitbox"
 #define OBJECT_ID_KEY "object_id"
 #define AMMO_ID_KEY "ammo_id"
 #define OBJECT_AMOUNT_KEY "amount"
@@ -50,7 +56,7 @@ void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
     Point exit = game_map.get_exit_point();
     Tileset tileset = game_map.get_tileset();
     std::vector<Layer> layers = game_map.get_layers();
-    std::vector<Tile> tiles = game_map.get_tileset().get_tiles();
+    std::vector<std::shared_ptr<Enemy>> enemies = game_map.get_enemies();
     std::vector<std::shared_ptr<Object>> objects = game_map.get_objects();
 
     YAML::Emitter out;
@@ -98,6 +104,20 @@ void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
             out << YAML::EndSeq;
         }
         out << YAML::EndSeq;
+    }
+    out << YAML::EndMap;
+
+    // Enemies
+    out << YAML::Key << ENEMY_KEY;
+    out << YAML::Value << YAML::BeginMap;
+    for (std::shared_ptr<Enemy> enemy : enemies) {
+        out << YAML::Key << ENEMY_ID_KEY << static_cast<int>(enemy->get_enemy_id());
+        out << YAML::Key << ENEMY_HEALTH_KEY << static_cast<int>(enemy->get_health());
+        out << YAML::Key << ENEMY_DAMAGE_KEY << static_cast<int>(enemy->get_damage());
+        out << YAML::Key << X_KEY << static_cast<int>(enemy->get_x_pos());
+        out << YAML::Key << Y_KEY << static_cast<int>(enemy->get_y_pos());
+        out << YAML::Key << ENEMY_X_HITBOX_KEY << static_cast<int>(enemy->get_x_hitbox());
+        out << YAML::Key << ENEMY_Y_HITBOX_KEY << static_cast<int>(enemy->get_y_hitbox());
     }
     out << YAML::EndMap;
 

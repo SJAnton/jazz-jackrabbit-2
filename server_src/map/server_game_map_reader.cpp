@@ -8,18 +8,24 @@
 
 #define SPAWN_POINT_KEY "SpawnPoint"
 #define EXIT_POINT_KEY "ExitPoint"
-#define TILE_SET_KEY "Tileset"
+#define TILESET_KEY "Tileset"
+#define ENEMY_KEY "Enemies"
 #define OBJECT_KEY "Objects"
 #define LAYER_KEY "Layers"
 #define TILE_KEY "Tile"
-#define TILES_NUMBER_KEY "tiles_num"
 #define TILE_MAP_KEY "tile_map"
 #define IS_SOLID_KEY "is_solid"
 #define X_KEY "x"
 #define Y_KEY "y"
 #define ID_KEY "id"
+#define TILES_NUMBER_KEY "tiles_num"
 #define LAYER_HEIGHT_KEY "height"
 #define LAYER_WIDTH_KEY "width"
+#define ENEMY_ID_KEY "enemy_id"
+#define ENEMY_HEALTH_KEY "health"
+#define ENEMY_DAMAGE_KEY "damage"
+#define ENEMY_X_HITBOX_KEY "x_hitbox"
+#define ENEMY_Y_HITBOX_KEY "y_hitbox"
 #define OBJECT_ID_KEY "object_id"
 #define AMMO_ID_KEY "ammo_id"
 #define OBJECT_AMOUNT_KEY "amount"
@@ -69,6 +75,7 @@ std::map<uint8_t, ServerGameMap> ServerGameMapReader::read_levels() {
         int layers_height = 0;
         int layers_width = 0;
         std::vector<std::vector<int>> tile_map;
+        std::vector<std::shared_ptr<Enemy>> enemies;
         std::vector<std::shared_ptr<Object>> objects;
 
         for (YAML::iterator it = node.begin(); it != node.end(); ++it) {
@@ -84,7 +91,7 @@ std::map<uint8_t, ServerGameMap> ServerGameMapReader::read_levels() {
                 exit_x = value[X_KEY].as<uint8_t>();
                 exit_y = value[Y_KEY].as<uint8_t>();
 
-            } else if (key.as<std::string>() == TILE_SET_KEY) {
+            } else if (key.as<std::string>() == TILES_NUMBER_KEY) {
                 tiles_num = value[TILES_NUMBER_KEY].as<int>();
 
             } else if (key.as<std::string>() == LAYER_KEY) {
@@ -97,6 +104,24 @@ std::map<uint8_t, ServerGameMap> ServerGameMapReader::read_levels() {
                     for (int j = 0; j < layers_width; ++j) {
                         tile_map[i][j] = tm[i][j].as<int>();
                     }
+                }
+
+            } else if (key.as<std::string>() == ENEMY_KEY) {
+                for (YAML::const_iterator enemy_it = value.begin(); enemy_it != value.end(); ++enemy_it) {
+                    YAML::Node enemy = *enemy_it;
+
+                    uint8_t enemy_id = enemy[ENEMY_ID_KEY].as<uint8_t>();
+                    uint8_t health = enemy[ENEMY_HEALTH_KEY].as<uint8_t>();
+                    uint8_t damage = enemy[ENEMY_DAMAGE_KEY].as<uint8_t>();
+                    uint8_t x_pos = enemy[X_KEY].as<uint8_t>();
+                    uint8_t y_pos = enemy[Y_KEY].as<uint8_t>();
+                    uint8_t x_hitbox = enemy[ENEMY_X_HITBOX_KEY].as<uint8_t>();
+                    uint8_t y_hitbox = enemy[ENEMY_Y_HITBOX_KEY].as<uint8_t>();
+
+                    std::shared_ptr<Enemy> en = std::make_shared<Enemy>(
+                        x_pos, y_pos, health, enemy_id, damage, x_hitbox, y_hitbox
+                    );
+                    enemies.push_back(en);
                 }
 
             } else if (key.as<std::string>() == OBJECT_KEY) {
@@ -126,7 +151,7 @@ std::map<uint8_t, ServerGameMap> ServerGameMapReader::read_levels() {
             }
         }
         ServerGameMap level(tiles_num, spawn_x, spawn_y, exit_x, exit_y,
-                            layers_height, layers_width, tile_map, objects);
+                            layers_height, layers_width, tile_map, enemies, objects);
         levels.emplace(level_number, level);
         level_number++;
     }

@@ -16,6 +16,10 @@ std::vector<Layer> ServerGameMap::get_layers() {
     return layers;
 }
 
+std::vector<std::shared_ptr<Enemy>> ServerGameMap::get_enemies() {
+    return enemies;
+}
+
 std::vector<std::shared_ptr<Object>> ServerGameMap::get_objects() {
     return objects;
 }

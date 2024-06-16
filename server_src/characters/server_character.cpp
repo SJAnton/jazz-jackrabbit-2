@@ -49,6 +49,18 @@ uint8_t Character::get_points() {
     return points;
 }
 
+uint8_t Character::get_health() {
+    return health;
+}
+
+uint8_t Character::get_x_hitbox() {
+    return x_hitbox;
+}
+
+uint8_t Character::get_y_hitbox() {
+    return y_hitbox;
+}
+
 uint8_t Character::get_x_pos() {
     return x_pos;
 }
@@ -321,7 +333,7 @@ void Character::pick_up_ammo(std::shared_ptr<Object> &object) {
     }
 }
 
-void Character::change_weapon(int id) {
+void Character::change_weapon(int id, std::map<std::string, std::vector<uint8_t>> &map) {
     std::unique_ptr<Weapon> new_weapon;
     switch (id) {
         case BLASTER_ID:
