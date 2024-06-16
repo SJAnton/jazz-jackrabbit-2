@@ -100,7 +100,7 @@ std::vector<uint8_t> ServerProtocol::encodePlayer(const InfoPlayer &infoPlayer) 
     bytes.push_back(infoPlayer.vida);
     bytes.push_back(infoPlayer.puntos);
     bytes.push_back(ARMA_COMUN);
-    bytes.push_back(infoPlayer.muncion);
+    bytes.push_back(infoPlayer.municion);
     return bytes;
 }
 
