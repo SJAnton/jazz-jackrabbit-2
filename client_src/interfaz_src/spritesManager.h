@@ -57,6 +57,9 @@ private:
 
     //HUD
     SpriteObject heartIcon;
+    SpriteSheet spazGun;
+    SpriteSheet jazzGun;
+    SpriteSheet loriGun;
 
 
 private: 
@@ -96,7 +99,8 @@ public:
     void renderizarTerreno();
     void renderizarItemEn(const TipoRecolectable &tipo, int x, int y);
     void renderizarProyectilEn(const Direcciones &dir, int x, int y);
-    void renderizarVidas(int& vidas);
+    void renderizarVidas(int &vidas);
+    void renderizarMunicionArma(const TipoPlayer &tipo, int cantMunicion);
 
     // UPDATES
     /**

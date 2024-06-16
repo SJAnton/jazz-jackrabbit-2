@@ -35,7 +35,10 @@ SpritesManager::SpritesManager() :
     gema(PATH_ITEM_GEM, 36, 36, 8),
     zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20),
     proyectil_0(PATH_PROJECTILE_0, 16, 8,3),
-    heartIcon(PATH_HEART_ICON)
+    heartIcon(PATH_HEART_ICON),
+    spazGun(PATH_SPAZ_GUN, 24, 24, 10),
+    jazzGun(PATH_JAZZ_GUN, 24, 24, 10),
+    loriGun(PATH_LORI_GUN, 16, 16, 5)
 {
     SpritesPlayers::init();
 
@@ -166,6 +169,23 @@ void SpritesManager::renderizarVidas(int& vidas){
         heartIcon.renderizarEn(corazones_x + separacion, corazones_y);
         separacion -= 30;
     }
+}
+
+void SpritesManager::renderizarMunicionArma(const TipoPlayer &tipo, int cantMunicion){
+    int municion_x = ANCHO_WINDOW * 0.8;
+    int municion_y = ALTO_WINDOW * 0.9;
+    int separacion = 0;
+    if(tipo == TipoPlayer::Spaz){
+        spazGun.renderizarEn(municion_x, municion_y);
+    }
+    else if(tipo == TipoPlayer::Jazz){
+        jazzGun.renderizarEn(municion_x, municion_y);
+    }
+    else if(tipo == TipoPlayer::Lori){
+        loriGun.renderizarEn(municion_x, municion_y);
+    }
+    std::string municion = "X" + std::to_string(cantMunicion);
+    font.renderText(municion, municion_x + 30, municion_y, 0.4f);
 }
 
 void SpritesManager::updateItems() {
