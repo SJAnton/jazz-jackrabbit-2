@@ -28,15 +28,13 @@ CMAKE_BUILD_TYPE:STRING=
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+CMAKE_CXX_COMPILER:STRING=/usr/bin/clang++
 
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-11
+//LLVM archiver
+CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/llvm-ar-14
 
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-11
+//Generate index for LLVM archive
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/llvm-ranlib-14
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -54,15 +52,13 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+CMAKE_C_COMPILER:STRING=/usr/bin/clang
 
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-11
+//LLVM archiver
+CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/llvm-ar-14
 
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-11
+//Generate index for LLVM archive
+CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/llvm-ranlib-14
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -209,12 +205,6 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Arguments to supply to pkg-config
-PKG_CONFIG_ARGN:STRING=
-
-//pkg-config executable
-PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
-
 //Value Computed by CMake
 client_BINARY_DIR:STATIC=/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build
 
@@ -223,15 +213,6 @@ client_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 client_SOURCE_DIR:STATIC=/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2
-
-//Path to a library.
-pkgcfg_lib_SDL2IMAGE_SDL2:FILEPATH=/usr/local/lib/libSDL2.so
-
-//Path to a library.
-pkgcfg_lib_SDL2IMAGE_SDL2_image:FILEPATH=/usr/local/lib/libSDL2_image.so
-
-//Path to a library.
-pkgcfg_lib_SDL2_SDL2:FILEPATH=/usr/local/lib/libSDL2.so
 
 
 ########################
@@ -381,91 +362,4 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Details about finding PkgConfig
-FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.2()]
-//ADVANCED property for variable: PKG_CONFIG_ARGN
-PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
-PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
-SDL2IMAGE_CFLAGS:INTERNAL=-D_REENTRANT;-I/usr/local/include/SDL2;-I/usr/local/include;-I/usr/local/include/SDL2
-SDL2IMAGE_CFLAGS_I:INTERNAL=
-SDL2IMAGE_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
-SDL2IMAGE_FOUND:INTERNAL=1
-SDL2IMAGE_INCLUDEDIR:INTERNAL=/usr/local/include
-SDL2IMAGE_INCLUDE_DIRS:INTERNAL=/usr/local/include/SDL2;/usr/local/include;/usr/local/include/SDL2
-SDL2IMAGE_LDFLAGS:INTERNAL=-L/usr/local/lib;-lSDL2_image;-Wl,-rpath,/usr/local/lib;-Wl,--enable-new-dtags;-lSDL2
-SDL2IMAGE_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/usr/local/lib;-Wl,--enable-new-dtags
-SDL2IMAGE_LIBDIR:INTERNAL=/usr/local/lib
-SDL2IMAGE_LIBRARIES:INTERNAL=SDL2_image;SDL2
-SDL2IMAGE_LIBRARY_DIRS:INTERNAL=/usr/local/lib
-SDL2IMAGE_LIBS:INTERNAL=
-SDL2IMAGE_LIBS_L:INTERNAL=
-SDL2IMAGE_LIBS_OTHER:INTERNAL=
-SDL2IMAGE_LIBS_PATHS:INTERNAL=
-SDL2IMAGE_MODULE_NAME:INTERNAL=SDL2_image
-SDL2IMAGE_PREFIX:INTERNAL=/usr/local
-SDL2IMAGE_SDL2_image_INCLUDEDIR:INTERNAL=
-SDL2IMAGE_SDL2_image_LIBDIR:INTERNAL=
-SDL2IMAGE_SDL2_image_PREFIX:INTERNAL=
-SDL2IMAGE_SDL2_image_VERSION:INTERNAL=
-SDL2IMAGE_STATIC_CFLAGS:INTERNAL=-D_REENTRANT;-I/usr/local/include/SDL2;-I/usr/local/include;-I/usr/local/include/SDL2
-SDL2IMAGE_STATIC_CFLAGS_I:INTERNAL=
-SDL2IMAGE_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
-SDL2IMAGE_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include/SDL2;/usr/local/include;/usr/local/include/SDL2
-SDL2IMAGE_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib;-lSDL2_image;-Wl,-rpath,/usr/local/lib;-Wl,--enable-new-dtags;-lSDL2;-lm;-lpthread
-SDL2IMAGE_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/usr/local/lib;-Wl,--enable-new-dtags
-SDL2IMAGE_STATIC_LIBDIR:INTERNAL=
-SDL2IMAGE_STATIC_LIBRARIES:INTERNAL=SDL2_image;SDL2;m;pthread
-SDL2IMAGE_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib
-SDL2IMAGE_STATIC_LIBS:INTERNAL=
-SDL2IMAGE_STATIC_LIBS_L:INTERNAL=
-SDL2IMAGE_STATIC_LIBS_OTHER:INTERNAL=
-SDL2IMAGE_STATIC_LIBS_PATHS:INTERNAL=
-SDL2IMAGE_VERSION:INTERNAL=2.8.2
-SDL2_CFLAGS:INTERNAL=-D_REENTRANT;-I/usr/local/include;-I/usr/local/include/SDL2
-SDL2_CFLAGS_I:INTERNAL=
-SDL2_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
-SDL2_FOUND:INTERNAL=1
-SDL2_INCLUDEDIR:INTERNAL=/usr/local/include
-SDL2_INCLUDE_DIRS:INTERNAL=/usr/local/include;/usr/local/include/SDL2
-SDL2_LDFLAGS:INTERNAL=-L/usr/local/lib;-Wl,-rpath,/usr/local/lib;-Wl,--enable-new-dtags;-lSDL2
-SDL2_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/usr/local/lib;-Wl,--enable-new-dtags
-SDL2_LIBDIR:INTERNAL=/usr/local/lib
-SDL2_LIBRARIES:INTERNAL=SDL2
-SDL2_LIBRARY_DIRS:INTERNAL=/usr/local/lib
-SDL2_LIBS:INTERNAL=
-SDL2_LIBS_L:INTERNAL=
-SDL2_LIBS_OTHER:INTERNAL=
-SDL2_LIBS_PATHS:INTERNAL=
-SDL2_MODULE_NAME:INTERNAL=sdl2
-SDL2_PREFIX:INTERNAL=/usr/local
-SDL2_STATIC_CFLAGS:INTERNAL=-D_REENTRANT;-I/usr/local/include;-I/usr/local/include/SDL2
-SDL2_STATIC_CFLAGS_I:INTERNAL=
-SDL2_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
-SDL2_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include;/usr/local/include/SDL2
-SDL2_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib;-Wl,-rpath,/usr/local/lib;-Wl,--enable-new-dtags;-lSDL2;-lm;-lpthread
-SDL2_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/usr/local/lib;-Wl,--enable-new-dtags
-SDL2_STATIC_LIBDIR:INTERNAL=
-SDL2_STATIC_LIBRARIES:INTERNAL=SDL2;m;pthread
-SDL2_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib
-SDL2_STATIC_LIBS:INTERNAL=
-SDL2_STATIC_LIBS_L:INTERNAL=
-SDL2_STATIC_LIBS_OTHER:INTERNAL=
-SDL2_STATIC_LIBS_PATHS:INTERNAL=
-SDL2_VERSION:INTERNAL=2.31.0
-SDL2_sdl2_INCLUDEDIR:INTERNAL=
-SDL2_sdl2_LIBDIR:INTERNAL=
-SDL2_sdl2_PREFIX:INTERNAL=
-SDL2_sdl2_VERSION:INTERNAL=
-__pkg_config_arguments_SDL2:INTERNAL=REQUIRED;sdl2
-__pkg_config_arguments_SDL2IMAGE:INTERNAL=REQUIRED;SDL2_image
-__pkg_config_checked_SDL2:INTERNAL=1
-__pkg_config_checked_SDL2IMAGE:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2IMAGE_SDL2
-pkgcfg_lib_SDL2IMAGE_SDL2-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2IMAGE_SDL2_image
-pkgcfg_lib_SDL2IMAGE_SDL2_image-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_SDL2_SDL2
-pkgcfg_lib_SDL2_SDL2-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/usr/local/lib
 
