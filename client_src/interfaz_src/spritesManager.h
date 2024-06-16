@@ -10,6 +10,7 @@
 #include "sprites_paths.h"
 #include "button_partida.h"
 #include "button_character.h"
+#include "fontManager.h"
 #include <list>
 #include <vector>
 
@@ -25,7 +26,7 @@ private:
     std::list<ButtonPartida> botones_partidas;
     std::list<ButtonCharacter> botones_character;
     //SpriteObject letras;
-    SDL_Texture* fontTexture;//cambiar si se puede
+    fontManager font;
 
     //SeleccionPlayer
     SpriteObject character_spaz;

@@ -39,11 +39,7 @@ SpritesManager::SpritesManager() :
 {
     SpritesPlayers::init();
 
-    //Temporal. Armar mejor la clase ButtonPartida
-    SDL_Surface* surface = IMG_Load(PATH_FONT);
-    fontTexture = SDL_CreateTextureFromSurface(InterfazGrafica::renderer, surface);
-    SDL_FreeSurface(surface);
-
+    font = fontManager();
     
     //players.emplace_back(Lori);
     
@@ -77,9 +73,9 @@ std::list<ButtonPartida> SpritesManager::getBotonesPartidas() {
 
 void SpritesManager::renderizarBotonesPartidas() {
     for (auto button : botones_partidas) {
-        button.renderizar(InterfazGrafica::renderer, fontTexture);
+        button.renderizar();
     }
-    botones_partidas.back().renderizarCrearPartida(InterfazGrafica::renderer, fontTexture);
+    botones_partidas.back().renderizarCrearPartida();
 }
 
 
