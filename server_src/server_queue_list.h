@@ -2,6 +2,7 @@
 #define SERVER_QUEUE_LIST_H_
 
 #include <list>
+#include <map>
 #include <mutex>
 
 #include "../common_src/queue.h"
@@ -12,23 +13,24 @@
 */
 class ServerQueueList {
     private:
-        std::list<Queue<InfoJuego>*> list;
-
+        //std::list<Queue<InfoJuego>*> list;
+        std::map <int , std::list<Queue<InfoJuego>*>> map;
         std::mutex m;
 
     public:
         ServerQueueList() {}
 
-        void push_back(Queue<InfoJuego> *queue);
+        void push_back(Queue<InfoJuego> *queue, const int &id_client);
 
-        void push_to_all_queues(InfoJuego data);
+        void push_to_all_queues(const InfoJuego &data);
 
-        void remove(Queue<InfoJuego> *queue);
+        void remove(const int &id_client);
 
         int size();
 
-        std::list<Queue<InfoJuego>*>::iterator begin();
+        //std::list<Queue<InfoJuego>*>::iterator begin();
 
-        std::list<Queue<InfoJuego>*>::iterator end();
+        //std::list<Queue<InfoJuego>*>::iterator end();
 };
+
 #endif

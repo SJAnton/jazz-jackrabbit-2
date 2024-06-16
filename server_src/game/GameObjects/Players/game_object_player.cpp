@@ -20,6 +20,7 @@ void ObjectPlayer::init(int health, int speed_walk, int speed_run, int speed_int
         defaultWalkSpeed = speed_walk;
         defaultRunSpeed = speed_run;
         defaultIntoxicatedSpeed = speed_intoxicated;
+        defaultJumpSpeed = speed_jump;
         defaultFallSpeed = speed_fall;
         inicializado = true;
     }
@@ -100,6 +101,27 @@ void ObjectPlayer::run(Direcciones direccion) {
 
 void ObjectPlayer::jump(Direcciones direccion) {
     estado = EstadosPlayer::Jumping;
+    jumping = true;
+    for (int i=0; i <  defaultJumpSpeed; i++) { //para chequear en cada unidad que se mueve si hay una pared
+        
+        if (position.y  <= 0 || position.y >= Y_MAX) { // si me salgo del mapa...
+            estado = EstadosPlayer::Falling;
+            jumping = false;
+            std::cout << "me fui de rango. pos y " << position.y << std::endl;
+            return;
+        }
+        //Chequeo si hay una pared arriba 
+        if (GameMundo::casilleros[y_up][position.x].estaBloqueado() || 
+            GameMundo::casilleros[y_up][pos_x_max].estaBloqueado()) { 
+            //Colison con pared
+            std::cout << "pared a arriba" << std::endl;
+            jumping = false;
+            estado = EstadosPlayer::Falling;
+            return;
+        } else { //si no
+            set_pos_y(position.y - 1); // se mueve 1 casillero hacia arriba
+        }
+    }
 }
 
 ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
@@ -114,6 +136,9 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
 }
 
 void ObjectPlayer::fall() {
+    if (jumping)
+        return;
+
     for (int i=0; i < ObjectPlayer::defaultFallSpeed; i++) {
         //Chequeo si hay una pared debajo (para hacer mas simple miro solo los extremos de x)
         if (GameMundo::casilleros[y_down][position.x].estaBloqueado() || 
@@ -146,6 +171,10 @@ void ObjectPlayer::pick_up_ammo(int ammo) {
 void ObjectPlayer::set_intoxicated_status(bool status) {
     intoxicated = status;
 }
+void ObjectPlayer::set_jumping_status(const bool &status) {
+    jumping = status;
+}
+
 
 void ObjectPlayer::add_points(int points) {
     this->points += points;

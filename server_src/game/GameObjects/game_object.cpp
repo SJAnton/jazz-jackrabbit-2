@@ -61,14 +61,21 @@ void GameObject::setPosition(const Coordenada &coordenada) {
 }
 
 void GameObject::set_pos_x(int x) {
-    if (x < 0)
+    if (x <= 0 || x >= X_MAX)
         return;
     position.x = x;
     pos_x_max = position.x + width -1;
     x_left = position.x -1;
-    x_right = pos_x_max +1;
-    if (position.x < 1) 
-        x_left = 0;
+    x_right = pos_x_max + 1;
+}
+
+void GameObject::set_pos_y(int y) {
+    if (y <= 0 || y >= Y_MAX)
+        return;
+    position.y = y;
+    pos_y_max = position.y + height -1;
+    y_up = position.y -1;
+    y_down = pos_y_max +1;
 }
 
 bool GameObject::isInside(const Coordenada &coordenada) {

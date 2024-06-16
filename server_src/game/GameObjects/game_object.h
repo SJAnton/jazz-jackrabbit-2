@@ -9,7 +9,7 @@
 #include <vector>
 
 #define X_MAX 30*64
-
+#define Y_MAX 20*64
 class GameMundo; // Declaración anticipada de GameMundo
 
 
@@ -41,6 +41,7 @@ protected:
     bool has_gravity = false;
 
     void set_pos_x(int x);
+    void set_pos_y(int y);
 
 public:
     GameObject(unsigned int width, unsigned int height);

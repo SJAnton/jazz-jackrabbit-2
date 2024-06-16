@@ -27,7 +27,10 @@ class Game {
 
         GameMundo gameMundo;
 
-        //std::list<std::shared_ptr<Projectile>> &projectile_list;
+
+        int auxJump = 0; //variable auxiliar para llevar el conteo de veces que se llama a player->jump
+        //establesco el tiempo que dura el salto en 4 iteraciones 
+        int timeJump = 7; //   (ajustar segun la vel de salto y visualmente)
 
     public:
         Game();
@@ -46,7 +49,7 @@ class Game {
 
         void add_player(TipoPlayer &player_type, int player_id);
 
-        void remove_player(uint8_t &player_id);
+        void remove_player(const int &player_id);
         
         bool is_running();
 };

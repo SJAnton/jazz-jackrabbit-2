@@ -19,6 +19,10 @@
 
 using namespace std;
 
+/**
+ * Este hilo se ejecuta solo una vez y permanece abierto hasta que el server_main lo decida.
+ * Se encarga de aceptar clientes, creando uno objeto Client por cada uno.
+*/
 class ServerAcceptor : public Thread {
     private:
         Socket sk; //server_sk
@@ -29,8 +33,6 @@ class ServerAcceptor : public Thread {
         list<Client> clients;
 
         GameloopList gameloops;
-
-        //map<uint8_t, shared_ptr<CharacterMap>> ch_maps;
 
         //map<uint8_t, shared_ptr<Queue<uint8_t>>> gameloops_q;
 

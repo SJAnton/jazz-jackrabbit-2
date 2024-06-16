@@ -16,7 +16,7 @@
 
 //Metodo para cargar todas las constantes del config
 void Game::init() {
-    ObjectPlayer::init(10, 5, 10, 2, 15, 15);
+    ObjectPlayer::init(10, 5, 10, 2, 10, 15);
     ObjectProjectile::init(1, 2, 3, 4, 11, 12, 13, 14);
     ObjectCollected::init(20, 10, 3, 2, -1, 0.2f);
     EnemyRat::init(3, 4);
@@ -38,6 +38,20 @@ Game::Game() :
 
 
 void Game::execute_actions(std::vector<uint8_t> &actions) {
+    //chequeo si esta saltando alguno
+    for (auto &p : ch_map->getPlayers()) {
+
+        if (p->isJumping()) {
+            p->jump(Direcciones::Left);
+            auxJump++;
+            if (auxJump > timeJump) {
+                p->set_jumping_status(false);
+                auxJump = 0;
+            }
+//            return;
+        }
+    }
+
     if (actions.empty()) {
         return;
     }
@@ -51,6 +65,9 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
 
     std::shared_ptr<ObjectPlayer> player = ch_map->at(player_id); //identifico el player por su id
     //std::cout << "Ejecuto accion" << std::endl;
+
+    
+    
     switch (action) {
         case ACTION_IDLE:
            // player->do_nothing();
@@ -62,6 +79,7 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
             player->run(direction);
             break;
         case ACTION_JUMP:
+            player->set_jumping_status(true);
             player->jump(direction);
             break;
         case ACTION_SHOOT: {
@@ -131,7 +149,7 @@ void Game::add_player(TipoPlayer &player_type, int player_id) {
     gameMundo.addPlayer(player, player->getPosition());
 }
 
-void Game::remove_player(uint8_t &player_id) {
+void Game::remove_player(const int &player_id) {
     ch_map->erase(player_id);
 }
 

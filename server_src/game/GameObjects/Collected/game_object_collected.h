@@ -14,7 +14,8 @@
 #define WIDTH_COLLECTED 3
 #define HEIGHT_COLLECTED 3
 
-//No hace falta polimorfismo porque en escencia todas hacen lo mismo
+// No hace falta polimorfismo porque en escencia todas hacen lo mismo 
+// (devolver un numero entero cuando son recolectadas)
 class ObjectCollected : public GameObject {
 private:
     static bool initialized;

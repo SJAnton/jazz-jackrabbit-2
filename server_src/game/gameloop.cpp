@@ -15,25 +15,35 @@ ServerGameloop::ServerGameloop(int id_game, int id_client, TipoPlayer tipoPlayer
     id(id_game),
     recv_q(recv_q)
 {
-    std::cout << "creo un gameloop" << std::endl;
-    sndr_queues.push_back(sndr_q);
+    sndr_queues.push_back(sndr_q, id_client);
     game.add_player(tipoPlayer, id_client);  
 }
 
 void ServerGameloop::addPlayer(int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q) {
-    sndr_queues.push_back(sndr_q);
-    std::cout << "Agrego sender_q al gamloop" << std::endl;
+    sndr_queues.push_back(sndr_q, id_client);
     game.add_player(tipoPlayer, id_client);  
 }
 
+void ServerGameloop::removePlayer(int id) {
+    game.remove_player(id);
+    sndr_queues.remove(id);
+    std::cout << "player y sender eliminados del gameloop" << std::endl;
+    std::cout << "Aun quedan: " << sndr_queues.size() << std::endl;
+    if (sndr_queues.size() == 0) {
+        std::cout << "Terminar Gameloop" << std::endl;
+        //kill();
+    }
+
+}
 
 void ServerGameloop::run() {
     auto expected_itr_time = std::chrono::milliseconds(MILLISECONDS_PER_ITR);
 
+   
+   
     while (game.is_running()) {
         auto start_time = std::chrono::steady_clock::now();
-
-        
+                
         std::vector<uint8_t> data;
         uint8_t byte;
         while (recv_q->try_pop(byte)) {
@@ -46,6 +56,7 @@ void ServerGameloop::run() {
             continue;
         }
         game.update();
+
 
         game.execute_actions(data);
 
@@ -68,6 +79,10 @@ void ServerGameloop::send_snapshot() {
 
 bool ServerGameloop::is_dead() {
     return wc;
+}
+
+int ServerGameloop::getId() {
+    return id;
 }
 
 

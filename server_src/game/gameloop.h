@@ -24,9 +24,7 @@ class ServerGameloop : public Thread {
        // std::map<uint8_t, std::shared_ptr<ServerQueueList>> &monitors;
 
         //std::map<uint8_t, std::shared_ptr<Queue<uint8_t>>> &gameloops_q;
-
         //std::map<std::string, std::vector<uint8_t>> &data_map;
-
         //std::list<std::shared_ptr<Projectile>> projectile_list;
 
 
@@ -37,12 +35,14 @@ class ServerGameloop : public Thread {
                                Queue<InfoJuego> *sndr_q);
 
         void addPlayer(int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q);
-
+        void removePlayer(int id);
         void send_snapshot();
 
         void run() override;
 
         bool is_dead();
+
+        int getId();
 
         void kill();
 };
