@@ -90,4 +90,7 @@
 
 // HUD
 #define PATH_HEART_ICON "../sprites/HUD/Heart Icon (24x16)x01.png"
+#define PATH_SPAZ_GUN "../sprites/HUD/Spaz Gun (24x24)x10.png"
+#define PATH_JAZZ_GUN "../sprites/HUD/Jazz Gun (24x24)x10.png"
+#define PATH_LORI_GUN "../sprites/HUD/Lori Gun (16x16)x05.png"
 

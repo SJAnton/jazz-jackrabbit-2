@@ -129,6 +129,8 @@ void InterfazGrafica::renderizarJuego()
 
     spritesManager->renderizarVidas(infoJuego.players[0].vida);
 
+    spritesManager->renderizarMunicionArma(infoJuego.players[0].tipoPlayer, infoJuego.players[0].municion);
+
     SDL_RenderPresent(renderer); // dibuja todo
 }
 

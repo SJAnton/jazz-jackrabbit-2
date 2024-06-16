@@ -21,8 +21,8 @@ class ButtonPartida{
 	public:
 		ButtonPartida(int& idPartida);
 
-		void renderizar(SDL_Renderer*, SDL_Texture*);
-		void renderizarCrearPartida(SDL_Renderer* renderer, SDL_Texture* fontTexture);
+		void renderizar();
+		void renderizarCrearPartida();
 		bool clicked(int& x, int& y);
 		int getIdPartida();
 };
