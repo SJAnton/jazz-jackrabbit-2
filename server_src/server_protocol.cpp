@@ -43,6 +43,7 @@ void ServerProtocol::send_msg(std::vector<uint8_t> &msg, bool &was_closed) {
 void ServerProtocol::send_game_data(InfoJuego &game_data, bool &was_closed) {
     std::vector<uint8_t> bytes = encodeInfoJuego(game_data);
     sk.sendall(bytes.data(), bytes.size(), &was_closed);
+    //std::cout <<"was_closed: "<< was_closed << std::endl;
 }
 
 int ServerProtocol::disconnect() {

@@ -6,13 +6,17 @@ void ServerSender::run() {
     while (!wc) {
         try {
             //bool local_wc = wc.load();
-            InfoJuego data = q.pop();
+            InfoJuego data;// = q.pop();
+            if (q.try_pop(data) ){
+                pr.send_game_data(data, wc);
+            }
+            //std::cout << "sender..." << std::endl;
             if (wc) {
                 break;
             }
-            pr.send_game_data(data, wc);
+            
         } catch (const ClosedQueue &e) {
-
+            std::cout << "Queue cecrrada en ServerSender::run" << std::endl; 
         }
     }
 }

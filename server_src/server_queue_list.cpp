@@ -2,32 +2,37 @@
 
 #include <iostream>
 
-void ServerQueueList::push_back(Queue<InfoJuego> *queue) {
-    std::unique_lock<std::mutex> lock(m);
-    list.push_back(queue);
+
+void ServerQueueList::push_back(Queue<InfoJuego> *queue, const int &id_client) {
+    std::lock_guard<std::mutex> lock(m);
+    map[id_client].push_back(queue);
 }
 
-void ServerQueueList::push_to_all_queues(InfoJuego data) {
-    std::unique_lock<std::mutex> lock(m);
-    for (Queue<InfoJuego> *queue : list) {
-        queue->try_push(data);
+void ServerQueueList::push_to_all_queues(const InfoJuego &data) {
+    std::lock_guard<std::mutex> lock(m);
+    for (auto &pair : map) {
+        for (auto &queue : pair.second) {
+            //queue->push(data);
+            queue->try_push(data);
+        }
     }
 }
 
-void ServerQueueList::remove(Queue<InfoJuego> *queue) {
-    std::unique_lock<std::mutex> lock(m);
-    list.remove(queue);
+void ServerQueueList::remove(const int &id_client) {
+    std::lock_guard<std::mutex> lock(m);
+    map.erase(id_client);
 }
 
 int ServerQueueList::size() {
     std::unique_lock<std::mutex> lock(m);
-    return list.size();
+    return map.size();
 }
-
+/*
 std::list<Queue<InfoJuego>*>::iterator ServerQueueList::begin() {
-    return list.begin();
+    return map.begin();
 }
 
 std::list<Queue<InfoJuego>*>::iterator ServerQueueList::end() {
-    return list.end();
+    return map.end();
 }
+*/

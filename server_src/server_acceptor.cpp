@@ -17,12 +17,6 @@ void ServerAcceptor::run() {
             std::cout << "Se conectó el cliente " << id << std::endl;
 
             clients.back().start();
-            /*Client *client = new Client(std::move(peer), id, gmlp_id, gameloops,
-                                            ch_maps, monitors, gameloops_q, data);
-                                            */
-            //client->start();
-            //clients.push_back(client);
-
             //reap_dead();
             id++;
         } catch (LibError &e) {
@@ -36,7 +30,7 @@ void ServerAcceptor::run() {
 }
 
 void ServerAcceptor::reap_dead() {
-    clients.remove_if([](Client& client) { // Cambia Client* a Client&
+    clients.remove_if([](Client& client) {
         if (client.is_dead()) {
             client.kill();
             return true;
@@ -46,15 +40,12 @@ void ServerAcceptor::reap_dead() {
 }
 
 void ServerAcceptor::kill_all() {
-    for (auto &client : clients) {
+    for (auto &client : clients) { //mato todos los clientes
         client.kill();
         client.join();
-        //client->kill();
-        //client->join();
-        //delete client;
     }
     clients.clear();
-    for (auto &gameloop : gameloops) {
+    for (auto &gameloop : gameloops) { //mato todos los gameloops
         gameloop->kill();
         gameloop->join();
         delete gameloop;

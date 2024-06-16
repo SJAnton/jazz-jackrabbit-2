@@ -7,7 +7,7 @@
 #include "server_queue_list.h"
 #include "server_config_reader.h"
 
-#define CONFIG "config.yaml"
+#define CONFIG "../config.yaml"
 
 #define EXIT 'q'
 
