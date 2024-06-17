@@ -1,0 +1,32 @@
+{
+	"BUILD_DIR" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build/editor_autogen",
+	"CMAKE_BINARY_DIR" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor",
+	"CMAKE_SOURCE_DIR" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor",
+	"INCLUDE_DIR" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build/editor_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/gold_coin.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/silver_coin.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/erase.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile001.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile009.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/red_gem.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile000.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile013.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/put.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile008.png",
+		"/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/sprites/tile003.png"
+	],
+	"LOCK_FILE" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build/CMakeFiles/editor_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt5/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build/CMakeFiles/editor_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/resources.qrc",
+	"VERBOSITY" : 0
+}

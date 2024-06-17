@@ -1,0 +1,4 @@
+/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build/CMakeFiles/rebuild_cache.dir
+/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build/CMakeFiles/edit_cache.dir
+/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build/CMakeFiles/editor.dir
+/home/lorenzo/Escritorio/Taller/tp_final_editor/editor/build/CMakeFiles/editor_autogen.dir

@@ -1,4 +1,0 @@
-/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/rebuild_cache.dir
-/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/edit_cache.dir
-/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor.dir
-/home/lorenzo/Escritorio/Taller/build-editor-Desktop-Debug/CMakeFiles/editor_autogen.dir
