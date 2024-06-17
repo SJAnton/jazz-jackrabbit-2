@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2"
+CMAKE_SOURCE_DIR = /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build"
+CMAKE_BINARY_DIR = /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build/CMakeFiles" "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2/build/CMakeFiles /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -381,6 +381,30 @@ client_src/interfaz_src/event_handler.s: client_src/interfaz_src/event_handler.c
 client_src/interfaz_src/event_handler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_src/interfaz_src/event_handler.cpp.s
 .PHONY : client_src/interfaz_src/event_handler.cpp.s
+
+client_src/interfaz_src/fontManager.o: client_src/interfaz_src/fontManager.cpp.o
+.PHONY : client_src/interfaz_src/fontManager.o
+
+# target to build an object file
+client_src/interfaz_src/fontManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_src/interfaz_src/fontManager.cpp.o
+.PHONY : client_src/interfaz_src/fontManager.cpp.o
+
+client_src/interfaz_src/fontManager.i: client_src/interfaz_src/fontManager.cpp.i
+.PHONY : client_src/interfaz_src/fontManager.i
+
+# target to preprocess a source file
+client_src/interfaz_src/fontManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_src/interfaz_src/fontManager.cpp.i
+.PHONY : client_src/interfaz_src/fontManager.cpp.i
+
+client_src/interfaz_src/fontManager.s: client_src/interfaz_src/fontManager.cpp.s
+.PHONY : client_src/interfaz_src/fontManager.s
+
+# target to generate assembly for a file
+client_src/interfaz_src/fontManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_src/interfaz_src/fontManager.cpp.s
+.PHONY : client_src/interfaz_src/fontManager.cpp.s
 
 client_src/interfaz_src/interfaz_grafica.o: client_src/interfaz_src/interfaz_grafica.cpp.o
 .PHONY : client_src/interfaz_src/interfaz_grafica.o
@@ -686,6 +710,9 @@ help:
 	@echo "... client_src/interfaz_src/event_handler.o"
 	@echo "... client_src/interfaz_src/event_handler.i"
 	@echo "... client_src/interfaz_src/event_handler.s"
+	@echo "... client_src/interfaz_src/fontManager.o"
+	@echo "... client_src/interfaz_src/fontManager.i"
+	@echo "... client_src/interfaz_src/fontManager.s"
 	@echo "... client_src/interfaz_src/interfaz_grafica.o"
 	@echo "... client_src/interfaz_src/interfaz_grafica.i"
 	@echo "... client_src/interfaz_src/interfaz_grafica.s"
