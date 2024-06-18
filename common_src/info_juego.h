@@ -7,29 +7,30 @@
 #include <vector>
 #include <cstdint>
 
-#define LENGTH_PLAYER_INFO 11
-#define LENGTH_ENEMY_INFO 6
+#define LENGTH_PLAYER_INFO 12
+#define LENGTH_ENEMY_INFO 7
 #define LENGTH_ITEMS_INFO 5
-#define LENGTH_PROYECTIL_INFO 5
+#define LENGTH_PROYECTIL_INFO 6
 
 // Clase que representa la información de un jugador
 class InfoPlayer {
 public:
     int id;
-    int pos_x;
-    int pos_y;
+    int pos_x; // 2 bytes
+    int pos_y; // 2 bytes
+    Direcciones direccion;
     TipoPlayer tipoPlayer;
     EstadosPlayer estado;
     int vida;
-    int puntos;
+    int puntos; // 1 byte
     TipoArma arma;
     int municion;
 
     InfoPlayer(){};
     
-    InfoPlayer(int id, int x, int y, TipoPlayer tipoPlayer, EstadosPlayer e, int vida,
-                int pts, TipoArma arma, int municion) : 
-                id(id), pos_x(x), pos_y(y), tipoPlayer(tipoPlayer), 
+    InfoPlayer(int id, int x, int y, const Direcciones &dir, const TipoPlayer &tipoPlayer, 
+               const EstadosPlayer &e, int vida, int pts, const TipoArma &arma, int municion) : 
+                id(id), pos_x(x), pos_y(y), direccion(dir), tipoPlayer(tipoPlayer), 
                 estado(e), vida(vida), puntos(pts), arma(arma), municion(municion) {}
 };
 
@@ -39,10 +40,11 @@ public:
     TipoEnemy tipo;
     int pos_x;
     int pos_y;
+    Direcciones direccion;
     EstadosEnemy estado;
 
-    InfoEnemigo(TipoEnemy tipo, int x, int y,  EstadosEnemy estado)
-        : tipo(tipo), pos_x(x), pos_y(y), estado(estado) {}
+    InfoEnemigo(TipoEnemy tipo, int x, int y, const Direcciones &dir,  EstadosEnemy estado)
+        : tipo(tipo), pos_x(x), pos_y(y), direccion(dir), estado(estado) {}
 };
 
 //Clase que contiene la info de los objetos recolectables (monedas, zanahorias, etc)
@@ -58,12 +60,13 @@ public:
 
 class InfoProyectil {
 public:
+    TipoArma tipo;
     int pos_x;
     int pos_y;
     Direcciones direccion;
 
-    InfoProyectil(int x, int y, const Direcciones &dir) : 
-                pos_x(x), pos_y(y), direccion(dir) {}
+    InfoProyectil(TipoArma tipo, int x, int y, const Direcciones &dir) : 
+                tipo(tipo), pos_x(x), pos_y(y), direccion(dir) {}
 };
 
 // Clase que representa la información del juego

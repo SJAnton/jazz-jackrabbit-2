@@ -22,15 +22,10 @@ enum TipoEnemy{Rat, Bat, Lizard};
 
 
 // Recolectables
-enum TipoRecolectable {Moneda, Diamante, Zanahoria, Municion};
+enum TipoRecolectable {Moneda, Diamante, Zanahoria, Municion, Municion1, Municion2, Municion3, Municion4};
 
 // Armas y Proyectiles
-enum class TipoArma {Blaster, Bouncer, ElectroBlaster, Freezer,
-                        PepperSpray, RFMissile, Seeker, TNT, Toaster};
-
-//enum TipoArma {Tipo_1, Tipo_2, Tipo_3, Tipo_4};
-enum TipoProyectil {Tipo_1, Tipo_2, Tipo_3, Tipo_4};
-
+enum TipoArma {Tipo_1, Tipo_2, Tipo_3, Tipo_4};
 
 // otros
 enum Direcciones {Left, Right};

@@ -33,6 +33,6 @@ void ObjectEnemy::revive() {
 }
 
 InfoEnemigo ObjectEnemy::getInfo() {
-    return InfoEnemigo(tipoEnemy,position.x, position.y, enemy_status);
+    return InfoEnemigo(tipoEnemy,position.x, position.y, direction, enemy_status);
 }
 

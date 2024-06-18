@@ -17,6 +17,7 @@
 class ObjectPlayer : public GameObject {
    protected:
         static bool inicializado;
+
         //Constantes inicializadas en la funcion init() (llamado en Game::init())
         static int defaultHealth;
         static int defaultWalkSpeed;
@@ -24,10 +25,12 @@ class ObjectPlayer : public GameObject {
         static int defaultIntoxicatedSpeed;
         static int defaultJumpSpeed;
         static int defaultFallSpeed;
+
     protected:
         int id;// id de cliente?
         TipoPlayer tipoPlayer;
         EstadosPlayer estado = EstadosPlayer::Inactive;
+        Direcciones direction = Right;
         int health = 10; //vida
         int points = 0;
         Weapon weapon; //arma

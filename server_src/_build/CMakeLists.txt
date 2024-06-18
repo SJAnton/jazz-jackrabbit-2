@@ -32,6 +32,7 @@ set(SOURCE_FILES
     ../../common_src/resolver.cpp
     ../../common_src/resolvererror.cpp
     ../../common_src/socket.cpp
+    ../../common_src/protocol.cpp
 
     # Archivos server
     ../game/game.cpp

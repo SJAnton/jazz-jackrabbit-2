@@ -35,12 +35,12 @@ void ObjectProjectile::init(int damage_p1, int damage_p2, int damage_p3, int dam
 }
 
 
-ObjectProjectile::ObjectProjectile(const TipoProyectil &tipo, const Direcciones &dir, Coordenada &pos) :
+ObjectProjectile::ObjectProjectile(const TipoArma &tipo, const Direcciones &dir, Coordenada &pos) :
     GameObject(WIDTH_PROJECTILE, HEIGHT_PROJECTILE), tipoProyectil(tipo), direction(dir)
 {
     type = TypeGameObject::Proyectil;
 
-    switch (tipoProyectil)
+    switch (tipo)
     {
     case Tipo_1:
         this->damage = damage_p1;
@@ -111,7 +111,7 @@ bool ObjectProjectile::is_exploded() {
 }
 
 InfoProyectil ObjectProjectile::getInfo() {
-    return InfoProyectil(position.x, position.y, direction);
+    return InfoProyectil(tipoProyectil, position.x, position.y, direction);
 }
 
 

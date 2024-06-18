@@ -46,6 +46,7 @@ void ObjectPlayer::idle() {
 }
 
 void ObjectPlayer::move_x(Direcciones direccion, int speed) {
+    direction = direccion;
     if (direccion == Left) {
         for (int i=0; i <  speed; i++) { //para chequear en cada unidad que se mueve si hay una pared
             //Chequeo si hay una pared al lado (para hacer mas simple miro solo los extremos de y)
@@ -102,6 +103,7 @@ void ObjectPlayer::run(Direcciones direccion) {
 void ObjectPlayer::jump(Direcciones direccion) {
     estado = EstadosPlayer::Jumping;
     jumping = true;
+    direction = direccion;
     for (int i=0; i <  defaultJumpSpeed; i++) { //para chequear en cada unidad que se mueve si hay una pared
         
         if (position.y  <= 0 || position.y >= Y_MAX) { // si me salgo del mapa...
@@ -128,10 +130,10 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
     estado = EstadosPlayer::Shooting;
     if (dir == Left) {
         Coordenada pos(x_left - 8, pos_y_max - height/2); // ajustar visualmente
-        return ObjectProjectile(TipoProyectil::Tipo_1, dir, pos);
+        return ObjectProjectile(weapon.getType(), dir, pos);
     }
     Coordenada pos(pos_x_max+4, pos_y_max - height/2); // ajustar visualmente
-    return ObjectProjectile(TipoProyectil::Tipo_1, dir, pos);
+    return ObjectProjectile(weapon.getType(), dir, pos);
     //return ObjectProjectile(weapon.getTipo(), dir, pos);
 }
 
@@ -204,7 +206,5 @@ void ObjectPlayer::revive() {
 }
 
 InfoPlayer ObjectPlayer::getInfo() {
-    //InfoPlayer info(id, position.x, position.y, tipoPlayer, estado, health, points, weapon.getType(), weapon.getmuniciones());
-    InfoPlayer info(id, position.x, position.y, tipoPlayer, estado, health, points,  TipoArma::Blaster, 1); //hardcodeado
-    return info;
+    return InfoPlayer(id, position.x, position.y, direction, tipoPlayer, estado, health, points, weapon.getType(), weapon.getMuniciones());
 }

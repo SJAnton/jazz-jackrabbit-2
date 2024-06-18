@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2
+CMAKE_SOURCE_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2/build
+CMAKE_BINARY_DIR = "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2/build/CMakeFiles /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build/CMakeFiles" "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/esteban/Desktop/entregaTaller/jazz-jackrabbit-2/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/agustin/Escritorio/Taller 1/TP Final/jazz-jackrabbit-2/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -598,6 +598,30 @@ common_src/liberror.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/common_src/liberror.cpp.s
 .PHONY : common_src/liberror.cpp.s
 
+common_src/protocol.o: common_src/protocol.cpp.o
+.PHONY : common_src/protocol.o
+
+# target to build an object file
+common_src/protocol.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/common_src/protocol.cpp.o
+.PHONY : common_src/protocol.cpp.o
+
+common_src/protocol.i: common_src/protocol.cpp.i
+.PHONY : common_src/protocol.i
+
+# target to preprocess a source file
+common_src/protocol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/common_src/protocol.cpp.i
+.PHONY : common_src/protocol.cpp.i
+
+common_src/protocol.s: common_src/protocol.cpp.s
+.PHONY : common_src/protocol.s
+
+# target to generate assembly for a file
+common_src/protocol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/common_src/protocol.cpp.s
+.PHONY : common_src/protocol.cpp.s
+
 common_src/resolver.o: common_src/resolver.cpp.o
 .PHONY : common_src/resolver.o
 
@@ -737,6 +761,9 @@ help:
 	@echo "... common_src/liberror.o"
 	@echo "... common_src/liberror.i"
 	@echo "... common_src/liberror.s"
+	@echo "... common_src/protocol.o"
+	@echo "... common_src/protocol.i"
+	@echo "... common_src/protocol.s"
 	@echo "... common_src/resolver.o"
 	@echo "... common_src/resolver.i"
 	@echo "... common_src/resolver.s"

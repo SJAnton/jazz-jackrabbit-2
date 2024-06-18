@@ -12,106 +12,6 @@ ClientProtocol::ClientProtocol(const std::string& hostname, const std::string& s
 	socket(hostname.c_str(), servname.c_str()),
 	was_closed(false)
 {
-
-}
-//metodos privados
-uint8_t ClientProtocol::codeAccion(AccionesPlayer accion) {
-	switch (accion) {
-		case AccionesPlayer::Idle: return ACTION_IDLE;
-		case AccionesPlayer::Walk: return ACTION_WALK;
-		case AccionesPlayer::Run: return ACTION_RUN;
-		case AccionesPlayer::Jump: return ACTION_JUMP;
-		case AccionesPlayer::Shoot: return ACTION_SHOOT;
-		case AccionesPlayer::SpecialAttack: return ACTION_SPECIAL_ATTACK;
-		default: 
-		throw std::runtime_error("ERROR. Accion invalida");
-		return ACTION_IDLE;
-	}
-}
-uint8_t ClientProtocol::codeDireccion(Direcciones direccion) {
-	switch (direccion) {
-		case Left: return LEFT;
-		case Right: return RIGHT;
-		default: 
-		throw std::runtime_error("ERROR. Direccion invalida");
-		return RIGHT;
-	}
-}
-uint8_t ClientProtocol::codeTipoPlayer(const TipoPlayer &tipo) {
-	switch (tipo) {
-		case Jazz: return PLAYER_TYPE_JAZZ;
-		case Lori: return PLAYER_TYPE_LORI;
-		case Spaz: return PLAYER_TYPE_SPAZ;
-		default: 
-			throw std::runtime_error("ERROR. Tipo PLayer invalido");
-			return PLAYER_TYPE_JAZZ;
-	}
-}
-Direcciones ClientProtocol::decodeDireccion(uint8_t dir) {
-	switch (dir) {
-		case LEFT: return Left;
-		case RIGHT: return Right;
-		default: 
-		throw std::runtime_error("ERROR. Direccion invalida. ClientProtocol::decodeDireccion()");
-		return Right;
-	}
-}
-
-EstadosPlayer ClientProtocol::decodeEstadoPlayer(uint8_t byte) {
-    switch (byte) {
-        case STATE_IDLE: return EstadosPlayer::Inactive;
-        case STATE_WALK: return EstadosPlayer::Walking;
-        case STATE_RUN: return EstadosPlayer::Running;
-        case STATE_JUMP: return EstadosPlayer::Jumping;
-        case STATE_FALL: return EstadosPlayer::Falling;
-        case STATE_SHOOT: return EstadosPlayer::Shooting;
-        case STATE_SPECIAL_ATTACK: return EstadosPlayer::SpecialAttack;
-        case STATE_INTOXICATED_IDLE: return EstadosPlayer::IntoxicatedIdle;
-		case STATE_INTOXICATED_WALK: return EstadosPlayer::IntoxicatedWalk;
-        case STATE_DAMAGED: return EstadosPlayer::Damaged;
-        case STATE_DYING: return EstadosPlayer::Dying;
-        case STATE_DEAD: return EstadosPlayer::Dead;
-        case STATE_REVIVE: return EstadosPlayer::Reviving;
-        default: 
-		throw std::runtime_error("ERROR. EstadoPlayer invalido. Probablemente estas pasando un byte que corresponde a otra cosa");
-		return EstadosPlayer::Inactive;
-    }
-}
-TipoEnemy ClientProtocol::decodeTipoEnemy(uint8_t byte) {
-	switch (byte)
-	{
-	case ENEMY_RAT : return Rat;
-	case ENEMY_BAT : return Bat;
-	case ENEMY_LIZARD : return Lizard;	
-	default:
-		std::runtime_error("enemigo no existe. Probablemente se recibio un byte que corresponde a ora cosa");
-		return Rat;
-	}
-}
-TipoPlayer ClientProtocol::decodeTipoPlayer(uint8_t byte) {
-	switch (byte)
-	{
-	case PLAYER_TYPE_JAZZ : return Jazz;
-	case PLAYER_TYPE_LORI : return Lori;
-	case PLAYER_TYPE_SPAZ : return Spaz;	
-	default:
-		std::runtime_error("enemigo no existe. Probablemente se recibio un byte que corresponde a ora cosa");
-		return Spaz;
-	}
-}
-EstadosEnemy ClientProtocol::decodeEstadoEnemy(uint8_t byte) {
-
-	switch (byte)
-	{
-	case ENEMY_STATE_IDLE: return EstadosEnemy::Idle;
-	case ENEMY_STATE_MOVE: return EstadosEnemy::Move;
-	case ENEMY_STATE_ATTACK: return EstadosEnemy::Attack;
-	case ENEMY_STATE_DAMAGED: return EstadosEnemy::Damaged;
-	case ENEMY_STATE_DEATH: return EstadosEnemy::Death;
-	default:
-		std::runtime_error("Estado de enemigo no existe. Probablemente se recibio un byte que corresponde a ora cosa");
-		return EstadosEnemy::Idle;
-	}
 }
 
 int ClientProtocol::decodeInt(uint8_t byte) {
@@ -128,13 +28,25 @@ InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
 	int id = decodeInt(bytes[0]);
 	int pos_x = decodeInt(bytes[1], bytes[2]);// * MULTIPLICADOR_POSICION;
 	int pos_y = decodeInt(bytes[3], bytes[4]);// * MULTIPLICADOR_POSICION;
-	TipoPlayer tipo = decodeTipoPlayer(bytes[5]);
-	EstadosPlayer estado = decodeEstadoPlayer(bytes[6]);
-	int vida = decodeInt(bytes[7]);
-	int pts = decodeInt(bytes[8]);
-	TipoArma arma =  TipoArma::Blaster;//HARDCODEADO //decodeInt(bytes[contador+9) 
-	int municion = decodeInt(bytes[10]);
-	return InfoPlayer(id, pos_x, pos_y,tipo, estado, vida, pts, arma, municion);
+	Direcciones dir = decodeDireccion(bytes[5]);
+	TipoPlayer tipo = decodeTipoPlayer(bytes[6]);
+	EstadosPlayer estado = decodeEstadoPlayer(bytes[7]);
+	int vida = decodeInt(bytes[8]);
+	int pts = decodeInt(bytes[9]);
+	TipoArma arma =  decodeTipoArma(bytes[10]);
+	int municion = decodeInt(bytes[11]);
+	return InfoPlayer(id, pos_x, pos_y, dir, tipo, estado, vida, pts, arma, municion);
+}
+
+
+InfoEnemigo ClientProtocol::decodeEnemy(const std::vector<uint8_t> &bytes) {
+	TipoEnemy tipo = decodeTipoEnemy(bytes[0]);
+	int pos_x = decodeInt(bytes[1], bytes[2]);// * MULTIPLICADOR_POSICION;
+	int pos_y = decodeInt(bytes[3], bytes[4]);// * MULTIPLICADOR_POSICION;
+	Direcciones dir = decodeDireccion(bytes[5]);
+	EstadosEnemy estado = decodeEstadoEnemy(bytes[6]);
+
+	return InfoEnemigo(tipo, pos_x, pos_y, dir, estado);
 }
 
 // modularizarlo despues
@@ -162,63 +74,51 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 
 	    contador += LENGTH_PLAYER_INFO;
 	}
-	if (cantPlayers == 0)
-		contador++;
-
+	
 	int cantEnemigos = decodeInt(bytes[contador]);
-
+	contador++;
 	//Decode info Enemigos
 	for (int i = 0; i < cantEnemigos; i++) { 
 		if (contador + LENGTH_ENEMY_INFO > bytes.size()) {
 			std::runtime_error("Error. Faltaron datos de un enemigo. En ClientProtocol::decodificarMensajeDelServer()");
 		}
-		TipoEnemy tipo = decodeTipoEnemy(bytes[contador+1]);
-		int pos_x = decodeInt(bytes[contador+2], bytes[contador+3]);// * MULTIPLICADOR_POSICION;
-		int pos_y = decodeInt(bytes[contador+4], bytes[contador+5]);// * MULTIPLICADOR_POSICION;
-		EstadosEnemy estado = decodeEstadoEnemy(bytes[contador+6]);
-
-		infoEnemies.emplace_back(tipo, pos_x, pos_y, estado);
+		std::vector<uint8_t> enemyBytes(bytes.begin() + contador, bytes.begin() + contador + LENGTH_ENEMY_INFO);
+		infoEnemies.push_back(decodeEnemy(enemyBytes));
+		
 		contador += LENGTH_ENEMY_INFO;
 	}
-	if (cantEnemigos == 0)
-		contador++;
 	
 	int cantItems = decodeInt(bytes[contador]);
+	contador++;
 
 	//Decode info Recolectables
 	for (int i = 0; i < cantItems; i++) { 
 		if (contador + LENGTH_ITEMS_INFO > bytes.size())
 			std::runtime_error("Error. Faltaron datos de un item recolectable. En ClientProtocol::decodificarMensajeDelServer()");
 		
-		TipoRecolectable tipo = TipoRecolectable::Moneda; 
-		int pos_x = decodeInt(bytes[contador+2], bytes[contador+3]);// * MULTIPLICADOR_POSICION;
-		int pos_y = decodeInt(bytes[contador+4], bytes[contador+5]);// * MULTIPLICADOR_POSICION;
+		TipoRecolectable tipo = decodeTipoRecolectable(bytes[contador]); 
+		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]);// * MULTIPLICADOR_POSICION;
+		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]);// * MULTIPLICADOR_POSICION;
 
 		infoItems.emplace_back(tipo, pos_x, pos_y);
 		contador += LENGTH_ITEMS_INFO;
 	}
-	//if (cantItems == 0)
-		contador++;
-	
 	int cantProyectiles = decodeInt(bytes[contador]);
+	contador++;
 
 	//Decode info proyectiles
 	for (int i = 0; i < cantProyectiles; i++) { 
 		if (contador + LENGTH_PROYECTIL_INFO > bytes.size())
 			std::runtime_error("Error. Faltó info de un proyectil. En ClientProtocol::decodificarMensajeDelServer()");
-		
+		TipoArma tipo = decodeTipoArma(bytes[contador]);
 		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]);// * MULTIPLICADOR_POSICION;
 		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]);// * MULTIPLICADOR_POSICION;
-		
 		Direcciones dir = decodeDireccion(bytes[contador+5]);
 
-		infoProyectiles.emplace_back(pos_x, pos_y, dir);
+		infoProyectiles.emplace_back(tipo, pos_x, pos_y, dir);
 		contador += LENGTH_PROYECTIL_INFO;
 	}
-	//std::cout << "Cantidad de Players: " << cantPlayers << std::endl;
-	//std::cout << "Cantidad de Enemigos: " << cantEnemigos << std::endl;
-	//std::cout << "Cantidad de Items: " << cantItems << std::endl;
-	//std::cout << "Cantidad de proyectiles: " << cantProyectiles << std::endl;
+//	std::cout << "Recibi proyectiles" << cantProyectiles<< std::endl;
 
 	return InfoJuego(infoPlayers, infoEnemies, infoItems, infoProyectiles);
 }
@@ -231,12 +131,12 @@ void ClientProtocol::enviarComando(ComandoCliente comando, bool*was_closed_) {
 	if (comando.getTipoComando() == MensajeInicial) {
 		std::cout << "me uno a la partida" << std::endl;
 		mensaje.push_back((uint8_t)comando.getIdPartida());
-		mensaje.push_back(codeTipoPlayer(comando.getTipoPlayer()));
+		mensaje.push_back(encodeTipoPlayer(comando.getTipoPlayer()));
 	}
 	else { //Accion de un player
 		mensaje.push_back(id); // necesito saber mi ID de cliente
-		mensaje.push_back(codeAccion(comando.getAccion()));
-		mensaje.push_back(codeDireccion(comando.getDireccion()));
+		mensaje.push_back(encodeAccion(comando.getAccion()));
+		mensaje.push_back(encodeDireccion(comando.getDireccion()));
 	}
 	socket.sendall(mensaje.data(), mensaje.size(), &was_closed);	
 	*was_closed_= was_closed;

@@ -94,12 +94,12 @@ std::vector<uint8_t> ServerProtocol::encodePlayer(const InfoPlayer &infoPlayer) 
     bytes.push_back(infoPlayer.id);
     insertar2bytesDelNumero(infoPlayer.pos_x, bytes);
     insertar2bytesDelNumero(infoPlayer.pos_y, bytes);
-    
+    bytes.push_back(encodeDireccion(infoPlayer.direccion));
     bytes.push_back(encodeTipoPlayer(infoPlayer.tipoPlayer));
     bytes.push_back(encodeEstadoPlayer(infoPlayer.estado));
     bytes.push_back(infoPlayer.vida);
     bytes.push_back(infoPlayer.puntos);
-    bytes.push_back(ARMA_COMUN);
+    bytes.push_back(encodeTipoArma(infoPlayer.arma));
     bytes.push_back(infoPlayer.municion);
     return bytes;
 }
@@ -111,6 +111,7 @@ std::vector<uint8_t> ServerProtocol::encodeEnemy(const InfoEnemigo &infoEnemigo)
 
     insertar2bytesDelNumero(infoEnemigo.pos_x, bytes);
     insertar2bytesDelNumero(infoEnemigo.pos_y, bytes);
+    bytes.push_back(encodeDireccion(infoEnemigo.direccion));
     bytes.push_back(encodeEstadoEnemy(infoEnemigo.estado));
     return bytes;
 }
@@ -127,7 +128,7 @@ std::vector<uint8_t> ServerProtocol::encodeRecolectable(const InfoRecolectable &
 
 std::vector<uint8_t> ServerProtocol::encodeProyectil(const InfoProyectil &infoProyectil) {
     std::vector<uint8_t> bytes;
-
+    bytes.push_back(encodeTipoArma(infoProyectil.tipo));
     insertar2bytesDelNumero(infoProyectil.pos_x, bytes);
     insertar2bytesDelNumero(infoProyectil.pos_y, bytes);
 
@@ -141,7 +142,8 @@ void ServerProtocol::insertar2bytesDelNumero(int num, std::vector<uint8_t> &arra
     array.push_back(aux & 0xFF); // inseratr el byte menos significativo
 }
 
-
+// Codificadores
+/*
 uint8_t ServerProtocol::encodeTipoPlayer(TipoPlayer tipo) {
 	switch (tipo)
 	{
@@ -149,7 +151,7 @@ uint8_t ServerProtocol::encodeTipoPlayer(TipoPlayer tipo) {
 	case Lori : return PLAYER_TYPE_LORI;
 	case Spaz : return PLAYER_TYPE_SPAZ;	
 	default:
-		std::runtime_error("Tipo de Player no existe. Probablemente se recibio un byte que corresponde a ora cosa. En ClientProtocol::encodeTipoPlayer()");
+        std::invalid_argument("En ServerProtocol::encodeTipoPlayer()");
 		return PLAYER_TYPE_JAZZ;
 	}
 }
@@ -157,125 +159,92 @@ uint8_t ServerProtocol::encodeTipoPlayer(TipoPlayer tipo) {
 
 uint8_t ServerProtocol::encodeEstadoPlayer(const EstadosPlayer &estado) {
     switch (estado) {
-        case EstadosPlayer::Inactive:
-            return STATE_IDLE;
-        case EstadosPlayer::Walking:
-            return STATE_WALK;
-        case EstadosPlayer::Running:
-            return STATE_RUN;
-        case EstadosPlayer::Jumping:
-            return STATE_JUMP;
-        case EstadosPlayer::Falling : 
-            return STATE_FALL;
-        case EstadosPlayer::Shooting:
-            return STATE_SHOOT;
-        case EstadosPlayer::SpecialAttack:
-            return STATE_SPECIAL_ATTACK;
-        case EstadosPlayer::IntoxicatedIdle:
-            return STATE_INTOXICATED_IDLE;
-        case EstadosPlayer::IntoxicatedWalk:
-            return STATE_INTOXICATED_WALK;
-        case EstadosPlayer::Damaged:
-            return STATE_DAMAGED;
-        case EstadosPlayer::Dying:
-            return STATE_DYING;
-        case EstadosPlayer::Dead:
-            return STATE_DEAD;
-        case EstadosPlayer::Reviving:
-            return STATE_REVIVE;
+        case EstadosPlayer::Inactive: return STATE_IDLE;
+        case EstadosPlayer::Walking: return STATE_WALK;
+        case EstadosPlayer::Running: return STATE_RUN;
+        case EstadosPlayer::Jumping: return STATE_JUMP;
+        case EstadosPlayer::Falling: return STATE_FALL;
+        case EstadosPlayer::Shooting: return STATE_SHOOT;
+        case EstadosPlayer::SpecialAttack: return STATE_SPECIAL_ATTACK;
+        case EstadosPlayer::IntoxicatedIdle: return STATE_INTOXICATED_IDLE;
+        case EstadosPlayer::IntoxicatedWalk: return STATE_INTOXICATED_WALK;
+        case EstadosPlayer::Damaged: return STATE_DAMAGED;
+        case EstadosPlayer::Dying: return STATE_DYING;
+        case EstadosPlayer::Dead: return STATE_DEAD;
+        case EstadosPlayer::Reviving: return STATE_REVIVE;
         default: 
+            std::invalid_argument("En ServerProtocol::encodeEstadoPlayer()");
             return STATE_IDLE;
     }
 }
 
 uint8_t ServerProtocol::encodeTipoEnemy(TipoEnemy enemigo) {
 	switch (enemigo) {
-        case Rat:
-            return ENEMY_RAT;
-        case Bat:
-            return ENEMY_BAT;
-        case Lizard:
-            return ENEMY_LIZARD;	
+        case Rat: return ENEMY_RAT;
+        case Bat: return ENEMY_BAT;
+        case Lizard: return ENEMY_LIZARD;	
         default:
+            std::invalid_argument("En ServerProtocol::encodeTipoEnemy()");
             return ENEMY_RAT;
     }
 }
 
 uint8_t ServerProtocol::encodeEstadoEnemy(EstadosEnemy byte) {
 	switch (byte) {
-	    case EstadosEnemy::Idle: 
-            return ENEMY_STATE_IDLE;
-        case EstadosEnemy::Move:
-            return ENEMY_STATE_MOVE;
-	    case EstadosEnemy::Attack:
-            return ENEMY_STATE_ATTACK;
-	    case EstadosEnemy::Damaged:
-            return ENEMY_STATE_DAMAGED;
-	    case EstadosEnemy::Death:
-            return ENEMY_STATE_DEATH;
+	    case EstadosEnemy::Idle: return ENEMY_STATE_IDLE;
+        case EstadosEnemy::Move: return ENEMY_STATE_MOVE;
+	    case EstadosEnemy::Attack: return ENEMY_STATE_ATTACK;
+	    case EstadosEnemy::Damaged: return ENEMY_STATE_DAMAGED;
+	    case EstadosEnemy::Death: return ENEMY_STATE_DEATH;
 	    default:
+            std::invalid_argument("En ServerProtocol::encodeEstadoEnemy()");
             return ENEMY_STATE_IDLE;
-            //std::runtime_error("Estado de enemigo no existe.
-                //Probablemente se recibio un byte que corresponde a ora cosa");
 	}
 }
 
 uint8_t ServerProtocol::encodeTipoRecolectable(TipoRecolectable tipo){
     switch (tipo) {
-        case TipoRecolectable::Diamante:
-            return ITEM_DIAMANTE;
-        case TipoRecolectable::Moneda:
-            return ITEM_MONEDA;
-        case TipoRecolectable::Zanahoria:
-            return ITEM_ZANAHORIA;
-        case TipoRecolectable::Municion:
-            return ITEM_MUNCION;
+        case Diamante: return ITEM_DIAMANTE;
+        case Moneda:   return ITEM_MONEDA;
+        case Zanahoria: return ITEM_ZANAHORIA;
+        case Municion: return ITEM_MUNCION;
         default:
+            std::invalid_argument("En ServerProtocol::encodeTipoRecolectable()");
             return ITEM_DIAMANTE;
     }
 }
 
 uint8_t ServerProtocol::encodeDireccion(Direcciones direccion) {
 	switch (direccion) {
-		case Left:
-            return LEFT;
-		case Right:
-            return RIGHT;
+		case Left: return LEFT;
+		case Right: return RIGHT;
 		default: 
-		    //throw std::runtime_error("ERROR. Direccion invalida");
+            std::invalid_argument("En ServerProtocol::encodeDireccion()");
 		    return RIGHT;
 	}
 }
 
-// Decodificicar
 AccionesPlayer  ServerProtocol::decodeAction(uint8_t byte) {
     switch (byte) {
-        case ACTION_IDLE:
-            return AccionesPlayer::Idle;
-        case ACTION_WALK:
-            return AccionesPlayer::Walk;
-        case ACTION_RUN: 
-            return AccionesPlayer::Run;
-        case ACTION_JUMP:
-            return AccionesPlayer::Jump;
-        case ACTION_SHOOT:
-            return AccionesPlayer::Shoot;
-        case ACTION_SPECIAL_ATTACK:
-            return AccionesPlayer::SpecialAttack;
+        case ACTION_IDLE: return AccionesPlayer::Idle;
+        case ACTION_WALK: return AccionesPlayer::Walk;
+        case ACTION_RUN: return AccionesPlayer::Run;
+        case ACTION_JUMP: return AccionesPlayer::Jump;
+        case ACTION_SHOOT: return AccionesPlayer::Shoot;
+        case ACTION_SPECIAL_ATTACK: return AccionesPlayer::SpecialAttack;
         default:
-            //Excepcion
+            std::invalid_argument("En ServerProtocol::encodeAction()");
             return AccionesPlayer::Idle;
     }
 }
 
 Direcciones ServerProtocol::decodeDireccion(uint8_t byte) {
     switch (byte) {
-        case LEFT:
-            return Direcciones::Left;
-        case RIGHT:
-            return Direcciones::Right;
+        case LEFT: return Direcciones::Left;
+        case RIGHT: return Direcciones::Right;
         default:
-            //Excepcion
+            std::invalid_argument("En ServerProtocol::decodeDireccion()");
             return Direcciones::Right;
     }
 }
+*/

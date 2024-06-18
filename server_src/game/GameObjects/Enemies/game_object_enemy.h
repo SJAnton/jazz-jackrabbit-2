@@ -22,6 +22,7 @@ class ObjectEnemy : public GameObject {
         std::vector<Coordenada> waypoints;
         int waypoint_actual = 0; // Índice del waypoint actual
         bool alive = true; // Estado de vida del enemigo
+        Direcciones direction = Right;
 
     public:
         ObjectEnemy(TipoEnemy tipo, int width, int height,  

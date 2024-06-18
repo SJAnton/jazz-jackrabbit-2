@@ -142,7 +142,7 @@ InfoJuego Game::snapshot() {
 }
 
 void Game::add_player(TipoPlayer &player_type, int player_id) {
-    std::shared_ptr<ObjectPlayer> player = std::make_shared<ObjectPlayer>(player_id, player_type, Weapon(10,TipoArma::Blaster));
+    std::shared_ptr<ObjectPlayer> player = std::make_shared<ObjectPlayer>(player_id, player_type, Weapon(10,TipoArma::Tipo_1));
     ch_map->push_back(player_id, player);
     std::cout << "agrego player al juego" << std::endl;
 

@@ -22,7 +22,18 @@ public:
             municiones = maxMuniciones;
     };
 
-    //bool shoot();
+    void subMunicion() {
+        municiones--;
+        if (municiones <= 0)
+            municiones = 0;
+     };
+
+
+    void setType(const TipoArma &type) {tipoArma = type;};
+
+    TipoArma getType() {return tipoArma;};
+
+    int getMuniciones() {return municiones;};
 
     //~Weapon();
 };

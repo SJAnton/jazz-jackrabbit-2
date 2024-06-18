@@ -58,7 +58,10 @@
 #define ENEMY_STATE_DEATH 0X05
 
 //Armas
-#define ARMA_COMUN 0XC0
+#define WEAPON_TYPE1 0XC1
+#define WEAPON_TYPE2 0XC2
+#define WEAPON_TYPE3 0XC3
+#define WEAPON_TYPE4 0XC4
 
 
 //Items recolectables
