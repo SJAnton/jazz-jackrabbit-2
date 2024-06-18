@@ -12,7 +12,7 @@ void ClientRenderer::run(){
 	while(interfaz->estaAbierta()){
 		int frameStart = SDL_GetTicks();
 
-		interfaz->recibirInformacion();
+		//interfaz->recibirInformacion();
         interfaz->update(1);
         interfaz->renderizarActual();
 

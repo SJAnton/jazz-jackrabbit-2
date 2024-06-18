@@ -38,9 +38,6 @@ void ServerGameloop::removePlayer(int id) {
 
 void ServerGameloop::run() {
     auto expected_itr_time = std::chrono::milliseconds(MILLISECONDS_PER_ITR);
-
-   
-   
     while (game.is_running()) {
         auto start_time = std::chrono::steady_clock::now();
                 
@@ -57,12 +54,10 @@ void ServerGameloop::run() {
         }
         game.update();
 
-
         game.execute_actions(data);
 
         send_snapshot();
 
-        //dormir
         auto end_time = std::chrono::steady_clock::now();
         auto itr_time = end_time - start_time;
         if (itr_time < expected_itr_time) {

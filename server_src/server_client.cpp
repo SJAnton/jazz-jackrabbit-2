@@ -25,6 +25,39 @@ Client::Client(Socket &&_sk, int id,  GameloopList &gameloops) :
     
 }
 
+void Client::run() {
+    reap_dead_gameloops();
+
+    vector<uint8_t> msg = get_games(); // Envía las partidas disponibles (TODO: enviar escenarios)
+    protocol.send_msg(msg, wc);
+
+    // Recibe partida y personaje (TODO: recibir escenario elegido)
+    vector<uint8_t> init_data = protocol.recv_init_msg(wc);
+
+    std::cout << (int)init_data[GAME_POS] << std::endl;
+
+    if (init_data[GAME_POS] != NEW_GAME && !gameloops.contains(init_data[GAME_POS])) {
+        kill();
+        throw runtime_error("Game not found");
+    }
+    TipoPlayer player_selected = select_character(init_data[1]);
+    select_game(init_data[0], player_selected);
+
+    protocol.send_id(id, wc); // Envía al cliente su ID
+
+    receiver->start();
+    sender.start();
+
+    sender.join();
+    std::cout << "El sender se cerró. El cliente se desconecto" << std::endl;
+    gameLoop->removePlayer(id);
+    if (gameLoop->is_dead()) {
+        gameloops.remove(gameLoop);
+    }
+    receiver->join();
+    std::cout << "El receiver se cerró." << std::endl;
+}
+
 TipoPlayer Client::select_character(uint8_t type_player) {
      switch (type_player)
         {
@@ -38,8 +71,9 @@ TipoPlayer Client::select_character(uint8_t type_player) {
 }
 
 void Client::select_game(uint8_t game, const TipoPlayer &type_player) {
-    if (game == NEW_GAME) { // Creo un Nuevo Gameloop y el receiver utilizará la queue de aquí
-        int id_game = gameloops.size() + 1; // para evitar el 0
+    if (game == NEW_GAME) {
+        // Creo un Nuevo Gameloop y el receiver utilizará la queue de aquí
+        int id_game = gameloops.size() + 1;
 
         gameLoop = new ServerGameloop(id_game, id, type_player, recv_q, &sndr_q);
         receiver = new ServerReceiver(protocol, recv_q, wc);
@@ -47,8 +81,8 @@ void Client::select_game(uint8_t game, const TipoPlayer &type_player) {
         gameloops.push_back(gameLoop); // Agrego el nuevo gameloop a la lista
         gameLoop->start();
         std::cout << "Inició un nuevo gameloop" << std::endl;
-    } 
-    else { // Me uno al gameloop recibido, y el receiver cargará en la queue de ese gameloop
+    } else {
+        // Me uno al gameloop recibido, y el receiver cargará en la queue de ese gameloop
         gameLoop = gameloops.at(game);
         if (gameLoop == NULL) {
             std::runtime_error("Error. No se pudo encontrar la partida. En Client::select_game()");
@@ -60,95 +94,7 @@ void Client::select_game(uint8_t game, const TipoPlayer &type_player) {
         std::cout << "Se unió el cliente "<< id << " al gameloop " << gameLoop->getId() << std::endl;
     }
 }
-void Client::seleccionarGameYPlayer(uint8_t game, uint8_t tipoPlayer) {
-    int id_game = 1;
-    if (game == NEW_GAME) {
-        std::cout << "creo una partida" << std::endl;
-        switch (tipoPlayer)
-        {
-        case JAZZ_BYTE:
-            gameLoop = new ServerGameloop(id_game, id, TipoPlayer::Jazz, recv_q, &sndr_q);
-            break;
-        case LORI_BYTE:
-            gameLoop = new ServerGameloop(id_game, id, TipoPlayer::Lori, recv_q, &sndr_q);
-            break;
-        case SPAZ_BYTE:
-            gameLoop = new ServerGameloop(id_game, id, TipoPlayer::Spaz, recv_q, &sndr_q);
-            break;
-        default:
-            kill();
-            throw runtime_error("No character chosen");
-        }
-        receiver = new ServerReceiver(protocol, recv_q, wc);
-        std::cout << "creo un receiver" << std::endl;
 
-        gameloops.push_back(gameLoop);
-        gameLoop->start();
-        std::cout << "gameloop start" << std::endl;
-
-    } else {
-        gameLoop = gameloops.at(game);
-        if (gameLoop != NULL) {
-            std::cout << " partida enocontrada" << std::endl;
-        }
-        recv_q = gameLoop->recv_q;
-        receiver = new ServerReceiver(protocol, recv_q, wc);
-                std::cout << "creo un receiver" << std::endl;
-
-        switch (tipoPlayer)
-        {
-        case JAZZ_BYTE:
-            gameLoop->addPlayer(id, TipoPlayer::Jazz, &sndr_q);
-            break;
-        case LORI_BYTE:
-            gameLoop->addPlayer(id, TipoPlayer::Lori, &sndr_q);
-            break;
-        case SPAZ_BYTE:
-            gameLoop->addPlayer(id, TipoPlayer::Spaz, &sndr_q);
-            break;
-        default:
-            kill();
-            throw runtime_error("No character chosen");
-        }
-
-    }
-    std::cout << "me uno al gameloop" << std::endl;
-
-}
-void Client::run() {
-    reap_dead_gameloops();
-    //enviar ids de partidas
-    vector<uint8_t> msg = get_games();
-    protocol.send_msg(msg, wc);
-
-    vector<uint8_t> init_data = protocol.recv_init_msg(wc); //recibo la eleccion de partida y personaje
-    if (init_data[GAME_POS] != NEW_GAME && !gameloops.contains(init_data[GAME_POS])) {
-        kill();
-        throw runtime_error("Game not found");
-    }
-    TipoPlayer player_selected = select_character(init_data[1]);
-    select_game(init_data[0], player_selected);
-
-    protocol.send_id(id, wc); // Envio el id al cliente para que se lo guarde en el protocolo
-
-    receiver->start();
-    sender.start();
-
-    sender.join();
-    std::cout << "El sender se cerró. El cliente se desconecto" << std::endl;
-    gameLoop->removePlayer(id);
-    if (gameLoop->is_dead()) {
-        gameloops.remove(gameLoop);
-    }
-    receiver->join();
-    std::cout << "El receiver se cerró." << std::endl;
-
-
-}
-
-/**
- *  Recorre la lista de gameloops, eliminando y liberando la memoria de aquellos que han finalizado.
- */
 void Client::reap_dead_gameloops() {
     for (auto it = gameloops.begin(); it != gameloops.end();) {
         ServerGameloop *gameloop = *it;
@@ -166,11 +112,11 @@ void Client::reap_dead_gameloops() {
 vector<uint8_t> Client::get_games() {
     vector<uint8_t> msg;
     
-   msg.push_back(gameloops.size()); // Cantidad de partidas
-   for (auto game : gameloops) {
+    msg.push_back(gameloops.size()); // Cantidad de partidas
+    for (auto game : gameloops) {
         msg.push_back(game->id);
-   }
-   return msg;
+    }
+    return msg;
 }
 
 bool Client::is_dead() {
@@ -181,8 +127,6 @@ void Client::kill() {
     sndr_q.close();
     sk.close();
     if (recv_q != nullptr) {
-        //monitor->remove(&sndr_q);
-        //ch_map->erase(id);
         receiver->join();
         sender.join();
         delete receiver;

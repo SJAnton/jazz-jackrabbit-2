@@ -20,7 +20,6 @@ void Game::init() {
     ObjectProjectile::init(1, 2, 3, 4, 11, 12, 13, 14);
     ObjectCollected::init(20, 10, 3, 2, -1, 0.2f);
     EnemyRat::init(3, 4);
-
 } 
 
 Game::Game() : 

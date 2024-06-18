@@ -1,8 +1,7 @@
-#include "game_object_player.h"
 #include <iostream>
 
-
 #include "../../game_mundo.h"
+#include "game_object_player.h"
 
 // Inicializo las variables estáticas
 bool ObjectPlayer::inicializado = false;
@@ -12,7 +11,6 @@ int ObjectPlayer::defaultRunSpeed = 0;
 int ObjectPlayer::defaultIntoxicatedSpeed = 0;
 int ObjectPlayer::defaultJumpSpeed = 0;
 int ObjectPlayer::defaultFallSpeed = 0;
-
 
 void ObjectPlayer::init(int health, int speed_walk, int speed_run, int speed_intoxicated, int speed_jump, int speed_fall) {
     if (!inicializado) {

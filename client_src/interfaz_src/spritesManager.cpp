@@ -62,7 +62,7 @@ void SpritesManager::renderizarMenu() {
 }
 
 void SpritesManager::inicializarBotonesPartidas(const std::vector<int> &id_partidas) {
-    int cantidad = id_partidas.size();
+    //int cantidad = id_partidas.size();
     for (int id : id_partidas) {
         botones_partidas.emplace_back(id); 
         //Estaria bueno que el tamaño de los botones  y letras dependa de la cantidad de partidas 
@@ -172,7 +172,7 @@ void SpritesManager::renderizarVidas(int& vidas){
 void SpritesManager::renderizarMunicionArma(const TipoPlayer &tipo, int cantMunicion){
     int municion_x = ANCHO_WINDOW * 0.8;
     int municion_y = ALTO_WINDOW * 0.9;
-    int separacion = 0;
+    //int separacion = 0;
     if(tipo == TipoPlayer::Spaz){
         spazGun.renderizarEn(municion_x, municion_y);
     }

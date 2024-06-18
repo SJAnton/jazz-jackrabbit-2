@@ -7,7 +7,7 @@
 #include "server_queue_list.h"
 #include "server_config_reader.h"
 
-#define CONFIG "../config.yaml"
+#define CONFIG "config.yaml"
 
 #define EXIT 'q'
 
@@ -26,10 +26,6 @@ int main(int argc, char* argv[]) {
     if (!file.is_open()) {
         throw std::runtime_error("Failure opening configuration file");
     }
-    //Socket skt(SERVICENAME);
-    
-
-    //bool was_closed = false;
     ServerConfigReader reader(file);
     std::map<std::string, std::vector<uint8_t>> data = reader.read();
     Game::init();
@@ -40,9 +36,6 @@ int main(int argc, char* argv[]) {
     while (std::cin.get() != EXIT) {
 
     }
-    //was_closed = true;
-    //skt.shutdown(SHUTCODE);
-    //skt.close();
     acceptor.join();
     return SUCCESS;
 }

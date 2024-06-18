@@ -159,5 +159,3 @@ std::vector<InfoProyectil> GameMundo::getInfoProyectiles() {
     }
     return projectile_data;
 }
-
-

@@ -10,7 +10,7 @@
 #include "../../Weapons/weapon.h"
 #include <cstdint>
 
-#define WIDTH_PLAYER 20                                     // (para el futuro Padding de 20px y 11px arriba)
+#define WIDTH_PLAYER 20  // (para el futuro Padding de 20px y 11px arriba)
 #define HEIGHT_PLAYER 40
 
 // basado en el server_character
