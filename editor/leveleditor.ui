@@ -44,7 +44,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Terrain">
      <attribute name="title">
@@ -75,6 +75,24 @@
         <y>0</y>
         <width>1031</width>
         <height>61</height>
+       </rect>
+      </property>
+      <property name="flow">
+       <enum>QListView::LeftToRight</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="PlayerEnemies">
+     <attribute name="title">
+      <string>Player / Enemies</string>
+     </attribute>
+     <widget class="QListWidget" name="playerEnemiesListWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="flow">

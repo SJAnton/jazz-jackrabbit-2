@@ -11,5 +11,9 @@
         <file>sprites/gold_coin.png</file>
         <file>sprites/silver_coin.png</file>
         <file>sprites/red_gem.png</file>
+        <file>sprites/rat.png</file>
+        <file>sprites/bat.png</file>
+        <file>sprites/diablo.png</file>
+        <file>sprites/spaz.png</file>
     </qresource>
 </RCC>

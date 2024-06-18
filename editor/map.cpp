@@ -26,6 +26,44 @@ void Map::setObjectOccupied(int x, int y, bool occupied) {  // Nueva función
         objectGrid[x][y] = occupied;
     }
 }
+/*
+bool Map::canPlaceSprite(int x, int y, int width, int height, bool isObject) const {
+    for (int i = x; i < x + width; ++i) {
+        for (int j = y; j < y + height; ++j) {
+            if (!isValidCoordinate(i, j) || (isObject ? isObjectOccupied(i, j) : isOccupied(i, j))) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+*/
+
+bool Map::canPlaceSprite(int x, int y, int width, int height, bool isObject) const {
+    for (int i = x; i < x + width; ++i) {
+        for (int j = y; j < y + height; ++j) {
+            if (!isValidCoordinate(i, j) || (isObject ? objectGrid[i][j] : terrainGrid[i][j])) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+void Map::setSpriteOccupied(int x, int y, int width, int height, bool occupied, bool isObject) {
+    for (int i = x; i < x + width; ++i) {
+        for (int j = y; j < y + height; ++j) {
+            if (isObject) {
+                objectGrid[i][j] = occupied;
+            } else {
+                terrainGrid[i][j] = occupied;
+            }
+        }
+    }
+}
+
+
 
 int Map::getWidth() const {
     return width;
