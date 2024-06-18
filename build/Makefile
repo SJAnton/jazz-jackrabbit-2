@@ -238,30 +238,6 @@ client_src/client_receiver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_src/client_receiver.cpp.s
 .PHONY : client_src/client_receiver.cpp.s
 
-client_src/client_renderer.o: client_src/client_renderer.cpp.o
-.PHONY : client_src/client_renderer.o
-
-# target to build an object file
-client_src/client_renderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_src/client_renderer.cpp.o
-.PHONY : client_src/client_renderer.cpp.o
-
-client_src/client_renderer.i: client_src/client_renderer.cpp.i
-.PHONY : client_src/client_renderer.i
-
-# target to preprocess a source file
-client_src/client_renderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_src/client_renderer.cpp.i
-.PHONY : client_src/client_renderer.cpp.i
-
-client_src/client_renderer.s: client_src/client_renderer.cpp.s
-.PHONY : client_src/client_renderer.s
-
-# target to generate assembly for a file
-client_src/client_renderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client_src/client_renderer.cpp.s
-.PHONY : client_src/client_renderer.cpp.s
-
 client_src/client_sender.o: client_src/client_sender.cpp.o
 .PHONY : client_src/client_sender.o
 
@@ -716,9 +692,6 @@ help:
 	@echo "... client_src/client_receiver.o"
 	@echo "... client_src/client_receiver.i"
 	@echo "... client_src/client_receiver.s"
-	@echo "... client_src/client_renderer.o"
-	@echo "... client_src/client_renderer.i"
-	@echo "... client_src/client_renderer.s"
 	@echo "... client_src/client_sender.o"
 	@echo "... client_src/client_sender.i"
 	@echo "... client_src/client_sender.s"

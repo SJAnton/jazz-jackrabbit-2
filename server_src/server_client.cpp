@@ -39,7 +39,7 @@ TipoPlayer Client::select_character(uint8_t type_player) {
 
 void Client::select_game(uint8_t game, const TipoPlayer &type_player) {
     if (game == NEW_GAME) { // Creo un Nuevo Gameloop y el receiver utilizará la queue de aquí
-        int id_game = gameloops.size();
+        int id_game = gameloops.size() + 1; // para evitar el 0
 
         gameLoop = new ServerGameloop(id_game, id, type_player, recv_q, &sndr_q);
         receiver = new ServerReceiver(protocol, recv_q, wc);
@@ -132,9 +132,7 @@ void Client::run() {
     protocol.send_id(id, wc); // Envio el id al cliente para que se lo guarde en el protocolo
 
     receiver->start();
-    std::cout << "receiver inicia" << std::endl;
     sender.start();
-    std::cout << "sender inicia" << std::endl;
 
     sender.join();
     std::cout << "El sender se cerró. El cliente se desconecto" << std::endl;
