@@ -81,7 +81,6 @@ void SpritesManager::renderizarBotonesPartidas() {
     botones_partidas.back().renderizarCrearPartida();
 }
 
-
 void SpritesManager::inicializarBotonesCharacter(){
     int separacion = 250;
     int character_width = 144, character_height = 240;
@@ -107,7 +106,6 @@ void SpritesManager::renderizarBotonesCharacter(){
     character_spaz.renderizarEn(x + separacion, y);
     character_lori.renderizarEn(x + separacion * 2, y);
 }
-
 
 //JUEGO
 void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
@@ -193,17 +191,17 @@ void SpritesManager::updateItems() {
     gema.nextFrame();
     zanahoria.nextFrame();
 }
+
 void SpritesManager::flipPlayer(unsigned int n, bool invertirSprite) 
 {
     SpritePlayer& player = getPlayer(n);
     player.setFlip(invertirSprite);
 }
 
-
-
-void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos) {
+void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos, const Direcciones &dir) {
     SpritePlayer& player = getPlayer(n);
     player.setPosition(pos.x, pos.y);
+    player.setFlip(dir);
     if (player.getEstado() != estado) { // si cambió de estado
         player.setEstado(estado);
     }

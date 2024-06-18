@@ -69,10 +69,6 @@ private:
 public:
     SpritesManager();
 
-    //constructor que recibe la cantidad maxima de jugadores y el tipoPlayer de cada uno
-    //(Todavia no está implementado).
-    SpritesManager(int countPlayers, TipoPlayer tipos[]);
-
     void renderizarMenu();
 
     void inicializarBotonesPartidas(const std::vector<int> &id_partidas);
@@ -102,7 +98,9 @@ public:
     void renderizarVidas(int &vidas);
     void renderizarMunicionArma(const TipoPlayer &tipo, int cantMunicion);
 
+
     // UPDATES
+
     /**
      * Avanza al siguiente frame de la animacion de todos los items recolectables
     */
@@ -121,7 +119,7 @@ public:
      * nota.
      * Si NO EXISTE el player numero 'n' en SpritesManager, lanza una excepcion
     */
-    void updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos);
+    void updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos, const Direcciones &dir);
 
     /**
      * Actualiza el enemy numero 'n'.
@@ -132,7 +130,7 @@ public:
      * nota.
      * Si NO EXISTE el enemigo numero 'n' en SpritesManager, lanza una excepcion
     */
-    void updateEnemy(unsigned int n, const EstadosEnemy &estado, const Position &pos);
+    void updateEnemy(unsigned int n, const EstadosEnemy &estado, const Position &pos, const Direcciones &dir);
     
     //~SpritesManager();
 };

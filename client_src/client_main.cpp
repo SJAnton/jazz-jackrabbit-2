@@ -2,7 +2,6 @@
 #include "client_protocol.h"
 #include "client_receiver.h"
 #include "client_sender.h"
-#include "client_renderer.h"
 #include "client_player.h"
 
 #include "../common_src/queue.h"
@@ -26,9 +25,6 @@ int main(int argc, char* argv[]) {
     
     ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
     InterfazGrafica interfaz(cliente.queueReceptora, cliente);
-
-    //ClientRenderer* renderer = new ClientRenderer(interfaz);
-    //renderer->start();
     
     while (interfaz.estaAbierta()) // hacer a la interfaz un thread y hacer interfaz.start(). No hace falta un hilo renderer
     {
@@ -46,8 +42,7 @@ int main(int argc, char* argv[]) {
         
         
     }    
-    //renderer->join();
-    //interfaz.cerrarInterfaz();
+
     std::cout << "fin" << std::endl;
     
     return 0;

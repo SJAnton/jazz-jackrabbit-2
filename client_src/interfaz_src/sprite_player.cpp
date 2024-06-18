@@ -10,6 +10,13 @@ SpritePlayer::SpritePlayer(TipoPlayer tipoPlayer) :
 void SpritePlayer::setFlip(bool flip_) {
     flip = flip_;
 }
+void SpritePlayer::setFlip(const Direcciones &dir) {
+    if (dir == Left) 
+        flip = true;
+    else 
+        flip = false;
+}
+
 
 void SpritePlayer::setPosition(int x, int y) {
     position.x = x;

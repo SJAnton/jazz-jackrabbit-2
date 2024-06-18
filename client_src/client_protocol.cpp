@@ -62,18 +62,27 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 	std::vector<InfoEnemigo> infoEnemies;
 	std::vector<InfoRecolectable> infoItems;
 	std::vector<InfoProyectil> infoProyectiles;
-
-	//Decode info Players
-	for (int i = 0; i < cantPlayers; i++) { 
-		if (contador + LENGTH_PLAYER_INFO > bytes.size()) {
-			std::runtime_error("Error. Faltaron datos de un player. En ClientProtocol::decodificarMensajeDelServer()");
-		}
-		std::vector<uint8_t> playerBytes(bytes.begin() + contador, bytes.begin() + contador + LENGTH_PLAYER_INFO);
+	
+	int clientPlayerIndex = -1;
+    // Decode info Players
+    for (int i = 0; i < cantPlayers; i++) {
+        if (contador + LENGTH_PLAYER_INFO > bytes.size()) {
+            throw std::runtime_error("Error. Faltaron datos de un player. En ClientProtocol::decodificarMensajeDelServer()");
+        }
+        std::vector<uint8_t> playerBytes(bytes.begin() + contador, bytes.begin() + contador + LENGTH_PLAYER_INFO);
         InfoPlayer player = decodePlayer(playerBytes);
         infoPlayers.push_back(player);
 
-	    contador += LENGTH_PLAYER_INFO;
-	}
+        if (player.id == this->id) {
+            clientPlayerIndex = i;
+        }
+
+        contador += LENGTH_PLAYER_INFO;
+    }
+
+    if (clientPlayerIndex != -1 && clientPlayerIndex != 0) {
+        std::swap(infoPlayers[0], infoPlayers[clientPlayerIndex]); //me aseguro de poner el player del cliente en la posicion 0
+    }
 	
 	int cantEnemigos = decodeInt(bytes[contador]);
 	contador++;

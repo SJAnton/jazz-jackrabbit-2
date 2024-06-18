@@ -9,7 +9,7 @@ class SpritePlayer {
 private:
     TipoPlayer tipo;
     SpriteSheet spriteSheet;
-    EstadosPlayer estado;
+    EstadosPlayer estado = EstadosPlayer::Inactive;
     Position position;
     bool flip = false; //es true cuando está mirando a la izquierda
     int it = 0;
@@ -25,6 +25,7 @@ public:
     void setPosition(int x, int y);
 
     void setFlip(bool flip);
+    void setFlip(const Direcciones &dir);
     
     void setEstado(const EstadosPlayer &estado);
 

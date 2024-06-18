@@ -48,11 +48,6 @@ bool InterfazGrafica::estaAbierta() {
     return is_running;
 }
 
-void InterfazGrafica::recibirInformacion(){
-    //cliente.recibirInformacion();
-    //Proceso la informacion para actualizar la interfaz
-}
- 
 void InterfazGrafica::addPlayer(const TipoPlayer &tipo) {//temporal
     spritesManager->addPlayer(tipo);
 }
@@ -72,10 +67,17 @@ void InterfazGrafica::update(int it) {
     if (queueReceptora.try_pop(infoJuego)) {
         Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y); //el player 0 debo "ser yo"
         updateCamara(pos);
-        
+        //std::cout << "Cant players: " << infoJuego.cantidadPlayers() << std::endl;
+
         for (int i=0; i< infoJuego.cantidadPlayers(); i++) {
             pos = posRelativaACamara(infoJuego.players[i].pos_x, infoJuego.players[i].pos_y);
-            spritesManager->updatePlayer(i, infoJuego.players[i].estado, pos);
+            try {
+                spritesManager->updatePlayer(i, infoJuego.players[i].estado, pos, infoJuego.players[i].direccion);
+            } catch (...) { // si lanza una excepcion quiere decir que el player i no existe en spritesManager. Debo agregarlo
+                spritesManager->addPlayer(infoJuego.players[i].tipoPlayer);
+                spritesManager->updatePlayer(i, infoJuego.players[i].estado, pos, infoJuego.players[i].direccion);
+            }
+            
         }
         for (int i=0; i< infoJuego.cantEnemigos(); i++) {
             pos = posRelativaACamara(infoJuego.enemigos[i].pos_x, infoJuego.enemigos[i].pos_y);
@@ -127,6 +129,7 @@ void InterfazGrafica::renderizarJuego()
         //spritesManager->updatePlayer(i, infoJuego.players[i].estado, posicion);
     }
 
+    //HUD
     spritesManager->renderizarVidas(infoJuego.players[0].vida);
 
     spritesManager->renderizarMunicionArma(infoJuego.players[0].tipoPlayer, infoJuego.players[0].municion);
