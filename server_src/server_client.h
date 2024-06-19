@@ -39,6 +39,8 @@ class Client : public Thread {
 
         bool wc = false;
 
+        bool is_running = false;
+
         void reap_dead_gameloops();
 
         vector<uint8_t> get_games();
