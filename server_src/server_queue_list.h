@@ -13,8 +13,8 @@
 */
 class ServerQueueList {
     private:
-        //std::list<Queue<InfoJuego>*> list;
-        std::map <int , std::list<Queue<InfoJuego>*>> map;
+        std::map<int, std::list<Queue<InfoJuego>*>> map;
+
         std::mutex m;
 
     public:
@@ -28,9 +28,11 @@ class ServerQueueList {
 
         int size();
 
-        //std::list<Queue<InfoJuego>*>::iterator begin();
+        void clear();
 
-        //std::list<Queue<InfoJuego>*>::iterator end();
+        std::map<int, std::list<Queue<InfoJuego>*>>::iterator begin();
+
+        std::map<int, std::list<Queue<InfoJuego>*>>::iterator end();
 };
 
 #endif

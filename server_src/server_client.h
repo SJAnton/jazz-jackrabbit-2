@@ -12,32 +12,29 @@
 #include "../common_src/socket.h"
 #include "../common_src/liberror.h"
 #include "../common_src/info_juego.h"
-//#include "characters/server_player_jazz.h"
-//#include "characters/server_player_lori.h"
-//#include "characters/server_player_spaz.h"
 
 using namespace std;
 
 class Client : public Thread {
     private:    
-        // ESTA DATA LA RECIBIMOS POR PARAMETRO EN EL CONSTRUCTOR
         Socket sk;
+
         int id;
-        GameloopList &gameloops; // Lista de gameloops disponibles para unirse
 
-        // ESTA DATA LA CREAMOS EN EL CONSTRUCTOR
-        ServerGameloop *gameLoop; // puntero al gameloop seleccionado
+        atomic<int> &gmlp_id;
 
+        GameloopList &gameloops;
 
-        //map<uint8_t, shared_ptr<Queue<uint8_t>>> &gameloops_recv_queues; //cada gameloop tiene una queue para recibir
+        ServerGameloop *gameLoop;
 
         ServerProtocol protocol;
 
         Queue<InfoJuego> sndr_q;
-        shared_ptr<Queue<uint8_t>> recv_q; // sera un puntero a la queue del gameloop
 
-        //shared_ptr<ServerQueueList> monitor;
-        ServerReceiver *receiver; // antes de crearlo debo saber que queue utilizará
+        shared_ptr<Queue<uint8_t>> recv_q;
+
+        std::unique_ptr<ServerReceiver> receiver;
+
         ServerSender sender;
 
         bool wc = false;
@@ -49,11 +46,9 @@ class Client : public Thread {
         void select_game(uint8_t game, const TipoPlayer &type_player);
 
         TipoPlayer select_character(uint8_t character);
-        
-        void seleccionarGameYPlayer(uint8_t game, uint8_t tipoPlayer);
 
     public:
-        Client(Socket &&sk, int id,  GameloopList &gameloops);
+        Client(Socket &&sk, int id, atomic<int> &gmlp_id, GameloopList &gameloops);
         
         void run() override;
 
