@@ -100,13 +100,13 @@ void ObjectPlayer::run(Direcciones direccion) {
 
 void ObjectPlayer::jump(Direcciones direccion) {
     estado = EstadosPlayer::Jumping;
-    jumping = true;
+    is_jumping = true;
     direction = direccion;
     for (int i=0; i <  defaultJumpSpeed; i++) { //para chequear en cada unidad que se mueve si hay una pared
         
         if (position.y  <= 0 || position.y >= Y_MAX) { // si me salgo del mapa...
             estado = EstadosPlayer::Falling;
-            jumping = false;
+            is_jumping = false;
             std::cout << "me fui de rango. pos y " << position.y << std::endl;
             return;
         }
@@ -115,7 +115,7 @@ void ObjectPlayer::jump(Direcciones direccion) {
             GameMundo::casilleros[y_up][pos_x_max].estaBloqueado()) { 
             //Colison con pared
             std::cout << "pared a arriba" << std::endl;
-            jumping = false;
+            is_jumping = false;
             estado = EstadosPlayer::Falling;
             return;
         } else { //si no
@@ -136,9 +136,9 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
 }
 
 void ObjectPlayer::fall() {
-    if (jumping)
+    if (is_jumping) {
         return;
-
+    }
     for (int i=0; i < ObjectPlayer::defaultFallSpeed; i++) {
         //Chequeo si hay una pared debajo (para hacer mas simple miro solo los extremos de x)
         if (GameMundo::casilleros[y_down][position.x].estaBloqueado() || 
@@ -163,6 +163,7 @@ void ObjectPlayer::fall() {
 void ObjectPlayer::change_weapon(Weapon &&new_weapon) {
 
 }
+
 void ObjectPlayer::pick_up_ammo(int ammo) {
     std::cout << "arma suma municiones" << std::endl;
     //weapon.addMunicion(ammo);
@@ -171,10 +172,10 @@ void ObjectPlayer::pick_up_ammo(int ammo) {
 void ObjectPlayer::set_intoxicated_status(bool status) {
     intoxicated = status;
 }
-void ObjectPlayer::set_jumping_status(const bool &status) {
-    jumping = status;
-}
 
+void ObjectPlayer::set_jumping_status(const bool &status) {
+    is_jumping = status;
+}
 
 void ObjectPlayer::add_points(int points) {
     this->points += points;

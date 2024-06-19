@@ -1,11 +1,11 @@
 #include <fstream>
 
-#include "server_acceptor.h"
-#include "game/gameloop.h"
 #include "game/game.h"
-
+#include "game/gameloop.h"
+#include "server_acceptor.h"
 #include "server_queue_list.h"
 #include "server_config_reader.h"
+#include "../common_src/socket.h"
 
 #define CONFIG "config.yaml"
 
@@ -26,17 +26,22 @@ int main(int argc, char* argv[]) {
     if (!file.is_open()) {
         throw std::runtime_error("Failure opening configuration file");
     }
+    Socket skt(SERVICENAME);
+    bool was_closed = false;
     ServerConfigReader reader(file);
     std::map<std::string, std::vector<uint8_t>> data = reader.read();
 
     Game::init(data);
 
-    ServerAcceptor acceptor(SERVICENAME);
+    ServerAcceptor acceptor(skt, was_closed);
     acceptor.start();
 
     while (std::cin.get() != EXIT) {
 
     }
+    was_closed = true;
+    skt.shutdown(SHUTCODE);
+    skt.close();
     acceptor.join();
     return SUCCESS;
 }

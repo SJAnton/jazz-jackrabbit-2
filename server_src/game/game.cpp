@@ -70,7 +70,7 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
                 p->set_jumping_status(false);
                 auxJump = 0;
             }
-//            return;
+            //return;
         }
     }
 

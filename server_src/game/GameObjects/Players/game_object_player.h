@@ -39,13 +39,11 @@ class ObjectPlayer : public GameObject {
         bool intoxicated = false;
         bool falling = false;
         bool tocandoSuelo = true;
-        bool jumping = false;
+        bool is_jumping = false;
 
     private:
         // Mueve las posiciones del gameobject
-        //void move(unsigned int x, unsigned int y);
         void move_x(Direcciones direccion, int speed);
-
 
     public:
         // inicializo todas las constantes de los Players una unica vez
@@ -53,41 +51,47 @@ class ObjectPlayer : public GameObject {
     
         ObjectPlayer(int id, TipoPlayer &tipo, const Weapon &weapon);
 
-// Movimientos y Acciones
+        // Movimientos y Acciones
 
         void idle();
+        
         void walk(Direcciones direccion);
+
         void run(Direcciones direccion);
         
         //Hace un movimiento de parábola
         void jump(Direcciones direccion);
+
         void fall();
         //virtual void specialAttack(); // no implementado
 
-        /**
-         * Devuelve el proyectil disparado
-        */
+        // Devuelve el proyectil disparado
         ObjectProjectile shoot(Direcciones direccion);
 
-//getters
+        //getters
 
         int get_id() {return id;};
-        bool is_dead() {return alive;};
-        bool is_intoxicated() { return intoxicated;};
-        bool is_falling() {return falling;};
-        bool isJumping() {return jumping;}
 
-    //Setters
+        bool is_dead() {return alive;};
+
+        bool is_intoxicated() { return intoxicated;};
+
+        bool is_falling() {return falling;};
+
+        bool isJumping() {return is_jumping;}
+
+        //Setters
 
         void change_weapon(Weapon &&new_weapon);
         
-        // recoger municion
-        void pick_up_ammo(int ammo); 
+        void pick_up_ammo(int ammo); // recoger municion
 
         void add_hearts(int pts_vidas); // Suma vida. Si recibe un negativo era una zanahoria envenenada
 
         void set_intoxicated_status(bool status); // Convierte intoxicated a true/false
+
         void set_jumping_status(const bool &status);
+
         void take_damage(int &damage); // health - damage
 
         void add_points(int points); // points + sum

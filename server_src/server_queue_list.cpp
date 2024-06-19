@@ -27,12 +27,15 @@ int ServerQueueList::size() {
     std::unique_lock<std::mutex> lock(m);
     return map.size();
 }
-/*
-std::list<Queue<InfoJuego>*>::iterator ServerQueueList::begin() {
+
+void ServerQueueList::clear() {
+    map.clear();
+}
+
+std::map<int, std::list<Queue<InfoJuego>*>>::iterator ServerQueueList::begin() {
     return map.begin();
 }
 
-std::list<Queue<InfoJuego>*>::iterator ServerQueueList::end() {
+std::map <int, std::list<Queue<InfoJuego>*>>::iterator ServerQueueList::end() {
     return map.end();
 }
-*/

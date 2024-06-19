@@ -12,7 +12,7 @@ AccionesPlayer  Protocol::decodeAction(uint8_t byte) {
         case ACTION_SHOOT: return AccionesPlayer::Shoot;
         case ACTION_SPECIAL_ATTACK: return AccionesPlayer::SpecialAttack;
         default:
-            std::invalid_argument("En Protocol::encodeAction()");
+            throw std::invalid_argument("En Protocol::encodeAction()");
             return AccionesPlayer::Idle;
     }
 }
@@ -22,7 +22,7 @@ Direcciones Protocol::decodeDireccion(uint8_t byte) {
         case LEFT: return Direcciones::Left;
         case RIGHT: return Direcciones::Right;
         default:
-            std::invalid_argument("En Protocol::decodeDireccion()");
+            throw std::invalid_argument("En Protocol::decodeDireccion()");
             return Direcciones::Right;
     }
 }
@@ -67,7 +67,7 @@ TipoEnemy Protocol::decodeTipoEnemy(uint8_t byte) {
 	case ENEMY_BAT : return Bat;
 	case ENEMY_LIZARD : return Lizard;	
 	default:
-		std::invalid_argument("Protocol::decodeTipoEnemy()");
+		throw std::invalid_argument("Protocol::decodeTipoEnemy()");
 		return Rat;
 	}
 }
@@ -81,7 +81,7 @@ EstadosEnemy Protocol::decodeEstadoEnemy(uint8_t byte) {
 	case ENEMY_STATE_DAMAGED: return EstadosEnemy::Damaged;
 	case ENEMY_STATE_DEATH: return EstadosEnemy::Death;
 	default:
-		std::invalid_argument("Protocol::decodeEstadoEnemy()");
+		throw std::invalid_argument("Protocol::decodeEstadoEnemy()");
 		return EstadosEnemy::Idle;
 	}
 }
@@ -94,7 +94,7 @@ TipoRecolectable Protocol::decodeTipoRecolectable(uint8_t byte) {
 	case ITEM_MUNCION: return Municion;
 	case ITEM_ZANAHORIA: return Zanahoria;
 	default:
-		std::invalid_argument("En Protocol::decodeTipoRecolectable()");
+		throw std::invalid_argument("En Protocol::decodeTipoRecolectable()");
 		return Moneda;
 	}
 }
@@ -107,7 +107,7 @@ TipoArma Protocol::decodeTipoArma(uint8_t byte) {
     case WEAPON_TYPE3: return TipoArma::Tipo_3;
     case WEAPON_TYPE4: return TipoArma::Tipo_4;
     default:
-		std::invalid_argument("En Protocol::decodeTipoArma()");
+		throw std::invalid_argument("En Protocol::decodeTipoArma()");
         return TipoArma::Tipo_1;
     }
 }
@@ -134,7 +134,7 @@ uint8_t Protocol::encodeDireccion(const Direcciones &direccion) {
 		case Left: return LEFT;
 		case Right: return RIGHT;
 		default: 
-            std::invalid_argument("En Protocol::encodeDireccion()");
+            throw std::invalid_argument("En Protocol::encodeDireccion()");
 		    return RIGHT;
 	}
 }
@@ -146,7 +146,7 @@ uint8_t Protocol::encodeTipoPlayer(const TipoPlayer &tipo) {
 	case Lori : return PLAYER_TYPE_LORI;
 	case Spaz : return PLAYER_TYPE_SPAZ;	
 	default:
-        std::invalid_argument("En Protocol::encodeTipoPlayer()");
+        throw std::invalid_argument("En Protocol::encodeTipoPlayer()");
 		return PLAYER_TYPE_JAZZ;
 	}
 }
@@ -167,7 +167,7 @@ uint8_t Protocol::encodeEstadoPlayer(const EstadosPlayer &estado) {
         case EstadosPlayer::Dead: return STATE_DEAD;
         case EstadosPlayer::Reviving: return STATE_REVIVE;
         default: 
-            std::invalid_argument("En Protocol::encodeEstadoPlayer()");
+            throw std::invalid_argument("En Protocol::encodeEstadoPlayer()");
             return STATE_IDLE;
     }
 }
@@ -178,7 +178,7 @@ uint8_t Protocol::encodeTipoEnemy(const TipoEnemy &enemigo) {
         case Bat: return ENEMY_BAT;
         case Lizard: return ENEMY_LIZARD;	
         default:
-            std::invalid_argument("En Protocol::encodeTipoEnemy()");
+            throw std::invalid_argument("En Protocol::encodeTipoEnemy()");
             return ENEMY_RAT;
     }
 }
@@ -191,7 +191,7 @@ uint8_t Protocol::encodeEstadoEnemy(const EstadosEnemy &byte) {
 	    case EstadosEnemy::Damaged: return ENEMY_STATE_DAMAGED;
 	    case EstadosEnemy::Death: return ENEMY_STATE_DEATH;
 	    default:
-            std::invalid_argument("En Protocol::encodeEstadoEnemy()");
+            throw std::invalid_argument("En Protocol::encodeEstadoEnemy()");
             return ENEMY_STATE_IDLE;
 	}
 }
@@ -203,7 +203,7 @@ uint8_t Protocol::encodeTipoRecolectable(const TipoRecolectable &tipo){
         case Zanahoria: return ITEM_ZANAHORIA;
         case Municion: return ITEM_MUNCION;
         default:
-            std::invalid_argument("En Protocol::encodeTipoRecolectable()");
+            throw std::invalid_argument("En Protocol::encodeTipoRecolectable()");
             return ITEM_DIAMANTE;
     }
 }
@@ -216,7 +216,7 @@ uint8_t Protocol::encodeTipoArma(const TipoArma &tipo) {
     case TipoArma::Tipo_3 : return WEAPON_TYPE3;
     case TipoArma::Tipo_4 : return WEAPON_TYPE4;
     default:
-        std::invalid_argument("En Protocol::encodeTipoArma()");
+        throw std::invalid_argument("En Protocol::encodeTipoArma()");
         return WEAPON_TYPE1;
     }
 }

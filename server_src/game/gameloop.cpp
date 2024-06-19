@@ -29,16 +29,11 @@ void ServerGameloop::removePlayer(int id) {
     sndr_queues.remove(id);
     std::cout << "player y sender eliminados del gameloop" << std::endl;
     std::cout << "Aun quedan: " << sndr_queues.size() << std::endl;
-    if (sndr_queues.size() == 0) {
-        std::cout << "Terminar Gameloop" << std::endl;
-        //kill();
-    }
-
 }
 
 void ServerGameloop::run() {
     auto expected_itr_time = std::chrono::milliseconds(MILLISECONDS_PER_ITR);
-    while (game.is_running()) {
+    while (sndr_queues.size() > 0) {
         auto start_time = std::chrono::steady_clock::now();
                 
         std::vector<uint8_t> data;
@@ -53,7 +48,6 @@ void ServerGameloop::run() {
             continue;
         }
         game.update();
-
         game.execute_actions(data);
 
         send_snapshot();
@@ -63,7 +57,9 @@ void ServerGameloop::run() {
         if (itr_time < expected_itr_time) {
             std::this_thread::sleep_for(expected_itr_time - itr_time);
         }
+        //time_left--;
     }
+    std::cout << "fin gameloop" << std::endl;
     wc = true;
 }
 
@@ -86,6 +82,5 @@ void ServerGameloop::kill() {
     if (recv_q != nullptr) {
         recv_q->close();
     }
-    //monitors.erase(id);
-    //gameloops_q.erase(id);
+    sndr_queues.clear();
 }
