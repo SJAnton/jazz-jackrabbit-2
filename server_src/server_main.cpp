@@ -28,9 +28,10 @@ int main(int argc, char* argv[]) {
     }
     ServerConfigReader reader(file);
     std::map<std::string, std::vector<uint8_t>> data = reader.read();
-    Game::init();
+
+    Game::init(data);
+
     ServerAcceptor acceptor(SERVICENAME);
-   
     acceptor.start();
 
     while (std::cin.get() != EXIT) {

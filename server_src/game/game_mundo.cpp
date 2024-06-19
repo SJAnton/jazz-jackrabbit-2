@@ -1,9 +1,11 @@
-#include "game_mundo.h"
 #include <iostream>
 
-
+#include "game_mundo.h"
 #include "game_casillero.h"
 #include "game_coordenada.h"
+
+#define FILAS 15
+#define COLUMNAS 15
 
 std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(15 * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(15 * MULTIPLCADOR_CASILLERO));
 
@@ -11,12 +13,12 @@ std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vec
 GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
               std::vector<ObjectEnemy> &enemigos,
               std::vector<ObjectCollected> &itemsRecolectables) :
-    filas(15*MULTIPLCADOR_CASILLERO), 
-    columnas(15*MULTIPLCADOR_CASILLERO), 
+    filas(FILAS * MULTIPLCADOR_CASILLERO), 
+    columnas(COLUMNAS * MULTIPLCADOR_CASILLERO), 
     players(players), enemigos(enemigos), 
     itemsRecolectables(itemsRecolectables)
 {
-   for (int j = 0; j < 15; ++j) { //Cargo los casilleros solidos (HARDCODEADO)
+   for (int j = 0; j < COLUMNAS; ++j) { //Cargo los casilleros solidos (HARDCODEADO)
         CoordenadaBloque coord(j, 4); //bloqueo la fila 4
         bloquearCasilleros(coord);
     }

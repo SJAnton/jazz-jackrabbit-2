@@ -16,7 +16,10 @@ class Game {
      * Cantidad de items, tipo y sus posiciones.
      * 
     */
-        static void init(); //Metodo para cargar todas las constantes del config
+
+        // Carga los valores del config.yaml
+        static void init(std::map<std::string, std::vector<uint8_t>> &config);
+        
     private:
         bool _is_running = true;
 

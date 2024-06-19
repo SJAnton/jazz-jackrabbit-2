@@ -13,13 +13,36 @@
 #define PTS_VIDA 1
 #define PTS_MUNICION 3
 
+#define PLAYER_CODE "ObjectPlayer"
+#define PROJECTILE_CODE "ObjectProjectile"
+#define COLLECTED_CODE "ObjectCollected"
+#define RAT_CODE "EnemyRat"
 
 //Metodo para cargar todas las constantes del config
-void Game::init() {
-    ObjectPlayer::init(10, 5, 10, 2, 10, 15);
-    ObjectProjectile::init(1, 2, 3, 4, 11, 12, 13, 14);
-    ObjectCollected::init(20, 10, 3, 2, -1, 0.2f);
-    EnemyRat::init(3, 4);
+void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
+    std::vector<uint8_t> &player_data = data[PLAYER_CODE];
+    std::vector<uint8_t> &projectile_data = data[PROJECTILE_CODE];
+    std::vector<uint8_t> &collected_data = data[COLLECTED_CODE];
+    std::vector<uint8_t> &rat_data = data[RAT_CODE];
+
+    ObjectPlayer::init(
+        player_data[0], player_data[1], player_data[2],
+        player_data[3], player_data[4], player_data[5]
+    );
+
+    ObjectProjectile::init(
+        projectile_data[0], projectile_data[1], projectile_data[2], projectile_data[3],
+        projectile_data[4], projectile_data[5], projectile_data[6], projectile_data[7]
+    );
+
+    ObjectCollected::init(
+        collected_data[0], collected_data[1], collected_data[2],
+        collected_data[3], collected_data[4], collected_data[5]
+    );
+
+    EnemyRat::init(rat_data[0], rat_data[1]);
+
+    // TODO: implementar EnemyLizard y EnemyBat
 } 
 
 Game::Game() : 
