@@ -4,11 +4,11 @@
 #include "spritesheet.h"
 
 // Esta clase funciona como una libreria. No se deben crear instancias de esta clase
-class SpritesPlayers {
+class SpritesEnemies {
 public:
     //Bat
     static SpriteSheet Bat_idle;
-    static SpriteSheet Bat_Attack;
+    static SpriteSheet Bat_attack;
     
     //Rat
     static SpriteSheet Rat_idle;
@@ -24,7 +24,7 @@ public:
     static void init();
 private:
     static bool inicializado;
-    SpritesPlayers() {}; // constructor privado para evitar la creacion de instancias
+    SpritesEnemies() {}; // constructor privado para evitar la creacion de instancias
 };
 
 #endif

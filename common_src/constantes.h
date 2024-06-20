@@ -17,8 +17,8 @@ enum class AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
 
 
 // Enemy
-enum class EstadosEnemy{Idle, Move, Attack, Damaged, Death};
-enum TipoEnemy{Rat, Bat, Lizard};
+enum class EstadosEnemy{Idle, Move, Walk, Attack, Damaged, Death, Appear, Disappear};
+enum TipoEnemy{Rat, Bat, Diablo};
 
 
 // Recolectables

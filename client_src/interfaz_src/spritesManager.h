@@ -7,6 +7,8 @@
 //#include "spritesheetPlayer.h"
 #include "sprite_player.h"
 #include "sprites_players.h"
+#include "sprite_enemy.h"
+#include "sprites_enemies.h"
 #include "sprites_paths.h"
 #include "button_partida.h"
 #include "button_character.h"
@@ -52,6 +54,10 @@ private:
     std::list<SpritePlayer> players;
     bool playerInvertido = false;// sacar
 
+    //Enemies
+    std::list<SpriteEnemy> enemies;
+    bool enemyInvertido = false;// sacar
+
     //Proyectiles
     SpriteSheet proyectil_0;
 
@@ -64,6 +70,7 @@ private:
 
 private: 
     SpritePlayer& getPlayer(unsigned int n);
+    SpriteEnemy& getEnemy(unsigned int n);
 
 
 public:
@@ -86,6 +93,7 @@ public:
 
     
     void addPlayer(const TipoPlayer &tipo);
+    void addEnemy(const TipoEnemy &tipo);
 
     //RENDERIZADORES
 
