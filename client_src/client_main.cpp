@@ -21,7 +21,6 @@ int tiempo_transcurrido;
 
 int main(int argc, char* argv[]) {
     std::string input;
-    bool was_closed = false;
     
     ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
     InterfazGrafica interfaz(cliente.queueReceptora, cliente);

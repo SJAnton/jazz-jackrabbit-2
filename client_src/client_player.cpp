@@ -61,7 +61,6 @@ std::vector<int> ClientPlayer::getIdPartidas() {
 
 
 void ClientPlayer::entrarPartida(int idPartida, const TipoPlayer &tipoPlayer) {
-	bool was_closed = false;
 	queueEnviadora.push(ComandoCliente(idPartida, tipoPlayer));
 }
 

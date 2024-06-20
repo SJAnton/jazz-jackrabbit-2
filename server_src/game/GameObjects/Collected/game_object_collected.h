@@ -31,7 +31,7 @@ private:
     int puntos; // pueden funcionar como puntos, puntos de vida o cantidad de munciones segun el tipo
 
 public:
-    static void init(int pts_diamante, int pts_moneda, int pts_municion, int pts_zanahoria, int pts_zanahoria_podrida, float proba_podrida);
+    static void init(int pts_diamante, int pts_moneda, int pts_municion, int pts_zanahoria, int pts_zanahoria_podrida, int proba_podrida);
     ObjectCollected(const TipoRecolectable &tipo);
     
     // Devuelve los puntos que entrega al jugador que lo recolecta

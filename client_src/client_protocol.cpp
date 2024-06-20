@@ -53,7 +53,7 @@ InfoEnemigo ClientProtocol::decodeEnemy(const std::vector<uint8_t> &bytes) {
 // nota. EL PLAYER 0 DEBE SER EL QUE COINCIDA CON EL ID DEL CLIENTE (FUNDAMENTAL)
 InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t> &bytes) {
 	int cantPlayers = decodeInt(bytes[0]);
-	if (cantPlayers* LENGTH_PLAYER_INFO > bytes.size()){
+	if ((cantPlayers * LENGTH_PLAYER_INFO) > static_cast<int>(bytes.size())){
 		std::runtime_error("Error en el mensaje recibido. En ClientProtocol::decodificarMensajeDelServer()");
 	}
 	int contador = 1;
@@ -66,7 +66,7 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 	int clientPlayerIndex = -1;
     // Decode info Players
     for (int i = 0; i < cantPlayers; i++) {
-        if (contador + LENGTH_PLAYER_INFO > bytes.size()) {
+        if ((contador + LENGTH_PLAYER_INFO) > static_cast<int>(bytes.size())) {
             throw std::runtime_error("Error. Faltaron datos de un player. En ClientProtocol::decodificarMensajeDelServer()");
         }
         std::vector<uint8_t> playerBytes(bytes.begin() + contador, bytes.begin() + contador + LENGTH_PLAYER_INFO);
@@ -88,7 +88,7 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 	contador++;
 	//Decode info Enemigos
 	for (int i = 0; i < cantEnemigos; i++) { 
-		if (contador + LENGTH_ENEMY_INFO > bytes.size()) {
+		if ((contador + LENGTH_ENEMY_INFO) > static_cast<int>(bytes.size())) {
 			std::runtime_error("Error. Faltaron datos de un enemigo. En ClientProtocol::decodificarMensajeDelServer()");
 		}
 		std::vector<uint8_t> enemyBytes(bytes.begin() + contador, bytes.begin() + contador + LENGTH_ENEMY_INFO);
@@ -102,7 +102,7 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 
 	//Decode info Recolectables
 	for (int i = 0; i < cantItems; i++) { 
-		if (contador + LENGTH_ITEMS_INFO > bytes.size())
+		if ((contador + LENGTH_ITEMS_INFO) > static_cast<int>(bytes.size()))
 			std::runtime_error("Error. Faltaron datos de un item recolectable. En ClientProtocol::decodificarMensajeDelServer()");
 		
 		TipoRecolectable tipo = decodeTipoRecolectable(bytes[contador]); 
@@ -117,7 +117,7 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 
 	//Decode info proyectiles
 	for (int i = 0; i < cantProyectiles; i++) { 
-		if (contador + LENGTH_PROYECTIL_INFO > bytes.size())
+		if ((contador + LENGTH_PROYECTIL_INFO) > static_cast<int>(bytes.size()))
 			std::runtime_error("Error. Faltó info de un proyectil. En ClientProtocol::decodificarMensajeDelServer()");
 		TipoArma tipo = decodeTipoArma(bytes[contador]);
 		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]);// * MULTIPLICADOR_POSICION;
@@ -154,7 +154,7 @@ void ClientProtocol::enviarComando(ComandoCliente comando, bool*was_closed_) {
 
 InfoJuego ClientProtocol::recibirInformacion(bool *was_closed_) {
 	uint8_t aux[2];
-	int r = socket.recvall(&aux, sizeof(aux), &was_closed);	//recibo los primeros 2 bytes que indican el size del mensaje
+	socket.recvall(&aux, sizeof(aux), &was_closed);	//recibo los primeros 2 bytes que indican el size del mensaje
 	if (was_closed) {
 		*was_closed_ = was_closed;
 		std::cout << "wasclosed " << std::endl;//no se está activando esto
@@ -165,7 +165,7 @@ InfoJuego ClientProtocol::recibirInformacion(bool *was_closed_) {
 	//std::cout << "size " << size<< std::endl;//no se está activando esto
 	
     std::vector<uint8_t> bytes(size);
-	r = socket.recvall(bytes.data(), size, &was_closed);
+	socket.recvall(bytes.data(), size, &was_closed);
 	if (was_closed) {
 		*was_closed_ = true;
 		std::cout << "wasclosed " << std::endl;//no se está activando esto
@@ -200,13 +200,11 @@ std::vector<int> ClientProtocol::recibirIdsPartidas(bool *was_closed_)
 
 void ClientProtocol::recibirIDCliente() {
 	uint8_t byte;
-	int r = socket.recvall(&byte, sizeof(byte), &was_closed);	
+	socket.recvall(&byte, sizeof(byte), &was_closed);	
 	this->id = byte;
 }
-
 
 void ClientProtocol::close() {
 	socket.shutdown(2);
 	socket.close();
 }
-

@@ -9,14 +9,18 @@
 
 class Game {
     public:
-    /**
-     * necesito recibir:
-     * Terreno (clase que contenga una matriz (30x30) que me diga si un tile es solido o no) (NADA MAS!)
-     * Cantidad de enemigos, tipos y sus posiciones.
-     * Cantidad de items, tipo y sus posiciones.
-     * 
-    */
-        static void init(); //Metodo para cargar todas las constantes del config
+        /*
+         * necesito recibir:
+         * Terreno (clase que contenga una matriz (30x30) que me diga si un tile es solido o no)
+         * (NADA MAS!)
+         * Cantidad de enemigos, tipos y sus posiciones.
+         * Cantidad de items, tipo y sus posiciones.
+         * 
+        */
+
+        // Carga los valores del config.yaml
+        static void init(std::map<std::string, std::vector<uint8_t>> &config);
+        
     private:
         bool _is_running = true;
 
@@ -35,17 +39,11 @@ class Game {
     public:
         Game();
 
-        //std::vector<uint8_t> get_actions(std::shared_ptr<Queue<uint8_t>> &q);
         void update();
 
         void execute_actions(std::vector<uint8_t> &actions);
-        //void execute_actions(const int &id_client, const AccionesPlayer &accion);
-
-        //void tick(std::list<std::shared_ptr<Projectile>> &projectile_list);
 
         InfoJuego snapshot();
-
-        //void send_snapshot(ServerQueueList &sndr_qs);
 
         void add_player(TipoPlayer &player_type, int player_id);
 

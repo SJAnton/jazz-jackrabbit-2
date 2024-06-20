@@ -3,6 +3,7 @@
 #include <cstdlib>  
 #include <ctime>    
 
+#define DIVISOR_PROBA 100.0f
 
 // Definición de los miembros estáticos
 bool ObjectCollected::initialized = false;
@@ -13,9 +14,9 @@ int ObjectCollected::Pts_Zanahoria = 0;
 int ObjectCollected::Pts_Zanahoria_Podrida = 0;
 float ObjectCollected::Proba_Zanahoria_Podrida = 0.0f;
 
-void ObjectCollected::init(int pts_diamante, int pts_moneda, int pts_municion, int pts_zanahoria, int pts_zanahoria_podrida, float proba_podrida) {
-    if (proba_podrida < 0.0f || proba_podrida > 1.0f) {
-        throw std::invalid_argument("Probability must be between 0 and 1");
+void ObjectCollected::init(int pts_diamante, int pts_moneda, int pts_municion, int pts_zanahoria, int pts_zanahoria_podrida, int proba_podrida) {
+    if (proba_podrida < 0 || proba_podrida > 100) {
+        throw std::invalid_argument("Probability must be between 0 and 100");
     }
 
     Pts_Diamante = pts_diamante;
@@ -23,7 +24,7 @@ void ObjectCollected::init(int pts_diamante, int pts_moneda, int pts_municion, i
     Pts_Municion = pts_municion;
     Pts_Zanahoria = pts_zanahoria;
     Pts_Zanahoria_Podrida = pts_zanahoria_podrida;
-    Proba_Zanahoria_Podrida = proba_podrida;
+    Proba_Zanahoria_Podrida = proba_podrida / DIVISOR_PROBA;
 
      // Inicializar la semilla aleatoria
     std::srand(static_cast<unsigned>(std::time(nullptr)));

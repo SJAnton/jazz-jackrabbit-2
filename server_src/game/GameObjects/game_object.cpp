@@ -12,7 +12,7 @@ GameObject::GameObject(unsigned int w, unsigned int h) :
     //y_up(position.y -1),
     //y_down(pos_y_max +1)
 {
-   if (position.x >= 1) {
+    if (position.x >= 1) {
         x_left = position.x - 1;
     } else {
         x_left = 0;
@@ -29,15 +29,13 @@ GameObject::GameObject(unsigned int w, unsigned int h) :
     y_down = pos_y_max + 1;
 }
 
-
 Coordenada GameObject::getPosition() {
     return position;
 }
+
 Coordenada GameObject::getPositionEnd() {
     return Coordenada(pos_x_max, pos_y_max);
 }
-
-
 
 void GameObject::setPosition(const Coordenada &coordenada) {
     if (coordenada.x > X_MAX) {

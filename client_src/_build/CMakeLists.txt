@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
-project(client)
+
+project(client VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Flags de compilación
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 
 include(FindPkgConfig)
 include(ExternalProject)
@@ -52,37 +57,36 @@ else()
     set_sdl_variables()
 endif()
 
-# Common source files
-file(GLOB COMMON_SOURCES 
-    "common_src/*.cpp"
+# cmake . genera el makefile
+# make -f Makefile ejecuta el makefile
+set(SOURCE_FILES
+    ../../common_src/info_juego.cpp
+    ../../common_src/liberror.cpp
+    ../../common_src/protocol.cpp
+    ../../common_src/resolver.cpp
+    ../../common_src/resolvererror.cpp
+    ../../common_src/socket.cpp
+
+    ../client_main.cpp
+    ../client_player.cpp
+    ../client_protocol.cpp
+    ../client_receiver.cpp
+    ../client_renderer.cpp
+    ../client_sender.cpp
+
+    ../interfaz_src/button_character.cpp
+    ../interfaz_src/button_partida.cpp
+    ../interfaz_src/characters.cpp
+    ../interfaz_src/event_handler.cpp
+    ../interfaz_src/fontManager.cpp
+    ../interfaz_src/interfaz_grafica.cpp
+    ../interfaz_src/sprite_object.cpp
+    ../interfaz_src/sprite_player.cpp
+    ../interfaz_src/spritesheet.cpp
+    ../interfaz_src/spritesManager.cpp
+    ../interfaz_src/sprites_players.cpp
 )
 
-# Client source files
-file(GLOB CLIENT_SOURCES
-    "client_src/*.cpp"
-    "client_src/interfaz_src/*.cpp"
-)
+add_executable(client ${SOURCE_FILES})
 
-# Server source files
-file(GLOB SERVER_SOURCES 
-    #"_server_src/*.cpp"
-)
-
-# Client executable
-add_executable(client ${CLIENT_SOURCES} ${COMMON_SOURCES})
 target_link_libraries(client ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} pthread)
-
-# Ensure dependencies are built before client
-if (TARGET sdl2_dependency)
-    add_dependencies(client sdl2_dependency)
-endif()
-
-if (TARGET sdl2_image_dependency)
-    add_dependencies(client sdl2_image_dependency)
-endif()
-
-# Custom clean target
-add_custom_target(clean-all
-  COMMAND ${CMAKE_BUILD_TOOL} clean
-  COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}
-)
