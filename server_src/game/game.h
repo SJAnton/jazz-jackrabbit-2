@@ -52,5 +52,7 @@ class Game {
         void remove_player(const int &player_id);
         
         bool is_running();
+
+        void stop();
 };
 #endif

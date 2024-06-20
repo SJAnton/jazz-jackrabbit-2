@@ -31,7 +31,7 @@ void ServerGameloop::removePlayer(int id) {
     std::cout << "Aun quedan: " << sndr_queues.size() << std::endl;
     if (sndr_queues.size() == 0) {
         std::cout << "Terminar Gameloop" << std::endl;
-        //kill();
+        kill();
     }
 
 }
@@ -41,7 +41,7 @@ void ServerGameloop::run() {
 
    
    
-    while (game.is_running()) {
+    while (!wc) {
         auto start_time = std::chrono::steady_clock::now();
                 
         std::vector<uint8_t> data;

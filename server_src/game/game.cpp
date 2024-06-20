@@ -157,3 +157,6 @@ bool Game::is_running() {
     return _is_running;
 }
 
+void Game::stop() {
+    _is_running = false;
+}

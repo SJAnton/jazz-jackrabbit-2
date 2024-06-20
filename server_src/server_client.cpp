@@ -60,61 +60,6 @@ void Client::select_game(uint8_t game, const TipoPlayer &type_player) {
         std::cout << "Se unió el cliente "<< id << " al gameloop " << gameLoop->getId() << std::endl;
     }
 }
-void Client::seleccionarGameYPlayer(uint8_t game, uint8_t tipoPlayer) {
-    int id_game = 1;
-    if (game == NEW_GAME) {
-        std::cout << "creo una partida" << std::endl;
-        switch (tipoPlayer)
-        {
-        case JAZZ_BYTE:
-            gameLoop = new ServerGameloop(id_game, id, TipoPlayer::Jazz, recv_q, &sndr_q);
-            break;
-        case LORI_BYTE:
-            gameLoop = new ServerGameloop(id_game, id, TipoPlayer::Lori, recv_q, &sndr_q);
-            break;
-        case SPAZ_BYTE:
-            gameLoop = new ServerGameloop(id_game, id, TipoPlayer::Spaz, recv_q, &sndr_q);
-            break;
-        default:
-            kill();
-            throw runtime_error("No character chosen");
-        }
-        receiver = new ServerReceiver(protocol, recv_q, wc);
-        std::cout << "creo un receiver" << std::endl;
-
-        gameloops.push_back(gameLoop);
-        gameLoop->start();
-        std::cout << "gameloop start" << std::endl;
-
-    } else {
-        gameLoop = gameloops.at(game);
-        if (gameLoop != NULL) {
-            std::cout << " partida enocontrada" << std::endl;
-        }
-        recv_q = gameLoop->recv_q;
-        receiver = new ServerReceiver(protocol, recv_q, wc);
-                std::cout << "creo un receiver" << std::endl;
-
-        switch (tipoPlayer)
-        {
-        case JAZZ_BYTE:
-            gameLoop->addPlayer(id, TipoPlayer::Jazz, &sndr_q);
-            break;
-        case LORI_BYTE:
-            gameLoop->addPlayer(id, TipoPlayer::Lori, &sndr_q);
-            break;
-        case SPAZ_BYTE:
-            gameLoop->addPlayer(id, TipoPlayer::Spaz, &sndr_q);
-            break;
-        default:
-            kill();
-            throw runtime_error("No character chosen");
-        }
-
-    }
-    std::cout << "me uno al gameloop" << std::endl;
-
-}
 void Client::run() {
     reap_dead_gameloops();
     //enviar ids de partidas

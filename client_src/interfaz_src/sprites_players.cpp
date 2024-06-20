@@ -3,7 +3,7 @@
 
 //Tengo que declararlos aca porque son static
 
-//Jazz
+// Jazz
 SpriteSheet SpritesPlayers::Jazz_idle;
 SpriteSheet SpritesPlayers::Jazz_walk;
 SpriteSheet SpritesPlayers::Jazz_run;
@@ -14,9 +14,10 @@ SpriteSheet SpritesPlayers::Jazz_specialAtack;
 SpriteSheet SpritesPlayers::Jazz_damaged;
 SpriteSheet SpritesPlayers::Jazz_intoxicatedIdle;
 SpriteSheet SpritesPlayers::Jazz_intoxicatedWalk;
+SpriteSheet SpritesPlayers::Jazz_dying;
 SpriteSheet SpritesPlayers::Jazz_death;
 
-//Spaz
+// Spaz
 SpriteSheet SpritesPlayers::Spaz_idle;
 SpriteSheet SpritesPlayers::Spaz_walk;
 SpriteSheet SpritesPlayers::Spaz_run;
@@ -27,9 +28,10 @@ SpriteSheet SpritesPlayers::Spaz_specialAtack;
 SpriteSheet SpritesPlayers::Spaz_damaged;
 SpriteSheet SpritesPlayers::Spaz_intoxicatedIdle;
 SpriteSheet SpritesPlayers::Spaz_intoxicatedWalk;
+SpriteSheet SpritesPlayers::Spaz_dying;
 SpriteSheet SpritesPlayers::Spaz_death;
 
-//Lori
+// Lori
 SpriteSheet SpritesPlayers::Lori_idle;
 SpriteSheet SpritesPlayers::Lori_walk;
 SpriteSheet SpritesPlayers::Lori_run;
@@ -48,12 +50,12 @@ bool SpritesPlayers::inicializado = false;
 void SpritesPlayers::init() {
     if (!inicializado) {
         //Jazz (NO IMPLEMENTDO, reemplazar despues)
-        Jazz_idle = SpriteSheet(PATH_SPAZ_IDLE, 56, 56, 6); //CAMBIAR
+        Jazz_idle = SpriteSheet(PATH_JAZZ_IDLE, 56, 56, 14);
         Jazz_walk = SpriteSheet(PATH_JAZZ_WALK, 57, 56, 8);
         Jazz_run = SpriteSheet(PATH_JAZZ_RUN,72, 72, 4);
         Jazz_jump = SpriteSheet(PATH_JAZZ_JUMP, 56, 56, 12);
         Jazz_fall = SpriteSheet(PATH_JAZZ_FALL,56, 56, 3);
-        Jazz_shoot = SpriteSheet(PATH_JAZZ_SHOOT, 64, 64, 6);
+        Jazz_shoot = SpriteSheet(PATH_JAZZ_SHOOT, 56, 56, 7);
         Jazz_specialAtack = SpriteSheet(PATH_JAZZ_SPECIAL, 56, 64, 12);
         Jazz_damaged = SpriteSheet(PATH_JAZZ_DAMAGED, 72, 72, 9);
         Jazz_intoxicatedIdle = SpriteSheet(PATH_JAZZ_INTOXICATED_IDLE, 56, 56, 8);
@@ -71,7 +73,8 @@ void SpritesPlayers::init() {
         Spaz_damaged = SpriteSheet(PATH_SPAZ_DAMAGED, 56, 56, 11);
         Spaz_intoxicatedIdle = SpriteSheet(PATH_SPAZ_INTOXICATED_IDLE, 56, 56, 8);
         Spaz_intoxicatedWalk = SpriteSheet(PATH_SPAZ_INTOXICATED_WALK,56, 56, 12);
-        Spaz_death = SpriteSheet(PATH_SPAZ_DEATH, 96, 96, 26);
+        Spaz_dying = SpriteSheet(PATH_SPAZ_DYING, 56, 56, 13);
+        Spaz_death = SpriteSheet(PATH_SPAZ_DEATH, 56, 56, 7);
 
         //Lori
         Lori_idle = SpriteSheet(PATH_LORI_IDLE,56, 56, 8);

@@ -50,8 +50,6 @@ class Client : public Thread {
 
         TipoPlayer select_character(uint8_t character);
         
-        void seleccionarGameYPlayer(uint8_t game, uint8_t tipoPlayer);
-
     public:
         Client(Socket &&sk, int id,  GameloopList &gameloops);
         
