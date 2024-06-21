@@ -24,7 +24,7 @@ class ObjectEnemy : public GameObject {
     protected:
         TipoEnemy tipoEnemy = TipoEnemy::Bat;
 
-        int damage; //daño que realiza
+        int damage;
 
         int health;
 
@@ -52,7 +52,7 @@ class ObjectEnemy : public GameObject {
 
         int movement_range_buffer;
 
-        void move_x();
+        virtual void move_x();
 
         void restore_movement_range();
 
@@ -61,11 +61,13 @@ class ObjectEnemy : public GameObject {
                         int health, int speed, int points, int respawn_time,
                             int ammo_drop_chance, int movement_range);
 
-        void walk();
+        virtual void walk();
 
         void jump();
 
         virtual void fall();
+
+        TipoEnemy getTipoEnemy();
 
         int get_damage();
 

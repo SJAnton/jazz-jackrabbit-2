@@ -20,8 +20,6 @@
 #define LAYER_HEIGHT 30
 #define SPAWN_X 5
 #define SPAWN_Y 20
-#define EXIT_X 10
-#define EXIT_Y 20
 
 // Claves del YAML
 #define SPAWN_POINT_KEY "SpawnPoint"
@@ -39,66 +37,56 @@
 #define TILES_NUMBER_KEY "tiles_num"
 #define LAYER_HEIGHT_KEY "height"
 #define LAYER_WIDTH_KEY "width"
-#define ENEMY_ID_KEY "enemy_id"
-#define ENEMY_HEALTH_KEY "health"
-#define ENEMY_DAMAGE_KEY "damage"
-#define ENEMY_X_HITBOX_KEY "x_hitbox"
-#define ENEMY_Y_HITBOX_KEY "y_hitbox"
-#define OBJECT_ID_KEY "object_id"
-#define AMMO_ID_KEY "ammo_id"
-#define OBJECT_AMOUNT_KEY "amount"
-#define OBJECT_HITBOX_KEY "hitbox"
+#define TYPE_KEY "type"
 
-#define AMMO_OBJECT_ID 1
+#define BAT_STR "Bat"
+#define DIABLO_STR "Diablo"
+#define RAT_STR "Rat"
+#define MONEDA_STR "Moneda"
+#define DIAMANTE_STR "Diamante"
+#define ZANAHORIA_STR "Zanahoria"
+#define MUNICION_STR "Municion"
+#define MUNICION_1_STR "Municion1"
+#define MUNICION_2_STR "Municion2"
+#define MUNICION_3_STR "Municion3"
+#define MUNICION_4_STR "Municion4"
 
-void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
+void MapCreator::save_to_YAML(GameMap &game_map, std::string &name) {
     Point spawn = game_map.get_spawn_point();
-    Point exit = game_map.get_exit_point();
     Tileset tileset = game_map.get_tileset();
     std::vector<Layer> layers = game_map.get_layers();
-    std::vector<std::shared_ptr<Enemy>> enemies = game_map.get_enemies();
-    std::vector<std::shared_ptr<Object>> objects = game_map.get_objects();
+    std::vector<std::shared_ptr<ObjectEnemy>> enemies = game_map.get_enemies();
+    std::vector<std::shared_ptr<ObjectCollected>> objects = game_map.get_objects();
 
     YAML::Emitter out;
     std::ofstream ostr(LEVELS_ROUTE + name + FILE_EXTENSION);
 
     out << YAML::BeginMap;
 
-    // SpawnPoint
     out << YAML::Key << SPAWN_POINT_KEY;
     out << YAML::Value << YAML::BeginMap;
-    out << YAML::Key << X_KEY << YAML::Value << /*YAML::Hex <<*/ static_cast<int>(spawn.x);
-    out << YAML::Key << Y_KEY << YAML::Value << /*YAML::Hex <<*/ static_cast<int>(spawn.y);
+    out << YAML::Key << X_KEY << YAML::Value << static_cast<int>(spawn.x);
+    out << YAML::Key << Y_KEY << YAML::Value << static_cast<int>(spawn.y);
     out << YAML::EndMap;
 
-    // ExitPoint
-    out << YAML::Key << EXIT_POINT_KEY;
-    out << YAML::Value << YAML::BeginMap;
-    out << YAML::Key << X_KEY << YAML::Value << /*YAML::Hex <<*/ static_cast<int>(exit.x);
-    out << YAML::Key << Y_KEY << YAML::Value << /*YAML::Hex <<*/ static_cast<int>(exit.y);
-    out << YAML::EndMap;
-
-    // TileSet
     out << YAML::Key << TILESET_KEY;
     out << YAML::Value << YAML::BeginMap;
     out << YAML::Key << TILES_NUMBER_KEY << YAML::Value << tileset.get_tiles().size();
     out << YAML::EndMap;
 
-    // Layers
     out << YAML::Key << LAYER_KEY;
     out << YAML::Value << YAML::BeginMap;
-    for (Layer layer : layers) {
+    for (Layer &layer : layers) {
         out << YAML::Key << LAYER_HEIGHT_KEY << YAML::Value << layer.height;
         out << YAML::Key << LAYER_WIDTH_KEY << YAML::Value << layer.width;
 
         std::vector<std::vector<int>> tile_map = layer.tileMap;
 
-        // TileMap
         out << YAML::Key << TILE_MAP_KEY;
         out << YAML::Value << YAML::BeginSeq;
-        for (std::vector<int> row : tile_map) {
+        for (std::vector<int> &row : tile_map) {
             out << YAML::Flow << YAML::BeginSeq;
-            for (int tile : row) {
+            for (int &tile : row) {
                 out << tile;
             }
             out << YAML::EndSeq;
@@ -107,37 +95,22 @@ void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
     }
     out << YAML::EndMap;
 
-    // Enemies
     out << YAML::Key << ENEMY_KEY;
     out << YAML::Value << YAML::BeginMap;
-    for (std::shared_ptr<Enemy> enemy : enemies) {
-        out << YAML::Key << ENEMY_ID_KEY << static_cast<int>(enemy->get_enemy_id());
-        out << YAML::Key << ENEMY_HEALTH_KEY << static_cast<int>(enemy->get_health());
-        out << YAML::Key << ENEMY_DAMAGE_KEY << static_cast<int>(enemy->get_damage());
-        out << YAML::Key << X_KEY << static_cast<int>(enemy->get_x_pos());
-        out << YAML::Key << Y_KEY << static_cast<int>(enemy->get_y_pos());
-        out << YAML::Key << ENEMY_X_HITBOX_KEY << static_cast<int>(enemy->get_x_hitbox());
-        out << YAML::Key << ENEMY_Y_HITBOX_KEY << static_cast<int>(enemy->get_y_hitbox());
+    for (std::shared_ptr<ObjectEnemy> &enemy : enemies) {
+        // El resto de datos los leo del config.yaml
+        out << YAML::Key << X_KEY << YAML::Value << enemy->getPosition().x;
+        out << YAML::Key << Y_KEY << YAML::Value << enemy->getPosition().y;
+        out << YAML::Key << TYPE_KEY << YAML::Value << enemy_type_to_str(enemy->getTipoEnemy());
     }
     out << YAML::EndMap;
 
-    // Objects
     out << YAML::Key << OBJECT_KEY;
     out << YAML::Value << YAML::BeginMap;
-    for (std::shared_ptr<Object> object : objects) {
-        uint8_t object_id = object->get_object_id();
-        out << YAML::Key << OBJECT_ID_KEY << static_cast<int>(object_id);
-
-        if (object_id == AMMO_OBJECT_ID) {
-            std::shared_ptr<Ammo> ammo = std::dynamic_pointer_cast<Ammo>(object);
-            if (ammo != nullptr) {
-                out << YAML::Key << AMMO_ID_KEY << static_cast<int>(ammo->get_id());
-            }
-        }
-        out << YAML::Key << OBJECT_AMOUNT_KEY << static_cast<int>(object->get_amount());
-        out << YAML::Key << X_KEY << static_cast<int>(object->get_x_pos());
-        out << YAML::Key << Y_KEY << static_cast<int>(object->get_y_pos());
-        out << YAML::Key << OBJECT_HITBOX_KEY << static_cast<int>(object->get_hitbox());
+    for (std::shared_ptr<ObjectCollected> &object : objects) {
+        out << YAML::Key << X_KEY << YAML::Value << object->getPosition().x;
+        out << YAML::Key << Y_KEY << YAML::Value << object->getPosition().y;
+        out << YAML::Key << TYPE_KEY << YAML::Value << object_type_to_str(object->getTipoRecolectable());
     }
     out << YAML::EndMap;
 
@@ -149,8 +122,8 @@ void MapCreator::save_to_YAML(ServerGameMap &game_map, std::string &name) {
 }
 
 void MapCreator::generate_test_flat_map() {
-    ServerGameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
-                            FLAT_GAME_SELECTION, SPAWN_X, SPAWN_Y, EXIT_X, EXIT_Y);
+    GameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
+                     FLAT_GAME_SELECTION, SPAWN_X, SPAWN_Y);
 
     std::string name = FLAT_MAP_NAME;
 
@@ -158,8 +131,8 @@ void MapCreator::generate_test_flat_map() {
 }
 
 void MapCreator::generate_test_mountain_map() {
-    ServerGameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
-                            MOUNTAIN_GAME_SELECTION, SPAWN_X, SPAWN_Y, EXIT_X, EXIT_Y);
+    GameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
+                     MOUNTAIN_GAME_SELECTION, SPAWN_X, SPAWN_Y);
 
     std::string name = MOUNTAIN_MAP_NAME;
 
@@ -167,8 +140,8 @@ void MapCreator::generate_test_mountain_map() {
 }
 
 void MapCreator::generate_test_random_map() {
-    ServerGameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
-                            RANDOM_GAME_SELECTION, SPAWN_X, SPAWN_Y, EXIT_X, EXIT_Y);
+    GameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
+                     RANDOM_GAME_SELECTION, SPAWN_X, SPAWN_Y);
 
     std::string name = RANDOM_MAP_NAME;
 
@@ -176,10 +149,46 @@ void MapCreator::generate_test_random_map() {
 }
 
 void MapCreator::generate_test_snowy_map() {
-    ServerGameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
-                            SNOWY_GAME_SELECTION, SPAWN_X, SPAWN_Y, EXIT_X, EXIT_Y);
+    GameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
+                     SNOWY_GAME_SELECTION, SPAWN_X, SPAWN_Y);
 
     std::string name = SNOWY_MAP_NAME;
 
     save_to_YAML(game_map, name);
 }
+
+std::string MapCreator::enemy_type_to_str(const TipoEnemy &type) {
+    switch (type) {
+        case TipoEnemy::Bat:
+            return BAT_STR;
+        case TipoEnemy::Diablo:
+            return DIABLO_STR;
+        case TipoEnemy::Rat:
+            return RAT_STR;
+        default:
+            throw std::runtime_error("Invalid enemy type");
+    }
+}
+
+std::string MapCreator::object_type_to_str(const TipoRecolectable &type) {
+    switch (type) {
+        case TipoRecolectable::Moneda:
+            return MONEDA_STR;
+        case TipoRecolectable::Diamante:
+            return DIAMANTE_STR;
+        case TipoRecolectable::Zanahoria:
+            return ZANAHORIA_STR;
+        case TipoRecolectable::Municion:
+            return MUNICION_STR;
+        case TipoRecolectable::Municion1:
+            return MUNICION_1_STR;
+        case TipoRecolectable::Municion2:
+            return MUNICION_2_STR;
+        case TipoRecolectable::Municion3:
+            return MUNICION_3_STR;
+        case TipoRecolectable::Municion4:
+            return MUNICION_4_STR;
+        default:
+            throw std::runtime_error("Invalid object type");
+    }
+} 

@@ -3,11 +3,13 @@
 
 #include <yaml-cpp/yaml.h>
 
-#include "../server_src/objects/server_ammo.h"
-#include "../server_src/map/server_game_map.h"
+#include "../server_src/game/Map/game_map.h"
 
 class MapCreator {
     private:
+        std::string enemy_type_to_str(const TipoEnemy &type);
+
+        std::string object_type_to_str(const TipoRecolectable &type);
 
     public:
         MapCreator() {};
@@ -20,6 +22,6 @@ class MapCreator {
 
         void generate_test_snowy_map();
 
-        void save_to_YAML(ServerGameMap &game_map, std::string &name);
+        void save_to_YAML(GameMap &game_map, std::string &name);
 };
 #endif

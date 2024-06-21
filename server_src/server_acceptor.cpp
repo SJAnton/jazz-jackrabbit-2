@@ -16,8 +16,7 @@ void ServerAcceptor::run() {
 
             client->start();
             clients.push_back(client);
-
-            //reap_dead();
+            
             id++;
         } catch (LibError &e) {
 

@@ -1,4 +1,5 @@
 #include "enemy_bat.h"
+#include "../../game_mundo.h"
 
 bool EnemyBat::initialized = false;
 int EnemyBat::default_damage = 0;
@@ -20,6 +21,37 @@ void EnemyBat::init(int damage, int health, int speed, int points, int respawn_t
         default_ammo_drop_chance = dropping_ammo_chance;
         default_movement_range = movement_range;
         initialized = true;
+    }
+}
+
+void EnemyBat::move_x() {
+    // El bat no se detiene si no tiene un piso abajo
+    if (direction == Left) {
+        for (int i = 0; i < speed; ++i) {
+            if (position.x <= 0 || (position.x - 1) > X_MAX || movement_range <= 0 ||
+                GameMundo::casilleros[position.y][x_left].estaBloqueado() ||
+                GameMundo::casilleros[pos_y_max][x_left].estaBloqueado()) {
+                // Bloqueado a la izquierda
+                status = EstadosEnemy::Idle;
+                restore_movement_range();
+                break;
+            }
+            set_pos_x(position.x - 1);
+            movement_range--;
+        }
+    } else {
+        for (int i = 0; i < speed; ++i) {
+            if (position.x >= X_MAX || movement_range <= 0 ||
+                GameMundo::casilleros[position.y][x_right].estaBloqueado() ||
+                GameMundo::casilleros[pos_y_max][x_right].estaBloqueado()) {
+                // Bloqueado a la derecha
+                status = EstadosEnemy::Idle;
+                restore_movement_range();
+                break;
+            }
+            set_pos_x(position.x + 1);
+            movement_range--;
+        }
     }
 }
 

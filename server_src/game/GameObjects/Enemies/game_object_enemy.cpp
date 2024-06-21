@@ -78,6 +78,10 @@ void ObjectEnemy::fall() {
     }
 }
 
+TipoEnemy ObjectEnemy::getTipoEnemy() {
+    return tipoEnemy;
+}
+
 int ObjectEnemy::get_damage() {
     return damage;
 }

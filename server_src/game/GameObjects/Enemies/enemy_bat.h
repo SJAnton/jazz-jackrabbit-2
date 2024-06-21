@@ -29,6 +29,8 @@ class EnemyBat : public ObjectEnemy {
         static void init(int damage, int health, int speed, int points,
                             int respawn_time, int ammo_drop_chance, int movement_range);
         
+        void move_x() override;
+
         void fall() override;
 };
-#endif //OBJECT_ENEMY_RAT
+#endif

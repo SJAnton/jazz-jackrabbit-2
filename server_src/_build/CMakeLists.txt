@@ -35,12 +35,15 @@ set(SOURCE_FILES
     ../../common_src/protocol.cpp
     ../../common_src/tile_map.cpp
 
-    # Archivos server
+    # Armas
+    ../game/Weapons/weapon.cpp
+
+    # Juego
     ../game/game.cpp
     ../game/gameloop.cpp
     ../game/game_mundo.cpp
-    ../game/Weapons/weapon.cpp
-
+    
+    # Objectos
     ../game/GameObjects/game_object.cpp
     ../game/GameObjects/Players/game_object_player.cpp
     ../game/GameObjects/Collected/game_object_collected.cpp
@@ -50,49 +53,21 @@ set(SOURCE_FILES
     ../game/GameObjects/Enemies/enemy_diablo.cpp
     ../game/GameObjects/Enemies/enemy_rat.cpp
 
+    # Map
+    ../game/Map/game_map.cpp
+    ../game/Map/game_map_reader.cpp
+
+    # Archivos server
     ../server_acceptor.cpp
     ../server_character_map.cpp
     ../server_client.cpp
     ../server_config_reader.cpp
-    #../server_game.cpp
-    #../server_gameloop.cpp
     ../server_gameloop_list.cpp
     ../server_main.cpp
     ../server_protocol.cpp
     ../server_queue_list.cpp
     ../server_receiver.cpp
     ../server_sender.cpp
-
-    
-
-    #../game/Wapons/weaponer.cpp
-
-
-
-    # Armas
-    #../weapons/server_blaster.cpp
-    #../weapons/server_bouncer.cpp
-    #../weapons/server_electro_blaster.cpp
-    #../weapons/server_freezer.cpp
-    #../weapons/server_pepper_spray.cpp
-    #../weapons/server_rf_missile.cpp
-    #../weapons/server_seeker.cpp
-    #../weapons/server_tnt.cpp
-    #../weapons/server_toaster.cpp
-    #../weapons/server_weapon.cpp
-
-    # Proyectiles
-    #../weapons/projectile/server_iceball.cpp
-    #../weapons/projectile/server_projectile.cpp
-    #../weapons/projectile/server_rocket.cpp
-    #../weapons/projectile/server_seeker_rocket.cpp
-
-    # Personajes
-    #../characters/server_character.cpp
-    #../characters/server_enemy.cpp
-    #../characters/server_player_jazz.cpp
-    #../characters/server_player_lori.cpp
-    #../characters/server_player_spaz.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
