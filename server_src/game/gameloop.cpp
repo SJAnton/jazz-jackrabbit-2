@@ -38,17 +38,11 @@ void ServerGameloop::run() {
     auto expected_itr_time = std::chrono::milliseconds(MILLISECONDS_PER_ITR);
     while (sndr_queues.size() > 0 && time_left >= 0) {
         auto start_time = std::chrono::steady_clock::now();
-                
+
         std::vector<uint8_t> data;
         uint8_t byte;
         while (recv_q->try_pop(byte)) {
             data.push_back(byte);
-        }
-
-        if (data.size() > EXIT_POS && data.at(EXIT_POS) == EXIT_BYTE) {
-            uint8_t player_id = data.at(PLAYER_ID_POS);
-            game.remove_player(player_id);
-            continue;
         }
         game.update();
         game.execute_actions(data);

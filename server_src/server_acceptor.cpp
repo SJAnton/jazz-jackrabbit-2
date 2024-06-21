@@ -10,12 +10,14 @@ void ServerAcceptor::run() {
         try {
             Socket peer = sk.accept();
 
+            reap_dead();
+
             Client *client = new Client(std::move(peer), id, game_time, gmlp_id, gameloops);
 
             client->start();
             clients.push_back(client);
 
-            reap_dead();
+            //reap_dead();
             id++;
         } catch (LibError &e) {
 

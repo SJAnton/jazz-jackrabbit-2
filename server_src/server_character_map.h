@@ -25,6 +25,8 @@ class PlayerMap {
 
         bool empty();
 
+        int count(int id);
+
         void erase(int id);
 
         void clear();

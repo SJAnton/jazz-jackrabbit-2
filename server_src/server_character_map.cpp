@@ -15,6 +15,11 @@ int PlayerMap::size() {
     return map.size();
 }
 
+int PlayerMap::count(int id) {
+    std::unique_lock<std::mutex> lock(m);
+    return map.count(id);
+}
+
 bool PlayerMap::empty() {
     std::unique_lock<std::mutex> lock(m);
     return map.empty();

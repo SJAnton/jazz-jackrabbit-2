@@ -2,16 +2,11 @@
 
 #include <iostream>
 
+#include "../../common_src/constantes_protocolo.h"
+
 #define ID_POS 0
 #define ACTION_POS 1
 #define DIRECTION_POS 2
-
-#include "../../common_src/constantes_protocolo.h"
-
-#define PTS_DIAMANTE 20
-#define PTS_MONEDA 10
-#define PTS_VIDA 1
-#define PTS_MUNICION 3
 
 #define PLAYER_CODE "ObjectPlayer"
 #define PROJECTILE_CODE "ObjectProjectile"
@@ -85,22 +80,21 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
         else if (p->getEstado() == EstadosPlayer::Shooting) {
             p->updateShoot();
         }
-    }
-
+    } 
     if (actions.empty()) {
         return;
     }
     uint8_t player_id = actions[ID_POS];
     uint8_t action = actions[ACTION_POS];
-   
     Direcciones direction = Right;
+
     if (actions[DIRECTION_POS] == LEFT) {
         direction = Left;
+    } else if (ch_map->count(player_id) == 0) {
+        return;
     }
-
     std::shared_ptr<ObjectPlayer> player = ch_map->at(player_id); //identifico el player por su id
-    
-    
+
     switch (action) {
         case ACTION_IDLE:
            // player->do_nothing();
@@ -155,7 +149,6 @@ InfoJuego Game::snapshot() {
         InfoRecolectable info = item.getInfo();
         items_data.push_back(info);
     }
-
     InfoJuego game_data(players_data, enemies_data, items_data, gameMundo.getInfoProyectiles());
     return game_data;
 }

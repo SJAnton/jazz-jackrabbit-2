@@ -26,6 +26,7 @@ void Client::run() {
     vector<uint8_t> init_data = protocol.recv_init_msg(wc);
 
     if (init_data[GAME_POS] != NEW_GAME && !gameloops.contains(init_data[GAME_POS])) {
+        std::cout << "Entra al if" << std::endl;
         kill();
         throw runtime_error("Game not found");
     }
@@ -36,15 +37,8 @@ void Client::run() {
 
     receiver->start();
     sender.start();
-    sender.join();
 
-    std::cout << "El sender se cerró. El cliente se desconecto" << std::endl;
-    gameLoop->removePlayer(id);
-    if (gameLoop->is_dead()) {
-        gameloops.remove(gameLoop);
-    }
-    receiver->join();
-    std::cout << "El receiver se cerró." << std::endl;
+    is_running = true;
 }
 
 TipoPlayer Client::select_character(uint8_t type_player) {
@@ -94,7 +88,7 @@ void Client::reap_dead_gameloops() {
             it = gameloops.erase(it); // Devuelve la siguiente posición
             delete gameloop;
         } else {
-            it++;
+            ++it;
         }
     }
 }
@@ -116,4 +110,17 @@ bool Client::is_dead() {
 void Client::kill() {
     sndr_q.close();
     sk.close();
+
+    if (!is_running) {
+        return;
+    }
+    sender.join();
+
+    std::cout << "El sender se cerró. El cliente se desconecto" << std::endl;
+    gameLoop->removePlayer(id);
+    if (gameLoop->is_dead()) {
+        gameloops.remove(gameLoop);
+    }
+    receiver->join();
+    std::cout << "El receiver se cerró." << std::endl;
 }
