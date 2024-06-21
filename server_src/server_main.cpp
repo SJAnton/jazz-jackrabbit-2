@@ -7,6 +7,8 @@
 #include "server_config_reader.h"
 #include "../common_src/socket.h"
 
+#define GAME_KEY "Game"
+
 #define CONFIG "config.yaml"
 
 #define EXIT 'q'
@@ -33,7 +35,7 @@ int main(int argc, char* argv[]) {
 
     Game::init(data);
 
-    ServerAcceptor acceptor(skt, was_closed);
+    ServerAcceptor acceptor(skt, data[GAME_KEY][0], was_closed);
     acceptor.start();
 
     while (std::cin.get() != EXIT) {

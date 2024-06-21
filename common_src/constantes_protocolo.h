@@ -49,7 +49,7 @@
 // Enemigos
 #define ENEMY_RAT 0xB1
 #define ENEMY_BAT 0xB2
-#define ENEMY_LIZARD 0xB3
+#define ENEMY_DIABLO 0xB3
 
 #define ENEMY_STATE_IDLE 0X01
 #define ENEMY_STATE_MOVE 0X02

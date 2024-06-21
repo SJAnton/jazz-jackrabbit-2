@@ -65,7 +65,7 @@ TipoEnemy Protocol::decodeTipoEnemy(uint8_t byte) {
 	{
 	case ENEMY_RAT : return Rat;
 	case ENEMY_BAT : return Bat;
-	case ENEMY_LIZARD : return Lizard;	
+	case ENEMY_DIABLO : return Diablo;	
 	default:
 		throw std::invalid_argument("Protocol::decodeTipoEnemy()");
 		return Rat;
@@ -176,7 +176,7 @@ uint8_t Protocol::encodeTipoEnemy(const TipoEnemy &enemigo) {
 	switch (enemigo) {
         case Rat: return ENEMY_RAT;
         case Bat: return ENEMY_BAT;
-        case Lizard: return ENEMY_LIZARD;	
+        case Diablo: return ENEMY_DIABLO;	
         default:
             throw std::invalid_argument("En Protocol::encodeTipoEnemy()");
             return ENEMY_RAT;

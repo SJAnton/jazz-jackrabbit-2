@@ -8,6 +8,8 @@
 #include "GameObjects/Players/game_object_player.h"
 #include "GameObjects/Collected/game_object_collected.h"
 #include "GameObjects/Enemies/game_object_enemy.h"
+#include "GameObjects/Enemies/enemy_bat.h"
+#include "GameObjects/Enemies/enemy_diablo.h"
 #include "GameObjects/Enemies/enemy_rat.h"
 #include "GameObjects/Projectile/game_object_projectile.h"
 #include "../server_character_map.h"
@@ -25,7 +27,7 @@ private:
     // El terreno se puede pensar como los casilleros simplificados.
     //TileMap TileMap;
     std::vector<std::shared_ptr<ObjectPlayer>> players; //lista de los players
-    std::vector<ObjectEnemy> &enemigos;
+    std::vector<std::shared_ptr<ObjectEnemy>> &enemigos;
     std::vector<ObjectCollected> &itemsRecolectables;
     std::vector<ObjectProjectile> proyectiles;
 
@@ -62,15 +64,16 @@ public:
 
 public:
     GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
-              std::vector<ObjectEnemy> &enemigos,
+              std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,
               std::vector<ObjectCollected> &itemsRecolectables);
 
     //Recibe el terreno ya creado
     //GameMundo(Terreno &&terreno);
 
     void addItem(ObjectCollected &&item, const Coordenada &position);
-    void addPlayer(std::shared_ptr<ObjectPlayer>, Coordenada position);
+    void addPlayer(std::shared_ptr<ObjectPlayer> playerPtr, Coordenada position);
     void addProjectile(ObjectProjectile &&projectile);
+    void addEnemy(std::shared_ptr<ObjectEnemy> enemyPtr, Coordenada position);
 
     // Avanza una iteracion en el tiempo, aplica la gravedad a todos los objetos con peso
     // Chequea todas las colisiones de los recolectables, proyectiles, etc.

@@ -3,35 +3,83 @@
 
 #include <vector>
 #include <cstdint>
+#include <cstdlib>
 
 #include "../game_object.h"
+#include "../Collected/game_object_collected.h"
 #include "../../../../common_src/info_juego.h"
 
-//fijo
-#define WIDTH_BAT 10 //Ajustar luego
-#define HEIGHT_BAT 10 //Ajustar luego
+#define WIDTH_BAT 80
+#define HEIGHT_BAT 40
+#define WIDTH_DIABLO 80
+#define HEIGHT_DIABLO 40
+#define WIDTH_RAT 80
+#define HEIGHT_RAT 40
+
+#define FALL_SPEED 10
 
 class ObjectEnemy : public GameObject {
     private:
     
     protected:
         TipoEnemy tipoEnemy = TipoEnemy::Bat;
-        int damage; //daño que realiza
-        int health;
-        EstadosEnemy enemy_status = EstadosEnemy::Idle;
-        std::vector<Coordenada> waypoints;
-        int waypoint_actual = 0; // Índice del waypoint actual
-        bool alive = true; // Estado de vida del enemigo
-        Direcciones direction = Right;
 
-    public:
-        ObjectEnemy(TipoEnemy tipo, int width, int height,  
-                    int damage, int health, 
-                    const std::vector<Coordenada>& waypoints);
-    
+        int damage; //daño que realiza
+
+        int health;
+
+        int speed;
+
+        int points;
+
+        int respawn_time;
+
+        int ammo_drop_chance;
+
+        int movement_range;
+
+        EstadosEnemy status = EstadosEnemy::Idle;
+
+        bool is_alive = true;
+
+        bool on_ground = true;
+
+        Direcciones direction = (std::rand() % 2 == 0) ? Left : Right;
+
+        int health_buffer;
+
+        int respawn_time_buffer;
+
+        int movement_range_buffer;
+
         void move_x();
 
+        void restore_movement_range();
+
+    public:
+        ObjectEnemy(TipoEnemy tipo, int width, int height, int damage,
+                        int health, int speed, int points, int respawn_time,
+                            int ammo_drop_chance, int movement_range);
+
+        void walk();
+
+        void jump();
+
+        virtual void fall();
+
+        int get_damage();
+
+        bool is_dead();
+
+        bool is_falling();
+
+        void reduce_respawn_time();
+
         void take_damage(int &damage);
+
+        bool check_ammo_drop();
+
+        ObjectCollected drop_ammo();
 
         void attack();
 

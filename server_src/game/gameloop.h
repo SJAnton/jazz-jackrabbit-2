@@ -25,8 +25,8 @@ class ServerGameloop : public Thread {
         bool wc = false;
 
     public:
-        ServerGameloop(int id_game, int id_client, TipoPlayer tipoPlayer, std::shared_ptr<Queue<uint8_t>> recv_q, 
-                               Queue<InfoJuego> *sndr_q);
+        ServerGameloop(int id_game, int id_client, int time_left, TipoPlayer tipoPlayer,
+                        std::shared_ptr<Queue<uint8_t>> recv_q, Queue<InfoJuego> *sndr_q);
 
         void addPlayer(int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q);
         void removePlayer(int id);

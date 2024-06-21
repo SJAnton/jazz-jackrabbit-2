@@ -2,6 +2,9 @@
 #include "interfaz_grafica.h"
 #include <iostream>
 
+
+ #define PATH_PANTALLA_INICIO "../sprites/Title_Screen (640x398).png"
+
 SpritesManager::SpritesManager() :
     botonPlay(PATH_BUTTON_PLAY),
     titulo(PATH_TITULO),
@@ -31,7 +34,7 @@ SpritesManager::SpritesManager() :
 void SpritesManager::renderizarMenu() {
     int separacion = 120;
 
-    SpriteObject title_screen = SpriteObject("../sprites/Title_Screen (640x398).png", ANCHO_WINDOW, ALTO_WINDOW);
+    SpriteObject title_screen = SpriteObject(PATH_PANTALLA_INICIO, ANCHO_WINDOW, ALTO_WINDOW);
     title_screen.renderizar();
 
     int boton_width = 282, boton_height = 84;
@@ -175,12 +178,28 @@ void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, c
     }
 }
 
+void SpritesManager::updateEnemy(unsigned int n, const EstadosEnemy &estado, const Position &pos, const Direcciones &dir) {
+    SpriteEnemy& enemy = getEnemy(n);
+    enemy.setPosition(pos.x, pos.y);
+    enemy.setFlip(dir);
+    if (enemy.getEstado() != estado) { // si cambió de estado
+        enemy.setEstado(estado);
+    }
+    else {
+        enemy.updateFrame();
+    }
+}
+
 void SpritesManager::updateProyectiles() {
     proyectil_0.nextFrame();
 }
 
 void SpritesManager::addPlayer(const TipoPlayer &tipo) {
     players.emplace_back(tipo);
+}
+
+void SpritesManager::addEnemy(const TipoEnemy &tipo) {
+    enemies.emplace_back(tipo);
 }
 
 
@@ -192,4 +211,12 @@ SpritePlayer& SpritesManager::getPlayer(unsigned int n) {
     }
     auto player = std::next(players.begin(), n);
     return *player;
+}
+
+SpriteEnemy& SpritesManager::getEnemy(unsigned int n) {
+    if (n >= enemies.size()) {
+        throw std::out_of_range("Index out of range");
+    }
+    auto enemy = std::next(enemies.begin(), n);
+    return *enemy;
 }

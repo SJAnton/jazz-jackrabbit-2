@@ -86,6 +86,8 @@ set(SOURCE_FILES
     ../interfaz_src/spritesheet.cpp
     ../interfaz_src/spritesManager.cpp
     ../interfaz_src/sprites_players.cpp
+    ../interfaz_src/sprites_enemies.cpp
+    ../interfaz_src/sprite_enemy.cpp
     ../interfaz_src/sprites_tile_map.cpp
 )
 
