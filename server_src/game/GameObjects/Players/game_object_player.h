@@ -13,6 +13,15 @@
 #define WIDTH_PLAYER 20  // (para el futuro Padding de 20px y 11px arriba)
 #define HEIGHT_PLAYER 40
 
+// constantes de cuantas iteraciones duran la animaciones
+#define TIME_JUMP 16//12
+#define TIME_SHOOT 6
+#define TIME_DEATH 60 // 4 seg
+
+#define TIME_DYING_SPAZ 13 // (no tiene la misma duracion que las otras)
+#define TIME_DYING_LORI 20
+#define TIME_DYING_JAZZ 20
+
 // basado en el server_character
 class ObjectPlayer : public GameObject {
    protected:
@@ -37,13 +46,23 @@ class ObjectPlayer : public GameObject {
         
         bool alive = true;
         bool intoxicated = false;
-        bool falling = false;
-        bool tocandoSuelo = true;
+        bool falling = true;
         bool is_jumping = false;
+        bool tocandoSuelo = false;
+
+    public:
+        // los timer los maeja el game
+        int timer_jump = 0; // Variable auxiliar para saber en que iteracion del salto está
+        int timer_shoot = 0; // Variable auxiliar para saber cuantas iterciones pasaron desde el disparo
+        int timer_dying = 0; // Variable auxiliar para saber en que iteracion del estado muriendo
+        int timer_death = 0; // Variable auxiliar para saber cuantas iterciones lleva muerto
+        bool is_dying = false; // cuando se esta ejecutando la animacion de morir
 
     private:
         // Mueve las posiciones del gameobject
         void move_x(Direcciones direccion, int speed);
+        void move_xy();
+        int getTimeDying();
 
     public:
         // inicializo todas las constantes de los Players una unica vez
@@ -72,7 +91,7 @@ class ObjectPlayer : public GameObject {
 
         int get_id() {return id;};
 
-        bool is_dead() {return alive;};
+        bool is_dead() {return !alive;};
 
         bool is_intoxicated() { return intoxicated;};
 
@@ -80,8 +99,10 @@ class ObjectPlayer : public GameObject {
 
         bool isJumping() {return is_jumping;}
 
-        //Setters
 
+        EstadosPlayer getEstado();
+        //Setters
+        
         void change_weapon(Weapon &&new_weapon);
         
         void pick_up_ammo(int ammo); // recoger municion
@@ -95,6 +116,14 @@ class ObjectPlayer : public GameObject {
         void take_damage(int &damage); // health - damage
 
         void add_points(int points); // points + sum
+
+
+        void death();
+
+        // actualiza los timers y cambia el estado de dying a death cuando corresponda
+        void updateDeath();
+        void updateJump();
+        void updateShoot();
 
         void revive();
 

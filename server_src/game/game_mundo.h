@@ -11,6 +11,8 @@
 #include "GameObjects/Enemies/enemy_rat.h"
 #include "GameObjects/Projectile/game_object_projectile.h"
 #include "../server_character_map.h"
+#include "../../common_src/tile_map.h"
+
 #include <list>
 #include <vector>
 

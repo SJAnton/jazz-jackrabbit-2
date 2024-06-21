@@ -59,18 +59,18 @@ Game::Game() :
 
 
 
+// Se llama en cada iteracion del gameloop.
 void Game::execute_actions(std::vector<uint8_t> &actions) {
-    //chequeo si esta saltando alguno
+    //chequeo los estados de cada player
     for (auto &p : ch_map->getPlayers()) {
-
-        if (p->isJumping()) {
-            p->jump(Direcciones::Left);
-            auxJump++;
-            if (auxJump > timeJump) {
-                p->set_jumping_status(false);
-                auxJump = 0;
-            }
-            //return;
+        if (p->is_dead()) {
+            p->updateDeath();
+        }
+        else if (p->isJumping()) {
+            p->updateJump();
+        }
+        else if (p->getEstado() == EstadosPlayer::Shooting) {
+            p->updateShoot();
         }
     }
 
@@ -86,8 +86,6 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
     }
 
     std::shared_ptr<ObjectPlayer> player = ch_map->at(player_id); //identifico el player por su id
-    //std::cout << "Ejecuto accion" << std::endl;
-
     
     
     switch (action) {
@@ -101,12 +99,15 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
             player->run(direction);
             break;
         case ACTION_JUMP:
-            player->set_jumping_status(true);
             player->jump(direction);
             break;
         case ACTION_SHOOT: {
-            ObjectProjectile proyectil = player->shoot(direction);
-            gameMundo.addProjectile(std::move(proyectil));
+            try {
+                ObjectProjectile proyectil = player->shoot(direction);
+                gameMundo.addProjectile(std::move(proyectil));
+            } catch(const NoAmmoException& e) {
+                std::cout << "sin balas" << std::endl;
+            }
             break;
         }
         //case ACTION_SPECIAL_ATTACK:
@@ -164,11 +165,11 @@ InfoJuego Game::snapshot() {
 }
 
 void Game::add_player(TipoPlayer &player_type, int player_id) {
-    std::shared_ptr<ObjectPlayer> player = std::make_shared<ObjectPlayer>(player_id, player_type, Weapon(10,TipoArma::Tipo_1));
+    std::shared_ptr<ObjectPlayer> player = std::make_shared<ObjectPlayer>(player_id, player_type, Weapon(TipoArma::Tipo_1));
     ch_map->push_back(player_id, player);
     std::cout << "agrego player al juego" << std::endl;
 
-    gameMundo.addPlayer(player, player->getPosition());
+    gameMundo.addPlayer(player, Coordenada(70, 50));
 }
 
 void Game::remove_player(const int &player_id) {

@@ -2,40 +2,57 @@
 #define WEAPN_H
 
 #include "../../../common_src/constantes.h"
+#include "../GameObjects/Projectile/game_object_projectile.h"
+#include <exception>
+#include <string>
+
+
+
+// Excepcion que me dice que no hay municiones
+class NoAmmoException : public std::exception {
+public:
+    virtual const char* what() const noexcept override {
+        return "No hay municiones disponibles";
+    }
+};
+
 
 /**
- * Clase de la que heredan todas las diferentes armas
+ * Todas las armas van a hacer lo mismo. Lo unico en que varian según su tipo son la 
+ * velocidad de disparo (tiempo entre un disparo y otro)
+ * 
+ * (la  velocidad  y el daño del proyectil estan en la clase ObjectProyectile)
+ * 
 */
 class Weapon
 {
+protected:
+        static bool inizializated;
+
+        //Constantes del config.yaml (cargar con init() una sola vez)
+        static int diley_shoot_w1;
+        static int diley_shoot_w2;
+        static int diley_shoot_w3;
+        static int diley_shoot_w4;
+        
 private:
-    const int maxMuniciones;// cantidad maxima de balas que tiene el arma (varia segun el tipo)
     TipoArma tipoArma;
-    int municiones = 1; // cantidad de balas que le quedan
+    int municiones = 0; // cantidad de balas que le quedan
    
 public:
-    Weapon(int maxMuniciones, TipoArma tipoArma) : maxMuniciones(maxMuniciones), tipoArma(tipoArma) {};
+    static void innit(int diley_shoot_w1, int diley_shoot_w2, int diley_shoot_w3, int diley_shoot_w4);
 
-    void addMunicion(int cantMunicion) {
-        municiones += cantMunicion;
-        if (municiones >= maxMuniciones)
-            municiones = maxMuniciones;
-    };
+    Weapon(TipoArma tipoArma);
 
-    void subMunicion() {
-        municiones--;
-        if (municiones <= 0)
-            municiones = 0;
-     };
-
-
-    void setType(const TipoArma &type) {tipoArma = type;};
+    void addMunicion(int cantMunicion);
 
     TipoArma getType() {return tipoArma;};
 
     int getMuniciones() {return municiones;};
 
-    //~Weapon();
+    // devuelve un proyectil si se pudo disparar
+    ObjectProjectile shoot(const Direcciones &dir, const Coordenada &position);
+
 };
 
 #endif //WEAPON_H

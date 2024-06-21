@@ -7,6 +7,7 @@
 
 #include "../../../../common_src/info_juego.h"
 #include "../../../../common_src/constantes_protocolo.h"
+#include "../../../../common_src/constantes.h"
 #include "../game_object.h"
 #include "../game_object.h"
 
@@ -41,7 +42,9 @@ class ObjectProjectile : public GameObject {
         static void init(int damage_p1, int damage_p2, int damage_p3, int damage_p4,
                         int speed_p1, int speed_p2, int speed_p3, int speed_p4);
         
-        ObjectProjectile(const TipoArma &tipo, const Direcciones &direction, Coordenada &position);
+        //ObjectProjectile(TipoArma tipo, const Direcciones &direction, Coordenada &position);
+        ObjectProjectile(TipoArma tipo, const Direcciones &direction, const Coordenada &position);
+
 
         // Avanza en el eje x en la direccion establecida y velocidad establecida 
         void move_x_pos();

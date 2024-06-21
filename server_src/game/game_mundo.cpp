@@ -4,10 +4,11 @@
 #include "game_casillero.h"
 #include "game_coordenada.h"
 
-#define FILAS 15
-#define COLUMNAS 15
 
-std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(15 * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(15 * MULTIPLCADOR_CASILLERO));
+#define FILAS 30
+#define COLUMNAS 30
+
+std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(30 * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(30 * MULTIPLCADOR_CASILLERO));
 
 //constructores
 GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
@@ -18,10 +19,17 @@ GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players,
     players(players), enemigos(enemigos), 
     itemsRecolectables(itemsRecolectables)
 {
-   for (int j = 0; j < COLUMNAS; ++j) { //Cargo los casilleros solidos (HARDCODEADO)
-        CoordenadaBloque coord(j, 4); //bloqueo la fila 4
-        bloquearCasilleros(coord);
+    TileMap tileMap =  TileMap::getLevel_1();
+    for (int i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLUMNAS; ++j) { //Cargo los casilleros solidos
+            if (tileMap.terreno[i][j].is_solid()) {
+                CoordenadaBloque coordenada(j, i); //bloqueo las coordenadas correspondientes a un tile solido
+                bloquearCasilleros(coordenada);
+            }
+            
+        }
     }
+    
 }
 
 void GameMundo::addPlayer(std::shared_ptr<ObjectPlayer> playerPtr, Coordenada position) {

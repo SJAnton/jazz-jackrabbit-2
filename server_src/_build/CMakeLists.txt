@@ -33,11 +33,13 @@ set(SOURCE_FILES
     ../../common_src/resolvererror.cpp
     ../../common_src/socket.cpp
     ../../common_src/protocol.cpp
+    ../../common_src/tile_map.cpp
 
     # Archivos server
     ../game/game.cpp
     ../game/gameloop.cpp
     ../game/game_mundo.cpp
+    ../game/Weapons/weapon.cpp
 
     ../game/GameObjects/game_object.cpp
     ../game/GameObjects/Players/game_object_player.cpp
