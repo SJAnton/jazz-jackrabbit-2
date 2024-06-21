@@ -16,6 +16,8 @@
 #define PLAYER_CODE "ObjectPlayer"
 #define PROJECTILE_CODE "ObjectProjectile"
 #define COLLECTED_CODE "ObjectCollected"
+#define BAT_CODE "EnemyBat"
+#define DIABLO_CODE "EnemyDiablo"
 #define RAT_CODE "EnemyRat"
 
 //Metodo para cargar todas las constantes del config
@@ -23,6 +25,8 @@ void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
     std::vector<uint8_t> &player_data = data[PLAYER_CODE];
     std::vector<uint8_t> &projectile_data = data[PROJECTILE_CODE];
     std::vector<uint8_t> &collected_data = data[COLLECTED_CODE];
+    std::vector<uint8_t> &bat_data = data[BAT_CODE];
+    std::vector<uint8_t> &diablo_data = data[DIABLO_CODE];
     std::vector<uint8_t> &rat_data = data[RAT_CODE];
 
     ObjectPlayer::init(
@@ -40,9 +44,18 @@ void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
         collected_data[3], collected_data[4], collected_data[5]
     );
 
-    EnemyRat::init(rat_data[0], rat_data[1]);
+    EnemyBat::init(
+        bat_data[0], bat_data[1], bat_data[2], bat_data[3], bat_data[4], bat_data[5], bat_data[6]
+    );
 
-    // TODO: implementar EnemyLizard y EnemyBat
+    EnemyDiablo::init(
+        diablo_data[0], diablo_data[1], diablo_data[2], diablo_data[3],
+        diablo_data[4], diablo_data[5], diablo_data[6]
+    );
+
+    EnemyRat::init(
+        rat_data[0], rat_data[1], rat_data[2], rat_data[3], rat_data[4], rat_data[5], rat_data[6]
+    );
 } 
 
 Game::Game() : 
@@ -60,9 +73,8 @@ Game::Game() :
 
 
 void Game::execute_actions(std::vector<uint8_t> &actions) {
-    //chequeo si esta saltando alguno
     for (auto &p : ch_map->getPlayers()) {
-
+        //chequeo si esta saltando alguno
         if (p->isJumping()) {
             p->jump(Direcciones::Left);
             auxJump++;
@@ -88,8 +100,6 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
     std::shared_ptr<ObjectPlayer> player = ch_map->at(player_id); //identifico el player por su id
     //std::cout << "Ejecuto accion" << std::endl;
 
-    
-    
     switch (action) {
         case ACTION_IDLE:
            // player->do_nothing();
@@ -120,39 +130,22 @@ void Game::update() {
     gameMundo.update();
 }
 
-/*void Game::tick() {
-    for (auto it = ch_map->begin(); it != ch_map->end(); it++) {
-        std::shared_ptr<ObjectPlayer> Player = it->second;
-        if (Player.is_falling()) {
-            Player->fall();
-        }
-    }
-    for (std::shared_ptr<ObjectPlayerProjectile> projectile : projectile_list) {
-        projectile->move_x_pos();
-        if (projectile->contact()) {
-            projectile_list.remove(projectile);
-        }
-        
-    }
-}
-*/
-
 InfoJuego Game::snapshot() {
     std::vector<InfoPlayer> players_data;
     std::vector<InfoEnemigo> enemies_data;
     std::vector<InfoRecolectable> items_data;
 
-    for (auto it = ch_map->begin(); it != ch_map->end(); it++) {
+    for (auto it = ch_map->begin(); it != ch_map->end(); ++it) {
         std::shared_ptr<ObjectPlayer> &Player = it->second;
 
         InfoPlayer player_data = Player->getInfo();
         players_data.push_back(player_data);
     }
-    for (auto enemy : enemies) {
-        InfoEnemigo info = enemy.getInfo();
+    for (auto &enemy : enemies) {
+        InfoEnemigo info = enemy->getInfo();
         enemies_data.push_back(info);
     }
-    for (auto item : itemsRecolectables) {
+    for (auto &item : itemsRecolectables) {
         if (item.isCollected())
             continue;
         InfoRecolectable info = item.getInfo();

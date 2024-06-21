@@ -24,14 +24,32 @@ ObjectCollected:
   pts_zanahoria_podrida: 0
   proba_podrida: 20 # Entre 0 y 100
 
-EnemyRat:
-  damage: 3
-  health: 4
-
-EnemyLizard:
-  damage: 3
-  health: 4
-
 EnemyBat:
-  damage: 3
+  damage: 1
   health: 4
+  speed: 15
+  points: 1
+  respawn_time: 10 # Segundos
+  dropping_ammo_chance: 10
+  movement_range: 15
+
+EnemyDiablo:
+  damage: 1
+  health: 4
+  speed: 15
+  points: 1
+  respawn_time: 10
+  dropping_ammo_chance: 10
+  movement_range: 15
+
+EnemyRat:
+  damage: 1
+  health: 4
+  speed: 15
+  points: 1
+  respawn_time: 10
+  dropping_ammo_chance: 10
+  movement_range: 15
+
+Game:
+  time: 250

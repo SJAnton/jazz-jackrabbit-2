@@ -1,9 +1,9 @@
-#ifndef OBJECT_ENEMY_RAT
-#define OBJECT_ENEMY_RAT
+#ifndef OBJECT_ENEMY_BAT
+#define OBJECT_ENEMY_BAT
 
 #include "game_object_enemy.h"
 
-class EnemyRat : public ObjectEnemy {
+class EnemyBat : public ObjectEnemy {
     private:
         static bool initialized;
 
@@ -22,11 +22,13 @@ class EnemyRat : public ObjectEnemy {
         static int default_movement_range;
 
     public:
-        EnemyRat() : ObjectEnemy(TipoEnemy::Rat, WIDTH_RAT, HEIGHT_RAT, default_damage,
+        EnemyBat() : ObjectEnemy(TipoEnemy::Bat, WIDTH_BAT, HEIGHT_BAT, default_damage,
                         default_health, default_speed, default_points, default_respawn_time,
                             default_ammo_drop_chance, default_movement_range) {}
 
         static void init(int damage, int health, int speed, int points,
                             int respawn_time, int ammo_drop_chance, int movement_range);
+        
+        void fall() override;
 };
-#endif
+#endif //OBJECT_ENEMY_RAT

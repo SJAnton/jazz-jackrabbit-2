@@ -21,6 +21,8 @@ class Client : public Thread {
 
         int id;
 
+        int game_time;
+
         atomic<int> &gmlp_id;
 
         GameloopList &gameloops;
@@ -50,7 +52,7 @@ class Client : public Thread {
         TipoPlayer select_character(uint8_t character);
 
     public:
-        Client(Socket &&sk, int id, atomic<int> &gmlp_id, GameloopList &gameloops);
+        Client(Socket &&sk, int id, int game_time, atomic<int> &gmlp_id, GameloopList &gameloops);
         
         void run() override;
 

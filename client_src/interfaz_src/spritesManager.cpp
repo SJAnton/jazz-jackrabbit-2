@@ -13,9 +13,7 @@
 #define PATH_PISO_BLOQUE_1 "../sprites/Terreno/tile008.png"
 
 #define PATH_FONDO_2 "../sprites/Terreno/tile002.png"
-
-
-
+#define PATH_PANTALLA_INICIO "../sprites/Title_Screen (640x398).png"
 
 SpritesManager::SpritesManager() :
     botonPlay(PATH_BUTTON_PLAY),
@@ -51,7 +49,7 @@ SpritesManager::SpritesManager() :
 void SpritesManager::renderizarMenu() {
     int separacion = 120;
 
-    SpriteObject title_screen = SpriteObject("../sprites/Title_Screen (640x398).png", ANCHO_WINDOW, ALTO_WINDOW);
+    SpriteObject title_screen = SpriteObject(PATH_PANTALLA_INICIO, ANCHO_WINDOW, ALTO_WINDOW);
     title_screen.renderizar();
 
     int boton_width = 282, boton_height = 84;

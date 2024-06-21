@@ -25,7 +25,7 @@ class Game {
         bool _is_running = true;
 
         std::shared_ptr<PlayerMap> ch_map;
-        std::vector<ObjectEnemy> enemies; //lista con todos los enemigos del juego
+        std::vector<std::shared_ptr<ObjectEnemy>> enemies; //lista con todos los enemigos del juego
         std::vector<ObjectCollected> itemsRecolectables;
 
 

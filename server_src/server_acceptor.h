@@ -24,6 +24,8 @@ class ServerAcceptor : public Thread {
     private:
         Socket &sk;
 
+        int game_time;
+
         bool &was_closed;
 
         atomic<int> gmlp_id = 1;
@@ -33,7 +35,7 @@ class ServerAcceptor : public Thread {
         GameloopList gameloops;
 
     public:
-        ServerAcceptor(Socket &socket, bool &was_closed);
+        ServerAcceptor(Socket &socket, int game_time, bool &was_closed);
 
         void run() override;
 

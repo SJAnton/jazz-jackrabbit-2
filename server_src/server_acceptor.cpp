@@ -1,7 +1,7 @@
 #include "server_acceptor.h"
 
-ServerAcceptor::ServerAcceptor(Socket &socket, bool &was_closed) :
-                                sk(socket), was_closed(was_closed) {}
+ServerAcceptor::ServerAcceptor(Socket &socket, int game_time, bool &was_closed) :
+                                sk(socket), game_time(game_time), was_closed(was_closed) {}
 
 
 void ServerAcceptor::run() {
@@ -10,7 +10,7 @@ void ServerAcceptor::run() {
         try {
             Socket peer = sk.accept();
 
-            Client *client = new Client(std::move(peer), id, gmlp_id, gameloops);
+            Client *client = new Client(std::move(peer), id, game_time, gmlp_id, gameloops);
 
             client->start();
             clients.push_back(client);

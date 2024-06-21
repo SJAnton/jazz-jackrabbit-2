@@ -44,6 +44,8 @@ set(SOURCE_FILES
     ../game/GameObjects/Collected/game_object_collected.cpp
     ../game/GameObjects/Projectile/game_object_projectile.cpp
     ../game/GameObjects/Enemies/game_object_enemy.cpp
+    ../game/GameObjects/Enemies/enemy_bat.cpp
+    ../game/GameObjects/Enemies/enemy_diablo.cpp
     ../game/GameObjects/Enemies/enemy_rat.cpp
 
     ../server_acceptor.cpp

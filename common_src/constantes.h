@@ -20,7 +20,6 @@ enum class AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
 enum class EstadosEnemy{Idle, Move, Walk, Attack, Damaged, Death, Appear, Disappear};
 enum TipoEnemy{Rat, Bat, Diablo};
 
-
 // Recolectables
 enum TipoRecolectable {Moneda, Diamante, Zanahoria, Municion, Municion1, Municion2, Municion3, Municion4};
 

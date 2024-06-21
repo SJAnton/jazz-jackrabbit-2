@@ -24,7 +24,7 @@
 #define PATH_SPAZ_INTOXICATED_IDLE "../sprites/Players/Spaz/Intoxicated_Idle (56x56)x08.png"
 #define PATH_SPAZ_INTOXICATED_WALK "../sprites/Players/Spaz/Intoxicated_Walk (56x56)x12.png"
 #define PATH_SPAZ_DEATH "../sprites/Players/Spaz/Death (56x56)x07.png"
-#define PATH_SPAZ_DYING "../sprites/Players/Spaz/Death (56x56)x13.png"
+#define PATH_SPAZ_DYING "../sprites/Players/Spaz/Dying (56x56)x13.png"
 
 //player Lori
 #define PATH_LORI_DAMAGED "../sprites/Players/Lori/Damaged (56x56)x11.png"
