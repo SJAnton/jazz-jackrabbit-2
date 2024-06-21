@@ -8,6 +8,29 @@
 #define PATH_FONT "../sprites/font.png"
 
 
+
+//=========
+// TERRENO
+//=========
+#define PATH_TILE_0 "../sprites/Terreno/tile000.png"
+#define PATH_TILE_1 "../sprites/Terreno/tile001.png"
+#define PATH_TILE_2 "../sprites/Terreno/tile002.png"
+#define PATH_TILE_3 "../sprites/Terreno/tile003.png"
+#define PATH_TILE_4 "../sprites/Terreno/tile004.png"
+#define PATH_TILE_5 "../sprites/Terreno/tile005.png"
+#define PATH_TILE_6 "../sprites/Terreno/tile006.png"
+#define PATH_TILE_7 "../sprites/Terreno/tile007.png"
+#define PATH_TILE_8 "../sprites/Terreno/tile008.png"
+#define PATH_TILE_9 "../sprites/Terreno/tile009.png"
+#define PATH_TILE_10 "../sprites/Terreno/tile010.png"
+#define PATH_TILE_11 "../sprites/Terreno/tile011.png"
+#define PATH_TILE_12 "../sprites/Terreno/tile012.png"
+#define PATH_TILE_13 "../sprites/Terreno/tile013.png"
+#define PATH_TILE_14 "../sprites/Terreno/tile014.png"
+#define PATH_TILE_15 "../sprites/Terreno/tile015.png"
+
+
+
 //=========
 // PLAYERS
 //=========
@@ -24,7 +47,7 @@
 #define PATH_SPAZ_INTOXICATED_IDLE "../sprites/Players/Spaz/Intoxicated_Idle (56x56)x08.png"
 #define PATH_SPAZ_INTOXICATED_WALK "../sprites/Players/Spaz/Intoxicated_Walk (56x56)x12.png"
 #define PATH_SPAZ_DEATH "../sprites/Players/Spaz/Death (56x56)x07.png"
-#define PATH_SPAZ_DYING "../sprites/Players/Spaz/Death (56x56)x13.png"
+#define PATH_SPAZ_DYING "../sprites/Players/Spaz/Dying (56x56)x13.png"
 
 //player Lori
 #define PATH_LORI_DAMAGED "../sprites/Players/Lori/Damaged (56x56)x11.png"

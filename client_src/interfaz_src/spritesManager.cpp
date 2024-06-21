@@ -2,21 +2,6 @@
 #include "interfaz_grafica.h"
 #include <iostream>
 
- // Definirlas en 'sprites_paths.h'
-//TERRENO
-#define PATH_PISO_1 "../sprites/Terreno/tile012.png"
-#define PATH_PISO_2 "../sprites/Terreno/tile013.png"
-#define PATH_PISO_DIAGONAL_1 "../sprites/Terreno/tile011.png"
-#define PATH_PISO_DIAGONAL_2 "../sprites/Terreno/tile006.png"
-#define PATH_PISO_IZQ "../sprites/Terreno/tile000.png"
-#define PATH_PISO_DER "../sprites/Terreno/tile001.png"
-#define PATH_PISO_BLOQUE_1 "../sprites/Terreno/tile008.png"
-
-#define PATH_FONDO_2 "../sprites/Terreno/tile002.png"
-
-
-
-
 SpritesManager::SpritesManager() :
     botonPlay(PATH_BUTTON_PLAY),
     titulo(PATH_TITULO),
@@ -24,13 +9,7 @@ SpritesManager::SpritesManager() :
     character_jazz(PATH_CHARACTER_JAZZ),
     character_lori(PATH_CHARACTER_LORI),
     //letras(PATH_FONT),
-    fondo(PATH_FONDO_2),
-    piso(PATH_PISO_1),
-    pisoIzq(PATH_PISO_IZQ),
-    PisoDer(PATH_PISO_DER),
-    pisoDiagonalIzq(PATH_PISO_DIAGONAL_1),
-    pisoDiagonalDer(PATH_PISO_DIAGONAL_2),
-    pisoBloque(PATH_PISO_BLOQUE_1),
+    spritesTileMap(TileMap::getLevel_1()),
     moneda(PATH_ITEM_COIN, 28, 28, 20),
     gema(PATH_ITEM_GEM, 36, 36, 8),
     zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20),
@@ -41,6 +20,7 @@ SpritesManager::SpritesManager() :
     loriGun(PATH_LORI_GUN, 16, 16, 5)
 {
     SpritesPlayers::init();
+    SpritesTileMap::init();
 
     font = fontManager();
     
@@ -124,22 +104,7 @@ void SpritesManager::renderizarPlayer(unsigned int n) {
 
 void SpritesManager::renderizarFondo(const Position &posCamara)
 {
-    int size = 64;
-    fondo.setArea(size, size);
-    piso.setArea(size, size);
-    pisoBloque.setArea(size, size);
-    for (int i = -15; i < 25; i++) {
-        for (int j = -15; j < 25; j++) { //HARDCODEADO
-            fondo.renderizarEn(size*i - posCamara.x, size*j - posCamara.y);
-        }
-    }
-    for (size_t i = 0; i < 15; i++) {
-        for (size_t j = 0; j < 10; j++) { //HARDCODEADO
-            //fondo.renderizarEn(size*i - posCamara.x, size*j - posCamara.y);
-            piso.renderizarEn(size*i - posCamara.x, 4*64  - posCamara.y); //Fila 4
-            pisoBloque.renderizarEn(i*size - posCamara.x, 5*64 - posCamara.y);
-        }
-    }
+   spritesTileMap.renderizar(posCamara);
 }
 
 void SpritesManager::renderizarItemEn(const TipoRecolectable &tipo, int x, int y) {

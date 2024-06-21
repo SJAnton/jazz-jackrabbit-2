@@ -11,6 +11,9 @@
 #include "button_partida.h"
 #include "button_character.h"
 #include "fontManager.h"
+#include "../../common_src/tile_map.h"
+#include "sprites_tile_map.h"
+
 #include <list>
 #include <vector>
 
@@ -34,14 +37,7 @@ private:
     SpriteObject character_lori;
 
     //terreno 
-    SpriteObject fondo;//Podria ser una imagen grande
-    //SpriteTileMap (implementar)
-    SpriteObject piso;//temporal
-    SpriteObject pisoIzq;//temporal
-    SpriteObject PisoDer;//temporal
-    SpriteObject pisoDiagonalIzq;//temporal
-    SpriteObject pisoDiagonalDer;//temporal
-    SpriteObject pisoBloque;//temporal
+    SpritesTileMap spritesTileMap;
 
     //Items recolectables
     SpriteSheet moneda;

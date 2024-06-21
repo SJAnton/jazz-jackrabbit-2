@@ -66,6 +66,7 @@ set(SOURCE_FILES
     ../../common_src/resolver.cpp
     ../../common_src/resolvererror.cpp
     ../../common_src/socket.cpp
+    ../../common_src/tile_map.cpp
 
     ../client_main.cpp
     ../client_player.cpp
@@ -85,6 +86,7 @@ set(SOURCE_FILES
     ../interfaz_src/spritesheet.cpp
     ../interfaz_src/spritesManager.cpp
     ../interfaz_src/sprites_players.cpp
+    ../interfaz_src/sprites_tile_map.cpp
 )
 
 add_executable(client ${SOURCE_FILES})
