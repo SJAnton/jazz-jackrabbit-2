@@ -1,5 +1,7 @@
 #include "tile_map.h"
 
+#include <iostream>
+
  int level_1[30][30] = {
         {9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 , 9 },
         {9 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 9 },
@@ -34,9 +36,26 @@
     };
 
 
+std::vector<uint8_t> TileMap::toBytes() {
+    std::vector<uint8_t> bytes;
+    bytes.push_back(terreno.size());
+    std::cout << "size FILAS: " << terreno.size() << std::endl;
+    bytes.push_back(terreno[0].size());
+    std::cout << "size COLUMNAS: " << terreno[0].size() << std::endl;
+    for (int i = 0; i < (int)terreno.size(); ++i) {
+        std::cout << "FILA: " << i << " ";
+        for (int j = 0; j < (int)terreno[i].size(); ++j) {
+            bytes.push_back((uint8_t)terreno[i][j].getIdTile());
+            std::cout << (int)terreno[i][j].getIdTile() << " ";
+        }
+        std::cout << std::endl;
+    }
+    return bytes;
+}
+
 TileMap::TileMap(std::vector<std::vector<int>> matriz_ids_tiles) {
     int size = matriz_ids_tiles.size();
-
+    
     for (int i = 0; i < size; ++i) {
         std::vector<Tile> fila;
         int columnas = matriz_ids_tiles[i].size();
@@ -45,6 +64,7 @@ TileMap::TileMap(std::vector<std::vector<int>> matriz_ids_tiles) {
         }
         terreno.push_back(fila);
     }
+    toBytes();
 }
 
 
