@@ -109,7 +109,7 @@ class ObjectPlayer : public GameObject, public std::enable_shared_from_this<Obje
         EstadosPlayer getEstado();
         //Setters
         
-        void change_weapon(Weapon &&new_weapon);
+        void change_weapon();
         
         void pick_up_ammo(int ammo); // recoger municion
 

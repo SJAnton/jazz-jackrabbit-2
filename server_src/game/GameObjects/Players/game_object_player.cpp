@@ -166,16 +166,6 @@ void ObjectPlayer::run(Direcciones direccion) {
     }
 }
 
-void ObjectPlayer::change_shooting_weapon() {
-    if (secondary_weapon.getType() == Tipo_1 && weapon.getType() == Tipo_1) {
-        std::cout << "no hay arma secundaria" << std::endl;
-        return;
-    }
-    std::swap(weapon, secondary_weapon);
-    std::cout << "arma principal: " << weapon.getType() << std::endl;
-    std::cout << "arma secundaria: " << secondary_weapon.getType() << std::endl;
-}
-
 void ObjectPlayer::jump(Direcciones direccion) {
 
     if (!tocandoSuelo || !alive || is_jumping || isDoingSpecialAttack) { //si estoy en el aire, haciendo el ataque especial o muerto no puedo saltar
@@ -243,7 +233,18 @@ EstadosPlayer ObjectPlayer::getEstado() {
 
 // setters
 
-void ObjectPlayer::change_weapon(Weapon &&new_weapon) {
+/*
+void ObjectPlayer::change_shooting_weapon() {
+    if (secondary_weapon.getType() == Tipo_1 && weapon.getType() == Tipo_1) {
+        std::cout << "no hay arma secundaria" << std::endl;
+        return;
+    }
+    std::swap(weapon, secondary_weapon);
+    std::cout << "arma principal: " << weapon.getType() << std::endl;
+    std::cout << "arma secundaria: " << secondary_weapon.getType() << std::endl;
+}
+*/
+void ObjectPlayer::change_weapon() {
 
 }
 
