@@ -118,6 +118,9 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
             }
             break;
         }
+        case ACTION_CHANGE_WEAPON:
+            player->change_shooting_weapon();
+            break;
         //case ACTION_SPECIAL_ATTACK:
             //player->special_attack();
             //break;

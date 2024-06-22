@@ -40,7 +40,9 @@ private:
     int municiones = 0; // cantidad de balas que le quedan
    
 public:
-    static void innit(int diley_shoot_w1, int diley_shoot_w2, int diley_shoot_w3, int diley_shoot_w4);
+    static void init(int diley_shoot_w1, int diley_shoot_w2, int diley_shoot_w3, int diley_shoot_w4);
+
+    Weapon(); //Constructor por defecto
 
     Weapon(TipoArma tipoArma);
 

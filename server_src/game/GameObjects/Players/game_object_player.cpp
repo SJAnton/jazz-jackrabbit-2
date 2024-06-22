@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility> 
 
 #include "../../game_mundo.h"
 #include "game_object_player.h"
@@ -29,9 +30,10 @@ ObjectPlayer::ObjectPlayer(int id, TipoPlayer &tipo, const Weapon &weapon) :
     id(id), 
     tipoPlayer(tipo),
     health(defaultHealth),
-    weapon(weapon)   
-{
+    weapon(weapon)
+    {
     type = TypeGameObject::Player;
+    secondary_weapon = Weapon(Tipo_2); //BORRAR
 }
 
 
@@ -137,6 +139,16 @@ void ObjectPlayer::run(Direcciones direccion) {
     else { //estoy en el aire
         move_x(direccion, ObjectPlayer::defaultWalkSpeed); // me muevo sin cambiar el estado
     }
+}
+
+void ObjectPlayer::change_shooting_weapon() {
+    if (secondary_weapon.getType() == Tipo_1 && weapon.getType() == Tipo_1) {
+        std::cout << "no hay arma secundaria" << std::endl;
+        return;
+    }
+    std::swap(weapon, secondary_weapon);
+    std::cout << "arma principal: " << weapon.getType() << std::endl;
+    std::cout << "arma secundaria: " << secondary_weapon.getType() << std::endl;
 }
 
 void ObjectPlayer::jump(Direcciones direccion) {

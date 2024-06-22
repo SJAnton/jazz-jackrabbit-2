@@ -56,7 +56,7 @@ else()
     set_sdl_variables()
 endif()
 
-# SLD2_mixer --> sudo apt-get install libsdl2-mixer-2.0-0 libsdl2-mixer-dev
+# SDL2_mixer --> sudo apt-get install libsdl2-mixer-2.0-0 libsdl2-mixer-dev
 pkg_check_modules(SDL2MIXER REQUIRED SDL2_mixer)
 if(NOT SDL2MIXER_FOUND)
     ExternalProject_Add(SDL2_mixer

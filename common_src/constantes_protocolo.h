@@ -12,6 +12,7 @@
 #define ACTION_JUMP 0x14
 #define ACTION_SHOOT 0x15
 #define ACTION_SPECIAL_ATTACK 0x16
+#define ACTION_CHANGE_WEAPON 0x17
 // La accion vendrá seguida de la direccion en el eje x
 #define LEFT 0x4C // L
 #define RIGHT 0x52 // R

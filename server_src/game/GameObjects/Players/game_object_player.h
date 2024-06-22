@@ -43,7 +43,7 @@ class ObjectPlayer : public GameObject {
         int health = 10; //vida
         int points = 0;
         Weapon weapon; //arma
-        
+        Weapon secondary_weapon; //arma secundaria
         bool alive = true;
         bool intoxicated = false;
         bool falling = true;
@@ -84,6 +84,8 @@ class ObjectPlayer : public GameObject {
         void fall();
         //virtual void specialAttack(); // no implementado
 
+        void change_shooting_weapon();
+
         // Devuelve el proyectil disparado
         ObjectProjectile shoot(Direcciones direccion);
 
@@ -116,7 +118,7 @@ class ObjectPlayer : public GameObject {
         void take_damage(int &damage); // health - damage
 
         void add_points(int points); // points + sum
-
+        
 
         void death();
 

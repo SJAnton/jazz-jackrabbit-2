@@ -13,7 +13,7 @@ enum class EstadosPlayer {Inactive, Walking, Running, Jumping, Falling, Shooting
     SpecialAttack, IntoxicatedIdle, IntoxicatedWalk, Damaged, Dying, Dead, Reviving
 };
 
-enum class AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack};
+enum class AccionesPlayer{Idle, Walk, Run, Jump, Shoot, SpecialAttack, ChangeWeapon};
 
 
 // Enemy
