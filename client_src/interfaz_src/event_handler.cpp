@@ -39,6 +39,7 @@ void EventHandler::run()
                 manejarSeleccionPlayer(e);
                 break;;
             case Juego: 
+                //manejarComandosJuego(e, dir);
                 manejarComandosJuego(e, dir);
                 break;
             case ResultadosFinales:
@@ -47,6 +48,7 @@ void EventHandler::run()
                 break;
             }
         }
+        procesarEstadoTeclas(dir);
 
         Uint32 frameTime = SDL_GetTicks() - frameStart;
         if (1000 / 15 > frameTime) {
@@ -130,34 +132,36 @@ void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
 
 void EventHandler::manejarComandosJuego(SDL_Event &e, Direcciones &dir) {
     if (e.type == SDL_KEYDOWN) {
-        switch (e.key.keysym.sym) { // Obtengo el código de la tecla presionada
-        case SDLK_SPACE: 
-            cliente.saltar(dir);
-            break;
-        case SDLK_LEFT:
-            dir = Direcciones::Left;
-            interfaz.flipPlayer(true);
-            if (SDL_GetModState() & KMOD_LCTRL) // Se presionó Ctrl + Izquierda
-                cliente.correr(dir);
-            else
-                cliente.caminar(dir);
-            break;
-        case SDLK_RIGHT:
-            dir = Direcciones::Right;
-            interfaz.flipPlayer(false);
-            if (SDL_GetModState() & KMOD_LCTRL) // Se presionó Ctrl + Derecha
-                cliente.correr(dir);
-            else
-                cliente.caminar(dir);
-            break;
-        case SDLK_d:
-            cliente.disparar(dir);
-            break;
-        case SDLK_a: 
-            cliente.ataque_especial(dir);
-            break;
-        default:
-            break;
-        }
+        key_state[e.key.keysym.sym] = true;
+    } else if (e.type == SDL_KEYUP) {
+        key_state[e.key.keysym.sym] = false;
+    }
+}
+
+void EventHandler::procesarEstadoTeclas(Direcciones &dir) {
+    if (key_state[SDLK_SPACE]) {
+        cliente.saltar(dir);
+    }
+    if (key_state[SDLK_LEFT]) {
+        dir = Direcciones::Left;
+        interfaz.flipPlayer(true);
+        if (SDL_GetModState() & KMOD_LCTRL) // Se presionó Ctrl + Izquierda
+            cliente.correr(dir);
+        else
+            cliente.caminar(dir);
+    }
+    if (key_state[SDLK_RIGHT]) {
+        dir = Direcciones::Right;
+        interfaz.flipPlayer(false);
+        if (SDL_GetModState() & KMOD_LCTRL) // Se presionó Ctrl + Derecha
+            cliente.correr(dir);
+        else
+            cliente.caminar(dir);
+    }
+    if (key_state[SDLK_d]) {
+        cliente.disparar(dir);
+    }
+    if (key_state[SDLK_a]) {
+        cliente.ataque_especial(dir);
     }
 }

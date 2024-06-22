@@ -11,13 +11,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 include(FindPkgConfig)
 include(ExternalProject)
 
-# Function to set variables for SDL2 and SDL2_image
 function(set_sdl_variables)
-    include_directories(${SDL2_INCLUDE_DIRS})
-    link_directories(${SDL2_LIBRARY_DIRS})
+    include_directories(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS} ${SDL2MIXER_INCLUDE_DIRS})
+    link_directories(${SDL2_LIBRARY_DIRS} ${SDL2IMAGE_LIBRARY_DIRS} ${SDL2MIXER_LIBRARY_DIRS})
 endfunction()
 
-# Check for SDL2
+# SDL2
 pkg_check_modules(SDL2 REQUIRED sdl2)
 if(NOT SDL2_FOUND)
     ExternalProject_Add(SDL2
@@ -37,7 +36,7 @@ else()
     set_sdl_variables()
 endif()
 
-# Check for SDL2_image
+# SDL2_image
 pkg_check_modules(SDL2IMAGE REQUIRED SDL2_image)
 if(NOT SDL2IMAGE_FOUND)
     ExternalProject_Add(SDL2_image
@@ -53,6 +52,26 @@ if(NOT SDL2IMAGE_FOUND)
     set(SDL2IMAGE_LIBRARY_DIRS "${CMAKE_BINARY_DIR}/SDL2_image/src/SDL2_image-build/lib")
     set(SDL2IMAGE_LIBRARIES SDL2_image)
     add_custom_target(sdl2_image_dependency DEPENDS SDL2_image)
+else()
+    set_sdl_variables()
+endif()
+
+# SLD2_mixer --> sudo apt-get install libsdl2-mixer-2.0-0 libsdl2-mixer-dev
+pkg_check_modules(SDL2MIXER REQUIRED SDL2_mixer)
+if(NOT SDL2MIXER_FOUND)
+    ExternalProject_Add(SDL2_mixer
+        GIT_REPOSITORY https://github.com/libsdl-org/SDL_mixer.git
+        GIT_TAG release-2.6.3
+        PREFIX ${CMAKE_BINARY_DIR}/SDL2_mixer
+        CONFIGURE_COMMAND ./configure
+        BUILD_COMMAND make
+        INSTALL_COMMAND make install
+        BUILD_IN_SOURCE 1
+    )
+    set(SDL2MIXER_INCLUDE_DIRS "${CMAKE_BINARY_DIR}/SDL2_mixer/src/SDL2_mixer-build/include")
+    set(SDL2MIXER_LIBRARY_DIRS "${CMAKE_BINARY_DIR}/SDL2_mixer/src/SDL2_mixer-build/lib")
+    set(SDL2MIXER_LIBRARIES SDL2_mixer)
+    add_custom_target(sdl2_mixer_dependency DEPENDS SDL2_mixer)
 else()
     set_sdl_variables()
 endif()
@@ -93,4 +112,4 @@ set(SOURCE_FILES
 
 add_executable(client ${SOURCE_FILES})
 
-target_link_libraries(client ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} pthread)
+target_link_libraries(client ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} pthread)
