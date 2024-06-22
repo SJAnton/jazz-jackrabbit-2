@@ -29,6 +29,7 @@ class ObjectPlayer : public GameObject {
 
         //Constantes inicializadas en la funcion init() (llamado en Game::init())
         static int defaultHealth;
+        static int defaultDamageAttack;
         static int defaultWalkSpeed;
         static int defaultRunSpeed;
         static int defaultIntoxicatedSpeed;
@@ -49,26 +50,30 @@ class ObjectPlayer : public GameObject {
         bool falling = true;
         bool is_jumping = false;
         bool tocandoSuelo = false;
+        bool isDoingSpecialAttack = false;
 
     public:
         // los timer los maeja el game
         int timer_jump = 0; // Variable auxiliar para saber en que iteracion del salto está
         int timer_shoot = 0; // Variable auxiliar para saber cuantas iterciones pasaron desde el disparo
+        int timer_specialAttack = 0; // Variable auxiliar para saber cuantas iterciones van desde que inició el ataque especial
+
         int timer_dying = 0; // Variable auxiliar para saber en que iteracion del estado muriendo
         int timer_death = 0; // Variable auxiliar para saber cuantas iterciones lleva muerto
         bool is_dying = false; // cuando se esta ejecutando la animacion de morir
 
-    private:
+    protected:
         // Mueve las posiciones del gameobject
-        void move_x(Direcciones direccion, int speed);
-        void move_xy();
+        bool move_x(Direcciones direccion, int speed);
+        bool move_y(int speed);
+        bool down_y(int spped);
         int getTimeDying();
 
     public:
         // inicializo todas las constantes de los Players una unica vez
-        static void init(int health, int speed_walk, int speed_run, int speed_intoxicated, int speed_jump, int speed_fall);
+        static void init(int health, int damage_attack, int speed_walk, int speed_run, int speed_intoxicated, int speed_jump, int speed_fall);
     
-        ObjectPlayer(int id, TipoPlayer &tipo, const Weapon &weapon);
+        ObjectPlayer(int id, const TipoPlayer &tipo);
 
         // Movimientos y Acciones
 
@@ -82,7 +87,7 @@ class ObjectPlayer : public GameObject {
         void jump(Direcciones direccion);
 
         void fall();
-        //virtual void specialAttack(); // no implementado
+        virtual void specialAttack() {}; // no implementado
 
         // Devuelve el proyectil disparado
         ObjectProjectile shoot(Direcciones direccion);
@@ -90,15 +95,11 @@ class ObjectPlayer : public GameObject {
         //getters
 
         int get_id() {return id;};
-
         bool is_dead() {return !alive;};
-
         bool is_intoxicated() { return intoxicated;};
-
         bool is_falling() {return falling;};
-
         bool isJumping() {return is_jumping;}
-
+        bool is_doing_specialAttack() {return isDoingSpecialAttack;};
 
         EstadosPlayer getEstado();
         //Setters
@@ -124,6 +125,7 @@ class ObjectPlayer : public GameObject {
         void updateDeath();
         void updateJump();
         void updateShoot();
+        virtual void updateSpecialAttack() {};
 
         void revive();
 

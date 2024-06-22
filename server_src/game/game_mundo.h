@@ -101,7 +101,19 @@ private:
      * y en ese caso explota, dañando al personaje con el que colisionó 
     */
     void chequearColisionesProyectiles();
+
+    /**
+     * Chequea si un player está dentro de un enemigo
+     * y en ese caso le hace daño (solo si no estan haciendo el estaque especial).
+     * En caso de que el player esté haciendo el ataque especial, reibe el daño el enemigo
+    */
     void chequearColisionesEnemies();
+
+    /**
+     * Chequea para los players que estén haciendo el ataque especial, 
+     * si colisionan con otros players
+    */
+    void chequearColisionesPlayers(){}; //IMPLEMENTAR
 
     void chequearColisiones();
     

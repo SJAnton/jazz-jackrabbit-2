@@ -6,6 +6,9 @@
 //#include "../server_character_map.h"
 #include "../../common_src/info_juego.h"
 #include "game_mundo.h"
+#include "GameObjects/Players/player_Spaz.h"
+#include "GameObjects/Players/player_Lori.h"
+#include "GameObjects/Players/player_Jazz.h"
 
 class Game {
     public:

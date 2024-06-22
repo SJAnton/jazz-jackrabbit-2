@@ -16,6 +16,7 @@ void ServerSender::run() {
             }
             
         } catch (const ClosedQueue &e) {
+            wc = true;
             std::cout << "Queue cecrrada en ServerSender::run" << std::endl; 
         }
     }

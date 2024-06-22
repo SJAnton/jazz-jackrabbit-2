@@ -6,15 +6,17 @@
 // Inicializo las variables estáticas
 bool ObjectPlayer::inicializado = false;
 int ObjectPlayer::defaultHealth = 0;
+int ObjectPlayer::defaultDamageAttack = 0;
 int ObjectPlayer::defaultWalkSpeed = 0;
 int ObjectPlayer::defaultRunSpeed = 0;
 int ObjectPlayer::defaultIntoxicatedSpeed = 0;
 int ObjectPlayer::defaultJumpSpeed = 0;
 int ObjectPlayer::defaultFallSpeed = 0;
 
-void ObjectPlayer::init(int health, int speed_walk, int speed_run, int speed_intoxicated, int speed_jump, int speed_fall) {
+void ObjectPlayer::init(int health, int damageAttack, int speed_walk, int speed_run, int speed_intoxicated, int speed_jump, int speed_fall) {
     if (!inicializado) {
         defaultHealth = health;
+        defaultDamageAttack = damageAttack;
         defaultWalkSpeed = speed_walk;
         defaultRunSpeed = speed_run;
         defaultIntoxicatedSpeed = speed_intoxicated;
@@ -24,12 +26,13 @@ void ObjectPlayer::init(int health, int speed_walk, int speed_run, int speed_int
     }
 }
 
-ObjectPlayer::ObjectPlayer(int id, TipoPlayer &tipo, const Weapon &weapon) :
+
+ObjectPlayer::ObjectPlayer(int id, const TipoPlayer &tipo) :
     GameObject(WIDTH_PLAYER, HEIGHT_PLAYER),
     id(id), 
     tipoPlayer(tipo),
     health(defaultHealth),
-    weapon(weapon)   
+    weapon(Tipo_1)   
 {
     type = TypeGameObject::Player;
 }
@@ -38,25 +41,26 @@ ObjectPlayer::ObjectPlayer(int id, TipoPlayer &tipo, const Weapon &weapon) :
 // Movimientos
 
 void ObjectPlayer::idle() {
+ if (!alive || isDoingSpecialAttack)
+        return;
     estado = EstadosPlayer::Inactive;
     if (intoxicated)
         estado = EstadosPlayer::IntoxicatedIdle;
 }
 
-void ObjectPlayer::move_x(Direcciones direccion, int speed) {
+bool ObjectPlayer::move_x(Direcciones direccion, int speed) {
     direction = direccion;
     if (direccion == Left) {
         for (int i=0; i <  speed; i++) { //para chequear en cada unidad que se mueve si hay una pared
             if (position.x  <= 0 || position.x -1 > X_MAX) {
                 //estado = EstadosPlayer::Inactive;
-                return;
+                return false;
             }
             //Chequeo si hay una pared al lado (para hacer mas simple miro solo los extremos de y)
             if (GameMundo::casilleros[position.y][x_left].estaBloqueado() || GameMundo::casilleros[pos_y_max][x_left].estaBloqueado()) { 
-                //Colison con pared
-                //std::cout << "pared a la izquierda" << std::endl;
+                //Colison con pared a la izquierda
                 //estado = EstadosPlayer::Inactive;
-                return;
+                return false;
             } else { //si no esta bloqueado..
                 set_pos_x(position.x -1);
             }
@@ -66,44 +70,65 @@ void ObjectPlayer::move_x(Direcciones direccion, int speed) {
             if (GameMundo::casilleros[position.y][x_right].estaBloqueado() || GameMundo::casilleros[pos_y_max][x_right].estaBloqueado()) { 
                 //std::cout << "pared a la derecha" << std::endl;
                 //estado = EstadosPlayer::Inactive;
-                return;
+                return false;
             } else { //si no esta bloqueado..
                 set_pos_x(position.x + 1);
             }
         }
     }
+    return true;
 }
 
-void ObjectPlayer::move_xy() {
-    for (int i=0; i <  defaultJumpSpeed; i++) { //para chequear en cada unidad que se mueve si hay una pared
+bool ObjectPlayer::move_y(int speed) {
+    for (int i=0; i <  speed; i++) { //para chequear en cada unidad que se mueve si hay una pared
         if (position.y  <= 0 || position.y >= Y_MAX) { // si me salgo del mapa...
             estado = EstadosPlayer::Falling;
             is_jumping = false;
             falling = true;
             timer_jump = 0; //reseteo el timer a 0
             std::cout << "me fui de rango. pos y " << position.y << std::endl;
-            return;
+            return false;
         }
         //Chequeo si hay una pared arriba 
         if (GameMundo::casilleros[y_up][position.x].estaBloqueado() || 
             GameMundo::casilleros[y_up][pos_x_max].estaBloqueado()) { 
             //Colison con pared arriba
-            //std::cout << "pared a arriba" << std::endl;
+            std::cout << "pared a arriba" << std::endl;
             is_jumping = false;
             falling = true;
             timer_jump = 0; //reseteo el timer a 0
             estado = EstadosPlayer::Falling;
-            return;
+            return false;
         } else { //si no
             set_pos_y(position.y - 1); // se mueve 1 casillero hacia arriba
-            if (i % 3 == 0)
-                move_x(direction, defaultJumpSpeed/4);
+            //if (i % 3 == 0)
+              //  move_x(direction, defaultJumpSpeed/4);
         }
     }
+    return true;
 }
-
+bool ObjectPlayer::down_y(int speed) {
+    for (int i=0; i < speed; i++) {
+        //Chequeo si hay una pared debajo (para hacer mas simple miro solo los extremos de x)
+        if (GameMundo::casilleros[y_down][position.x].estaBloqueado() || 
+            GameMundo::casilleros[y_down][pos_x_max].estaBloqueado()) {
+            //Colision con suelo;
+            //estado = EstadosPlayer::Inactive;
+            tocandoSuelo = true;
+            falling = false;
+            //is_jumping = false;
+            return false;
+        } else { 
+            //std::cout << "Cayendo" << std::endl;
+            tocandoSuelo = false;
+            falling = true;
+            setPosition(Coordenada(position.x, position.y + 1));
+        }
+    }
+    return true;
+}
 void ObjectPlayer::walk(Direcciones direccion) {
-    if (!alive)
+    if (!alive || isDoingSpecialAttack)
         return;
 
     direction = direccion;
@@ -122,7 +147,7 @@ void ObjectPlayer::walk(Direcciones direccion) {
 }
 
 void ObjectPlayer::run(Direcciones direccion) {
-    if (!alive)
+    if (!alive || isDoingSpecialAttack)
         return;
 
     if (tocandoSuelo) {
@@ -140,7 +165,8 @@ void ObjectPlayer::run(Direcciones direccion) {
 }
 
 void ObjectPlayer::jump(Direcciones direccion) {
-    if (!tocandoSuelo || !alive || is_jumping) { //si estoy cayendo, saltando o muerto no puedo saltar
+
+    if (!tocandoSuelo || !alive || is_jumping || isDoingSpecialAttack) { //si estoy en el aire, haciendo el ataque especial o muerto no puedo saltar
         return;
     }
     estado = EstadosPlayer::Jumping;
@@ -151,6 +177,8 @@ void ObjectPlayer::jump(Direcciones direccion) {
 }
 
 ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
+    //if (!alive || isDoingSpecialAttack)
+      //  return execpcion;
     if (estado == EstadosPlayer::Inactive) {
         estado = EstadosPlayer::Shooting;
     }
@@ -170,7 +198,7 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
 }
 
 void ObjectPlayer::fall() {
-    if (is_jumping) { //si estoy saltando no debo caer
+    if (is_jumping || isDoingSpecialAttack) { //si estoy saltando no debo caer
         return;
     }
     for (int i=0; i < ObjectPlayer::defaultFallSpeed; i++) {
@@ -284,7 +312,7 @@ void ObjectPlayer::updateJump() {
         timer_jump = 0;
     } 
     else {
-        move_xy();
+        move_y(defaultJumpSpeed);
         }
     
     /*else { // caida en parabola

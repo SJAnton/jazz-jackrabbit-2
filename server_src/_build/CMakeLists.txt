@@ -43,9 +43,15 @@ set(SOURCE_FILES
     ../game/gameloop.cpp
     ../game/game_mundo.cpp
     
-    # Objectos
+    # Objetos
     ../game/GameObjects/game_object.cpp
+
     ../game/GameObjects/Players/game_object_player.cpp
+    ../game/GameObjects/Players/player_Spaz.cpp
+    ../game/GameObjects/Players/player_Lori.cpp
+    ../game/GameObjects/Players/player_Jazz.cpp
+
+
     ../game/GameObjects/Collected/game_object_collected.cpp
     ../game/GameObjects/Projectile/game_object_projectile.cpp
     ../game/GameObjects/Enemies/game_object_enemy.cpp

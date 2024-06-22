@@ -104,7 +104,7 @@ void GameMundo::chequearColisionesProyectiles() {
         bool hubo_colision = false;
         for (Coordenada &c : areaObj) { // por cada coordenada ocupada del proyectil...
             if (it->is_exploded()) {
-                std::cout << "Proyectil destruido" << std::endl;
+                //std::cout << "Proyectil destruido" << std::endl;
                 it = proyectiles.erase(it); // elimina el proyectil y actualiza el iterador
                 hubo_colision = true;
                 break; // Pasa al siguiente proyectil

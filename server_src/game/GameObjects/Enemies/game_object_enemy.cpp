@@ -11,7 +11,8 @@ ObjectEnemy::ObjectEnemy(TipoEnemy tipo, int width, int height,  int damage, int
                                     health(health), speed(speed), points(points),
                                     respawn_time(respawn_time * ITR_PER_SEC),
                                     ammo_drop_chance(ammo_drop_chance),
-                                    movement_range(movement_range) {
+                                    movement_range(movement_range) 
+{
     type = TypeGameObject::Enemy;
     health_buffer = health;
     respawn_time_buffer = respawn_time;
@@ -143,5 +144,5 @@ void ObjectEnemy::revive() {
 }
 
 InfoEnemigo ObjectEnemy::getInfo() {
-    return InfoEnemigo(tipoEnemy,position.x, position.y, direction, status);
+    return InfoEnemigo(tipoEnemy, position.x, position.y, direction, status);
 }

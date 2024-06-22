@@ -25,7 +25,7 @@ void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
     std::vector<uint8_t> &rat_data = data[RAT_CODE];
 
     ObjectPlayer::init(
-        player_data[0], player_data[1], player_data[2],
+        player_data[0], 3/*player_data[1]*/ , player_data[1], player_data[2],
         player_data[3], player_data[4], player_data[5]
     );
 
@@ -51,18 +51,33 @@ void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
     EnemyRat::init(
         rat_data[0], rat_data[1], rat_data[2], rat_data[3], rat_data[4], rat_data[5], rat_data[6]
     );
-} 
+}
+
 
 Game::Game() : 
     ch_map(std::make_shared<PlayerMap>()), 
     gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables) 
 {
+
+    // RECIBIR POR PARAMAETRO EL TILEMAP Y LOS POINTS DE SPAWN !!!
+    // *******************************************************
+
     //Hardcodeo 2 monedas (esta info debo recibirla en init y guardarmela en una variable estatica privada)
     itemsRecolectables.push_back(ObjectCollected(Moneda));
     itemsRecolectables.back().setPosition(Coordenada(250, 225));
 
-    itemsRecolectables.push_back(ObjectCollected(Moneda));
+    itemsRecolectables.push_back(ObjectCollected(Diamante));
     itemsRecolectables.back().setPosition(Coordenada(350, 220));
+
+    //hardcodeo unos enemigos...
+    enemies.push_back(std::make_shared<EnemyBat>());
+    enemies.back()->setPosition(Coordenada(450, 220));
+    
+    enemies.push_back(std::make_shared<EnemyDiablo>());
+    enemies.back()->setPosition(Coordenada(100, 450));
+
+    enemies.push_back(std::make_shared<EnemyRat>());
+    enemies.back()->setPosition(Coordenada(650, 490));
 }
 
 // Se llama en cada iteracion del gameloop.
@@ -78,6 +93,9 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
         }
         else if (p->getEstado() == EstadosPlayer::Shooting) {
             p->updateShoot();
+        }
+        else if (p->is_doing_specialAttack()) {
+            p->updateSpecialAttack();
         }
     } 
     if (actions.empty()) {
@@ -97,7 +115,7 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
     } else if (ch_map->count(player_id) == 0) {
         return;
     }
-    std::shared_ptr<ObjectPlayer> player = ch_map->at(player_id); //identifico el player por su id
+    std::shared_ptr<ObjectPlayer> player = ch_map->at(player_id); // identifico el player por su id
 
     switch (action) {
         case ACTION_WALK:
@@ -118,9 +136,9 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
             }
             break;
         }
-        //case ACTION_SPECIAL_ATTACK:
-            //player->special_attack();
-            //break;
+        case ACTION_SPECIAL_ATTACK:
+            player->specialAttack();
+            break;
         default:
             break;
     }
@@ -155,9 +173,19 @@ InfoJuego Game::snapshot() {
 }
 
 void Game::add_player(TipoPlayer &player_type, int player_id) {
-    std::shared_ptr<ObjectPlayer> player = std::make_shared<ObjectPlayer>(
-        player_id, player_type, Weapon(TipoArma::Tipo_1)
-    );
+    std::shared_ptr<ObjectPlayer> player;
+    switch (player_type) {
+        case Spaz : 
+            player = std::make_shared<PlayerSpaz>(player_id);
+            break;
+        case Jazz:
+            player = std::make_shared<PlayerJazz>(player_id);
+            break;
+        case Lori:            
+            player = std::make_shared<PlayerLori>(player_id);
+            break;
+    }
+     
     ch_map->push_back(player_id, player);
     std::cout << "agrego player al juego" << std::endl;
 

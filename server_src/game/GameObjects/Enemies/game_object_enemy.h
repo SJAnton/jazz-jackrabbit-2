@@ -11,8 +11,8 @@
 
 #define WIDTH_BAT 80
 #define HEIGHT_BAT 40
-#define WIDTH_DIABLO 80
-#define HEIGHT_DIABLO 40
+#define WIDTH_DIABLO 20                                 // padding left 20px
+#define HEIGHT_DIABLO 40                                // pading up 15px
 #define WIDTH_RAT 80
 #define HEIGHT_RAT 40
 
@@ -25,13 +25,9 @@ class ObjectEnemy : public GameObject {
         TipoEnemy tipoEnemy = TipoEnemy::Bat;
 
         int damage;
-
         int health;
-
         int speed;
-
         int points;
-
         int respawn_time;
 
         int ammo_drop_chance;
@@ -62,9 +58,7 @@ class ObjectEnemy : public GameObject {
                             int ammo_drop_chance, int movement_range);
 
         virtual void walk();
-
         void jump();
-
         virtual void fall();
 
         TipoEnemy getTipoEnemy();

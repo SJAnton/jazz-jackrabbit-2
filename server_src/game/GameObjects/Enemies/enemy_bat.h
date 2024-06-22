@@ -22,9 +22,7 @@ class EnemyBat : public ObjectEnemy {
         static int default_movement_range;
 
     public:
-        EnemyBat() : ObjectEnemy(TipoEnemy::Bat, WIDTH_BAT, HEIGHT_BAT, default_damage,
-                        default_health, default_speed, default_points, default_respawn_time,
-                            default_ammo_drop_chance, default_movement_range) {}
+        EnemyBat();
 
         static void init(int damage, int health, int speed, int points,
                             int respawn_time, int ammo_drop_chance, int movement_range);

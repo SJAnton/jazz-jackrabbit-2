@@ -1,6 +1,7 @@
 ObjectPlayer:
   health: 10
-  speed_walk: 15
+  #damage: 3
+  speed_walk: 10
   speed_run: 20
   speed_intoxicated: 2
   speed_jump: 10
@@ -27,7 +28,7 @@ ObjectCollected:
 EnemyBat:
   damage: 1
   health: 4
-  speed: 15
+  speed: 4
   points: 1
   respawn_time: 10 # Segundos
   dropping_ammo_chance: 10
@@ -36,7 +37,7 @@ EnemyBat:
 EnemyDiablo:
   damage: 1
   health: 4
-  speed: 15
+  speed: 4
   points: 1
   respawn_time: 10
   dropping_ammo_chance: 10
@@ -45,7 +46,7 @@ EnemyDiablo:
 EnemyRat:
   damage: 1
   health: 4
-  speed: 15
+  speed: 4
   points: 1
   respawn_time: 10
   dropping_ammo_chance: 10

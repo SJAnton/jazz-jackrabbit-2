@@ -22,3 +22,8 @@ void EnemyDiablo::init(int damage, int health, int speed, int points, int respaw
         initialized = true;
     }
 }
+
+EnemyDiablo::EnemyDiablo() : 
+    ObjectEnemy(TipoEnemy::Diablo, WIDTH_DIABLO, HEIGHT_DIABLO, default_damage,
+                            default_health, default_speed, default_points, default_respawn_time,
+                                default_ammo_drop_chance, default_movement_range) {}

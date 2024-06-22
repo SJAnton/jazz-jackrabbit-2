@@ -1,5 +1,6 @@
 #include "enemy_bat.h"
 #include "../../game_mundo.h"
+#include <iostream>
 
 bool EnemyBat::initialized = false;
 int EnemyBat::default_damage = 0;
@@ -22,6 +23,14 @@ void EnemyBat::init(int damage, int health, int speed, int points, int respawn_t
         default_movement_range = movement_range;
         initialized = true;
     }
+}
+
+EnemyBat::EnemyBat() : 
+    ObjectEnemy(TipoEnemy::Bat, WIDTH_BAT, HEIGHT_BAT, default_damage,
+                default_health, default_speed, default_points, default_respawn_time,
+                default_ammo_drop_chance, default_movement_range) 
+{
+    std::cout << "creo un bat" << std::endl;
 }
 
 void EnemyBat::move_x() {
