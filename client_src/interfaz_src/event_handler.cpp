@@ -38,8 +38,7 @@ void EventHandler::run()
             case SeleccionPlayer: 
                 manejarSeleccionPlayer(e);
                 break;;
-            case Juego: 
-                //manejarComandosJuego(e, dir);
+            case Juego:
                 manejarComandosJuego(e, dir);
                 break;
             case ResultadosFinales:

@@ -181,13 +181,13 @@ void ObjectPlayer::fall() {
             if (estado == EstadosPlayer::Falling)
                 estado = EstadosPlayer::Inactive;
             tocandoSuelo = true;
-            //falling = false;
+            falling = false;
             //is_jumping = false;
             return;
         } else { 
             //std::cout << "Cayendo" << std::endl;
             tocandoSuelo = false;
-            //falling = true;
+            falling = true;
             estado = EstadosPlayer::Falling;
             setPosition(Coordenada(position.x, position.y + 1));
         }

@@ -82,6 +82,11 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
         }
     } 
     if (actions.empty()) {
+        for (auto &p : ch_map->getPlayers()) {
+            if (!p->isJumping() && !p->is_falling()) {
+                p->idle();
+            }
+        }
         return;
     }
     uint8_t player_id = actions[ID_POS];
@@ -96,9 +101,6 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
     std::shared_ptr<ObjectPlayer> player = ch_map->at(player_id); //identifico el player por su id
 
     switch (action) {
-        case ACTION_IDLE:
-           // player->do_nothing();
-            break;
         case ACTION_WALK:
             player->walk(direction);
             break;
