@@ -25,6 +25,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(yaml-cpp REQUIRED)
 
 if(ANDROID)
   add_library(editor SHARED
@@ -36,6 +37,7 @@ if(ANDROID)
 else()
   add_executable(editor
     main.cpp
+    qstring_hash.h
     leveleditor.cpp
     leveleditor.h
     leveleditor.ui
@@ -43,8 +45,10 @@ else()
     customgraphicsview.h
     map.cpp
     map.h
+    spriteitem.cpp
+    spriteitem.h
     resources.qrc
   )
 endif()
 
-target_link_libraries(editor PRIVATE Qt5::Widgets)
+target_link_libraries(editor PRIVATE Qt5::Widgets yaml-cpp)

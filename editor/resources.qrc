@@ -15,5 +15,6 @@
         <file>sprites/bat.png</file>
         <file>sprites/diablo.png</file>
         <file>sprites/spaz.png</file>
+        <file>sprites/save.png</file>
     </qresource>
 </RCC>

@@ -30,7 +30,7 @@
       <x>960</x>
       <y>10</y>
       <width>91</width>
-      <height>571</height>
+      <height>301</height>
      </rect>
     </property>
    </widget>
@@ -100,6 +100,16 @@
       </property>
      </widget>
     </widget>
+   </widget>
+   <widget class="QListWidget" name="fileList">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>320</y>
+      <width>91</width>
+      <height>261</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

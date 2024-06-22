@@ -1,8 +1,12 @@
 #include "leveleditor.h"
 #include "ui_leveleditor.h"
 #include <QIcon>
+#include <QDebug>
 #include <QDataStream>
 #include <QResizeEvent>
+#include <unordered_set>
+#include <yaml-cpp/yaml.h>
+#include <fstream>
 #include "spriteitem.h"
 
 // Función para agregar SpriteItem a una QListWidget
@@ -13,12 +17,31 @@ void addSpriteItemToListWidget(QListWidget *listWidget, const QString &path, con
     listWidget->addItem(item);
 }
 
+std::unordered_map<QString, int> LevelEditor::initializeIds() {
+    return {
+        {"Floor", 1},
+        {"Background", 2},
+        {"Floor Left Corner", 3},
+        {"Floor Right Corner", 4},
+        {"Underground 1", 5},
+        {"Underground 2", 6},
+
+        {"Gold Coin", 0},
+        {"Silver Coin", 1},
+        {"Red Gem", 2},
+
+        {"Spaz", 0},
+        {"Rat", 1},
+        {"Bat", 2},
+        {"Diablo", 3}
+    };
+}
 
 LevelEditor::LevelEditor(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::LevelEditor),
     map(new Map(30, 20)),  // Inicializa el mapa con el tamaño deseado
-    isMousePressed(false)
+    isMousePressed(false), ids(initializeIds())
 {
     ui->setupUi(this);
 
@@ -49,6 +72,9 @@ LevelEditor::LevelEditor(QWidget *parent) :
     addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/bat.png", "Bat", QSize(32, 32));
     addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/diablo.png", "Diablo", QSize(64, 96));
 
+    // Inicializar el diccionario
+    initializeIds();
+
     // Habilitar la selección en la lista
     ui->terrainListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->objectsListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -57,6 +83,7 @@ LevelEditor::LevelEditor(QWidget *parent) :
     connect(ui->graphicsView, &CustomGraphicsView::mousePressed, this, &LevelEditor::onGraphicsViewClicked);
     connect(ui->graphicsView, &CustomGraphicsView::mouseMoved, this, &LevelEditor::onGraphicsViewMouseMoved);
     connect(ui->graphicsView, &CustomGraphicsView::mouseReleased, this, &LevelEditor::onGraphicsViewMouseReleased);
+    connect(ui->fileList, &QListWidget::itemClicked, this, &LevelEditor::handleFileListClick);
 
     // Añadir modos a la lista de modos
     QListWidgetItem *putMode = new QListWidgetItem(QIcon(":/sprites/put.png"), "Put");
@@ -64,6 +91,10 @@ LevelEditor::LevelEditor(QWidget *parent) :
 
     QListWidgetItem *eraseMode = new QListWidgetItem(QIcon(":/sprites/erase.png"), "Erase");
     ui->modeList->addItem(eraseMode);
+
+    // Añadir guardar a las opciones
+    QListWidgetItem *save = new QListWidgetItem(QIcon(":/sprites/save.png"), "Save");
+    ui->fileList->addItem(save);
 
     // Conectar la señal de cambio de selección al slot correspondiente
     connect(ui->modeList, &QListWidget::currentItemChanged, this, &LevelEditor::onModeChanged);
@@ -138,6 +169,8 @@ void LevelEditor::onGraphicsViewMouseReleased(QMouseEvent *event) {
     isMousePressed = false;
 }
 
+int nextUniqueId = 0;
+
 void LevelEditor::placeSpriteAtPosition(const QPointF &scenePos) {
     SpriteItem *selectedItem = nullptr;
     bool isObject = false;
@@ -155,6 +188,7 @@ void LevelEditor::placeSpriteAtPosition(const QPointF &scenePos) {
     if (selectedItem) {
         QIcon icon = selectedItem->icon();
         QSize spriteSize = selectedItem->getSize();
+        QString identifier = selectedItem->text();
         int gridSize = 32;  // Tamaño del tile
         int spriteWidth = spriteSize.width();
         int spriteHeight = spriteSize.height();
@@ -162,17 +196,8 @@ void LevelEditor::placeSpriteAtPosition(const QPointF &scenePos) {
         int x = static_cast<int>(scenePos.x()) / gridSize;
         int y = static_cast<int>(scenePos.y()) / gridSize;
 
-        int widthInTiles, heightInTiles;
-
-        // Si el tamaño del sprite es igual al tamaño de la grilla
-        if (spriteWidth == gridSize && spriteHeight == gridSize) {
-            widthInTiles = 1;
-            heightInTiles = 1;
-        } else {
-            // Para sprites más grandes que la grilla
-            widthInTiles = (spriteWidth + gridSize - 1) / gridSize;  // Redondear hacia arriba
-            heightInTiles = (spriteHeight + gridSize - 1) / gridSize;  // Redondear hacia arriba
-        }
+        int widthInTiles = (spriteWidth > gridSize) ? (spriteWidth + gridSize - 1) / gridSize : 1;
+        int heightInTiles = (spriteHeight > gridSize) ? (spriteHeight + gridSize - 1) / gridSize : 1;
 
         if (map->isValidCoordinate(x, y) && map->canPlaceSprite(x, y, widthInTiles, heightInTiles, isObject)) {
             QGraphicsPixmapItem *item = new QGraphicsPixmapItem(icon.pixmap(spriteWidth, spriteHeight));
@@ -180,64 +205,12 @@ void LevelEditor::placeSpriteAtPosition(const QPointF &scenePos) {
             item->setZValue(isObject ? 1 : 0);
             scene->addItem(item);
 
-            map->setSpriteOccupied(x, y, widthInTiles, heightInTiles, true, isObject);
+            //map->setSpriteOccupied(x, y, widthInTiles, heightInTiles, true, isObject);
+            map->setSpriteOccupied(x, y, widthInTiles, heightInTiles, true, isObject, identifier, spriteSize, nextUniqueId);
+            nextUniqueId++;
         }
     }
 }
-
-
-/*
-void LevelEditor::eraseSpriteAtPosition(const QPointF &scenePos) {
-    // Calcular la posición de la matriz
-    int gridSize = 32;  // Tamaño del sprite
-    int x = static_cast<int>(scenePos.x()) / gridSize;
-    int y = static_cast<int>(scenePos.y()) / gridSize;
-
-    // Verificar si las coordenadas están dentro del rango
-    if (map->isValidCoordinate(x, y)) {
-        // Buscar y borrar sprites en la posición especificada
-        QList<QGraphicsItem *> items = scene->items(QRectF(x * gridSize, y * gridSize, gridSize, gridSize));
-        for (QGraphicsItem *item : items) {
-            if (QGraphicsPixmapItem *pixmapItem = dynamic_cast<QGraphicsPixmapItem *>(item)) {
-                QSize spriteSize = pixmapItem->pixmap().size();
-                int spriteWidth = spriteSize.width();
-                int spriteHeight = spriteSize.height();
-                int widthInTiles = (spriteWidth > gridSize) ? (spriteWidth + gridSize - 1) / gridSize : 1;
-                int heightInTiles = (spriteHeight > gridSize) ? (spriteHeight + gridSize - 1) / gridSize : 1;
-
-
-                if (widthInTiles == 1 && heightInTiles == 1) {
-                    // El sprite ocupa un solo tile, verificar si es terreno u objeto
-                    if (pixmapItem->zValue() == 1) {  // Verificar si es un objeto
-                        scene->removeItem(pixmapItem);
-                        delete pixmapItem;
-                        map->setObjectOccupied(x, y, false);
-                        return;  // Solo queremos borrar un sprite por vez, así que salimos después de borrar uno
-                    } else if (pixmapItem->zValue() == 0) {  // Verificar si es terreno
-                        scene->removeItem(pixmapItem);
-                        delete pixmapItem;
-                        map->setOccupied(x, y, false);
-                        return;  // Solo queremos borrar un sprite por vez, así que salimos después de borrar uno
-                    }
-                } else {
-                    // El sprite ocupa más de un tile, necesitamos encontrar y borrar todos los sprites en esa área
-                    for (int i = x; i < x + widthInTiles; ++i) {
-                        for (int j = y; j < y + heightInTiles; ++j) {
-                            QList<QGraphicsItem *> itemsAtPosition = scene->items(QRectF(i * gridSize, j * gridSize, gridSize, gridSize));
-                            for (QGraphicsItem *subItem : itemsAtPosition) {
-                                scene->removeItem(subItem);
-                                delete subItem;
-                            }
-                            map->setSpriteOccupied(i, j, 1, 1, false, pixmapItem->zValue() == 1);
-                        }
-                    }
-                    return;  // Solo queremos borrar un sprite por vez, así que salimos después de borrar uno
-                }
-            }
-        }
-    }
-}
-*/
 
 void LevelEditor::eraseSpriteAtPosition(const QPointF &scenePos) {
     // Calcular la posición de la matriz
@@ -252,22 +225,202 @@ void LevelEditor::eraseSpriteAtPosition(const QPointF &scenePos) {
         for (QGraphicsItem *item : items) {
             if (QGraphicsPixmapItem *pixmapItem = dynamic_cast<QGraphicsPixmapItem *>(item)) {
                 QSize spriteSize = pixmapItem->pixmap().size();
+
                 int spriteWidth = spriteSize.width();
                 int spriteHeight = spriteSize.height();
                 int widthInTiles = (spriteWidth > gridSize) ? (spriteWidth + gridSize - 1) / gridSize : 1;
                 int heightInTiles = (spriteHeight > gridSize) ? (spriteHeight + gridSize - 1) / gridSize : 1;
 
+                // Calcular la posición de la esquina superior izquierda del sprite
+                int startX = pixmapItem->pos().x() / gridSize;
+                int startY = pixmapItem->pos().y() / gridSize;
+
                 bool isObject = (pixmapItem->zValue() == 1);
+
+                // Obtener el identificador del sprite
+                SpriteInfo info = map->getSpriteInfo(startX, startY, isObject);
+                QString identifier = info.identifier;
 
                 // Eliminar el sprite del QGraphicsScene
                 scene->removeItem(pixmapItem);
                 delete pixmapItem;
 
                 // Actualizar la matriz de ocupación
-                map->setSpriteOccupied(x, y, widthInTiles, heightInTiles, false, isObject);
+                map->setSpriteOccupied(startX, startY, widthInTiles, heightInTiles, false, isObject, identifier, spriteSize);
                 return;  // Solo queremos borrar un sprite por vez, así que salimos después de borrar uno
             }
         }
     }
 }
+
+
+
+void LevelEditor::handleFileListClick(QListWidgetItem *item) {
+    if (item->text() == "Save") {
+        saveLevel();
+    }
+}
+
+
+// Implementación de saveLevel
+#include <yaml-cpp/yaml.h>
+#include <fstream>
+#include <QSet>
+#include "leveleditor.h"
+#include "map.h"
+#include <QDebug>
+
+// Implementación de saveLevel
+void LevelEditor::saveLevel() {
+    YAML::Emitter out;
+
+    // Obteniendo las dimensiones del mapa
+    int rows = map->getRows();
+    int cols = map->getCols();
+    int tiles_num = rows * cols;
+
+    // Encontrando el SpawnPoint
+    int spawnX = -1, spawnY = -1;
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < cols; ++x) {
+            if (map->isObjectOccupied(x, y)) {
+                QString identifier = map->getIdentifier(x, y, true);
+                if (identifier == "Spaz") {
+                    spawnX = x;
+                    spawnY = y;
+                }
+            }
+        }
+    }
+
+    // Inicio del archivo YAML
+    out << YAML::BeginMap;
+
+    // Añadir el SpawnPoint
+    if (spawnX != -1 && spawnY != -1) {
+        out << YAML::Key << "SpawnPoint" << YAML::Value << YAML::BeginMap;
+        out << YAML::Key << "x" << YAML::Value << spawnX;
+        out << YAML::Key << "y" << YAML::Value << spawnY;
+        out << YAML::EndMap;
+    }
+
+    // Añadir el número de tiles
+    out << YAML::Key << "tiles_num" << YAML::Value << tiles_num;
+
+    // Añadir las capas
+    out << YAML::Key << "Layers" << YAML::Value << YAML::BeginMap;
+    out << YAML::Key << "height" << YAML::Value << rows;
+    out << YAML::Key << "width" << YAML::Value << cols;
+    out << YAML::Key << "tile_map" << YAML::Value << YAML::BeginSeq;
+
+    for (int y = 0; y < rows; ++y) {
+        out << YAML::Flow << YAML::BeginSeq;
+        for (int x = 0; x < cols; ++x) {
+            QString identifier = map->getIdentifier(x, y, false);
+            if (!identifier.isEmpty()) {
+                int id = ids[identifier];
+                out << id;
+            } else {
+                out << 0; // Suponiendo que 0 es el valor predeterminado para un tile vacío
+            }
+        }
+        out << YAML::EndSeq;
+    }
+
+    out << YAML::EndSeq;
+    out << YAML::EndMap;
+
+    // Conjuntos para llevar el registro de objetos y enemigos ya añadidos
+    QSet<int> addedEnemies;
+    QSet<int> addedObjects;
+
+    // Añadir los enemigos
+    out << YAML::Key << "Enemies" << YAML::Value << YAML::BeginSeq;
+
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < cols; ++x) {
+            if (map->isObjectOccupied(x, y)) {
+                QString identifier = map->getIdentifier(x, y, true);
+                int uniqueId = map->getUniqueId(x, y); // Suponiendo que esta función existe
+                if (identifier != "Spaz") {
+                    int id = ids[identifier];
+                    if (ui->playerEnemiesListWidget->findItems(identifier, Qt::MatchExactly).size() > 0) {
+                        if (!addedEnemies.contains(uniqueId)) {
+                            QSize spriteSize = scene->items(QRectF(x * 32, y * 32, 32, 32)).first()->boundingRect().size().toSize();
+                            int spriteWidth = spriteSize.width();
+                            int spriteHeight = spriteSize.height();
+                            int widthInTiles = (spriteWidth + 31) / 32; // Ajuste para asegurarse de que los tamaños se calculen correctamente
+                            int heightInTiles = (spriteHeight + 31) / 32;
+
+                            out << YAML::BeginMap;
+                            out << YAML::Key << "enemy_id" << YAML::Value << id;
+                            out << YAML::Key << "x" << YAML::Value << x;
+                            out << YAML::Key << "y" << YAML::Value << y;
+                            out << YAML::Key << "x_hitbox" << YAML::Value << widthInTiles;
+                            out << YAML::Key << "y_hitbox" << YAML::Value << heightInTiles;
+                            out << YAML::EndMap;
+
+                            addedEnemies.insert(uniqueId);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    out << YAML::EndSeq;
+
+    // Añadir los objetos
+    out << YAML::Key << "Objects" << YAML::Value << YAML::BeginSeq;
+
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < cols; ++x) {
+            if (map->isObjectOccupied(x, y)) {
+                QString identifier = map->getIdentifier(x, y, true);
+                int uniqueId = map->getUniqueId(x, y); // Suponiendo que esta función existe
+                int id = ids[identifier];
+                if (ui->objectsListWidget->findItems(identifier, Qt::MatchExactly).size() > 0) {
+                    if (!addedObjects.contains(uniqueId)) {
+                        QSize spriteSize = scene->items(QRectF(x * 32, y * 32, 32, 32)).first()->boundingRect().size().toSize();
+                        int spriteWidth = spriteSize.width();
+                        int spriteHeight = spriteSize.height();
+                        int widthInTiles = (spriteWidth + 31) / 32; // Ajuste para asegurarse de que los tamaños se calculen correctamente
+                        int heightInTiles = (spriteHeight + 31) / 32;
+
+                        out << YAML::BeginMap;
+                        out << YAML::Key << "object_id" << YAML::Value << id;
+                        out << YAML::Key << "x" << YAML::Value << x;
+                        out << YAML::Key << "y" << YAML::Value << y;
+                        out << YAML::Key << "x_hitbox" << YAML::Value << widthInTiles;
+                        out << YAML::Key << "y_hitbox" << YAML::Value << heightInTiles;
+                        out << YAML::EndMap;
+
+                        addedObjects.insert(uniqueId);
+                    }
+                }
+            }
+        }
+    }
+
+    out << YAML::EndSeq;
+
+    // Fin del archivo YAML
+    out << YAML::EndMap;
+
+    // Guardar en archivo
+    std::ofstream fout("level.yaml");
+    fout << out.c_str();
+    fout.close();
+
+    qDebug() << "Level saved to level.yaml";
+}
+
+
+
+
+
+
+
+
+
 

@@ -12,7 +12,10 @@
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QStyledItemDelegate>
+#include <QString>
+#include <unordered_map>
 #include "customgraphicsview.h"
+#include "qstring_hash.h"
 #include "map.h"
 
 namespace Ui {
@@ -46,6 +49,10 @@ private slots:
     void onGraphicsViewMouseMoved(QMouseEvent *event);
     void onGraphicsViewMouseReleased(QMouseEvent *event);
     void onModeChanged(QListWidgetItem *current, QListWidgetItem *previous);
+    void placeSpriteAtPosition(const QPointF &scenePos);
+    void eraseSpriteAtPosition(const QPointF &scenePos);
+    void handleFileListClick(QListWidgetItem *item);
+    void saveLevel();
 
 private:
     Ui::LevelEditor *ui;
@@ -53,8 +60,8 @@ private:
     Map *map;
     bool isMousePressed;
     QString currentMode;
-    void placeSpriteAtPosition(const QPointF &scenePos);
-    void eraseSpriteAtPosition(const QPointF &scenePos);
+    std::unordered_map<QString, int> ids;
+    std::unordered_map<QString, int> initializeIds();
 };
 
 #endif // LEVELEDITOR_H
