@@ -26,16 +26,13 @@ void MusicPlayer::play(std::string path) {
         throw std::runtime_error("Music file does not exist");
     } else if (music != nullptr) {
         Mix_FreeMusic(music);
-        //music = nullptr;
     }
     music = Mix_LoadMUS(path.c_str());
 
     if (music == nullptr) {
         throw std::runtime_error("Failed to load music");
-    }
-    if (Mix_PlayMusic(music, LOOPS) < 0) {
+    } else if (Mix_PlayMusic(music, LOOPS) < 0) {
         throw std::runtime_error("Failed to play music");
-    
     }
 }
 

@@ -8,6 +8,9 @@
 #define ACTION_POS 1
 #define DIRECTION_POS 2
 
+#define TOP_NUM 3
+#define TOP_LAST_POS 2
+
 #define PLAYER_CODE "ObjectPlayer"
 #define PROJECTILE_CODE "ObjectProjectile"
 #define COLLECTED_CODE "ObjectCollected"
@@ -136,14 +139,18 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
             }
             break;
         }
-        case ACTION_SPECIAL_ATTACK:
-            player->specialAttack();
+        case ACTION_CHANGE_WEAPON:
+            player->change_shooting_weapon();
             break;
+        //case ACTION_SPECIAL_ATTACK:
+            //player->special_attack();
+            //break;
         default:
             break;
     }
 }
 void Game::update() {
+    update_top_players();
     gameMundo.update();
 }
 
@@ -170,6 +177,25 @@ InfoJuego Game::snapshot() {
     }
     InfoJuego game_data(players_data, enemies_data, items_data, gameMundo.getInfoProyectiles());
     return game_data;
+}
+
+bool Game::compare_points(std::shared_ptr<ObjectPlayer> &pl1, std::shared_ptr<ObjectPlayer> &pl2) {
+    return pl1->get_points() > pl2->get_points();
+}
+
+void Game::update_top_players() {
+    std::vector<std::shared_ptr<ObjectPlayer>> players = ch_map->getPlayers();
+    for (auto &player : players) {
+        if (std::count(top_players.begin(), top_players.end(), player) == 0) {
+            // Character no está en la lista
+            if (top_players.size() < TOP_NUM) {
+                top_players.push_back(player);
+            } else if (player->get_points() > top_players[TOP_LAST_POS]->get_points()) {
+                top_players[TOP_LAST_POS] = player;
+            }
+        }
+        std::sort(top_players.begin(), top_players.end(), Game::compare_points);
+    }
 }
 
 void Game::add_player(TipoPlayer &player_type, int player_id) {

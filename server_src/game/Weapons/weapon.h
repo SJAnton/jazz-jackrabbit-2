@@ -1,12 +1,15 @@
 #ifndef WEAPON_H
-#define WEAPN_H
+#define WEAPON_H
+
+#include <memory>
+#include <string>
+#include <exception>
 
 #include "../../../common_src/constantes.h"
+//#include "../GameObjects/Players/game_object_player.h"
 #include "../GameObjects/Projectile/game_object_projectile.h"
-#include <exception>
-#include <string>
 
-
+class ObjectPlayer; // Foward declaration para evitar includes cruzados
 
 // Excepcion que me dice que no hay municiones
 class NoAmmoException : public std::exception {
@@ -40,7 +43,9 @@ private:
     int municiones = 0; // cantidad de balas que le quedan
    
 public:
-    static void innit(int diley_shoot_w1, int diley_shoot_w2, int diley_shoot_w3, int diley_shoot_w4);
+    static void init(int diley_shoot_w1, int diley_shoot_w2, int diley_shoot_w3, int diley_shoot_w4);
+
+    Weapon(); //Constructor por defecto
 
     Weapon(TipoArma tipoArma);
 
@@ -51,7 +56,9 @@ public:
     int getMuniciones() {return municiones;};
 
     // devuelve un proyectil si se pudo disparar
-    ObjectProjectile shoot(const Direcciones &dir, const Coordenada &position);
+    ObjectProjectile shoot(
+        const Direcciones &dir, const Coordenada &position, std::shared_ptr<ObjectPlayer> &shooter
+    );
 
 };
 

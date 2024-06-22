@@ -50,6 +50,11 @@ void ClientPlayer::ataque_especial(Direcciones direccion) {
 	//std::cout << "Ataque especial" << std::endl;
 }
 
+void ClientPlayer::cambiar_arma(Direcciones direccion) {
+	queueEnviadora.push(ComandoCliente(AccionesPlayer::ChangeWeapon, direccion));
+	//std::cout << "Cambiar arma" << std::endl;
+}
+
 void ClientPlayer::recibirInformacion(){
 	protocolo.recibirIDCliente();
 	//protocolo.recibirTerreno();

@@ -1,6 +1,7 @@
 #ifndef SERVER_PROJECTILE_H_
 #define SERVER_PROJECTILE_H_
 
+#include <memory>
 #include <vector>
 #include <cstdint>
 #include <stdexcept>
@@ -11,6 +12,7 @@
 #include "../game_object.h"
 #include "../game_object.h"
 
+class ObjectPlayer; // Foward declaration para evitar includes cruzados
 
 //Fijo (no lo decide el config)
 #define WIDTH_PROJECTILE 6 //ajustar luego 
@@ -34,6 +36,7 @@ class ObjectProjectile : public GameObject {
     protected:
         TipoArma tipoProyectil;
         Direcciones direction;
+        std::shared_ptr<ObjectPlayer> &shooter;
         int damage;
         int speed;
         bool exploded = false;
@@ -42,9 +45,16 @@ class ObjectProjectile : public GameObject {
         static void init(int damage_p1, int damage_p2, int damage_p3, int damage_p4,
                         int speed_p1, int speed_p2, int speed_p3, int speed_p4);
         
-        //ObjectProjectile(TipoArma tipo, const Direcciones &direction, Coordenada &position);
-        ObjectProjectile(TipoArma tipo, const Direcciones &direction, const Coordenada &position);
+        ObjectProjectile(
+            TipoArma tipo, const Direcciones &direction,
+            const Coordenada &position, std::shared_ptr<ObjectPlayer> &shooter
+        );
 
+        ~ObjectProjectile() {};
+
+        ObjectProjectile &operator=(const ObjectProjectile &other) {
+            return *this;
+        }
 
         // Avanza en el eje x en la direccion establecida y velocidad establecida 
         void move_x_pos();
@@ -54,6 +64,9 @@ class ObjectProjectile : public GameObject {
 
         // Devuelve true si el proyectil ya colisionó con algo
         bool is_exploded();
+
+        // Devuelve el ObjectPlayer que disparó el proyectil
+        std::shared_ptr<ObjectPlayer> get_shooter();
 
         InfoProyectil getInfo();
 };

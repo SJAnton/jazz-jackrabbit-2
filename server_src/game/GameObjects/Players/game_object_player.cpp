@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility> 
 
 #include "../../game_mundo.h"
 #include "game_object_player.h"
@@ -35,6 +36,7 @@ ObjectPlayer::ObjectPlayer(int id, const TipoPlayer &tipo) :
     weapon(Tipo_1)   
 {
     type = TypeGameObject::Player;
+    secondary_weapon = Weapon(Tipo_2); //BORRAR
 }
 
 
@@ -164,6 +166,16 @@ void ObjectPlayer::run(Direcciones direccion) {
     }
 }
 
+void ObjectPlayer::change_shooting_weapon() {
+    if (secondary_weapon.getType() == Tipo_1 && weapon.getType() == Tipo_1) {
+        std::cout << "no hay arma secundaria" << std::endl;
+        return;
+    }
+    std::swap(weapon, secondary_weapon);
+    std::cout << "arma principal: " << weapon.getType() << std::endl;
+    std::cout << "arma secundaria: " << secondary_weapon.getType() << std::endl;
+}
+
 void ObjectPlayer::jump(Direcciones direccion) {
 
     if (!tocandoSuelo || !alive || is_jumping || isDoingSpecialAttack) { //si estoy en el aire, haciendo el ataque especial o muerto no puedo saltar
@@ -186,7 +198,9 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
     if (dir == Right)
         pos = Coordenada(pos_x_max+4, pos_y_max - height/2);
     
-    return weapon.shoot(direction, pos);
+    std::shared_ptr<ObjectPlayer> sft = shared_from_this();
+
+    return weapon.shoot(direction, pos, sft);
     /*
         if (dir == Left) {
             Coordenada pos(x_left - 8, pos_y_max - height/2); // ajustar visualmente

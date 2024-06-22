@@ -123,6 +123,7 @@ uint8_t Protocol::encodeAccion(const AccionesPlayer &accion) {
 		case AccionesPlayer::Jump: return ACTION_JUMP;
 		case AccionesPlayer::Shoot: return ACTION_SHOOT;
 		case AccionesPlayer::SpecialAttack: return ACTION_SPECIAL_ATTACK;
+        case AccionesPlayer::ChangeWeapon: return ACTION_CHANGE_WEAPON;
 		default: 
 		throw std::invalid_argument("ERROR. Accion invalida");
 		return ACTION_IDLE;

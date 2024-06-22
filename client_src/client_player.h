@@ -25,6 +25,7 @@ class ClientPlayer{
 		void correr(Direcciones direccion);
 		void disparar(Direcciones direccion);
 		void ataque_especial(Direcciones direccion);
+		void cambiar_arma(Direcciones direccion);
 		
 		void recibirInformacion();
 

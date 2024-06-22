@@ -65,6 +65,8 @@ class ObjectEnemy : public GameObject {
 
         int get_damage();
 
+        int get_points();
+
         bool is_dead();
 
         bool is_falling();
