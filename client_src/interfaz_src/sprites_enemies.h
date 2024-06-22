@@ -18,8 +18,7 @@ public:
     //Diablo
     static SpriteSheet Diablo_idle;
     static SpriteSheet Diablo_attack;
-    static SpriteSheet Diablo_appear;
-    static SpriteSheet Diablo_disappear;
+    static SpriteSheet Diablo_damaged;
 
     static void init();
 private:

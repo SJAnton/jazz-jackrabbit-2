@@ -51,7 +51,6 @@ private:
     void (InterfazGrafica::*renderizarPantalla)(); //Puntero a funcion renderizar
     void updateCamara(const Position &pos);
     Position posRelativaACamara(const int &x, const int &y);
-
     MusicPlayer &musicPlayer;
 
 public:
@@ -62,9 +61,10 @@ public:
     bool estaAbierta();
     void addPlayer(const TipoPlayer &tipo);//temporal
 
-    void recibirInformacion();
+    //void recibirInformacion();
 
     EstadoInterfaz getEstado() { return estado;};
+
     void nextEstado();
 
     /**
@@ -82,9 +82,6 @@ public:
 
     void stop();
     void cerrarInterfaz();
-
-    //Temporal hasta que se me ocurra un lugar mejor donde hacer esto (una forma de avisar al spriteplayer)
-    void flipPlayer(bool flip);
 
     ~InterfazGrafica();
 };

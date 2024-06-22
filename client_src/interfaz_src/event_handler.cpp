@@ -41,7 +41,7 @@ void EventHandler::run()
             case Juego:
                 manejarComandosJuego(e, dir);
                 break;
-            case ResultadosFinales:
+            case ResultadosFinales: //IMPLEMENTAR
                 break;
             default:
                 break;
@@ -118,9 +118,9 @@ void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
             if (personaje.clicked(mouseX, mouseY)) { //Chequea si se clickeo en la zona del boton
                 std::cout << "Comienza el juego!" << std::endl;
                 TipoPlayer personajeSeleccionado = personaje.getTipoPlayer();
+                interfaz.addPlayer(personajeSeleccionado);
                 cliente.entrarPartida(partidaSeleccionada, personajeSeleccionado);
                 cliente.recibirInformacion();
-                interfaz.addPlayer(personajeSeleccionado);
                 interfaz.nextEstado();
 
                 return;
@@ -143,7 +143,7 @@ void EventHandler::procesarEstadoTeclas(Direcciones &dir) {
     }
     if (key_state[SDLK_LEFT]) {
         dir = Direcciones::Left;
-        interfaz.flipPlayer(true);
+        //interfaz.flipPlayer(true);
         if (SDL_GetModState() & KMOD_LCTRL) // Se presionó Ctrl + Izquierda
             cliente.correr(dir);
         else
@@ -151,7 +151,6 @@ void EventHandler::procesarEstadoTeclas(Direcciones &dir) {
     }
     if (key_state[SDLK_RIGHT]) {
         dir = Direcciones::Right;
-        interfaz.flipPlayer(false);
         if (SDL_GetModState() & KMOD_LCTRL) // Se presionó Ctrl + Derecha
             cliente.correr(dir);
         else

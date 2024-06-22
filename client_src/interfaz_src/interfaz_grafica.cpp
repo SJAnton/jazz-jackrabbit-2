@@ -72,7 +72,7 @@ void InterfazGrafica::update(int it) {
     
     //infoJuego = queueReceptora.pop();
     if (queueReceptora.try_pop(infoJuego)) {
-        Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y); //el player 0 debo "ser yo"
+        Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y); // el player 0 debo "ser yo"
         updateCamara(pos);
         //std::cout << "Cant players: " << infoJuego.cantidadPlayers() << std::endl;
 
@@ -88,7 +88,15 @@ void InterfazGrafica::update(int it) {
         }
         for (int i=0; i< infoJuego.cantEnemigos(); i++) {
             pos = posRelativaACamara(infoJuego.enemigos[i].pos_x, infoJuego.enemigos[i].pos_y);
-            //spritesManager->updateEnemy(i, infoJuego.enemigos[i].estado, pos);
+            try {
+                spritesManager->updateEnemy(i, infoJuego.enemigos[i].estado, pos, infoJuego.enemigos[i].direccion);
+            } catch (...) {
+                if (infoJuego.enemigos[i].tipo == Bat)
+                    std::cout << "agrego un bat" << std::endl;
+                spritesManager->addEnemy(infoJuego.enemigos[i].tipo);
+                spritesManager->updateEnemy(i, infoJuego.enemigos[i].estado, pos, infoJuego.enemigos[i].direccion);
+            }
+            
         }
     }
 
@@ -99,35 +107,33 @@ void InterfazGrafica::update(int it) {
 } 
 
 
-void InterfazGrafica::flipPlayer(bool flip) {
-    spritesManager->flipPlayer(0, flip);
-}
-
 Position InterfazGrafica::posRelativaACamara(const int &x, const int &y) {
     return Position(x - camara.x, y- camara.y);
 }
 
 void InterfazGrafica::renderizarJuego() 
 {
+    if (infoJuego.cantidadPlayers() == 0) {
+        throw std::runtime_error("NO hay ningun Player cargardo aun. En InterfazGrafica::renderizarJuego()");
+    }
     SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
-
     SDL_RenderClear(renderer);//borra todo
-    spritesManager->renderizarFondo(Position(camara.x, camara.y));
 
+    spritesManager->renderizarTerreno(Position(camara.x, camara.y));
+
+    // renderizo players
     for (int i=0; i< infoJuego.cantidadPlayers(); i++) {
         spritesManager->renderizarPlayer(i);
     }
-
+    //renderizo enemigos
     for (int i=0; i< infoJuego.cantEnemigos(); i++) {
-        //spritesManager->renderizarEnemigo(i);
+        spritesManager->renderizarEnemigo(i);
     }
-
     //renderizo los items
     for (int i=0; i< infoJuego.cantRecolectables(); i++) {
         Position pos = posRelativaACamara(infoJuego.recolectables[i].pos_x, infoJuego.recolectables[i].pos_y);
         spritesManager->renderizarItemEn(infoJuego.recolectables[i].tipo, pos.x, pos.y);
     }
-
     //renderizo los proyectiles
     for (int i=0; i< infoJuego.cantProyectiles(); i++) {
         //std::cout << "Hay " << infoJuego.cantProyectiles() << " proyectiles" << std::endl;
@@ -138,8 +144,7 @@ void InterfazGrafica::renderizarJuego()
 
     //HUD
     spritesManager->renderizarVidas(infoJuego.players[0].vida);
-
-    spritesManager->renderizarMunicionArma(infoJuego.players[0].tipoPlayer, infoJuego.players[0].municion);
+    spritesManager->renderizarMunicionArma(infoJuego.players[0].arma, infoJuego.players[0].municion);
 
     SDL_RenderPresent(renderer); // dibuja todo
 }

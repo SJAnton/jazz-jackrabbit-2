@@ -30,7 +30,6 @@ private:
     //SeleccionarPartida
     std::list<ButtonPartida> botones_partidas;
     std::list<ButtonCharacter> botones_character;
-    //SpriteObject letras;
     fontManager font;
 
     //SeleccionPlayer
@@ -45,23 +44,29 @@ private:
     SpriteSheet moneda;
     SpriteSheet gema;
     SpriteSheet zanahoria;
+    SpriteSheet municion_1;
+    SpriteSheet municion_2;
+    SpriteSheet municion_3;
+    SpriteSheet municion_4;
 
     //Players
     std::list<SpritePlayer> players;
-    bool playerInvertido = false;// sacar
 
     //Enemies
     std::list<SpriteEnemy> enemies;
-    bool enemyInvertido = false;// sacar
-
     //Proyectiles
     SpriteSheet proyectil_0;
 
     //HUD
     SpriteObject heartIcon;
-    SpriteSheet spazGun;
-    SpriteSheet jazzGun;
-    SpriteSheet loriGun;
+    SpriteSheet gun_1;
+    SpriteSheet gun_2;
+    SpriteSheet gun_3;
+    SpriteSheet gun_4;
+
+    //SpriteSheet spazGun;
+    //SpriteSheet jazzGun;
+    //SpriteSheet loriGun;
 
 
 private: 
@@ -85,7 +90,7 @@ public:
 
     //modifica el spritesheet por otro que corresponda al estado nuevo, cambiando de animacion
     //void setEstadoPlayer(unsigned int numero, EstadosPlayer estado);
-    void flipPlayer(unsigned int numero, bool invertirSprite);
+    //void flipPlayer(unsigned int numero, bool invertirSprite);
 
     
     void addPlayer(const TipoPlayer &tipo);
@@ -93,14 +98,14 @@ public:
 
     //RENDERIZADORES
 
-    void renderizarPlayerEn(unsigned int n, int x, int y);
+    //void renderizarPlayerEn(unsigned int n, int x, int y);
     void renderizarPlayer(unsigned int n);
-    void renderizarFondo(const Position &posCamara);
-    void renderizarTerreno();
+    void renderizarEnemigo(unsigned int n);
+    void renderizarTerreno(const Position &posCamara);
     void renderizarItemEn(const TipoRecolectable &tipo, int x, int y);
     void renderizarProyectilEn(const Direcciones &dir, int x, int y);
     void renderizarVidas(int &vidas);
-    void renderizarMunicionArma(const TipoPlayer &tipo, int cantMunicion);
+    void renderizarMunicionArma(const TipoArma &tipo, int cantMunicion);
 
 
     // UPDATES

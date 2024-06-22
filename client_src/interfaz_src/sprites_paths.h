@@ -87,19 +87,19 @@
 //==========
 
 //Bat
-#define PATH_BAT_IDLE "../sprites/Enemies/Bat Idle (32x40)x08.png"
-#define PATH_BAT_ATTACK "../sprites/Enemies/Bat Attack (72x48)08.png"
+#define PATH_BAT_IDLE "../sprites/Enemies/Bat/Bat Idle (32x40)x08.png"
+#define PATH_BAT_ATTACK "../sprites/Enemies/Bat/Bat_Attack (72x48)x08.png"
 
 //Rat
-#define PATH_RAT_IDLE "../sprites/Enemies/Rata_Idle (84x44)x08.png"
-#define PATH_RAT_WALK "../sprites/Enemies/Rata_Walk (84x44)x08.png"
-#define PATH_RAT_ATTACK "../sprites/Enemies/Rata_Attack (84x44)x08.png"
+#define PATH_RAT_IDLE "../sprites/Enemies/Rat/Rata_Idle (84x44)x08.png"
+#define PATH_RAT_WALK "../sprites/Enemies/Rat/Rata_Walk (84x44)x08.png"
+#define PATH_RAT_ATTACK "../sprites/Enemies/Rat/Rata_Attack (84x44)x08.png"
 
 //Diablo
-#define PATH_DIABLO_IDLE "../sprites/Enemies/Diablo_idle (128x128)x08.png"
-#define PATH_DIABLO_ATTACK "../sprites/Enemies/Diablo_Attack (128x128)x18.png"
-#define PATH_DIABLO_APPEAR "../sprites/Enemies/Diablo_Appear (128x128)x20.png"
-#define PATH_DIABLO_DISAPPEAR "../sprites/Enemies/Diablo_Disappear (128x128)x17.png"
+#define PATH_DIABLO_IDLE "../sprites/Enemies/Diablo/Diablo_Idle (64x64)x13.png"
+#define PATH_DIABLO_ATTACK "../sprites/Enemies/Diablo/Diablo_Attack (64x64)x08.png"
+#define PATH_DIABLO_DAMAGED "../sprites/Enemies/Diablo/Diablo_Damaged (64x64)x09.png"
+
 
 //=====================
 // ITEMS RECOLECTABLES
@@ -107,14 +107,32 @@
 #define PATH_ITEM_COIN "../sprites/Items/Gold_coin (28x28)x20.png"
 #define PATH_ITEM_GEM "../sprites/Items/Gem (36x36)x08.png"
 #define PATH_ITEM_ZANAHORIA "../sprites/Items/Zanahoria (36x36)x20.png"
+#define PATH_ITEM_MUNICION_1 "../sprites/Items/Municion_1 (24x24)x10.png"
+#define PATH_ITEM_MUNICION_2 "../sprites/Items/Municion_2 (24x24)x09.png"
+#define PATH_ITEM_MUNICION_3 "../sprites/Items/Municion_3 (24x24)x10.png"
+#define PATH_ITEM_MUNICION_4 "../sprites/Items/Municion_4 (24x24)x10.png"
 
 
-// PROJECTILES
+//=============
+// PROYECTILES
+//=============
 #define PATH_PROJECTILE_0 "../sprites/Projectiles/Projectile (16x8)x03.png"
+#define PATH_PROJECTILE_1 "../sprites/Projectiles/Proyectil_1 (24x12)x06.png"
+#define PATH_PROJECTILE_2 "../sprites/Projectiles/Proyectil_2 (24x12)x03.png"
+#define PATH_PROJECTILE_3 "../sprites/Projectiles/Proyectil_3 (24x12)x03.png"
+#define PATH_PROJECTILE_4 "../sprites/Projectiles/Proyectil_4 (24x12)x06.png"
+#define PATH_PROJECTILE_EXPLOSION "../sprites/Projectiles/Proyectil_Explosion (20x14)x04.png"
+
 
 // HUD
 #define PATH_HEART_ICON "../sprites/HUD/Heart Icon (24x16)x01.png"
-#define PATH_SPAZ_GUN "../sprites/HUD/Spaz Gun (24x24)x10.png"
-#define PATH_JAZZ_GUN "../sprites/HUD/Jazz Gun (24x24)x10.png"
-#define PATH_LORI_GUN "../sprites/HUD/Lori Gun (16x16)x05.png"
+//#define PATH_SPAZ_GUN "../sprites/HUD/Spaz Gun (24x24)x10.png"
+//#define PATH_JAZZ_GUN "../sprites/HUD/Jazz Gun (24x24)x10.png"
+//#define PATH_LORI_GUN "../sprites/HUD/Lori Gun (16x16)x05.png"
+
+#define PATH_GUN_1 "../sprites/HUD/Gun_1 (24x24)x10.png"
+#define PATH_GUN_2 "../sprites/HUD/Gun_2 (24x24)x10.png"
+#define PATH_GUN_3 "../sprites/HUD/Gun_3 (24x24)x09.png"
+#define PATH_GUN_4 "../sprites/HUD/Gun_4 (32x24)x10.png"
+
 

@@ -10,7 +10,8 @@ void ClientSender::run() {
 		while (_keep_running) {
 			if (was_closed)
 				break;
-			ComandoCliente comando;
+			
+			ComandoCliente  comando; //= queueEnviadora.pop();
 			if(queueEnviadora.try_pop(comando)){
 				protocolo.enviarComando(comando, &was_closed);
 			}

@@ -13,8 +13,8 @@ SpriteSheet SpritesEnemies::Rat_attack;
 //Diablo
 SpriteSheet SpritesEnemies::Diablo_idle;
 SpriteSheet SpritesEnemies::Diablo_attack;
-SpriteSheet SpritesEnemies::Diablo_appear;
-SpriteSheet SpritesEnemies::Diablo_disappear;
+SpriteSheet SpritesEnemies::Diablo_damaged;
+
 
 bool SpritesEnemies::inicializado = false;
 
@@ -30,10 +30,9 @@ void SpritesEnemies::init() {
         Rat_attack = SpriteSheet(PATH_RAT_ATTACK, 84, 44, 8);
 
         //Diablo
-        Diablo_idle = SpriteSheet(PATH_DIABLO_IDLE, 128, 128, 8);
-        Diablo_attack = SpriteSheet(PATH_DIABLO_ATTACK, 128, 128, 18);
-        Diablo_appear = SpriteSheet(PATH_DIABLO_APPEAR, 128, 128, 20);
-        Diablo_disappear = SpriteSheet(PATH_DIABLO_DISAPPEAR, 128, 128, 17);
+        Diablo_idle = SpriteSheet(PATH_DIABLO_IDLE, 64, 64, 13);
+        Diablo_attack = SpriteSheet(PATH_DIABLO_ATTACK, 64, 64, 8);
+        Diablo_damaged = SpriteSheet(PATH_DIABLO_DAMAGED, 64, 64, 9);
 
         inicializado = true;
     }

@@ -12,23 +12,30 @@ SpritesManager::SpritesManager() :
     character_jazz(PATH_CHARACTER_JAZZ),
     character_lori(PATH_CHARACTER_LORI),
     //letras(PATH_FONT),
-    spritesTileMap(TileMap::getLevel_1()),
+    spritesTileMap(TileMap::getLevel_1()),  //CAMBIAR
     moneda(PATH_ITEM_COIN, 28, 28, 20),
     gema(PATH_ITEM_GEM, 36, 36, 8),
     zanahoria(PATH_ITEM_ZANAHORIA, 36, 36, 20),
+    municion_1(PATH_ITEM_MUNICION_1, 24, 24, 10),
+    municion_2(PATH_ITEM_MUNICION_2, 24, 24, 9),
+    municion_3(PATH_ITEM_MUNICION_3, 24, 24, 10),
+    municion_4(PATH_ITEM_MUNICION_4, 24, 24, 10),
     proyectil_0(PATH_PROJECTILE_0, 16, 8,3),
     heartIcon(PATH_HEART_ICON),
-    spazGun(PATH_SPAZ_GUN, 24, 24, 10),
-    jazzGun(PATH_JAZZ_GUN, 24, 24, 10),
-    loriGun(PATH_LORI_GUN, 16, 16, 5)
+    gun_1(PATH_GUN_1, 24, 24, 10),
+    gun_2(PATH_GUN_2, 24, 24, 10),
+    gun_3(PATH_GUN_3, 24, 24, 9),
+    gun_4(PATH_GUN_4, 32, 24, 10)
+
+    //spazGun(PATH_SPAZ_GUN, 24, 24, 10),
+    //jazzGun(PATH_JAZZ_GUN, 24, 24, 10),
+    //loriGun(PATH_LORI_GUN, 16, 16, 5)
 {
-    SpritesPlayers::init();
     SpritesTileMap::init();
+    SpritesPlayers::init();
+    SpritesEnemies::init();
 
     font = fontManager();
-    
-    //players.emplace_back(Lori);
-    
 }
 
 void SpritesManager::renderizarMenu() {
@@ -91,6 +98,7 @@ void SpritesManager::renderizarBotonesCharacter(){
 }
 
 //JUEGO
+/*
 void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
 {
     SpritePlayer& player = getPlayer(n);
@@ -99,14 +107,18 @@ void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
     player.renderizarEn(x, y);
 
 }
+*/
 
 void SpritesManager::renderizarPlayer(unsigned int n) {
     SpritePlayer& player = getPlayer(n);
     player.renderizar();
 }
+void SpritesManager::renderizarEnemigo(unsigned int n) {
+    SpriteEnemy& enemy = getEnemy(n);
+    enemy.renderizar();
+}
 
-void SpritesManager::renderizarFondo(const Position &posCamara)
-{
+void SpritesManager::renderizarTerreno(const Position &posCamara) {
    spritesTileMap.renderizar(posCamara);
 }
 
@@ -137,22 +149,33 @@ void SpritesManager::renderizarVidas(int& vidas){
     }
 }
 
-void SpritesManager::renderizarMunicionArma(const TipoPlayer &tipo, int cantMunicion){
+void SpritesManager::renderizarMunicionArma(const TipoArma &tipo, int cantMunicion){
     int municion_x = ANCHO_WINDOW * 0.8;
     int municion_y = ALTO_WINDOW * 0.9;
+
     //int separacion = 0;
-    if(tipo == TipoPlayer::Spaz){
-        spazGun.renderizarEn(municion_x, municion_y);
+    std::string municion;
+    if(tipo == Tipo_1){
+        gun_1.renderizarEn(municion_x, municion_y);
+        municion += "X.";        // municoines infiintas.
     }
-    else if(tipo == TipoPlayer::Jazz){
-        jazzGun.renderizarEn(municion_x, municion_y);
+    else if(tipo == Tipo_2){
+        gun_2.renderizarEn(municion_x, municion_y);
     }
-    else if(tipo == TipoPlayer::Lori){
-        loriGun.renderizarEn(municion_x, municion_y);
+    else if(tipo == Tipo_3){
+        gun_3.renderizarEn(municion_x, municion_y);
     }
-    std::string municion = "X" + std::to_string(cantMunicion);
+    else if (tipo == Tipo_4) {
+        gun_4.renderizarEn(municion_x, municion_y);
+    }
+    
+    if(tipo != Tipo_1){ 
+        municion += "X" + std::to_string(cantMunicion);
+    }
+
     font.renderText(municion, municion_x + 30, municion_y, 0.4f);
 }
+
 
 void SpritesManager::updateItems() {
     moneda.nextFrame();
@@ -160,12 +183,13 @@ void SpritesManager::updateItems() {
     zanahoria.nextFrame();
 }
 
+/*
 void SpritesManager::flipPlayer(unsigned int n, bool invertirSprite) 
 {
     SpritePlayer& player = getPlayer(n);
     player.setFlip(invertirSprite);
 }
-
+*/
 void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos, const Direcciones &dir) {
     SpritePlayer& player = getPlayer(n);
     player.setPosition(pos.x, pos.y);
@@ -185,7 +209,7 @@ void SpritesManager::updateEnemy(unsigned int n, const EstadosEnemy &estado, con
     if (enemy.getEstado() != estado) { // si cambió de estado
         enemy.setEstado(estado);
     }
-    else {
+    else { // si mantuvo el estado
         enemy.updateFrame();
     }
 }

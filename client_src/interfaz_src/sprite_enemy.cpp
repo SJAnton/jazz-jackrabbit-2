@@ -101,9 +101,7 @@ void SpriteEnemy::setEstadoDiablo(const EstadosEnemy &estado_) {
         break;
     case EstadosEnemy::Attack : spriteSheet = SpritesEnemies::Diablo_attack;
         break;
-    case EstadosEnemy::Appear : spriteSheet = SpritesEnemies::Diablo_appear;
-        break;
-    case EstadosEnemy::Disappear : spriteSheet = SpritesEnemies::Diablo_disappear;
+    case EstadosEnemy::Damaged : spriteSheet = SpritesEnemies::Diablo_damaged;
         break;
     default:
         break;
