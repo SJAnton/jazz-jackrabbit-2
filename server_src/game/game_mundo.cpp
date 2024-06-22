@@ -120,6 +120,9 @@ void GameMundo::chequearColisionesProyectiles() {
                 if (e->isInside(c)) {
                     int damage = it->explode();
                     e->take_damage(damage);
+                    if (e->is_dead()) {
+                        it->get_shooter()->add_points(e->get_points());
+                    }
                     break; // pasa a la siguiente coordenada
                 }
             }

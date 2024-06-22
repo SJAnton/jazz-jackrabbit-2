@@ -170,7 +170,9 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
     if (dir == Right)
         pos = Coordenada(pos_x_max+4, pos_y_max - height/2);
     
-    return weapon.shoot(direction, pos);
+    std::shared_ptr<ObjectPlayer> sft = shared_from_this();
+
+    return weapon.shoot(direction, pos, sft);
     /*
         if (dir == Left) {
             Coordenada pos(x_left - 8, pos_y_max - height/2); // ajustar visualmente

@@ -44,10 +44,12 @@ void Weapon::addMunicion(int cantMunicion) {
     municiones += cantMunicion;
 }
 
-ObjectProjectile Weapon::shoot(const Direcciones &dir, const Coordenada &position) {
+ObjectProjectile Weapon::shoot(
+    const Direcciones &dir, const Coordenada &position, std::shared_ptr<ObjectPlayer> &shooter
+) {
     if (municiones > 0 || tipoArma == Tipo_1) {
         municiones--;
-        return ObjectProjectile(tipoArma, dir, position);
+        return ObjectProjectile(tipoArma, dir, position, shooter);
     } else {
         throw NoAmmoException();
     }

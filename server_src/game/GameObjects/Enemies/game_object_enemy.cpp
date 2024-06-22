@@ -86,6 +86,10 @@ int ObjectEnemy::get_damage() {
     return damage;
 }
 
+int ObjectEnemy::get_points() {
+    return points;
+}
+
 bool ObjectEnemy::is_dead() {
     return !is_alive;
 }

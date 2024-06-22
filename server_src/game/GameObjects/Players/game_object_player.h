@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <cstdint>
+
 //#include "constantes.h"
 #include "../game_object.h"
 #include "../Projectile/game_object_projectile.h"
@@ -8,7 +10,7 @@
 #include "../../../../common_src/info_juego.h"
 
 #include "../../Weapons/weapon.h"
-#include <cstdint>
+
 
 #define WIDTH_PLAYER 20  // (para el futuro Padding de 20px y 11px arriba)
 #define HEIGHT_PLAYER 40
@@ -23,7 +25,7 @@
 #define TIME_DYING_JAZZ 20
 
 // basado en el server_character
-class ObjectPlayer : public GameObject {
+class ObjectPlayer : public GameObject, public std::enable_shared_from_this<ObjectPlayer> {
    protected:
         static bool inicializado;
 
@@ -92,6 +94,8 @@ class ObjectPlayer : public GameObject {
         //getters
 
         int get_id() {return id;};
+
+        int get_points() {return points;};
 
         bool is_dead() {return !alive;};
 

@@ -28,9 +28,15 @@ class Game {
         std::vector<std::shared_ptr<ObjectEnemy>> enemies; //lista con todos los enemigos del juego
         std::vector<ObjectCollected> itemsRecolectables;
 
+        std::vector<std::shared_ptr<ObjectPlayer>> top_players;
 
         GameMundo gameMundo;
 
+        static bool compare_points(
+            std::shared_ptr<ObjectPlayer> &pl1, std::shared_ptr<ObjectPlayer> &pl2
+        );
+
+        void update_top_players();
 
         int auxJump = 0; //variable auxiliar para llevar el conteo de veces que se llama a player->jump
         //establesco el tiempo que dura el salto en 4 iteraciones 
