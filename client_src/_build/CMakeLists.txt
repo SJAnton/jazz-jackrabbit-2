@@ -108,6 +108,8 @@ set(SOURCE_FILES
     ../interfaz_src/sprites_enemies.cpp
     ../interfaz_src/sprite_enemy.cpp
     ../interfaz_src/sprites_tile_map.cpp
+
+    ../music_src/music_player.cpp
 )
 
 add_executable(client ${SOURCE_FILES})

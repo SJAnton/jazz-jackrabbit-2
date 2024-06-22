@@ -19,6 +19,7 @@
 //#define ALTO_WINDOW 500 // representa pixeles
 
 #include "event_handler.h"
+#include "../music_src/music_player.h"
 
 enum EstadoInterfaz {Menu, SeleccionPartida, SeleccionPlayer, Juego, ResultadosFinales};
 
@@ -51,9 +52,12 @@ private:
     void updateCamara(const Position &pos);
     Position posRelativaACamara(const int &x, const int &y);
 
+    MusicPlayer &musicPlayer;
 
 public:
-    InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer &client);
+    InterfazGrafica(
+        Queue<InfoJuego> &queueReceptora, ClientPlayer &client, MusicPlayer &musicPlayer
+    );
     
     bool estaAbierta();
     void addPlayer(const TipoPlayer &tipo);//temporal

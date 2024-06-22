@@ -65,12 +65,11 @@ Game::Game() :
     itemsRecolectables.back().setPosition(Coordenada(350, 220));
 }
 
-
-
 // Se llama en cada iteracion del gameloop.
 void Game::execute_actions(std::vector<uint8_t> &actions) {
     //chequeo los estados de cada player
-    for (auto &p : ch_map->getPlayers()) {
+    std::vector<std::shared_ptr<ObjectPlayer>> players = ch_map->getPlayers();
+    for (auto &p : players) {
         if (p->is_dead()) {
             p->updateDeath();
         }
@@ -82,7 +81,7 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
         }
     } 
     if (actions.empty()) {
-        for (auto &p : ch_map->getPlayers()) {
+        for (auto &p : players) {
             if (!p->isJumping() && !p->is_falling()) {
                 p->idle();
             }
@@ -156,7 +155,9 @@ InfoJuego Game::snapshot() {
 }
 
 void Game::add_player(TipoPlayer &player_type, int player_id) {
-    std::shared_ptr<ObjectPlayer> player = std::make_shared<ObjectPlayer>(player_id, player_type, Weapon(TipoArma::Tipo_1));
+    std::shared_ptr<ObjectPlayer> player = std::make_shared<ObjectPlayer>(
+        player_id, player_type, Weapon(TipoArma::Tipo_1)
+    );
     ch_map->push_back(player_id, player);
     std::cout << "agrego player al juego" << std::endl;
 

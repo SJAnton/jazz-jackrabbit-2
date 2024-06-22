@@ -1,21 +1,28 @@
 #include "interfaz_grafica.h"
-
 #include "sprite_object.h"
 #include "spritesheet.h"
 #include "spritesManager.h"
 #include "characters.h"
-
 #include "event_handler.h"
+
+#define MENU_MUSIC_PATH "../music_src/Music/TitleScreen.mp3"
+#define SELECTION_MUSIC_PATH "../music_src/Music/Selection.mp3"
+#define CASTLE_MUSIC_PATH "../music_src/Music/Castle.mp3"
+#define COLONIUS_MUSIC_PATH "../music_src/Music/Colonius.mp3"
+#define LABRATORY_MUSIC_PATH "../music_src/Music/Labratory.mp3"
+#define MEDIVO_MUSIC_PATH "../music_src/Music/Medivo.mp3"
 
 SDL_Renderer* InterfazGrafica::renderer = nullptr;
 
 SDL_Rect InterfazGrafica::camara = {0,0,ANCHO_WINDOW, ALTO_WINDOW};
 
 //constructor
-InterfazGrafica::InterfazGrafica(Queue<InfoJuego> &queueReceptora, ClientPlayer &client) : 
-    estado(Menu),
-    queueReceptora(queueReceptora),
-    renderizarPantalla(&InterfazGrafica::renderizarMenu)
+InterfazGrafica::InterfazGrafica(
+    Queue<InfoJuego> &queueReceptora, ClientPlayer &client, MusicPlayer &musicPlayer
+    ) : estado(Menu),
+        queueReceptora(queueReceptora),
+        renderizarPantalla(&InterfazGrafica::renderizarMenu),
+        musicPlayer(musicPlayer)
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         window = SDL_CreateWindow("Ventana del juego", SDL_WINDOWPOS_CENTERED, 
@@ -141,6 +148,7 @@ void InterfazGrafica::nextEstado() {
     switch (estado)
     {
     case Menu:
+        musicPlayer.play(SELECTION_MUSIC_PATH);
         estado = SeleccionPartida;
         renderizarPantalla = &InterfazGrafica::renderizarSeleccionPartida;
         break;
@@ -149,14 +157,17 @@ void InterfazGrafica::nextEstado() {
         renderizarPantalla = &InterfazGrafica::renderizarSeleccionPlayer;
         break;
     case SeleccionPlayer:
+        musicPlayer.play(MEDIVO_MUSIC_PATH); // TODO: modificar por música del mapa particular
         estado = Juego;
         renderizarPantalla = &InterfazGrafica::renderizarJuego;
         break;
     case Juego:
+        musicPlayer.stop();
         estado = ResultadosFinales; //no implementado
         //renderizarPantalla = &InterfazGrafica::renderizarTablaResultados;
         break;
     case ResultadosFinales:
+        musicPlayer.stop();
         estado = Menu;
         renderizarPantalla = &InterfazGrafica::renderizarMenu;
     default:
