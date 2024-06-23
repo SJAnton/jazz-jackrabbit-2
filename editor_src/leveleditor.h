@@ -28,7 +28,7 @@ class CustomDelegate : public QStyledItemDelegate
 public:
     explicit CustomDelegate(QObject *parent = nullptr) : QStyledItemDelegate(parent) {}
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override {
-        return QSize(80, 40); // Ajusta el tamaño según tus necesidades
+        return QSize(80, 40);
     }
 };
 

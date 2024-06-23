@@ -17,11 +17,11 @@ void addSpriteItemToListWidget(QListWidget *listWidget, const QString &path, con
     listWidget->addItem(item);
 }
 
-std::unordered_map<QString, int> LevelEditor::initializeIds() {
+std::unordered_map<QString, int> LevelEditor::initializeIds() { //Diccionario de sprites/ids
     return {
-        {"Floor", 13},
+        {"Floor", 13}, //ids de los tiles coinciden con los numeros de los archivos
         {"Background", 3},
-        {"Floor Left Corner", 3},
+        {"Floor Left Corner", 16}, //Cambiar nombre de archivo, no puede ser tile000.png
         {"Floor Right Corner", 1},
         {"Underground 1", 8},
         {"Underground 2", 9},
@@ -51,8 +51,6 @@ LevelEditor::LevelEditor(QWidget *parent) :
     int sceneHeight = 20 * gridSize;
 
     // Inicializar la escena
-    //scene = new QGraphicsScene(this);
-    //scene = new QGraphicsScene(0, 0, ui->graphicsView->width(), ui->graphicsView->height(), this);
     scene = new QGraphicsScene(0, 0, sceneWidth, sceneHeight, this);
     ui->graphicsView->setScene(scene);
 
@@ -110,7 +108,7 @@ LevelEditor::LevelEditor(QWidget *parent) :
 
 LevelEditor::~LevelEditor() {
     delete ui;
-    delete map;  // Eliminar el puntero del mapa
+    delete map; 
 }
 
 void LevelEditor::dragEnterEvent(QDragEnterEvent *event) {
@@ -205,7 +203,6 @@ void LevelEditor::placeSpriteAtPosition(const QPointF &scenePos) {
             item->setZValue(isObject ? 1 : 0);
             scene->addItem(item);
 
-            //map->setSpriteOccupied(x, y, widthInTiles, heightInTiles, true, isObject);
             map->setSpriteOccupied(x, y, widthInTiles, heightInTiles, true, isObject, identifier, spriteSize, nextUniqueId);
             nextUniqueId++;
         }
@@ -260,152 +257,7 @@ void LevelEditor::handleFileListClick(QListWidgetItem *item) {
         saveLevel();
     }
 }
-/*
-// Implementación de saveLevel
-void LevelEditor::saveLevel() {
-    YAML::Emitter out;
 
-    // Obteniendo las dimensiones del mapa
-    int rows = map->getRows();
-    int cols = map->getCols();
-    int tiles_num = rows * cols;
-
-    // Encontrando el SpawnPoint
-    int spawnX = -1, spawnY = -1;
-    for (int y = 0; y < rows; ++y) {
-        for (int x = 0; x < cols; ++x) {
-            if (map->isObjectOccupied(x, y)) {
-                QString identifier = map->getIdentifier(x, y, true);
-                if (identifier == "Spaz") {
-                    spawnX = x;
-                    spawnY = y;
-                }
-            }
-        }
-    }
-
-    // Inicio del archivo YAML
-    out << YAML::BeginMap;
-
-    // Añadir el SpawnPoint
-    if (spawnX != -1 && spawnY != -1) {
-        out << YAML::Key << "SpawnPoint" << YAML::Value << YAML::BeginMap;
-        out << YAML::Key << "x" << YAML::Value << spawnX;
-        out << YAML::Key << "y" << YAML::Value << spawnY;
-        out << YAML::EndMap;
-    }
-
-    // Añadir el número de tiles
-    out << YAML::Key << "tiles_num" << YAML::Value << tiles_num;
-
-    // Añadir las capas
-    out << YAML::Key << "Layers" << YAML::Value << YAML::BeginMap;
-    out << YAML::Key << "height" << YAML::Value << rows;
-    out << YAML::Key << "width" << YAML::Value << cols;
-    out << YAML::Key << "tile_map" << YAML::Value << YAML::BeginSeq;
-
-    for (int y = 0; y < rows; ++y) {
-        out << YAML::Flow << YAML::BeginSeq;
-        for (int x = 0; x < cols; ++x) {
-            QString identifier = map->getIdentifier(x, y, false);
-            if (!identifier.isEmpty()) {
-                int id = ids[identifier];
-                out << id;
-            } else {
-                out << 0; // Suponiendo que 0 es el valor predeterminado para un tile vacío
-            }
-        }
-        out << YAML::EndSeq;
-    }
-
-    out << YAML::EndSeq;
-    out << YAML::EndMap;
-
-    // Conjuntos para llevar el registro de objetos y enemigos ya añadidos
-    QSet<int> addedEnemies;
-    QSet<int> addedObjects;
-
-    // Añadir los enemigos
-    out << YAML::Key << "Enemies" << YAML::Value << YAML::BeginSeq;
-
-    for (int y = 0; y < rows; ++y) {
-        for (int x = 0; x < cols; ++x) {
-            if (map->isObjectOccupied(x, y)) {
-                QString identifier = map->getIdentifier(x, y, true);
-                int uniqueId = map->getUniqueId(x, y); // Suponiendo que esta función existe
-                if (identifier != "Spaz") {
-                    int id = ids[identifier];
-                    if (ui->playerEnemiesListWidget->findItems(identifier, Qt::MatchExactly).size() > 0) {
-                        if (!addedEnemies.contains(uniqueId)) {
-                            QSize spriteSize = scene->items(QRectF(x * 32, y * 32, 32, 32)).first()->boundingRect().size().toSize();
-                            int spriteWidth = spriteSize.width();
-                            int spriteHeight = spriteSize.height();
-                            int widthInTiles = (spriteWidth + 31) / 32; // Ajuste para asegurarse de que los tamaños se calculen correctamente
-                            int heightInTiles = (spriteHeight + 31) / 32;
-
-                            out << YAML::BeginMap;
-                            out << YAML::Key << "enemy_id" << YAML::Value << id;
-                            out << YAML::Key << "x" << YAML::Value << x;
-                            out << YAML::Key << "y" << YAML::Value << y;
-                            out << YAML::Key << "x_hitbox" << YAML::Value << widthInTiles;
-                            out << YAML::Key << "y_hitbox" << YAML::Value << heightInTiles;
-                            out << YAML::EndMap;
-
-                            addedEnemies.insert(uniqueId);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    out << YAML::EndSeq;
-
-    // Añadir los objetos
-    out << YAML::Key << "Objects" << YAML::Value << YAML::BeginSeq;
-
-    for (int y = 0; y < rows; ++y) {
-        for (int x = 0; x < cols; ++x) {
-            if (map->isObjectOccupied(x, y)) {
-                QString identifier = map->getIdentifier(x, y, true);
-                int uniqueId = map->getUniqueId(x, y); // Suponiendo que esta función existe
-                int id = ids[identifier];
-                if (ui->objectsListWidget->findItems(identifier, Qt::MatchExactly).size() > 0) {
-                    if (!addedObjects.contains(uniqueId)) {
-                        QSize spriteSize = scene->items(QRectF(x * 32, y * 32, 32, 32)).first()->boundingRect().size().toSize();
-                        int spriteWidth = spriteSize.width();
-                        int spriteHeight = spriteSize.height();
-                        int widthInTiles = (spriteWidth + 31) / 32; // Ajuste para asegurarse de que los tamaños se calculen correctamente
-                        int heightInTiles = (spriteHeight + 31) / 32;
-
-                        out << YAML::BeginMap;
-                        out << YAML::Key << "object_id" << YAML::Value << id;
-                        out << YAML::Key << "x" << YAML::Value << x;
-                        out << YAML::Key << "y" << YAML::Value << y;
-                        out << YAML::Key << "x_hitbox" << YAML::Value << widthInTiles;
-                        out << YAML::Key << "y_hitbox" << YAML::Value << heightInTiles;
-                        out << YAML::EndMap;
-
-                        addedObjects.insert(uniqueId);
-                    }
-                }
-            }
-        }
-    }
-
-    out << YAML::EndSeq;
-
-    // Fin del archivo YAML
-    out << YAML::EndMap;
-
-    // Guardar en archivo
-    std::ofstream fout("level.yaml");
-    fout << out.c_str();
-    fout.close();
-
-    qDebug() << "Level saved to level.yaml";
-}
-*/
 
 void LevelEditor::saveLevel() {
     YAML::Emitter out;
@@ -423,8 +275,8 @@ void LevelEditor::saveLevel() {
             if (map->isObjectOccupied(x, y)) {
                 QString identifier = map->getIdentifier(x, y, true);
                 if (identifier == "Spaz" && !spawnPointAdded) {
-                    spawnX = x * 32; // Convertir a coordenadas reales
-                    spawnY = y * 32; // Convertir a coordenadas reales
+                    spawnX = x * 32; 
+                    spawnY = y * 32; 
                     spawnPointAdded = true;
                 }
             }
@@ -459,7 +311,7 @@ void LevelEditor::saveLevel() {
                 int id = ids[identifier];
                 out << id;
             } else {
-                out << 0; // Suponiendo que 0 es el valor predeterminado para un tile vacío
+                out << 0; // 0 es el valor predeterminado para un tile vacío
             }
         }
         out << YAML::EndSeq;
@@ -479,13 +331,13 @@ void LevelEditor::saveLevel() {
         for (int x = 0; x < cols; ++x) {
             if (map->isObjectOccupied(x, y)) {
                 QString identifier = map->getIdentifier(x, y, true);
-                int uniqueId = map->getUniqueId(x, y); // Suponiendo que esta función existe
+                int uniqueId = map->getUniqueId(x, y);
                 if (identifier != "Spaz") {
                     int id = ids[identifier];
                     if (ui->playerEnemiesListWidget->findItems(identifier, Qt::MatchExactly).size() > 0) {
                         if (!addedEnemies.contains(uniqueId)) {
-                            int realX = x * 32; // Convertir a coordenadas reales
-                            int realY = y * 32; // Convertir a coordenadas reales
+                            int realX = x * 32; 
+                            int realY = y * 32; 
 
                             out << YAML::BeginMap;
                             out << YAML::Key << "enemy_id" << YAML::Value << id;
@@ -510,12 +362,12 @@ void LevelEditor::saveLevel() {
         for (int x = 0; x < cols; ++x) {
             if (map->isObjectOccupied(x, y)) {
                 QString identifier = map->getIdentifier(x, y, true);
-                int uniqueId = map->getUniqueId(x, y); // Suponiendo que esta función existe
+                int uniqueId = map->getUniqueId(x, y); 
                 int id = ids[identifier];
                 if (ui->objectsListWidget->findItems(identifier, Qt::MatchExactly).size() > 0) {
                     if (!addedObjects.contains(uniqueId)) {
-                        int realX = x * 32; // Convertir a coordenadas reales
-                        int realY = y * 32; // Convertir a coordenadas reales
+                        int realX = x * 32; 
+                        int realY = y * 32; 
 
                         out << YAML::BeginMap;
                         out << YAML::Key << "object_id" << YAML::Value << id;
