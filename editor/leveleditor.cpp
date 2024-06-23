@@ -19,12 +19,12 @@ void addSpriteItemToListWidget(QListWidget *listWidget, const QString &path, con
 
 std::unordered_map<QString, int> LevelEditor::initializeIds() {
     return {
-        {"Floor", 1},
-        {"Background", 2},
+        {"Floor", 13},
+        {"Background", 3},
         {"Floor Left Corner", 3},
-        {"Floor Right Corner", 4},
-        {"Underground 1", 5},
-        {"Underground 2", 6},
+        {"Floor Right Corner", 1},
+        {"Underground 1", 8},
+        {"Underground 2", 9},
 
         {"Gold Coin", 0},
         {"Silver Coin", 1},
@@ -63,14 +63,14 @@ LevelEditor::LevelEditor(QWidget *parent) :
     addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile009.png", "Underground 2", QSize(32, 32));
     addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile003.png", "Background", QSize(32, 32));
 
-    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/gold_coin.png", "Gold Coin", QSize(32, 32));
-    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/silver_coin.png", "Silver Coin", QSize(32, 32));
-    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/red_gem.png", "Red Gem", QSize(32, 32));
+    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/gold_coin.png", "Gold Coin", QSize(23, 23));
+    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/silver_coin.png", "Silver Coin", QSize(23, 23));
+    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/red_gem.png", "Red Gem", QSize(25, 26));
 
-    addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/spaz.png", "Spaz", QSize(48, 40));
-    addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/rat.png", "Rat", QSize(72, 32));
-    addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/bat.png", "Bat", QSize(32, 32));
-    addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/diablo.png", "Diablo", QSize(64, 96));
+    addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/spaz.png", "Spaz", QSize(45, 37));
+    addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/rat.png", "Rat", QSize(67, 23));
+    addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/bat.png", "Bat", QSize(21, 29));
+    addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/diablo.png", "Diablo", QSize(43, 42));
 
     // Inicializar el diccionario
     initializeIds();
@@ -260,16 +260,7 @@ void LevelEditor::handleFileListClick(QListWidgetItem *item) {
         saveLevel();
     }
 }
-
-
-// Implementación de saveLevel
-#include <yaml-cpp/yaml.h>
-#include <fstream>
-#include <QSet>
-#include "leveleditor.h"
-#include "map.h"
-#include <QDebug>
-
+/*
 // Implementación de saveLevel
 void LevelEditor::saveLevel() {
     YAML::Emitter out;
@@ -393,6 +384,143 @@ void LevelEditor::saveLevel() {
                         out << YAML::Key << "y" << YAML::Value << y;
                         out << YAML::Key << "x_hitbox" << YAML::Value << widthInTiles;
                         out << YAML::Key << "y_hitbox" << YAML::Value << heightInTiles;
+                        out << YAML::EndMap;
+
+                        addedObjects.insert(uniqueId);
+                    }
+                }
+            }
+        }
+    }
+
+    out << YAML::EndSeq;
+
+    // Fin del archivo YAML
+    out << YAML::EndMap;
+
+    // Guardar en archivo
+    std::ofstream fout("level.yaml");
+    fout << out.c_str();
+    fout.close();
+
+    qDebug() << "Level saved to level.yaml";
+}
+*/
+
+void LevelEditor::saveLevel() {
+    YAML::Emitter out;
+
+    // Obteniendo las dimensiones del mapa
+    int rows = map->getRows();
+    int cols = map->getCols();
+    int tiles_num = rows * cols;
+
+    // Encontrando el SpawnPoint
+    int spawnX = -1, spawnY = -1;
+    bool spawnPointAdded = false;
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < cols; ++x) {
+            if (map->isObjectOccupied(x, y)) {
+                QString identifier = map->getIdentifier(x, y, true);
+                if (identifier == "Spaz" && !spawnPointAdded) {
+                    spawnX = x * 32; // Convertir a coordenadas reales
+                    spawnY = y * 32; // Convertir a coordenadas reales
+                    spawnPointAdded = true;
+                }
+            }
+        }
+    }
+
+    // Inicio del archivo YAML
+    out << YAML::BeginMap;
+
+    // Añadir el SpawnPoint
+    if (spawnX != -1 && spawnY != -1) {
+        out << YAML::Key << "SpawnPoint" << YAML::Value << YAML::BeginMap;
+        out << YAML::Key << "x" << YAML::Value << spawnX;
+        out << YAML::Key << "y" << YAML::Value << spawnY;
+        out << YAML::EndMap;
+    }
+
+    // Añadir el número de tiles
+    out << YAML::Key << "tiles_num" << YAML::Value << tiles_num;
+
+    // Añadir las capas
+    out << YAML::Key << "Layers" << YAML::Value << YAML::BeginMap;
+    out << YAML::Key << "height" << YAML::Value << rows;
+    out << YAML::Key << "width" << YAML::Value << cols;
+    out << YAML::Key << "tile_map" << YAML::Value << YAML::BeginSeq;
+
+    for (int y = 0; y < rows; ++y) {
+        out << YAML::Flow << YAML::BeginSeq;
+        for (int x = 0; x < cols; ++x) {
+            QString identifier = map->getIdentifier(x, y, false);
+            if (!identifier.isEmpty()) {
+                int id = ids[identifier];
+                out << id;
+            } else {
+                out << 0; // Suponiendo que 0 es el valor predeterminado para un tile vacío
+            }
+        }
+        out << YAML::EndSeq;
+    }
+
+    out << YAML::EndSeq;
+    out << YAML::EndMap;
+
+    // Conjuntos para llevar el registro de objetos y enemigos ya añadidos
+    QSet<int> addedEnemies;
+    QSet<int> addedObjects;
+
+    // Añadir los enemigos
+    out << YAML::Key << "Enemies" << YAML::Value << YAML::BeginSeq;
+
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < cols; ++x) {
+            if (map->isObjectOccupied(x, y)) {
+                QString identifier = map->getIdentifier(x, y, true);
+                int uniqueId = map->getUniqueId(x, y); // Suponiendo que esta función existe
+                if (identifier != "Spaz") {
+                    int id = ids[identifier];
+                    if (ui->playerEnemiesListWidget->findItems(identifier, Qt::MatchExactly).size() > 0) {
+                        if (!addedEnemies.contains(uniqueId)) {
+                            int realX = x * 32; // Convertir a coordenadas reales
+                            int realY = y * 32; // Convertir a coordenadas reales
+
+                            out << YAML::BeginMap;
+                            out << YAML::Key << "enemy_id" << YAML::Value << id;
+                            out << YAML::Key << "x" << YAML::Value << realX;
+                            out << YAML::Key << "y" << YAML::Value << realY;
+                            out << YAML::EndMap;
+
+                            addedEnemies.insert(uniqueId);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    out << YAML::EndSeq;
+
+    // Añadir los objetos
+    out << YAML::Key << "Objects" << YAML::Value << YAML::BeginSeq;
+
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < cols; ++x) {
+            if (map->isObjectOccupied(x, y)) {
+                QString identifier = map->getIdentifier(x, y, true);
+                int uniqueId = map->getUniqueId(x, y); // Suponiendo que esta función existe
+                int id = ids[identifier];
+                if (ui->objectsListWidget->findItems(identifier, Qt::MatchExactly).size() > 0) {
+                    if (!addedObjects.contains(uniqueId)) {
+                        int realX = x * 32; // Convertir a coordenadas reales
+                        int realY = y * 32; // Convertir a coordenadas reales
+
+                        out << YAML::BeginMap;
+                        out << YAML::Key << "object_id" << YAML::Value << id;
+                        out << YAML::Key << "x" << YAML::Value << realX;
+                        out << YAML::Key << "y" << YAML::Value << realY;
                         out << YAML::EndMap;
 
                         addedObjects.insert(uniqueId);
