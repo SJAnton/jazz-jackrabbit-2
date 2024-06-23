@@ -37,7 +37,7 @@ class LevelEditor : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit LevelEditor(QWidget *parent = nullptr);
+    explicit LevelEditor(QWidget *parent = nullptr, int width = 0, int height = 0);
     ~LevelEditor();
 
 protected:

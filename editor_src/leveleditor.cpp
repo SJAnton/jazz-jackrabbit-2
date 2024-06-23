@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QDataStream>
 #include <QResizeEvent>
+#include <QApplication>
+#include <QDesktopWidget>
 #include <unordered_set>
 #include <yaml-cpp/yaml.h>
 #include <fstream>
@@ -37,18 +39,23 @@ std::unordered_map<QString, int> LevelEditor::initializeIds() { //Diccionario de
     };
 }
 
-LevelEditor::LevelEditor(QWidget *parent) :
+LevelEditor::LevelEditor(QWidget *parent, int width, int height) :
     QMainWindow(parent),
     ui(new Ui::LevelEditor),
-    map(new Map(30, 20)),  // Inicializa el mapa con el tamaño deseado
+    map(new Map(width, height)),  // Inicializa el mapa con el tamaño deseado
     isMousePressed(false), ids(initializeIds())
 {
     ui->setupUi(this);
 
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width() - this->width()) / 2;
+    int y = (screenGeometry.height() - this->height()) / 2;
+    this->move(x, y);
+
     // Calcular el tamaño de la escena
     int gridSize = 32;
-    int sceneWidth = 30 * gridSize;
-    int sceneHeight = 20 * gridSize;
+    int sceneWidth = width * gridSize;
+    int sceneHeight = height * gridSize;
 
     // Inicializar la escena
     scene = new QGraphicsScene(0, 0, sceneWidth, sceneHeight, this);

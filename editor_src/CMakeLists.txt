@@ -30,6 +30,9 @@ find_package(yaml-cpp REQUIRED)
 if(ANDROID)
   add_library(editor SHARED
     main.cpp
+    mainwindow.cpp
+    mainwindow.h
+    mainwindow.ui
     leveleditor.cpp
     leveleditor.h
     leveleditor.ui
@@ -37,6 +40,9 @@ if(ANDROID)
 else()
   add_executable(editor
     main.cpp
+    mainwindow.cpp
+    mainwindow.h
+    mainwindow.ui
     qstring_hash.h
     leveleditor.cpp
     leveleditor.h
