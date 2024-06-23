@@ -11,68 +11,49 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Ventana Principal</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="createScenarioButton">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>310</y>
-      <width>300</width>
-      <height>100</height>
+      <x>400</x>
+      <y>340</y>
+      <width>251</width>
+      <height>91</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>23</pointsize>
+     </font>
     </property>
     <property name="text">
-     <string>Crear escenario</string>
+     <string>Crear Escenario</string>
     </property>
    </widget>
-   <widget class="QWidget" name="inputWidget">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>210</y>
-      <width>400</width>
-      <height>300</height>
+      <x>330</x>
+      <y>120</y>
+      <width>411</width>
+      <height>91</height>
      </rect>
     </property>
-    <property name="visible">
-     <bool>false</bool>
+    <property name="font">
+     <font>
+      <pointsize>40</pointsize>
+     </font>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="instructionLabel">
-       <property name="text">
-        <string>Ingrese filas y columnas:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="rowsInput">
-       <property name="placeholderText">
-        <string>Filas</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="colsInput">
-       <property name="placeholderText">
-        <string>Columnas</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="startLevelEditorButton">
-       <property name="text">
-        <string>Iniciar Editor de Niveles</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="text">
+     <string>Editor de niveles</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar"/>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

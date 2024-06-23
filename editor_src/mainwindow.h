@@ -2,9 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QPushButton>
-#include <QLineEdit>
-#include "leveleditor.h"
+#include "setupwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,15 +18,10 @@ public:
 
 private slots:
     void on_createScenarioButton_clicked();
-    void on_startLevelEditorButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    LevelEditor *levelEditor;
-    QPushButton *createScenarioButton;
-    QWidget *inputWidget;
-    QLineEdit *rowsInput;
-    QLineEdit *colsInput;
+    SetupWindow *setupWindow;
 };
 
 #endif // MAINWINDOW_H

@@ -395,7 +395,7 @@ void LevelEditor::saveLevel() {
     out << YAML::EndMap;
 
     // Guardar en archivo
-    std::ofstream fout("level.yaml");
+    std::ofstream fout("../../server_src/game/Map/levels/level.yaml");
     fout << out.c_str();
     fout.close();
 

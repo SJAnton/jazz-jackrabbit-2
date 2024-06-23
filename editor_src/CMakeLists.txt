@@ -44,6 +44,9 @@ else()
     mainwindow.h
     mainwindow.ui
     qstring_hash.h
+    setupwindow.cpp
+    setupwindow.h
+    setupwindow.ui
     leveleditor.cpp
     leveleditor.h
     leveleditor.ui
