@@ -5,6 +5,9 @@ PlayerLori::PlayerLori(int id) : ObjectPlayer(id, TipoPlayer::Lori) {
 }
 
 void PlayerLori::specialAttack() {
+    if (is_dead() || is_intoxicated() || isJumping() || is_falling()) {
+        return;
+    }
     isDoingSpecialAttack = true;
     tocandoSuelo = false;
     estado = EstadosPlayer::SpecialAttack;

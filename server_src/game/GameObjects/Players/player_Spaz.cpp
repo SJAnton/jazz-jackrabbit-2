@@ -5,6 +5,9 @@ PlayerSpaz::PlayerSpaz(int id) : ObjectPlayer(id, TipoPlayer::Spaz) {
 }
 
 void PlayerSpaz::specialAttack() {
+    if (is_dead() || is_intoxicated() || isJumping() || is_falling()) {
+        return;
+    }
     isDoingSpecialAttack = true;
     estado = EstadosPlayer::SpecialAttack;
 }

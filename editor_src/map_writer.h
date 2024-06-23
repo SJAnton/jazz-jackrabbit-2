@@ -5,14 +5,14 @@
 
 #include "../server_src/game/Map/game_map.h"
 
-class MapCreator {
+class MapWriter {
     private:
         std::string enemy_type_to_str(const TipoEnemy &type);
 
         std::string object_type_to_str(const TipoRecolectable &type);
 
     public:
-        MapCreator() {};
+        MapWriter() {};
 
         void generate_test_flat_map();
 

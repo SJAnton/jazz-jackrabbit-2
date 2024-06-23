@@ -33,15 +33,23 @@ protected:
         static bool inizializated;
 
         //Constantes del config.yaml (cargar con init() una sola vez)
-        static int diley_shoot_w1;
-        static int diley_shoot_w2;
-        static int diley_shoot_w3;
-        static int diley_shoot_w4;
+        static int delay_shoot_w1;
+        static int delay_shoot_w2;
+        static int delay_shoot_w3;
+        static int delay_shoot_w4;
+
+        // Para reestablecer el valor de delay_shoot
+        static int buffer_shoot_w1;
+        static int buffer_shoot_w2;
+        static int buffer_shoot_w3;
+        static int buffer_shoot_w4;
         
 private:
     TipoArma tipoArma;
     int municiones = 0; // cantidad de balas que le quedan
    
+    bool can_shoot = true;
+
 public:
     static void init(int diley_shoot_w1, int diley_shoot_w2, int diley_shoot_w3, int diley_shoot_w4);
 
@@ -51,14 +59,16 @@ public:
 
     void addMunicion(int cantMunicion);
 
+    void updateDelay();
+
+    bool canShoot() {return can_shoot;};
+
     TipoArma getType() {return tipoArma;};
 
     int getMuniciones() {return municiones;};
 
     // devuelve un proyectil si se pudo disparar
-    ObjectProjectile shoot(
-        const Direcciones &dir, const Coordenada &position, std::shared_ptr<ObjectPlayer> &shooter
-    );
+    ObjectProjectile shoot(const Direcciones &dir, const Coordenada &position, int shooter_id);
 
 };
 

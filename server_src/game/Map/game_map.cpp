@@ -1,6 +1,6 @@
 #include "game_map.h"
 
-Tileset GameMap::get_tileset() {
+GameMapTileset GameMap::get_tileset() {
     return tileset;
 }
 

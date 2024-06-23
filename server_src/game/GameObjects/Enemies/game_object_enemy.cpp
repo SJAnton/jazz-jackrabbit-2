@@ -1,6 +1,11 @@
 #include "game_object_enemy.h"
 #include "../../game_mundo.h"
 
+#include <iostream>
+
+#define EDGE_DISTANCE_LEFT 0
+#define EDGE_DISTANCE_RIGHT 30
+
 #define ITR_PER_SEC 15
 #define RANDOM_NUMBER_MAX 100
 
@@ -25,7 +30,7 @@ void ObjectEnemy::move_x() {
             if (position.x <= 0 || (position.x - 1) > X_MAX || movement_range <= 0 ||
                 GameMundo::casilleros[position.y][x_left].estaBloqueado() ||
                 GameMundo::casilleros[pos_y_max][x_left].estaBloqueado()  ||
-                !GameMundo::casilleros[y_down][position.x - 1].estaBloqueado() ||
+                !GameMundo::casilleros[y_down][x_left - EDGE_DISTANCE_LEFT].estaBloqueado() ||
                 !GameMundo::casilleros[y_down][pos_x_max].estaBloqueado()) {
                 // Bloqueado a la izquierda, o no hay piso
                 status = EstadosEnemy::Idle;
@@ -40,7 +45,7 @@ void ObjectEnemy::move_x() {
             if (position.x >= X_MAX || movement_range <= 0 ||
                 GameMundo::casilleros[position.y][x_right].estaBloqueado() ||
                 GameMundo::casilleros[pos_y_max][x_right].estaBloqueado()  ||
-                !GameMundo::casilleros[y_down][position.x + 1].estaBloqueado() ||
+                !GameMundo::casilleros[y_down][x_right + EDGE_DISTANCE_RIGHT].estaBloqueado() ||
                 !GameMundo::casilleros[y_down][pos_x_max].estaBloqueado()) {
                 // Bloqueado a la derecha, o no hay piso
                 status = EstadosEnemy::Idle;
@@ -57,7 +62,7 @@ void ObjectEnemy::walk() {
     if (!is_alive) {
         return;
     }
-    status = EstadosEnemy::Move;
+    status = EstadosEnemy::Attack;
     move_x();
 }
 
@@ -66,6 +71,9 @@ void ObjectEnemy::jump() {
 }
 
 void ObjectEnemy::fall() {
+    if (!is_alive) {
+        return;
+    }
     for (int i = 0; i < FALL_SPEED; ++i) {
         if (GameMundo::casilleros[y_down][position.x].estaBloqueado() || 
             GameMundo::casilleros[y_down][pos_x_max].estaBloqueado()) {
@@ -74,7 +82,7 @@ void ObjectEnemy::fall() {
             break;
         }
         on_ground = false;
-        status = EstadosEnemy::Move;
+        status = EstadosEnemy::Attack;
         setPosition(Coordenada(position.x, position.y + 1));
     }
 }
@@ -99,7 +107,10 @@ bool ObjectEnemy::is_falling() {
     return !on_ground;
 }
 
-void ObjectEnemy::reduce_respawn_time() {
+void ObjectEnemy::update_respawn_time() {
+    if (is_alive) {
+        return;
+    }
     respawn_time--;
     if (respawn_time <= 0) {
         respawn_time = respawn_time_buffer;

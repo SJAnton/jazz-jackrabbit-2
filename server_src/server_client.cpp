@@ -11,15 +11,17 @@
 
 #define SHUTCODE 2
 
-Client::Client(Socket &&_sk, int id, int game_time, atomic<int> &gmlp_id, GameloopList &gameloops) :
+Client::Client(Socket &&_sk, int id, int game_time, atomic<int> &gmlp_id,
+                GameloopList &gameloops, GameMapReader &map_reader) :
                 sk(std::move(_sk)), id(id), game_time(game_time), gmlp_id(gmlp_id),
-                    gameloops(gameloops), protocol(sk), recv_q(std::make_shared<Queue<uint8_t>>()),
-                        sender(protocol, sndr_q, wc) {}
+                gameloops(gameloops), map_reader(map_reader), protocol(sk),
+                recv_q(std::make_shared<Queue<uint8_t>>()), sender(protocol, sndr_q, wc) {}
 
 void Client::run() {
     reap_dead_gameloops();
 
     vector<uint8_t> msg = get_games(); // Envía las partidas disponibles (TODO: enviar escenarios)
+    std::map<uint8_t, GameMap> levels = map_reader.read_levels();
     protocol.send_msg(msg, wc);
 
     // Recibe partida y personaje (TODO: recibir escenario elegido)

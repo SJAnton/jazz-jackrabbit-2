@@ -14,6 +14,7 @@
 #define PLAYER_CODE "ObjectPlayer"
 #define PROJECTILE_CODE "ObjectProjectile"
 #define COLLECTED_CODE "ObjectCollected"
+#define WEAPON_CODE "Weapon"
 #define BAT_CODE "EnemyBat"
 #define DIABLO_CODE "EnemyDiablo"
 #define RAT_CODE "EnemyRat"
@@ -23,6 +24,7 @@ void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
     std::vector<uint8_t> &player_data = data[PLAYER_CODE];
     std::vector<uint8_t> &projectile_data = data[PROJECTILE_CODE];
     std::vector<uint8_t> &collected_data = data[COLLECTED_CODE];
+    std::vector<uint8_t> &weapon_data = data[WEAPON_CODE];
     std::vector<uint8_t> &bat_data = data[BAT_CODE];
     std::vector<uint8_t> &diablo_data = data[DIABLO_CODE];
     std::vector<uint8_t> &rat_data = data[RAT_CODE];
@@ -41,6 +43,8 @@ void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
         collected_data[0], collected_data[1], collected_data[2],
         collected_data[3], collected_data[4], collected_data[5]
     );
+
+    Weapon::init(weapon_data[0], weapon_data[1], weapon_data[2], weapon_data[3]);
 
     EnemyBat::init(
         bat_data[0], bat_data[1], bat_data[2], bat_data[3], bat_data[4], bat_data[5], bat_data[6]
@@ -100,6 +104,8 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
         else if (p->is_doing_specialAttack()) {
             p->updateSpecialAttack();
         }
+        p->updateShootingDelay();
+        p->updateDamageWaitTime();
     } 
     if (actions.empty()) {
         for (auto &p : players) {
@@ -132,6 +138,15 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
             break;
         case ACTION_SHOOT: {
             try {
+                if (!player->get_weapon().canShoot()) {
+                    return;
+                }/* else if (player->getEstado() == EstadosPlayer::Walking) {
+                    // Caminar y disparar a la vez
+                    //--> bug si suelto la tecla de movimiento y sigo disparando
+                    player->walk(direction);
+                } else if (player->getEstado() == EstadosPlayer::Running) {
+                    player->run(direction);
+                }*/
                 ObjectProjectile proyectil = player->shoot(direction);
                 gameMundo.addProjectile(std::move(proyectil));
             } catch(const NoAmmoException& e) {

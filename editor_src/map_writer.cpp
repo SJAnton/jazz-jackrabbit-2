@@ -1,6 +1,7 @@
-#include "editor_map_creator.h"
+#include "map_writer.h"
 
 #include <fstream>
+#include <filesystem>
 
 #define LEVELS_ROUTE "../../server_src/map/levels/"
 #define FILE_EXTENSION ".yaml"
@@ -51,9 +52,12 @@
 #define MUNICION_3_STR "Municion3"
 #define MUNICION_4_STR "Municion4"
 
-void MapCreator::save_to_YAML(GameMap &game_map, std::string &name) {
+void MapWriter::save_to_YAML(GameMap &game_map, std::string &name) {
+    if (!std::filesystem::exists(LEVELS_ROUTE)) {
+        throw std::runtime_error("Levels directory does not exist");
+    } 
     Point spawn = game_map.get_spawn_point();
-    Tileset tileset = game_map.get_tileset();
+    GameMapTileset tileset = game_map.get_tileset();
     std::vector<Layer> layers = game_map.get_layers();
     std::vector<std::shared_ptr<ObjectEnemy>> enemies = game_map.get_enemies();
     std::vector<std::shared_ptr<ObjectCollected>> objects = game_map.get_objects();
@@ -121,7 +125,7 @@ void MapCreator::save_to_YAML(GameMap &game_map, std::string &name) {
     ostr.close();
 }
 
-void MapCreator::generate_test_flat_map() {
+void MapWriter::generate_test_flat_map() {
     GameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
                      FLAT_GAME_SELECTION, SPAWN_X, SPAWN_Y);
 
@@ -130,7 +134,7 @@ void MapCreator::generate_test_flat_map() {
     save_to_YAML(game_map, name);
 }
 
-void MapCreator::generate_test_mountain_map() {
+void MapWriter::generate_test_mountain_map() {
     GameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
                      MOUNTAIN_GAME_SELECTION, SPAWN_X, SPAWN_Y);
 
@@ -139,7 +143,7 @@ void MapCreator::generate_test_mountain_map() {
     save_to_YAML(game_map, name);
 }
 
-void MapCreator::generate_test_random_map() {
+void MapWriter::generate_test_random_map() {
     GameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
                      RANDOM_GAME_SELECTION, SPAWN_X, SPAWN_Y);
 
@@ -148,7 +152,7 @@ void MapCreator::generate_test_random_map() {
     save_to_YAML(game_map, name);
 }
 
-void MapCreator::generate_test_snowy_map() {
+void MapWriter::generate_test_snowy_map() {
     GameMap game_map(NUM_TILES, NUM_LAYERS, LAYER_WIDTH, LAYER_HEIGHT, 
                      SNOWY_GAME_SELECTION, SPAWN_X, SPAWN_Y);
 
@@ -157,7 +161,7 @@ void MapCreator::generate_test_snowy_map() {
     save_to_YAML(game_map, name);
 }
 
-std::string MapCreator::enemy_type_to_str(const TipoEnemy &type) {
+std::string MapWriter::enemy_type_to_str(const TipoEnemy &type) {
     switch (type) {
         case TipoEnemy::Bat:
             return BAT_STR;
@@ -170,7 +174,7 @@ std::string MapCreator::enemy_type_to_str(const TipoEnemy &type) {
     }
 }
 
-std::string MapCreator::object_type_to_str(const TipoRecolectable &type) {
+std::string MapWriter::object_type_to_str(const TipoRecolectable &type) {
     switch (type) {
         case TipoRecolectable::Moneda:
             return MONEDA_STR;

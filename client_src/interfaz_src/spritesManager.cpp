@@ -115,6 +115,9 @@ void SpritesManager::renderizarPlayer(unsigned int n) {
 }
 void SpritesManager::renderizarEnemigo(unsigned int n) {
     SpriteEnemy& enemy = getEnemy(n);
+    if (enemy.getEstado() == EstadosEnemy::Death) {
+        return;
+    }
     enemy.renderizar();
 }
 

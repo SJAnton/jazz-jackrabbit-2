@@ -71,7 +71,7 @@ class ObjectEnemy : public GameObject {
 
         bool is_falling();
 
-        void reduce_respawn_time();
+        void update_respawn_time();
 
         void take_damage(int &damage);
 

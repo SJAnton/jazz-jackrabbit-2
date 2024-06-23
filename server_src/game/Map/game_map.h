@@ -15,40 +15,40 @@
 #define MOUNTAIN_ID 0x02
 #define SNOW_ID 0x03
 
-struct Tile {
+struct GameMapTile {
     int id;
     bool solid;
     int width; // Ancho en píxeles
     int height; // Alto en píxeles
     uint8_t type; // Indica si el tile es de tierra, pasto, etc
 
-    Tile(int id = 0, bool solid = false, int width = 30, int height = 30, uint8_t type = 0x9) :
+    GameMapTile(int id = 0, bool solid = false, int width = 30, int height = 30, uint8_t type = 0x9) :
             id(id), solid(solid), width(width), height(height), type(type) {}
 };
 
-class Tileset {
+class GameMapTileset {
     public:
-        std::vector<Tile> tiles;
+        std::vector<GameMapTile> tiles;
 
-        Tileset(int numTiles) {
+        GameMapTileset(int numTiles) {
             tiles.resize(numTiles);
         }
 
-        std::vector<Tile> get_tiles() {
+        std::vector<GameMapTile> get_tiles() {
             return tiles;
         }
 
         void addTile(int id, bool solid, int pixelWidth, int pixelHeight, uint8_t type) {
             if(id >= 0 && id < (int)tiles.size()) {
-                tiles[id] = Tile(id, solid, pixelWidth, pixelHeight, type);
+                tiles[id] = GameMapTile(id, solid, pixelWidth, pixelHeight, type);
             }
         }
 
-        Tile getTile(int id) const {
+        GameMapTile getTile(int id) const {
             if(id >= 0 && id < (int)tiles.size()) {
                 return tiles[id];
             }
-            return Tile(-1, false, 0, 0, 0x0);  // Tile inexistente
+            return GameMapTile(-1, false, 0, 0, 0x0);  // Tile inexistente
         }
 
         bool isSolid(int id) const {
@@ -100,7 +100,7 @@ struct Point {
 
 class GameMap {
     public:
-        Tileset tileset;
+        GameMapTileset tileset;
         Point spawn_point;
         std::vector<Layer> layers;
         std::vector<std::shared_ptr<ObjectEnemy>> enemies;
@@ -150,7 +150,7 @@ class GameMap {
             layers[0].setTileMap(tile_map);
         }
 
-        Tileset get_tileset();
+        GameMapTileset get_tileset();
 
         Point get_spawn_point();
 

@@ -24,6 +24,9 @@
 #define TIME_DYING_LORI 20
 #define TIME_DYING_JAZZ 20
 
+#define ITR_PER_SEC 15
+#define DAMAGE_WAIT_TIME 1 // Segundos
+
 // basado en el server_character
 class ObjectPlayer : public GameObject, public std::enable_shared_from_this<ObjectPlayer> {
    protected:
@@ -53,6 +56,10 @@ class ObjectPlayer : public GameObject, public std::enable_shared_from_this<Obje
         bool is_jumping = false;
         bool tocandoSuelo = false;
         bool isDoingSpecialAttack = false;
+
+        bool can_take_damage = true;
+        int damage_wait_time = DAMAGE_WAIT_TIME * ITR_PER_SEC;
+        int damage_wait_buffer = DAMAGE_WAIT_TIME * ITR_PER_SEC;
 
     public:
         // los timer los maeja el game
@@ -100,11 +107,14 @@ class ObjectPlayer : public GameObject, public std::enable_shared_from_this<Obje
 
         int get_points() {return points;};
 
+        Weapon get_weapon() {return weapon;};
+
         bool is_dead() {return !alive;};
         bool is_intoxicated() { return intoxicated;};
         bool is_falling() {return falling;};
         bool isJumping() {return is_jumping;}
         bool is_doing_specialAttack() {return isDoingSpecialAttack;};
+        bool can_be_damaged() {return can_take_damage;};
 
         EstadosPlayer getEstado();
         //Setters
@@ -130,6 +140,8 @@ class ObjectPlayer : public GameObject, public std::enable_shared_from_this<Obje
         void updateDeath();
         void updateJump();
         void updateShoot();
+        void updateShootingDelay();
+        void updateDamageWaitTime();
         virtual void updateSpecialAttack() {};
 
         void revive();

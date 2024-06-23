@@ -7,7 +7,6 @@
 #include <yaml-cpp/yaml.h>
 
 #include "game_map.h"
-#include "../GameObjects/Enemies/game_object_enemy.h"
 
 class GameMapReader {
     private:

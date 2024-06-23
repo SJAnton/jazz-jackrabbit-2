@@ -36,7 +36,7 @@ class ObjectProjectile : public GameObject {
     protected:
         TipoArma tipoProyectil;
         Direcciones direction;
-        std::shared_ptr<ObjectPlayer> &shooter;
+        int shooter_id;
         int damage;
         int speed;
         bool exploded = false;
@@ -47,14 +47,8 @@ class ObjectProjectile : public GameObject {
         
         ObjectProjectile(
             TipoArma tipo, const Direcciones &direction,
-            const Coordenada &position, std::shared_ptr<ObjectPlayer> &shooter
+            const Coordenada &position, int shooter_id
         );
-
-        ~ObjectProjectile() {};
-
-        ObjectProjectile &operator=(const ObjectProjectile &other) {
-            return *this;
-        }
 
         // Avanza en el eje x en la direccion establecida y velocidad establecida 
         void move_x_pos();
@@ -65,8 +59,8 @@ class ObjectProjectile : public GameObject {
         // Devuelve true si el proyectil ya colisionó con algo
         bool is_exploded();
 
-        // Devuelve el ObjectPlayer que disparó el proyectil
-        std::shared_ptr<ObjectPlayer> get_shooter();
+        // Devuelve el ID del player que disparó el proyectil
+        int get_shooter_id();
 
         InfoProyectil getInfo();
 };

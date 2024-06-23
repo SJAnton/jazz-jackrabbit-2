@@ -121,7 +121,15 @@ void GameMundo::chequearColisionesProyectiles() {
                     int damage = it->explode();
                     e->take_damage(damage);
                     if (e->is_dead()) {
-                        it->get_shooter()->add_points(e->get_points());
+                        for (auto &p : players) {
+                            if (p->get_id() == it->get_shooter_id()) {
+                                p->add_points(e->get_points());
+                                break;
+                            }
+                        }
+                        if (e->check_ammo_drop()) {
+                            e->drop_ammo();
+                        }
                     }
                     break; // pasa a la siguiente coordenada
                 }
@@ -138,12 +146,13 @@ void GameMundo::chequearColisionesEnemies() {
         std::vector<Coordenada> areaObj = e->coordenadasOcupadas();
         for (Coordenada &c : areaObj) {
             for (auto &p : players) {
-                if (p->isInside(c)) {
+                if (p->isInside(c) && p->can_be_damaged() && !e->is_dead()) {
                     e->attack();
                     int damage = e->get_damage();
                     p->take_damage(damage);
                     break;
                 }
+                
             }
         }
     }
@@ -166,6 +175,8 @@ void GameMundo::update() {
     }
     for (auto &e : enemigos) {
         e->walk();
+        e->fall();
+        e->update_respawn_time();
     }
     //manejarComandos();
 }

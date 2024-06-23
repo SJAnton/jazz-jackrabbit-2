@@ -35,10 +35,11 @@ void ObjectProjectile::init(int damage_p1, int damage_p2, int damage_p3, int dam
 }
 
 
-ObjectProjectile::ObjectProjectile(TipoArma tipo, const Direcciones &dir, const Coordenada &pos,
-                                    std::shared_ptr<ObjectPlayer> &shooter) :
+ObjectProjectile::ObjectProjectile(
+    TipoArma tipo, const Direcciones &dir, const Coordenada &pos, int shooter_id
+) :
     GameObject(WIDTH_PROJECTILE, HEIGHT_PROJECTILE),
-    tipoProyectil(tipo), direction(dir), shooter(shooter)
+    tipoProyectil(tipo), direction(dir), shooter_id(shooter_id)
 {
     type = TypeGameObject::Proyectil;
 
@@ -112,8 +113,8 @@ bool ObjectProjectile::is_exploded() {
     return exploded;
 }
 
-std::shared_ptr<ObjectPlayer> ObjectProjectile::get_shooter() {
-    return shooter;
+int ObjectProjectile::get_shooter_id() {
+    return shooter_id;
 }
 
 InfoProyectil ObjectProjectile::getInfo() {

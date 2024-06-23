@@ -7,12 +7,18 @@ ObjectPlayer:
   speed_jump: 10
   speed_fall: 15
 
+Weapon:
+  delay_p1: 7
+  delay_p2: 20
+  delay_p3: 20
+  delay_p4: 20
+
 ObjectProjectile:
   damage_p1: 1
   damage_p2: 2
   damage_p3: 3
   damage_p4: 4
-  speed_p1: 11
+  speed_p1: 25
   speed_p2: 12
   speed_p3: 13
   speed_p4: 14
@@ -32,7 +38,7 @@ EnemyBat:
   points: 1
   respawn_time: 10 # Segundos
   dropping_ammo_chance: 10
-  movement_range: 15
+  movement_range: 250
 
 EnemyDiablo:
   damage: 1
@@ -41,7 +47,7 @@ EnemyDiablo:
   points: 1
   respawn_time: 10
   dropping_ammo_chance: 10
-  movement_range: 15
+  movement_range: 250
 
 EnemyRat:
   damage: 1
@@ -50,7 +56,7 @@ EnemyRat:
   points: 1
   respawn_time: 10
   dropping_ammo_chance: 10
-  movement_range: 15
+  movement_range: 250
 
 Game:
   time: 250

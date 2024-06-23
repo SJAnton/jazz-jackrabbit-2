@@ -95,7 +95,6 @@ bool ObjectPlayer::move_y(int speed) {
         if (GameMundo::casilleros[y_up][position.x].estaBloqueado() || 
             GameMundo::casilleros[y_up][pos_x_max].estaBloqueado()) { 
             //Colison con pared arriba
-            std::cout << "pared a arriba" << std::endl;
             is_jumping = false;
             falling = true;
             timer_jump = 0; //reseteo el timer a 0
@@ -167,7 +166,6 @@ void ObjectPlayer::run(Direcciones direccion) {
 }
 
 void ObjectPlayer::jump(Direcciones direccion) {
-
     if (!tocandoSuelo || !alive || is_jumping || isDoingSpecialAttack) { //si estoy en el aire, haciendo el ataque especial o muerto no puedo saltar
         return;
     }
@@ -176,6 +174,21 @@ void ObjectPlayer::jump(Direcciones direccion) {
     tocandoSuelo = false;
     direction = direccion;
     updateJump();
+}
+
+void ObjectPlayer::updateShootingDelay() {
+    if (weapon.canShoot()) {
+        return;
+    }
+    weapon.updateDelay();
+}
+
+void ObjectPlayer::updateDamageWaitTime() {
+    damage_wait_time--;
+    if (damage_wait_time <= 0) {
+        damage_wait_time = damage_wait_buffer;
+        can_take_damage = true;
+    }
 }
 
 ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
@@ -187,10 +200,8 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
     Coordenada pos(x_left - 8, pos_y_max - height/2);
     if (dir == Right)
         pos = Coordenada(pos_x_max+4, pos_y_max - height/2);
-    
-    std::shared_ptr<ObjectPlayer> sft = shared_from_this();
 
-    return weapon.shoot(direction, pos, sft);
+    return weapon.shoot(direction, pos, id);
     /*
         if (dir == Left) {
             Coordenada pos(x_left - 8, pos_y_max - height/2); // ajustar visualmente
@@ -278,6 +289,7 @@ void ObjectPlayer::add_hearts(int pts_vidas) {
 
 void ObjectPlayer::take_damage(int &damage) {
     estado = EstadosPlayer::Damaged;
+    can_take_damage = false;
     health -= damage;
     if (health <= 0) {
         death();

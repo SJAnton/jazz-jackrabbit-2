@@ -3,12 +3,13 @@
 
 #include <map>
 
-#include "../common_src/queue.h"
-#include "../common_src/thread.h"
 #include "server_sender.h"
 #include "server_receiver.h"
 #include "server_queue_list.h"
 #include "server_gameloop_list.h"
+#include "game/Map/game_map_reader.h"
+#include "../common_src/queue.h"
+#include "../common_src/thread.h"
 #include "../common_src/socket.h"
 #include "../common_src/liberror.h"
 #include "../common_src/info_juego.h"
@@ -26,6 +27,8 @@ class Client : public Thread {
         atomic<int> &gmlp_id;
 
         GameloopList &gameloops;
+
+        GameMapReader &map_reader;
 
         ServerGameloop *gameLoop;
 
@@ -52,7 +55,8 @@ class Client : public Thread {
         TipoPlayer select_character(uint8_t character);
 
     public:
-        Client(Socket &&sk, int id, int game_time, atomic<int> &gmlp_id, GameloopList &gameloops);
+        Client(Socket &&sk, int id, int game_time, atomic<int> &gmlp_id,
+                GameloopList &gameloops, GameMapReader &map_reader);
         
         void run() override;
 

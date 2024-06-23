@@ -5,6 +5,9 @@ PlayerJazz::PlayerJazz(int id) : ObjectPlayer(id, TipoPlayer::Jazz) {
 }
 
 void PlayerJazz::specialAttack() {
+    if (is_dead() || is_intoxicated() || isJumping() || is_falling()) {
+        return;
+    }
     isDoingSpecialAttack = true;
     tocandoSuelo = false;
     estado = EstadosPlayer::SpecialAttack;

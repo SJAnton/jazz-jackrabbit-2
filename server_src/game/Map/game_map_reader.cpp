@@ -4,7 +4,7 @@
 #include <filesystem>
 
 #define CURRENT_FOLDER_LENGTH 6 // "/build"
-#define LEVELS_FOLDER "/levels"
+#define LEVELS_FOLDER "/game/Map/levels"
 
 #define SPAWN_POINT_KEY "SpawnPoint"
 #define EXIT_POINT_KEY "ExitPoint"
