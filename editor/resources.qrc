@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sprites/tile000.png</file>
+        <file>sprites/tile003.png</file>
+        <file>sprites/tile001.png</file>
+        <file>sprites/tile013.png</file>
+        <file>sprites/tile008.png</file>
+        <file>sprites/tile009.png</file>
+        <file>sprites/erase.png</file>
+        <file>sprites/put.png</file>
+        <file>sprites/gold_coin.png</file>
+        <file>sprites/silver_coin.png</file>
+        <file>sprites/red_gem.png</file>
+        <file>sprites/rat.png</file>
+        <file>sprites/bat.png</file>
+        <file>sprites/diablo.png</file>
+        <file>sprites/spaz.png</file>
+        <file>sprites/save.png</file>
+    </qresource>
+</RCC>

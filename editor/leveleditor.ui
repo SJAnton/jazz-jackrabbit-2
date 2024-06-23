@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LevelEditor</class>
+ <widget class="QMainWindow" name="LevelEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>LevelEditor</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="CustomGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>931</width>
+      <height>571</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="modeList">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>10</y>
+      <width>91</width>
+      <height>301</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>580</y>
+      <width>1031</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="Terrain">
+     <attribute name="title">
+      <string>Terrain</string>
+     </attribute>
+     <widget class="QListWidget" name="terrainListWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="flow">
+       <enum>QListView::LeftToRight</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Objects">
+     <attribute name="title">
+      <string>Objects</string>
+     </attribute>
+     <widget class="QListWidget" name="objectsListWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="flow">
+       <enum>QListView::LeftToRight</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="PlayerEnemies">
+     <attribute name="title">
+      <string>Player / Enemies</string>
+     </attribute>
+     <widget class="QListWidget" name="playerEnemiesListWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1031</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="flow">
+       <enum>QListView::LeftToRight</enum>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QListWidget" name="fileList">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>320</y>
+      <width>91</width>
+      <height>261</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1080</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>customgraphicsview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
