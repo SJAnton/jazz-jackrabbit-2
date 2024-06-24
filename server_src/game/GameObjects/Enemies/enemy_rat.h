@@ -26,6 +26,11 @@ class EnemyRat : public ObjectEnemy {
                         default_health, default_speed, default_points, default_respawn_time,
                             default_ammo_drop_chance, default_movement_range) {}
 
+        EnemyRat(
+                TipoEnemy tipo, int width, int height, int damage, int health, int speed,
+                int points, int respawn_time, int ammo_drop_chance, int movement_range
+        );
+
         static void init(int damage, int health, int speed, int points,
                             int respawn_time, int ammo_drop_chance, int movement_range);
 };

@@ -24,6 +24,11 @@ class EnemyDiablo : public ObjectEnemy {
     public:
         EnemyDiablo();
 
+        EnemyDiablo(
+            TipoEnemy tipo, int width, int height, int damage, int health, int speed,
+            int points, int respawn_time, int ammo_drop_chance, int movement_range
+        );
+
         static void init(int damage, int health, int speed, int points,
                             int respawn_time, int ammo_drop_chance, int movement_range);
 };

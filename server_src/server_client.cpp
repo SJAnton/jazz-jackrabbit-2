@@ -67,8 +67,7 @@ void Client::select_game(uint8_t game, const TipoPlayer &type_player, Level &lev
         // Creo un Nuevo Gameloop y el receiver utilizará la queue de aquí
         int id_game = gmlp_id++;
 
-        //gameLoop = new ServerGameloop(id_game, id, game_time, type_player, recv_q, &sndr_q, level);
-        gameLoop = new ServerGameloop(id_game, id, game_time, type_player, recv_q, &sndr_q);
+        gameLoop = new ServerGameloop(id_game, id, game_time, type_player, recv_q, &sndr_q, level);
 
         receiver = std::make_unique<ServerReceiver>(protocol, recv_q, wc);
 
@@ -82,8 +81,7 @@ void Client::select_game(uint8_t game, const TipoPlayer &type_player, Level &lev
             std::runtime_error("Game not found");
         }
         receiver = std::make_unique<ServerReceiver>(protocol, gameLoop->recv_q, wc);
-        gameLoop->addPlayer(id, type_player, &sndr_q);
-        //gameLoop->addPlayer(id, type_player, &sndr_q, Coordenada(level.spawn_x, level.spawn_y));
+        gameLoop->addPlayer(id, type_player, &sndr_q, Coordenada(level.spawn_x, level.spawn_y));
         std::cout << "Se unió el cliente "<< id << " al gameloop " << gameLoop->getId() << std::endl;
     }
 }

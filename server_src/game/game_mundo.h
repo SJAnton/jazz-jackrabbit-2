@@ -64,10 +64,6 @@ public:
     static std::vector<std::vector<Casillero>> casilleros;
 
 public:
-    GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
-              std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,
-              std::vector<ObjectCollected> &itemsRecolectables);
-
     //Recibe el terreno ya creado
     GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
               std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,
@@ -86,8 +82,6 @@ public:
     std::vector<InfoProyectil> getInfoProyectiles();
 
 private:
-    //void cargarMapa(const Terreno &terreno);
-
     //bloquea todos los casilleros que pertenecen al tile
     void bloquearCasilleros(const CoordenadaBloque &bloque);
 

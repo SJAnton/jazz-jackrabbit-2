@@ -28,10 +28,13 @@ void EnemyBat::init(int damage, int health, int speed, int points, int respawn_t
 EnemyBat::EnemyBat() : 
     ObjectEnemy(TipoEnemy::Bat, WIDTH_BAT, HEIGHT_BAT, default_damage,
                 default_health, default_speed, default_points, default_respawn_time,
-                default_ammo_drop_chance, default_movement_range) 
-{
-    std::cout << "creo un bat" << std::endl;
-}
+                default_ammo_drop_chance, default_movement_range) {}
+
+EnemyBat::EnemyBat(
+    TipoEnemy tipo, int width, int height, int damage, int health, int speed,
+    int points, int respawn_time, int ammo_drop_chance, int movement_range
+) : ObjectEnemy(tipo, width, height, damage, health, speed, points, respawn_time,
+                ammo_drop_chance, movement_range) {};
 
 void EnemyBat::move_x() {
     // El bat no se detiene si no tiene un piso abajo

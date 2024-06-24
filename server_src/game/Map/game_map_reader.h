@@ -7,6 +7,9 @@
 #include <yaml-cpp/yaml.h>
 
 #include "../../../common_src/tile_map.h"
+#include "../GameObjects/Enemies/enemy_bat.h"
+#include "../GameObjects/Enemies/enemy_diablo.h"
+#include "../GameObjects/Enemies/enemy_rat.h"
 #include "../GameObjects/Enemies/game_object_enemy.h"
 
 struct Level {

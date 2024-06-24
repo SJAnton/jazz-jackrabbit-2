@@ -58,8 +58,9 @@ class ObjectPlayer : public GameObject {
         bool is_jumping = false;
         bool tocandoSuelo = false;
         bool isDoingSpecialAttack = false;
-
         bool can_take_damage = true;
+
+        int health_buffer = 0;
         int damage_wait_time = DAMAGE_WAIT_TIME * ITR_PER_SEC;
         int damage_wait_buffer = DAMAGE_WAIT_TIME * ITR_PER_SEC;
 
