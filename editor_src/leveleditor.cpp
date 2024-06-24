@@ -27,6 +27,20 @@ std::unordered_map<QString, int> LevelEditor::initializeIds() { //Diccionario de
         {"Floor Right Corner", 1},
         {"Underground 1", 8},
         {"Underground 2", 9},
+        
+        {"Beach Pillar Base 1", 20},
+        {"Beach Pillar Base 2", 21},
+        {"Beach Pillar Base 3", 22},
+        {"Beach Pillar Top 1", 23},
+        {"Beach Pillar Top 2", 24},
+        {"Beach Pillar Top 3", 25},
+        {"Beach Background 1", 26},
+        {"Beach Background 2", 27},
+        {"Beach Background 3", 28},
+        {"Beach Base 1", 29},
+        {"Beach Base 2", 30},
+        {"Beach Floor", 31},
+        {"Beach Underground", 32},
 
         {"Gold Coin", 0},
         {"Silver Coin", 1},
@@ -61,17 +75,34 @@ LevelEditor::LevelEditor(QWidget *parent, int width, int height) :
     scene = new QGraphicsScene(0, 0, sceneWidth, sceneHeight, this);
     ui->graphicsView->setScene(scene);
 
+    //Terreno castillo
     addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile013.png", "Floor", QSize(32, 32));
     addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile000.png", "Floor Left Corner", QSize(32, 32));
     addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile001.png", "Floor Right Corner", QSize(32, 32));
     addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile008.png", "Underground 1", QSize(32, 32));
     addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile009.png", "Underground 2", QSize(32, 32));
     addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile003.png", "Background", QSize(32, 32));
+    //Terreno playa
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile020.png", "Beach Pillar Base 1", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile021.png", "Beach Pillar Base 2", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile022.png", "Beach Pillar Base 3", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile023.png", "Beach Pillar Top 1", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile024.png", "Beach Pillar Top 2", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile025.png", "Beach Pillar Top 3", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile026.png", "Beach Background 1", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile027.png", "Beach Background 2", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile028.png", "Beach Background 3", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile029.png", "Beach Base 1", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile030.png", "Beach Base 2", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile031.png", "Beach Floor", QSize(32, 32));
+    addSpriteItemToListWidget(ui->terrainListWidget, ":/sprites/tile032.png", "Beach Underground", QSize(32, 32));
 
+    //Objetos
     addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/gold_coin.png", "Gold Coin", QSize(23, 23));
     addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/silver_coin.png", "Silver Coin", QSize(23, 23));
     addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/red_gem.png", "Red Gem", QSize(25, 26));
 
+    //Spawnpoint y enemigos
     addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/spaz.png", "Spaz", QSize(45, 37));
     addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/rat.png", "Rat", QSize(67, 23));
     addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/bat.png", "Bat", QSize(21, 29));
