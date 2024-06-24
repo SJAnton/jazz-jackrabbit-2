@@ -45,7 +45,6 @@ protected:
 
 public:
     GameObject(unsigned int width, unsigned int height);
-
     
     Coordenada getPosition();
 

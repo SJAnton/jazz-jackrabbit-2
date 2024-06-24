@@ -90,14 +90,14 @@ Game::Game() :
 
 Game::Game(Level &level) : ch_map(std::make_shared<PlayerMap>()), 
                            gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables, level) {
-    std::vector<std::shared_ptr<ObjectEnemy>> &enemies = level.enemies;
-    std::vector<std::shared_ptr<ObjectCollected>> &objects = level.objects;
-    for (auto &enemy : enemies) {
+    std::vector<std::shared_ptr<ObjectEnemy>> &levelEnemies = level.enemies;
+    std::vector<ObjectCollected> &levelObjects = level.objects;
+    for (auto &enemy : levelEnemies) {
         // Posición seteada en el reader
         enemies.push_back(enemy);
     }
-    for (auto &object : objects) {
-        objects.push_back(object);
+    for (auto &object : levelObjects) {
+        itemsRecolectables.push_back(object);
     }
 };
 

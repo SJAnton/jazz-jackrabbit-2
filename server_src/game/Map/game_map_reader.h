@@ -16,11 +16,10 @@ struct Level {
     int tile_map_width;
     TileMap tile_map;
     std::vector<std::shared_ptr<ObjectEnemy>> enemies;
-    std::vector<std::shared_ptr<ObjectCollected>> objects;
+    std::vector<ObjectCollected> objects;
 
     Level(int spawn_x, int spawn_y, int height, int width, TileMap &tile_map,
-          std::vector<std::shared_ptr<ObjectEnemy>> enemies,
-          std::vector<std::shared_ptr<ObjectCollected>> objects) : 
+          std::vector<std::shared_ptr<ObjectEnemy>> enemies, std::vector<ObjectCollected> objects) : 
           spawn_x(spawn_x), spawn_y(spawn_y), tile_map_height(height),
           tile_map_width(width), tile_map(tile_map), enemies(enemies), objects(objects) {};
 };

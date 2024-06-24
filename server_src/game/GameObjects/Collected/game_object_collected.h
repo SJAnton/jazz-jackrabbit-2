@@ -33,7 +33,7 @@ private:
 public:
     static void init(int pts_diamante, int pts_moneda, int pts_municion, int pts_zanahoria, int pts_zanahoria_podrida, int proba_podrida);
     ObjectCollected(const TipoRecolectable &tipo);
-    
+
     // Devuelve los puntos que entrega al jugador que lo recolecta
     int recolectar();
     bool isCollected();

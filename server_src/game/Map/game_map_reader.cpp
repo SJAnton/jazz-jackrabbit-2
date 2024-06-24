@@ -72,7 +72,7 @@ std::map<uint8_t, Level> GameMapReader::read_levels() {
         int layers_width = 0;
         std::vector<std::vector<int>> matrix;
         std::vector<std::shared_ptr<ObjectEnemy>> enemies;
-        std::vector<std::shared_ptr<ObjectCollected>> objects;
+        std::vector<ObjectCollected> objects;
         TileMap tile_map;
 
         for (YAML::iterator it = node.begin(); it != node.end(); ++it) {
@@ -117,8 +117,8 @@ std::map<uint8_t, Level> GameMapReader::read_levels() {
                     int y = object_node[Y_KEY].as<int>();
                     TipoRecolectable type = id_to_object_type(object_node[OBJECT_ID_KEY].as<int>());
 
-                    std::shared_ptr<ObjectCollected> object = std::make_shared<ObjectCollected>(type);
-                    object->setPosition(Coordenada(x, y));
+                    ObjectCollected object = ObjectCollected(type);
+                    object.setPosition(Coordenada(x, y));
                     objects.push_back(object);
                 }
             }
