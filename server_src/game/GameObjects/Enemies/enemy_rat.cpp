@@ -23,4 +23,8 @@ void EnemyRat::init(int damage, int health, int speed, int points, int respawn_t
     }
 }
 
-// Implementación de otros miembros de la clase
+EnemyRat::EnemyRat(
+    TipoEnemy tipo, int width, int height, int damage, int health, int speed,
+    int points, int respawn_time, int ammo_drop_chance, int movement_range
+) : ObjectEnemy(tipo, width, height, damage, health, speed, points, respawn_time,
+                ammo_drop_chance, movement_range) {};

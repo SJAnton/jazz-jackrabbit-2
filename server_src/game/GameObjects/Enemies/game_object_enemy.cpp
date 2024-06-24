@@ -16,11 +16,11 @@ ObjectEnemy::ObjectEnemy(TipoEnemy tipo, int width, int height,  int damage, int
                                     health(health), speed(speed), points(points),
                                     respawn_time(respawn_time * ITR_PER_SEC),
                                     ammo_drop_chance(ammo_drop_chance),
-                                    movement_range(movement_range) 
+                                    movement_range(movement_range)
 {
     type = TypeGameObject::Enemy;
     health_buffer = health;
-    respawn_time_buffer = respawn_time;
+    respawn_time_buffer = respawn_time * ITR_PER_SEC;
     movement_range_buffer = movement_range;
 }
 
@@ -112,6 +112,7 @@ void ObjectEnemy::update_respawn_time() {
         return;
     }
     respawn_time--;
+    //std::cout << respawn_time << std::endl;
     if (respawn_time <= 0) {
         respawn_time = respawn_time_buffer;
         revive();
@@ -135,9 +136,9 @@ void ObjectEnemy::take_damage(int &damage) {
     if (health <= 0){
         is_alive = false;
         status = EstadosEnemy::Death;
-    } else {
-        status = EstadosEnemy::Damaged;
-    }
+        return;
+    } 
+    status = EstadosEnemy::Damaged;
 }
 
 bool ObjectEnemy::check_ammo_drop() {

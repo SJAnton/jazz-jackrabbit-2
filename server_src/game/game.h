@@ -44,8 +44,6 @@ class Game {
         int timeJump = 7; //   (ajustar segun la vel de salto y visualmente)
 
     public:
-        Game();
-
         Game(Level &level);
 
         void update();

@@ -91,7 +91,7 @@ std::map<uint8_t, Level> GameMapReader::read_levels() {
                 matrix.resize(layers_height, std::vector<int>(layers_width));
                 for (int i = 0; i < layers_height; ++i) {
                     for (int j = 0; j < layers_width; ++j) {
-                        matrix[i][j] = tm[i][j].as<int>();
+                        matrix[i][j] = tm[j][i].as<int>();
                     }
                 }
                 tile_map = TileMap(matrix);
@@ -134,19 +134,19 @@ std::map<uint8_t, Level> GameMapReader::read_levels() {
 std::shared_ptr<ObjectEnemy> GameMapReader::initialize_enemy(TipoEnemy &type) {
     switch (type) {
         case TipoEnemy::Bat:
-            return std::make_shared<ObjectEnemy>(
+            return std::make_shared<EnemyBat>(
                 TipoEnemy::Bat, WIDTH_BAT, HEIGHT_BAT, data[BAT_CODE][0],
                 data[BAT_CODE][1], data[BAT_CODE][2], data[BAT_CODE][3],
                 data[BAT_CODE][4], data[BAT_CODE][5],data[BAT_CODE][6]
             );
         case TipoEnemy::Diablo:
-            return std::make_shared<ObjectEnemy>(
+            return std::make_shared<EnemyDiablo>(
                 TipoEnemy::Diablo, WIDTH_DIABLO, HEIGHT_DIABLO, data[DIABLO_CODE][0],
                 data[DIABLO_CODE][1], data[DIABLO_CODE][2], data[DIABLO_CODE][3],
                 data[DIABLO_CODE][4], data[DIABLO_CODE][5],data[DIABLO_CODE][6]
             );
         case TipoEnemy::Rat:
-            return std::make_shared<ObjectEnemy>(
+            return std::make_shared<EnemyRat>(
                 TipoEnemy::Rat, WIDTH_RAT, HEIGHT_RAT, data[RAT_CODE][0],
                 data[RAT_CODE][1], data[RAT_CODE][2], data[RAT_CODE][3],
                 data[RAT_CODE][4], data[RAT_CODE][5],data[RAT_CODE][6]

@@ -32,9 +32,12 @@ ObjectPlayer::ObjectPlayer(int id, const TipoPlayer &tipo) :
     GameObject(WIDTH_PLAYER, HEIGHT_PLAYER),
     id(id), 
     tipoPlayer(tipo),
-    health(defaultHealth)
+    health(defaultHealth),
+    health_buffer(health)
     //weapon(Tipo_1)   
 {
+    std::cout << health_buffer << std::endl;
+
     type = TypeGameObject::Player;
     initialize_weapons();
     weapon = &weapons[weaponIndex];
@@ -321,7 +324,7 @@ void ObjectPlayer::death() {
     estado = EstadosPlayer::Dying;
 }
 void ObjectPlayer::revive() {
-    health = 10;
+    health = health_buffer;
     alive = true;
     estado = EstadosPlayer::Inactive;
 }
@@ -338,6 +341,19 @@ int ObjectPlayer::getTimeDying() {
     case Spaz: return TIME_DYING_SPAZ;
     default: 
         return TIME_DYING_LORI;
+    }
+}
+
+int ObjectPlayer::getSpecialAttackDamage() {
+    switch (tipoPlayer) {
+    case Jazz:
+        return 100;
+    case Lori: 
+        return 100;
+    case Spaz: 
+        return 100;
+    default: 
+        return 0;
     }
 }
 

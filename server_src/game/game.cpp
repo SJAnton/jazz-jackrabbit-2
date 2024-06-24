@@ -30,8 +30,8 @@ void Game::init(std::map<std::string, std::vector<int>> &data) {
     std::vector<int> &rat_data = data[RAT_CODE];
 
     ObjectPlayer::init(
-        player_data[0], 3/*player_data[1]*/ , player_data[1], player_data[2],
-        player_data[3], player_data[4], player_data[5]
+        player_data[0], player_data[1], player_data[2], player_data[3],
+        player_data[4], player_data[5], player_data[6]
     );
 
     ObjectProjectile::init(
@@ -58,34 +58,6 @@ void Game::init(std::map<std::string, std::vector<int>> &data) {
     EnemyRat::init(
         rat_data[0], rat_data[1], rat_data[2], rat_data[3], rat_data[4], rat_data[5], rat_data[6]
     );
-}
-
-
-Game::Game() : 
-    ch_map(std::make_shared<PlayerMap>()), 
-    gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables)
-{
-    // TODO: borrar al debuggear carga de mapas
-
-    // RECIBIR POR PARAMAETRO EL TILEMAP Y LOS POINTS DE SPAWN !!!
-    // *******************************************************
-
-    //Hardcodeo 2 monedas (esta info debo recibirla en init y guardarmela en una variable estatica privada)
-    itemsRecolectables.push_back(ObjectCollected(Moneda));
-    itemsRecolectables.back().setPosition(Coordenada(250, 225));
-
-    itemsRecolectables.push_back(ObjectCollected(Diamante));
-    itemsRecolectables.back().setPosition(Coordenada(350, 220));
-
-    //hardcodeo unos enemigos...
-    enemies.push_back(std::make_shared<EnemyBat>());
-    enemies.back()->setPosition(Coordenada(450, 220));
-    
-    enemies.push_back(std::make_shared<EnemyDiablo>());
-    enemies.back()->setPosition(Coordenada(100, 450));
-
-    enemies.push_back(std::make_shared<EnemyRat>());
-    enemies.back()->setPosition(Coordenada(650, 490));
 }
 
 Game::Game(Level &level) : ch_map(std::make_shared<PlayerMap>()), 

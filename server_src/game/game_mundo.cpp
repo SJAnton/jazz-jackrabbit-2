@@ -4,34 +4,10 @@
 #include "game_casillero.h"
 #include "game_coordenada.h"
 
-
 #define FILAS 30
 #define COLUMNAS 30
 
 std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(30 * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(30 * MULTIPLCADOR_CASILLERO));
-
-//constructores
-GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
-              std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,
-              std::vector<ObjectCollected> &itemsRecolectables) :
-    filas(FILAS * MULTIPLCADOR_CASILLERO), 
-    columnas(COLUMNAS * MULTIPLCADOR_CASILLERO), 
-    players(players), enemigos(enemigos), 
-    itemsRecolectables(itemsRecolectables)
-{
-    // TODO: borrar al debuggear carga de mapas
-    TileMap tileMap =  TileMap::getLevel_1();
-    for (int i = 0; i < FILAS; i++) {
-        for (int j = 0; j < COLUMNAS; ++j) { //Cargo los casilleros solidos
-            if (tileMap.terreno[i][j].is_solid()) {
-                CoordenadaBloque coordenada(j, i); //bloqueo las coordenadas correspondientes a un tile solido
-                bloquearCasilleros(coordenada);
-            }
-            
-        }
-    }
-    
-}
 
 GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
               std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,
@@ -141,14 +117,18 @@ void GameMundo::chequearColisionesProyectiles() {
                 break; // Pasa al siguiente proyectil
             }
             for (auto &p : players) { // por cada player
-                if (p->isInside(c)) {
+                if (p->is_dead()) {
+                    continue;
+                } else if (p->isInside(c)) {
                     int damage = it->explode();
                     p->take_damage(damage);
                     break; // pasa a la siguiente coordenada
                 }
             }
             for (auto &e : enemigos) { // por cada enemigo
-                if (e->isInside(c)) {
+                if (e->is_dead()) {
+                    continue;
+                } else if (e->isInside(c)) {
                     int damage = it->explode();
                     e->take_damage(damage);
                     if (e->is_dead()) {
@@ -177,13 +157,18 @@ void GameMundo::chequearColisionesEnemies() {
         std::vector<Coordenada> areaObj = e->coordenadasOcupadas();
         for (Coordenada &c : areaObj) {
             for (auto &p : players) {
-                if (p->isInside(c) && p->can_be_damaged() && !e->is_dead()) {
+                if (!p->isInside(c) || e->is_dead()) {
+                    continue;
+                } else if (p->getEstado() == EstadosPlayer::SpecialAttack) {
+                    int damage = p->getSpecialAttackDamage();
+                    e->take_damage(damage);
+                    break;
+                } else if (p->can_be_damaged() && !e->is_dead()) {
                     e->attack();
                     int damage = e->get_damage();
                     p->take_damage(damage);
                     break;
                 }
-                
             }
         }
     }
