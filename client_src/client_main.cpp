@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
     ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
     InterfazGrafica interfaz(cliente.queueReceptora, cliente, musicPlayer);
     
-    musicPlayer.play(MENU_MUSIC_PATH);
+    musicPlayer.play_music(MENU_MUSIC_PATH);
 
     while (interfaz.estaAbierta()) // hacer a la interfaz un thread y hacer interfaz.start(). No hace falta un hilo renderer
     {

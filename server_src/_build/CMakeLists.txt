@@ -60,7 +60,6 @@ set(SOURCE_FILES
     ../game/GameObjects/Enemies/enemy_rat.cpp
 
     # Map
-    ../game/Map/game_map.cpp
     ../game/Map/game_map_reader.cpp
 
     # Archivos server

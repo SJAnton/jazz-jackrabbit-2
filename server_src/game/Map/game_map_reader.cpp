@@ -21,23 +21,20 @@
 #define TILES_NUMBER_KEY "tiles_num"
 #define LAYER_HEIGHT_KEY "height"
 #define LAYER_WIDTH_KEY "width"
-#define TYPE_KEY "type"
+#define ENEMY_ID_KEY "enemy_id"
+#define OBJECT_ID_KEY "object_id"
 
 #define BAT_CODE "EnemyBat"
 #define DIABLO_CODE "EnemyDiablo"
 #define RAT_CODE "EnemyRat"
 
-#define BAT_STR "Bat"
-#define DIABLO_STR "Diablo"
-#define RAT_STR "Rat"
-#define MONEDA_STR "Moneda"
-#define DIAMANTE_STR "Diamante"
-#define ZANAHORIA_STR "Zanahoria"
-#define MUNICION_STR "Municion"
-#define MUNICION_1_STR "Municion1"
-#define MUNICION_2_STR "Municion2"
-#define MUNICION_3_STR "Municion3"
-#define MUNICION_4_STR "Municion4"
+#define BAT_ID 1
+#define DIABLO_ID 2
+#define RAT_ID 3
+
+#define COIN_ID 0
+#define COIN_ID2 1
+#define GEM_ID 2
 
 // c_cpp_properties.json --> cppStandard: "c++17"
 namespace fs = std::filesystem;
@@ -56,9 +53,9 @@ std::vector<std::string> GameMapReader::get_levels() {
     return levels_path;
 }
 
-std::map<uint8_t, GameMap> GameMapReader::read_levels() {
+std::map<uint8_t, Level> GameMapReader::read_levels() {
     std::vector<std::string> levels_path = get_levels();
-    std::map<uint8_t, GameMap> levels;
+    std::map<uint8_t, Level> levels;
     uint8_t level_number = 0;
 
     for (std::string level_path : levels_path) {
@@ -69,45 +66,43 @@ std::map<uint8_t, GameMap> GameMapReader::read_levels() {
         }
         YAML::Node node = YAML::Load(file);
 
-        uint8_t spawn_x = 0;
-        uint8_t spawn_y = 0;
-        int tiles_num = 0;
+        int spawn_x = 0;
+        int spawn_y = 0;
         int layers_height = 0;
         int layers_width = 0;
-        std::vector<std::vector<int>> tile_map;
+        std::vector<std::vector<int>> matrix;
         std::vector<std::shared_ptr<ObjectEnemy>> enemies;
         std::vector<std::shared_ptr<ObjectCollected>> objects;
+        TileMap tile_map;
 
         for (YAML::iterator it = node.begin(); it != node.end(); ++it) {
             YAML::Node key = it->first;
             YAML::Node value = it->second;
 
             if (key.as<std::string>() == SPAWN_POINT_KEY) {
-                spawn_x = value[X_KEY].as<uint8_t>();
-                spawn_y = value[Y_KEY].as<uint8_t>();
-
-            } else if (key.as<std::string>() == TILES_NUMBER_KEY) {
-                tiles_num = value[TILES_NUMBER_KEY].as<int>();
+                spawn_x = value[X_KEY].as<int>();
+                spawn_y = value[Y_KEY].as<int>();
 
             } else if (key.as<std::string>() == LAYER_KEY) {
                 layers_height = value[LAYER_HEIGHT_KEY].as<int>();
                 layers_width = value[LAYER_WIDTH_KEY].as<int>();
 
                 YAML::Node tm = value[TILE_MAP_KEY];
-                tile_map.resize(layers_height, std::vector<int>(layers_width));
+                matrix.resize(layers_height, std::vector<int>(layers_width));
                 for (int i = 0; i < layers_height; ++i) {
                     for (int j = 0; j < layers_width; ++j) {
-                        tile_map[i][j] = tm[i][j].as<int>();
+                        matrix[i][j] = tm[i][j].as<int>();
                     }
                 }
+                tile_map = TileMap(matrix);
 
             } else if (key.as<std::string>() == ENEMY_KEY) {
                 for (YAML::const_iterator it = value.begin(); it != value.end(); ++it) {
                     YAML::Node enemy_node = *it;
 
-                    uint8_t x = enemy_node[X_KEY].as<uint8_t>();
-                    uint8_t y = enemy_node[Y_KEY].as<uint8_t>();
-                    TipoEnemy type = str_to_enemy_type(enemy_node[TYPE_KEY].as<std::string>());
+                    int x = enemy_node[X_KEY].as<int>();
+                    int y = enemy_node[Y_KEY].as<int>();
+                    TipoEnemy type = id_to_enemy_type(enemy_node[ENEMY_ID_KEY].as<int>());
 
                     std::shared_ptr<ObjectEnemy> enemy = initialize_enemy(type);
                     enemy->setPosition(Coordenada(x, y));
@@ -118,9 +113,9 @@ std::map<uint8_t, GameMap> GameMapReader::read_levels() {
                 for (YAML::const_iterator it = value.begin(); it != value.end(); ++it) {
                     YAML::Node object_node = *it;
 
-                    uint8_t x = object_node[X_KEY].as<uint8_t>();
-                    uint8_t y = object_node[Y_KEY].as<uint8_t>();
-                    TipoRecolectable type = str_to_object_type(object_node[TYPE_KEY].as<std::string>());
+                    int x = object_node[X_KEY].as<int>();
+                    int y = object_node[Y_KEY].as<int>();
+                    TipoRecolectable type = id_to_object_type(object_node[OBJECT_ID_KEY].as<int>());
 
                     std::shared_ptr<ObjectCollected> object = std::make_shared<ObjectCollected>(type);
                     object->setPosition(Coordenada(x, y));
@@ -128,10 +123,8 @@ std::map<uint8_t, GameMap> GameMapReader::read_levels() {
                 }
             }
         }
-        GameMap level(
-            tiles_num, spawn_x, spawn_y, layers_height,
-            layers_width, tile_map, enemies, objects
-        );
+        Level level(spawn_x, spawn_y, layers_height, layers_width, tile_map, enemies, objects);
+
         levels.emplace(level_number, level);
         level_number++;
     }
@@ -163,34 +156,28 @@ std::shared_ptr<ObjectEnemy> GameMapReader::initialize_enemy(TipoEnemy &type) {
     }
 }
 
-TipoEnemy GameMapReader::str_to_enemy_type(const std::string &type) {
-    if (type == BAT_STR) {
-        return TipoEnemy::Bat;
-    } else if (type == DIABLO_STR) {
-        return TipoEnemy::Diablo;
-    } else if (type == RAT_STR) {
-        return TipoEnemy::Rat;
+TipoEnemy GameMapReader::id_to_enemy_type(int id) {
+    switch (id) {
+        case BAT_ID:
+            return TipoEnemy::Bat;
+        case DIABLO_ID:
+            return TipoEnemy::Diablo;
+        case RAT_ID:
+            return TipoEnemy::Rat;
+        default:
+            throw std::runtime_error("Invalid enemy id");
     }
-    throw std::runtime_error("Invalid enemy type");
 }
 
-TipoRecolectable GameMapReader::str_to_object_type(const std::string &type) {
-    if (type == MONEDA_STR) {
-        return TipoRecolectable::Moneda;
-    } else if (type == DIAMANTE_STR) {
-        return TipoRecolectable::Diamante;
-    } else if (type == ZANAHORIA_STR) {
-        return TipoRecolectable::Zanahoria;
-    } else if (type == MUNICION_STR) {
-        return TipoRecolectable::Municion;
-    } else if (type == MUNICION_1_STR) {
-        return TipoRecolectable::Municion1;
-    } else if (type == MUNICION_2_STR) {
-        return TipoRecolectable::Municion2;
-    } else if (type == MUNICION_3_STR) {
-        return TipoRecolectable::Municion3;
-    } else if (type == MUNICION_4_STR) {
-        return TipoRecolectable::Municion4;
+TipoRecolectable GameMapReader::id_to_object_type(int id) {
+    switch (id) {
+        case COIN_ID:
+            return TipoRecolectable::Moneda;
+        case COIN_ID2:
+            return TipoRecolectable::Moneda;
+        case GEM_ID:
+            return TipoRecolectable::Diamante;
+        default:
+            throw std::runtime_error("Invalid object id");
     }
-    throw std::runtime_error("Invalid object type");
 }

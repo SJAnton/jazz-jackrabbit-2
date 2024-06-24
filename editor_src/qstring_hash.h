@@ -1,11 +1,8 @@
-#ifndef QSTRING_HASH_H
+/*#ifndef QSTRING_HASH_H
 #define QSTRING_HASH_H
 
 #include <QString>
 #include <functional>
-
-#ifndef QT_HASH_QSTRING_DEFINED
-#define QT_HASH_QSTRING_DEFINED
 
 // Especialización de std::hash para QString
 namespace std {
@@ -16,6 +13,5 @@ struct hash<QString> {
     }
 };
 }
-#endif
 
-#endif // QSTRING_HASH_H
+#endif // QSTRING_HASH_H*/

@@ -19,6 +19,7 @@ GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players,
     players(players), enemigos(enemigos), 
     itemsRecolectables(itemsRecolectables)
 {
+    // TODO: borrar al debuggear carga de mapas
     TileMap tileMap =  TileMap::getLevel_1();
     for (int i = 0; i < FILAS; i++) {
         for (int j = 0; j < COLUMNAS; ++j) { //Cargo los casilleros solidos
@@ -31,6 +32,28 @@ GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players,
     }
     
 }
+
+GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
+              std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,
+              std::vector<ObjectCollected> &itemsRecolectables, Level &level) :
+              filas(level.tile_map_height * MULTIPLCADOR_CASILLERO),
+              columnas(level.tile_map_width * MULTIPLCADOR_CASILLERO), players(players),
+              enemigos(enemigos), itemsRecolectables(itemsRecolectables)
+{
+    TileMap &tileMap = level.tile_map;
+    int &tileMapHeight = level.tile_map_height;
+    int &tileMapWidth = level.tile_map_width;
+
+    for (int i = 0; i < tileMapHeight; i++) {
+        for (int j = 0; j < tileMapWidth; ++j) {
+            if (tileMap.terreno[i][j].is_solid()) {
+                CoordenadaBloque coordenada(j, i);
+                bloquearCasilleros(coordenada);
+            }
+        }
+    }
+}
+
 
 void GameMundo::addPlayer(std::shared_ptr<ObjectPlayer> playerPtr, Coordenada position) {
     

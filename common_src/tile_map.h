@@ -33,6 +33,8 @@ public:
     // Constructor a partir de una matriz de id's de tiles
     TileMap(std::vector<std::vector<int>> matriz_ids_tiles);
 
+    TileMap() {};
+
     /**
      * Constructor a partir de una tira de bytes, donde 
      * el primer byte indica la cantidad de columnas y el segundo la cantidad de fiilas

@@ -9,7 +9,9 @@
 
 class MusicPlayer {
     private:
-        Mix_Music *music;
+        Mix_Music *music = nullptr;
+
+        Mix_Chunk *effect = nullptr;
 
     public:
         MusicPlayer(int volume) :  music(nullptr) {
@@ -20,6 +22,9 @@ class MusicPlayer {
             if (music != nullptr) {
                 Mix_FreeMusic(music);
             }
+            if (effect != nullptr) {
+                Mix_FreeChunk(effect);
+            }
             Mix_CloseAudio();
             SDL_Quit();
         };
@@ -28,7 +33,9 @@ class MusicPlayer {
 
         void set_volume(int volume);
 
-        void play(std::string path);
+        void play_music(std::string path);
+
+        void play_effect(std::string path);
 
         void stop();
 };

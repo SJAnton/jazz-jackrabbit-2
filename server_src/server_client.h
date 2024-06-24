@@ -50,7 +50,7 @@ class Client : public Thread {
 
         vector<uint8_t> get_games();
 
-        void select_game(uint8_t game, const TipoPlayer &type_player);
+        void select_game(uint8_t game, const TipoPlayer &type_player, Level &level);
 
         TipoPlayer select_character(uint8_t character);
 

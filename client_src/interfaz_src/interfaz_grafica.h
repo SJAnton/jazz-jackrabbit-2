@@ -51,8 +51,9 @@ private:
     void (InterfazGrafica::*renderizarPantalla)(); //Puntero a funcion renderizar
     void updateCamara(const Position &pos);
     Position posRelativaACamara(const int &x, const int &y);
+    
     MusicPlayer &musicPlayer;
-
+    MusicPlayer effectsPlayer;
 public:
     InterfazGrafica(
         Queue<InfoJuego> &queueReceptora, ClientPlayer &client, MusicPlayer &musicPlayer

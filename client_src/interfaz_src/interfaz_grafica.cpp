@@ -12,6 +12,10 @@
 #define LABRATORY_MUSIC_PATH "../music_src/Music/Labratory.mp3"
 #define MEDIVO_MUSIC_PATH "../music_src/Music/Medivo.mp3"
 
+#define EFFECTS_VOLUME 100
+
+#define SHOOTING_EFFECT_PATH "../music_src/Effects/Shooting.mp3"
+
 SDL_Renderer* InterfazGrafica::renderer = nullptr;
 
 SDL_Rect InterfazGrafica::camara = {0,0,ANCHO_WINDOW, ALTO_WINDOW};
@@ -22,7 +26,8 @@ InterfazGrafica::InterfazGrafica(
     ) : estado(Menu),
         queueReceptora(queueReceptora),
         renderizarPantalla(&InterfazGrafica::renderizarMenu),
-        musicPlayer(musicPlayer)
+        musicPlayer(musicPlayer),
+        effectsPlayer(EFFECTS_VOLUME)
 {
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         window = SDL_CreateWindow("Ventana del juego", SDL_WINDOWPOS_CENTERED, 
@@ -79,7 +84,18 @@ void InterfazGrafica::update(int it) {
         for (int i=0; i< infoJuego.cantidadPlayers(); i++) {
             pos = posRelativaACamara(infoJuego.players[i].pos_x, infoJuego.players[i].pos_y);
             try {
-                spritesManager->updatePlayer(i, infoJuego.players[i].estado, pos, infoJuego.players[i].direccion);
+
+                EstadosPlayer estado = infoJuego.players[i].estado;
+
+                /*switch (estado) {
+                    case EstadosPlayer::Shooting:
+                        effectsPlayer.play_effect(SHOOTING_EFFECT_PATH);
+                        break;
+                    default:
+                        break;
+                }*/
+
+                spritesManager->updatePlayer(i, estado, pos, infoJuego.players[i].direccion);
             } catch (...) { // si lanza una excepcion quiere decir que el player i no existe en spritesManager. Debo agregarlo
                 spritesManager->addPlayer(infoJuego.players[i].tipoPlayer);
                 spritesManager->updatePlayer(i, infoJuego.players[i].estado, pos, infoJuego.players[i].direccion);
@@ -153,7 +169,7 @@ void InterfazGrafica::nextEstado() {
     switch (estado)
     {
     case Menu:
-        musicPlayer.play(SELECTION_MUSIC_PATH);
+        musicPlayer.play_music(SELECTION_MUSIC_PATH);
         estado = SeleccionPartida;
         renderizarPantalla = &InterfazGrafica::renderizarSeleccionPartida;
         break;
@@ -162,7 +178,7 @@ void InterfazGrafica::nextEstado() {
         renderizarPantalla = &InterfazGrafica::renderizarSeleccionPlayer;
         break;
     case SeleccionPlayer:
-        musicPlayer.play(MEDIVO_MUSIC_PATH); // TODO: modificar por música del mapa particular
+        musicPlayer.play_music(MEDIVO_MUSIC_PATH); // TODO: modificar por música del mapa particular
         estado = Juego;
         renderizarPantalla = &InterfazGrafica::renderizarJuego;
         break;

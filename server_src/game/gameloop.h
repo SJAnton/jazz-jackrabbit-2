@@ -28,7 +28,14 @@ class ServerGameloop : public Thread {
         ServerGameloop(int id_game, int id_client, int time_left, TipoPlayer tipoPlayer,
                         std::shared_ptr<Queue<uint8_t>> recv_q, Queue<InfoJuego> *sndr_q);
 
+        ServerGameloop(int id_game, int id_client, int time_left, TipoPlayer tipoPlayer,
+                       std::shared_ptr<Queue<uint8_t>> recv_q, Queue<InfoJuego> *sndr_q,
+                       Level &level);
+
         void addPlayer(int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q);
+        void addPlayer(
+            int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q, Coordenada spawn
+        );
         void removePlayer(int id);
         void send_snapshot();
 

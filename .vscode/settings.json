@@ -63,7 +63,8 @@
         "forward_list": "cpp",
         "unordered_set": "cpp",
         "codecvt": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "qresizeevent": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

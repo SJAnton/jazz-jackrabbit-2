@@ -13,13 +13,29 @@
 ServerGameloop::ServerGameloop(int id_game, int id_client, int time_left, TipoPlayer tipoPlayer, 
                                std::shared_ptr<Queue<uint8_t>> recv_q, Queue<InfoJuego> *sndr_q) :
                                 id(id_game), time_left(time_left * ITR_PER_SEC), recv_q(recv_q) {
+    // TODO: borrar al debuggear carga de mapas
     sndr_queues.push_back(sndr_q, id_client);
     game.add_player(tipoPlayer, id_client);  
 }
 
+ServerGameloop::ServerGameloop(int id_game, int id_client, int time_left, TipoPlayer tipoPlayer,
+                               std::shared_ptr<Queue<uint8_t>> recv_q, Queue<InfoJuego> *sndr_q,
+                               Level &level) : game(level), id(id_game),
+                               time_left(time_left * ITR_PER_SEC), recv_q(recv_q) {    
+    sndr_queues.push_back(sndr_q, id_client);
+    game.add_player(tipoPlayer, id_client, Coordenada(level.spawn_x, level.spawn_y));  
+}
+
 void ServerGameloop::addPlayer(int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q) {
+    // TODO: borrar al debuggear carga de mapas
     sndr_queues.push_back(sndr_q, id_client);
     game.add_player(tipoPlayer, id_client);  
+}
+
+void ServerGameloop::addPlayer(int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q,
+                               Coordenada spawn) {
+    sndr_queues.push_back(sndr_q, id_client);
+    game.add_player(tipoPlayer, id_client, spawn);  
 }
 
 void ServerGameloop::removePlayer(int id) {

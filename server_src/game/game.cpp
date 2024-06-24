@@ -20,14 +20,14 @@
 #define RAT_CODE "EnemyRat"
 
 //Metodo para cargar todas las constantes del config
-void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
-    std::vector<uint8_t> &player_data = data[PLAYER_CODE];
-    std::vector<uint8_t> &projectile_data = data[PROJECTILE_CODE];
-    std::vector<uint8_t> &collected_data = data[COLLECTED_CODE];
-    std::vector<uint8_t> &weapon_data = data[WEAPON_CODE];
-    std::vector<uint8_t> &bat_data = data[BAT_CODE];
-    std::vector<uint8_t> &diablo_data = data[DIABLO_CODE];
-    std::vector<uint8_t> &rat_data = data[RAT_CODE];
+void Game::init(std::map<std::string, std::vector<int>> &data) {
+    std::vector<int> &player_data = data[PLAYER_CODE];
+    std::vector<int> &projectile_data = data[PROJECTILE_CODE];
+    std::vector<int> &collected_data = data[COLLECTED_CODE];
+    std::vector<int> &weapon_data = data[WEAPON_CODE];
+    std::vector<int> &bat_data = data[BAT_CODE];
+    std::vector<int> &diablo_data = data[DIABLO_CODE];
+    std::vector<int> &rat_data = data[RAT_CODE];
 
     ObjectPlayer::init(
         player_data[0], 3/*player_data[1]*/ , player_data[1], player_data[2],
@@ -63,8 +63,9 @@ void Game::init(std::map<std::string, std::vector<uint8_t>> &data) {
 
 Game::Game() : 
     ch_map(std::make_shared<PlayerMap>()), 
-    gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables) 
+    gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables)
 {
+    // TODO: borrar al debuggear carga de mapas
 
     // RECIBIR POR PARAMAETRO EL TILEMAP Y LOS POINTS DE SPAWN !!!
     // *******************************************************
@@ -86,6 +87,19 @@ Game::Game() :
     enemies.push_back(std::make_shared<EnemyRat>());
     enemies.back()->setPosition(Coordenada(650, 490));
 }
+
+Game::Game(Level &level) : ch_map(std::make_shared<PlayerMap>()), 
+                           gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables, level) {
+    std::vector<std::shared_ptr<ObjectEnemy>> &enemies = level.enemies;
+    std::vector<std::shared_ptr<ObjectCollected>> &objects = level.objects;
+    for (auto &enemy : enemies) {
+        // Posición seteada en el reader
+        enemies.push_back(enemy);
+    }
+    for (auto &object : objects) {
+        objects.push_back(object);
+    }
+};
 
 // Se llama en cada iteracion del gameloop.
 void Game::execute_actions(std::vector<uint8_t> &actions) {
@@ -109,7 +123,9 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
     } 
     if (actions.empty()) {
         for (auto &p : players) {
-            if (!p->isJumping() && !p->is_falling()) {
+            if (p->is_dead()) {
+                continue;
+            } else if (!p->isJumping() && !p->is_falling()) {
                 p->idle();
             }
         }
@@ -214,6 +230,7 @@ void Game::update_top_players() {
 }
 
 void Game::add_player(TipoPlayer &player_type, int player_id) {
+    // TODO: borrar al debuggear carga de mapas
     std::shared_ptr<ObjectPlayer> player;
     switch (player_type) {
         case Spaz : 
@@ -231,6 +248,24 @@ void Game::add_player(TipoPlayer &player_type, int player_id) {
     std::cout << "agrego player al juego" << std::endl;
 
     gameMundo.addPlayer(player, Coordenada(70, 50));
+}
+
+void Game::add_player(TipoPlayer &player_type, int player_id, Coordenada spawn) {
+    std::shared_ptr<ObjectPlayer> player;
+    switch (player_type) {
+        case Spaz : 
+            player = std::make_shared<PlayerSpaz>(player_id);
+            break;
+        case Jazz:
+            player = std::make_shared<PlayerJazz>(player_id);
+            break;
+        case Lori:            
+            player = std::make_shared<PlayerLori>(player_id);
+            break;
+    }
+    ch_map->push_back(player_id, player);
+    std::cout << "agrego player al juego" << std::endl;
+    gameMundo.addPlayer(player, spawn);
 }
 
 void Game::remove_player(const int &player_id) {

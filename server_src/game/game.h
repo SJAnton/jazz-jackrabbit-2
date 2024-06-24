@@ -1,11 +1,9 @@
 #ifndef SERVER_GAME_H_
 #define SERVER_GAME_H_
 
-//#include "../../common_src/queue.h"
-//#include "../server_queue_list.h"
-//#include "../server_character_map.h"
-#include "../../common_src/info_juego.h"
 #include "game_mundo.h"
+#include "Map/game_map_reader.h"
+#include "../../common_src/info_juego.h"
 #include "GameObjects/Players/player_Spaz.h"
 #include "GameObjects/Players/player_Lori.h"
 #include "GameObjects/Players/player_Jazz.h"
@@ -22,7 +20,7 @@ class Game {
         */
 
         // Carga los valores del config.yaml
-        static void init(std::map<std::string, std::vector<uint8_t>> &config);
+        static void init(std::map<std::string, std::vector<int>> &config);
         
     private:
         bool _is_running = true;
@@ -48,6 +46,8 @@ class Game {
     public:
         Game();
 
+        Game(Level &level);
+
         void update();
 
         void execute_actions(std::vector<uint8_t> &actions);
@@ -55,6 +55,8 @@ class Game {
         InfoJuego snapshot();
 
         void add_player(TipoPlayer &player_type, int player_id);
+
+        void add_player(TipoPlayer &player_type, int player_id, Coordenada spawn);
 
         void remove_player(const int &player_id);
         

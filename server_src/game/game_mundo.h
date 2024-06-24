@@ -4,6 +4,7 @@
 //#include "game_terreno.h"
 #include "game_casillero.h"
 #include "game_coordenada.h"
+#include "Map/game_map_reader.h"
 #include "GameObjects/game_object.h"
 #include "GameObjects/Players/game_object_player.h"
 #include "GameObjects/Collected/game_object_collected.h"
@@ -68,7 +69,10 @@ public:
               std::vector<ObjectCollected> &itemsRecolectables);
 
     //Recibe el terreno ya creado
-    //GameMundo(Terreno &&terreno);
+    GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
+              std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,
+              std::vector<ObjectCollected> &itemsRecolectables, 
+              Level &level);
 
     void addItem(ObjectCollected &&item, const Coordenada &position);
     void addPlayer(std::shared_ptr<ObjectPlayer> playerPtr, Coordenada position);

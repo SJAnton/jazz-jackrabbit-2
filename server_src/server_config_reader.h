@@ -14,6 +14,6 @@ class ServerConfigReader {
             node = YAML::Load(file);
         };
 
-        std::map<std::string, std::vector<uint8_t>> read();
+        std::map<std::string, std::vector<int>> read();
 };
 #endif

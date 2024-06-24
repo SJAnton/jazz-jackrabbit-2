@@ -21,7 +21,10 @@ void Client::run() {
     reap_dead_gameloops();
 
     vector<uint8_t> msg = get_games(); // Envía las partidas disponibles (TODO: enviar escenarios)
-    std::map<uint8_t, GameMap> levels = map_reader.read_levels();
+    std::map<uint8_t, Level> levels = map_reader.read_levels();
+
+    Level demo_level = levels.at(0);
+
     protocol.send_msg(msg, wc);
 
     // Recibe partida y personaje (TODO: recibir escenario elegido)
@@ -33,7 +36,7 @@ void Client::run() {
         throw runtime_error("Game not found");
     }
     TipoPlayer player_selected = select_character(init_data[1]);
-    select_game(init_data[0], player_selected);
+    select_game(init_data[0], player_selected, demo_level);
 
     protocol.send_id(id, wc); // Envía al cliente su ID
 
@@ -57,13 +60,14 @@ TipoPlayer Client::select_character(uint8_t type_player) {
     }
 }
 
-void Client::select_game(uint8_t game, const TipoPlayer &type_player) {
+void Client::select_game(uint8_t game, const TipoPlayer &type_player, Level &level) {
     if (game == NEW_GAME) {
         // Creo un Nuevo Gameloop y el receiver utilizará la queue de aquí
         int id_game = gmlp_id++;
 
+        //gameLoop = new ServerGameloop(id_game, id, game_time, type_player, recv_q, &sndr_q, level);
         gameLoop = new ServerGameloop(id_game, id, game_time, type_player, recv_q, &sndr_q);
-        
+
         receiver = std::make_unique<ServerReceiver>(protocol, recv_q, wc);
 
         gameloops.push_back(gameLoop); // Agrego el nuevo gameloop a la lista
@@ -77,6 +81,7 @@ void Client::select_game(uint8_t game, const TipoPlayer &type_player) {
         }
         receiver = std::make_unique<ServerReceiver>(protocol, gameLoop->recv_q, wc);
         gameLoop->addPlayer(id, type_player, &sndr_q);
+        //gameLoop->addPlayer(id, type_player, &sndr_q, Coordenada(level.spawn_x, level.spawn_y));
         std::cout << "Se unió el cliente "<< id << " al gameloop " << gameLoop->getId() << std::endl;
     }
 }

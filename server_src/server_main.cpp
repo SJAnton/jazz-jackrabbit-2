@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
     bool was_closed = false;
 
     ServerConfigReader reader(file);
-    std::map<std::string, std::vector<uint8_t>> data = reader.read();
+    std::map<std::string, std::vector<int>> data = reader.read();
     GameMapReader map_reader(data);
 
     Game::init(data);
