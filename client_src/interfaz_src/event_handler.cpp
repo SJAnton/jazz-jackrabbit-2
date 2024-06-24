@@ -120,9 +120,10 @@ void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
                 TipoPlayer personajeSeleccionado = personaje.getTipoPlayer();
                 interfaz.addPlayer(personajeSeleccionado);
                 cliente.entrarPartida(partidaSeleccionada, personajeSeleccionado);
-                cliente.recibirInformacion();
+                TileMap tilemap = cliente.recibirInformacion();
                 //TileMap mapa = cliente.recibirMapa();
-                interfaz.setMapa(cliente.recibirMapa());
+                interfaz.setMapa(tilemap);
+                cliente.startReceiver();
                 interfaz.nextEstado();
 
                 return;

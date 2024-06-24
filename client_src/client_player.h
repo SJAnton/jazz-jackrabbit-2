@@ -28,9 +28,9 @@ class ClientPlayer{
 		void ataque_especial(Direcciones direccion);
 		void cambiar_arma(Direcciones direccion);
 		
-		void recibirInformacion();
-		TileMap recibirMapa();
-
+		TileMap recibirInformacion();
+		//TileMap recibirMapa();
+		void startReceiver();
 		void crearPartida(const TipoPlayer &TipoPlayer);
 		void entrarPartida(int idPartida, const TipoPlayer &TipoPlayer);
 

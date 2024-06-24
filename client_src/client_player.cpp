@@ -23,46 +23,36 @@ ClientPlayer::ClientPlayer(const std::string& hostname, const std::string& servn
 void ClientPlayer::caminar(Direcciones direccion){
 	ComandoCliente comando(AccionesPlayer::Walk, direccion);
 	queueEnviadora.push(comando);
-
-	//if (direccion == Right)
-		//std::cout << "Moverse a la derecha" << std::endl;
-	//else
-		//std::cout << "Moverse a la izquierda" << std::endl;
 }
-
 
 void ClientPlayer::saltar(Direcciones direccion) {
 	queueEnviadora.push(ComandoCliente(AccionesPlayer::Jump, direccion));
-	//std::cout << "Saltar" << std::endl;
 }
 
 void ClientPlayer::correr(Direcciones direccion) {
 	queueEnviadora.push(ComandoCliente(AccionesPlayer::Run, direccion));
-	//std::cout << "Correr" << std::endl;
 }
 
 void ClientPlayer::disparar(Direcciones direccion) {
 	queueEnviadora.push(ComandoCliente(AccionesPlayer::Shoot, direccion));
-	//std::cout << "Disparar" << std::endl;
 }
 
 void ClientPlayer::ataque_especial(Direcciones direccion) {
 	queueEnviadora.push(ComandoCliente(AccionesPlayer::SpecialAttack, direccion));
-	//std::cout << "Ataque especial" << std::endl;
 }
 
 void ClientPlayer::cambiar_arma(Direcciones direccion) {
 	queueEnviadora.push(ComandoCliente(AccionesPlayer::ChangeWeapon, direccion));
-	//std::cout << "Cambiar arma" << std::endl;
 }
 
-void ClientPlayer::recibirInformacion(){
+TileMap ClientPlayer::recibirInformacion(){
 	protocolo.recibirIDCliente();
-	receiver.start();
+	TileMap tilemap = protocolo.recibirMapa();
+	return tilemap;
 }
 
-TileMap ClientPlayer::recibirMapa() {
-	return protocolo.recibirMapa();
+void ClientPlayer::startReceiver() {
+	receiver.start();
 }
 
 std::vector<int> ClientPlayer::getIdPartidas() {
