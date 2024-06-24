@@ -5,6 +5,7 @@
 #include "../common_src/constantes_protocolo.h"
 #include "../common_src/info_juego.h"
 #include "../common_src/protocol.h"
+#include "../common_src/tile_map.h"
 
 #include <string>
 #include <vector>
@@ -31,7 +32,7 @@ class ClientProtocol : public Protocol {
 		InfoEnemigo decodeEnemy(const std::vector<uint8_t> &bytes);
 		InfoRecolectable decodeRecolectable(const std::vector<uint8_t> &bytes);
 		InfoProyectil decodeProyetil(const std::vector<uint8_t> &bytes);
-
+		TileMap decodeTerreno(const int &filas, const int &columnas, const std::vector<uint8_t> &bytes);
 		InfoJuego decodificarMensajeDelServer(const std::vector<uint8_t> &bytes);
 
 	public:
@@ -44,6 +45,7 @@ class ClientProtocol : public Protocol {
 		void enviarComando(ComandoCliente comando, bool*was_closed);
 
 		InfoJuego recibirInformacion(bool *was_closed);
+		TileMap recibirMapa();
 		std::vector<int> recibirIdsPartidas(bool *was_closed);
 		void recibirIDCliente();
 		//Terreno recibirTerreno(bool *was_closed);

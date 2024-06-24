@@ -49,8 +49,16 @@ void ServerProtocol::send_game_data(InfoJuego &game_data, bool &was_closed) {
 void ServerProtocol::send_tile_map(TileMap &tile_map, bool &was_closed) {
     // Recibe un arreglo que tiene en pos 0 la cantidad de filas y en pos 1 la cantidad de columnas
     // Itera la matriz columna por columna, desde 0 hasta la cantidad de filas y columnas
+    //std::vector<uint8_t> bytesSize = {(uint8_t)tile_map.terreno.size(), (uint8_t)tile_map.terreno.at(0).size()};
+    //sk.sendall(bytesSize.data(), bytesSize.size(), &was_closed);
+    uint8_t sizeFilas = tile_map.terreno.size();
+    uint8_t sizeColumnas = tile_map.terreno.at(0).size();
+    sk.sendall(&sizeFilas, sizeof(uint8_t), &was_closed);
+    sk.sendall(&sizeColumnas, sizeof(uint8_t), &was_closed);
+    //std::cout << "Enviando mapa de tamaño: " << (int)bytesSize[0] << "x" << (int)bytesSize[1] << std::endl;
     std::vector<uint8_t> bytes = encodeTileMap(tile_map);
     sk.sendall(bytes.data(), bytes.size(), &was_closed);
+    std::cout << "Bytes enviados: " << (int)bytes.size() + sizeof(uint8_t) + sizeof(uint8_t) << std::endl; 
 }
 
 int ServerProtocol::disconnect() {
@@ -144,7 +152,7 @@ std::vector<uint8_t> ServerProtocol::encodeProyectil(const InfoProyectil &infoPr
 }
 
 std::vector<uint8_t> ServerProtocol::encodeTileMap(TileMap &tileMap) {
-    std::vector<uint8_t> bytes = tileMap.toBytes();    
+    std::vector<uint8_t> bytes = tileMap.toBytes();
     return bytes;
 }
 

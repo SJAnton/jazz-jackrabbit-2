@@ -38,14 +38,10 @@
 
 std::vector<uint8_t> TileMap::toBytes() {
     std::vector<uint8_t> bytes;
-    bytes.push_back(terreno.size());
-    bytes.push_back(terreno[0].size());
     for (int i = 0; i < (int)terreno.size(); ++i) {
         for (int j = 0; j < (int)terreno[i].size(); ++j) {
             bytes.push_back((uint8_t)terreno[i][j].getIdTile());
-            std::cout << (int)terreno[i][j].getIdTile() << " ";
         }
-        std::cout << std::endl;
     }
     return bytes;
 }

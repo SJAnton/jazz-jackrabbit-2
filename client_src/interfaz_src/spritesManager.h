@@ -144,6 +144,7 @@ public:
     */
     void updateEnemy(unsigned int n, const EstadosEnemy &estado, const Position &pos, const Direcciones &dir);
     
+    void setMapa(const TileMap &tileMap);
     //~SpritesManager();
 };
 

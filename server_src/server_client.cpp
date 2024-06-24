@@ -40,7 +40,7 @@ void Client::run() {
     select_game(init_data[0], player_selected, demo_level);
 
     protocol.send_id(id, wc); // Envía al cliente su ID
-    //protocol.send_tile_map(demo_level.tile_map, wc); // Envía el mapa al cliente
+    protocol.send_tile_map(demo_level.tile_map, wc); // Envía el mapa al cliente
 
     receiver->start();
     sender.start();

@@ -128,6 +128,10 @@ void SpritesManager::renderizarTerreno(const Position &posCamara) {
    spritesTileMap.renderizar(posCamara);
 }
 
+void SpritesManager::setMapa(const TileMap &mapa) {
+    spritesTileMap.setTileMap(mapa);
+}
+
 void SpritesManager::renderizarItemEn(const TipoRecolectable &tipo, int x, int y) {
     if (tipo == TipoRecolectable::Moneda)
         moneda.renderizarEn(x, y);

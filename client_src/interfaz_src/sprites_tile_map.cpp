@@ -83,6 +83,9 @@ void SpritesTileMap::renderizar(const Position &posCamara) {
 
 }
 
+void SpritesTileMap::setTileMap(const TileMap &tileMap) {
+    this->tileMap = tileMap;
+}
 
 SpriteObject SpritesTileMap::getTile(int id_tile) {
     switch (id_tile)
