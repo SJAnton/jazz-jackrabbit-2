@@ -35,14 +35,14 @@ void Weapon::init(int delay_w1, int delay_w2, int delay_w3, int delay_w4) {
 Weapon::Weapon(TipoArma tipoArma) : 
     tipoArma(tipoArma) 
 {
+    municiones = 100;
+    /*
     if (tipoArma == Tipo_1){
         municiones = -1; // representa infinitas municiones
     }
-    else if (tipoArma == Tipo_2){ 
-        municiones = 100;  
-    }
     else 
         municiones = 0;
+    */
 }
 
 Weapon::Weapon() : 

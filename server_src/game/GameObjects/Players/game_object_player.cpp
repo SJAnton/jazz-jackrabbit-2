@@ -260,6 +260,7 @@ void ObjectPlayer::change_shooting_weapon() {
 }
 */
 void ObjectPlayer::change_weapon() {
+
     weaponIndex++;
     if (weaponIndex >= (int)weapons.size()) {
         weaponIndex = 0;

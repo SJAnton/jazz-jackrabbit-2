@@ -59,6 +59,7 @@ private:
     SpriteSheet proyectil_1;
     SpriteSheet proyectil_2;
     SpriteSheet proyectil_3;
+    SpriteSheet proyectil_4;
 
     //HUD
     SpriteObject heartIcon;
