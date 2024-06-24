@@ -49,7 +49,8 @@ class ObjectPlayer : public GameObject, public std::enable_shared_from_this<Obje
         int health = 10; //vida
         int points = 0;
         Weapon weapon; //arma
-        Weapon secondary_weapon; //arma secundaria
+        std::vector<Weapon> weapons; //armas
+        int weaponIndex = 0; //indice del arma actual
         bool alive = true;
         bool intoxicated = false;
         bool falling = true;
@@ -121,7 +122,9 @@ class ObjectPlayer : public GameObject, public std::enable_shared_from_this<Obje
         
         void change_weapon();
         
-        void pick_up_ammo(int ammo); // recoger municion
+        void pick_up_ammo(int ammo, int weaponIndex); // recoger municion
+
+        void initialize_weapons();
 
         void add_hearts(int pts_vidas); // Suma vida. Si recibe un negativo era una zanahoria envenenada
 

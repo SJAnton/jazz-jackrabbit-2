@@ -21,7 +21,7 @@ void Client::run() {
     reap_dead_gameloops();
 
     vector<uint8_t> msg = get_games(); // Envía las partidas disponibles (TODO: enviar escenarios)
-    std::map<uint8_t, GameMap> levels = map_reader.read_levels();
+    //std::map<uint8_t, GameMap> levels = map_reader.read_levels();
     protocol.send_msg(msg, wc);
 
     // Recibe partida y personaje (TODO: recibir escenario elegido)

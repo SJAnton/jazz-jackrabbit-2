@@ -87,7 +87,15 @@ void GameMundo::chequearColisionesItems() {
                     else if (it->getTipoRecolectable() == Zanahoria)
                         p->add_hearts(pts);
                     else if (it->getTipoRecolectable() == Municion)
-                        p->pick_up_ammo(pts);
+                        p->pick_up_ammo(pts, 0);
+                    else if (it->getTipoRecolectable() == Municion1)
+                        p->pick_up_ammo(pts, 0);
+                    else if (it->getTipoRecolectable() == Municion2)
+                        p->pick_up_ammo(pts, 1);
+                    else if (it->getTipoRecolectable() == Municion3)
+                        p->pick_up_ammo(pts, 2);
+                    else if (it->getTipoRecolectable() == Municion4)
+                        p->pick_up_ammo(pts, 3);
                     break; // pasa a la siguiente coordenada
                 }
             }
