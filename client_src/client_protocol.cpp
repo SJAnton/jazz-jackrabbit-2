@@ -252,6 +252,35 @@ std::vector<int> ClientProtocol::recibirIdsPartidas(bool *was_closed_)
     return idsPartidas;
 }
 
+void ClientProtocol::enviarNivelElegido(std::string nombre, bool *was_closed_) {
+	uint8_t length = nombre.length();
+	socket.sendall(&length, sizeof(length), &was_closed);
+	for (char c : nombre) {
+		socket.sendall(&c, sizeof(c), &was_closed);
+	}
+}
+
+std::vector<std::string> ClientProtocol::recibirNombresNiveles(bool *was_closed_) {
+	uint8_t vec_size;
+	socket.recvall(&vec_size, sizeof(vec_size), &was_closed);
+
+	std::vector<std::string> nombres(vec_size);
+
+	for (int i = 0; i < vec_size; ++i) {
+		uint8_t name_length;
+		std::string filename;
+		socket.recvall(&name_length, sizeof(name_length), &was_closed);
+		for (int j = 0; j < name_length; ++j) {
+			uint8_t c;
+			socket.recvall(&c, sizeof(c), &was_closed);
+			filename += c;
+		}
+		nombres.push_back(filename);
+		std::cout << filename << std::endl;
+	}
+	return nombres;
+}
+
 void ClientProtocol::recibirIDCliente() {
 	uint8_t byte;
 	socket.recvall(&byte, sizeof(byte), &was_closed);	

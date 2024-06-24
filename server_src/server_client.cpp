@@ -21,26 +21,23 @@ Client::Client(Socket &&_sk, int id, int game_time, atomic<int> &gmlp_id,
 void Client::run() {
     reap_dead_gameloops();
 
-    vector<uint8_t> msg = get_games(); // Envía las partidas disponibles (TODO: enviar escenarios)
-    std::map<uint8_t, Level> levels = map_reader.read_levels();
+    vector<uint8_t> msg = get_games();
+    std::map<std::string, Level> levels = map_reader.read_levels();
 
-    Level demo_level = levels.at(0);
+    protocol.send_msg(msg, levels, wc);
 
-    protocol.send_msg(msg, wc);
-
-    // Recibe partida y personaje (TODO: recibir escenario elegido)
+    // Recibe partida y personaje
+    std::string level_name = protocol.recv_chosen_level(wc);
     vector<uint8_t> init_data = protocol.recv_init_msg(wc);
 
     if (init_data[GAME_POS] != NEW_GAME && !gameloops.contains(init_data[GAME_POS])) {
         kill();
         throw runtime_error("Game not found");
     }
-    
     TipoPlayer player_selected = select_character(init_data[1]);
-    select_game(init_data[0], player_selected, demo_level);
+    select_game(init_data[0], player_selected, levels.at(level_name));
 
-    protocol.send_id(id, wc); // Envía al cliente su ID
-    //protocol.send_tile_map(demo_level.tile_map, wc); // Envía el mapa al cliente
+    protocol.send_id(id, wc);
 
     receiver->start();
     sender.start();

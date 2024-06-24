@@ -11,7 +11,11 @@ ClientPlayer::ClientPlayer(const std::string& hostname, const std::string& servn
 	sender(protocolo, queueEnviadora)
 {
 	bool was_closed;
-	ids_partidas = protocolo.recibirIdsPartidas(&was_closed);	
+	ids_partidas = protocolo.recibirIdsPartidas(&was_closed);
+	nombres_niveles = protocolo.recibirNombresNiveles(&was_closed);
+
+	protocolo.enviarNivelElegido("demo", &was_closed);
+
 	sender.start();
 }
 
@@ -57,10 +61,14 @@ void ClientPlayer::recibirInformacion(){
 	//protocolo.recibirTerreno();
 	receiver.start();
 }
+
 std::vector<int> ClientPlayer::getIdPartidas() {
 	return ids_partidas;
 }
 
+std::vector<std::string> ClientPlayer::getNombresNiveles() {
+	return nombres_niveles;
+}
 
 void ClientPlayer::entrarPartida(int idPartida, const TipoPlayer &tipoPlayer) {
 	queueEnviadora.push(ComandoCliente(idPartida, tipoPlayer));

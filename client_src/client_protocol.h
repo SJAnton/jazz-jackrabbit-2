@@ -45,6 +45,8 @@ class ClientProtocol : public Protocol {
 
 		InfoJuego recibirInformacion(bool *was_closed);
 		std::vector<int> recibirIdsPartidas(bool *was_closed);
+		void enviarNivelElegido(std::string nombre, bool *was_closed_);
+		std::vector<std::string> recibirNombresNiveles(bool *was_closed_);
 		void recibirIDCliente();
 		//Terreno recibirTerreno(bool *was_closed);
 

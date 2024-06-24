@@ -44,6 +44,6 @@ class GameMapReader {
     public:
         GameMapReader(std::map<std::string, std::vector<int>> &data) : data(data) {};
 
-        std::map<uint8_t, Level> read_levels();
+        std::map<std::string, Level> read_levels();
 };
 #endif

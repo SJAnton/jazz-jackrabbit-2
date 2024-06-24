@@ -4,11 +4,13 @@
 #include <arpa/inet.h>
 #include <string>
 #include <vector>
+#include <map>
 
 #include "../common_src/socket.h"
 #include "../common_src/info_juego.h"
 #include "../common_src/protocol.h"
 #include "../common_src/tile_map.h"
+#include "game/Map/game_map_reader.h"
 
 class ServerProtocol : public Protocol{
     private:
@@ -19,11 +21,15 @@ class ServerProtocol : public Protocol{
 
         std::vector<uint8_t> recv_init_msg(bool &was_closed);
 
+        std::string recv_chosen_level(bool &was_closed);
+
         void send_id(uint8_t id, bool &was_closed);
 
         std::vector<uint8_t> recv_msg(bool &was_closed);
 
-        void send_msg(std::vector<uint8_t> &msg, bool &was_closed);
+        void send_msg(
+            std::vector<uint8_t> &msg, std::map<std::string, Level> &levels, bool &was_closed
+        );
 
         void send_game_data(InfoJuego &game_data, bool &was_closed);
 

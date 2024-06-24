@@ -77,12 +77,12 @@ void ObjectEnemy::fall() {
     for (int i = 0; i < FALL_SPEED; ++i) {
         if (GameMundo::casilleros[y_down][position.x].estaBloqueado() || 
             GameMundo::casilleros[y_down][pos_x_max].estaBloqueado()) {
-            status = EstadosEnemy::Idle;
+            status = EstadosEnemy::Attack;
             on_ground = true;
             break;
         }
         on_ground = false;
-        status = EstadosEnemy::Attack;
+        status = EstadosEnemy::Idle;
         setPosition(Coordenada(position.x, position.y + 1));
     }
 }

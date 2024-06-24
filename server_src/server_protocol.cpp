@@ -18,6 +18,18 @@ std::vector<uint8_t> ServerProtocol::recv_init_msg(bool &was_closed) {
     return data;
 }
 
+std::string ServerProtocol::recv_chosen_level(bool &was_closed) {
+    uint8_t length;
+    std::string level_name;
+    sk.recvall(&length, sizeof(length), &was_closed);
+    for (int i = 0; i < length; ++i) {
+        char c;
+        sk.recvall(&c, sizeof(c), &was_closed);
+        level_name += c;
+    }
+    return level_name;
+}
+
 void ServerProtocol::send_id(uint8_t id, bool &was_closed) {
     sk.sendall(&id, sizeof(id), &was_closed);
 }
@@ -32,11 +44,23 @@ std::vector<uint8_t> ServerProtocol::recv_msg(bool &was_closed) {
     return data;
 }
 
-void ServerProtocol::send_msg(std::vector<uint8_t> &msg, bool &was_closed) {
+void ServerProtocol::send_msg(
+    std::vector<uint8_t> &msg, std::map<std::string, Level> &levels, bool &was_closed
+) {
     int size = msg.size();
     for (int i = 0; i < size; i++) {
         uint8_t byte = msg[i];
         sk.sendall(&byte, sizeof(byte), &was_closed);
+    }
+    uint8_t lvls_size = levels.size();
+    sk.sendall(&lvls_size, sizeof(lvls_size), &was_closed); // Cantidad de niveles
+    for (auto &level : levels) {
+        std::string name = level.first;
+        uint8_t length = name.length(); // Longitud del nombre del nivel
+        sk.sendall(&length, sizeof(length), &was_closed);
+        for (char c : name) {
+            sk.sendall(&c, sizeof(c), &was_closed);
+        }
     }
 }
 

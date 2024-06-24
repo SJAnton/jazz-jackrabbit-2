@@ -3,6 +3,7 @@
 #include <iostream>
 #include <filesystem>
 
+#define YAML_LENGTH 5 // ".yaml"
 #define CURRENT_FOLDER_LENGTH 6 // "/build"
 #define LEVELS_FOLDER "/game/Map/levels"
 
@@ -53,11 +54,9 @@ std::vector<std::string> GameMapReader::get_levels() {
     return levels_path;
 }
 
-std::map<uint8_t, Level> GameMapReader::read_levels() {
+std::map<std::string, Level> GameMapReader::read_levels() {
     std::vector<std::string> levels_path = get_levels();
-    std::map<uint8_t, Level> levels;
-    uint8_t level_number = 0;
-
+    std::map<std::string, Level> levels;
     for (std::string level_path : levels_path) {
         // Itera todos los niveles
         std::ifstream file(level_path);
@@ -65,6 +64,9 @@ std::map<uint8_t, Level> GameMapReader::read_levels() {
             throw std::runtime_error("Failure loading level");
         }
         YAML::Node node = YAML::Load(file);
+
+        std::string filename = fs::path(level_path).filename().string();
+        filename.erase(filename.length() - YAML_LENGTH);
 
         int spawn_x = 0;
         int spawn_y = 0;
@@ -123,10 +125,10 @@ std::map<uint8_t, Level> GameMapReader::read_levels() {
                 }
             }
         }
-        Level level(spawn_x, spawn_y, layers_height, layers_width, tile_map, enemies, objects);
-
-        levels.emplace(level_number, level);
-        level_number++;
+        Level level(
+            spawn_x, spawn_y, layers_height, layers_width, tile_map, enemies, objects
+        );
+        levels.emplace(filename, level);
     }
     return levels;
 }
