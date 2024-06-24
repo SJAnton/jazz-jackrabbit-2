@@ -28,7 +28,7 @@
 #define DAMAGE_WAIT_TIME 1 // Segundos
 
 // basado en el server_character
-class ObjectPlayer : public GameObject, public std::enable_shared_from_this<ObjectPlayer> {
+class ObjectPlayer : public GameObject {
    protected:
         static bool inicializado;
 
@@ -98,6 +98,8 @@ class ObjectPlayer : public GameObject, public std::enable_shared_from_this<Obje
 
         void fall();
         virtual void specialAttack() {}; // no implementado
+
+        int getSpecialAttackDamage();
 
         // Devuelve el proyectil disparado
         ObjectProjectile shoot(Direcciones direccion);

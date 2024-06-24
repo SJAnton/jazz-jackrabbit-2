@@ -177,13 +177,18 @@ void GameMundo::chequearColisionesEnemies() {
         std::vector<Coordenada> areaObj = e->coordenadasOcupadas();
         for (Coordenada &c : areaObj) {
             for (auto &p : players) {
-                if (p->isInside(c) && p->can_be_damaged() && !e->is_dead()) {
+                if (!p->isInside(c)) {
+                    continue;
+                } else if (p->getEstado() == EstadosPlayer::SpecialAttack) {
+                    int damage = p->getSpecialAttackDamage();
+                    e->take_damage(damage);
+                    break;
+                } else if (p->can_be_damaged() && !e->is_dead()) {
                     e->attack();
                     int damage = e->get_damage();
                     p->take_damage(damage);
                     break;
                 }
-                
             }
         }
     }

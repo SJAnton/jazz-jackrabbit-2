@@ -339,6 +339,19 @@ int ObjectPlayer::getTimeDying() {
     }
 }
 
+int ObjectPlayer::getSpecialAttackDamage() {
+    switch (tipoPlayer) {
+    case Jazz:
+        return 100;
+    case Lori: 
+        return 100;
+    case Spaz: 
+        return 100;
+    default: 
+        return 0;
+    }
+}
+
 void ObjectPlayer::updateShoot() {
     timer_shoot++;
     if (timer_shoot >= TIME_SHOOT) {

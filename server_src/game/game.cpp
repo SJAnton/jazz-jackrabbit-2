@@ -30,8 +30,8 @@ void Game::init(std::map<std::string, std::vector<int>> &data) {
     std::vector<int> &rat_data = data[RAT_CODE];
 
     ObjectPlayer::init(
-        player_data[0], 3/*player_data[1]*/ , player_data[1], player_data[2],
-        player_data[3], player_data[4], player_data[5]
+        player_data[0], player_data[1], player_data[2], player_data[3],
+        player_data[4], player_data[5], player_data[6]
     );
 
     ObjectProjectile::init(
