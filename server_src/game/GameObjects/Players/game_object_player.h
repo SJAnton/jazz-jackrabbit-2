@@ -12,8 +12,8 @@
 #include "../../Weapons/weapon.h"
 
 
-#define WIDTH_PLAYER 20  // (para el futuro Padding de 20px y 11px arriba)
-#define HEIGHT_PLAYER 40
+//#define WIDTH_PLAYER 20  // (para el futuro Padding de 20px y 11px arriba)
+//#define HEIGHT_PLAYER 40
 
 // constantes de cuantas iteraciones duran la animaciones
 #define TIME_JUMP 16//12
@@ -48,9 +48,10 @@ class ObjectPlayer : public GameObject {
         Direcciones direction = Right;
         int health = 10; //vida
         int points = 0;
-        Weapon weapon; //arma
+        Weapon *weapon; //arma
         std::vector<Weapon> weapons; //armas
         int weaponIndex = 0; //indice del arma actual
+
         bool alive = true;
         bool intoxicated = false;
         bool falling = true;
@@ -110,7 +111,7 @@ class ObjectPlayer : public GameObject {
 
         int get_points() {return points;};
 
-        Weapon get_weapon() {return weapon;};
+        Weapon get_weapon() {return *weapon;};
 
         bool is_dead() {return !alive;};
         bool is_intoxicated() { return intoxicated;};

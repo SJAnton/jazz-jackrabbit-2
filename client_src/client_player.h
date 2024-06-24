@@ -12,9 +12,9 @@ class ClientPlayer{
 		ClientProtocol protocolo;
 		ClientReceiver receiver;
 		ClientSender sender;
-		static Queue<ComandoCliente> queueEnviadora;
 		std::vector<int> ids_partidas;
 	public:
+		static Queue<ComandoCliente> queueEnviadora;
 		static Queue<InfoJuego> queueReceptora;
 
 	public:

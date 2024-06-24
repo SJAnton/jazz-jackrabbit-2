@@ -39,16 +39,13 @@
 std::vector<uint8_t> TileMap::toBytes() {
     std::vector<uint8_t> bytes;
     bytes.push_back(terreno.size());
-    //std::cout << "size FILAS: " << terreno.size() << std::endl;
     bytes.push_back(terreno[0].size());
-    //std::cout << "size COLUMNAS: " << terreno[0].size() << std::endl;
     for (int i = 0; i < (int)terreno.size(); ++i) {
-        //std::cout << "FILA: " << i << " ";
         for (int j = 0; j < (int)terreno[i].size(); ++j) {
             bytes.push_back((uint8_t)terreno[i][j].getIdTile());
-            //std::cout << (int)terreno[i][j].getIdTile() << " ";
+            std::cout << (int)terreno[i][j].getIdTile() << " ";
         }
-        //std::cout << std::endl;
+        std::cout << std::endl;
     }
     return bytes;
 }

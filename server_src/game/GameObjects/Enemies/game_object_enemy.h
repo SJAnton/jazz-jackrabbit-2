@@ -9,12 +9,12 @@
 #include "../Collected/game_object_collected.h"
 #include "../../../../common_src/info_juego.h"
 
-#define WIDTH_BAT 80
-#define HEIGHT_BAT 40
-#define WIDTH_DIABLO 20                                 // padding left 20px
-#define HEIGHT_DIABLO 40                                // pading up 15px
-#define WIDTH_RAT 80
-#define HEIGHT_RAT 40
+//#define WIDTH_BAT 80
+//#define HEIGHT_BAT 40
+//#define WIDTH_DIABLO 20                                 // padding left 20px
+//#define HEIGHT_DIABLO 40                                // pading up 15px
+//#define WIDTH_RAT 80
+//#define HEIGHT_RAT 40
 
 #define FALL_SPEED 10
 

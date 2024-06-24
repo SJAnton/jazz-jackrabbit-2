@@ -17,6 +17,11 @@ class ClientProtocol : public Protocol {
 		uint8_t id;
 
 	private:
+		int getPaddingLeft(const TipoEnemy &tipo, const EstadosEnemy &estado);
+		int getPaddingTop(const TipoEnemy &tipo, const EstadosEnemy &estado);
+		int getPaddingLeft(const TipoRecolectable &tipo);
+		int getPaddingTop(const TipoRecolectable &tipo);
+
 		//obtiene el valor decimal contenido entre ambos bytes
 		int decodeInt(uint8_t byte1, uint8_t byte2);
 		//obtiene el valor decimal contenido en 1 byte
@@ -43,6 +48,7 @@ class ClientProtocol : public Protocol {
 		void recibirIDCliente();
 		//Terreno recibirTerreno(bool *was_closed);
 
+		bool is_was_closed() {return was_closed;};
 		void close();
 };
 

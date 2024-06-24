@@ -11,10 +11,7 @@ ClientPlayer::ClientPlayer(const std::string& hostname, const std::string& servn
 	sender(protocolo, queueEnviadora)
 {
 	bool was_closed;
-	ids_partidas = protocolo.recibirIdsPartidas(&was_closed);
-	//ids_partidas.push_back(0);//temporal
-	//ids_partidas.push_back(2);
-	
+	ids_partidas = protocolo.recibirIdsPartidas(&was_closed);	
 	sender.start();
 }
 

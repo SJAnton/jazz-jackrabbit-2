@@ -8,6 +8,7 @@
 #include "../common_src/socket.h"
 #include "../common_src/info_juego.h"
 #include "../common_src/protocol.h"
+#include "../common_src/tile_map.h"
 
 class ServerProtocol : public Protocol{
     private:
@@ -25,6 +26,8 @@ class ServerProtocol : public Protocol{
         void send_msg(std::vector<uint8_t> &msg, bool &was_closed);
 
         void send_game_data(InfoJuego &game_data, bool &was_closed);
+
+        void send_tile_map(TileMap &tile_map, bool &was_closed);
 
         int disconnect();
 
@@ -79,6 +82,15 @@ class ServerProtocol : public Protocol{
          * [4] -> 1 byte con la direccion del proyectil
          */
         std::vector<uint8_t> encodeProyectil(const InfoProyectil &);
+
+        /**
+         * Crea un buffer de 2 + n*m bytes con la estructura de un mapa:
+         * [0] -> 1 byte con cantidad de filas
+         * [1] -> 1 byte con cantidad de columnas
+         * n*m bytes con la matriz de tiles. Cada byte es un tipo de tile.
+         * Envía el mapa por filas. Desde la 0 hasta la cantidad de filas.
+         */
+        std::vector<uint8_t> encodeTileMap(TileMap &tile_map);
 
 
 };
