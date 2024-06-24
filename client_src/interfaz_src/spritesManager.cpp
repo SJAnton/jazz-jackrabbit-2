@@ -21,6 +21,9 @@ SpritesManager::SpritesManager() :
     municion_3(PATH_ITEM_MUNICION_3, 24, 24, 10),
     municion_4(PATH_ITEM_MUNICION_4, 24, 24, 10),
     proyectil_0(PATH_PROJECTILE_0, 16, 8,3),
+    proyectil_1(PATH_PROJECTILE_1, 24, 12, 6),
+    proyectil_2(PATH_PROJECTILE_2, 24, 12, 6),
+    proyectil_3(PATH_PROJECTILE_3, 24, 12, 6),
     heartIcon(PATH_HEART_ICON),
     gun_1(PATH_GUN_1, 24, 24, 10),
     gun_2(PATH_GUN_2, 24, 24, 10),
@@ -134,11 +137,35 @@ void SpritesManager::renderizarItemEn(const TipoRecolectable &tipo, int x, int y
         zanahoria.renderizarEn(x, y);
 }
 
-void SpritesManager::renderizarProyectilEn(const Direcciones &dir, int x, int y) {
-    if (dir == Left)
-        proyectil_0.renderizarInvertidoEn(x, y);
-    else 
-        proyectil_0.renderizarEn(x, y);
+void SpritesManager::renderizarProyectilEn(const Direcciones &dir, TipoArma &tipo ,int x, int y) {
+    switch (tipo) {
+        case Tipo_1:
+            if (dir == Left)
+                proyectil_0.renderizarInvertidoEn(x, y);
+            else 
+                proyectil_0.renderizarEn(x, y);
+            break;
+        case Tipo_2:
+            if (dir == Left)
+                proyectil_1.renderizarInvertidoEn(x, y);
+            else
+            proyectil_1.renderizarEn(x, y);
+            break;
+        case Tipo_3:
+            if (dir == Left)
+                proyectil_2.renderizarInvertidoEn(x, y);
+            else
+            proyectil_2.renderizarEn(x, y);
+            break;
+        case Tipo_4:
+            if (dir == Left)
+                proyectil_3.renderizarInvertidoEn(x, y);
+            else
+            proyectil_3.renderizarEn(x, y);
+            break;
+        default:
+            throw std::runtime_error("Proyectil no encontrado");
+    }
 }
 
 void SpritesManager::renderizarVidas(int& vidas){
