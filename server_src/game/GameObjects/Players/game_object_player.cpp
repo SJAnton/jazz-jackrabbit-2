@@ -260,6 +260,12 @@ void ObjectPlayer::change_shooting_weapon() {
 }
 */
 void ObjectPlayer::change_weapon() {
+
+    for (int i = 0; i < (int)weapons.size(); i++) {
+        weapon = &weapons[i];
+        std::cout << "arma: " << weapon->getType() << std::endl;
+    }
+
     weaponIndex++;
     if (weaponIndex >= (int)weapons.size()) {
         weaponIndex = 0;

@@ -24,6 +24,7 @@ SpritesManager::SpritesManager() :
     proyectil_1(PATH_PROJECTILE_1, 24, 12, 6),
     proyectil_2(PATH_PROJECTILE_2, 24, 12, 6),
     proyectil_3(PATH_PROJECTILE_3, 24, 12, 6),
+    proyectil_4(PATH_PROJECTILE_4, 24, 12, 6),
     heartIcon(PATH_HEART_ICON),
     gun_1(PATH_GUN_1, 24, 24, 10),
     gun_2(PATH_GUN_2, 24, 24, 10),
@@ -151,21 +152,21 @@ void SpritesManager::renderizarProyectilEn(const Direcciones &dir, TipoArma &tip
             break;
         case Tipo_2:
             if (dir == Left)
-                proyectil_1.renderizarInvertidoEn(x, y);
-            else
-            proyectil_1.renderizarEn(x, y);
-            break;
-        case Tipo_3:
-            if (dir == Left)
                 proyectil_2.renderizarInvertidoEn(x, y);
             else
             proyectil_2.renderizarEn(x, y);
             break;
-        case Tipo_4:
+        case Tipo_3:
             if (dir == Left)
                 proyectil_3.renderizarInvertidoEn(x, y);
             else
             proyectil_3.renderizarEn(x, y);
+            break;
+        case Tipo_4:
+            if (dir == Left)
+                proyectil_4.renderizarInvertidoEn(x, y);
+            else
+            proyectil_4.renderizarEn(x, y);
             break;
         default:
             throw std::runtime_error("Proyectil no encontrado");
