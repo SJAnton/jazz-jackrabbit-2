@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     
     musicPlayer.play_music(MENU_MUSIC_PATH);
 
-    while (interfaz.estaAbierta()) // hacer a la interfaz un thread y hacer interfaz.start(). No hace falta un hilo renderer
+    while (interfaz.estaAbierta())
     {
 
         int frameStart = SDL_GetTicks(); //obtengo el tiempo que paso desde que se inicializo SDL
@@ -43,9 +43,7 @@ int main(int argc, char* argv[]) {
         tiempo_transcurrido = SDL_GetTicks() - frameStart;
         if (frame_delay > tiempo_transcurrido) {
             SDL_Delay(frame_delay - tiempo_transcurrido); // sleep
-        }
-        
-        
+        }        
     }    
 
     std::cout << "fin" << std::endl;

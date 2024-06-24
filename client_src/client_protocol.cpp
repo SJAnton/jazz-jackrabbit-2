@@ -4,6 +4,7 @@
 #include <exception>
 #include <iostream>
 #include <iomanip>
+#include "../common_src/paddings.h"
 
 #define MULTIPLICADOR_POSICION 4
 
@@ -13,6 +14,54 @@ ClientProtocol::ClientProtocol(const std::string& hostname, const std::string& s
 	was_closed(false)
 {
 }
+
+int ClientProtocol::getPaddingLeft(const TipoEnemy &tipo, const EstadosEnemy &estado) {
+	switch (tipo)
+	{
+	case TipoEnemy::Bat :
+		if (estado == EstadosEnemy::Idle)
+			return PADDING_LEFT_BAT_IDLE;
+		return PADDING_LEFT_BAT_ATTACK;
+	case TipoEnemy::Rat : return PADDING_LEFT_RAT;
+	case TipoEnemy::Diablo : return PADDING_LEFT_DIABLO;
+	default: 
+		return 0;
+	}
+}
+int ClientProtocol::getPaddingTop(const TipoEnemy &tipo, const EstadosEnemy &estado) {
+	switch (tipo)
+	{
+	case TipoEnemy::Bat :
+		if (estado == EstadosEnemy::Idle)
+			return PADDING_TOP_BAT_IDLE;
+		return PADDING_TOP_BAT_ATTACK;
+	case TipoEnemy::Rat : return PADDING_TOP_RAT;
+	case TipoEnemy::Diablo : return PADDING_TOP_DIABLO;
+	default: 
+		return 0;
+	}
+}
+int ClientProtocol::getPaddingLeft(const TipoRecolectable &tipo) {
+	switch (tipo)
+	{
+	case TipoRecolectable::Moneda : return PADDING_LEFT_COIN;
+	case TipoRecolectable::Diamante : return PADDING_LEFT_GEM;
+	case TipoRecolectable::Zanahoria : return PADDING_LEFT_CARROT;
+	default: 
+		return PADDING_LEFT_AMMO;
+	}
+}
+int ClientProtocol::getPaddingTop(const TipoRecolectable &tipo) {
+	switch (tipo)
+	{
+	case TipoRecolectable::Moneda : return PADDING_TOP_COIN;
+	case TipoRecolectable::Diamante : return PADDING_TOP_GEM;
+	case TipoRecolectable::Zanahoria : return PADDING_TOP_CARROT;
+	default: 
+		return PADDING_TOP_AMMO;
+	}
+}
+
 
 int ClientProtocol::decodeInt(uint8_t byte) {
     return static_cast<int>(byte);
@@ -26,8 +75,8 @@ int ClientProtocol::decodeInt(uint8_t byte1, uint8_t byte2) {
 
 InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
 	int id = decodeInt(bytes[0]);
-	int pos_x = decodeInt(bytes[1], bytes[2]);// * MULTIPLICADOR_POSICION;
-	int pos_y = decodeInt(bytes[3], bytes[4]);// * MULTIPLICADOR_POSICION;
+	int pos_x = decodeInt(bytes[1], bytes[2]) - PADDING_LEFT_PLAYER;// * MULTIPLICADOR_POSICION;
+	int pos_y = decodeInt(bytes[3], bytes[4]) - PADDING_TOP_PLAYER;// * MULTIPLICADOR_POSICION;
 	Direcciones dir = decodeDireccion(bytes[5]);
 	TipoPlayer tipo = decodeTipoPlayer(bytes[6]);
 	EstadosPlayer estado = decodeEstadoPlayer(bytes[7]);
@@ -35,6 +84,8 @@ InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
 	int pts = decodeInt(bytes[9]);
 	TipoArma arma =  decodeTipoArma(bytes[10]);
 	int municion = decodeInt(bytes[11]);
+
+
 	return InfoPlayer(id, pos_x, pos_y, dir, tipo, estado, vida, pts, arma, municion);
 }
 
@@ -45,6 +96,9 @@ InfoEnemigo ClientProtocol::decodeEnemy(const std::vector<uint8_t> &bytes) {
 	int pos_y = decodeInt(bytes[3], bytes[4]);// * MULTIPLICADOR_POSICION;
 	Direcciones dir = decodeDireccion(bytes[5]);
 	EstadosEnemy estado = decodeEstadoEnemy(bytes[6]);
+
+	pos_x -= getPaddingLeft(tipo,estado);
+	pos_y -= getPaddingTop(tipo,estado);
 
 	return InfoEnemigo(tipo, pos_x, pos_y, dir, estado);
 }
@@ -106,8 +160,8 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 			std::runtime_error("Error. Faltaron datos de un item recolectable. En ClientProtocol::decodificarMensajeDelServer()");
 		
 		TipoRecolectable tipo = decodeTipoRecolectable(bytes[contador]); 
-		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]);// * MULTIPLICADOR_POSICION;
-		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]);// * MULTIPLICADOR_POSICION;
+		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]) - getPaddingLeft(tipo);// * MULTIPLICADOR_POSICION;
+		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]) - getPaddingTop(tipo);// * MULTIPLICADOR_POSICION;
 
 		infoItems.emplace_back(tipo, pos_x, pos_y);
 		contador += LENGTH_ITEMS_INFO;
@@ -120,8 +174,8 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 		if ((contador + LENGTH_PROYECTIL_INFO) > static_cast<int>(bytes.size()))
 			std::runtime_error("Error. Faltó info de un proyectil. En ClientProtocol::decodificarMensajeDelServer()");
 		TipoArma tipo = decodeTipoArma(bytes[contador]);
-		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]);// * MULTIPLICADOR_POSICION;
-		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]);// * MULTIPLICADOR_POSICION;
+		int pos_x = decodeInt(bytes[contador+1], bytes[contador+2]) - PADDING_LEFT_PROJECTILE;// * MULTIPLICADOR_POSICION;
+		int pos_y = decodeInt(bytes[contador+3], bytes[contador+4]) - PADDING_TOP_PROJECTILE;// * MULTIPLICADOR_POSICION;
 		Direcciones dir = decodeDireccion(bytes[contador+5]);
 
 		infoProyectiles.emplace_back(tipo, pos_x, pos_y, dir);
@@ -157,7 +211,7 @@ InfoJuego ClientProtocol::recibirInformacion(bool *was_closed_) {
 	socket.recvall(&aux, sizeof(aux), &was_closed);	//recibo los primeros 2 bytes que indican el size del mensaje
 	if (was_closed) {
 		*was_closed_ = was_closed;
-		std::cout << "wasclosed " << std::endl;//no se está activando esto
+		std::cout << "wasclosed " << std::endl;
 		return InfoJuego();
 	}
 

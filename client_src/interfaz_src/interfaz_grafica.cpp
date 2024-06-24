@@ -63,11 +63,15 @@ bool InterfazGrafica::estaAbierta() {
 void InterfazGrafica::addPlayer(const TipoPlayer &tipo) {//temporal
     spritesManager->addPlayer(tipo);
 }
+
 //muevo la camara para que quede centrada en la posicion recibida
 void InterfazGrafica::updateCamara(const Position &pos) {
     
     camara.x = pos.x - ANCHO_WINDOW/2;
     camara.y = pos.y - ALTO_WINDOW/2;
+}
+Position InterfazGrafica::posRelativaACamara(const int &x, const int &y) {
+    return Position(x - camara.x, y- camara.y);
 }
 
 void InterfazGrafica::update(int it) {
@@ -75,8 +79,12 @@ void InterfazGrafica::update(int it) {
         return;
     iteracion += it;
     
-    //infoJuego = queueReceptora.pop();
-    if (queueReceptora.try_pop(infoJuego)) {
+    try {
+        infoJuego = queueReceptora.pop();
+    } catch (const ClosedQueue& e) {
+        std::cout << "cierro interfaz en update()" << std::endl;
+        cerrarInterfaz();
+    }
         Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y); // el player 0 debo "ser yo"
         updateCamara(pos);
         //std::cout << "Cant players: " << infoJuego.cantidadPlayers() << std::endl;
@@ -114,21 +122,19 @@ void InterfazGrafica::update(int it) {
             }
             
         }
+    
+
+    if (iteracion % 2 == 0) {
+        spritesManager->updateItems();
+        spritesManager->updateProyectiles();
     }
 
-    if (iteracion % 2 == 0)
-        spritesManager->updateItems();
-
-    spritesManager->updateProyectiles();
 } 
-
-
-Position InterfazGrafica::posRelativaACamara(const int &x, const int &y) {
-    return Position(x - camara.x, y- camara.y);
-}
 
 void InterfazGrafica::renderizarJuego() 
 {
+    if (!is_running)
+        return;
     if (infoJuego.cantidadPlayers() == 0) {
         throw std::runtime_error("NO hay ningun Player cargardo aun. En InterfazGrafica::renderizarJuego()");
     }

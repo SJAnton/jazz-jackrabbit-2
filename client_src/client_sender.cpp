@@ -1,4 +1,5 @@
 #include "client_sender.h"
+#include "client_player.h"
 #include <atomic>
 #include <iostream>
 
@@ -10,17 +11,27 @@ void ClientSender::run() {
 		while (_keep_running) {
 			if (was_closed)
 				break;
-			
-			ComandoCliente  comando; //= queueEnviadora.pop();
-			if(queueEnviadora.try_pop(comando)){
-				protocolo.enviarComando(comando, &was_closed);
-			}
+
+			ComandoCliente  comando = queueEnviadora.pop();
+			protocolo.enviarComando(comando, &was_closed);
 		}
-		std::cout << "me fui del sender..." << std::endl;
 		protocolo.close();
+	} catch (const ClosedQueue& e) { // si la queue fue cerrada, no se trata de un error
+			was_closed = true;
+			stop();
+			protocolo.close();
 	} catch (const std::exception& e) {
         std::cerr << "Error en el Sender: " << e.what() << std::endl;
+		queueEnviadora.close();
+		ClientPlayer::queueReceptora.close();
+		protocolo.close();
+		was_closed = true;
+		stop();
     } catch(...) {
         std::cerr << "Error INESPERADO en el Sender: " << std::endl;
+		queueEnviadora.close();
+		protocolo.close();
+		was_closed = true;
+		stop();
     }
 }
