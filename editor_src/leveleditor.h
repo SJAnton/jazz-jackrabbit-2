@@ -9,6 +9,8 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QMimeData>
+#include <QInputDialog>
+#include <QDir>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QStyledItemDelegate>
@@ -52,7 +54,8 @@ private slots:
     void placeSpriteAtPosition(const QPointF &scenePos);
     void eraseSpriteAtPosition(const QPointF &scenePos);
     void handleFileListClick(QListWidgetItem *item);
-    void saveLevel();
+    void promptSaveLevel();
+    void saveLevel(const QString& filePath);
 
 private:
     Ui::LevelEditor *ui;

@@ -27,7 +27,7 @@ std::unordered_map<QString, int> LevelEditor::initializeIds() { //Diccionario de
         {"Floor Right Corner", 1},
         {"Underground 1", 8},
         {"Underground 2", 9},
-        
+
         {"Beach Pillar Base 1", 20},
         {"Beach Pillar Base 2", 21},
         {"Beach Pillar Base 3", 22},
@@ -288,16 +288,26 @@ void LevelEditor::eraseSpriteAtPosition(const QPointF &scenePos) {
     }
 }
 
-
+void LevelEditor::promptSaveLevel()
+{
+    bool ok;
+    QString filePath = QInputDialog::getText(this, tr("Guardar Nivel"),
+                                             tr("Ingrese la ruta del archivo:"), QLineEdit::Normal,
+                                             "../../server_src/game/Map/levels/nombre_archivo.yaml", &ok);
+    if (ok && !filePath.isEmpty()) {
+        saveLevel(filePath);
+    }
+}
 
 void LevelEditor::handleFileListClick(QListWidgetItem *item) {
     if (item->text() == "Save") {
-        saveLevel();
+        //saveLevel();
+        promptSaveLevel();
     }
 }
 
 
-void LevelEditor::saveLevel() {
+void LevelEditor::saveLevel(const QString& filePath) {
     YAML::Emitter out;
 
     // Obteniendo las dimensiones del mapa
@@ -426,7 +436,8 @@ void LevelEditor::saveLevel() {
     out << YAML::EndMap;
 
     // Guardar en archivo
-    std::ofstream fout("../../server_src/game/Map/levels/level.yaml");
+    //std::ofstream fout("../../server_src/game/Map/levels/level.yaml");
+    std::ofstream fout(filePath.toStdString());
     fout << out.c_str();
     fout.close();
 
