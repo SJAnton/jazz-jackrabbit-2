@@ -58,8 +58,11 @@ void ClientPlayer::cambiar_arma(Direcciones direccion) {
 
 void ClientPlayer::recibirInformacion(){
 	protocolo.recibirIDCliente();
-	//protocolo.recibirTerreno();
 	receiver.start();
+}
+
+TileMap ClientPlayer::recibirMapa() {
+	return protocolo.recibirMapa();
 }
 
 std::vector<int> ClientPlayer::getIdPartidas() {

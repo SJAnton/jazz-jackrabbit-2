@@ -1,5 +1,7 @@
 #include "protocol.h"
 
+#include <iostream>
+
 
 /* Decodificadores */
 

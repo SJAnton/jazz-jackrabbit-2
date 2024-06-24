@@ -21,7 +21,7 @@ class Tile {
         };
 
         bool is_solid() const {return _is_solid;};
-        int getIdTile() {return id_tile;};
+        int getIdTile() const {return id_tile;};
 };
 
 class TileMap

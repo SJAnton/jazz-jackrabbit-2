@@ -29,6 +29,7 @@ class ClientPlayer{
 		void cambiar_arma(Direcciones direccion);
 		
 		void recibirInformacion();
+		TileMap recibirMapa();
 
 		void crearPartida(const TipoPlayer &TipoPlayer);
 		void entrarPartida(int idPartida, const TipoPlayer &TipoPlayer);

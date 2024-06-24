@@ -64,6 +64,10 @@ void InterfazGrafica::addPlayer(const TipoPlayer &tipo) {//temporal
     spritesManager->addPlayer(tipo);
 }
 
+void InterfazGrafica::setMapa (const TileMap &mapa) {
+    spritesManager->setMapa(mapa);
+}
+
 //muevo la camara para que quede centrada en la posicion recibida
 void InterfazGrafica::updateCamara(const Position &pos) {
     
@@ -136,7 +140,7 @@ void InterfazGrafica::renderizarJuego()
     if (!is_running)
         return;
     if (infoJuego.cantidadPlayers() == 0) {
-        throw std::runtime_error("NO hay ningun Player cargardo aun. En InterfazGrafica::renderizarJuego()");
+        throw std::runtime_error("No hay ningun Player cargardo aun. En InterfazGrafica::renderizarJuego()");
     }
     SDL_SetRenderDrawColor(renderer,0, 0, 0, 1);
     SDL_RenderClear(renderer);//borra todo

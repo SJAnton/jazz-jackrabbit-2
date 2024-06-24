@@ -39,6 +39,7 @@ public:
 
     void renderizar(const Position &posCamara);
 
+    void setTileMap(const TileMap &tileMap);
 
 };
 

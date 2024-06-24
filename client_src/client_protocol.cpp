@@ -89,6 +89,24 @@ InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
 	return InfoPlayer(id, pos_x, pos_y, dir, tipo, estado, vida, pts, arma, municion);
 }
 
+/*
+TileMap ClientProtocol::decodeTerreno(const int &filas, const int &columnas, const std::vector<uint8_t> &bytes) {
+	std::vector<std::vector<int>> matriz_ids_tiles;
+	int contador = 0;
+	for (int i = 0; i < filas; i++) {
+		std::vector<int> fila;
+		std::cout << "Fila " << i << ": ";
+		for (int j = 0; j < columnas; j++) {
+			fila.push_back(decodeInt(bytes[contador]));
+			std::cout << fila[j] << " ";
+			contador++;
+		}
+		std::cout << std::endl;
+		matriz_ids_tiles.push_back(fila);
+	}
+	return TileMap(matriz_ids_tiles);
+}
+*/
 
 InfoEnemigo ClientProtocol::decodeEnemy(const std::vector<uint8_t> &bytes) {
 	TipoEnemy tipo = decodeTipoEnemy(bytes[0]);
@@ -285,6 +303,33 @@ void ClientProtocol::recibirIDCliente() {
 	uint8_t byte;
 	socket.recvall(&byte, sizeof(byte), &was_closed);	
 	this->id = byte;
+}
+
+TileMap ClientProtocol::recibirMapa() {
+	uint8_t aux1;
+	uint8_t aux2;
+	socket.recvall(&aux1, sizeof(aux1), &was_closed);	//recibo los primeros 2 bytes que indican el size de la matriz del mapa
+	socket.recvall(&aux2, sizeof(aux2), &was_closed);	//recibo los primeros 2 bytes que indican el size de la matriz del mapa
+	if (was_closed) {
+		std::runtime_error("socket Was_closed");
+		return TileMap();
+	}
+	std::vector<uint8_t> bytes;
+	bytes.push_back(aux1);
+	bytes.push_back(aux2);
+	int size = 2 + decodeInt(aux1)*decodeInt(aux2);
+	bytes.resize(size);
+
+	int bytesRead = 2;
+	while (bytesRead < size) {
+		int bytesReceived = socket.recvall(bytes.data() + bytesRead, bytes.size() - bytesRead, &was_closed);
+		if (was_closed) {
+			std::cout << "Conexión cerrada inesperadamente" << std::endl;
+			return TileMap();  // O manejar el error de conexión cerrada de acuerdo a tu lógica
+		}
+		bytesRead += bytesReceived;
+	}
+	return TileMap(bytes);
 }
 
 void ClientProtocol::close() {
