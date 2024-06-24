@@ -89,6 +89,7 @@ InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
 	return InfoPlayer(id, pos_x, pos_y, dir, tipo, estado, vida, pts, arma, municion);
 }
 
+/*
 TileMap ClientProtocol::decodeTerreno(const int &filas, const int &columnas, const std::vector<uint8_t> &bytes) {
 	std::vector<std::vector<int>> matriz_ids_tiles;
 	int contador = 0;
@@ -104,6 +105,7 @@ TileMap ClientProtocol::decodeTerreno(const int &filas, const int &columnas, con
 	}
 	return TileMap(matriz_ids_tiles);
 }
+*/
 
 InfoEnemigo ClientProtocol::decodeEnemy(const std::vector<uint8_t> &bytes) {
 	TipoEnemy tipo = decodeTipoEnemy(bytes[0]);
@@ -277,30 +279,27 @@ TileMap ClientProtocol::recibirMapa() {
 	uint8_t aux1;
 	uint8_t aux2;
 	socket.recvall(&aux1, sizeof(aux1), &was_closed);	//recibo los primeros 2 bytes que indican el size de la matriz del mapa
-	if (was_closed) {
-		std::cout << "wasclosed " << std::endl;
-		return TileMap();
-	}
 	socket.recvall(&aux2, sizeof(aux2), &was_closed);	//recibo los primeros 2 bytes que indican el size de la matriz del mapa
 	if (was_closed) {
-		std::cout << "wasclosed " << std::endl;
+		std::runtime_error("socket Was_closed");
 		return TileMap();
 	}
-	int sizeFilas = decodeInt(aux1);
-	int sizeColumnas = decodeInt(aux2);
+	std::vector<uint8_t> bytes;
+	bytes.push_back(aux1);
+	bytes.push_back(aux2);
+	int size = 2 + decodeInt(aux1)*decodeInt(aux2);
+	bytes.resize(size);
 
-	std::cout << "sizeFilas: " << sizeFilas << " sizeColumnas: " << sizeColumnas << std::endl;
-
-	std::vector<uint8_t> bytes(sizeFilas * sizeColumnas);
-	socket.recvall(bytes.data(), sizeFilas * sizeColumnas, &was_closed);
-	if (was_closed) {
-		std::cout << "wasclosed " << std::endl;
-		return TileMap();
+	int bytesRead = 2;
+	while (bytesRead < size) {
+		int bytesReceived = socket.recvall(bytes.data() + bytesRead, bytes.size() - bytesRead, &was_closed);
+		if (was_closed) {
+			std::cout << "Conexión cerrada inesperadamente" << std::endl;
+			return TileMap();  // O manejar el error de conexión cerrada de acuerdo a tu lógica
+		}
+		bytesRead += bytesReceived;
 	}
-
-	std::cout << "bytes recibidos: " << bytes.size() + sizeof(aux1) + sizeof(aux2) << std::endl;
-	TileMap mapa = decodeTerreno(sizeFilas, sizeColumnas, bytes);
-	return mapa;
+	return TileMap(bytes);
 }
 
 void ClientProtocol::close() {
