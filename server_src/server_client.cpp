@@ -32,14 +32,15 @@ void Client::run() {
     vector<uint8_t> init_data = protocol.recv_init_msg(wc);
 
     if (init_data[GAME_POS] != NEW_GAME && !gameloops.contains(init_data[GAME_POS])) {
-        std::cout << "Entra al if" << std::endl;
         kill();
         throw runtime_error("Game not found");
     }
+    
     TipoPlayer player_selected = select_character(init_data[1]);
     select_game(init_data[0], player_selected, demo_level);
 
     protocol.send_id(id, wc); // Envía al cliente su ID
+    //protocol.send_tile_map(demo_level.tile_map, wc); // Envía el mapa al cliente
 
     receiver->start();
     sender.start();

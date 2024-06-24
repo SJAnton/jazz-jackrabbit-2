@@ -46,6 +46,13 @@ void ServerProtocol::send_game_data(InfoJuego &game_data, bool &was_closed) {
     //std::cout <<"was_closed: "<< was_closed << std::endl;
 }
 
+void ServerProtocol::send_tile_map(TileMap &tile_map, bool &was_closed) {
+    // Recibe un arreglo que tiene en pos 0 la cantidad de filas y en pos 1 la cantidad de columnas
+    // Itera la matriz columna por columna, desde 0 hasta la cantidad de filas y columnas
+    std::vector<uint8_t> bytes = encodeTileMap(tile_map);
+    sk.sendall(bytes.data(), bytes.size(), &was_closed);
+}
+
 int ServerProtocol::disconnect() {
     sk.shutdown(SHUTCODE);
     sk.close();
@@ -136,11 +143,17 @@ std::vector<uint8_t> ServerProtocol::encodeProyectil(const InfoProyectil &infoPr
     return bytes;
 }
 
+std::vector<uint8_t> ServerProtocol::encodeTileMap(TileMap &tileMap) {
+    std::vector<uint8_t> bytes = tileMap.toBytes();    
+    return bytes;
+}
+
 void ServerProtocol::insertar2bytesDelNumero(int num, std::vector<uint8_t> &array) {
     int aux = htons(num);
     array.push_back((aux >> 8) & 0xFF); // insertar el byte más significativo
     array.push_back(aux & 0xFF); // inseratr el byte menos significativo
 }
+
 
 // Codificadores
 /*
