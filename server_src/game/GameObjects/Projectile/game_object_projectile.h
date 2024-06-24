@@ -15,8 +15,8 @@
 class ObjectPlayer; // Foward declaration para evitar includes cruzados
 
 //Fijo (no lo decide el config)
-#define WIDTH_PROJECTILE 6 //ajustar luego 
-#define HEIGHT_PROJECTILE 4 //ajustar luego
+//#define WIDTH_PROJECTILE 6 //ajustar luego 
+//#define HEIGHT_PROJECTILE 4 //ajustar luego
 
 // Simplifico. Sin polimorfismo. Todos los proyectiles hacen lo mismo, 
 // lo unico que va a variar segun su tipo es la velocidad y daño que causan

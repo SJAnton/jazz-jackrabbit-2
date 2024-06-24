@@ -11,8 +11,8 @@
 #define PTS_VIDA 1
 #define PTS_MUNICION 3
 
-#define WIDTH_COLLECTED 3
-#define HEIGHT_COLLECTED 3
+#define WIDTH_COLLECTED 24
+#define HEIGHT_COLLECTED 24
 
 // No hace falta polimorfismo porque en escencia todas hacen lo mismo 
 // (devolver un numero entero cuando son recolectadas)

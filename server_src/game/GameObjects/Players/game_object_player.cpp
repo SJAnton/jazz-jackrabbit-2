@@ -32,11 +32,12 @@ ObjectPlayer::ObjectPlayer(int id, const TipoPlayer &tipo) :
     GameObject(WIDTH_PLAYER, HEIGHT_PLAYER),
     id(id), 
     tipoPlayer(tipo),
-    health(defaultHealth),
-    weapon(Tipo_1)   
+    health(defaultHealth)
+    //weapon(Tipo_1)   
 {
     type = TypeGameObject::Player;
     initialize_weapons();
+    weapon = &weapons[weaponIndex];
 }
 
 
@@ -129,7 +130,7 @@ bool ObjectPlayer::down_y(int speed) {
     return true;
 }
 void ObjectPlayer::walk(Direcciones direccion) {
-    if (!alive || isDoingSpecialAttack)
+    if (!alive || isDoingSpecialAttack || estado == EstadosPlayer::Shooting)
         return;
 
     direction = direccion;
@@ -177,10 +178,10 @@ void ObjectPlayer::jump(Direcciones direccion) {
 }
 
 void ObjectPlayer::updateShootingDelay() {
-    if (weapon.canShoot()) {
+    if (weapon->canShoot()) {
         return;
     }
-    weapon.updateDelay();
+    weapon->updateDelay();
 }
 
 void ObjectPlayer::updateDamageWaitTime() {
@@ -201,7 +202,7 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
     if (dir == Right)
         pos = Coordenada(pos_x_max+4, pos_y_max - height/2);
 
-    return weapon.shoot(direction, pos, id);
+    return weapon->shoot(direction, pos, id);
     /*
         if (dir == Left) {
             Coordenada pos(x_left - 8, pos_y_max - height/2); // ajustar visualmente
@@ -260,13 +261,14 @@ void ObjectPlayer::change_weapon() {
     if (weaponIndex >= (int)weapons.size()) {
         weaponIndex = 0;
     }
-    if (weapons[weaponIndex].getMuniciones() == 0) {
+    /*if (weapons[weaponIndex].getMuniciones() == 0) {
         weaponIndex++;
         if (weaponIndex >= (int)weapons.size()) {
             weaponIndex = 0;
         }
     }
-    weapon = weapons[weaponIndex];
+    */
+    weapon = &weapons[weaponIndex];
 }
 
 void ObjectPlayer::pick_up_ammo(int ammo, int weapon_index) {
@@ -325,7 +327,7 @@ void ObjectPlayer::revive() {
 }
 
 InfoPlayer ObjectPlayer::getInfo() {
-    return InfoPlayer(id, position.x, position.y, direction, tipoPlayer, estado, health, points, weapon.getType(), weapon.getMuniciones());
+    return InfoPlayer(id, position.x, position.y, direction, tipoPlayer, estado, health, points, weapon->getType(), weapon->getMuniciones());
 }
 
 int ObjectPlayer::getTimeDying() {

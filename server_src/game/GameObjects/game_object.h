@@ -5,6 +5,7 @@
 //#include "../game_mundo.h"
 
 #include "../../../common_src/info_juego.h"
+#include "../../../common_src/paddings.h"
 
 #include <vector>
 

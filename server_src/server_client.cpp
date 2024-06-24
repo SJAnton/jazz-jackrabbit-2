@@ -17,6 +17,7 @@ Client::Client(Socket &&_sk, int id, int game_time, atomic<int> &gmlp_id,
                 gameloops(gameloops), map_reader(map_reader), protocol(sk),
                 recv_q(std::make_shared<Queue<uint8_t>>()), sender(protocol, sndr_q, wc) {}
 
+
 void Client::run() {
     reap_dead_gameloops();
 
