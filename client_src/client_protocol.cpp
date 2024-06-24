@@ -95,6 +95,7 @@ TileMap ClientProtocol::decodeTerreno(const int &filas, const int &columnas, con
 	int contador = 0;
 	for (int i = 0; i < filas; i++) {
 		std::vector<int> fila;
+		std::cout << "Fila " << i << ": ";
 		for (int j = 0; j < columnas; j++) {
 			fila.push_back(decodeInt(bytes[contador]));
 			std::cout << fila[j] << " ";

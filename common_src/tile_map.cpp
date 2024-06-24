@@ -36,16 +36,6 @@
     };
 
 
-void imprimirTileMap(const TileMap& tileMap) {
-    const auto& terreno = tileMap.terreno; // Asumiendo que terreno es accesible
-    for (const auto& fila : terreno) {
-        for (const auto& tile : fila) {
-            std::cout << tile.getIdTile() << " ";
-        }
-        std::cout << std::endl;
-    }
-}
-
 TileMap::TileMap(std::vector<std::vector<int>> matriz_ids_tiles) {
     int size = matriz_ids_tiles.size();
     
