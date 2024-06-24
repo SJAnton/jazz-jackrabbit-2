@@ -36,7 +36,7 @@ ObjectPlayer::ObjectPlayer(int id, const TipoPlayer &tipo) :
     weapon(Tipo_1)   
 {
     type = TypeGameObject::Player;
-    secondary_weapon = Weapon(Tipo_2); //BORRAR
+    initialize_weapons();
 }
 
 
@@ -256,12 +256,28 @@ void ObjectPlayer::change_shooting_weapon() {
 }
 */
 void ObjectPlayer::change_weapon() {
-
+    weaponIndex++;
+    if (weaponIndex >= (int)weapons.size()) {
+        weaponIndex = 0;
+    }
+    if (weapons[weaponIndex].getMuniciones() == 0) {
+        weaponIndex++;
+        if (weaponIndex >= (int)weapons.size()) {
+            weaponIndex = 0;
+        }
+    }
+    weapon = weapons[weaponIndex];
 }
 
-void ObjectPlayer::pick_up_ammo(int ammo) {
-    std::cout << "arma suma municiones" << std::endl;
-    //weapon.addMunicion(ammo);
+void ObjectPlayer::pick_up_ammo(int ammo, int weapon_index) {
+    weapons[weapon_index].addMunicion(ammo);
+}
+
+void ObjectPlayer::initialize_weapons() {
+    weapons.push_back(Weapon(Tipo_1));
+    weapons.push_back(Weapon(Tipo_2));
+    weapons.push_back(Weapon(Tipo_3));
+    weapons.push_back(Weapon(Tipo_4));
 }
 
 void ObjectPlayer::set_intoxicated_status(bool status) {

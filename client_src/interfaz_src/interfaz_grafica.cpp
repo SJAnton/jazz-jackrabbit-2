@@ -154,7 +154,7 @@ void InterfazGrafica::renderizarJuego()
     for (int i=0; i< infoJuego.cantProyectiles(); i++) {
         //std::cout << "Hay " << infoJuego.cantProyectiles() << " proyectiles" << std::endl;
         Position pos = posRelativaACamara(infoJuego.proyectiles[i].pos_x, infoJuego.proyectiles[i].pos_y);
-        spritesManager->renderizarProyectilEn(infoJuego.proyectiles[i].direccion, pos.x, pos.y);
+        spritesManager->renderizarProyectilEn(infoJuego.proyectiles[i].direccion, infoJuego.proyectiles[i].tipo, pos.x, pos.y);
         //spritesManager->updatePlayer(i, infoJuego.players[i].estado, posicion);
     }
 

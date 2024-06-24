@@ -56,6 +56,9 @@ private:
     std::list<SpriteEnemy> enemies;
     //Proyectiles
     SpriteSheet proyectil_0;
+    SpriteSheet proyectil_1;
+    SpriteSheet proyectil_2;
+    SpriteSheet proyectil_3;
 
     //HUD
     SpriteObject heartIcon;
@@ -103,7 +106,7 @@ public:
     void renderizarEnemigo(unsigned int n);
     void renderizarTerreno(const Position &posCamara);
     void renderizarItemEn(const TipoRecolectable &tipo, int x, int y);
-    void renderizarProyectilEn(const Direcciones &dir, int x, int y);
+    void renderizarProyectilEn(const Direcciones &dir, TipoArma &tipo,int x, int y);
     void renderizarVidas(int &vidas);
     void renderizarMunicionArma(const TipoArma &tipo, int cantMunicion);
 

@@ -5,7 +5,7 @@
 #include <functional>
 
 // Especialización de std::hash para QString
-namespace std {
+/*namespace std {
 template<>
 struct hash<QString> {
     size_t operator()(const QString &key) const {
