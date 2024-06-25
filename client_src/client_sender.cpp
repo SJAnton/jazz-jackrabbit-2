@@ -22,7 +22,7 @@ void ClientSender::run() {
 	} catch (const std::exception& e) {
         std::cerr << "Error en el Sender: " << e.what() << std::endl;
 		queueEnviadora.close();
-		ClientPlayer::queueReceptora.close();
+		//ClientPlayer::queueReceptora.close();
 		protocolo.close();
 		was_closed = true;
 		stop();

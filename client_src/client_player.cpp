@@ -73,8 +73,8 @@ void ClientPlayer::entrarPartida(int idPartida, const TipoPlayer &tipoPlayer) {
 void ClientPlayer::kill() {
     sender.stop();
     receiver.stop();
-	queueEnviadora.close();
-	queueReceptora.close();
+	//queueEnviadora.close();
+	//queueReceptora.close();
 	sender.join();
     receiver.join();
 }
@@ -83,9 +83,13 @@ ClientPlayer::~ClientPlayer() {
     // Señalar a los hilos que terminen
     sender.stop();
     receiver.stop();
-
-	queueEnviadora.close();
-	queueReceptora.close();
+	try {
+		queueEnviadora.close();
+		queueReceptora.close();
+	}catch(...) {
+		
+	}
+		
 
     // Esperar a que los hilos realmente terminen
     sender.join();

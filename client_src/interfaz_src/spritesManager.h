@@ -70,9 +70,9 @@ private:
     SpriteSheet gun_3;
     SpriteSheet gun_4;
 
-    //SpriteSheet spazGun;
-    //SpriteSheet jazzGun;
-    //SpriteSheet loriGun;
+    SpriteSheet spaz_HUD;
+    SpriteSheet jazz_HUD;
+    SpriteSheet lori_HUD;
 
 
 private: 
@@ -93,7 +93,7 @@ public:
     std::list<ButtonCharacter> getBotonesCharacter();
     void renderizarBotonesCharacter();
     //EstadosPlayer getEstadoPlayer(unsigned int numero);
-    void renderizarPosicionesFinales(const std::vector<InfoPlayer> players);
+    void renderizarPosicionesFinales(const std::vector<InfoTabla> &ranking_players);
 
     //modifica el spritesheet por otro que corresponda al estado nuevo, cambiando de animacion
     //void setEstadoPlayer(unsigned int numero, EstadosPlayer estado);

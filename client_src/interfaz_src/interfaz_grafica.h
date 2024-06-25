@@ -43,6 +43,8 @@ private:
     Queue<InfoJuego> &queueReceptora;
 
     EventHandler *eventHandler;
+    int max_x = ANCHO_WINDOW; //para saber donde frenar la camara.
+    int max_y = ALTO_WINDOW;
 
 public:
     static SDL_Renderer* renderer; //para poder accederlo desde otras clases

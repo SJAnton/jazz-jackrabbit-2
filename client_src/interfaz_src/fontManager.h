@@ -16,6 +16,7 @@ class fontManager{
 	public:
 		fontManager();
 		void renderText(const std::string& text, int x, int y, float scale);
+		void renderText(const std::string& text, int x, int y, float scale, int spacing);
 
 };
 

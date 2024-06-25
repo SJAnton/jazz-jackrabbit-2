@@ -82,14 +82,33 @@ void InterfazGrafica::addPlayer(int id, const TipoPlayer &tipo) {//temporal
 
 void InterfazGrafica::setMapa (const TileMap &mapa) {
     spritesManager->setMapa(mapa);
+    max_x = mapa.getFilas() * 32;
+    max_y = mapa.getColumnas() * 32;
 }
 
 //muevo la camara para que quede centrada en la posicion recibida
 void InterfazGrafica::updateCamara(const Position &pos) {
-    
-    camara.x = pos.x - ANCHO_WINDOW/2;
-    camara.y = pos.y - ALTO_WINDOW/2;
+    int new_camara_x = pos.x - ANCHO_WINDOW / 2;
+    int new_camara_y = pos.y - ALTO_WINDOW / 2;
+
+    // Asegurarse de que la cámara no se salga de los márgenes del escenario
+    if (new_camara_x < 0) {
+        new_camara_x = 0;
+    } else if (new_camara_x > max_x - ANCHO_WINDOW) {
+        new_camara_x = max_x - ANCHO_WINDOW;
+    }
+
+    if (new_camara_y < 0) {
+        new_camara_y = 0;
+    } else if (new_camara_y > max_y - ALTO_WINDOW) {
+        new_camara_y = max_y - ALTO_WINDOW;
+    }
+
+    // Actualizar la posición de la cámara
+    camara.x = new_camara_x;
+    camara.y = new_camara_y;
 }
+
 Position InterfazGrafica::posRelativaACamara(const int &x, const int &y) {
     return Position(x - camara.x, y- camara.y);
 }
@@ -257,7 +276,7 @@ void InterfazGrafica::renderizarTablaResultados(){
     SDL_SetRenderDrawColor(renderer,106, 101, 255, 1);
     SDL_RenderClear(renderer);
 
-    spritesManager->renderizarPosicionesFinales(infoJuego.players);
+    spritesManager->renderizarPosicionesFinales(infoJuego.rankingPlayers);
 
     SDL_RenderPresent(renderer);
 }
