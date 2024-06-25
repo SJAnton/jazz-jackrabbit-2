@@ -19,7 +19,7 @@ class ClientPlayer{
 		static Queue<InfoJuego> queueReceptora;
 
 	public:
-		ClientPlayer(const std::string& hostname, const std::string& servname);
+		ClientPlayer(const std::string& hostname, const std::string& servname, bool &wc);
 
 		void caminar(Direcciones direccion);
 		void saltar(Direcciones direccion);
@@ -36,6 +36,7 @@ class ClientPlayer{
 
 		std::vector<int> getIdPartidas();
 		std::vector<std::string> getNombresNiveles();
+		void kill();
 		~ClientPlayer();
 };
 

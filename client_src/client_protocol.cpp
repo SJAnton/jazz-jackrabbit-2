@@ -293,7 +293,6 @@ std::vector<std::string> ClientProtocol::recibirNombresNiveles(bool *was_closed_
 			filename += c;
 		}
 		nombres.push_back(filename);
-		std::cout << filename << std::endl;
 	}
 	return nombres;
 }

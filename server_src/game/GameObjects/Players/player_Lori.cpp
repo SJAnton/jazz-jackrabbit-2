@@ -5,7 +5,8 @@ PlayerLori::PlayerLori(int id) : ObjectPlayer(id, TipoPlayer::Lori) {
 }
 
 void PlayerLori::specialAttack() {
-    if (is_dead() || is_intoxicated() || isJumping() || is_falling()) {
+    if (is_dead() || is_intoxicated() || isJumping() ||
+        is_falling() || estado == EstadosPlayer::SpecialAttack) {
         return;
     }
     isDoingSpecialAttack = true;
@@ -17,6 +18,7 @@ void PlayerLori::specialAttack() {
 void PlayerLori::updateSpecialAttack() {
     timer_specialAttack++;
     if (timer_specialAttack >= TIME_HIGHKICK) {
+        estado = EstadosPlayer::SpecialAttack;
         isDoingSpecialAttack = false;
         timer_specialAttack = 0;
     }

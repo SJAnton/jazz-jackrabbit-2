@@ -22,4 +22,5 @@ void ClientRenderer::run(){
         }
 	}
 	interfaz->cerrarInterfaz(); 
+	std::cout << "fin renderer" << std::endl;
 }

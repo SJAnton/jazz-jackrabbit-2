@@ -132,6 +132,9 @@ void ObjectEnemy::restore_movement_range() {
 }
 
 void ObjectEnemy::take_damage(int &damage) {
+    if (!is_alive) {
+        return;
+    }
     health -= damage;
     if (health <= 0){
         is_alive = false;
@@ -154,6 +157,9 @@ void ObjectEnemy::attack() {
 }
 
 void ObjectEnemy::revive() {
+    if (is_alive) {
+        return;
+    }
     is_alive = true;
     health = health_buffer;
     status = EstadosEnemy::Idle;

@@ -19,7 +19,7 @@ class ClientReceiver : public Thread {
         //std::atomic<bool>& alive;
 
     public:
-        ClientReceiver(ClientProtocol& protocol, Queue<InfoJuego>& recv_queue);
+        ClientReceiver(ClientProtocol& protocol, Queue<InfoJuego>& recv_queue, bool &wc);
 
         virtual void run() override;
 };

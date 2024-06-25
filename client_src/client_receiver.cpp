@@ -4,8 +4,8 @@
 #include "client_player.h"
 
 
-ClientReceiver::ClientReceiver(ClientProtocol &protocol, Queue<InfoJuego> &recv_queue): 
-protocolo(protocol), queueReceptora(recv_queue), was_closed(false){}
+ClientReceiver::ClientReceiver(ClientProtocol &protocol, Queue<InfoJuego> &recv_queue, bool &wc): 
+protocolo(protocol), queueReceptora(recv_queue), was_closed(wc){}
 
 
 void ClientReceiver::run() {
@@ -31,5 +31,5 @@ void ClientReceiver::run() {
     } catch(...) {
         std::cerr << "Error INESPERADO en el Receiver: " << std::endl;
     }
-    
+    std::cout << "fin receiver" << std::endl;
 }

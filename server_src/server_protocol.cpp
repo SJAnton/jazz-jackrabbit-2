@@ -27,7 +27,6 @@ std::string ServerProtocol::recv_chosen_level(bool &was_closed) {
         sk.recvall(&c, sizeof(c), &was_closed);
         level_name += c;
     }
-    std::cout << level_name << std::endl;
     return level_name;
 }
 

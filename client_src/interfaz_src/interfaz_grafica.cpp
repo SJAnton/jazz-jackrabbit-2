@@ -15,6 +15,20 @@
 #define EFFECTS_VOLUME 100
 
 #define SHOOTING_EFFECT_PATH "../music_src/Effects/Shooting.mp3"
+#define SHOOTING_ROCKET_EFFECT_PATH "../music_src/Effects/ShootingRocket.mp3"
+#define JUMPING_EFFECT_PATH "../music_src/Effects/Jump.mp3"
+#define JAZZ_HURT_EFFECT_PATH "../music_src/Effects/JazzHurt.mp3"
+#define SPAZ_HURT_EFFECT_PATH "../music_src/Effects/SpazHurt.mp3"
+#define LORI_HURT_EFFECT_PATH "../music_src/Effects/LoriHurt.mp3"
+#define INTOXICATED_EFFECT_PATH "../music_src/Effects/Intoxicated.mp3"
+#define SPECIAL_ATTACK_EFFECT_PATH "../music_src/Effects/SpecialAttack.mp3"
+#define DEATH_EFFECT_PATH "../music_src/Effects/Death.mp3"
+#define REVIVING_EFFECT_PATH "../music_src/Effects/Reviving.mp3"
+#define TOUCHING_GROUND_EFFECT_PATH "../music_src/Effects/TouchingGround.mp3"
+#define TIMES_UP_PATH "../music_src/Effects/TimesUp.mp3"
+#define TIMES_UP_2_PATH "../music_src/Effects/TimesUp2.mp3"
+#define ENEMY_HURT_EFFECT_PATH "../music_src/Effects/EnemyHurt.mp3"
+#define ENEMY_DEATH_EFFECT_PATH "../music_src/Effects/EnemyDeath.mp3"
 
 SDL_Renderer* InterfazGrafica::renderer = nullptr;
 
@@ -50,7 +64,10 @@ InterfazGrafica::InterfazGrafica(
     spritesManager = new SpritesManager();
     spritesManager->inicializarBotonesPartidas(client.getIdPartidas());
     spritesManager->inicializarBotonesCharacter();
-    eventHandler =  new EventHandler(*this, client, spritesManager->getBotonesPartidas(), spritesManager->getBotonesCharacter());
+    eventHandler =  new EventHandler(
+        *this, client, effectsPlayer, spritesManager->getBotonesPartidas(),
+        spritesManager->getBotonesCharacter(), this->is_running
+    );
 
     eventHandler->start();
     //infoJuego.addPlayer();
@@ -92,36 +109,30 @@ void InterfazGrafica::update(int it) {
         Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y); // el player 0 debo "ser yo"
         updateCamara(pos);
         //std::cout << "Cant players: " << infoJuego.cantidadPlayers() << std::endl;
-
+        
         for (int i=0; i< infoJuego.cantidadPlayers(); i++) {
-            pos = posRelativaACamara(infoJuego.players[i].pos_x, infoJuego.players[i].pos_y);
+            InfoPlayer &infoPlayer = infoJuego.players[i];
+            EstadosPlayer &estado = infoPlayer.estado;
+            pos = posRelativaACamara(infoPlayer.pos_x, infoPlayer.pos_y);
             try {
-
-                EstadosPlayer estado = infoJuego.players[i].estado;
-
-                /*switch (estado) {
-                    case EstadosPlayer::Shooting:
-                        effectsPlayer.play_effect(SHOOTING_EFFECT_PATH);
-                        break;
-                    default:
-                        break;
-                }*/
-
-                spritesManager->updatePlayer(i, estado, pos, infoJuego.players[i].direccion);
+                spritesManager->updatePlayer(i, estado, pos, infoPlayer.direccion);
+                efectosPlayer(estado, infoPlayer);
             } catch (...) { // si lanza una excepcion quiere decir que el player i no existe en spritesManager. Debo agregarlo
-                spritesManager->addPlayer(infoJuego.players[i].tipoPlayer);
-                spritesManager->updatePlayer(i, infoJuego.players[i].estado, pos, infoJuego.players[i].direccion);
+                spritesManager->addPlayer(infoPlayer.tipoPlayer);
+                spritesManager->updatePlayer(i, estado, pos, infoPlayer.direccion);
             }
-            
         }
         for (int i=0; i< infoJuego.cantEnemigos(); i++) {
-            pos = posRelativaACamara(infoJuego.enemigos[i].pos_x, infoJuego.enemigos[i].pos_y);
+            InfoEnemigo &infoEnemigo = infoJuego.enemigos[i];
+            EstadosEnemy &estado = infoEnemigo.estado;
+            pos = posRelativaACamara(infoEnemigo.pos_x, infoEnemigo.pos_y);
             try {
-                spritesManager->updateEnemy(i, infoJuego.enemigos[i].estado, pos, infoJuego.enemigos[i].direccion);
+                spritesManager->updateEnemy(i, estado, pos, infoEnemigo.direccion);
+                //efectosEnemy(estado, infoEnemigo);
             } catch (...) {
-                if (infoJuego.enemigos[i].tipo == Bat)
-                spritesManager->addEnemy(infoJuego.enemigos[i].tipo);
-                spritesManager->updateEnemy(i, infoJuego.enemigos[i].estado, pos, infoJuego.enemigos[i].direccion);
+                if (infoEnemigo.tipo == Bat)
+                spritesManager->addEnemy(infoEnemigo.tipo);
+                spritesManager->updateEnemy(i, estado, pos, infoEnemigo.direccion);
             }
             
         }
@@ -193,6 +204,8 @@ void InterfazGrafica::nextEstado() {
         break;
     case Juego:
         musicPlayer.stop();
+        effectsPlayer.play_effect(TIMES_UP_PATH);
+        effectsPlayer.play_effect(TIMES_UP_2_PATH);
         estado = ResultadosFinales; //no implementado
         //renderizarPantalla = &InterfazGrafica::renderizarTablaResultados;
         break;
@@ -242,6 +255,92 @@ void InterfazGrafica::renderizarSeleccionPlayer(){
     SDL_RenderPresent(renderer);
 }
 
+void InterfazGrafica::efectosArma(TipoArma &arma) {
+    switch (arma) {
+        case Tipo_1:
+            effectsPlayer.play_effect(SHOOTING_EFFECT_PATH);
+            break;
+        case Tipo_2:
+            effectsPlayer.play_effect(SHOOTING_ROCKET_EFFECT_PATH);
+            break;
+        case Tipo_3:
+            effectsPlayer.play_effect(SHOOTING_ROCKET_EFFECT_PATH);
+            break;
+        case Tipo_4:
+            effectsPlayer.play_effect(SHOOTING_ROCKET_EFFECT_PATH);
+            break;
+    }
+}
+
+void InterfazGrafica::efectosPlayer(EstadosPlayer &estado, InfoPlayer &infoPlayer) {
+    if (estado == estado_anterior_player) {
+        return;
+    } else if (estado_anterior_player == EstadosPlayer::Falling && estado != EstadosPlayer::Shooting) {
+        effectsPlayer.play_effect(TOUCHING_GROUND_EFFECT_PATH);
+    } else if ((estado_anterior_player == EstadosPlayer::Falling && estado == EstadosPlayer::Shooting) ||
+               (estado_anterior_player == EstadosPlayer::Walking && estado == EstadosPlayer::Shooting) ||
+               (estado_anterior_player == EstadosPlayer::Running && estado == EstadosPlayer::Shooting) ||
+               (estado_anterior_player == EstadosPlayer::Jumping && estado == EstadosPlayer::Shooting)) {
+        // TODO: arreglar
+        efectosArma(infoPlayer.arma);
+    }
+    switch (estado) {
+        case EstadosPlayer::Shooting:
+            efectosArma(infoPlayer.arma);
+            break;
+        case EstadosPlayer::Jumping:
+            effectsPlayer.play_effect(JUMPING_EFFECT_PATH);
+            break;
+        case EstadosPlayer::Damaged:
+            if (infoPlayer.tipoPlayer == TipoPlayer::Jazz) {
+                effectsPlayer.play_effect(JAZZ_HURT_EFFECT_PATH);
+            } else if (infoPlayer.tipoPlayer == TipoPlayer::Spaz) {
+                effectsPlayer.play_effect(SPAZ_HURT_EFFECT_PATH);
+            } else {
+                effectsPlayer.play_effect(LORI_HURT_EFFECT_PATH);
+            }
+            break;
+        case EstadosPlayer::IntoxicatedIdle:
+            effectsPlayer.play_effect(INTOXICATED_EFFECT_PATH);
+            break;
+        case EstadosPlayer::SpecialAttack:
+            effectsPlayer.play_effect(SPECIAL_ATTACK_EFFECT_PATH);
+            break;
+        case EstadosPlayer::Dying:
+            effectsPlayer.play_effect(DEATH_EFFECT_PATH);
+            break;
+        /*case EstadosPlayer::Reviving:
+            effectsPlayer.play_effect(REVIVING_EFFECT_PATH);
+            break;*/
+        default:
+            break;
+    }
+    estado_anterior_player = estado;
+}
+
+void InterfazGrafica::efectosEnemy(EstadosEnemy &estado, InfoEnemigo &infoEnemigo) {
+    if (estado == estado_anterior_enemy) {
+        return;
+    }
+
+    switch (estado) {
+        case EstadosEnemy::Damaged:
+            effectsPlayer.play_effect(ENEMY_HURT_EFFECT_PATH);
+            break;
+        case EstadosEnemy::Death:
+            if (enemigo_muerto.count(&infoEnemigo) > 0 || enemigo_muerto[&infoEnemigo]) {
+                break;
+            }
+            effectsPlayer.play_effect(ENEMY_DEATH_EFFECT_PATH);
+            enemigo_muerto[&infoEnemigo] = true;
+            break;
+        default:
+            enemigo_muerto[&infoEnemigo] = false;
+            break;
+    }
+    estado_anterior_enemy = estado;
+}
+
 void InterfazGrafica::cerrarInterfaz() 
 {
     this->is_running = false;
@@ -256,6 +355,7 @@ void InterfazGrafica::cerrarInterfaz()
 //destructor
 InterfazGrafica::~InterfazGrafica()
 {
+    std::cout << "fin interfaz" << std::endl; 
     this->is_running = false;
     eventHandler->stop();
     eventHandler->join();

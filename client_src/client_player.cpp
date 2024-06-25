@@ -5,10 +5,10 @@
 Queue<InfoJuego> ClientPlayer::queueReceptora;
 Queue<ComandoCliente> ClientPlayer::queueEnviadora;
 
-ClientPlayer::ClientPlayer(const std::string& hostname, const std::string& servname) :
+ClientPlayer::ClientPlayer(const std::string& hostname, const std::string& servname, bool &wc) :
 	protocolo(hostname, servname),
-	receiver(protocolo, queueReceptora),
-	sender(protocolo, queueEnviadora)
+	receiver(protocolo, queueReceptora, wc),
+	sender(protocolo, queueEnviadora, wc)
 {
 	bool was_closed;
 	ids_partidas = protocolo.recibirIdsPartidas(&was_closed);
@@ -67,10 +67,22 @@ void ClientPlayer::entrarPartida(int idPartida, const TipoPlayer &tipoPlayer) {
 	queueEnviadora.push(ComandoCliente(idPartida, tipoPlayer));
 }
 
+void ClientPlayer::kill() {
+    sender.stop();
+    receiver.stop();
+	queueEnviadora.close();
+	queueReceptora.close();
+	sender.join();
+    receiver.join();
+}
+
 ClientPlayer::~ClientPlayer() {
     // Señalar a los hilos que terminen
     sender.stop();
     receiver.stop();
+
+	queueEnviadora.close();
+	queueReceptora.close();
 
     // Esperar a que los hilos realmente terminen
     sender.join();

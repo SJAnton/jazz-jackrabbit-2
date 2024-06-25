@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "../../common_src/thread.h"
+#include "../music_src/music_player.h"
 //#include "interfaz_grafica.h"
 #include "../client_player.h"
 
@@ -19,12 +20,15 @@ class EventHandler : public Thread
 private:
     InterfazGrafica &interfaz;
     ClientPlayer &cliente;
+    MusicPlayer &effectsPlayer;
 
     std::map<SDL_Keycode, bool> key_state; // True si la tecla está presionada, false si no
 
     std::list<ButtonPartida> partidas; //Para saber en qué posicion de la pantalla estan los botones
     std::list<ButtonCharacter> personajes;
     int partidaSeleccionada = 0; // guarda el id de la partida que se seleccione
+
+    bool &keep_running;
 
 private:
     void manejarEventosMenu(SDL_Event &e);
@@ -37,9 +41,9 @@ private:
     void manejarComandosJuego(SDL_Event &e, Direcciones &dir);
 
 public:
-    EventHandler(InterfazGrafica &interfaz, ClientPlayer &clientPlayer, const std::list<ButtonPartida> &partidas, const std::list<ButtonCharacter> &personajes);
-
-    void cargarPartidas();
+    EventHandler(InterfazGrafica &interfaz, ClientPlayer &clientPlayer, MusicPlayer &effectsPlayer,
+    const std::list<ButtonPartida> &partidas, const std::list<ButtonCharacter> &personajes,
+    bool &keep_running);
 
     void run() override;
 };
