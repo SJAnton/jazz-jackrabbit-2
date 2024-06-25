@@ -36,6 +36,11 @@
 #define COIN_ID 0
 #define COIN_ID2 1
 #define GEM_ID 2
+#define MUNICION 3
+#define MUNICION_1 4
+#define MUNICION_2 5
+#define MUNICION_3 6
+#define MUNICION_4 7
 
 // c_cpp_properties.json --> cppStandard: "c++17"
 namespace fs = std::filesystem;
@@ -178,6 +183,16 @@ TipoRecolectable GameMapReader::id_to_object_type(int id) {
             return TipoRecolectable::Moneda;
         case GEM_ID:
             return TipoRecolectable::Diamante;
+        case MUNICION :
+            return TipoRecolectable::Municion;
+        case MUNICION_1:
+            return TipoRecolectable::Municion1;
+        case MUNICION_2:
+            return TipoRecolectable::Municion2;
+        case MUNICION_3:
+            return TipoRecolectable::Municion3;
+        case MUNICION_4:
+            return TipoRecolectable::Municion4;
         default:
             throw std::runtime_error("Invalid object id");
     }
