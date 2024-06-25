@@ -11,7 +11,7 @@
 ## Compilación
 
 ### Dependencias
-* [SDL2](SDL2) (#Instalacion) (desarrollado con la version )
+* [SDL2](SDL2) (desarrollado con la version )
 * [SDL2_image](SDL2_image), [SDL2_mixer](SDL_mixer)
 * Qt5 (desarrollado con la version 5.15.3)
 * [yaml-cpp](yaml-cpp)
@@ -63,12 +63,13 @@ El juego consiste en hacer la mayor cantidad de puntos. Las formas de conseguir 
 * Barra espaciadora ` `: el jugador salta
 * Letra `D`: para disparar
 * Letra `C`: para cambiar de arma
+* Letra `A`: ataque especial
 * Tecla `Ctrl`: para correr
 
 ## Instalaciones
-* SDL2: 
-* SDL2_image: _sudo apt-get install libsdl2-dev_
-* SDL2_mixer: _sudo apt-get install libsdl2-image-dev_
-* Qt5:
-* yaml-cpp: 
-* PKG-Config: _sudo apt-get install pkg-config_
+* ##### SDL2: _sudo apt-get install libsdl2-dev_
+* ##### SDL2_image: _sudo apt-get install libsdl2-image-dev_
+* ##### SDL2_mixer: 
+* ##### Qt5:
+* ##### yaml-cpp: 
+* ##### PKG-Config: _sudo apt-get install pkg-config_
