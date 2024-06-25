@@ -215,7 +215,7 @@ void InterfazGrafica::nextEstado() {
         renderizarPantalla = &InterfazGrafica::renderizarSeleccionPlayer;
         break;
     case SeleccionPlayer:
-        musicPlayer.play_music(MEDIVO_MUSIC_PATH); // TODO: modificar por música del mapa particular
+        musicPlayer.play_random_music();
         estado = Juego;
         renderizarPantalla = &InterfazGrafica::renderizarJuego;
         break;
@@ -348,19 +348,21 @@ void InterfazGrafica::efectosEnemy(EstadosEnemy &estado, InfoEnemigo &infoEnemig
     if (estado == estado_anterior_enemy) {
         return;
     }
-
     switch (estado) {
         case EstadosEnemy::Damaged:
             effectsPlayer.play_effect(ENEMY_HURT_EFFECT_PATH);
             break;
         case EstadosEnemy::Death:
-            if (enemigo_muerto.count(&infoEnemigo) > 0 || enemigo_muerto[&infoEnemigo]) {
+            if (enemigo_muerto.count(&infoEnemigo) && enemigo_muerto[&infoEnemigo]) {
                 break;
             }
             effectsPlayer.play_effect(ENEMY_DEATH_EFFECT_PATH);
             enemigo_muerto[&infoEnemigo] = true;
             break;
         default:
+            if (estado_anterior_enemy == EstadosEnemy::Death) {
+                break;
+            }
             enemigo_muerto[&infoEnemigo] = false;
             break;
     }

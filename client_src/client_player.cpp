@@ -73,8 +73,6 @@ void ClientPlayer::entrarPartida(int idPartida, const TipoPlayer &tipoPlayer) {
 void ClientPlayer::kill() {
     sender.stop();
     receiver.stop();
-	//queueEnviadora.close();
-	//queueReceptora.close();
 	sender.join();
     receiver.join();
 }

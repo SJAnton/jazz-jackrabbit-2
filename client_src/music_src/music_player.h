@@ -1,7 +1,9 @@
 #ifndef CLIENT_MUSIC_PLAYER_H_
 #define CLIENT_MUSIC_PLAYER_H_
 
+#include <random>
 #include <string>
+#include <vector>
 #include <stdexcept>
 #include <filesystem>
 #include <SDL2/SDL.h>
@@ -36,6 +38,8 @@ class MusicPlayer {
         void play_music(std::string path);
 
         void play_effect(std::string path);
+
+        void play_random_music();
 
         void stop();
 };
