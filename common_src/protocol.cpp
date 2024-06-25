@@ -95,6 +95,10 @@ TipoRecolectable Protocol::decodeTipoRecolectable(uint8_t byte) {
 	case ITEM_DIAMANTE: return Diamante;
 	case ITEM_MUNCION: return Municion;
 	case ITEM_ZANAHORIA: return Zanahoria;
+    case ITEM_MUNCION_1: return Municion1;
+    case ITEM_MUNCION_2: return Municion2;
+    case ITEM_MUNCION_3: return Municion3;
+    case ITEM_MUNCION_4: return Municion4;
 	default:
 		throw std::invalid_argument("En Protocol::decodeTipoRecolectable()");
 		return Moneda;
@@ -205,6 +209,10 @@ uint8_t Protocol::encodeTipoRecolectable(const TipoRecolectable &tipo){
         case Moneda:   return ITEM_MONEDA;
         case Zanahoria: return ITEM_ZANAHORIA;
         case Municion: return ITEM_MUNCION;
+        case Municion1: return ITEM_MUNCION_1;
+        case Municion2: return ITEM_MUNCION_2;
+        case Municion3: return ITEM_MUNCION_3;
+        case Municion4: return ITEM_MUNCION_4;
         default:
             throw std::invalid_argument("En Protocol::encodeTipoRecolectable()");
             return ITEM_DIAMANTE;
