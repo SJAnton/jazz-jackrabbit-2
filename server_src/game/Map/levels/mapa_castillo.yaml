@@ -56,13 +56,13 @@ Enemies:
     x: 544
     y: 320
   - enemy_id: 2
-    x: 160
+    x: 100
     y: 352
   - enemy_id: 1
     x: 1696
     y: 416
   - enemy_id: 2
-    x: 480
+    x: 440
     y: 480
   - enemy_id: 2
     x: 864

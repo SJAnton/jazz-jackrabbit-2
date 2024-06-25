@@ -164,6 +164,18 @@ void SpritesManager::renderizarItemEn(const TipoRecolectable &tipo, int x, int y
         gema.renderizarEn(x, y);
     else if (tipo == TipoRecolectable::Zanahoria)
         zanahoria.renderizarEn(x, y);
+    else if (tipo == TipoRecolectable::Municion1)
+        municion_1.renderizarEn(x, y);
+    else if (tipo == TipoRecolectable::Municion2)
+        municion_2.renderizarEn(x, y);
+    else if (tipo == TipoRecolectable::Municion3)
+        municion_3.renderizarEn(x, y);
+    else if (tipo == TipoRecolectable::Municion4)
+        municion_4.renderizarEn(x, y);
+    else if (tipo == TipoRecolectable::Municion)
+        municion_1.renderizarEn(x, y);
+    else
+        throw std::runtime_error("Item no encontrado");
 }
 
 void SpritesManager::renderizarProyectilEn(const Direcciones &dir, TipoArma &tipo ,int x, int y) {
