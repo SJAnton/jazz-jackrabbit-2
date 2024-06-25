@@ -101,6 +101,29 @@ void SpritesManager::renderizarBotonesCharacter(){
     character_lori.renderizarEn(x + separacion * 2, y);
 }
 
+bool comparadorPorPuntos(const InfoPlayer& a, const InfoPlayer& b) {
+    return a.puntos > b.puntos; // Orden descendente (de mayor a menor)
+}
+
+void SpritesManager::renderizarPosicionesFinales(const std::vector<InfoPlayer> players){
+    int tabla_x = ANCHO_WINDOW * 0.5;
+    int tabla_y = ALTO_WINDOW * 0.4;
+    int separacion = 40;
+
+    font.renderText("TABLA DE POSICIONES", tabla_x, tabla_y, 0.5f);
+
+    std::vector<InfoPlayer> sortedPlayers = players;
+    std::sort(sortedPlayers.begin(), sortedPlayers.end(), comparadorPorPuntos);
+
+    for (size_t i = 0; i < sortedPlayers.size(); i++)
+    {
+        std::string playerData = std::to_string(i + 1);
+        playerData += ".PLAYER" + std::to_string(sortedPlayers[i].id) + " PTS:" + std::to_string(sortedPlayers[i].puntos);
+        font.renderText(playerData, tabla_x, tabla_y + separacion, 0.5f);
+        separacion += 40;
+    }
+}
+
 //JUEGO
 /*
 void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
@@ -211,13 +234,19 @@ void SpritesManager::renderizarMunicionArma(const TipoArma &tipo, int cantMunici
     font.renderText(municion, municion_x + 30, municion_y, 0.4f);
 }
 
-bool comparadorPorPuntos(const InfoPlayer& a, const InfoPlayer& b) {
-    return a.puntos > b.puntos; // Orden descendente (de mayor a menor)
+void SpritesManager::renderizarTiempo(int tiempo){
+    int tabla_x = ANCHO_WINDOW * 0.02;
+    int tabla_y = ALTO_WINDOW * 0.05;
+
+    std::string tiempo_restante = "TIEMPO RESTANTE: ";
+    tiempo_restante += std::to_string(tiempo);
+
+    font.renderText(tiempo_restante, tabla_x, tabla_y, 0.23f);
 }
 
 void SpritesManager::renderizarTablaPosiciones(const std::vector<InfoPlayer> players){
     int tabla_x = ANCHO_WINDOW * 0.02;
-    int tabla_y = ALTO_WINDOW * 0.1;
+    int tabla_y = ALTO_WINDOW * 0.11;
     int separacion = 20;
 
     font.renderText("TABLA DE POSICIONES", tabla_x, tabla_y, 0.23f);

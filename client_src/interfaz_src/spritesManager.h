@@ -93,6 +93,7 @@ public:
     std::list<ButtonCharacter> getBotonesCharacter();
     void renderizarBotonesCharacter();
     //EstadosPlayer getEstadoPlayer(unsigned int numero);
+    void renderizarPosicionesFinales(const std::vector<InfoPlayer> players);
 
     //modifica el spritesheet por otro que corresponda al estado nuevo, cambiando de animacion
     //void setEstadoPlayer(unsigned int numero, EstadosPlayer estado);
@@ -112,6 +113,7 @@ public:
     void renderizarProyectilEn(const Direcciones &dir, TipoArma &tipo,int x, int y);
     void renderizarVidas(int &vidas);
     void renderizarMunicionArma(const TipoArma &tipo, int cantMunicion);
+    void renderizarTiempo(int tiempo);
     void renderizarTablaPosiciones(const std::vector<InfoPlayer> players);
 
 

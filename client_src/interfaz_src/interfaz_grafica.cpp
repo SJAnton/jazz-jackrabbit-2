@@ -181,6 +181,7 @@ void InterfazGrafica::renderizarJuego()
     //HUD
     spritesManager->renderizarVidas(infoJuego.players[0].vida);
     spritesManager->renderizarMunicionArma(infoJuego.players[0].arma, infoJuego.players[0].municion);
+    spritesManager->renderizarTiempo(100); //Pasar infoJuego.tiempo
     spritesManager->renderizarTablaPosiciones(infoJuego.players);
 
     SDL_RenderPresent(renderer); // dibuja todo
@@ -252,6 +253,15 @@ void InterfazGrafica::renderizarSeleccionPlayer(){
     SDL_RenderClear(renderer);
 
     spritesManager->renderizarBotonesCharacter();
+
+    SDL_RenderPresent(renderer);
+}
+
+void InterfazGrafica::renderizarTablaResultados(){
+    SDL_SetRenderDrawColor(renderer,106, 101, 255, 1);
+    SDL_RenderClear(renderer);
+
+    spritesManager->renderizarPosicionesFinales(infoJuego.players);
 
     SDL_RenderPresent(renderer);
 }
