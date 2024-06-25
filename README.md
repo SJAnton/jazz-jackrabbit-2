@@ -11,11 +11,11 @@
 ## Compilación
 
 ### Dependencias
-* [SDL2](SDL2) (desarrollado con la version )
-* [SDL2_image](SDL2_image), [SDL2_mixer](SDL_mixer)
+* [SDL2](SDL2:) (desarrollado con la version )
+* [SDL2_image](SDL2_image:), [SDL2_mixer](SDL_mixer:)
 * Qt5 (desarrollado con la version 5.15.3)
-* [yaml-cpp](yaml-cpp)
-* [PKG-Config](PKG-Config)
+* [yaml-cpp](yaml-cpp:)
+* [PKG-Config](PKG-Config:)
 
 
 ### Comandos
@@ -67,9 +67,27 @@ El juego consiste en hacer la mayor cantidad de puntos. Las formas de conseguir 
 * Tecla `Ctrl`: para correr
 
 ## Instalaciones
-* ##### SDL2: _sudo apt-get install libsdl2-dev_
-* ##### SDL2_image: _sudo apt-get install libsdl2-image-dev_
-* ##### SDL2_mixer: 
+* ##### SDL2:
+```sh
+sudo apt-get install libsdl2-dev_
+```
+* ##### SDL2_image:
+```sh
+sudo apt-get install libsdl2-image-dev_
+```
+* ##### SDL2_mixer:
+```sh
+comando instalacion mixer
+```
 * ##### Qt5:
-* ##### yaml-cpp: 
-* ##### PKG-Config: _sudo apt-get install pkg-config_
+```sh
+  comando instalacion Qt5
+```
+* ##### yaml-cpp:
+```sh
+comando instalacion yaml-cpp
+```
+* ##### PKG-Config:
+```sh
+sudo apt-get install pkg-config_
+```
