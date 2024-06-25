@@ -16,7 +16,7 @@ class ServerGameloop : public Thread {
 
         int id;
 
-        int time_left;
+        //int time_left;
 
         std::shared_ptr<Queue<uint8_t>> recv_q;
 
@@ -25,13 +25,13 @@ class ServerGameloop : public Thread {
         bool wc = false;
 
     public:
-        ServerGameloop(int id_game, int id_client, int time_left, TipoPlayer tipoPlayer,
+        ServerGameloop(int id_game, int id_client, TipoPlayer tipoPlayer,
                        std::shared_ptr<Queue<uint8_t>> recv_q, Queue<InfoJuego> *sndr_q,
                        Level &level);
 
-        void addPlayer(
-            int id_client, TipoPlayer tipoPlayer, Queue<InfoJuego> *sndr_q, Coordenada spawn
-        );
+        void addPlayer(int id_client, TipoPlayer tipoPlayer, 
+                       Queue<InfoJuego> *sndr_q, Coordenada spawn);
+
         void removePlayer(int id);
         void send_snapshot();
 

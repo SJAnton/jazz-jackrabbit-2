@@ -18,9 +18,14 @@
 #define BAT_CODE "EnemyBat"
 #define DIABLO_CODE "EnemyDiablo"
 #define RAT_CODE "EnemyRat"
+#define GAME_KEY "Game"
+
+int Game::timeLeftInit = 0;
 
 //Metodo para cargar todas las constantes del config
 void Game::init(std::map<std::string, std::vector<int>> &data) {
+    timeLeftInit = data[GAME_KEY][0];
+
     std::vector<int> &player_data = data[PLAYER_CODE];
     std::vector<int> &projectile_data = data[PROJECTILE_CODE];
     std::vector<int> &collected_data = data[COLLECTED_CODE];
@@ -60,8 +65,10 @@ void Game::init(std::map<std::string, std::vector<int>> &data) {
     );
 }
 
+
 Game::Game(Level &level) : ch_map(std::make_shared<PlayerMap>()), 
-                           gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables, level) {
+                           gameMundo(ch_map->getPlayers(), enemies, itemsRecolectables, level),
+                           timeleft(timeLeftInit) {
     std::vector<std::shared_ptr<ObjectEnemy>> &levelEnemies = level.enemies;
     std::vector<ObjectCollected> &levelObjects = level.objects;
     for (auto &enemy : levelEnemies) {
@@ -152,15 +159,26 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
             break;
     }
 }
+
 void Game::update() {
     update_top_players();
     gameMundo.update();
+}
+
+void Game::minusTimeLeft() {
+    timeleft--;
+}
+int Game::getTimeLeft() {
+   return timeleft;
 }
 
 InfoJuego Game::snapshot() {
     std::vector<InfoPlayer> players_data;
     std::vector<InfoEnemigo> enemies_data;
     std::vector<InfoRecolectable> items_data;
+    std::vector<InfoTabla> ranking_data;
+
+
 
     for (auto it = ch_map->begin(); it != ch_map->end(); ++it) {
         std::shared_ptr<ObjectPlayer> &Player = it->second;
@@ -178,7 +196,13 @@ InfoJuego Game::snapshot() {
         InfoRecolectable info = item.getInfo();
         items_data.push_back(info);
     }
-    InfoJuego game_data(players_data, enemies_data, items_data, gameMundo.getInfoProyectiles());
+
+    for (auto &p : top_players) {
+        InfoTabla info(p->get_id(), p->get_TipoPlayer(), p->get_points());
+        ranking_data.push_back(info);
+    }
+
+    InfoJuego game_data(players_data, enemies_data, items_data, gameMundo.getInfoProyectiles(), ranking_data, timeleft);
     return game_data;
 }
 

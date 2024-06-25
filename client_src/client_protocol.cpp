@@ -81,9 +81,9 @@ InfoPlayer ClientProtocol::decodePlayer(const std::vector<uint8_t> &bytes) {
 	TipoPlayer tipo = decodeTipoPlayer(bytes[6]);
 	EstadosPlayer estado = decodeEstadoPlayer(bytes[7]);
 	int vida = decodeInt(bytes[8]);
-	int pts = decodeInt(bytes[9]);
-	TipoArma arma =  decodeTipoArma(bytes[10]);
-	int municion = decodeInt(bytes[11]);
+	int pts = decodeInt(bytes[9], bytes[10]);
+	TipoArma arma =  decodeTipoArma(bytes[11]);
+	int municion = decodeInt(bytes[12]);
 
 
 	return InfoPlayer(id, pos_x, pos_y, dir, tipo, estado, vida, pts, arma, municion);
@@ -133,6 +133,8 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 	std::vector<InfoEnemigo> infoEnemies;
 	std::vector<InfoRecolectable> infoItems;
 	std::vector<InfoProyectil> infoProyectiles;
+	std::vector<InfoTabla> rankingPlayers;
+
 	
 	int clientPlayerIndex = -1;
     // Decode info Players
@@ -198,9 +200,26 @@ InfoJuego ClientProtocol::decodificarMensajeDelServer(const std::vector<uint8_t>
 		infoProyectiles.emplace_back(tipo, pos_x, pos_y, dir);
 		contador += LENGTH_PROYECTIL_INFO;
 	}
-//	std::cout << "Recibi proyectiles" << cantProyectiles<< std::endl;
 
-	return InfoJuego(infoPlayers, infoEnemies, infoItems, infoProyectiles);
+	//decode Tabla
+	int cantTabla = decodeInt(bytes[contador]);
+	contador++;
+
+	for (int i = 0; i < cantTabla; i++) {
+        if ((contador + LENGTH_TABLA_INFO) > static_cast<int>(bytes.size())) {
+            throw std::runtime_error("Error. Faltaron datos en la tabla del ranking. En ClientProtocol::decodificarMensajeDelServer()");
+        }
+		int id_player = decodeInt(bytes[contador]);
+		TipoPlayer tipo = decodeTipoPlayer(bytes[contador+1]);
+		int puntos = decodeInt(bytes[contador+2], bytes[contador+3]);// * MULTIPLICADOR_POSICION;
+
+		rankingPlayers.emplace_back(id_player, tipo, puntos);
+		contador += LENGTH_TABLA_INFO;
+	}
+	int tiempo_restante = decodeInt(bytes[contador], bytes[contador+1]);
+//	std::cout << "tiempo restante: " << tiempo_restante << std::endl;
+
+	return InfoJuego(infoPlayers, infoEnemies, infoItems, infoProyectiles, rankingPlayers, tiempo_restante);
 }
 
 
@@ -243,6 +262,7 @@ InfoJuego ClientProtocol::recibirInformacion(bool *was_closed_) {
 		return InfoJuego();
 
 	}
+	
 	/*std::cout << "Mensaje recibido: ";
 		for (uint8_t byte : bytes) {
 			std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << " ";

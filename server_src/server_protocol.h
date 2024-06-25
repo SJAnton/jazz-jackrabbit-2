@@ -90,6 +90,10 @@ class ServerProtocol : public Protocol{
         std::vector<uint8_t> encodeProyectil(const InfoProyectil &);
 
         /**
+         * 
+         */
+        std::vector<uint8_t> encodeTabla(const InfoTabla &);
+        /**
          * Crea un buffer de 2 + n*m bytes con la estructura de un mapa:
          * [0] -> 1 byte con cantidad de filas
          * [1] -> 1 byte con cantidad de columnas

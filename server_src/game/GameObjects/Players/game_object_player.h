@@ -109,6 +109,7 @@ class ObjectPlayer : public GameObject {
         //getters
 
         int get_id() {return id;};
+        TipoPlayer get_TipoPlayer() {return tipoPlayer;};
 
         int get_points() {return points;};
 

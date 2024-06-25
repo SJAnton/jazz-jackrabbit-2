@@ -8,7 +8,7 @@
 #include "../common_src/socket.h"
 #include "game/Map/game_map_reader.h"
 
-#define GAME_KEY "Game"
+//#define GAME_KEY "Game"
 
 #define CONFIG "config.yaml"
 
@@ -38,7 +38,8 @@ int main(int argc, char* argv[]) {
 
     Game::init(data);
 
-    ServerAcceptor acceptor(skt, data[GAME_KEY][0], map_reader, was_closed);
+    //ServerAcceptor acceptor(skt, data[GAME_KEY][0], map_reader, was_closed);
+    ServerAcceptor acceptor(skt, map_reader, was_closed);
     acceptor.start();
 
     while (std::cin.get() != EXIT) {

@@ -24,8 +24,6 @@ class ServerAcceptor : public Thread {
     private:
         Socket &sk;
 
-        int game_time;
-
         GameMapReader &map_reader;
 
         bool &was_closed;
@@ -37,7 +35,7 @@ class ServerAcceptor : public Thread {
         GameloopList gameloops;
 
     public:
-        ServerAcceptor(Socket &socket, int game_time, GameMapReader &map_reader, bool &was_closed);
+        ServerAcceptor(Socket &socket, GameMapReader &map_reader, bool &was_closed);
 
         void run() override;
 

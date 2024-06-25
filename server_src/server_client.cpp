@@ -11,9 +11,9 @@
 
 #define SHUTCODE 2
 
-Client::Client(Socket &&_sk, int id, int game_time, atomic<int> &gmlp_id,
+Client::Client(Socket &&_sk, int id, atomic<int> &gmlp_id,
                 GameloopList &gameloops, GameMapReader &map_reader) :
-                sk(std::move(_sk)), id(id), game_time(game_time), gmlp_id(gmlp_id),
+                sk(std::move(_sk)), id(id), gmlp_id(gmlp_id),
                 gameloops(gameloops), map_reader(map_reader), protocol(sk),
                 recv_q(std::make_shared<Queue<uint8_t>>()), sender(protocol, sndr_q, wc) {}
 
@@ -73,7 +73,7 @@ void Client::select_game(uint8_t game, const TipoPlayer &type_player, Level &lev
         // Creo un Nuevo Gameloop y el receiver utilizará la queue de aquí
         int id_game = gmlp_id++;
 
-        gameLoop = new ServerGameloop(id_game, id, game_time, type_player, recv_q, &sndr_q, level);
+        gameLoop = new ServerGameloop(id_game, id, type_player, recv_q, &sndr_q, level);
 
         receiver = std::make_unique<ServerReceiver>(protocol, recv_q, wc);
 

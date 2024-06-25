@@ -10,10 +10,10 @@
 #define ITR_PER_SEC 15
 #define MILLISECONDS_PER_ITR 1000/15
 
-ServerGameloop::ServerGameloop(int id_game, int id_client, int time_left, TipoPlayer tipoPlayer,
+ServerGameloop::ServerGameloop(int id_game, int id_client, TipoPlayer tipoPlayer,
                                std::shared_ptr<Queue<uint8_t>> recv_q, Queue<InfoJuego> *sndr_q,
                                Level &level) : game(level), id(id_game),
-                               time_left(time_left * ITR_PER_SEC), recv_q(recv_q) {    
+                               /*time_left(time_left * ITR_PER_SEC),*/ recv_q(recv_q) {    
     sndr_queues.push_back(sndr_q, id_client);
     game.add_player(tipoPlayer, id_client, Coordenada(level.spawn_x, level.spawn_y));  
 }
@@ -38,7 +38,8 @@ void ServerGameloop::removePlayer(int id) {
 
 void ServerGameloop::run() {
     auto expected_itr_time = std::chrono::milliseconds(MILLISECONDS_PER_ITR);
-    while (sndr_queues.size() > 0 && time_left >= 0) {
+    int i = 0;
+    while (sndr_queues.size() > 0 && game.getTimeLeft() >= 0) {
         auto start_time = std::chrono::steady_clock::now();
 
         std::vector<uint8_t> data;
@@ -54,9 +55,14 @@ void ServerGameloop::run() {
         auto end_time = std::chrono::steady_clock::now();
         auto itr_time = end_time - start_time;
         if (itr_time < expected_itr_time) {
-            std::this_thread::sleep_for(expected_itr_time - itr_time);
+            std::this_thread::sleep_for(expected_itr_time - itr_time); //sleep
         }
-        time_left--;
+
+        if (i % ITR_PER_SEC == 0) { // si paso 1 segundo
+            game.minusTimeLeft();
+            i = 0;
+        }
+        i++;
     }
     std::cout << "fin gameloop" << std::endl;
     wc = true;

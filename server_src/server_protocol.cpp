@@ -108,12 +108,24 @@ std::vector<uint8_t> ServerProtocol::encodeInfoJuego(const InfoJuego &infoJuego)
         auto dataProyectil = encodeProyectil(infoJuego.proyectiles[i]);
         bytes.insert(bytes.end(), dataProyectil.begin(), dataProyectil.end());//concateno
     }
+
+    //agrego top 3
+    int aux = infoJuego.rankingPlayers.size();
+    bytes.push_back(aux);
+    for (int i=0; i < aux; i++) {
+        auto dataTabla = encodeTabla(infoJuego.rankingPlayers[i]);
+        bytes.insert(bytes.end(), dataTabla.begin(), dataTabla.end());//concateno
+    }
+
+    //agrego teimpo restante
+    insertar2bytesDelNumero(infoJuego.tiempo_restante, bytes); 
+
     /*std::cout << "Mensaje enviado: ";
-		for (uint8_t byte : bytes) {
-			std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << " ";
-		}
-		std::cout << std::endl;
-        */
+    for (uint8_t byte : bytes) {
+        std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(byte) << " ";
+    }
+    std::cout << std::endl;
+    */
     return bytes;
 }
 
@@ -127,7 +139,8 @@ std::vector<uint8_t> ServerProtocol::encodePlayer(const InfoPlayer &infoPlayer) 
     bytes.push_back(encodeTipoPlayer(infoPlayer.tipoPlayer));
     bytes.push_back(encodeEstadoPlayer(infoPlayer.estado));
     bytes.push_back(infoPlayer.vida);
-    bytes.push_back(infoPlayer.puntos);
+    //bytes.push_back(infoPlayer.puntos);
+    insertar2bytesDelNumero(infoPlayer.puntos, bytes);
     bytes.push_back(encodeTipoArma(infoPlayer.arma));
     bytes.push_back(infoPlayer.municion);
     return bytes;
@@ -164,6 +177,16 @@ std::vector<uint8_t> ServerProtocol::encodeProyectil(const InfoProyectil &infoPr
     bytes.push_back(encodeDireccion(infoProyectil.direccion));
     return bytes;
 }
+
+std::vector<uint8_t> ServerProtocol::encodeTabla(const InfoTabla &infoTabla) {
+    std::vector<uint8_t> bytes;
+    bytes.push_back(infoTabla.id);
+    bytes.push_back(encodeTipoPlayer(infoTabla.tipoPlayer));
+    insertar2bytesDelNumero(infoTabla.puntos, bytes);
+
+    return bytes;
+}
+
 
 std::vector<uint8_t> ServerProtocol::encodeTileMap(TileMap &tileMap) {
     std::vector<uint8_t> bytes = tileMap.toBytes();

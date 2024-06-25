@@ -10,15 +10,6 @@
 
 class Game {
     public:
-        /*
-         * necesito recibir:
-         * Terreno (clase que contenga una matriz (30x30) que me diga si un tile es solido o no)
-         * (NADA MAS!)
-         * Cantidad de enemigos, tipos y sus posiciones.
-         * Cantidad de items, tipo y sus posiciones.
-         * 
-        */
-
         // Carga los valores del config.yaml
         static void init(std::map<std::string, std::vector<int>> &config);
         
@@ -32,6 +23,9 @@ class Game {
         std::vector<std::shared_ptr<ObjectPlayer>> top_players;
 
         GameMundo gameMundo;
+
+        static int timeLeftInit; // constante para guardarme el tiempo de duracion de la partida.
+        int timeleft; // variable para el tiempo restante
 
         static bool compare_points(
             std::shared_ptr<ObjectPlayer> &pl1, std::shared_ptr<ObjectPlayer> &pl2
@@ -47,6 +41,10 @@ class Game {
         Game(Level &level);
 
         void update();
+        
+        // Resta un segundo
+        void minusTimeLeft();
+        int getTimeLeft();
 
         void execute_actions(std::vector<uint8_t> &actions);
 
