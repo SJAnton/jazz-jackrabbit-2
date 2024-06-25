@@ -80,15 +80,14 @@ std::map<std::string, Level> GameMapReader::read_levels() {
         for (YAML::iterator it = node.begin(); it != node.end(); ++it) {
             YAML::Node key = it->first;
             YAML::Node value = it->second;
-
+            
             if (key.as<std::string>() == SPAWN_POINT_KEY) {
                 spawn_x = value[X_KEY].as<int>();
                 spawn_y = value[Y_KEY].as<int>();
 
             } else if (key.as<std::string>() == LAYER_KEY) {
-                layers_height = value[LAYER_HEIGHT_KEY].as<int>();
-                layers_width = value[LAYER_WIDTH_KEY].as<int>();
-
+                layers_height = value[LAYER_WIDTH_KEY].as<int>();
+                layers_width = value[LAYER_HEIGHT_KEY].as<int>();
                 YAML::Node tm = value[TILE_MAP_KEY];
                 matrix.resize(layers_height, std::vector<int>(layers_width));
                 for (int i = 0; i < layers_height; ++i) {

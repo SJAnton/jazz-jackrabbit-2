@@ -4,10 +4,10 @@
 #include "game_casillero.h"
 #include "game_coordenada.h"
 
-#define FILAS 30
-#define COLUMNAS 30
+#define FILAS 600
+#define COLUMNAS 600
 
-std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(30 * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(30 * MULTIPLCADOR_CASILLERO));
+std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(COLUMNAS * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(FILAS * MULTIPLCADOR_CASILLERO));
 
 GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
               std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,
@@ -20,14 +20,16 @@ GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players,
     int &tileMapHeight = level.tile_map_height;
     int &tileMapWidth = level.tile_map_width;
 
-    for (int i = 0; i < tileMapHeight; i++) {
-        for (int j = 0; j < tileMapWidth; ++j) {
+
+    for (int i = 0; i < tileMapWidth; i++) {
+        for (int j = 0; j < tileMapHeight; ++j) {
             if (tileMap.terreno[i][j].is_solid()) {
                 CoordenadaBloque coordenada(j, i);
                 bloquearCasilleros(coordenada);
             }
         }
     }
+
 }
 
 
@@ -203,7 +205,6 @@ void GameMundo::update() {
 void GameMundo::bloquearCasilleros(const CoordenadaBloque &bloque) {
     int x = bloque.x * MULTIPLCADOR_CASILLERO;
     int y  = bloque.y * MULTIPLCADOR_CASILLERO;
-
     for (int i = y; i < y+MULTIPLCADOR_CASILLERO; ++i) {
         for (int j = x; j < x+MULTIPLCADOR_CASILLERO; ++j) {
             casilleros[i][j].bloquear();

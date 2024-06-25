@@ -64,7 +64,10 @@
         "unordered_set": "cpp",
         "codecvt": "cpp",
         "variant": "cpp",
-        "qresizeevent": "cpp"
+        "qresizeevent": "cpp",
+        "any": "cpp",
+        "optional": "cpp",
+        "span": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

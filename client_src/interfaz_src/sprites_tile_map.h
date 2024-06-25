@@ -29,6 +29,24 @@ private:
     static SpriteObject tile_13;
     static SpriteObject tile_14;
     static SpriteObject tile_15;
+    static SpriteObject tile_16;
+    static SpriteObject tile_17;
+    static SpriteObject tile_18;
+    static SpriteObject tile_19;
+    static SpriteObject tile_20;
+    static SpriteObject tile_21;
+    static SpriteObject tile_22;
+    static SpriteObject tile_23;
+    static SpriteObject tile_24;
+    static SpriteObject tile_25;
+    static SpriteObject tile_26;
+    static SpriteObject tile_27;
+    static SpriteObject tile_28;
+    static SpriteObject tile_29;
+    static SpriteObject tile_30;
+    static SpriteObject tile_31;
+    static SpriteObject tile_32;
+    
 
     SpriteObject getTile(int id_tile);
 

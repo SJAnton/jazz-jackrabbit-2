@@ -120,7 +120,6 @@ void InterfazGrafica::update(int it) {
                 spritesManager->updateEnemy(i, infoJuego.enemigos[i].estado, pos, infoJuego.enemigos[i].direccion);
             } catch (...) {
                 if (infoJuego.enemigos[i].tipo == Bat)
-                    std::cout << "agrego un bat" << std::endl;
                 spritesManager->addEnemy(infoJuego.enemigos[i].tipo);
                 spritesManager->updateEnemy(i, infoJuego.enemigos[i].estado, pos, infoJuego.enemigos[i].direccion);
             }

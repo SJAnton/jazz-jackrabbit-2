@@ -6,6 +6,9 @@
 
 #define ID_FONDO_1 2
 #define ID_FONDO_2 3
+#define ID_FONDO_3 26
+#define ID_FONDO_4 27
+#define ID_FONDO_5 28
 
 class Tile {
     private:
@@ -14,7 +17,7 @@ class Tile {
     
     public:
         Tile (const int &id_tile) : id_tile(id_tile) {
-            if (id_tile == ID_FONDO_1 || id_tile == ID_FONDO_2)
+            if (id_tile == ID_FONDO_1 || id_tile == ID_FONDO_2 || id_tile == ID_FONDO_3 || id_tile == ID_FONDO_4 || id_tile == ID_FONDO_5)
                 _is_solid = false;
             else 
                 _is_solid = true;

@@ -309,8 +309,6 @@ TileMap ClientProtocol::recibirMapa() {
 	uint8_t aux2;
 	socket.recvall(&aux1, sizeof(aux1), &was_closed);	//recibo los primeros 2 bytes que indican el size de la matriz del mapa
 	socket.recvall(&aux2, sizeof(aux2), &was_closed);	//recibo los primeros 2 bytes que indican el size de la matriz del mapa
-	std::cout << "filas " << decodeInt(aux1) << std::endl;
-	std::cout << "cols " << decodeInt(aux2) << std::endl;
 	if (was_closed) {
 		std::runtime_error("socket Was_closed");
 		return TileMap();

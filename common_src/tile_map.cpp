@@ -37,16 +37,28 @@
 
 
 TileMap::TileMap(std::vector<std::vector<int>> matriz_ids_tiles) {
-    int size = matriz_ids_tiles.size();
+    int size = matriz_ids_tiles[0].size();
     
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < size; i++) {
         std::vector<Tile> fila;
-        int columnas = matriz_ids_tiles[i].size();
-        for (int j = 0; j < columnas; ++j) {
+        int columnas = matriz_ids_tiles.size();
+        for (int j = 0; j < columnas; j++) {
             fila.push_back(Tile(matriz_ids_tiles[j][i]));
         }
         terreno.push_back(fila);
     }
+
+    /*
+    std::cout << "filas cargadas: " << terreno.size() <<  std::endl;
+    std::cout << "Columnas cargadas: " << terreno[0].size() <<  std::endl;
+    std::cout << "tilemap creado: " << std::endl;
+    for (const auto& fila : terreno) {
+        for (const auto& tile : fila) {
+            std::cout << tile.getIdTile() << " ";
+        }
+        std::cout << std::endl;
+    }
+    */
 }
 
 TileMap::TileMap(std::vector<uint8_t> matriz_ids_tiles) {
@@ -54,8 +66,8 @@ TileMap::TileMap(std::vector<uint8_t> matriz_ids_tiles) {
         throw std::runtime_error("Invalid input: not enough data for dimensions.");
     }
 
-    int columnas = matriz_ids_tiles[0];
-    int filas = matriz_ids_tiles[1];
+    int columnas = matriz_ids_tiles[1];
+    int filas = matriz_ids_tiles[0];
 
 
   //  if (matriz_ids_tiles.size() < (2 + filas * columnas)) {
@@ -72,18 +84,6 @@ TileMap::TileMap(std::vector<uint8_t> matriz_ids_tiles) {
         }
         terreno.push_back(fila);
     }
-   /*
-    std::cout << "filas cargadas: " << terreno.size() <<  std::endl;
-    std::cout << "Columnas cargadas: " << terreno[0].size() <<  std::endl;
-
-    std::cout << "tilemap creado: " << std::endl;
-    for (const auto& fila : terreno) {
-        for (const auto& tile : fila) {
-            std::cout << tile.getIdTile() << " ";
-        }
-        std::cout << std::endl;
-    }
-    */
     
 }
 
@@ -94,7 +94,7 @@ std::vector<uint8_t> TileMap::toBytes() {
     bytes.push_back(terreno[0].size()); //columnas
 
     for (int i = 0; i < (int)terreno.size(); ++i) {
-        for (int j = 0; j < (int)terreno[i].size(); ++j) {
+        for (int j = 0; j < (int)terreno.at(0).size(); ++j) {
             bytes.push_back((uint8_t)terreno[i][j].getIdTile());
         }
     }

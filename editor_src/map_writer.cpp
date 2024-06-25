@@ -17,8 +17,8 @@
 #define SNOWY_GAME_SELECTION 3
 #define NUM_TILES 30
 #define NUM_LAYERS 1
-#define LAYER_WIDTH 30
-#define LAYER_HEIGHT 30
+#define LAYER_WIDTH 60
+#define LAYER_HEIGHT 60
 #define SPAWN_X 5
 #define SPAWN_Y 20
 

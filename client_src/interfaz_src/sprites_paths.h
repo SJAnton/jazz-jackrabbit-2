@@ -28,6 +28,20 @@
 #define PATH_TILE_13 "../sprites/Terreno/tile013.png"
 #define PATH_TILE_14 "../sprites/Terreno/tile014.png"
 #define PATH_TILE_15 "../sprites/Terreno/tile015.png"
+#define PATH_TILE_20 "../sprites/Terreno/tile020.png"
+#define PATH_TILE_21 "../sprites/Terreno/tile021.png"
+#define PATH_TILE_22 "../sprites/Terreno/tile022.png"
+#define PATH_TILE_23 "../sprites/Terreno/tile023.png"
+#define PATH_TILE_24 "../sprites/Terreno/tile024.png"
+#define PATH_TILE_25 "../sprites/Terreno/tile025.png"
+#define PATH_TILE_26 "../sprites/Terreno/tile026.png"
+#define PATH_TILE_27 "../sprites/Terreno/tile027.png"
+#define PATH_TILE_28 "../sprites/Terreno/tile028.png"
+#define PATH_TILE_29 "../sprites/Terreno/tile029.png"
+#define PATH_TILE_30 "../sprites/Terreno/tile030.png"
+#define PATH_TILE_31 "../sprites/Terreno/tile031.png"
+#define PATH_TILE_32 "../sprites/Terreno/tile032.png"
+
 
 
 

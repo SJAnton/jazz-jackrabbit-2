@@ -30,7 +30,9 @@ void Client::run() {
     std::string level_name = protocol.recv_chosen_level(wc);
     vector<uint8_t> init_data = protocol.recv_init_msg(wc);
 
-    Level level = levels.at(level_name);
+    std::string level_name_2 = "mapa_playa_2";
+
+    Level level = levels.at(level_name_2);
 
     if (init_data[GAME_POS] != NEW_GAME && !gameloops.contains(init_data[GAME_POS])) {
         kill();
