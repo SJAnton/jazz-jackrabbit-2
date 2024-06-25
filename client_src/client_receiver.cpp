@@ -16,8 +16,8 @@ void ClientReceiver::run() {
                 break;        
             queueReceptora.push(infoJuego);
         }
-        queueReceptora.close();
-        ClientPlayer::queueEnviadora.close();
+        //queueReceptora.close();
+        //ClientPlayer::queueEnviadora.close();
     } catch (const ClosedQueue& e) { // si la queue fue cerrada
         std::cout << "la queueReceptora fue cerrada en el receiver" << std::endl;
         ClientPlayer::queueEnviadora.close();

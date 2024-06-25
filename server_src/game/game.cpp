@@ -87,15 +87,14 @@ void Game::execute_actions(std::vector<uint8_t> &actions) {
     for (auto &p : players) {
         if (p->is_dead()) {
             p->updateDeath();
-        }
-        else if (p->isJumping()) {
+        } else if (p->isJumping()) {
             p->updateJump();
-        }
-        else if (p->getEstado() == EstadosPlayer::Shooting) {
+        } else if (p->getEstado() == EstadosPlayer::Shooting) {
             p->updateShoot();
-        }
-        else if (p->is_doing_specialAttack()) {
+        } else if (p->is_doing_specialAttack()) {
             p->updateSpecialAttack();
+        } else if (p->is_rebouncing_sides()) {
+            p->updateRebounceSides();
         }
         p->updateShootingDelay();
         p->updateDamageWaitTime();

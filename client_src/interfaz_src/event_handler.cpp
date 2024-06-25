@@ -176,7 +176,12 @@ void EventHandler::procesarEstadoTeclas(Direcciones &dir) {
         cliente.disparar(dir);
     }
     if (key_state[SDLK_c]) {
-        cliente.cambiar_arma(dir);
+        if (!bloquear_cambio_arma) {
+            cliente.cambiar_arma(dir);
+        }
+        bloquear_cambio_arma = true;
+    } else {
+        bloquear_cambio_arma = false;
     }
     if (key_state[SDLK_a]) {
         cliente.ataque_especial(dir);

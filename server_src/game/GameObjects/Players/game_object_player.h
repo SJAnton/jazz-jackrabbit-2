@@ -19,6 +19,7 @@
 #define TIME_JUMP 16//12
 #define TIME_SHOOT 6
 #define TIME_DEATH 60 // 4 seg
+#define TIME_REBOUNCE_SIDES 10
 
 #define TIME_DYING_SPAZ 13 // (no tiene la misma duracion que las otras)
 #define TIME_DYING_LORI 20
@@ -59,6 +60,7 @@ class ObjectPlayer : public GameObject {
         bool tocandoSuelo = false;
         bool isDoingSpecialAttack = false;
         bool can_take_damage = true;
+        bool rebouncing_sides = false;
 
         int health_buffer = 0;
         int damage_wait_time = DAMAGE_WAIT_TIME * ITR_PER_SEC;
@@ -69,6 +71,7 @@ class ObjectPlayer : public GameObject {
         int timer_jump = 0; // Variable auxiliar para saber en que iteracion del salto está
         int timer_shoot = 0; // Variable auxiliar para saber cuantas iterciones pasaron desde el disparo
         int timer_specialAttack = 0; // Variable auxiliar para saber cuantas iterciones van desde que inició el ataque especial
+        int timer_rebounce_sides = 0;
 
         int timer_dying = 0; // Variable auxiliar para saber en que iteracion del estado muriendo
         int timer_death = 0; // Variable auxiliar para saber cuantas iterciones lleva muerto
@@ -80,6 +83,8 @@ class ObjectPlayer : public GameObject {
         bool move_y(int speed);
         bool down_y(int spped);
         int getTimeDying();
+        void rebounceFall();
+        void rebounceSides();
 
     public:
         // inicializo todas las constantes de los Players una unica vez
@@ -99,6 +104,9 @@ class ObjectPlayer : public GameObject {
         void jump(Direcciones direccion);
 
         void fall();
+
+        void rebounceFromEnemy();
+
         virtual void specialAttack() {}; // no implementado
 
         int getSpecialAttackDamage();
@@ -121,6 +129,7 @@ class ObjectPlayer : public GameObject {
         bool isJumping() {return is_jumping;}
         bool is_doing_specialAttack() {return isDoingSpecialAttack;};
         bool can_be_damaged() {return can_take_damage;};
+        bool is_rebouncing_sides() {return rebouncing_sides;};
 
         EstadosPlayer getEstado();
         //Setters
@@ -140,13 +149,13 @@ class ObjectPlayer : public GameObject {
         void take_damage(int &damage); // health - damage
 
         void add_points(int points); // points + sum
-        
 
         void death();
 
         // actualiza los timers y cambia el estado de dying a death cuando corresponda
         void updateDeath();
         void updateJump();
+        void updateRebounceSides();
         void updateShoot();
         void updateShootingDelay();
         void updateDamageWaitTime();

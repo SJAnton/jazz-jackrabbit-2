@@ -196,8 +196,6 @@ void ObjectPlayer::updateDamageWaitTime() {
 }
 
 ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
-    //if (!alive || isDoingSpecialAttack)
-      //  return execpcion;
     if (estado == EstadosPlayer::Inactive) {
         estado = EstadosPlayer::Shooting;
     }
@@ -206,21 +204,13 @@ ObjectProjectile ObjectPlayer::shoot(Direcciones dir) {
         pos = Coordenada(pos_x_max+4, pos_y_max - height/2);
 
     return weapon->shoot(direction, pos, id);
-    /*
-        if (dir == Left) {
-            Coordenada pos(x_left - 8, pos_y_max - height/2); // ajustar visualmente
-            return ObjectProjectile(weapon.getType(), dir, pos);
-        }
-        Coordenada pos(pos_x_max+4, pos_y_max - height/2); // ajustar visualmente
-        return ObjectProjectile(weapon.getType(), dir, pos);
-    */
 }
 
 void ObjectPlayer::fall() {
     if (is_jumping || isDoingSpecialAttack) { //si estoy saltando no debo caer
         return;
     }
-    for (int i=0; i < ObjectPlayer::defaultFallSpeed; i++) {
+    for (int i=0; i < ObjectPlayer::defaultFallSpeed; ++i) {
         //Chequeo si hay una pared debajo (para hacer mas simple miro solo los extremos de x)
         if (GameMundo::casilleros[y_down][position.x].estaBloqueado() || 
             GameMundo::casilleros[y_down][pos_x_max].estaBloqueado()) {
@@ -241,6 +231,43 @@ void ObjectPlayer::fall() {
     }
 }
 
+void ObjectPlayer::rebounceFromEnemy() {
+    if (!alive) {
+        return;
+    } else if (is_jumping || falling) {
+        // Eje Y
+        rebounceFall();
+    } else {
+        rebounceSides();
+        rebouncing_sides = true;
+    }
+}
+
+void ObjectPlayer::rebounceFall() {
+    Direcciones prev_dir = direction;
+    for (int i = 0; i < ObjectPlayer::defaultFallSpeed; ++i) {
+        tocandoSuelo = false;
+        falling = true;
+        estado = EstadosPlayer::Damaged;
+        if (prev_dir == Right) {
+            setPosition(Coordenada(position.x - 1, position.y + 1));
+        } else {
+            setPosition(Coordenada(position.x + 1, position.y + 1));
+        }
+        direction = prev_dir;
+    }
+}
+
+void ObjectPlayer::rebounceSides() {
+    for (int i = 0; i < ObjectPlayer::defaultWalkSpeed; ++i) {
+        estado = EstadosPlayer::Damaged;
+        if (direction == Right) {
+            setPosition(Coordenada(position.x - 1, position.y - 1));
+        } else {
+            setPosition(Coordenada(position.x + 1, position.y - 1));
+        }
+    }
+}
 
 EstadosPlayer ObjectPlayer::getEstado() {
     return estado;
@@ -248,30 +275,11 @@ EstadosPlayer ObjectPlayer::getEstado() {
 
 // setters
 
-/*
-void ObjectPlayer::change_shooting_weapon() {
-    if (secondary_weapon.getType() == Tipo_1 && weapon.getType() == Tipo_1) {
-        std::cout << "no hay arma secundaria" << std::endl;
-        return;
-    }
-    std::swap(weapon, secondary_weapon);
-    std::cout << "arma principal: " << weapon.getType() << std::endl;
-    std::cout << "arma secundaria: " << secondary_weapon.getType() << std::endl;
-}
-*/
 void ObjectPlayer::change_weapon() {
-
     weaponIndex++;
     if (weaponIndex >= (int)weapons.size()) {
         weaponIndex = 0;
     }
-    /*if (weapons[weaponIndex].getMuniciones() == 0) {
-        weaponIndex++;
-        if (weaponIndex >= (int)weapons.size()) {
-            weaponIndex = 0;
-        }
-    }
-    */
     weapon = &weapons[weaponIndex];
 }
 
@@ -372,25 +380,20 @@ void ObjectPlayer::updateJump() {
         is_jumping = false;
         falling = true;
         timer_jump = 0;
-    } 
-    else {
+    } else {
         move_y(defaultJumpSpeed);
-        }
-    
-    /*else { // caida en parabola
-        //move_x(direction, defaultFallSpeed);
-        timer_jump--;
-        if (timer_jump <= 0 || falling == false) { //si toca el suelo, el metodo fall() cambiará el valor de falling
-            is_jumping = false;
-            std::cout << "termino el salto" << std::endl;
-        }
-
     }
-    */
-
 }
 
-
+void ObjectPlayer::updateRebounceSides() {
+    timer_rebounce_sides++;
+    if (timer_rebounce_sides >= TIME_REBOUNCE_SIDES) {
+        rebouncing_sides = false;
+        timer_rebounce_sides = 0;
+    } else {
+        rebounceSides();
+    }
+}
 
 void ObjectPlayer::updateDeath() {
     if (alive)

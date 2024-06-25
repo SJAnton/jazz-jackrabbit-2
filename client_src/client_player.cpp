@@ -14,7 +14,7 @@ ClientPlayer::ClientPlayer(const std::string& hostname, const std::string& servn
 	ids_partidas = protocolo.recibirIdsPartidas(&was_closed);
 	nombres_niveles = protocolo.recibirNombresNiveles(&was_closed);
 
-	protocolo.enviarNivelElegido("nombre_archivo", &was_closed);
+	protocolo.enviarNivelElegido("mapa_playa_2", &was_closed);
 
 	sender.start();
 }
@@ -73,8 +73,8 @@ void ClientPlayer::entrarPartida(int idPartida, const TipoPlayer &tipoPlayer) {
 void ClientPlayer::kill() {
     sender.stop();
     receiver.stop();
-	queueEnviadora.close();
-	queueReceptora.close();
+	//queueEnviadora.close();
+	//queueReceptora.close();
 	sender.join();
     receiver.join();
 }

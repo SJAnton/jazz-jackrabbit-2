@@ -169,6 +169,7 @@ void GameMundo::chequearColisionesEnemies() {
                     e->attack();
                     int damage = e->get_damage();
                     p->take_damage(damage);
+                    p->rebounceFromEnemy();
                     break;
                 }
             }

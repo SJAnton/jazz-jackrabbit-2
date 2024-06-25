@@ -30,6 +30,8 @@ private:
 
     bool &keep_running;
 
+    bool bloquear_cambio_arma = false;
+
 private:
     void manejarEventosMenu(SDL_Event &e);
     void manejarSeleccionPartida(SDL_Event &e);
