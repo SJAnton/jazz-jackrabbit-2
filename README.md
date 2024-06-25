@@ -1,4 +1,7 @@
-![jazzJackRabbit](jazzJackRabbit.jpeg)
+<p align="center">
+  <img src="jazzJackRabbit.jpeg" alt="jazzJackRabbit">
+</p>
+
 # Jazz Jackrabbit 2
 
 ## Indice 
@@ -77,15 +80,15 @@ sudo apt-get install libsdl2-image-dev_
 ```
 * ##### SDL2_mixer:
 ```sh
-comando instalacion mixer
+sudo apt-get install libsdl2-mixer-2.0-0 libsdl2-mixer-dev
 ```
 * ##### Qt5:
 ```sh
-  comando instalacion Qt5
+sudo apt install qtcreator qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
 ```
 * ##### yaml-cpp:
 ```sh
-comando instalacion yaml-cpp
+sudo apt-get install libyaml-cpp-dev
 ```
 * ##### PKG-Config:
 ```sh
