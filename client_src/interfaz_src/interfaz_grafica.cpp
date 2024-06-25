@@ -130,7 +130,7 @@ void InterfazGrafica::update(int it) {
                 spritesManager->updateEnemy(i, estado, pos, infoEnemigo.direccion);
                 //efectosEnemy(estado, infoEnemigo);
             } catch (...) {
-                if (infoEnemigo.tipo == Bat)
+                //if (infoEnemigo.tipo == Bat)
                 spritesManager->addEnemy(infoEnemigo.tipo);
                 spritesManager->updateEnemy(i, estado, pos, infoEnemigo.direccion);
             }
@@ -181,6 +181,7 @@ void InterfazGrafica::renderizarJuego()
     //HUD
     spritesManager->renderizarVidas(infoJuego.players[0].vida);
     spritesManager->renderizarMunicionArma(infoJuego.players[0].arma, infoJuego.players[0].municion);
+    spritesManager->renderizarTablaPosiciones(infoJuego.players);
 
     SDL_RenderPresent(renderer); // dibuja todo
 }

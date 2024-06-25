@@ -192,7 +192,7 @@ void SpritesManager::renderizarMunicionArma(const TipoArma &tipo, int cantMunici
     std::string municion;
     if(tipo == Tipo_1){
         gun_1.renderizarEn(municion_x, municion_y);
-        municion += "X.";        // municoines infiintas.
+        municion += "X99";        // municoines infiintas.
     }
     else if(tipo == Tipo_2){
         gun_2.renderizarEn(municion_x, municion_y);
@@ -209,6 +209,30 @@ void SpritesManager::renderizarMunicionArma(const TipoArma &tipo, int cantMunici
     }
 
     font.renderText(municion, municion_x + 30, municion_y, 0.4f);
+}
+
+bool comparadorPorPuntos(const InfoPlayer& a, const InfoPlayer& b) {
+    return a.puntos > b.puntos; // Orden descendente (de mayor a menor)
+}
+
+void SpritesManager::renderizarTablaPosiciones(const std::vector<InfoPlayer> players){
+    int tabla_x = ANCHO_WINDOW * 0.02;
+    int tabla_y = ALTO_WINDOW * 0.1;
+    int separacion = 20;
+
+    font.renderText("TABLA DE POSICIONES", tabla_x, tabla_y, 0.23f);
+
+    std::vector<InfoPlayer> sortedPlayers = players;
+    std::sort(sortedPlayers.begin(), sortedPlayers.end(), comparadorPorPuntos);
+
+    for (size_t i = 0; i < sortedPlayers.size(); i++)
+    {
+        std::string playerData = std::to_string(i + 1);
+        playerData += ".PLAYER" + std::to_string(sortedPlayers[i].id) + " PTS:" + std::to_string(sortedPlayers[i].puntos);
+        font.renderText(playerData, tabla_x, tabla_y + separacion, 0.23f);
+        separacion += 20;
+    }
+    
 }
 
 
