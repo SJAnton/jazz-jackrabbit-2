@@ -130,7 +130,7 @@ void InterfazGrafica::update(int it) {
                 spritesManager->updateEnemy(i, estado, pos, infoEnemigo.direccion);
                 //efectosEnemy(estado, infoEnemigo);
             } catch (...) {
-                if (infoEnemigo.tipo == Bat)
+                //if (infoEnemigo.tipo == Bat)
                 spritesManager->addEnemy(infoEnemigo.tipo);
                 spritesManager->updateEnemy(i, estado, pos, infoEnemigo.direccion);
             }

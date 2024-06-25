@@ -80,39 +80,43 @@ SpritesTileMap::SpritesTileMap(const TileMap &tileMap) : tileMap(tileMap)
 
 void SpritesTileMap::renderizar(const Position &posCamara) {
     int size = 32;
+    int offset = 15; // tiles de que se ven desde el centro a los lados (15 para cada lado aprox)
+    int filas = tileMap.getFilas();
+    int columnas = tileMap.getColumnas();
 
-    // Ver si se puede cambiar por una imagen grande de fondo (mas de 60*32 px de ancho y alto)
+    //Pinto por fuera de los limites del terreno de juego
+    for (int i = -offset; i < 0; i++) { // filas por encima del 0
+        for (int j = -offset; j < filas +offset; j++) { // columnas 
+            tile_9.renderizarEn(size*j - posCamara.x, size*i - posCamara.y);
+        }
+    }
+    for (int i = 0; i < columnas+offset; i++) { 
+        for (int j = -offset; j < 0; j++) { //columnas detras del 0
+            tile_9.renderizarEn(size*j - posCamara.x, size*i - posCamara.y);
+        }
+    }
 
-    /*
-    for (int i = -15; i < 0; i++) { // Pinto por fuera de los limites del terreno de juego
-        for (int j = -15; j < 45; j++) {
+    for (int i = columnas; i < columnas + offset; i++) { // Filas por debajo de la ultima fila
+        for (int j = 0; j < filas + offset; j++) { 
             tile_9.renderizarEn(size*j - posCamara.x, size*i - posCamara.y);
         }
     }
-    for (int i = 0; i < 45; i++) { // Pinto por fuera de los limites del terreno de juego
-        for (int j = -15; j < 0; j++) {
+    
+    for (int i = 0; i < columnas+offset; i++) { 
+        for (int j = filas; j < filas+offset; j++) { //columnas detras del 0
             tile_9.renderizarEn(size*j - posCamara.x, size*i - posCamara.y);
         }
     }
-    for (int i = 30; i < 45; i++) { // Pinto por fuera de los limites del terreno de juego
-        for (int j = 0; j < 45; j++) {
-            tile_9.renderizarEn(size*j - posCamara.x, size*i - posCamara.y);
-        }
-    }
-    for (int i = 0; i < 45; i++) { // Pinto por fuera de los limites del terreno de juego
-        for (int j = 30; j < 45; j++) {
-            tile_9.renderizarEn(size*j - posCamara.x, size*i - posCamara.y);
-        }
-    }
-    */
 
-    for (size_t i = 0; i < tileMap.terreno.at(0).size(); i++) {
-        for (size_t j = 0; j < tileMap.terreno.size(); j++) { 
+    
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) { 
             int id = tileMap.terreno[j][i].getIdTile();
             SpriteObject tile = getTile(id);
             tile.renderizarEn(size*i - posCamara.x, size*j  - posCamara.y);
         }
     }
+
 
 }
 

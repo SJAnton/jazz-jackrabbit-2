@@ -4,10 +4,10 @@
 #include "game_casillero.h"
 #include "game_coordenada.h"
 
-#define FILAS 60//600
-#define COLUMNAS 60//600
+#define MAX_FILAS 60//600
+#define MAX_COLUMNAS 60//600
 
-std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(COLUMNAS * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(FILAS * MULTIPLCADOR_CASILLERO));
+std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(MAX_COLUMNAS * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(MAX_FILAS * MULTIPLCADOR_CASILLERO));
 
 GameMundo::GameMundo(std::vector<std::shared_ptr<ObjectPlayer>> players, 
               std::vector<std::shared_ptr<ObjectEnemy>> &enemigos,

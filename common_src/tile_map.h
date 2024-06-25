@@ -51,6 +51,9 @@ public:
     std::vector<uint8_t> toBytes();
 
     static TileMap getLevel_1();
+
+    int getFilas() {return terreno[0].size();};
+    int getColumnas() {return terreno.size();};
 };
 
 
