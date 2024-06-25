@@ -11,11 +11,11 @@
 ## Compilación
 
 ### Dependencias
-* [SDL2](SDL2:) (desarrollado con la version )
-* [SDL2_image](SDL2_image:), [SDL2_mixer](SDL_mixer:)
+* [SDL2](#Instalaciones) (desarrollado con la version)
+* [SDL2_image](#Instalaciones), [SDL2_mixer](#Instalaciones)
 * Qt5 (desarrollado con la version 5.15.3)
-* [yaml-cpp](yaml-cpp:)
-* [PKG-Config](PKG-Config:)
+* [yaml-cpp](#Instalaciones)
+* [PKG-Config](#Instalaciones)
 
 
 ### Comandos
