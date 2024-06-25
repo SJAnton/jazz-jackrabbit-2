@@ -4,8 +4,8 @@
 #include "game_casillero.h"
 #include "game_coordenada.h"
 
-#define FILAS 600
-#define COLUMNAS 600
+#define FILAS 60//600
+#define COLUMNAS 60//600
 
 std::vector<std::vector<Casillero>> GameMundo::casilleros = std::vector<std::vector<Casillero>>(COLUMNAS * MULTIPLCADOR_CASILLERO, std::vector<Casillero>(FILAS * MULTIPLCADOR_CASILLERO));
 

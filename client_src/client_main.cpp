@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
         }        
     }    
     was_closed = true;
-    cliente.kill();
+    //cliente.kill();
     std::cout << "fin" << std::endl;
     
     return 0;
