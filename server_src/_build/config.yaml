@@ -1,10 +1,10 @@
 ObjectPlayer:
   health: 10
   damage: 3
-  speed_walk: 10
+  speed_walk: 11
   speed_run: 20
   speed_intoxicated: 2
-  speed_jump: 10
+  speed_jump: 12
   speed_fall: 15
 
 Weapon:
