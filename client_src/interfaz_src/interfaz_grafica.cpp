@@ -70,15 +70,14 @@ InterfazGrafica::InterfazGrafica(
     );
 
     eventHandler->start();
-    //infoJuego.addPlayer();
 }
 
 bool InterfazGrafica::estaAbierta() {
     return is_running;
 }
 
-void InterfazGrafica::addPlayer(const TipoPlayer &tipo) {//temporal
-    spritesManager->addPlayer(tipo);
+void InterfazGrafica::addPlayer(int id, const TipoPlayer &tipo) {//temporal
+    spritesManager->addPlayer(id, tipo);
 }
 
 void InterfazGrafica::setMapa (const TileMap &mapa) {
@@ -102,10 +101,6 @@ void InterfazGrafica::update(int it) {
     
     try {
         infoJuego = queueReceptora.pop();
-    } catch (const ClosedQueue& e) {
-        std::cout << "cierro interfaz en update()" << std::endl;
-        cerrarInterfaz();
-    }
         Position pos(infoJuego.players[0].pos_x, infoJuego.players[0].pos_y); // el player 0 debo "ser yo"
         updateCamara(pos);
         //std::cout << "Cant players: " << infoJuego.cantidadPlayers() << std::endl;
@@ -115,11 +110,11 @@ void InterfazGrafica::update(int it) {
             EstadosPlayer &estado = infoPlayer.estado;
             pos = posRelativaACamara(infoPlayer.pos_x, infoPlayer.pos_y);
             try {
-                spritesManager->updatePlayer(i, estado, pos, infoPlayer.direccion);
+                spritesManager->updatePlayer(infoPlayer.id, estado, pos, infoPlayer.direccion);
                 efectosPlayer(estado, infoPlayer);
             } catch (...) { // si lanza una excepcion quiere decir que el player i no existe en spritesManager. Debo agregarlo
-                spritesManager->addPlayer(infoPlayer.tipoPlayer);
-                spritesManager->updatePlayer(i, estado, pos, infoPlayer.direccion);
+                spritesManager->addPlayer(infoPlayer.id, infoPlayer.tipoPlayer);
+                spritesManager->updatePlayer(infoPlayer.id, estado, pos, infoPlayer.direccion);
             }
         }
         for (int i=0; i< infoJuego.cantEnemigos(); i++) {
@@ -130,19 +125,20 @@ void InterfazGrafica::update(int it) {
                 spritesManager->updateEnemy(i, estado, pos, infoEnemigo.direccion);
                 //efectosEnemy(estado, infoEnemigo);
             } catch (...) {
-                //if (infoEnemigo.tipo == Bat)
                 spritesManager->addEnemy(infoEnemigo.tipo);
                 spritesManager->updateEnemy(i, estado, pos, infoEnemigo.direccion);
             }
-            
         }
     
-
-    if (iteracion % 2 == 0) {
-        spritesManager->updateItems();
-        spritesManager->updateProyectiles();
+        if (iteracion % 2 == 0) {
+            spritesManager->updateItems();
+            spritesManager->updateProyectiles();
+        }
+    } catch (const ClosedQueue& e) {
+        std::cout << "Capturo Queue cerrada en InterfazGrafica::update()" << std::endl;
+        nextEstado();
+        //cerrarInterfaz();
     }
-
 } 
 
 void InterfazGrafica::renderizarJuego() 
@@ -159,7 +155,7 @@ void InterfazGrafica::renderizarJuego()
 
     // renderizo players
     for (int i=0; i< infoJuego.cantidadPlayers(); i++) {
-        spritesManager->renderizarPlayer(i);
+        spritesManager->renderizarPlayer(infoJuego.players[i].id);
     }
     //renderizo enemigos
     for (int i=0; i< infoJuego.cantEnemigos(); i++) {
@@ -181,8 +177,8 @@ void InterfazGrafica::renderizarJuego()
     //HUD
     spritesManager->renderizarVidas(infoJuego.players[0].vida);
     spritesManager->renderizarMunicionArma(infoJuego.players[0].arma, infoJuego.players[0].municion);
-    spritesManager->renderizarTiempo(100); //Pasar infoJuego.tiempo
-    spritesManager->renderizarTablaPosiciones(infoJuego.players);
+    spritesManager->renderizarTiempo(infoJuego.tiempo_restante); //Pasar infoJuego.tiempo
+    spritesManager->renderizarTablaPosiciones(infoJuego.rankingPlayers);
 
     SDL_RenderPresent(renderer); // dibuja todo
 }
@@ -209,7 +205,7 @@ void InterfazGrafica::nextEstado() {
         effectsPlayer.play_effect(TIMES_UP_PATH);
         effectsPlayer.play_effect(TIMES_UP_2_PATH);
         estado = ResultadosFinales; //no implementado
-        //renderizarPantalla = &InterfazGrafica::renderizarTablaResultados;
+        renderizarPantalla = &InterfazGrafica::renderizarTablaResultados;
         break;
     case ResultadosFinales:
         musicPlayer.stop();

@@ -49,7 +49,7 @@ class ClientProtocol : public Protocol {
 		std::vector<int> recibirIdsPartidas(bool *was_closed);
 		void enviarNivelElegido(std::string nombre, bool *was_closed_);
 		std::vector<std::string> recibirNombresNiveles(bool *was_closed_);
-		void recibirIDCliente();
+		int recibirIDCliente();
 		//Terreno recibirTerreno(bool *was_closed);
 
 		bool is_was_closed() {return was_closed;};

@@ -136,10 +136,11 @@ void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
 }
 */
 
-void SpritesManager::renderizarPlayer(unsigned int n) {
-    SpritePlayer& player = getPlayer(n);
+void SpritesManager::renderizarPlayer(int id) {
+    SpritePlayer& player = getPlayer(id);
     player.renderizar();
 }
+
 void SpritesManager::renderizarEnemigo(unsigned int n) {
     SpriteEnemy& enemy = getEnemy(n);
     if (enemy.getEstado() == EstadosEnemy::Death) {
@@ -244,20 +245,20 @@ void SpritesManager::renderizarTiempo(int tiempo){
     font.renderText(tiempo_restante, tabla_x, tabla_y, 0.23f);
 }
 
-void SpritesManager::renderizarTablaPosiciones(const std::vector<InfoPlayer> players){
+void SpritesManager::renderizarTablaPosiciones(const std::vector<InfoTabla> &ranking_players){
     int tabla_x = ANCHO_WINDOW * 0.02;
     int tabla_y = ALTO_WINDOW * 0.11;
     int separacion = 20;
 
     font.renderText("TABLA DE POSICIONES", tabla_x, tabla_y, 0.23f);
 
-    std::vector<InfoPlayer> sortedPlayers = players;
-    std::sort(sortedPlayers.begin(), sortedPlayers.end(), comparadorPorPuntos);
+    //std::vector<InfoPlayer> sortedPlayers = players;
+    //std::sort(sortedPlayers.begin(), sortedPlayers.end(), comparadorPorPuntos);
 
-    for (size_t i = 0; i < sortedPlayers.size(); i++)
+    for (size_t i = 0; i < ranking_players.size(); i++)
     {
         std::string playerData = std::to_string(i + 1);
-        playerData += ".PLAYER" + std::to_string(sortedPlayers[i].id) + " PTS:" + std::to_string(sortedPlayers[i].puntos);
+        playerData += ".PLAYER" + std::to_string(ranking_players[i].id) + " PTS:" + std::to_string(ranking_players[i].puntos);
         font.renderText(playerData, tabla_x, tabla_y + separacion, 0.23f);
         separacion += 20;
     }
@@ -278,8 +279,8 @@ void SpritesManager::flipPlayer(unsigned int n, bool invertirSprite)
     player.setFlip(invertirSprite);
 }
 */
-void SpritesManager::updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos, const Direcciones &dir) {
-    SpritePlayer& player = getPlayer(n);
+void SpritesManager::updatePlayer(int id, const EstadosPlayer &estado, const Position &pos, const Direcciones &dir) {
+    SpritePlayer& player = getPlayer(id);
     player.setPosition(pos.x, pos.y);
     player.setFlip(dir);
     if (player.getEstado() != estado) { // si cambió de estado
@@ -306,8 +307,8 @@ void SpritesManager::updateProyectiles() {
     proyectil_0.nextFrame();
 }
 
-void SpritesManager::addPlayer(const TipoPlayer &tipo) {
-    players.emplace_back(tipo);
+void SpritesManager::addPlayer(int id, const TipoPlayer &tipo) {
+    players.emplace_back(id, tipo);
 }
 
 void SpritesManager::addEnemy(const TipoEnemy &tipo) {
@@ -317,12 +318,13 @@ void SpritesManager::addEnemy(const TipoEnemy &tipo) {
 
 //metodos privados:
 
-SpritePlayer& SpritesManager::getPlayer(unsigned int n) {
-    if (n >= players.size()) {
-        throw std::out_of_range("Index out of range");
+SpritePlayer& SpritesManager::getPlayer(int id) {
+    for (auto& player : players) {
+        if (player.getId() == id) {
+            return player;
+        }
     }
-    auto player = std::next(players.begin(), n);
-    return *player;
+    throw std::out_of_range("Player no existe en spritesManager");
 }
 
 SpriteEnemy& SpritesManager::getEnemy(unsigned int n) {

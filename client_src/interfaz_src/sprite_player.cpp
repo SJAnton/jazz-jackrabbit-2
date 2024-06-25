@@ -1,15 +1,13 @@
 #include "sprite_player.h"
 
 
-SpritePlayer::SpritePlayer(TipoPlayer tipoPlayer) :
-    tipo(tipoPlayer)
+SpritePlayer::SpritePlayer(int id, TipoPlayer tipoPlayer) :
+    id(id), tipo(tipoPlayer)
 {
     setEstado(EstadosPlayer::Inactive);
 }
 
-void SpritePlayer::setFlip(bool flip_) {
-    flip = flip_;
-}
+
 void SpritePlayer::setFlip(const Direcciones &dir) {
     if (dir == Left) 
         flip = true;
@@ -49,6 +47,9 @@ EstadosPlayer SpritePlayer::getEstado() {
     return estado;
 }
 
+int SpritePlayer::getId() {
+    return id;
+}
 
 void SpritePlayer::setEstado(const EstadosPlayer &estado_) {
     estado = estado_;

@@ -317,10 +317,11 @@ std::vector<std::string> ClientProtocol::recibirNombresNiveles(bool *was_closed_
 	return nombres;
 }
 
-void ClientProtocol::recibirIDCliente() {
+int ClientProtocol::recibirIDCliente() {
 	uint8_t byte;
 	socket.recvall(&byte, sizeof(byte), &was_closed);	
 	this->id = byte;
+	return (int)id;
 }
 
 TileMap ClientProtocol::recibirMapa() {

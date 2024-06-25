@@ -18,16 +18,22 @@ void ClientReceiver::run() {
         }
         queueReceptora.close();
         ClientPlayer::queueEnviadora.close();
-    } catch (const ClosedQueue& e) { // si la queue fue cerrada, no se trata de un error
-        was_closed = true;
-        stop();
-    } catch (const std::exception& e) {
-        queueReceptora.close();
+    } catch (const ClosedQueue& e) { // si la queue fue cerrada
+        std::cout << "la queueReceptora fue cerrada en el receiver" << std::endl;
         ClientPlayer::queueEnviadora.close();
-        protocolo.close();
         was_closed = true;
         stop();
-        std::cerr << "Error en el Receiver: " << e.what() << std::endl;
+    } catch (const std::exception& e) { // falló algo del socket
+        std::cout << "el socket se cerró. En el receiver" << std::endl;
+        std::cout << "Cierro la queueReceptora." << std::endl;
+        queueReceptora.close();
+        std::cout << "Cierro la queueEnviadora." << std::endl;
+        ClientPlayer::queueEnviadora.close();
+        
+        //protocolo.close();
+        was_closed = true;
+        stop();
+
     } catch(...) {
         std::cerr << "Error INESPERADO en el Receiver: " << std::endl;
     }

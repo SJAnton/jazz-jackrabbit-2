@@ -70,7 +70,7 @@ public:
     );
     
     bool estaAbierta();
-    void addPlayer(const TipoPlayer &tipo);//temporal
+    void addPlayer(int id, const TipoPlayer &tipo);//temporal
     void setMapa (const TileMap &mapa);
 
     //void recibirInformacion();

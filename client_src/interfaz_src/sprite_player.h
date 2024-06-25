@@ -7,6 +7,7 @@
 
 class SpritePlayer {
 private:
+    int id; // Para poder identificarlos en el caso de necesitarlo
     TipoPlayer tipo;
     SpriteSheet spriteSheet;
     EstadosPlayer estado = EstadosPlayer::Inactive;
@@ -20,16 +21,14 @@ private:
     void setEstadoLori(const EstadosPlayer &estado_);
 
 public:
-    SpritePlayer(TipoPlayer tipoPlayer);
+    SpritePlayer(int id, TipoPlayer tipoPlayer);
 
     void setPosition(int x, int y);
-
-    void setFlip(bool flip);
-    void setFlip(const Direcciones &dir);
-    
+    void setFlip(const Direcciones &dir);    
     void setEstado(const EstadosPlayer &estado);
 
     EstadosPlayer getEstado();
+    int getId();
 
     void renderizarEn(int x, int y);
     void renderizar();

@@ -48,7 +48,8 @@ void EventHandler::run()
             case Juego:
                 manejarComandosJuego(e, dir);
                 break;
-            case ResultadosFinales: //IMPLEMENTAR
+            case ResultadosFinales: 
+                manejarResultadosFinales(e);
                 break;
             default:
                 break;
@@ -130,10 +131,10 @@ void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
                 std::cout << "Comienza el juego!" << std::endl;
                 effectsPlayer.play_effect(BUTTON_PRESSED_EFFECT_PATH);
                 TipoPlayer personajeSeleccionado = personaje.getTipoPlayer();
-                interfaz.addPlayer(personajeSeleccionado);
                 cliente.entrarPartida(partidaSeleccionada, personajeSeleccionado);
                 TileMap tilemap = cliente.recibirInformacion();
-                //TileMap mapa = cliente.recibirMapa();
+                int id = cliente.getId();
+                interfaz.addPlayer(id, personajeSeleccionado);
                 interfaz.setMapa(tilemap);
                 cliente.startReceiver();
                 interfaz.nextEstado();
@@ -180,4 +181,11 @@ void EventHandler::procesarEstadoTeclas(Direcciones &dir) {
     if (key_state[SDLK_a]) {
         cliente.ataque_especial(dir);
     }
+}
+
+void EventHandler::manejarResultadosFinales(SDL_Event &e) {
+    if (e.type == SDL_QUIT || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)) {
+        interfaz.stop();
+        stop();
+    } 
 }

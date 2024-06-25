@@ -46,7 +46,7 @@ void ClientPlayer::cambiar_arma(Direcciones direccion) {
 }
 
 TileMap ClientPlayer::recibirInformacion(){
-	protocolo.recibirIDCliente();
+	id = protocolo.recibirIDCliente();
 	TileMap tilemap = protocolo.recibirMapa();
 	return tilemap;
 }
@@ -61,6 +61,9 @@ std::vector<int> ClientPlayer::getIdPartidas() {
 
 std::vector<std::string> ClientPlayer::getNombresNiveles() {
 	return nombres_niveles;
+}
+int ClientPlayer::getId() {
+	return id;
 }
 
 void ClientPlayer::entrarPartida(int idPartida, const TipoPlayer &tipoPlayer) {

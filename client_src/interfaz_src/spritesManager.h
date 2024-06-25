@@ -76,7 +76,7 @@ private:
 
 
 private: 
-    SpritePlayer& getPlayer(unsigned int n);
+    SpritePlayer& getPlayer(int id);
     SpriteEnemy& getEnemy(unsigned int n);
 
 
@@ -100,13 +100,13 @@ public:
     //void flipPlayer(unsigned int numero, bool invertirSprite);
 
     
-    void addPlayer(const TipoPlayer &tipo);
+    void addPlayer(int id, const TipoPlayer &tipo);
     void addEnemy(const TipoEnemy &tipo);
 
     //RENDERIZADORES
 
     //void renderizarPlayerEn(unsigned int n, int x, int y);
-    void renderizarPlayer(unsigned int n);
+    void renderizarPlayer(int id);
     void renderizarEnemigo(unsigned int n);
     void renderizarTerreno(const Position &posCamara);
     void renderizarItemEn(const TipoRecolectable &tipo, int x, int y);
@@ -114,7 +114,7 @@ public:
     void renderizarVidas(int &vidas);
     void renderizarMunicionArma(const TipoArma &tipo, int cantMunicion);
     void renderizarTiempo(int tiempo);
-    void renderizarTablaPosiciones(const std::vector<InfoPlayer> players);
+    void renderizarTablaPosiciones(const std::vector<InfoTabla> &);
 
 
     // UPDATES
@@ -129,15 +129,15 @@ public:
     void updateProyectiles();
 
     /**
-     * Actualiza el player numero 'n'.
+     * Actualiza el player que le corresponde el id.
      * Se cambia la posicion a la posicion recibida.
      * Si el estado es el mismo que tenia antes, avanza al siguiente frame de la animacion.
      * Si es diferente al que tenia antes, cambia su estado (y su animacion).
      * 
      * nota.
-     * Si NO EXISTE el player numero 'n' en SpritesManager, lanza una excepcion
+     * Si NO EXISTE el player con ese id en SpritesManager, lanza una excepcion
     */
-    void updatePlayer(unsigned int n, const EstadosPlayer &estado, const Position &pos, const Direcciones &dir);
+    void updatePlayer(int id, const EstadosPlayer &estado, const Position &pos, const Direcciones &dir);
 
     /**
      * Actualiza el enemy numero 'n'.
