@@ -31,6 +31,11 @@ private:
     int iteracion = 0;
     EstadoInterfaz estado;
 
+    EstadosPlayer estado_anterior_player = EstadosPlayer::Inactive;
+    EstadosEnemy estado_anterior_enemy = EstadosEnemy::Idle;
+
+    std::map<const InfoEnemigo*, bool> enemigo_muerto;
+
     //uso puntero para no tener que construirlo en la member initializer list
     SpritesManager *spritesManager;
 
@@ -52,6 +57,10 @@ private:
     void updateCamara(const Position &pos);
     Position posRelativaACamara(const int &x, const int &y);
     
+    void efectosArma(TipoArma &arma);
+    void efectosPlayer(EstadosPlayer &estado, InfoPlayer &infoPlayer);
+    void efectosEnemy(EstadosEnemy &estado, InfoEnemigo &infoEnemigo);
+
     MusicPlayer &musicPlayer;
     MusicPlayer effectsPlayer;
 public:

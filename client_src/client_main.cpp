@@ -25,8 +25,10 @@ int tiempo_transcurrido;
 int main(int argc, char* argv[]) {
     std::string input;
     
+    bool was_closed = false;
+
     MusicPlayer musicPlayer = MusicPlayer(VOLUME);
-    ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME);
+    ClientPlayer cliente = ClientPlayer(HOSTNAME, SERVICENAME, was_closed);
     InterfazGrafica interfaz(cliente.queueReceptora, cliente, musicPlayer);
     
     musicPlayer.play_music(MENU_MUSIC_PATH);
@@ -45,7 +47,8 @@ int main(int argc, char* argv[]) {
             SDL_Delay(frame_delay - tiempo_transcurrido); // sleep
         }        
     }    
-
+    was_closed = true;
+    cliente.kill();
     std::cout << "fin" << std::endl;
     
     return 0;

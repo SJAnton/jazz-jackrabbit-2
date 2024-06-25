@@ -3,13 +3,18 @@
 #include <iostream>
 #include "../../common_src/constantes.h"
 
-EventHandler::EventHandler(InterfazGrafica &interfaz, ClientPlayer &clientPlayer, 
+#define BUTTON_PRESSED_EFFECT_PATH "../music_src/Effects/ButtonPressed.mp3"
+
+EventHandler::EventHandler(InterfazGrafica &interfaz, ClientPlayer &clientPlayer,
+                            MusicPlayer &effectsPlayer,
                            const std::list<ButtonPartida> &partidas,
-                           const std::list<ButtonCharacter> &personajes) : 
+                           const std::list<ButtonCharacter> &personajes, bool &keep_running) : 
         interfaz(interfaz),
         cliente(clientPlayer),
+        effectsPlayer(effectsPlayer),
         partidas(partidas),
-        personajes(personajes)
+        personajes(personajes),
+        keep_running(keep_running)
 {
 }
 
@@ -18,14 +23,16 @@ void EventHandler::run()
     SDL_Event e;
     int frameStart;
     Direcciones dir = Direcciones::Right;
-    while (_keep_running) {
+    //while (_keep_running) {
+    while (keep_running) {
         frameStart = SDL_GetTicks();
 
-        while (SDL_PollEvent(&e)) {
+        while (SDL_PollEvent(&e) && keep_running) {
+
             if (e.type == SDL_QUIT || (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)) {
                 interfaz.stop();
                 stop();
-                return;
+                break;
             } 
             switch (interfaz.getEstado())
             {
@@ -54,6 +61,7 @@ void EventHandler::run()
             SDL_Delay(1000 / 15 - frameTime); // sleep 
         }
     }
+    std::cout << "fin handler" << std::endl;
 }
 bool pointInsideRect(int x, int y, SDL_Rect rect) { //.
     return (x >= rect.x && x <= rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h);
@@ -71,6 +79,7 @@ void EventHandler::manejarEventosMenu(SDL_Event &e) {
 
         if (pointInsideRect(mouseX, mouseY, {boton_x, boton_y, boton_width, boton_height})) { //Chequea si se clickeo en la zona del boton
             std::cout << "Seleccione una partida" << std::endl;
+            effectsPlayer.play_effect(BUTTON_PRESSED_EFFECT_PATH);
             interfaz.nextEstado();
         }
     }
@@ -84,6 +93,7 @@ void EventHandler::manejarSeleccionPartida(SDL_Event &e){
         for (auto partida : partidas) { //Recorro las partidas
             if (partida.clicked(mouseX, mouseY)) { //Chequea si se clickeo en la zona del boton
                 std::cout << "Seleccione un personaje" << std::endl;
+                effectsPlayer.play_effect(BUTTON_PRESSED_EFFECT_PATH);
                 partidaSeleccionada = partida.getIdPartida();
                 interfaz.nextEstado();
                 //cliente.entrarPartida(partidaSeleccionada, TipoPlayer::Spaz);//hardcodeado
@@ -100,6 +110,7 @@ void EventHandler::manejarSeleccionPartida(SDL_Event &e){
 
         if (pointInsideRect(mouseX, mouseY, {x, y, texto_width, size_letras})) { //Chequea si se clickeo en la zona del boton
             std::cout << "Creando partida nueva" << std::endl;
+            effectsPlayer.play_effect(BUTTON_PRESSED_EFFECT_PATH);
             partidaSeleccionada = 0;
             interfaz.nextEstado();
             //cliente.entrarPartida(partidaSeleccionada, TipoPlayer::Spaz);//hardcodeado
@@ -117,6 +128,7 @@ void EventHandler::manejarSeleccionPlayer(SDL_Event &e) {
         for (auto personaje : personajes) { //Recorro los personajes
             if (personaje.clicked(mouseX, mouseY)) { //Chequea si se clickeo en la zona del boton
                 std::cout << "Comienza el juego!" << std::endl;
+                effectsPlayer.play_effect(BUTTON_PRESSED_EFFECT_PATH);
                 TipoPlayer personajeSeleccionado = personaje.getTipoPlayer();
                 interfaz.addPlayer(personajeSeleccionado);
                 cliente.entrarPartida(partidaSeleccionada, personajeSeleccionado);

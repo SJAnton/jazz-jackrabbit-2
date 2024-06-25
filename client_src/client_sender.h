@@ -16,7 +16,7 @@ class ClientSender : public Thread {
         bool was_closed;
 
     public:
-        ClientSender(ClientProtocol& protocol, Queue<ComandoCliente>& send_queue);
+        ClientSender(ClientProtocol& protocol, Queue<ComandoCliente>& send_queue, bool &wc);
 
         virtual void run() override;
 };

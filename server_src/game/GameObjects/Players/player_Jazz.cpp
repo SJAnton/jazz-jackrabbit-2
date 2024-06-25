@@ -5,7 +5,8 @@ PlayerJazz::PlayerJazz(int id) : ObjectPlayer(id, TipoPlayer::Jazz) {
 }
 
 void PlayerJazz::specialAttack() {
-    if (is_dead() || is_intoxicated() || isJumping() || is_falling()) {
+    if (is_dead() || is_intoxicated() || isJumping() ||
+        is_falling() || estado == EstadosPlayer::SpecialAttack) {
         return;
     }
     isDoingSpecialAttack = true;
@@ -17,6 +18,7 @@ void PlayerJazz::specialAttack() {
 void PlayerJazz::updateSpecialAttack() {
     timer_specialAttack++;
     if (timer_specialAttack >= TIME_UPPERCUT) {
+        estado = EstadosPlayer::SpecialAttack;
         isDoingSpecialAttack = false;
         timer_specialAttack = 0;
     }

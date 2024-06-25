@@ -327,7 +327,7 @@ void ObjectPlayer::death() {
 void ObjectPlayer::revive() {
     health = health_buffer;
     alive = true;
-    estado = EstadosPlayer::Inactive;
+    estado = EstadosPlayer::Reviving;
 }
 
 InfoPlayer ObjectPlayer::getInfo() {
