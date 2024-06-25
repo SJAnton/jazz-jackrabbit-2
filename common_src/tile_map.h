@@ -52,8 +52,8 @@ public:
 
     static TileMap getLevel_1();
 
-    int getFilas() {return terreno[0].size();};
-    int getColumnas() {return terreno.size();};
+    int getFilas() const {return terreno[0].size();};
+    int getColumnas() const {return terreno.size();};
 };
 
 

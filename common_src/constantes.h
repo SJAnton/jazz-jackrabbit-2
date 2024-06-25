@@ -3,8 +3,8 @@
 
 //#include "info_juego.h"
 
-#define ANCHO_WINDOW 750
-#define ALTO_WINDOW 500 
+#define ANCHO_WINDOW 900
+#define ALTO_WINDOW 600 
 
 // Player
 enum TipoPlayer {Jazz, Spaz, Lori};

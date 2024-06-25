@@ -46,7 +46,7 @@ SpriteObject::SpriteObject(const std::string &pathSprite, int w, int h) :
 void SpriteObject::setArea(int width, int height) {
     widthSprite = width;
     heightSprite = height;
-    destRect = {pos_x, pos_y, widthSprite, widthSprite};
+    destRect = {pos_x, pos_y, widthSprite, heightSprite};
 }
 
 

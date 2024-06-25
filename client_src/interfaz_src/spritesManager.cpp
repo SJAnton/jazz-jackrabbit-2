@@ -29,17 +29,25 @@ SpritesManager::SpritesManager() :
     gun_1(PATH_GUN_1, 24, 24, 10),
     gun_2(PATH_GUN_2, 24, 24, 10),
     gun_3(PATH_GUN_3, 24, 24, 9),
-    gun_4(PATH_GUN_4, 32, 24, 10)
-
-    //spazGun(PATH_SPAZ_GUN, 24, 24, 10),
-    //jazzGun(PATH_JAZZ_GUN, 24, 24, 10),
-    //loriGun(PATH_LORI_GUN, 16, 16, 5)
+    gun_4(PATH_GUN_4, 32, 24, 10),
+    spaz_HUD(PATH_HUD_SPAZ, 40, 40, 10),
+    jazz_HUD(PATH_HUD_JAZZ, 40, 40, 11),
+    lori_HUD(PATH_HUD_LORI, 46, 46, 6)
 {
     SpritesTileMap::init();
     SpritesPlayers::init();
     SpritesEnemies::init();
 
     font = fontManager();
+
+    gun_1.setArea(48, 48);
+    gun_2.setArea(48, 48);
+    gun_3.setArea(48, 48);
+    gun_4.setArea(64, 48);
+    spaz_HUD.setArea(20, 20);
+    jazz_HUD.setArea(20, 20);
+    lori_HUD.setArea(23, 23);
+
 }
 
 void SpritesManager::renderizarMenu() {
@@ -75,66 +83,58 @@ void SpritesManager::renderizarBotonesPartidas() {
     botones_partidas.back().renderizarCrearPartida();
 }
 
-void SpritesManager::inicializarBotonesCharacter(){
-    int separacion = 250;
+void SpritesManager::inicializarBotonesCharacter() {
+    int num_characters = 3;
+    int separacion = 150;
     int character_width = 144, character_height = 240;
-    int x = ((ANCHO_WINDOW / 3) - character_width) / 2;
+
+    // Calcular el espacio total requerido para todos los personajes y las separaciones entre ellos
+    int total_width = (num_characters * character_width) + ((num_characters - 1) * separacion);
+
+    int x = (ANCHO_WINDOW - total_width) / 2;
     int y = (ALTO_WINDOW - character_height) / 2;
 
     botones_character.emplace_back(TipoPlayer::Jazz, x, y);
-    botones_character.emplace_back(TipoPlayer::Spaz, x + separacion, y);
-    botones_character.emplace_back(TipoPlayer::Lori, x + separacion * 2, y);
+    botones_character.emplace_back(TipoPlayer::Spaz, x + character_width + separacion, y);
+    botones_character.emplace_back(TipoPlayer::Lori, x + (character_width +separacion) * 2, y);
 }
-
 std::list<ButtonCharacter> SpritesManager::getBotonesCharacter() {
     return botones_character;
 }
-
 void SpritesManager::renderizarBotonesCharacter(){
-    int separacion = 250;
+    int num_characters = 3;
+    int separacion = 150;
     int character_width = 144, character_height = 240;
-    int x = ((ANCHO_WINDOW / 3) - character_width) / 2;
+
+    // Calcular el espacio total requerido para todos los personajes y las separaciones entre ellos
+    int total_width = (num_characters * character_width) + ((num_characters - 1) * separacion);
+
+    int x = (ANCHO_WINDOW - total_width) / 2;
     int y = (ALTO_WINDOW - character_height) / 2;
 
+    // Renderizar los personajes en las posiciones calculadas
     character_jazz.renderizarEn(x, y);
-    character_spaz.renderizarEn(x + separacion, y);
-    character_lori.renderizarEn(x + separacion * 2, y);
+    character_spaz.renderizarEn(x + character_width + separacion, y);
+    character_lori.renderizarEn(x + 2 * (character_width + separacion), y);
 }
 
-bool comparadorPorPuntos(const InfoPlayer& a, const InfoPlayer& b) {
-    return a.puntos > b.puntos; // Orden descendente (de mayor a menor)
-}
 
-void SpritesManager::renderizarPosicionesFinales(const std::vector<InfoPlayer> players){
+void SpritesManager::renderizarPosicionesFinales(const std::vector<InfoTabla> &ranking_players){
     int tabla_x = ANCHO_WINDOW * 0.5;
     int tabla_y = ALTO_WINDOW * 0.4;
     int separacion = 40;
 
     font.renderText("TABLA DE POSICIONES", tabla_x, tabla_y, 0.5f);
 
-    std::vector<InfoPlayer> sortedPlayers = players;
-    std::sort(sortedPlayers.begin(), sortedPlayers.end(), comparadorPorPuntos);
-
-    for (size_t i = 0; i < sortedPlayers.size(); i++)
-    {
+    for (size_t i = 0; i < ranking_players.size(); i++) {
         std::string playerData = std::to_string(i + 1);
-        playerData += ".PLAYER" + std::to_string(sortedPlayers[i].id) + " PTS:" + std::to_string(sortedPlayers[i].puntos);
+        playerData += ".PLAYER" + std::to_string(ranking_players[i].id) + " PTS:" + std::to_string(ranking_players[i].puntos);
         font.renderText(playerData, tabla_x, tabla_y + separacion, 0.5f);
         separacion += 40;
     }
 }
 
 //JUEGO
-/*
-void SpritesManager::renderizarPlayerEn(unsigned int n, int x, int y)
-{
-    SpritePlayer& player = getPlayer(n);
-    if (playerInvertido)
-        player.setFlip(true);
-    player.renderizarEn(x, y);
-
-}
-*/
 
 void SpritesManager::renderizarPlayer(int id) {
     SpritePlayer& player = getPlayer(id);
@@ -198,25 +198,25 @@ void SpritesManager::renderizarProyectilEn(const Direcciones &dir, TipoArma &tip
 }
 
 void SpritesManager::renderizarVidas(int& vidas){
-    int corazones_x = ANCHO_WINDOW * 0.9;
+    int corazones_x = ANCHO_WINDOW * 0.94;
     int corazones_y = ALTO_WINDOW * 0.05;
     int separacion = 0;
     for (int i = 0; i < vidas; ++i)
     {
         heartIcon.renderizarEn(corazones_x + separacion, corazones_y);
-        separacion -= 30;
+        separacion -= 15;
     }
 }
 
 void SpritesManager::renderizarMunicionArma(const TipoArma &tipo, int cantMunicion){
     int municion_x = ANCHO_WINDOW * 0.8;
-    int municion_y = ALTO_WINDOW * 0.9;
+    int municion_y = ALTO_WINDOW * 0.84;
 
     //int separacion = 0;
     std::string municion;
     if(tipo == Tipo_1){
         gun_1.renderizarEn(municion_x, municion_y);
-        municion += "X99";        // municoines infiintas.
+        municion += "X .";        // municoines infiintas.
     }
     else if(tipo == Tipo_2){
         gun_2.renderizarEn(municion_x, municion_y);
@@ -232,37 +232,38 @@ void SpritesManager::renderizarMunicionArma(const TipoArma &tipo, int cantMunici
         municion += "X" + std::to_string(cantMunicion);
     }
 
-    font.renderText(municion, municion_x + 30, municion_y, 0.4f);
+    font.renderText(municion, municion_x + 45, municion_y, 0.7f, -20);
 }
 
 void SpritesManager::renderizarTiempo(int tiempo){
-    int tabla_x = ANCHO_WINDOW * 0.02;
+    int tabla_x = ANCHO_WINDOW / 2;
     int tabla_y = ALTO_WINDOW * 0.05;
-
-    std::string tiempo_restante = "TIEMPO RESTANTE: ";
-    tiempo_restante += std::to_string(tiempo);
-
-    font.renderText(tiempo_restante, tabla_x, tabla_y, 0.23f);
+    
+    font.renderText(std::to_string(tiempo), tabla_x, tabla_y, 0.4f, -1);
 }
 
 void SpritesManager::renderizarTablaPosiciones(const std::vector<InfoTabla> &ranking_players){
     int tabla_x = ANCHO_WINDOW * 0.02;
-    int tabla_y = ALTO_WINDOW * 0.11;
+    int tabla_y = ALTO_WINDOW * 0.05;
     int separacion = 20;
+    font.renderText("RANKING", tabla_x, tabla_y, 0.23f, -4);
+    
+    for (size_t i = 0; i < ranking_players.size(); i++) {
+            if (ranking_players[i].tipoPlayer == Lori)
+                lori_HUD.renderizarEn(tabla_x, tabla_y + separacion-5);
+            else if (ranking_players[i].tipoPlayer == Spaz)
+                spaz_HUD.renderizarEn(tabla_x, tabla_y + separacion-5);
+            else 
+                jazz_HUD.renderizarEn(tabla_x, tabla_y + separacion-5);
 
-    font.renderText("TABLA DE POSICIONES", tabla_x, tabla_y, 0.23f);
-
-    //std::vector<InfoPlayer> sortedPlayers = players;
-    //std::sort(sortedPlayers.begin(), sortedPlayers.end(), comparadorPorPuntos);
-
-    for (size_t i = 0; i < ranking_players.size(); i++)
-    {
         std::string playerData = std::to_string(i + 1);
         playerData += ".PLAYER" + std::to_string(ranking_players[i].id) + " PTS:" + std::to_string(ranking_players[i].puntos);
-        font.renderText(playerData, tabla_x, tabla_y + separacion, 0.23f);
+        font.renderText(playerData, tabla_x+40, tabla_y + separacion, 0.23f, -4);
         separacion += 20;
     }
-    
+    //lori_HUD.nextFrame();
+    //spaz_HUD.nextFrame(); //No anda
+    //jazz_HUD.nextFrame();
 }
 
 
@@ -272,13 +273,6 @@ void SpritesManager::updateItems() {
     zanahoria.nextFrame();
 }
 
-/*
-void SpritesManager::flipPlayer(unsigned int n, bool invertirSprite) 
-{
-    SpritePlayer& player = getPlayer(n);
-    player.setFlip(invertirSprite);
-}
-*/
 void SpritesManager::updatePlayer(int id, const EstadosPlayer &estado, const Position &pos, const Direcciones &dir) {
     SpritePlayer& player = getPlayer(id);
     player.setPosition(pos.x, pos.y);

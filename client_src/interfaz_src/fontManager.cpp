@@ -19,10 +19,26 @@ void fontManager::renderText(const std::string& text, int x, int y, float scale)
             SDL_Rect srcRect = it->second;
             SDL_Rect dstRect = { x, y, static_cast<int>(srcRect.w * scale), 
                                 static_cast<int>(srcRect.h * scale) };
+
             SDL_RenderCopy(renderer, fontTexture, &srcRect, &dstRect);
             x += dstRect.w;
         } else if (c == ' ') { // Si el carácter es un espacio
             x += static_cast<int>(64 * scale); // Avanza el ancho de un espacio
+        }
+    }
+}
+
+void fontManager::renderText(const std::string& text, int x, int y, float scale, int spacing) {
+    for (char c : text) {
+        auto it = charMap.find(c);
+        if (it != charMap.end()) { // Si se encuentra el carácter en el mapa
+            SDL_Rect srcRect = it->second;
+            SDL_Rect dstRect = { x, y, static_cast<int>(srcRect.w * scale), 
+                                static_cast<int>(srcRect.h * scale) };
+            SDL_RenderCopy(renderer, fontTexture, &srcRect, &dstRect);
+            x += dstRect.w + spacing; // Añadir el espacio entre caracteres
+        } else if (c == ' ') { // Si el carácter es un espacio
+            x += static_cast<int>(64 * scale) + spacing; // Añadir el espacio entre caracteres
         }
     }
 }

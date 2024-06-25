@@ -1,3 +1,4 @@
+![jazzJackRabbit](jazzJackRabbit.jpeg)
 # Cliente
 ### Instalación de dependencias:
 Las dependencias utilizadas son PKG-Config, SDL2 y SDL2-Image.

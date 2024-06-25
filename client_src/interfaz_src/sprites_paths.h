@@ -140,10 +140,9 @@
 
 // HUD
 #define PATH_HEART_ICON "../sprites/HUD/Heart Icon (24x16)x01.png"
-//#define PATH_SPAZ_GUN "../sprites/HUD/Spaz Gun (24x24)x10.png"
-//#define PATH_JAZZ_GUN "../sprites/HUD/Jazz Gun (24x24)x10.png"
-//#define PATH_LORI_GUN "../sprites/HUD/Lori Gun (16x16)x05.png"
-
+#define PATH_HUD_LORI "../sprites/HUD/Lori_HUD (46x46)x06.png"
+#define PATH_HUD_JAZZ "../sprites/HUD/Jazz_HUD (40x40)x11.png"
+#define PATH_HUD_SPAZ "../sprites/HUD/Spaz_HUD (40x40)x10.png"
 #define PATH_GUN_1 "../sprites/HUD/Gun_1 (24x24)x10.png"
 #define PATH_GUN_2 "../sprites/HUD/Gun_2 (24x24)x10.png"
 #define PATH_GUN_3 "../sprites/HUD/Gun_3 (24x24)x09.png"
