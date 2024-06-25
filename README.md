@@ -2,9 +2,9 @@
 # Jazz Jackrabbit 2
 
 ## Indice 
-  - [Compilación](#Compilacion)
-  - [Ejecución](#Ejecucion)
-  - [Instrucciones de juego](#Instrucciones_de_juego)
+  - [Compilación](#Compilación)
+  - [Ejecución](#Ejecución)
+  - [Instrucciones de juego](#Instrucciones_del_juego)
   - [Instalaciones](#Instalaciones)
   
 
