@@ -45,6 +45,10 @@ std::unordered_map<QString, int> LevelEditor::initializeIds() { //Diccionario de
         {"Gold Coin", 0},
         {"Silver Coin", 1},
         {"Red Gem", 2},
+        {"Municion 1", 3},
+        {"Municion 2", 4},
+        {"Municion 3", 5},
+        {"Municion 4", 6},
 
         {"Spaz", 0},
         {"Rat", 1},
@@ -101,6 +105,11 @@ LevelEditor::LevelEditor(QWidget *parent, int width, int height) :
     addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/gold_coin.png", "Gold Coin", QSize(23, 23));
     addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/silver_coin.png", "Silver Coin", QSize(23, 23));
     addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/red_gem.png", "Red Gem", QSize(25, 26));
+    //Municiones
+    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/Municion_1.png", "Municion 1", QSize(21, 32));
+    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/Municion_2.png", "Municion 2", QSize(23, 32));
+    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/Municion_3.png", "Municion 3", QSize(23, 32));
+    addSpriteItemToListWidget(ui->objectsListWidget, ":/sprites/Municion_4.png", "Municion 4", QSize(23, 32));
 
     //Spawnpoint y enemigos
     addSpriteItemToListWidget(ui->playerEnemiesListWidget, ":/sprites/spaz.png", "Spaz", QSize(45, 37));

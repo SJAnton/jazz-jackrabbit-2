@@ -14,7 +14,9 @@
 #include "button_character.h"
 #include "fontManager.h"
 #include "../../common_src/tile_map.h"
+#include "../../common_src/info_juego.h"
 #include "sprites_tile_map.h"
+#include <algorithm> 
 
 #include <list>
 #include <vector>
@@ -110,6 +112,7 @@ public:
     void renderizarProyectilEn(const Direcciones &dir, TipoArma &tipo,int x, int y);
     void renderizarVidas(int &vidas);
     void renderizarMunicionArma(const TipoArma &tipo, int cantMunicion);
+    void renderizarTablaPosiciones(const std::vector<InfoPlayer> players);
 
 
     // UPDATES
