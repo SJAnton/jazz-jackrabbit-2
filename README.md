@@ -1,32 +1,48 @@
 ![jazzJackRabbit](jazzJackRabbit.jpeg)
-# Cliente
-### Instalación de dependencias:
-Las dependencias utilizadas son PKG-Config, SDL2 y SDL2-Image.
-```sh
-sudo apt-get install pkg-config
-```
-```sh
-sudo apt-get install libsdl2-dev
-```
-```sh
-sudo apt-get install libsdl2-image-dev
-```
+# Jazz Jackrabbit 2
+
+## Indice 
+  - [Compilación](#Compilacion)
+  - [Ejecución](#Ejecucion)
+  - [Instrucciones de juego](#Instrucciones_de_juego)
+  - [Instalaciones](#Instalaciones)
+  
+
+## Compilación
+
+### Dependencias
+* [SDL2](SDL2) (#Instalacion) (desarrollado con la version )
+* [SDL2_image](SDL2_image), [SDL2_mixer](SDL_mixer)
+* Qt5 (desarrollado con la version 5.15.3)
+* [yaml-cpp](yaml-cpp)
+* [PKG-Config](PKG-Config)
 
 
-### Para crear el makefile del cliente, ir a la carpeta build y hacer:
+### Comandos
+#### Cliente
+Para compilar en el cliente:
+* Navegar hacia la carpeta "_build" dentro de "client_src" y ejecutar el comando: ```sh ./client {IP} {Puerto} ```
+* Una vez que termine, correr el comando ```sh make ```
+
+#### Servidor
+Para compilar en el servidor:
+* Navegar hacia la carpeta "_build" dentro de "server_src" y ejecutar el comando: ```sh cmake .```
+* Una vez que termine, correr el comando ```make```
+
+
+## Ejecución:
+#### Servidor
+El ejecutable en el servidor es _./server_, y para ejecutarlo se agrega pasando por parámetro el puerto:
 ```sh
-cmake ..
+./server {Puerto}
+```
+Para ejecutar localmente:
+```sh
+./server 8080
 ```
 
-### Compilación:
-Luego, dentro de la misma carpeta, hacer:
-```sh
-make
-```
-Esto creara el ejecutable cel client.
-
-### Ejecución:
-Es necesario haber ejecutado el servidor anteriormente.
+#### Cliente
+Para ejecutar el cliente es necesario haber ejecutado el servidor anteriormente. Su ejecutable es _./client_, y se ejecuta dando la IP y el Puerto:
 ```sh
 ./client {IP} {Puerto}
 ```
@@ -35,22 +51,24 @@ Para ejecutar localmente:
 ./client localhost 8080
 ```
 
-# Server
-### Para crear el makefile del server, ir a la carpeta server_src/build y hacer:
-```sh
-cmake .
-```
-y luego, para crear el ejecutable hacer:
-```sh
-make
-```
-Esto creara el ejecutable del server.
+## Instrucciones del Juego
+### Objetivo
+El juego consiste en hacer la mayor cantidad de puntos. Las formas de conseguir puntos es:
+- Eliminando enemigos
+- Recogiendo Monedas o Gemas
 
-### Ejecución:
-```sh
-./server {Puerto}
-```
-Para ejecutar localmente:
-```sh
-./server 8080
-```
+### Controles
+* Flecha `→`: mueve el jugador hacia la derecha
+* Flecha `←`: mueve el jugador hacia la izquierda
+* Barra espaciadora ` `: el jugador salta
+* Letra `D`: para disparar
+* Letra `C`: para cambiar de arma
+* Tecla `Ctrl`: para correr
+
+## Instalaciones
+* SDL2: 
+* SDL2_image: _sudo apt-get install libsdl2-dev_
+* SDL2_mixer: _sudo apt-get install libsdl2-image-dev_
+* Qt5:
+* yaml-cpp: 
+* PKG-Config: _sudo apt-get install pkg-config_
